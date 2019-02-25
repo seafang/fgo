@@ -14,40 +14,67 @@
 	<style>
 		@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 		
+		* {
+			box-sizing: border-box;
+		}
+		
 		body {
 			font-family: "Noto Sans TC", sans-serif;
+			padding: 5px;
 		}
-
-		ul {
+        
+		/*header style*/
+		.header {
+			background-color: #f1f1f1;
+			padding: 5px;
+			text-align: left;
+		}
+		
+		/*topnav style*/
+		.topnav {
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
-			background-color: #787878;
+			background-color: #5D5D5D;
+			border: none;
 		}
 
-		li {
-			float: left;
-		}
-    
-		li a {
+		.topnav a {
+        	float: left;
 			display: block;
 			color: white;
 			text-align: center;
-			padding: 15px;
+			padding: 5px 10px;
 			text-decoration: none;
 			line-height: 2;
 			font-size: 14px;
 			font-weight: 500;
 		}
-    
-		li a:hover {
-			background-color: #5D5D5D;
+		
+		.topnav a.right {
+			float: right;
 		}
     
-		li a:active {
+		.topnav a:hover {
+			background-color: #282828;
+		}
+    
+		.topnav a:active {
 			background-color: #FFFFFF;
-			color: #787878;
+			color: #5D5D5D;
+		}
+        
+		/*footer style*/
+		.footer {
+			color: white;			
+			background-color: #5D5D5D;
+			padding: 10px 10px;
+			text-align: left;
+		}			
+		
+		@media screen and (max-width: 390px) {
+			.topnav a.right, .topnav a {float: none;}
 		}
 		
 		#to_top{
@@ -58,26 +85,32 @@
 			padding: 10px;
 			right: 10px;
 			bottom: 10px;
-        }
+		}
 	</style>
 </head>
 <body>
-	<ul style="border:none;">
-		<li><a href="#從者管理">從者管理</a></li>
-		<li><a href="#禮裝管理">禮裝管理</a></li>
-		<li><a href="#寶傷排名">寶傷排名</a></li>
-		<li><a href="#寶傷計算">寶傷計算</a></li>
-		<li><a href="#寶傷計算(手機版)">寶傷計算(手機版)</a></li>
-		<li><a href="#NP計算">NP計算</a></li>
-		<li><a href="#FGO公式">FGO公式</a></li>
-		<li><a href="#使用說明">使用說明</a></li>
-		<li><a href="#更新紀錄">更新紀錄</a></li>
-	</ul>
+	<div class="header">
+		<h1 style="font-size:4vw">FGO寶具傷害及NP計算機 <small><small><small>by 威爾夫</small></small></small></h1>
+	</div>
+	<div class="topnav">
+		<a href="#從者管理">從者管理</a>
+		<a href="#禮裝管理">禮裝管理</a>
+		<a href="#寶傷排名">寶傷排名</a>
+		<a href="#寶傷計算">寶傷計算</a>
+		<a href="#NP計算">NP計算</a>
+		<a href="#更新紀錄" class="right">更新紀錄</a>
+		<a href="#使用說明" class="right">使用說明</a>
+		<a href="#FGO公式" class="right">FGO公式</a>
+	</div>
 	<noscript><h3 style="font-size:5vw;color:red;">請先啟用JavaScript！</h3></noscript>
 	<br>
-	<p>Construction in progress</p>
+	<p>Construction in progress...</p>
 	<div id="to_top">
 		<a href="#top">回到頂部</a>
+	</div>
+	<br>
+	<div class="footer">
+		<!-- <p><small><small>版權所有&#169;威爾夫</small></small></p> -->
 	</div>
 </body>
 </html>
