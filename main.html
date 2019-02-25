@@ -58,10 +58,6 @@
 			float: right;
 		}
     
-		.topnav a:hover {
-			background-color: #282828;
-		}
-    
 		.topnav a.left:active, .topnav a.right:active {
 			background-color: #FFFFFF;
 			color: #5D5D5D;
@@ -74,6 +70,10 @@
 			padding: 10px 10px;
 			text-align: left;
 		}			
+		
+		@media screen and (max-width: 660px) {
+			.topnav a:hover {background-color: #282828;}
+		}
 		
 		@media screen and (max-width: 660px) {
 			.header {font-size:2vw}
