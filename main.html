@@ -60,7 +60,7 @@
 			background-color: #282828;
 		}
     
-		.topnav a:active {
+		.topnav a.left:active, .topnav a.right:active {
 			background-color: #FFFFFF;
 			color: #5D5D5D;
 		}
@@ -74,17 +74,20 @@
 		}			
 		
 		@media screen and (max-width: 390px) {
-			.topnav a.right, .topnav a {float: none;}
+			.topnav a, .topnav a.right {float: none;}
 		}
 		
-		#to_top{
-			text-align: center;  
+		a.to_top {
 			background: #D4D4D4; 
-			display: none;
+			text-align: center;
+			display: block;
+			font-size: 14px;
+			color: black;
+			text-decoration: none;
+			padding: 5px;
 			position: fixed;
-			padding: 10px;
-			right: 10px;
-			bottom: 10px;
+			right: 0;
+			bottom: 20px;
 		}
 	</style>
 </head>
@@ -93,24 +96,38 @@
 		<h1 style="font-size:4vw">FGO寶具傷害及NP計算機 <small><small><small>by 威爾夫</small></small></small></h1>
 	</div>
 	<div class="topnav">
-		<a href="#從者管理">從者管理</a>
-		<a href="#禮裝管理">禮裝管理</a>
-		<a href="#寶傷排名">寶傷排名</a>
-		<a href="#寶傷計算">寶傷計算</a>
-		<a href="#NP計算">NP計算</a>
-		<a href="#更新紀錄" class="right">更新紀錄</a>
-		<a href="#使用說明" class="right">使用說明</a>
-		<a href="#FGO公式" class="right">FGO公式</a>
+		<a class="menu" onclick="menu()">&equiv;</a>
+		<div id="menu-content">
+			<a href="#從者管理" class="left">從者管理</a>
+			<a href="#禮裝管理" class="left">禮裝管理</a>
+			<a href="#寶傷排名" class="left">寶傷排名</a>
+			<a href="#寶傷計算" class="left">寶傷計算</a>
+			<a href="#NP計算" class="left">NP計算</a>
+			<a href="#更新紀錄" class="right">更新紀錄</a>
+			<a href="#使用說明" class="right">使用說明</a>
+			<a href="#FGO公式" class="right">FGO公式</a>
+		</div>
 	</div>
 	<noscript><h3 style="font-size:5vw;color:red;">請先啟用JavaScript！</h3></noscript>
 	<br>
 	<p>Construction in progress...</p>
-	<div id="to_top">
-		<a href="#top">回到頂部</a>
-	</div>
+	<a href="#topnav" class="to_top">回到頂部</a>
 	<br>
 	<div class="footer">
 		<!-- <p><small><small>版權所有&#169;威爾夫</small></small></p> -->
 	</div>
+	<script>
+		var hide
+		
+		function menu() {
+			if (hide == undefined) {
+				document.getElementById("menu-content").style.display = "none";
+				hide = 0;
+			} else {
+				document.getElementById("menu-content").style.display = "block";
+				hide = undefined;
+			}
+		}
+	</script>
 </body>
 </html>
