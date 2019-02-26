@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/png" href="images/logo.png" />
 <title>FGO寶具傷害及NP計算機</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="jquery.js"></script>
 <link rel="stylesheet" href="css/style.css" /> 
 <!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -103,7 +105,7 @@ a.to_top {
 	
 <!-- top navigation box -->
 <nav>
-	<a class="menu" onclick="menu()">&equiv;</a>
+	<a class="menu">&equiv;</a>
 	<div id="menu-content">
 		<a href="#從者管理" class="left">從者管理</a>
 		<a href="#禮裝管理" class="left">禮裝管理</a>
@@ -130,17 +132,6 @@ a.to_top {
 </footer>
 	
 <script>
-//menu button
-{ let hide = undefined;
-function menu() {
-	if (hide === undefined) {
-		document.getElementById("menu-content").style.display = "none";
-		hide = 0;
-	} else {
-		document.getElementById("menu-content").style.display = "block";
-		hide = undefined;
-	}
-}}
 
 </script>
 
