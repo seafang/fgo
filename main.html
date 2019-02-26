@@ -1,136 +1,148 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" />
 <head>
-	<meta charset="UTF-8" />
-	<meta name="description" content="FGO計算機" />
-	<meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發" />
-	<meta name="author" content="Wilfred Tang" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="icon" type="image/png" href="images/logo.png">
-	<title>FGO寶具傷害及NP計算機</title>
-	<link rel="stylesheet" href="css/style.css" /> 
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<![endif]-->
-	<style>
-		@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+<meta charset="UTF-8" />
+<meta name="description" content="FGO計算機" />
+<meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發" />
+<meta name="author" content="Wilfred Tang" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="images/logo.png" />
+<title>FGO寶具傷害及NP計算機</title>
+<link rel="stylesheet" href="css/style.css" /> 
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
+	
+<style>
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 		
-		* {
-			box-sizing: border-box;
-		}
+* {
+	box-sizing: border-box;
+}
 		
-		body {
-			font-family: "Noto Sans TC", sans-serif;
-			padding: 5px;
-		}
+/*body style*/
+body {
+	font-family: "Noto Sans TC", sans-serif;
+	padding: 5px;
+}
         
-		/*header style*/
-		.header {
-			background-color: #f1f1f1;
-			padding: 5px;
-			text-align: left;
-			font-size: 16px;
-		}
-		
-		/*topnav style*/
-		.topnav {
-			list-style-type: none;
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-			background-color: #5D5D5D;
-			border: none;
-		}
-
-		.topnav a {
-        	float: left;
-			display: block;
-			color: white;
-			text-align: center;
-			padding: 5px 10px;
-			text-decoration: none;
-			line-height: 2;
-			font-size: 14px;
-			font-weight: 500;
-		}
-		
-		.topnav a.right {
-			float: right;
-		}
-    
-		.topnav a.left:active, .topnav a.right:active {
-			background-color: #FFFFFF;
-			color: #5D5D5D;
-		}
+/*header style*/
+header {
+	background-color: #f1f1f1;
+	padding: 5px;
+	text-align: left;
+	font-size: 16px;
+}
+	
+/*top navigation box style*/
+nav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #5D5D5D;
+	border: none;
+}
+nav a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 5px 10px;
+	text-decoration: none;
+	line-height: 2;
+	font-size: 14px;
+	font-weight: 500;
+}	
+nav a.right {
+	float: right;
+}
+nav a.left:active, nav a.right:active {
+	background-color: #FFFFFF;
+	color: #5D5D5D;
+}
         
-		/*footer style*/
-		.footer {
-			color: white;			
-			background-color: #5D5D5D;
-			padding: 10px 10px;
-			text-align: left;
-		}			
-		
-		@media screen and (min-width: 660px) {
-			.topnav a:hover {background-color: #282828;}
-		}
-		
-		@media screen and (max-width: 660px) {
-			.header {font-size:2vw}
-			.topnav a, .topnav a.right {float: none; width: 100%;}
-		}
-		
-		a.to_top {
-			background: #D4D4D4; 
-			text-align: center;
-			display: block;
-			font-size: 14px;
-			color: black;
-			text-decoration: none;
-			padding: 5px;
-			position: fixed;
-			right: 0;
-			bottom: 40px;
-		}
-	</style>
+/*footer style*/
+footer {
+	color: white;			
+	background-color: #5D5D5D;
+	padding: 10px 10px;
+	text-align: left;
+}			
+	
+/*responsive style*/
+@media screen and (min-width: 660px) {
+	nav a:hover {background-color: #282828;}
+}
+@media screen and (max-width: 660px) {
+	header {font-size:2vw}
+	nav a, nav a.right {float: none; width: 100%;}
+}
+	
+/*return to top button style*/
+a.to_top {
+	background: #D4D4D4; 
+	text-align: center;
+	display: block;
+	font-size: 14px;
+	color: black;
+	text-decoration: none;
+	padding: 5px;
+	position: fixed;
+	right: 0;
+	bottom: 40px;
+}
+</style>
 </head>
 <body>
-	<div class="header">
-		<h1>FGO寶具傷害及NP計算機 <small><small><small>by 威爾夫</small></small></small></h1>
+	
+<!-- header -->
+<header>
+	<h1>FGO寶具傷害及NP計算機 <small><small><small>by 威爾夫</small></small></small></h1>
+</header>
+	
+<!-- top navigation box -->
+<nav>
+	<a class="menu" onclick="menu()">&equiv;</a>
+	<div id="menu-content">
+		<a href="#從者管理" class="left">從者管理</a>
+		<a href="#禮裝管理" class="left">禮裝管理</a>
+		<a href="#寶傷排名" class="left">寶傷排名</a>
+		<a href="#寶傷計算" class="left">寶傷計算</a>
+		<a href="#NP計算" class="left">NP計算</a>
+		<a href="#更新紀錄" class="right">更新紀錄</a>
+		<a href="#FGO公式" class="right">FGO公式</a>
+		<a href="#使用說明" class="right">使用說明</a>
 	</div>
-	<div class="topnav">
-		<a class="menu" onclick="menu()">&equiv;</a>
-		<div id="menu-content">
-			<a href="#從者管理" class="left">從者管理</a>
-			<a href="#禮裝管理" class="left">禮裝管理</a>
-			<a href="#寶傷排名" class="left">寶傷排名</a>
-			<a href="#寶傷計算" class="left">寶傷計算</a>
-			<a href="#NP計算" class="left">NP計算</a>
-			<a href="#更新紀錄" class="right">更新紀錄</a>
-			<a href="#使用說明" class="right">使用說明</a>
-			<a href="#FGO公式" class="right">FGO公式</a>
-		</div>
-	</div>
-	<noscript><h3 style="font-size:5vw;color:red;">請先啟用JavaScript！</h3></noscript>
-	<br>
-	<p>Construction in progress...</p>
-	<a href="#topnav" class="to_top">回到頂部</a>
-	<br>
-	<div class="footer">
-		<!-- <p><small><small>版權所有&#169;威爾夫</small></small></p> -->
-	</div>
-	<script>
-		var hide
-		
-		function menu() {
-			if (hide == undefined) {
-				document.getElementById("menu-content").style.display = "none";
-				hide = 0;
-			} else {
-				document.getElementById("menu-content").style.display = "block";
-				hide = undefined;
-			}
-		}
-	</script>
+</nav>
+	
+<noscript><h3 style="font-size:5vw; color:red;">請先啟用JavaScript！</h3></noscript>
+<br>
+<p>Construction in progress...</p>
+
+<!-- return to top button -->
+<a href="#topnav" class="to_top">回到頂部</a>
+<br>
+	
+<!-- footer -->
+<footer>
+	<!-- <p><small><small>版權所有&#169;威爾夫</small></small></p> -->
+</footer>
+	
+<script>
+//menu button
+{ let hide = undefined;
+function menu() {
+	if (hide === undefined) {
+		document.getElementById("menu-content").style.display = "none";
+		hide = 0;
+	} else {
+		document.getElementById("menu-content").style.display = "block";
+		hide = undefined;
+	}
+}}
+
+</script>
+
 </body>
 </html>
