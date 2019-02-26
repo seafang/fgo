@@ -1,6 +1,6 @@
 //menu button
 $(document).ready(function() {
 	$("a.menu").click(function() {
-		$("#menu-content").toggle();
+		$("#menu-content").toggle(300);
 	});
 });
