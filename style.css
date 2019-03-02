@@ -67,6 +67,7 @@ footer {
 	z-index: 99; 
 	right: 0;
 	bottom: 40px;
+	cursor: pointer;
 }
 
 /*responsive style*/
