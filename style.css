@@ -59,8 +59,14 @@ iframe {
 	width: 100%;
 	height: auto;
 	border: none;
-row {
+}
+.row {
 	width: 100%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 a.left {
 	float: left;
@@ -93,11 +99,6 @@ select {
 .element-100 {
 	float: left;
 	width: 100%;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 /*footer style*/
