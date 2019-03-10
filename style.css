@@ -55,6 +55,9 @@ nav a.active {
 }
 
 /*content style*/
+row {
+	width: 100%;
+}
 a.left {
 	float: left;
 }
@@ -86,6 +89,11 @@ select {
 .element-100 {
 	float: left;
 	width: 100%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /*footer style*/
@@ -120,4 +128,5 @@ footer {
 @media screen and (max-width: 660px) {
 	header {font-size:2vw}
 	nav a, nav a.right {float: none; width: 100%;}
+	.element-20, .element-25, .element-75 {float: none; width: 100%;}
 }
