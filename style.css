@@ -1,17 +1,3 @@
-<html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-    <link rel="alternate stylesheet" type="text/css" href="resource://gre-resources/plaintext.css"
-
-      title="Wrap Long Lines">
-  </head>
-  <body>
-    <pre>@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-		
-* {
-	box-sizing: border-box;
-}
-		
 /*body style*/
 body {
 	font-family: "Noto Sans TC", sans-serif;
@@ -91,6 +77,3 @@ footer {
 	header {font-size:2vw}
 	nav a, nav a.right {float: none; width: 100%;}
 }
-</pre>
-  </body>
-</html>
