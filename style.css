@@ -81,15 +81,15 @@ iframe {
 .right {
 	float: right;
 }
-.mid {
-	float: none;
-}
 .btn {
 	display: block;
 	cursor: pointer;
 }
 label {
 	display: inline-block;
+}
+select {
+	width: 100%
 }
 .element-20 {
 	float: left;
