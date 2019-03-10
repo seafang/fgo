@@ -55,6 +55,10 @@ nav a.active {
 }
 
 /*content style*/
+iframe {
+	width: 100%;
+	height: auto;
+	border: none;
 row {
 	width: 100%;
 }
