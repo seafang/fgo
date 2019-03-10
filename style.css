@@ -65,6 +65,28 @@ a.btn {
 	display: block;
 	cursor: pointer;
 }
+label {
+	display: inline-block;
+}
+select {
+	width: 100%;
+}
+.element-20 {
+	float: left;
+	width: 20%;
+}
+.element-25 {
+	float: left;
+	width: 25%;
+}
+.element-75 {
+	float: left;
+	width: 75%;
+}
+.element-100 {
+	float: left;
+	width: 100%;
+}
 
 /*footer style*/
 footer {
