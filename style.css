@@ -55,8 +55,10 @@ nav a.active {
 }
 
 /*content style*/
-body, section {
+html, body, section {
 	height:100%;
+}
+body, section {
 	overflow: hidden;
 }
 iframe {
