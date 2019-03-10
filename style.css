@@ -55,7 +55,7 @@ nav a.active {
 }
 
 /*content style*/
-section {
+body, section {
 	height:100%;
 	overflow: hidden;
 }
