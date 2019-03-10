@@ -1,4 +1,12 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <link rel="alternate stylesheet" type="text/css" href="resource://gre-resources/plaintext.css"
+
+      title="Wrap Long Lines">
+  </head>
+  <body>
+    <pre>@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
 		
 * {
 	box-sizing: border-box;
@@ -45,6 +53,10 @@ nav a.left:active, nav a.right:active {
 	background-color: #FFFFFF;
 	color: #5D5D5D;
 }
+nav a.active {
+	background-color: #FFFFFF;
+	color: #5D5D5D;
+}
         
 /*footer style*/
 footer {
@@ -79,3 +91,6 @@ footer {
 	header {font-size:2vw}
 	nav a, nav a.right {float: none; width: 100%;}
 }
+</pre>
+  </body>
+</html>
