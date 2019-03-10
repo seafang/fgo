@@ -1,5 +1,3 @@
-"use strict";
-
 //load page
 window.onload = function () {
 	$("#defaultFrame").click();
