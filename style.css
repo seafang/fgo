@@ -57,8 +57,9 @@ nav a.active {
 /*content style*/
 iframe {
 	width: 100%;
-	height: auto;
+	height: 100%;
 	border: none;
+	overflow: hidden
 }
 .row {
 	width: 100%;
