@@ -2,10 +2,10 @@
 window.onload = function () {
 	$("#defaultFrame").click();
 }
-function openFrame() {
+function openFrame(url, tab) {
 	$("nav a").removeClass("active");
-	$(this).addClass("active");
-	$("#activeFrame").src = $(this).url;
+	$(tab).addClass("active");
+	$("#activeFrame").src = url;
 }
 	
 //menu button
