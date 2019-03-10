@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+* {
+	box-sizing: border-box;
+}
+
 /*body style*/
 body {
 	font-family: "Noto Sans TC", sans-serif;
