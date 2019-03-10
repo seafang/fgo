@@ -53,7 +53,19 @@ nav a.active {
 	background-color: #FFFFFF;
 	color: #5D5D5D;
 }
-        
+
+/*content style*/
+a.left {
+	float: left;
+}
+a.right {
+	float: right;
+}
+a.btn {
+	display: block;
+	cursor: pointer;
+}
+
 /*footer style*/
 footer {
 	color: white;			
