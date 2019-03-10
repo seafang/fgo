@@ -108,6 +108,8 @@ footer {
 	background-color: #5D5D5D;
 	padding: 10px 10px;
 	text-align: left;
+	position: fixed;
+	bottom: 0;
 }			
 
 /*return to top button style*/
