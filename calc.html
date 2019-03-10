@@ -1,11 +1,144 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	</head>
-	<body>
-		<br>
-		<p>Construction in progress...</p>
-	</body>
+<html lang="zh-Hant" />
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css" />
+<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div class="enemy">
+	<div class="enemy-info" id="enemy-setup">
+		<div class="row">
+			<a class="enemy-popup left btn" onclick="selectEnemy()">選擇敵人</a>
+			<a class="left" id="enemy-name"></a>
+			<a class="right btn" onclick="setEnemy(enemy3-detail)">設為敵人Ⅲ</a>
+			<a class="right btn" onclick="setEnemy(enemy2-detail)">設為敵人Ⅱ</a>
+			<a class="right btn" onclick="setEnemy(enemy1-detail)">設為敵人Ⅰ</a>
+		</div>
+		<div class="row">
+			<div class="element-20">
+				<label for="enemy-class">職階</label>
+				<select id="enemy-class" name="enemyclass">
+					<option value="saber">Saber</option>
+					<option value="archer">Archer</option>
+					<option value="lancer">Lancer</option>
+					<option value="rider">Rider</option>
+					<option value="caster">Caster</option>
+					<option value="assassin">Assassin</option>
+					<option value="berserker">Berserker</option>
+					<option value="shielder">Shielder</option>
+					<option value="ruler">Ruler</option>
+					<option value="avenger">Avenger</option>
+					<option value="mooncancer">Mooncancer</option>
+					<option value="alterego">Alterego</option>
+					<option value="foreigner">Foreigner</option>
+					<option value="beasti">Beast I</option>
+					<option value="beastii">Beast II</option>
+					<option value="beastiii">Beast III</option>
+				</select>
+			</div>
+			<div class="element-20">
+				<label for="enemy-gender">性別</label>
+				<select id="enemy-gender" name="enemygender">
+					<option value="male">男性</option>
+					<option value="female">女性</option>
+					<option value="unknown">不明</option>
+					<option value="sexless">無性別</option>
+				</select>
+			</div>
+			<div class="element-20">
+				<label for="enemy-attribute">陣營</label>
+				<select id="enemy-attribute" name="enemyattribute">
+					<option value="sky">天</option>
+					<option value="earth">地</option>
+					<option value="man">人</option>
+					<option value="star">星</option>
+					<option value="beast">獸</option>
+				</select>
+			</div>
+			<div class="element-20">
+				<label for="enemy-alignment1">屬性</label>
+				<select id="enemy-alignment1" name="enemyattribute1">
+					<option value="lawful">秩序</option>
+					<option value="neutral">中立</option>
+					<option value="chaotic">混沌</option>
+				</select>
+				<label for="enemy-alignment2"></label>
+				<select id="enemy-alignment2" name="enemyattribute2">
+					<option value="good">善</option>
+					<option value="neutral">中庸</option>
+					<option value="evil">惡</option>
+					<option value="insane">狂</option>
+					<option value="bride">花嫁</option>
+					<option value="summer">夏</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<a class="element-100" id="enemy-trait"></a>
+		</div>
+	<div class="enemy-info" id="enemy1">
+		<span class="resetbtn" onclick="resetEnemy(enemy1-detail)">重設</span>
+		<div class="enemy-detail" id="enemy1-detail">
+			<div class="row">
+				<a class="element-25" id="enemy1-name"></a>
+				<a class="element-25" id="enemy1-class"></a>
+					<label for="enemy1-class">職階</label>
+				</div>
+			</div>
+			<div class="row">
+				<a class="element-25">性別<span id="enemy1-gender"></span></a>
+				<a class="element-25">陣營<span id="enemy1-attribute"></span><a>
+				<a class="element-25">屬性<span id="enemy1-alignment"></span><a>
+			</div>
+			<div class="row">
+				<a class="element-100">特性<span id="enemy1-trait"></span></a>
+			</div>
+		</div>
+	</div>
+	<div class="enemy-info" id="enemy2">
+		<span class="resetbtn" onclick="resetEnemy(enemy2-detail)">重設</span>
+		<div class="enemy-detail" id="enemy2-detail">
+			<div class="row">
+				<a class="element-25" id="enemy2-name"></a>
+				<a class="element-25" id="enemy2-class"></a>
+					<label for="enemy1-class">職階</label>
+				</div>
+			</div>
+			<div class="row">
+				<a class="element-25">性別<span id="enemy2-gender"></span></a>
+				<a class="element-25">陣營<span id="enemy2-attribute"></span><a>
+				<a class="element-25">屬性<span id="enemy2-alignment"></span><a>
+			</div>
+			<div class="row">
+				<a class="element-100">特性<span id="enemy2-trait"></span></a>
+			</div>
+		</div>
+	</div>
+	<div class="enemy-info" id="enemy3">
+		<span class="resetbtn" onclick="resetEnemy(enemy3-detail)">重設</span>
+		<div class="enemy-detail" id="enemy3-detail">
+			<div class="row">
+				<a class="element-25" id="enemy3-name"></a>
+				<a class="element-25" id="enemy3-class"></a>
+					<label for="enemy1-class">職階</label>
+				</div>
+			</div>
+			<div class="row">
+				<a class="element-25">性別<span id="enemy3-gender"></span></a>
+				<a class="element-25">陣營<span id="enemy3-attribute"></span><a>
+				<a class="element-25">屬性<span id="enemy3-alignment"></span><a>
+			</div>
+			<div class="row">
+				<a class="element-100">特性<span id="enemy3-trait"></span></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="servant">
+	
+</div>
+</body>
 </html>
 		
