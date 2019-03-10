@@ -58,6 +58,9 @@ nav a.active {
 html, body, section {
 	height:100%;
 }
+section {
+	overflow: hidden;
+}
 iframe {
 	width: 100%;
 	height: 100%;
