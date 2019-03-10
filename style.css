@@ -75,27 +75,31 @@ iframe {
   display: table;
   clear: both;
 }
-a.left {
+.left {
 	float: left;
 }
-a.right {
+.right {
 	float: right;
 }
-a.btn {
+.mid {
+	float: none;
+}
+.btn {
 	display: block;
 	cursor: pointer;
 }
 label {
 	display: inline-block;
 }
-select {
-	width: 100%;
-}
 .element-20 {
 	float: left;
 	width: 20%;
 }
 .element-25 {
+	float: left;
+	width: 25%;
+}
+.element-50 {
 	float: left;
 	width: 25%;
 }
@@ -140,5 +144,5 @@ footer {
 @media screen and (max-width: 660px) {
 	header {font-size:2vw}
 	nav a, nav a.right {float: none; width: 100%;}
-	.element-20, .element-25, .element-75 {float: none; width: 100%;}
+	.element-20, .element-25, .element-50, .element-75 {float: none; width: 100%;}
 }
