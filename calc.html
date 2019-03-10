@@ -12,12 +12,13 @@
 		<div class="row">
 			<a class="enemy-popup left btn" onclick="selectEnemy()">選擇敵人</a>
 			<a class="left" id="enemy-name"></a>
-			<a class="right btn" onclick="setEnemy(enemy3-detail)">設為敵人Ⅲ</a>
-			<a class="right btn" onclick="setEnemy(enemy2-detail)">設為敵人Ⅱ</a>
-			<a class="right btn" onclick="setEnemy(enemy1-detail)">設為敵人Ⅰ</a>
+			<a class="mid btn" onclick="setEnemy(enemy1-detail)">設為敵人Ⅰ</a>
+			<a class="mid btn" onclick="setEnemy(enemy2-detail)">設為敵人Ⅱ</a>
+			<a class="mid btn" onclick="setEnemy(enemy3-detail)">設為敵人Ⅲ</a>
 		</div>
 		<div class="row">
 			<div class="element-20">
+				<span>
 				<label for="enemy-class">職階</label>
 				<select id="enemy-class" name="enemyclass">
 					<option value="saber">Saber</option>
@@ -37,49 +38,59 @@
 					<option value="beastii">Beast II</option>
 					<option value="beastiii">Beast III</option>
 				</select>
+				</span>
 			</div>
 			<div class="element-20">
-				<label for="enemy-gender">性別</label>
-				<select id="enemy-gender" name="enemygender">
+				<span>
+				<label class="element-25" for="enemy-gender">性別</label>
+				<select class="element-75" id="enemy-gender" name="enemygender">
 					<option value="male">男性</option>
 					<option value="female">女性</option>
 					<option value="unknown">不明</option>
 					<option value="sexless">無性別</option>
 				</select>
+				</span>
 			</div>
 			<div class="element-20">
-				<label for="enemy-attribute">陣營</label>
-				<select id="enemy-attribute" name="enemyattribute">
+				<span>
+				<label class="element-25" for="enemy-attribute">陣營</label>
+				<select class="element-75" id="enemy-attribute" name="enemyattribute">
 					<option value="sky">天</option>
 					<option value="earth">地</option>
 					<option value="man">人</option>
 					<option value="star">星</option>
 					<option value="beast">獸</option>
 				</select>
+				</span>
 			</div>
 			<div class="element-20">
-				<label for="enemy-alignment1">屬性</label>
-				<select id="enemy-alignment1" name="enemyattribute1">
+				<span>
+				<label class="element-25" for="enemy-alignment1">屬性</label>
+				<select class="element-75" id="enemy-alignment1" name="enemyattribute1">
 					<option value="lawful">秩序</option>
 					<option value="neutral">中立</option>
 					<option value="chaotic">混沌</option>
 				</select>
-				<label for="enemy-alignment2"></label>
-				<select id="enemy-alignment2" name="enemyattribute2">
+				</span>
+			</div>
+			<div class="element-20">
+				<span>
+				<label class="element-25" for="enemy-alignment2"></label>
+				<select class="element-75" id="enemy-alignment2" name="enemyattribute2">
 					<option value="good">善</option>
 					<option value="neutral">中庸</option>
 					<option value="evil">惡</option>
 					<option value="insane">狂</option>
 					<option value="bride">花嫁</option>
 					<option value="summer">夏</option>
-				</select>
+				</span>
 			</div>
 		</div>
 		<div class="row">
 			<a class="element-100" id="enemy-trait"></a>
 		</div>
 	<div class="enemy-info" id="enemy1">
-		<span class="resetbtn" onclick="resetEnemy(enemy1-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">重設</span>
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<a class="element-25" id="enemy1-name"></a>
@@ -98,7 +109,7 @@
 		</div>
 	</div>
 	<div class="enemy-info" id="enemy2">
-		<span class="resetbtn" onclick="resetEnemy(enemy2-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">重設</span>
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<a class="element-25" id="enemy2-name"></a>
@@ -117,7 +128,7 @@
 		</div>
 	</div>
 	<div class="enemy-info" id="enemy3">
-		<span class="resetbtn" onclick="resetEnemy(enemy3-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">重設</span>
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<a class="element-25" id="enemy3-name"></a>
