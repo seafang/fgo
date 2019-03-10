@@ -1,3 +1,15 @@
+"use strict";
+
+//load page
+window.onload = function () {
+	$("#defaultFrame").click();
+}
+function openFrame() {
+	$("nav a").removeClass("active");
+	$(this).addClass("active");
+	$("#activeFrame").src = $(this).url;
+}
+	
 //menu button
 $(document).ready(function() {
 	$("a.menu").click(function() {

@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-		
+
 * {
 	box-sizing: border-box;
 }
-		
+
 /*body style*/
 body {
 	font-family: "Noto Sans TC", sans-serif;
@@ -42,6 +42,10 @@ nav a.right {
 	float: right;
 }
 nav a.left:active, nav a.right:active {
+	background-color: #FFFFFF;
+	color: #5D5D5D;
+}
+nav a.active {
 	background-color: #FFFFFF;
 	color: #5D5D5D;
 }

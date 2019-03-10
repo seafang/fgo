@@ -1,58 +1,50 @@
-<!doctype html>
-<html lang="zh-Hant" />
-<head>
-<meta charset="UTF-8" />
-<meta name="description" content="FGO計算機" />
-<meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發" />
-<meta name="author" content="Wilfred Tang" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="images/logo.png" />
-<title>FGO寶具傷害及NP計算機</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://seafang.github.io/fgo/misc.js"></script>
-<link rel="stylesheet" href="style.css" />
-<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<![endif]-->
-</head>
-<body>
-	
-<!-- header -->
-<header>
-	<h1>FGO寶具傷害及NP計算機 <small><small><small>by wilfang</small></small></small></h1>
-</header>
-	
-<!-- top navigation box -->
-<nav>
-	<a class="menu">&equiv;</a>
-	<div id="menu-content">
-		<a href="#從者管理" class="left">從者管理</a>
-		<a href="#禮裝管理" class="left">禮裝管理</a>
-		<a href="#寶傷計算" class="left">寶傷計算</a>
-		<a href="#寶傷排名" class="left">寶傷排名</a>
-		<a href="#NP計算" class="left">NP計算</a>
-		<a href="#更新紀錄" class="right">更新紀錄</a>
-		<a href="#FGO公式" class="right">FGO公式</a>
-		<a href="#使用說明" class="right">使用說明</a>
-	</div>
-</nav>
-	
-<noscript><h3 style="font-size:5vw; color:red;">請先啟用JavaScript！</h3></noscript>
-<br>
-<p>Construction in progress...</p>
-
-<!-- return to top button -->
-<a onclick="toTop()" id="to_top">回到頂部</a>
-<br>
-	
-<!-- footer -->
-<footer>
-	<!-- <p><small><small>版權所有&#169;wilfang</small></small></p> -->
-</footer>
-	
-<script>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="description" content="FGO計算機">
+    <meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發">
+    <meta name="author" content="Wilfred Tang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <title>FGO寶具傷害及NP計算機</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://seafang.github.io/fgo/misc.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+  </head>
+  <body> <!-- header -->
+    <header>
+      <h1>FGO寶具傷害及NP計算機 <small><small><small>by wilfang</small></small></small></h1>
+    </header>
+    <!-- top navigation box -->
+    <nav> <a class="menu">≡</a>
+      <div id="menu-content">
+        <a class="left" data-url="servant.html" onclick="openFrame()">從者管理</a>
+        <a class="left" data-url="ce.html" onclick="openFrame()">禮裝管理</a>
+        <a class="left" id="defaultFrame" data-url="calc.html" onclick="openFrame()">寶傷計算</a>
+        <a class="left" data-url="rank.html" onclick="openFrame()">寶傷排名</a>
+        <a class="left" data-url="npcalc.html" onclick="openFrame()">NP計算</a>
+        <a class="right" data-url="update.html" onclick="openFrame()">更新紀錄</a>
+        <a class="right" data-url="formula.html" onclick="openFrame()">FGO公式</a>
+        <a class="right" data-url="instruction.html" onclick="openFrame()">使用說明</a>
+      </div>
+    </nav>
+    <noscript><h1 style="font-size:5vw; color:red;">請先啟用JavaScript！</h1></noscript>
+    <br>
+    <div class="content">
+      <iframe id="activeFrame" src="calc.html" scrolling="auto" frameborder="0" style="width: 100%;"></iframe>
+    </div>
+    <!-- return to top button -->
+    <a onclick="toTop()" id="to_top">回到頂部</a>
+    <br>
+    <!-- footer -->
+    <footer>
+      <!-- <p><small><small>版權所有&#169;wilfang</small></small></p> -->
+    </footer>
+    <script>
 
 </script>
-
-</body>
+  </body>
 </html>
