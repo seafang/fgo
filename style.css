@@ -81,6 +81,9 @@ iframe {
 .right {
 	float: right;
 }
+.bold {
+	font-weight: bold;
+}
 .btn {
 	display: block;
 	cursor: pointer;
