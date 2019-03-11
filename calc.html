@@ -627,8 +627,182 @@
 <!--Teammate Section-->
 <div class="info">
 	<div class="teammate-info" id="teammate1">
-	
+		<div class="row">
+			<a class="selectionbtn left btn" onclick="teammate(1)">選擇隊友Ⅰ</a>
+			<span class="resetbtn btn right" onclick="resetTeammate(1)">清除</span>
+		</div>
+		<div class="row">
+			<div class="element-25">
+				<form>
+					<input type="checkbox" name="teammate1-skill1" value="true" onchange="setTeammateSkill(1, 1)">
+					<span><img id="teammate1-skill1-img" src="" /><a id="teammate1-skill1-name"></a></span>
+				</form>
+			</div>
+			<div class="element-25">
+				<form>
+					<input type="checkbox" name="teammate1-skill2" value="true" onchange="setTeammateSkill(1, 2)">
+					<span><img id="teammate1-skill2-img" src="" /><a id="teammate1-skill2-name"></a></span>
+				</form>
+			</div>
+			<div class="element-25">
+				<form>
+					<input type="checkbox" name="teammate1-skill3" value="true" onchange="setTeammateSkill(1, 3)">
+					<span><img id="teammate1-skill3-img" src="" /><a id="teammate1-skill3-name"></a></span>
+				</form>
+			</div>
+			<div class="element-25">
+				<form>
+					<input type="checkbox" name="teammate1-np" value="true" onchange="setTeammateNP(1)">
+					<span><img id="teammate1-np-img" src="" /><a id="teammate1-np-name"></a></span>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="element-25">
+				<a id="teammate1-skill1-dscrp"></a>
+			</div>
+			<div class="element-25">
+				<a id="teammate1-skill2-dscrp"></a>
+			</div>
+			<div class="element-25">
+				<a id="teammate1-skill3-dscrp"></a>
+			</div>
+			<div class="element-25">
+				<a id="teammate1-np-dscrp"></a>
+			</div>
+		</div>
 	</div>
+	<div class="teammate-info" id="teammate2">					
+		<div class="row">			
+			<a class="selectionbtn left btn" onclick="teammate(2)">選擇隊友Ⅰ</a>		
+			<span class="resetbtn btn right" onclick="resetTeammate(2)">清除</span>		
+		</div>			
+		<div class="row">			
+			<div class="element-25">		
+				<form>	
+					<input type="checkbox" name="teammate2-skill1" value="true" onchange="setTeammateSkill(2, 1)">
+					<span><img id="teammate2-skill1-img" src="" /><a id="teammate2-skill1-name"></a></span>
+				</form>	
+			</div>		
+			<div class="element-25">		
+				<form>	
+					<input type="checkbox" name="teammate2-skill2" value="true" onchange="setTeammateSkill(2, 2)">
+					<span><img id="teammate2-skill2-img" src="" /><a id="teammate2-skill2-name"></a></span>
+				</form>	
+			</div>		
+			<div class="element-25">		
+				<form>	
+					<input type="checkbox" name="teammate2-skill3" value="true" onchange="setTeammateSkill(2, 3)">
+					<span><img id="teammate2-skill3-img" src="" /><a id="teammate2-skill3-name"></a></span>
+				</form>	
+			</div>		
+			<div class="element-25">		
+				<form>	
+					<input type="checkbox" name="teammate2-np" value="true" onchange="setTeammateNP(2)">
+					<span><img id="teammate2-np-img" src="" /><a id="teammate2-np-name"></a></span>
+				</form>	
+			</div>		
+		</div>			
+		<div class="row">			
+			<div class="element-25">		
+				<a id="teammate2-skill1-dscrp"></a>	
+			</div>		
+			<div class="element-25">		
+				<a id="teammate2-skill2-dscrp"></a>	
+			</div>		
+			<div class="element-25">		
+				<a id="teammate2-skill3-dscrp"></a>	
+			</div>		
+			<div class="element-25">		
+				<a id="teammate2-np-dscrp"></a>	
+			</div>		
+		</div>			
+	</div>				
+</div>
+<br/>
+	
+<!--Buff Section-->
+<span class="resetbtn btn right" onclick="resetBuff()">重置</span>
+<div class="info">
+	<div class="row">
+		<div class="element-20">
+			<form>
+				禮裝ATK
+				<input type="number" class="narrow" id="ce-atk" name="ceatk" value="0" min="0" max="2400">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				攻擊力提升(%)
+				<input type="number" class="narrow" id="atk-buff" name="atkbuff" value="0" min="0" max="100">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				防禦力下降(%)
+				<input type="number" class="narrow" id="def-debuff" name="defdebuff" value="0" min="0" max="100">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				傷害附加
+				<input type="number" class="narrow" id="add-atk" name="add-atk" value="0" min="0">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				傷害減免
+				<input type="number" class="narrow" id="red-atk" name="red-atk" value="0" min="0">
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="element-20">
+			<form>
+				寶具威力提升(%)
+				<input type="number" class="narrow" id="np-buff" name="npbuff" value="0" min="0">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				活動攻擊加成(%)
+				<input type="number" class="narrow" id="event-buff" name="eventbuff" value="0" min="0">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				Buster性能(%)
+				<input type="number" class="narrow" id="buster-buff" name="busterbuff" value="0" min="0">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				Art性能(%)
+				<input type="number" class="narrow" id="art-buff" name="artbuff" value="0" min="0">
+			</form>
+		</div>
+		<div class="element-20">
+			<form>
+				Quick性能(%)
+				<input type="number" class="narrow" id="quick-buff" name="quickbuff" value="0" min="0">
+			</form>
+		</div>
+	</div>
+</div>
+<br/>
+	
+<div class="row">
+	<a class="actionbtn left btn" onclick="addLord()">加上孔明Buff</a>
+	<a class="actionbtn left btn" onclick="addMerlin()">加上梅林Buff</a>
+	<a class="actionbtn left btn" onclick="addTamamo()">加上玉藻前Buff</a>
+	<a class="actionbtn left btn" onclick="addSkadi()">加上斯卡蒂Buff</a>
+	<a class="actionbtn left btn" onclick="npCalc()">計算</a>
+</div>
+<br/>
+
+<!--Result Section-->
+<span class="resetbtn btn right" onclick="resetResult()">清除結果</span>
+<div class="result">
 </div>
 </body>
 </html>
