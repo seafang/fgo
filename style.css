@@ -92,7 +92,24 @@ label {
 	display: inline-block;
 }
 select {
-	width: 75%
+	width: 75%;
+}
+select.narrow {
+	width: 50%;
+}
+input {
+	width: 75%;
+}
+input.narrow {
+	width: 75%;
+}
+.element-10 {
+	float: left;
+	width: 10%;
+}
+.element-15 {
+	float: left;
+	width: 15%;
 }
 .element-20 {
 	float: left;
@@ -112,7 +129,7 @@ select {
 }
 .element-50 {
 	float: left;
-	width: 25%;
+	width: 50%;
 }
 .element-75 {
 	float: left;
@@ -153,7 +170,7 @@ footer {
 	#to_top:hover {background-color: #5D5D5D; color: white;}
 }
 @media screen and (max-width: 660px) {
-	header {font-size:2vw}
+	header {font-size: 2vw;}
 	nav a, nav a.right {float: none; width: 100%;}
-	.element-20, .element-25, .element-30, .element-40, .element-50, .element-75 {float: none; width: 100%;}
+	.element-10, .element-15, .element-20, .element-25, .element-30, .element-40, .element-50, .element-75 {float: none; width: 50%;}
 }
