@@ -65,6 +65,7 @@ section, iframe {
 	height: 100%;
 	border: none;
 	overflow: hidden;
+	font-size: 12px;
 }
 .row {
 	width: 100%;
