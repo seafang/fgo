@@ -105,7 +105,7 @@
 	</div>
 	<div class="enemy-info" id="enemy1">
 		<a class="bold">敵人Ⅰ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">清除</span>
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<a class="element-20" id="enemy1-name"></a>
@@ -122,7 +122,7 @@
 	</div>
 	<div class="enemy-info" id="enemy2">
 		<a class="bold">敵人Ⅱ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">清除</span>
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<a class="element-20" id="enemy2-name"></a>
@@ -139,7 +139,7 @@
 	</div>
 	<div class="enemy-info" id="enemy3">
 		<a class="bold">敵人Ⅲ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">重設</span>
+		<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">清除</span>
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<a class="element-20" id="enemy3-name"></a>
@@ -172,6 +172,7 @@
 			</div>
 			<div class="element-30">
 				<div class="element-50">
+				<span>
 					<label for="servant-lv">等級</label>
 					<select id="servant-lv" name="servantlv">
 						<option value="100">100</option>
@@ -275,26 +276,172 @@
 						<option value="2">2</option>
 						<option value="1">1</option>
 					</select>
+				</span>
 				</div>
 				<div class="element-50">
-					<label for="servant-np">寶具等級</label>
-					<select id="servant-np" name="servantnp" onchange="setNP()">
+				<span>
+					<label for="servant-nplv">寶具等級</label>
+					<select id="servant-nplv" name="servantnplv">
 						<option value="np1">1</option>
 						<option value="np2">2</option>
 						<option value="np3">3</option>
 						<option value="np4">4</option>
 						<option value="np5">5</option>
 					</select>
+				</span>
 				</div>
 			</div>
 			<div class="element-20">
 				<form>
 					芙芙(ATK)
-					<input type="number" id="servant-statup" name="servantstatup"  min="0" max="2000">
+					<input type="number" id="servant-statup" name="servantstatup" value="0" min="0" max="2000">
+				</form>
+			<div class="element-20">
+				<form>
+					剩餘HP(%)
+					<input type="number" id="servant-hp" name="servanthp" value="100" min="0" max="100">
 				</form>
 			</div>
 		</span>
 		</div>
+		<div class="row">
+			<a class="element-20">性別<span id="servant-gender"></span></a>
+			<a class="element-20">陣營<span id="servant-attribute"></span><a>
+			<a class="element-20">屬性<span id="servant-alignment"></span><a>
+			<a class="element-40">特性<span id="servant-trait"></span></a>
+		</div>
+		<div class="row">
+			<a class="element-20">寶具<span id="servant-np"></span></a>
+			<a class="element-40"><span id="servant-npdscrp"></span></a>
+			<div class="element-20">
+				<form>
+					寶具強化
+					<input type="checkbox" name="checkrankup" value="true" onchange="setNPRankUp()">
+				</form>
+			</div>
+			<div class="element-20">
+			<span>
+				<label for="servant-npoc">寶具OC</label>
+				<select id="servant-npoc" name="servantnpoc">
+					<option value="oc1">100%</option>
+					<option value="oc2">200%</option>
+					<option value="oc3">300%</option>
+					<option value="oc4">400%</option>
+					<option value="oc5">500%</option>
+				</select>
+			</span>
+			</div>
+		</div>
+	</div>
+	<div class="servant-info" id="servant-skill">
+		<div class="row">
+			<a class="element-20">技能1</a>
+			<div class="element-20">
+			<span>
+				<label for="skill1-lv">技能等級</label>
+				<select id="skill1-lv" name="skill1lv">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</span>
+			</div>
+			<div class="element-20">
+				<form>
+					技能強化
+					<input type="checkbox" name="checkskill1rankup" value="true" onchange="setSkillRankUp()">
+				</form>
+			</div>
+			<div class="element-20">
+				<form>
+					使用技能
+					<input type="checkbox" name="useskill1" value="true">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<a class="element-100" id="skill1-dscrp"></a>
+		</div>
+		<div class="row">
+			<a class="element-20">技能2</a>
+			<div class="element-20">
+			<span>
+				<label for="skill2-lv">技能等級</label>
+				<select id="skill2-lv" name="skill2lv">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</span>
+			</div>
+			<div class="element-20">
+				<form>
+					技能強化
+					<input type="checkbox" name="checkskill2rankup" value="true" onchange="setSkillRankUp()">
+				</form>
+			</div>
+			<div class="element-20">
+				<form>
+					使用技能
+					<input type="checkbox" name="useskill2" value="true">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<a class="element-100" id="skill2-dscrp"></a>
+		</div>
+		<div class="row">
+			<a class="element-20">技能3</a>
+			<div class="element-20">
+			<span>
+				<label for="skill3-lv">技能等級</label>
+				<select id="skill3-lv" name="skill3lv">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</span>
+			</div>
+			<div class="element-20">
+				<form>
+					技能強化
+					<input type="checkbox" name="checkskill3rankup" value="true" onchange="setSkillRankUp()">
+				</form>
+			</div>
+			<div class="element-20">
+				<form>
+					使用技能
+					<input type="checkbox" name="useskill3" value="true">
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<a class="element-100" id="skill1-dscrp"></a>
+		</div>	
+	</div>
+	<br/>
+	<div class="servant-info" id="servant-ce">
 	</div>
 </div>
 </body>
