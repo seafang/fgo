@@ -9,6 +9,7 @@ body {
 	font-family: "Noto Sans TC", sans-serif;
 	padding: 5px;
 	height: 100%;
+	width: auto;
 	position: absolute;
 }
         
