@@ -68,6 +68,22 @@ nav a.active {
 	color: #5D5D5D;
 }
 
+/*return to top button*/
+#to_top {
+	background-color: #D4D4D4; 
+	text-align: center;
+	display: none;
+	font-size: 14px;
+	color: black;
+	text-decoration: none;
+	padding: 5px;
+	position: fixed;
+	z-index: 99; 
+	right: 0;
+	bottom: 40px;
+	cursor: pointer;
+}
+
 /*content*/
 section, iframe {
 	width: 100%;
