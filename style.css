@@ -9,8 +9,10 @@ body {
 	font-family: "Noto Sans TC", sans-serif;
 	padding: 5px;
 	height: 100%;
-	width: inherit;
 	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
 }
         
 /*header style*/
