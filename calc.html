@@ -16,7 +16,7 @@
 <body>
 
 <!--Enemy Section-->
-<div class="enemy">
+<div class="info">
 	<div class="enemy-info" id="enemy-setup">
 		<div class="row">
 			<a class="selectionbtn left btn" onclick="commonEnemy()">非從者敵人</a>
@@ -106,12 +106,13 @@
 			<a class="left btn" onclick="setEnemy(enemy1-detail)">設為敵人Ⅰ</a>
 			<a class="left btn" onclick="setEnemy(enemy2-detail)">設為敵人Ⅱ</a>
 			<a class="left btn" onclick="setEnemy(enemy3-detail)">設為敵人Ⅲ</a>
+			<a class="right btn" onclick="toggleEnemySetup()">接疊▲</a>
 		</div>
-		<br/>
 	</div>
+	<br/>
+	<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">清除</span>
 	<div class="enemy-info" id="enemy1">
 		<a class="bold">敵人Ⅰ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">清除</span>
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<a class="element-20" id="enemy1-name"></a>
@@ -124,11 +125,11 @@
 				<a class="element-100">特性<span id="enemy1-trait"></span></a>
 			</div>
 		</div>
-		<br/>
 	</div>
+	<br/>
+	<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">清除</span>
 	<div class="enemy-info" id="enemy2">
 		<a class="bold">敵人Ⅱ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">清除</span>
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<a class="element-20" id="enemy2-name"></a>
@@ -141,11 +142,11 @@
 				<a class="element-100">特性<span id="enemy2-trait"></span></a>
 			</div>
 		</div>
-		<br/>
 	</div>
+	<br/>
+	<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">清除</span>
 	<div class="enemy-info" id="enemy3">
 		<a class="bold">敵人Ⅲ</a>
-		<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">清除</span>
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<a class="element-20" id="enemy3-name"></a>
@@ -158,12 +159,12 @@
 				<a class="element-100">特性<span id="enemy3-trait"></span></a>
 			</div>
 		</div>
-		<br/>
 	</div>
 </div>
+<br/>
 
 <!--Servant Section-->
-<div class="servant">
+<div class="info">
 	<div class="servant-info" id="servant-setup">
 		<div class="row">
 			<a class="selectionbtn left btn" onclick="servant()">選擇從者</a>
@@ -180,6 +181,7 @@
 				<span>
 					<label for="servant-lv">等級</label>
 					<select class="narrow" id="servant-lv" name="servantlv">
+						<option value="default">預設</option>
 						<option value="100">100</option>
 						<option value="99">99</option>
 						<option value="98">98</option>
@@ -339,7 +341,12 @@
 	</div>
 	<div class="servant-info" id="servant-skill">
 		<div class="row">
-			<a class="element-20">技能1</a>
+			<a class="element-20">技能1<span id="skill1-name"></span></a>
+			<div class="element-20">
+				<form>
+					<input type="checkbox" name="useskill1" value="true" onchange="setSkill1()">使用技能
+				</form>
+			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill1-lv">技能等級</label>
@@ -362,17 +369,17 @@
 					<input type="checkbox" name="checkskill1rankup" value="true" onchange="setSkillRankUp()">技能強化
 				</form>
 			</div>
-			<div class="element-20">
-				<form>
-					<input type="checkbox" name="useskill1" value="true">使用技能
-				</form>
-			</div>
 		</div>
 		<div class="row">
 			<a class="element-100" id="skill1-dscrp"></a>
 		</div>
 		<div class="row">
-			<a class="element-20">技能2</a>
+			<a class="element-20">技能2<span id="skill2-name"></span></a>
+			<div class="element-20">
+				<form>
+					<input type="checkbox" name="useskill2" value="true" onchange="setSkill2()">使用技能
+				</form>
+			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill2-lv">技能等級</label>
@@ -395,17 +402,17 @@
 					<input type="checkbox" name="checkskill2rankup" value="true" onchange="setSkillRankUp()">技能強化
 				</form>
 			</div>
-			<div class="element-20">
-				<form>
-					<input type="checkbox" name="useskill2" value="true">使用技能
-				</form>
-			</div>
 		</div>
 		<div class="row">
 			<a class="element-100" id="skill2-dscrp"></a>
 		</div>
 		<div class="row">
-			<a class="element-20">技能3</a>
+			<a class="element-20">技能3<span id="skill3-name"></span></a>
+			<div class="element-20">
+				<form>
+					<input type="checkbox" name="useskill3" value="true" onchange="setSkill3()">使用技能
+				</form>
+			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill3-lv">技能等級</label>
@@ -428,11 +435,6 @@
 					<input type="checkbox" name="checkskill3rankup" value="true" onchange="setSkillRankUp()">技能強化
 				</form>
 			</div>
-			<div class="element-20">
-				<form>
-					<input type="checkbox" name="useskill3" value="true">使用技能
-				</form>
-			</div>
 		</div>
 		<div class="row">
 			<a class="element-100" id="skill1-dscrp"></a>
@@ -440,6 +442,192 @@
 	</div>
 	<br/>
 	<div class="servant-info" id="servant-ce">
+		<div class="row">
+			<a class="selectionbtn left btn" onclick="servantCE()">選擇禮裝</a>
+			<span class="resetbtn btn right" onclick="resetCE(servant)">清除</span>
+		</div>
+		<div class="row">
+			<a class="element-20" id="ce-name"></a>
+			<div class="element-15">
+				<form>
+					<input type="checkbox" name="checkEffect" value="true" onchange="setCEEffect(servant)">滿破
+				</form>
+			</div>
+			<div class="element-15">
+				<span>
+					<label for="ce-lv">等級</label>
+					<select class="narrow" id="ce-lv" name="celv">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+						<option value="33">33</option>
+						<option value="34">34</option>
+						<option value="35">35</option>
+						<option value="36">36</option>
+						<option value="37">37</option>
+						<option value="38">38</option>
+						<option value="39">39</option>
+						<option value="40">40</option>
+						<option value="41">41</option>
+						<option value="42">42</option>
+						<option value="43">43</option>
+						<option value="44">44</option>
+						<option value="45">45</option>
+						<option value="46">46</option>
+						<option value="47">47</option>
+						<option value="48">48</option>
+						<option value="49">49</option>
+						<option value="50">50</option>
+						<option value="51">51</option>
+						<option value="52">52</option>
+						<option value="53">53</option>
+						<option value="54">54</option>
+						<option value="55">55</option>
+						<option value="56">56</option>
+						<option value="57">57</option>
+						<option value="58">58</option>
+						<option value="59">59</option>
+						<option value="60">60</option>
+						<option value="61">61</option>
+						<option value="62">62</option>
+						<option value="63">63</option>
+						<option value="64">64</option>
+						<option value="65">65</option>
+						<option value="66">66</option>
+						<option value="67">67</option>
+						<option value="68">68</option>
+						<option value="69">69</option>
+						<option value="70">70</option>
+						<option value="71">71</option>
+						<option value="72">72</option>
+						<option value="73">73</option>
+						<option value="74">74</option>
+						<option value="75">75</option>
+						<option value="76">76</option>
+						<option value="77">77</option>
+						<option value="78">88</option>
+						<option value="79">89</option>
+						<option value="80">80</option>
+						<option value="81">81</option>
+						<option value="82">82</option>
+						<option value="83">83</option>
+						<option value="84">84</option>
+						<option value="85">85</option>
+						<option value="86">86</option>
+						<option value="87">87</option>
+						<option value="88">88</option>
+						<option value="89">89</option>
+						<option value="90">90</option>
+						<option value="91">91</option>
+						<option value="92">92</option>
+						<option value="93">93</option>
+						<option value="94">94</option>
+						<option value="95">95</option>
+						<option value="96">96</option>
+						<option value="97">97</option>
+						<option value="98">98</option>
+						<option value="99">99</option>
+						<option value="100">100</option>
+					</select>
+				</span>
+			</div>
+			<a class="element-40" id="ce-effect"></a>
+		</div>
+	</div>
+</div>
+<br/>
+
+<!--Master Section-->
+<div class="info">
+	<div class="row">
+		<a class="selectionbtn left btn" onclick="master()">選擇御主禮裝</a>
+		<span class="resetbtn btn right" onclick="resetCE(servant)">清除</span>
+	</div>
+	<div class="row">
+		<a class="element-20" id="master-name"></a>
+		<div class="element-20">
+			<span>
+				<label for="master-lv">等級</label>
+				<select id="master-lv" name="masterlv">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select>
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="element-30">
+			<form>
+				<input type="checkbox" name="check-master1" value="true" onchange="setMaster(1)">
+				<span><img id="master1-img" src="" /><a id="master1-name"></a></span>
+			</form>
+		</div>
+		<div class="element-30">
+			<form>
+				<input type="checkbox" name="check-master2" value="true" onchange="setMaster(2)">
+				<span><img id="master2-img" src="" /><a id="master2-name"></a></span>
+			</form>
+		</div>
+		<div class="element-30">
+			<form>
+				<input type="checkbox" name="check-master3" value="true" onchange="setMaster(3)">
+				<span><img id="master3-img" src="" /><a id="master3-name"></a></span>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="element-30">
+			<a id="master1-dscrp"></a>
+		</div>
+		<div class="element-30">
+			<a id="master1-dscrp"></a>
+		</div>
+		<div class="element-30">
+			<a id="master1-dscrp"></a>
+		</div>
+	</div>
+
+<!--Teammate Section-->
+<div class="info">
+	<div class="teammate-info" id="teammate1">
+	
 	</div>
 </div>
 </body>
