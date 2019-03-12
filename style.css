@@ -65,7 +65,7 @@ section, iframe {
 	border-radius: 4px;
 	padding: 1px 4px;
 }
-label {
+label, .label {
 	display: inline-block;
 	background-color: royalblue;
 	color: white;
@@ -73,16 +73,16 @@ label {
 	border-radius: 4px;
 }
 select {
-	width: 75%;
+	width: 80px;
 	border-radius: 4px;
 	padding: 1px 4px;
 	background-color: white;
 }
 select.narrow {
-	width: 40%;
+	width: 80px;
 }
 input {
-	width: 75%;
+	width: 80px;
 	border-radius: 4px;
 	padding: 3px 4px;
 }
@@ -90,7 +90,7 @@ input[type="checkbox"] {
 	width: auto;
 }
 input.narrow {
-	width: 40%;
+	width: 80px;
 }
 .element-10 {
 	float: left;
