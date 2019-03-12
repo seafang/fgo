@@ -66,12 +66,18 @@ section, iframe {
 	padding: 1px 4px;
 }
 .class-logo {
-	height: 20px;
-	width: 20px;
+	height: 30px;
+	width: 30px;
 	vertical-align: middle;
+	margin: 1px;
 }
 img.dull {
-	
+	filter: brightness(50%);
+}
+.star {
+	color: #F2EC3B;
+	text-shadow: 0px 0px 1px #000000;
+	font-size: 130%;
 }
 label, .label {
 	display: inline-block;
@@ -161,10 +167,17 @@ input.narrow {
 	animation-name: fadeIn;
 	animation-duration: 0.3s
 }
+.modal-header {
+	border-style: solid;
+	border-color: lightgray;
+	border-width: 2px;
+	padding: 5px;
+	border-radius: 5px;
+}
 #servant-enemy-modal-box {
 	background-color: #fefefe;
 	margin: auto;
-	padding: 20px;
+	padding: 5px;
 	width: 80%;
 	height: 1200px;
 }
