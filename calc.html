@@ -23,8 +23,8 @@
 <div class="info">
 	<div class="enemy-info" id="enemy-setup">
 		<div class="row">
-			<a class="selectionbtn left btn" onclick="openModal(servant-enemy-modal)">非從者敵人</a>
-			<a class="selectionbtn left btn" onclick="openModal(common-enemy-modal)">從者敵人</a>
+			<a class="selectionbtn left btn" onclick="openModal('servant-enemy-modal')">非從者敵人</a>
+			<a class="selectionbtn left btn" onclick="openModal('common-enemy-modal')">從者敵人</a>
 		</div>
 		<div class="row">
 			<div class="element-20">
@@ -860,7 +860,7 @@
 <!--Servant Enemy Modal-->
 <div class="modal" id="servant-enemy-modal">
 	<div class="modal-box" id="servant-enemy-modal-box">
-		<span class="closebtn btn" onclick="closeModal(servant-enemy-modal)">&times;</span>
+		<span class="closebtn btn" onclick="closeModal('servant-enemy-modal')">&times;</span>
 		<div class="modal-header">
 			<div class="row">
 				<img class="class-logo left" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantEnemyFilter()" />
