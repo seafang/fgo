@@ -854,12 +854,11 @@
 <div class="modal" id="servant-enemy-modal">
 	<div class="modal-box" id="servant-enemy-modal-box">
 		<div class="row">
-			<span class="left"><b>篩選</b></span>
 			<span class="closebtn" onclick="closeModal('#servant-enemy-modal')">&times;</span>
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<span class="label">職階</span>
+				<span class="label left">職階</span>
 				<img class="class-logo left" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="servantEnemyFilter()" />
@@ -873,9 +872,8 @@
 				<img class="class-logo left" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantEnemyFilter()" />
-				<span class="left label">全選/取消全選</span>
-				<img class="class-logo left" title="All" data-class="All" src="images/class/All.png" onclick="servantEnemyClassAll()" />
-				<img class="class-logo left dull" title="None" data-class="None" src="images/class/All.png" onclick="servantEnemyClassNone()" />
+				<span class="resetbtn" onclick="servantEnemyClassAll()">全選</span>
+				<span class="resetbtn" onclick="servantEnemyClassNone()">取消全選</span>
 			</div>
 			<div class="row">
 				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star0" value="0" onchange="servantEnemyStar()">
