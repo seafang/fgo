@@ -25,13 +25,15 @@
 		<div class="row">
 			<a class="selectionbtn left btn" onclick="commonEnemy()">非從者敵人</a>
 			<a class="selectionbtn left btn" onclick="servantEnemy()">從者敵人</a>
-			<span>目前選擇<a id="enemy-name"></a></span>
 		</div>
 		<div class="row">
 			<div class="element-20">
+				<span>目前選擇<a id="enemy-name"></a></span>
+			</div>
+			<div class="element-15">
 				<span>
 				<label for="enemy-class">職階</label>
-				<select id="enemy-class" name="enemyclass">
+				<select class="narrow" id="enemy-class" name="enemyclass">
 					<option value="saber">Saber</option>
 					<option value="archer">Archer</option>
 					<option value="lancer">Lancer</option>
@@ -51,10 +53,10 @@
 				</select>
 				</span>
 			</div>
-			<div class="element-20">
+			<div class="element-15">
 				<span>
 				<label for="enemy-gender">性別</label>
-				<select id="enemy-gender" name="enemygender">
+				<select class="narrow" id="enemy-gender" name="enemygender">
 					<option value="male">男性</option>
 					<option value="female">女性</option>
 					<option value="unknown">不明</option>
@@ -62,10 +64,10 @@
 				</select>
 				</span>
 			</div>
-			<div class="element-20">
+			<div class="element-15">
 				<span>
 				<label for="enemy-attribute">陣營</label>
-				<select id="enemy-attribute" name="enemyattribute">
+				<select class="narrow" id="enemy-attribute" name="enemyattribute">
 					<option value="sky">天</option>
 					<option value="earth">地</option>
 					<option value="man">人</option>
@@ -74,19 +76,17 @@
 				</select>
 				</span>
 			</div>
-			<div class="element-20">
+			<div class="element-30">
 				<span>
 				<label for="enemy-alignment1">屬性</label>
-				<select id="enemy-alignment1" name="enemyattribute1">
+				<select class="narrow" id="enemy-alignment1" name="enemyattribute1">
 					<option value="lawful">秩序</option>
 					<option value="neutral">中立</option>
 					<option value="chaotic">混沌</option>
 				</select>
 				</span>
-			</div>
-			<div class="element-20">
 				<span>
-				<select id="enemy-alignment2" name="enemyattribute2">
+				<select class="narrow" id="enemy-alignment2" name="enemyattribute2">
 					<option value="good">善</option>
 					<option value="neutral">中庸</option>
 					<option value="evil">惡</option>
@@ -113,7 +113,7 @@
 	<br/>
 	<span class="resetbtn btn right" onclick="resetEnemy(enemy1-detail)">清除</span>
 	<div class="enemy-info" id="enemy1">
-		<a class="bold">敵人Ⅰ</a>
+		<a class="bold">敵人I</a>
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<a class="element-20" id="enemy1-name"></a>
@@ -130,7 +130,7 @@
 	<br/>
 	<span class="resetbtn btn right" onclick="resetEnemy(enemy2-detail)">清除</span>
 	<div class="enemy-info" id="enemy2">
-		<a class="bold">敵人Ⅱ</a>
+		<a class="bold">敵人II</a>
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<a class="element-20" id="enemy2-name"></a>
@@ -147,7 +147,7 @@
 	<br/>
 	<span class="resetbtn btn right" onclick="resetEnemy(enemy3-detail)">清除</span>
 	<div class="enemy-info" id="enemy3">
-		<a class="bold">敵人Ⅲ</a>
+		<a class="bold">敵人III</a>
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<a class="element-20" id="enemy3-name"></a>
@@ -727,6 +727,7 @@
 <!--Buff Section-->
 <div class="info">
 	<div class="row">
+		<a class="element-20">Buff結算</a>
 		<span class="resetbtn btn right" onclick="resetBuff()">重置</span>
 	</div>
 	<div class="row">
