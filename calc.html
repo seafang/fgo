@@ -28,7 +28,7 @@
 		</div>
 		<div class="row">
 			<div class="element-20">
-				<span>目前選擇<a id="enemy-name"></a></span>
+				<span class="label">目前選擇</span><span id="enemy-name"></span>
 			</div>
 			<div class="element-15">
 				<span>
@@ -99,7 +99,7 @@
 		</div>
 		<div class="row">
 			<span>
-			<a class="bold">特性</a>
+			<a class="label">特性</a>
 			<a class="element-100" id="enemy-trait"></a>
 			</span>
 		</div>
@@ -116,14 +116,17 @@
 		<a class="bold">敵人I</a>
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
-				<a class="element-20" id="enemy1-name"></a>
-				<a class="element-20">職階<span id="enemy1-class"></span></a>
-				<a class="element-20">性別<span id="enemy1-gender"></span></a>
-				<a class="element-20">陣營<span id="enemy1-attribute"></span><a>
-				<a class="element-20">屬性<span id="enemy1-alignment"></span><a>
+				<div class="element-20">
+					<img class="enemy-img" id="enemy1-img" src=""/>
+					<span id="enemy1-name"></span>
+				</div>
+				<div class="element-20"><span class="label">職階</span><span id="enemy1-class"></span></div>
+				<div class="element-20"><span class="label">性別</span><span id="enemy1-gender"></span></div>
+				<div class="element-20"><span class="label">陣營</span><span id="enemy1-attribute"></span></div>
+				<div class="element-20"><span class="label">屬性</span><span id="enemy1-alignment"></span></div>
 			</div>
 			<div class="row">
-				<a class="element-100">特性<span id="enemy1-trait"></span></a>
+				<div class="element-100"><span class="label">特性</span><span id="enemy1-trait"></span></div>
 			</div>
 		</div>
 	</div>
@@ -133,14 +136,17 @@
 		<a class="bold">敵人II</a>
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
-				<a class="element-20" id="enemy2-name"></a>
-				<a class="element-20">職階<span id="enemy2-class"></span></a>
-				<a class="element-20">性別<span id="enemy2-gender"></span></a>
-				<a class="element-20">陣營<span id="enemy2-attribute"></span><a>
-				<a class="element-20">屬性<span id="enemy2-alignment"></span><a>
+				<div class="element-20">
+					<img class="enemy-img" id="enemy2-img" src=""/>
+					<span id="enemy2-name"></a>
+				</div>
+				<div class="element-20"><span class="label">職階</span><span id="enemy2-class"></span></div>
+				<div class="element-20"><span class="label">性別</span><span id="enemy2-gender"></span></div>
+				<div class="element-20"><span class="label">陣營</span><span id="enemy2-attribute"></span></div>
+				<div class="element-20"><span class="label">屬性</span><span id="enemy2-alignment"></span></div>
 			</div>
 			<div class="row">
-				<a class="element-100">特性<span id="enemy2-trait"></span></a>
+				<div class="element-100"><span class="label">特性</span><span id="enemy2-trait"></span></div>
 			</div>
 		</div>
 	</div>
@@ -150,14 +156,17 @@
 		<a class="bold">敵人III</a>
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
-				<a class="element-20" id="enemy3-name"></a>
-				<a class="element-20">職階<span id="enemy3-class"></span></a>
-				<a class="element-20">性別<span id="enemy3-gender"></span></a>
-				<a class="element-20">陣營<span id="enemy3-attribute"></span><a>
-				<a class="element-20">屬性<span id="enemy3-alignment"></span><a>
+				<div class="element-20">
+					<img class="enemy-img" id="enemy3-img" src=""/>
+					<span id="enemy3-name"></a>
+				</div>
+				<div class="element-20"><span class="label">職階</span><span id="enemy3-class"></span></div>
+				<div class="element-20"><span class="label">性別</span><span id="enemy3-gender"></span></div>
+				<div class="element-20"><span class="label">陣營</span><span id="enemy3-attribute"></span></div>
+				<div class="element-20"><span class="label">屬性</span><span id="enemy3-alignment"></span></div>
 			</div>
 			<div class="row">
-				<a class="element-100">特性<span id="enemy3-trait"></span></a>
+				<div class="element-100"><span class="label">特性</span><span id="enemy3-trait"></span></div>
 			</div>
 		</div>
 	</div>
@@ -300,36 +309,37 @@
 			</div>
 			<div class="element-20">
 				<form>
-					芙芙(ATK)
+					<span class="label">芙芙(ATK)</span>
 					<input type="number" class="narrow" id="servant-statup" name="servantstatup" value="0" min="0" max="2000">
 				</form>
 			</div>
 			<div class="element-20">
 				<form>
-					剩餘HP(%)
+					<span class="label">剩餘HP(%)</span>
 					<input type="number" class="narrow" id="servant-hp" name="servanthp" value="100" min="0" max="100">
 				</form>
 			</div>
 		</span>
 		</div>
 		<div class="row">
-			<a class="element-20">性別<span id="servant-gender"></span></a>
-			<a class="element-20">陣營<span id="servant-attribute"></span><a>
-			<a class="element-20">屬性<span id="servant-alignment"></span><a>
-			<a class="element-40">特性<span id="servant-trait"></span></a>
+			<div class="element-20"><span class="label">性別</span><span id="servant-gender"></span></div>
+			<div class="element-20"><span class="label">陣營</span><span id="servant-attribute"></span></div>
+			<div class="element-20"><span class="label">屬性</span><span id="servant-alignment"></span></div>
+			<div class="element-40"><span class="label">特性</span><span id="servant-trait"></span></div>
 		</div>
 		<div class="row">
-			<a class="element-20">寶具<span id="servant-np"></span></a>
-			<a class="element-40"><span id="servant-npdscrp"></span></a>
+			<div class="element-20"><span class="label">寶具</span><span id="servant-np"></span></div>
+			<div class="element-40"><span class="label">效果</span><span id="servant-npdscrp"></span></div>
 			<div class="element-20">
 				<form>
-					<input type="checkbox" name="checkrankup" value="true" onchange="setNPRankUp()">寶具強化
+					<input type="checkbox" name="checkrankup" value="true" onchange="setNPRankUp()">
+					<span class="label">寶具強化</span>
 				</form>
 			</div>
 			<div class="element-20">
 			<span>
 				<label for="servant-npoc">寶具OC</label>
-				<select id="servant-npoc" name="servantnpoc">
+				<select class="narrow" id="servant-npoc" name="servantnpoc">
 					<option value="oc1">100%</option>
 					<option value="oc2">200%</option>
 					<option value="oc3">300%</option>
@@ -342,16 +352,20 @@
 	</div>
 	<div class="servant-info" id="servant-skill">
 		<div class="row">
-			<a class="element-20">技能1<span id="skill1-name"></span></a>
 			<div class="element-20">
+				<img class="skill-img" id="skill1-img" src=""/>
+				<span id="skill1-name"></span>
+			</div>
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="useskill1" value="true" onchange="setSkill1()">使用技能
+					<input type="checkbox" name="useskill1" value="true" onchange="setSkill1()">
+					<span class="label">使用技能</span>
 				</form>
 			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill1-lv">技能等級</label>
-				<select id="skill1-lv" name="skill1lv">
+				<select class="narrow" id="skill1-lv" name="skill1lv">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -365,9 +379,10 @@
 				</select>
 			</span>
 			</div>
-			<div class="element-20">
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="checkskill1rankup" value="true" onchange="setSkillRankUp()">技能強化
+					<input type="checkbox" name="checkskill1rankup" value="true" onchange="setSkillRankUp()">
+					<span class="label">技能強化</span>
 				</form>
 			</div>
 		</div>
@@ -375,16 +390,20 @@
 			<a class="element-100" id="skill1-dscrp"></a>
 		</div>
 		<div class="row">
-			<a class="element-20">技能2<span id="skill2-name"></span></a>
 			<div class="element-20">
+				<img class="skill-img" id="skill2-img" src=""/>
+				<span id="skill2-name"></span>
+			</div>
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="useskill2" value="true" onchange="setSkill2()">使用技能
+					<input type="checkbox" name="useskill2" value="true" onchange="setSkill2()"
+					<span class="label">>使用技能</span>
 				</form>
 			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill2-lv">技能等級</label>
-				<select id="skill2-lv" name="skill2lv">
+				<select class="narrow" id="skill2-lv" name="skill2lv">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -398,9 +417,10 @@
 				</select>
 			</span>
 			</div>
-			<div class="element-20">
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="checkskill2rankup" value="true" onchange="setSkillRankUp()">技能強化
+					<input type="checkbox" name="checkskill2rankup" value="true" onchange="setSkillRankUp()">
+					<span class="label">技能強化</span>
 				</form>
 			</div>
 		</div>
@@ -408,16 +428,20 @@
 			<a class="element-100" id="skill2-dscrp"></a>
 		</div>
 		<div class="row">
-			<a class="element-20">技能3<span id="skill3-name"></span></a>
 			<div class="element-20">
+				<img class="skill-img" id="skill3-img" src=""/>
+				<span id="skill3-name"></span>
+			</div>
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="useskill3" value="true" onchange="setSkill3()">使用技能
+					<input type="checkbox" name="useskill3" value="true" onchange="setSkill3()">
+					<span class="label">使用技能</span>
 				</form>
 			</div>
 			<div class="element-20">
 			<span>
 				<label for="skill3-lv">技能等級</label>
-				<select id="skill3-lv" name="skill3lv">
+				<select class="narrow" id="skill3-lv" name="skill3lv">
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -431,9 +455,10 @@
 				</select>
 			</span>
 			</div>
-			<div class="element-20">
+			<div class="element-10">
 				<form>
-					<input type="checkbox" name="checkskill3rankup" value="true" onchange="setSkillRankUp()">技能強化
+					<input type="checkbox" name="checkskill3rankup" value="true" onchange="setSkillRankUp()">
+					<span class="label">技能強化</span>
 				</form>
 			</div>
 		</div>
@@ -448,10 +473,13 @@
 			<span class="resetbtn btn right" onclick="resetCE(servant)">清除</span>
 		</div>
 		<div class="row">
-			<a class="element-20" id="ce-name"></a>
+			<div class="element-25">
+				<img class="ce-img" id="servant-ce-img" src=""/>
+				<span class="element-20" id="ce-name"></span>
 			<div class="element-15">
 				<form>
-					<input type="checkbox" name="checkEffect" value="true" onchange="setCEEffect(servant)">滿破
+					<input type="checkbox" name="checkEffect" value="true" onchange="setCEEffect(servant)">
+					<span class="label">滿破</span>
 				</form>
 			</div>
 			<div class="element-15">
@@ -574,7 +602,7 @@
 		<span class="resetbtn btn right" onclick="resetCE(servant)">清除</span>
 	</div>
 	<div class="row">
-		<a class="element-20" id="master-name"></a>
+		<span class="element-20" id="master-name"></span>
 		<div class="element-20">
 			<span>
 				<label for="master-lv">等級</label>
@@ -597,31 +625,37 @@
 		<div class="element-30">
 			<form>
 				<input type="checkbox" name="check-master1" value="true" onchange="setMaster(1)">
-				<span><img id="master1-img" src="" /><a id="master1-name"></a></span>
+				<img id="master1-img" src="" />
+				<span id="master1-name"></span>
 			</form>
 		</div>
 		<div class="element-30">
 			<form>
 				<input type="checkbox" name="check-master2" value="true" onchange="setMaster(2)">
-				<span><img id="master2-img" src="" /><a id="master2-name"></a></span>
+				<img id="master2-img" src="" />
+				<span id="master2-name"></span>
 			</form>
 		</div>
 		<div class="element-30">
 			<form>
 				<input type="checkbox" name="check-master3" value="true" onchange="setMaster(3)">
-				<span><img id="master3-img" src="" /><a id="master3-name"></a></span>
+				<img id="master3-img" src="" />
+				<span id="master3-name"></span>
 			</form>
 		</div>
 	</div>
 	<div class="row">
 		<div class="element-30">
-			<a id="master1-dscrp"></a>
+			<span class="label">效果</span>
+			<span id="master1-dscrp"></span>
 		</div>
 		<div class="element-30">
-			<a id="master1-dscrp"></a>
+			<span class="label">效果</span>
+			<span id="master1-dscrp"></span>
 		</div>
 		<div class="element-30">
-			<a id="master1-dscrp"></a>
+			<span class="label">效果</span>
+			<span id="master1-dscrp"></span>
 		</div>
 	</div>
 </div>
@@ -638,25 +672,25 @@
 			<div class="element-25">
 				<form>
 					<input type="checkbox" name="teammate1-skill1" value="true" onchange="setTeammateSkill(1, 1)">
-					<span><img id="teammate1-skill1-img" src="" /><a id="teammate1-skill1-name"></a></span>
+					<img id="teammate1-skill1-img" src="" /><span id="teammate1-skill1-name"></span>
 				</form>
 			</div>
 			<div class="element-25">
 				<form>
 					<input type="checkbox" name="teammate1-skill2" value="true" onchange="setTeammateSkill(1, 2)">
-					<span><img id="teammate1-skill2-img" src="" /><a id="teammate1-skill2-name"></a></span>
+					<img id="teammate1-skill2-img" src="" /><span id="teammate1-skill2-name"></span>
 				</form>
 			</div>
 			<div class="element-25">
 				<form>
 					<input type="checkbox" name="teammate1-skill3" value="true" onchange="setTeammateSkill(1, 3)">
-					<span><img id="teammate1-skill3-img" src="" /><a id="teammate1-skill3-name"></a></span>
+					<img id="teammate1-skill3-img" src="" /><span id="teammate1-skill3-name"></span>
 				</form>
 			</div>
 			<div class="element-25">
 				<form>
 					<input type="checkbox" name="teammate1-np" value="true" onchange="setTeammateNP(1)">
-					<span><img id="teammate1-np-img" src="" /><a id="teammate1-np-name"></a></span>
+					<img id="teammate1-np-img" src="" /><span id="teammate1-np-name"></span>
 				</form>
 			</div>
 		</div>
@@ -684,25 +718,25 @@
 			<div class="element-25">		
 				<form>	
 					<input type="checkbox" name="teammate2-skill1" value="true" onchange="setTeammateSkill(2, 1)">
-					<span><img id="teammate2-skill1-img" src="" /><a id="teammate2-skill1-name"></a></span>
+					<img id="teammate2-skill1-img" src="" /><span id="teammate2-skill1-name"></span>
 				</form>	
 			</div>		
 			<div class="element-25">		
 				<form>	
 					<input type="checkbox" name="teammate2-skill2" value="true" onchange="setTeammateSkill(2, 2)">
-					<span><img id="teammate2-skill2-img" src="" /><a id="teammate2-skill2-name"></a></span>
+					<img id="teammate2-skill2-img" src="" /><span id="teammate2-skill2-name"></span>
 				</form>	
 			</div>		
 			<div class="element-25">		
 				<form>	
 					<input type="checkbox" name="teammate2-skill3" value="true" onchange="setTeammateSkill(2, 3)">
-					<span><img id="teammate2-skill3-img" src="" /><a id="teammate2-skill3-name"></a></span>
+					<img id="teammate2-skill3-img" src="" /><span id="teammate2-skill3-name"></span>
 				</form>	
 			</div>		
 			<div class="element-25">		
 				<form>	
 					<input type="checkbox" name="teammate2-np" value="true" onchange="setTeammateNP(2)">
-					<span><img id="teammate2-np-img" src="" /><a id="teammate2-np-name"></a></span>
+					<img id="teammate2-np-img" src="" /><span id="teammate2-np-name"></span>
 				</form>	
 			</div>		
 		</div>			
@@ -733,31 +767,31 @@
 	<div class="row">
 		<div class="element-20">
 			<form>
-				禮裝ATK
+				<span class="label">禮裝ATK</span>
 				<input type="number" class="narrow" id="ce-atk" name="ceatk" value="0" min="0" max="2400">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				攻擊力提升(%)
+				<span class="label">攻擊力提升(%)</span>
 				<input type="number" class="narrow" id="atk-buff" name="atkbuff" value="0" min="0" max="100">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				防禦力下降(%)
+				<span class="label">防禦力下降(%)</span>
 				<input type="number" class="narrow" id="def-debuff" name="defdebuff" value="0" min="0" max="100">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				傷害附加
+				<span class="label">傷害附加</span>
 				<input type="number" class="narrow" id="add-atk" name="add-atk" value="0" min="0">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				傷害減免
+				<span class="label">傷害減免</span>
 				<input type="number" class="narrow" id="red-atk" name="red-atk" value="0" min="0">
 			</form>
 		</div>
@@ -765,31 +799,31 @@
 	<div class="row">
 		<div class="element-20">
 			<form>
-				寶具威力提升(%)
+				<span class="label">寶具威力提升(%)</span>
 				<input type="number" class="narrow" id="np-buff" name="npbuff" value="0" min="0">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				活動攻擊加成(%)
+				<span class="label">活動攻擊加成(%)</span>
 				<input type="number" class="narrow" id="event-buff" name="eventbuff" value="0" min="0">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				Buster性能(%)
+				<span class="label">Buster性能(%)</span>
 				<input type="number" class="narrow" id="buster-buff" name="busterbuff" value="0" min="0">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				Art性能(%)
+				<span class="label">Art性能(%)</span>
 				<input type="number" class="narrow" id="art-buff" name="artbuff" value="0" min="0">
 			</form>
 		</div>
 		<div class="element-20">
 			<form>
-				Quick性能(%)
+				<span class="label">Quick性能(%)</span>
 				<input type="number" class="narrow" id="quick-buff" name="quickbuff" value="0" min="0">
 			</form>
 		</div>
@@ -798,10 +832,10 @@
 <br/>
 	
 <div class="row">
-	<a class="actionbtn left btn" onclick="addLord()">加上孔明Buff</a>
-	<a class="actionbtn left btn" onclick="addMerlin()">加上梅林Buff</a>
-	<a class="actionbtn left btn" onclick="addTamamo()">加上玉藻前Buff</a>
-	<a class="actionbtn left btn" onclick="addSkadi()">加上斯卡蒂Buff</a>
+	<a class="actionbtn left btn" onclick="addLord()">孔明Buff</a>
+	<a class="actionbtn left btn" onclick="addMerlin()">梅林Buff</a>
+	<a class="actionbtn left btn" onclick="addTamamo()">玉藻前Buff</a>
+	<a class="actionbtn left btn" onclick="addSkadi()">斯卡蒂Buff</a>
 	<a class="actionbtn left btn" onclick="npCalc()">計算</a>
 </div>
 <br/>
