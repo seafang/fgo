@@ -4,6 +4,16 @@
 	box-sizing: border-box;
 }
 
+body {
+	font-family: "Noto Sans TC", sans-serif;
+	padding: 5px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
 /*content*/
 section, iframe {
 	width: 100%;
@@ -68,7 +78,7 @@ select {
 	background-color: white;
 }
 select.narrow {
-	width: 50%;
+	width: 40%;
 }
 input {
 	width: 75%;
@@ -79,7 +89,7 @@ input[type="checkbox"] {
 	width: auto;
 }
 input.narrow {
-	width: 75%;
+	width: 40%;
 }
 .element-10 {
 	float: left;
