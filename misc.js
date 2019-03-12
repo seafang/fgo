@@ -32,14 +32,14 @@ function toTop() {
 // Modal
 function openModal(modal) {
 	$(modal).show();
-}
+};
 
 function closeModal(modal) {
 	$(modal).hide();
-}
+};
 
 window.onclick = function(event) {
 	if (event.target == $(".modal")) {
 		$(".modal").hide();
 	}
-}
+};
