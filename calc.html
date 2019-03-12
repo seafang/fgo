@@ -332,10 +332,8 @@
 			<div class="element-20"><span class="label">寶具</span><span id="servant-np"></span></div>
 			<div class="element-40"><span class="label">效果</span><span id="servant-npdscrp"></span></div>
 			<div class="element-20">
-				<form>
 					<input type="checkbox" name="checkrankup" value="true" onchange="setNPRankUp()">
 					<span class="label">寶具強化</span>
-				</form>
 			</div>
 			<div class="element-20">
 			<span>
@@ -381,10 +379,8 @@
 			</span>
 			</div>
 			<div class="element-10">
-				<form>
 					<input type="checkbox" name="checkskill1rankup" value="true" onchange="setSkillRankUp()">
 					<span class="label">技能強化</span>
-				</form>
 			</div>
 		</div>
 		<div class="row">
@@ -420,10 +416,8 @@
 			</span>
 			</div>
 			<div class="element-10">
-				<form>
 					<input type="checkbox" name="checkskill2rankup" value="true" onchange="setSkillRankUp()">
 					<span class="label">技能強化</span>
-				</form>
 			</div>
 		</div>
 		<div class="row">
@@ -459,10 +453,8 @@
 			</span>
 			</div>
 			<div class="element-10">
-				<form>
 					<input type="checkbox" name="checkskill3rankup" value="true" onchange="setSkillRankUp()">
 					<span class="label">技能強化</span>
-				</form>
 			</div>
 		</div>
 		<div class="row">
@@ -861,9 +853,13 @@
 <!--Servant Enemy Modal-->
 <div class="modal" id="servant-enemy-modal">
 	<div class="modal-box" id="servant-enemy-modal-box">
-		<span class="closebtn" onclick="closeModal('#servant-enemy-modal')">&times;</span>
+		<div class="row">
+			<span class="left"><b>篩選</b></span>
+			<span class="closebtn" onclick="closeModal('#servant-enemy-modal')">&times;</span>
+		</div>
 		<div class="modal-header">
 			<div class="row">
+				<span class="label">職階</span>
 				<img class="class-logo left" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="servantEnemyFilter()" />
@@ -877,7 +873,25 @@
 				<img class="class-logo left" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantEnemyFilter()" />
 				<img class="class-logo left" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantEnemyFilter()" />
-				<img class="class-logo left" title="All" data-class="All" src="images/class/All.png" onclick="servantEnemyAll()" />
+				<span class="left label">全選/取消全選</span>
+				<img class="class-logo left" title="All" data-class="All" src="images/class/All.png" onclick="servantEnemyClassAll()" />
+				<img class="class-logo left dull" title="None" data-class="None" src="images/class/All.png" onclick="servantEnemyClassNone()" />
+			</div>
+			<div class="row">
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star0" value="0" onchange="servantEnemyStar()">
+				<span class="star">－</span>
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star1" value="1" onchange="servantEnemyStar()">
+				<span class="star">★</span>
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star2" value="2" onchange="servantEnemyStar()">
+				<span class="star">★★</span>
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star3" value="3" onchange="servantEnemyStar()">
+				<span class="star">★★★</span>
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star4" value="4" onchange="servantEnemyStar()">
+				<span class="star">★★★★</span>
+				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star5" value="5" onchange="servantEnemyStar()">
+				<span class="star">★★★★★</span>
+				<span class="resetbtn" onclick="servantEnemyStarAll()">全選</span>
+				<span class="resetbtn" onclick="servantEnemyStarNone()">取消全選</span>
 			</div>
 		</div>
 	</div>
