@@ -9,7 +9,7 @@
 	html, body {
 		height: 100%;
 		overflow: hidden;
-		font-size: 14px;
+		font-size: 13px;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -25,10 +25,7 @@
 		<div class="row">
 			<a class="selectionbtn left btn" onclick="commonEnemy()">非從者敵人</a>
 			<a class="selectionbtn left btn" onclick="servantEnemy()">從者敵人</a>
-			<span>
-				<a class="bold">目前選擇</a>
-				<a id="enemy-name"></a>
-			</span>
+			<span>目前選擇<a id="enemy-name"></a></span>
 		</div>
 		<div class="row">
 			<div class="element-20">
@@ -102,14 +99,14 @@
 		</div>
 		<div class="row">
 			<span>
-			<a class="bold">特性：</a>
+			<a class="bold">特性</a>
 			<a class="element-100" id="enemy-trait"></a>
 			</span>
 		</div>
 		<div class="row">
-			<a class="left btn" onclick="setEnemy(enemy1-detail)">設為敵人Ⅰ</a>
-			<a class="left btn" onclick="setEnemy(enemy2-detail)">設為敵人Ⅱ</a>
-			<a class="left btn" onclick="setEnemy(enemy3-detail)">設為敵人Ⅲ</a>
+			<a class="left btn" onclick="setEnemy(enemy1-detail)">設為敵人I</a>
+			<a class="left btn" onclick="setEnemy(enemy2-detail)">設為敵人II</a>
+			<a class="left btn" onclick="setEnemy(enemy3-detail)">設為敵人III</a>
 			<a class="right btn" onclick="toggleEnemySetup()">接疊▲</a>
 		</div>
 	</div>
@@ -120,10 +117,10 @@
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<a class="element-20" id="enemy1-name"></a>
-				<a class="element-20">職階：<span id="enemy1-class"></span></a>
-				<a class="element-20">性別：<span id="enemy1-gender"></span></a>
-				<a class="element-20">陣營：<span id="enemy1-attribute"></span><a>
-				<a class="element-20">屬性：<span id="enemy1-alignment"></span><a>
+				<a class="element-20">職階<span id="enemy1-class"></span></a>
+				<a class="element-20">性別<span id="enemy1-gender"></span></a>
+				<a class="element-20">陣營<span id="enemy1-attribute"></span><a>
+				<a class="element-20">屬性<span id="enemy1-alignment"></span><a>
 			</div>
 			<div class="row">
 				<a class="element-100">特性<span id="enemy1-trait"></span></a>
@@ -137,7 +134,7 @@
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<a class="element-20" id="enemy2-name"></a>
-				<a class="element-20">職階：<span id="enemy2-class"></span></a>
+				<a class="element-20">職階<span id="enemy2-class"></span></a>
 				<a class="element-20">性別<span id="enemy2-gender"></span></a>
 				<a class="element-20">陣營<span id="enemy2-attribute"></span><a>
 				<a class="element-20">屬性<span id="enemy2-alignment"></span><a>
@@ -154,7 +151,7 @@
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<a class="element-20" id="enemy3-name"></a>
-				<a class="element-20">職階：<span id="enemy3-class"></span></a>
+				<a class="element-20">職階<span id="enemy3-class"></span></a>
 				<a class="element-20">性別<span id="enemy3-gender"></span></a>
 				<a class="element-20">陣營<span id="enemy3-attribute"></span><a>
 				<a class="element-20">屬性<span id="enemy3-alignment"></span><a>
