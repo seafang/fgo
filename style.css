@@ -161,12 +161,12 @@ input.narrow {
 	animation-name: fadeIn;
 	animation-duration: 0.3s
 }
-#servant-enemy-modal {
+#servant-enemy-modal-box {
 	background-color: #fefefe;
 	margin: auto;
 	padding: 20px;
 	width: 80%;
-	height: 80%;
+	height: 1200px;
 }
 .closebtn {
 	color: #aaaaaa;
