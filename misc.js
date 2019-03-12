@@ -31,11 +31,11 @@ function toTop() {
 
 // Modal
 function openModal(modal) {
-	$("#" + modal).show();
+	$(modal).show();
 }
 
 function closeModal(modal) {
-	$("#" + modal).hide();
+	$(modal).hide();
 }
 
 window.onclick = function(event) {
