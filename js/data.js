@@ -34,7 +34,7 @@ function loadServantEnemyImg() {
 	servantEnemyID.forEach(myFunction(id) {
 		imglist += "<img class='left servant-img' src='images/servant/" + id +
 		".png' onclick='setServantEnemy(" + id + ")' />"
-	};
+	});
 	$("#servant-enemy-img").innerHTML = imglist;
 }
 
