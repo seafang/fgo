@@ -29,16 +29,16 @@ var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
 	return servantEnemy.id
 });
 
-function loadServantEnemyImg() {
+/*function loadServantEnemyImg() {
 	var imglist = "";
 	servantEnemyID.forEach(myFunction(id) {
 		imglist += "<img class='left servant-img' src='images/servant/" + id +
 		".png' onclick='setServantEnemy(" + id + ")' />"
 	});
 	$("#servant-enemy-img").innerHTML = imglist;
-}
+}*/
 
-/* function loadServantEnemyImg() {
+function loadServantEnemyImg() {
 	var imglist = "";
 	var arrayLength = servantEnemyID.length;
 	for (i = 0; i < arrayLength; i++) {
@@ -46,7 +46,7 @@ function loadServantEnemyImg() {
 		".png' onclick='setServantEnemy(" + servantEnemyID[i] + ")' />"
     };
 	$(#servant-enemy-img).innerHTML = imglist;
-}*/
+}
 
 function servantEnemyFilterChange(element, className) {
 	newClass = servantEnemyFilter.classes;
