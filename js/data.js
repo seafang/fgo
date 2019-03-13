@@ -53,7 +53,7 @@ function servantEnemyFilterChange(element, className) {
 	if ($(element).class.includes("dull") == true) {
 		$(element).removeClass("dull");
 		newClass.push(className);
-		servantEnemyFilter.classes = newClass;'
+		servantEnemyFilter.classes = newClass;
 	} else {
 		position = newClass.indexOf(className);
 		newClass.splice(position, 1);
