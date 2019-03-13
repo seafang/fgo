@@ -79,7 +79,7 @@ function servantEnemyStarChange(element, starNo) {
 	if ($(element).checked == false) {
 		$(element).checked = true;
 		newStar.push(starNo);
-		servantEnemyFilter.star = newStar;'
+		servantEnemyFilter.star = newStar;
 	} else {
 		position = newClass.indexOf(starNo);
 		newStar.splice(position, 1);
