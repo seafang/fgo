@@ -34,9 +34,9 @@ section, iframe {
 	padding: 1px;
 }
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
 .left {
 	float: left;
@@ -142,6 +142,14 @@ input.narrow {
 	float: left;
 	width: 100%;
 }			
+#enemy-setup {
+	background-color: lightgray;
+	padding: 4px;
+}
+#enemy-setup-collapsebtn {
+	background-color: lightgray;
+	color: white;
+}
 
 /*modal*/
 .modal {
