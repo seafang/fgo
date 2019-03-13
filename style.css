@@ -189,6 +189,9 @@ input.narrow {
 	width: 80%;
 	height: 1200px;
 }
+.servant-enemy-class {
+	cursor: pointer;
+}
 .closebtn {
 	color: #aaaaaa;
 	float: right;
