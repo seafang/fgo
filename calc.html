@@ -4,6 +4,8 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://seafang.github.io/fgo/js/misc.js"></script>
+<script type="text/javascript" src="https://seafang.github.io/fgo/js/servant.json"></script>
+<script src="https://seafang.github.io/fgo/js/data.js"></script>
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
 <style>
@@ -871,8 +873,8 @@
 				<img class="class-logo left servant-enemy-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantEnemyFilterChange(this, Mooncancer)" />
 				<img class="class-logo left servant-enemy-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantEnemyFilterChange(this, Alterego)" />
 				<img class="class-logo left servant-enemy-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantEnemyFilterChange(this, Foreigner)" />
-				<span class="btn" onclick="servantEnemyClassAll()">全選</span>
-				<span class="resetbtn btn" onclick="servantEnemyClassNone()">取消全選</span>
+				<span class="resetbtn" onclick="servantEnemyClassAll()">全選</span>
+				<span class="resetbtn" onclick="servantEnemyClassNone()">取消全選</span>
 			</div>
 			<div class="row">
 				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star0" value="0" onchange="servantEnemyStarChange(this, 0)">
@@ -887,19 +889,17 @@
 				<span class="star">★★★★</span>
 				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star5" value="5" onchange="servantEnemyStarChange(this, 5)">
 				<span class="star">★★★★★</span>
-				<span class="btn" onclick="servantEnemyStarAll()">全選</span>
-				<span class="resetbtn btn" onclick="servantEnemyStarNone()">取消全選</span>
+				<span class="resetbtn" onclick="servantEnemyStarAll()">全選</span>
+				<span class="resetbtn" onclick="servantEnemyStarNone()">取消全選</span>
 			</div>
 			<div class="row">
-				<span class="mid btn" onclick="loadServantEnemyImg()">套用篩選</span>
+				<span class="mid resetbtn" onclick="loadServantEnemyImg()">套用篩選</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="https://seafang.github.io/fgo/js/servant.json"></script>
-<script src="https://seafang.github.io/fgo/js/data.js"></script>
 <script>
 loadServantEnemyImg();
 </script>
