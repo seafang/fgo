@@ -65,6 +65,24 @@ section, iframe {
 	border-radius: 4px;
 	padding: 1px 4px;
 }
+.setbtn {
+	background-color: white;
+	border: blue;
+	border-width: 2px;
+	color: blue;
+	border-style: solid;
+	border-radius: 4px;
+	padding: 1px 4px;
+}
+.applybtn {
+	background-color: white;
+	border: black;
+	border-width: 2px;
+	color: black;
+	border-style: solid;
+	border-radius: 4px;
+	padding: 1px 4px;
+}
 .class-logo {
 	height: 30px;
 	width: 30px;
@@ -177,10 +195,12 @@ input.narrow {
 }
 .modal-header {
 	border-style: solid;
-	border-color: lightgray;
+	border-color: gray;
 	border-width: 2px;
 	padding: 5px;
 	border-radius: 5px;
+	margin: 4px;
+	background-color: lightgray;
 }
 #servant-enemy-modal-box {
 	background-color: #fefefe;
@@ -202,6 +222,10 @@ input.narrow {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+}
+.modal .servant-img {
+	width: 60px;
+	margin: 4px;
 }
 
 /*responsive layout*/
