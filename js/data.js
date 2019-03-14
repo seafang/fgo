@@ -38,6 +38,7 @@ function loadServantEnemyImg() {
 	var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
 		return servantEnemy.id
 	});
+	$("#servant-enemy-img").html();
 	var imglist = "";
 	var arrayLength = servantEnemyID.length;
 	for (i = 0; i < arrayLength; i++) {
