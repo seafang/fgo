@@ -71,7 +71,8 @@ function servantEnemyClassAll() {
 function servantEnemyClassNone() {
 	$(".servant-enemy-class").removeClass("dull");
 	$(".servant-enemy-class").addClass("dull");
-	servantEnemyFilter.classes = [];
+	var emptyFilter = [];
+	servantEnemyFilter.classes = emptyFilter;
 }
 
 function servantEnemyStarChange(element, starNo) {
@@ -95,7 +96,8 @@ function servantEnemyStarAll() {
 
 function servantEnemyStarNone() {
 	$(".servant-enemy-star").prop("checked", false);
-	servantEnemyFilter.star = [];
+	var emptyFilter = [];
+	servantEnemyFilter.star = emptyFilter;
 }
 
 function initialServantEnemy() {
