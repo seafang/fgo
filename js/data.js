@@ -79,10 +79,8 @@ function servantEnemyStarChange(element, starNo) {
 	if ($(element).prop("checked")) {
 		position = newStar.indexOf(starNo);
 		newStar.splice(position, 1);
-		$(element).prop("checked", false);
 		servantEnemyFilter.star = newStar;
 	} else {
-		$(element).prop("checked", true);
 		newStar.push(starNo);
 		servantEnemyFilter.star = newStar;
 	}
