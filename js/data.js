@@ -35,7 +35,7 @@ var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
 		imglist += "<img class='left servant-img' src='images/servant/" + id +
 		".png' onclick='setServantEnemy(" + id + ")' />"
 	});
-	$("#servant-enemy-img").innerHTML = imglist;
+	$("#servant-enemy-img").html(imglist);
 }*/
 
 function loadServantEnemyImg() {
@@ -45,12 +45,12 @@ function loadServantEnemyImg() {
 		imglist += "<img class='left servant-img' src='images/servant/" + servantEnemyID[i] +
 		".png' onclick='setServantEnemy(" + servantEnemyID[i] + ")' />"
     };
-	document.getElementById("servant-enemy-img").innerHTML = imglist;
+	$("#servant-enemy-img").html(imglist);
 }
 
 function servantEnemyFilterChange(element, className) {
 	var newClass = servantEnemyFilter.classes;
-	if ($(element).class.includes("dull") == true) {
+	if ($(element).hasClass("dull")) {
 		$(element).removeClass("dull");
 		newClass.push(className);
 		servantEnemyFilter.classes = newClass;
