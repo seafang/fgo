@@ -71,7 +71,7 @@ function servantEnemyClassAll() {
 function servantEnemyClassNone() {
 	$(".servant-enemy-class").removeClass("dull");
 	$(".servant-enemy-class").addClass("dull");
-	let servantEnemyFilter.classes = [];
+	servantEnemyFilter.classes = [];
 }
 
 function servantEnemyStarChange(element, starNo) {
@@ -90,12 +90,12 @@ function servantEnemyStarChange(element, starNo) {
 
 function servantEnemyStarAll() {
 	$(".servant-enemy-star").prop("checked", true);
-	let servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
+	servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
 }
 
 function servantEnemyStarNone() {
 	$(".servant-enemy-star").prop("checked", false);
-	let servantEnemyFilter.star = [];
+	servantEnemyFilter.star = [];
 }
 
 function initialServantEnemy() {
