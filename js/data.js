@@ -44,7 +44,7 @@ function loadServantEnemyImg() {
 	for (i = 0; i < arrayLength; i++) {
 		imglist += "<img class='left servant-img' src='images/servant/" + servantEnemyID[i] +
 		".png' onclick='setServantEnemy(" + servantEnemyID[i] + ")' />"
-    };
+	};
 	$("#servant-enemy-img").html(imglist);
 }
 
@@ -71,31 +71,31 @@ function servantEnemyClassAll() {
 function servantEnemyClassNone() {
 	$(".servant-enemy-class").removeClass("dull");
 	$(".servant-enemy-class").addClass("dull");
-	servantEnemyFilter.classes = [];
+	let servantEnemyFilter.classes = [];
 }
 
 function servantEnemyStarChange(element, starNo) {
 	var newStar = servantEnemyFilter.star;
-	if ($(element).checked == false) {
-		$(element).checked = true;
+	if (!$(element).prop("checked")) {
+		$(element).prop("checked", true);
 		newStar.push(starNo);
 		servantEnemyFilter.star = newStar;
 	} else {
 		position = newClass.indexOf(starNo);
 		newStar.splice(position, 1);
-		$(element).checked = false;
+		$(element).prop("checked", false);
 		servantEnemyFilter.star = newStar;
 	}
 }
 
 function servantEnemyStarAll() {
 	$(".servant-enemy-star").prop("checked", true);
-	servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
+	let servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
 }
 
 function servantEnemyStarNone() {
 	$(".servant-enemy-star").prop("checked", false);
-	servantEnemyFilter.star = [];
+	let servantEnemyFilter.star = [];
 }
 
 function initialServantEnemy() {
