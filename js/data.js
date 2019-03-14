@@ -77,12 +77,12 @@ function servantEnemyClassNone() {
 function servantEnemyStarChange(element, starNo) {
 	var newStar = servantEnemyFilter.star;
 	if ($(element).prop("checked")) {
-		position = newStar.indexOf(starNo);
-		newStar.splice(position, 1);
+		newStar.push(starNo);
 		servantEnemyFilter.star = newStar;
 		$("#demo").append(servantEnemyFilter.star + "<br/>");
 	} else {
-		newStar.push(starNo);
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
 		servantEnemyFilter.star = newStar;
 		$("#demo").append(servantEnemyFilter.star + "<br/>");
 	}
