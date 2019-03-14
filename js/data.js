@@ -45,11 +45,11 @@ function loadServantEnemyImg() {
 		imglist += "<img class='left servant-img' src='images/servant/" + servantEnemyID[i] +
 		".png' onclick='setServantEnemy(" + servantEnemyID[i] + ")' />"
     };
-	$("#servant-enemy-img").innerHTML = imglist;
+	document.getElementById("servant-enemy-img").innerHTML = imglist;
 }
 
 function servantEnemyFilterChange(element, className) {
-	newClass = servantEnemyFilter.classes;
+	var newClass = servantEnemyFilter.classes;
 	if ($(element).class.includes("dull") == true) {
 		$(element).removeClass("dull");
 		newClass.push(className);
@@ -75,7 +75,7 @@ function servantEnemyClassNone() {
 }
 
 function servantEnemyStarChange(element, starNo) {
-	newStar = servantEnemyFilter.star;
+	var newStar = servantEnemyFilter.star;
 	if ($(element).checked == false) {
 		$(element).checked = true;
 		newStar.push(starNo);
@@ -89,12 +89,12 @@ function servantEnemyStarChange(element, starNo) {
 }
 
 function servantEnemyStarAll() {
-	$(".servant-enemy-star").checked = true;
+	$(".servant-enemy-star").prop("checked", true);
 	servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
 }
 
 function servantEnemyStarNone() {
-	$(".servant-enemy-star").checked = false;
+	$(".servant-enemy-star").prop("checked", false);
 	servantEnemyFilter.star = [];
 }
 
