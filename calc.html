@@ -107,9 +107,9 @@
 			</span>
 		</div>
 		<div class="row">
-			<a class="left btn" onclick="setEnemy(enemy1-detail)">設為敵人I</a>
-			<a class="left btn" onclick="setEnemy(enemy2-detail)">設為敵人II</a>
-			<a class="left btn" onclick="setEnemy(enemy3-detail)">設為敵人III</a>
+			<a class="left btn applybtn" onclick="setEnemy(enemy1-detail)">設為敵人I</a>
+			<a class="left btn applybtn" onclick="setEnemy(enemy2-detail)">設為敵人II</a>
+			<a class="left btn applybtn" onclick="setEnemy(enemy3-detail)">設為敵人III</a>
 			<a class="right btn" id="enemy-setup-collapsebtn" onclick="toggleEnemySetup()">接疊▲</a>
 		</div>
 	</div>
@@ -873,27 +873,27 @@
 				<img class="class-logo left servant-enemy-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantEnemyFilterChange(this, 'Mooncancer')" />
 				<img class="class-logo left servant-enemy-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantEnemyFilterChange(this, 'Alterego')" />
 				<img class="class-logo left servant-enemy-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantEnemyFilterChange(this, 'Foreigner')" />
-				<span class="resetbtn" onclick="servantEnemyClassAll()">全選</span>
-				<span class="resetbtn" onclick="servantEnemyClassNone()">取消全選</span>
+				<span class="btn setbtn left" onclick="servantEnemyClassAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantEnemyClassNone()">取消全選</span>
 			</div>
 			<div class="row">
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star0" value="0" onchange="servantEnemyStarChange(this, 0)">
-				<span class="star">－</span>
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star1" value="1" onchange="servantEnemyStarChange(this, 1)">
-				<span class="star">★</span>
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star2" value="2" onchange="servantEnemyStarChange(this, 2)">
-				<span class="star">★★</span>
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star3" value="3" onchange="servantEnemyStarChange(this, 3)">
-				<span class="star">★★★</span>
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star4" value="4" onchange="servantEnemyStarChange(this, 4)">
-				<span class="star">★★★★</span>
-				<input type="checkbox" class="servant-enemy-star" id="servant-enemy-star5" value="5" onchange="servantEnemyStarChange(this, 5)">
-				<span class="star">★★★★★</span>
-				<span class="resetbtn" onclick="servantEnemyStarAll()">全選</span>
-				<span class="resetbtn" onclick="servantEnemyStarNone()">取消全選</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star0" value="0" onchange="servantEnemyStarChange(this, 0)" checked="">
+				<span class="star left">－</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star1" value="1" onchange="servantEnemyStarChange(this, 1)" checked="">
+				<span class="star left">★</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star2" value="2" onchange="servantEnemyStarChange(this, 2)" checked="">
+				<span class="star left">★★</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star3" value="3" onchange="servantEnemyStarChange(this, 3)" checked="">
+				<span class="star left">★★★</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star4" value="4" onchange="servantEnemyStarChange(this, 4)" checked="">
+				<span class="star left">★★★★</span>
+				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star5" value="5" onchange="servantEnemyStarChange(this, 5)" checked="">
+				<span class="star left">★★★★★</span>
+				<span class="btn setbtn left" onclick="servantEnemyStarAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantEnemyStarNone()">取消全選</span>
 			</div>
 			<div class="row">
-				<span class="mid resetbtn" onclick="loadServantEnemyImg()">套用篩選</span>
+				<span class="btn applybtn left" onclick="loadServantEnemyImg()">套用篩選</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
