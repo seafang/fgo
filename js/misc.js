@@ -5,7 +5,7 @@ window.onload = function () {
 function openFrame(url, tab) {
 	$("nav a").removeClass("active");
 	$(tab).addClass("active");
-	$("#activeFrame").src(url);
+	$("#activeFrame").attr("src", url);
 }
 	
 //menu button
