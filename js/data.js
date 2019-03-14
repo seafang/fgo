@@ -80,20 +80,24 @@ function servantEnemyStarChange(element, starNo) {
 		position = newStar.indexOf(starNo);
 		newStar.splice(position, 1);
 		servantEnemyFilter.star = newStar;
+		$("#demo").append(servantEnemyFilter.star + "<br/>");
 	} else {
 		newStar.push(starNo);
 		servantEnemyFilter.star = newStar;
+		$("#demo").append(servantEnemyFilter.star + "<br/>");
 	}
 }
 
 function servantEnemyStarAll() {
 	$(".servant-enemy-star").prop("checked", true);
 	servantEnemyFilter.star = [0, 1, 2, 3, 4, 5];
+	$("#demo").append(servantEnemyFilter.star + "<br/>");
 }
 
 function servantEnemyStarNone() {
 	$(".servant-enemy-star").prop("checked", false);
 	servantEnemyFilter.star = [9];
+	$("#demo").append(servantEnemyFilter.star + "<br/>");
 }
 
 function initialServantEnemy() {
