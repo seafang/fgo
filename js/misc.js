@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 // To top button
 $(document).scroll(function(){
-	if ($document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
+	if ($(document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
 		$("#to_top").show();
 	} else {
 		$("#to_top").hide();
