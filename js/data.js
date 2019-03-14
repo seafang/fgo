@@ -24,11 +24,6 @@ let servantEnemyFilter = {
 	star: [0, 1, 2, 3, 4, 5]
 };
 
-var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
-var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
-	return servantEnemy.id
-});
-
 /*function loadServantEnemyImg() {
 	var imglist = "";
 	servantEnemyID.forEach(myFunction(id) {
@@ -39,6 +34,10 @@ var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
 }*/
 
 function loadServantEnemyImg() {
+	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
+	var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
+		return servantEnemy.id
+	});
 	var imglist = "";
 	var arrayLength = servantEnemyID.length;
 	for (i = 0; i < arrayLength; i++) {
@@ -101,7 +100,6 @@ function servantEnemyStarNone() {
 function initialServantEnemy() {
 	servantEnemyClassAll();
 	servantEnemyStarAll();
-	loadServantEnemyImg();
 }
 
 function setServantEnemy(value) {
