@@ -1,7 +1,8 @@
 // Set Enemy
+var enemyInfo = {};
+
 function pickEnemy(type, enemyID) {
 	closeModal();
-	var enemyInfo = {};
 	if (type === 1) {
 		enemyInfo = servants.filter(function(obj) {
 			return obj.id == enemyID;
