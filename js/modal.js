@@ -1,9 +1,3 @@
-// Set Enemy
-function setEnemy(type, id) {
-	var servantEnemyID = id;
-	closeModal();
-}
-
 // Servant enemy modal
 let servantEnemyFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
