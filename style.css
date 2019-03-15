@@ -88,6 +88,9 @@ section, iframe {
 	background-color: lightgray;
 	padding: 4px;
 }
+#enemy1, #enemy2, #enemy3 {
+	display: none;
+}
 
 /*user interface*/
 label, .label, .btn {
@@ -160,6 +163,9 @@ select {
 	padding: 1px 4px;
 	background-color: white;
 }
+select.wide {
+	width: 110px;
+}
 select.narrow {
 	width: 60px;
 }
@@ -192,6 +198,10 @@ img.dull {
 	color: #F2EC3B;
 	text-shadow: 0px 0px 1px #000000;
 	font-size: 110%;
+}
+.enemy-img {
+	width: 60px;
+	margin: 4px;
 }
 
 /*modal*/
