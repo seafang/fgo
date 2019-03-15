@@ -12,6 +12,7 @@ function pickEnemy(type, enemyID) {
 			return obj.id == enemyID;
 		});
 	}
+	$("#current-enemy-img").attr("src", enemyInfo[0].imgid)
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
@@ -25,15 +26,33 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-trait").html(enemyInfo[0].trait);
 }
 
+function resetCurrentEnemy() {
+	$("#current-enemy-img").attr("src", "");
+	$("#current-enemy-name").html("");
+	$(element).find(".enemy-class").val("Saber");
+	$("#current-enemy-gender").val("男性");
+	$("#current-enemy-attribute").val("天");
+	$("#current-enemy-alignment1").val("秩序");
+	$("#current-enemy-alignment2").val("善");
+	$("#current-enemy-trait").html("");
+}
+
 function setEnemy(element) {
 	$(element).show();
-	$(element).find(".enemy-name").html(enemyInfo[0].name);
-	$(element).find(".enemy-class").html(enemyInfo[0].classes);
-	$(element).find(".enemy-gender").html(enemyInfo[0].gender);
-	$(element).find(".enemy-attribute").html(enemyInfo[0].attribute);
-	$(element).find(".enemy-alignment1").html(enemyInfo[0].alignment1);
-	$(element).find(".enemy-alignment2").html(enemyInfo[0].alignment2);
-	$(element).find(".enemy-trait").html(enemyInfo[0].trait);
+	if ($("#current-enemy-img").attr("src") != ""){
+		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
+	}
+	if ($("#current-enemy-name").html() == ""){
+		$(element).find(".enemy-name").html("自訂敵人");
+	} else {
+		$(element).find(".enemy-name").html($("#current-enemy-name").html());
+	}
+	$(element).find(".enemy-class").html($("#current-enemy-class").val());
+	$(element).find(".enemy-gender").html($("#current-enemy-gender").val());
+	$(element).find(".enemy-attribute").html($("#current-enemy-attribute").val());
+	$(element).find(".enemy-alignment1").html($("#current-enemy-alignment1").val());
+	$(element).find(".enemy-alignment2").html($("#current-enemy-alignment2").val());
+	$(element).find(".enemy-trait").html($("#current-enemy-trait").html());
 }
 
 function resetEnemy(element) {
