@@ -131,9 +131,11 @@ section, iframe {
 }
 .modalbtn:hover {
 	background-color: darkgreen;
+	border-color: darkgreen;
 }
 .collapsebtn {
 	border-style: none;
+	border-radius: 0px 0px 4px 4px;
 }
 #enemy-setup-collapsebtn {
 	background-color: lightgray;
