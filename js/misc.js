@@ -2,6 +2,7 @@
 window.onload = function () {
 	$("#defaultFrame").click();
 }
+
 function openFrame(url, tab) {
 	$("nav a").removeClass("active");
 	$(tab).addClass("active");
@@ -34,12 +35,28 @@ function openModal(modal) {
 	$(modal).show();
 };
 
-function closeModal(modal) {
-	$(modal).hide();
+function closeModal() {
+	$(".modal").hide();
 };
 
-window.onclick = function(event) {
+/* window.onclick = function(event) {
 	if (event.target == $(".modal")) {
 		$(".modal").hide();
 	}
-};
+};*/
+
+$(document).click(function(event) {
+	if (!$(event.target).closest(".modal, .modalbtn").length) {
+		$(".modal").hide();
+	}
+});
+
+// Collapsible
+function toggleEnemySetup(button, element) {
+	if ($(button).html() == "接疊▲") {
+		$(button).html("展開▼");
+	} else {
+		$(button).html("接疊▲");
+	}
+	$(element).toggle("fast");
+}
