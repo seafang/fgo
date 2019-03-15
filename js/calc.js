@@ -28,7 +28,7 @@ function pickEnemy(type, enemyID) {
 
 function resetCurrentEnemy() {
 	$("#current-enemy-img").attr("src", "");
-	$("#current-enemy-name").html("");
+	$("#current-enemy-name").html("未選定/自訂敵人");
 	$("#current-enemy-class").val("Saber");
 	$("#current-enemy-gender").val("男性");
 	$("#current-enemy-attribute").val("天");
