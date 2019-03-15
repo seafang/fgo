@@ -58,5 +58,5 @@ function toggleEnemySetup(button, element) {
 	} else {
 		$(button).html("接疊▲");
 	}
-	$(element).toggle("300ms");
+	$(element).toggle(300);
 }
