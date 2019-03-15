@@ -46,7 +46,7 @@ function closeModal() {
 };*/
 
 $(document).click(function(event) {
-	if (!$(event.target).closest(".modal, .modalbtn").length) {
+	if (!$(event.target).closest(".modal-box, .modalbtn").length) {
 		$(".modal").hide();
 	}
 });
@@ -58,5 +58,5 @@ function toggleEnemySetup(button, element) {
 	} else {
 		$(button).html("接疊▲");
 	}
-	$(element).toggle("fast");
+	$(element).toggle("300ms");
 }
