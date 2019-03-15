@@ -12,7 +12,7 @@ function pickEnemy(type, enemyID) {
 		});
 	}
 	$("#current-enemy-name").html(enemyInfo[0].name);
-	if (enemyInfo.classes) {
+	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
 	} else {
 		$("#current-enemy-class").val("Saber");
