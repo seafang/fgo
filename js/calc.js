@@ -29,7 +29,7 @@ function pickEnemy(type, enemyID) {
 function resetCurrentEnemy() {
 	$("#current-enemy-img").attr("src", "");
 	$("#current-enemy-name").html("");
-	$(element).find(".enemy-class").val("Saber");
+	$("#current-enemy-class").val("Saber");
 	$("#current-enemy-gender").val("男性");
 	$("#current-enemy-attribute").val("天");
 	$("#current-enemy-alignment1").val("秩序");
