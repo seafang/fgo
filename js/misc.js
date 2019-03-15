@@ -52,7 +52,7 @@ $(document).click(function(event) {
 });
 
 // Collapsible
-function toggleEnemySetup(button, element) {
+function toggle(button, element) {
 	if ($(button).html() == "接疊▲") {
 		$(button).html("展開▼");
 	} else {
