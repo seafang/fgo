@@ -191,7 +191,7 @@ input.narrow {
 	vertical-align: middle;
 	margin: 1px;
 }
-img.dull {
+.dull {
 	filter: brightness(50%);
 }
 .star {
