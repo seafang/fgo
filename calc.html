@@ -30,16 +30,18 @@
 		<div class="row">
 			<a class="modalbtn left btn" onclick="openModal('#common-enemy-modal');initialCommonEnemy();loadCommonEnemyImg();">非從者敵人</a>
 			<a class="modalbtn left btn" onclick="openModal('#servant-enemy-modal');initialServantEnemy();loadServantEnemyImg();">從者敵人</a>
+			<a class="resetbtn left btn" onclick="resetCurrentEnemy()">清除選定</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
 			<div class="row">			
 				<div class="element-20">		
-					<span class="label">目前選擇</span><span id="current-enemy-name"></span>	
+					<img class="left enemy-img" id="current-enemy-img" src="" />
+					<span id="current-enemy-name">未選定/自訂敵人</span>	
 				</div>		
 				<div class="element-15">		
 					<span>	
 					<label for="current-enemy-class">職階</label>	
-					<select id="current-enemy-class" name="enemyclass">	
+					<select class="wide" id="current-enemy-class" name="enemyclass">	
 						<option value="Saber">Saber</option>
 						<option value="Archer">Archer</option>
 						<option value="Lancer">Lancer</option>
@@ -124,7 +126,7 @@
 		<div class="enemy-detail" id="enemy1-detail">
 			<div class="row">
 				<div class="element-20">
-					<img class="enemy-img" id="enemy1-img" src=""/>
+					<img class="enemy-img" id="enemy1-img" src="" />
 					<span class="enemy-name" id="enemy1-name"></span>
 				</div>
 				<div class="element-20"><span class="label">職階</span><span class="enemy-class" id="enemy1-class"></span></div>
@@ -148,7 +150,7 @@
 		<div class="enemy-detail" id="enemy2-detail">
 			<div class="row">
 				<div class="element-20">
-					<img class="enemy-img" id="enemy2-img" src=""/>
+					<img class="enemy-img" id="enemy2-img" src="" />
 					<span class="enemy-name" id="enemy2-name"></a>
 				</div>
 				<div class="element-20"><span class="label">職階</span><span class="enemy-class" id="enemy2-class"></span></div>
@@ -172,7 +174,7 @@
 		<div class="enemy-detail" id="enemy3-detail">
 			<div class="row">
 				<div class="element-20">
-					<img class="enemy-img" id="enemy3-img" src=""/>
+					<img class="enemy-img" id="enemy3-img" src="" />
 					<span class="enemy-name" id="enemy3-name"></a>
 				</div>
 				<div class="element-20"><span class="label">職階</span><span class="enemy-class" id="enemy3-class"></span></div>
