@@ -87,10 +87,6 @@ section, iframe {
 	background-color: lightgray;
 	padding: 4px;
 }
-#enemy-setup-collapsebtn {
-	background-color: lightgray;
-	color: white;
-}
 
 /*user interface*/
 .btn {
@@ -135,6 +131,13 @@ section, iframe {
 }
 .modalbtn:hover {
 	background-color: darkgreen;
+}
+.collapsebtn {
+	border-style: none;
+}
+#enemy-setup-collapsebtn {
+	background-color: lightgray;
+	color: gray;
 }
 label, .label {
 	display: inline-block;
