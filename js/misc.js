@@ -1,4 +1,4 @@
-//load page
+// Load page
 window.onload = function () {
 	$("#defaultFrame").click();
 }
@@ -9,7 +9,7 @@ function openFrame(url, tab) {
 	$("#activeFrame").attr("src", url);
 }
 	
-//menu button
+// Menu button
 $(document).ready(function() {
 	$("a.menu").click(function() {
 		$("#menu-content").toggle(300);
