@@ -136,6 +136,7 @@ section, iframe {
 .collapsebtn {
 	border-style: none;
 	border-radius: 0px 0px 4px 4px;
+	font-size: 10px;
 }
 #enemy-setup-collapsebtn {
 	background-color: lightgray;
