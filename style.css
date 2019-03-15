@@ -6,6 +6,7 @@
 
 body {
 	font-family: "Noto Sans TC", sans-serif;
+	font-weight: 300;
 	padding: 5px;
 	height: 100%;
 	position: absolute;
@@ -89,6 +90,9 @@ section, iframe {
 }
 
 /*user interface*/
+label, .label, .btn {
+	font-weight: 500;
+}
 .btn {
 	display: block;
 	cursor: pointer;
@@ -146,8 +150,9 @@ label, .label {
 	display: inline-block;
 	background-color: gray;
 	color: white;
-	padding: 1px 4px;
 	border-radius: 4px;
+	padding: 1px 4px;
+	margin: 0px 2px;
 }
 select {
 	width: 80px;
@@ -156,7 +161,10 @@ select {
 	background-color: white;
 }
 select.narrow {
-	width: 80px;
+	width: 60px;
+}
+select.tight {
+	width: 50px;
 }
 input {
 	width: 80px;
@@ -167,7 +175,7 @@ input[type="checkbox"] {
 	width: auto;
 }
 input.narrow {
-	width: 80px;
+	width: 60px;
 }
 
 /*image & logo*/
