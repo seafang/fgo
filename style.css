@@ -105,7 +105,7 @@ section, iframe {
 .resetbtn {
 	background-color: white;
 	color: red;
-	border: red;
+	border-color: red;
 }
 .resetbtn:hover {
 	background-color: red;
@@ -114,7 +114,7 @@ section, iframe {
 .setbtn {
 	background-color: white;
 	color: blue;
-	border: blue;
+	border-color: blue;
 }
 .setbtn:hover {
 	background-color: blue;
@@ -123,7 +123,7 @@ section, iframe {
 .applybtn {
 	background-color: white;
 	color: black;
-	border: black;
+	border-color: black;
 }
 .applybtn:hover {
 	background-color: black;
@@ -134,8 +134,7 @@ section, iframe {
 	color: white;
 }
 .modalbtn:hover {
-	background-color: white;
-	color: mediumseagreen;
+	background-color: darkgreen;
 }
 label, .label {
 	display: inline-block;
