@@ -23,7 +23,7 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
 	$("#current-enemy-alignment1").val(enemyInfo[0].alignment1);
 	$("#current-enemy-alignment2").val(enemyInfo[0].alignment2);
-	$("#current-enemy-trait").html(enemyInfo[0].trait);
+	$("#current-enemy-trait").html(enemyInfo[0].trait.toString());
 }
 
 function resetCurrentEnemy() {
@@ -49,7 +49,11 @@ function setEnemy(element) {
 	} else {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
 	}
-	$(element).find(".enemy-class").html($("#current-enemy-class").val());
+	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".png";
+	$(element).find(".enemy-class").attr({
+		src: imgURL,
+		alt: $("#current-enemy-class").val()
+	});
 	$(element).find(".enemy-gender").html($("#current-enemy-gender").val());
 	$(element).find(".enemy-attribute").html($("#current-enemy-attribute").val());
 	$(element).find(".enemy-alignment1").html($("#current-enemy-alignment1").val());
@@ -61,7 +65,7 @@ function resetEnemy(element) {
 	$(element).hide();
 	$(element).find(".enemy-img").attr("src", "images/logo_placeholder.jpg");
 	$(element).find(".enemy-name").html("");
-	$(element).find(".enemy-class").html("");
+	$(element).find(".enemy-class").attr("src", "images/class/Unknown.png");
 	$(element).find(".enemy-gender").html("");
 	$(element).find(".enemy-attribute").html("");
 	$(element).find(".enemy-alignment1").html("");
