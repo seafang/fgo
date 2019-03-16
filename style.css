@@ -199,6 +199,9 @@ select.wide {
 select.narrow {
 	width: 60px;
 }
+select.slim {
+	width: 50px;
+}
 select.tight {
 	width: 40px;
 }
