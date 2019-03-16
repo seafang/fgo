@@ -34,6 +34,7 @@ section, iframe {
 	width: 100%;
 	padding: 1px;
 	display: flex;
+	align-items: center;
 }
 .row:after {
 	content: "";
@@ -42,6 +43,7 @@ section, iframe {
 }
 .flex {
 	display: flex;
+	align-items: center;
 }
 .left {
 	float: left;
