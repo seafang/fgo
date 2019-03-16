@@ -33,11 +33,15 @@ section, iframe {
 .row {
 	width: 100%;
 	padding: 1px;
+	display: flex;
 }
 .row:after {
 	content: "";
 	display: table;
 	clear: both;
+}
+.flex {
+	display: flex;
 }
 .left {
 	float: left;
@@ -156,6 +160,11 @@ label, .label {
 	border-radius: 4px;
 	padding: 1px 4px;
 	margin: 0px 2px;
+}
+select, option, input {
+	font-family: "Noto Sans TC", sans-serif;
+	font-size: 13px;
+	font-weight: 300;
 }
 select {
 	width: 80px;
