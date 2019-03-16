@@ -27,7 +27,7 @@ function pickEnemy(type, enemyID) {
 }
 
 function resetCurrentEnemy() {
-	$("#current-enemy-img").attr("src", "images/logo_placeholder.jpg");
+	$("#current-enemy-img").attr("src", "images/bg_logo.png");
 	$("#current-enemy-name").html("未選定/自訂敵人");
 	$("#current-enemy-class").val("Saber");
 	$("#current-enemy-gender").val("男性");
@@ -39,10 +39,10 @@ function resetCurrentEnemy() {
 
 function setEnemy(element) {
 	$(element).show();
-	if ($("#current-enemy-img").attr("src") != "images/logo_placeholder.jpg"){
+	if ($("#current-enemy-img").attr("src") != "images/bg_logo.png"){
 		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
 	} else {
-		$(element).find(".enemy-img").attr("src", "images/logo_placeholder.jpg");
+		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
 	}
 	if ($("#current-enemy-name").html() == ""){
 		$(element).find(".enemy-name").html("自訂敵人");
@@ -63,7 +63,7 @@ function setEnemy(element) {
 
 function resetEnemy(element) {
 	$(element).hide();
-	$(element).find(".enemy-img").attr("src", "images/logo_placeholder.jpg");
+	$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
 	$(element).find(".enemy-name").html("");
 	$(element).find(".enemy-class").attr("src", "images/class/Unknown.png");
 	$(element).find(".enemy-gender").html("");
