@@ -49,7 +49,7 @@ function setEnemy(element) {
 	} else {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
 	}
-	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".png";
+	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
 		alt: $("#current-enemy-class").val()
