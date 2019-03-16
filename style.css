@@ -50,6 +50,7 @@ section, iframe {
 }
 .right {
 	float: right;
+	margin-left: auto;
 }
 .bold {
 	font-weight: bold;
@@ -96,6 +97,22 @@ section, iframe {
 }
 #enemy1, #enemy2, #enemy3 {
 	display: none;
+}
+.enemy-detail {
+	border-left-style: solid;
+	padding: 0px 0px 0px 4px;
+}
+#enemy1-detail {
+	border-left-color: green;
+}
+#enemy2-detail {
+	border-left-color: royal blue;
+}
+#enemy3-detail {
+	border-left-color: maroon;
+}
+.indent-4 {
+	padding-left: 4px
 }
 
 /*user interface*/
@@ -157,7 +174,7 @@ label, .label, .btn {
 }
 label, .label {
 	display: inline-block;
-	background-color: gray;
+	background-color: black;
 	color: white;
 	border-radius: 4px;
 	padding: 1px 4px;
@@ -257,9 +274,9 @@ input[type="checkbox"] {
 }
 .closebtn {
 	color: #aaaaaa;
-	float: right;
 	font-size: 20px;
 	font-weight: bolder;
+	margin-left: auto;
 }
 .closebtn:hover, .closebtn:focus {
 	color: #000;
