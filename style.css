@@ -91,6 +91,9 @@ section, iframe {
 	float: left;
 	width: 100%;
 }
+.indent-4 {
+	padding-left: 4px
+}
 #enemy-setup {
 	background-color: lightgray;
 	padding: 4px;
@@ -100,7 +103,8 @@ section, iframe {
 }
 .enemy-detail {
 	border-left-style: solid;
-	padding: 0px 0px 0px 4px;
+	border-left-width: 5px;
+	padding: 2px 4px;
 }
 #enemy1-detail {
 	border-left-color: green;
@@ -110,9 +114,6 @@ section, iframe {
 }
 #enemy3-detail {
 	border-left-color: maroon;
-}
-.indent-4 {
-	padding-left: 4px
 }
 
 /*user interface*/
