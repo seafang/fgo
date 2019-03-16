@@ -167,12 +167,11 @@ select, option, input {
 	font-family: "Noto Sans TC", sans-serif;
 	font-size: 13px;
 	font-weight: 300;
+	padding: 0px 4px;
+	border-radius: 4px;
 }
 select {
 	width: 80px;
-	border-radius: 4px;
-	padding: 1px 4px;
-	background-color: white;
 }
 select.wide {
 	width: 110px;
@@ -185,14 +184,12 @@ select.tight {
 }
 input {
 	width: 80px;
-	border-radius: 4px;
-	padding: 3px 4px;
-}
-input[type="checkbox"] {
-	width: auto;
 }
 input.narrow {
 	width: 60px;
+}
+input[type="checkbox"] {
+	width: auto;
 }
 
 /*image & logo*/
