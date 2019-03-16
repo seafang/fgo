@@ -24,7 +24,7 @@ function loadServantEnemyImg() {
 	var arrayLength = servantEnemyID.length;
 	for (i = 0; i < arrayLength; i++) {
 		imglist += "<img class='left servant-img' src='images/servant/" + servantEnemyID[i] +
-		".png' onclick='pickEnemy(1, " + servantEnemyID[i] + ")' />"
+		".webp' onclick='pickEnemy(1, " + servantEnemyID[i] + ")' />"
 	};
 	$("#servant-enemy-img").html(imglist);
 }
