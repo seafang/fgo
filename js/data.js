@@ -8,10 +8,10 @@ var servants = JSON.parse(servant);
  * @return {Array}
  */
 
-/*function multiFilter(array, filters) {
-	const filterKeys = Object.keys(filters);
-	return array.filter((item) => {
-		return filterKeys.every(key => {
+/* function multiFilter(array, filters) {
+	var filterKeys = Object.keys(filters);
+	return array.filter(function (item) {
+		return filterKeys.every(function (key) {
 			if (!filters[key].length) return true;
 			return filters[key].includes(item[key]);
 		});
@@ -20,9 +20,18 @@ var servants = JSON.parse(servant);
 
 function multiFilter(array, filters) {
 	var filterKeys = Object.keys(filters);
-	return array.filter(function (item) {
-		return filterKeys.every(function (key) {
+	return array.filter(function(item) {
+		return filterKeys.every(function(key) {
 			if (!filters[key].length) return true;
+			if (Array.isArray(item[key])) {
+				var test = [];
+				item[key].forEach(function(value) {
+					test.push(filters[key].includes(value));  
+				});
+				return test.some(function (value){
+					return true === value;
+				});
+			}
 			return filters[key].includes(item[key]);
 		});
 	});
