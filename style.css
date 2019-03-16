@@ -210,6 +210,9 @@ input[type="checkbox"] {
 }
 
 /*image & logo*/
+#header-logo {
+	width: 70px;
+}
 .class-logo {
 	height: 30px;
 	width: 30px;
