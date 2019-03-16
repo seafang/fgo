@@ -30,6 +30,27 @@ section, iframe {
 	border-radius: 4px;
 	padding: 8px;
 }
+.setup {
+	background-color: lightgray;
+	padding: 4px;
+}
+#enemy1, #enemy2, #enemy3 {
+	display: none;
+}
+.detail {
+	border-left-style: solid;
+	border-left-width: 5px;
+	padding: 2px 4px;
+}
+#enemy1-detail {
+	border-left-color: green;
+}
+#enemy2-detail {
+	border-left-color: royal blue;
+}
+#enemy3-detail {
+	border-left-color: maroon;
+}
 .row {
 	width: 100%;
 	padding: 1px;
@@ -50,7 +71,6 @@ section, iframe {
 }
 .right {
 	float: right;
-	margin-left: auto;
 }
 .bold {
 	font-weight: bold;
@@ -94,40 +114,22 @@ section, iframe {
 .indent-4 {
 	padding-left: 4px
 }
-#enemy-setup {
-	background-color: lightgray;
-	padding: 4px;
-}
-#enemy1, #enemy2, #enemy3 {
-	display: none;
-}
-.enemy-detail {
-	border-left-style: solid;
-	border-left-width: 5px;
-	padding: 2px 4px;
-}
-#enemy1-detail {
-	border-left-color: green;
-}
-#enemy2-detail {
-	border-left-color: royal blue;
-}
-#enemy3-detail {
-	border-left-color: maroon;
-}
 
 /*user interface*/
 label, .label, .btn {
 	font-weight: 500;
 }
 .btn {
-	display: block;
 	cursor: pointer;
 	padding: 1px 4px;
 	margin: 3px;
 	border-radius: 4px;
 	border-style: solid;
 	border-width: 2px;
+}
+.btnright {
+	float: right;
+	margin-left: auto;
 }
 .resetbtn {
 	background-color: white;
@@ -189,7 +191,7 @@ select, option, input {
 	border-radius: 4px;
 }
 select {
-	width: 80px;
+	width: 70px;
 }
 select.wide {
 	width: 110px;
@@ -198,7 +200,7 @@ select.narrow {
 	width: 60px;
 }
 select.tight {
-	width: 50px;
+	width: 40px;
 }
 input {
 	width: 80px;
