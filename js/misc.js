@@ -13,7 +13,7 @@ $("#activeFrame").contents().on("click", function() {
 });
 
 function iframeResize() {
-	var height = $("#activeFrame").contents().height() + 100;
+	var height = $("#activeFrame").contents().height() + 300;
 	/*let frame = document.getElementById("activeFrame");
 	frame.style.height = (height + 200) + "px";*/
 	$("#activeFrame").css("height", height);
