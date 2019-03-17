@@ -23,7 +23,7 @@ function iframeResize() {
 
 function initiateResize() {
 	let height = $("body").scrollHeight;
-	window.parentsUntil("body").find($("#activeFrame")).css("height", (height + 200) + "px");
+	$("window").parentsUntil("body").find($("#activeFrame")).css("height", (height + 200) + "px");
 }
 	
 // Menu button
