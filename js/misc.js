@@ -27,8 +27,8 @@ function initiateResize() {
 }*/
 
 function iframeResize() {
-	let height = $("#activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
-        $("iContent").style.height = (height + 300) + "px";
+	let height = document.getElementById("activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
+        document.getElementsByTagName("iframe").style.height = (height + 300) + "px";
 }
 
 function initiateResize() {
