@@ -8,9 +8,9 @@ $(document).on("scroll", function() {
 	iframeResize();
 });
 
-$("#activeFrame").contents().on("scroll", function() {
+/*$("#activeFrame").contents().on("scroll", function() {
 	iframeResize();
-});
+});*/
 
 function iframeResize() {
 	var height = $("#activeFrame").contents().height() + 300;
