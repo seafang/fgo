@@ -52,7 +52,7 @@ function resetCurrentEnemy() {
 
 function setEnemy(element) {
 	$(element).show();
-	if ($("#current-enemy-img").attr("src") != "images/bg_logo.png"){
+	if ($("#current-enemy-name").html() != "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
 	} else {
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
