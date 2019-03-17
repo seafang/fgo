@@ -8,6 +8,10 @@ document.addEventListener("click", function() {
 	iframeResize();
 });
 
+document.getElementById("activeFrame").contentWindow.document.addEventListener("click", function() {
+	iframeResize();
+});
+
 function iframeResize() {
 	var height = $("#activeFrame").contents().height() + 100;
 	/*let frame = document.getElementById("activeFrame");
