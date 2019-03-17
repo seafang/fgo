@@ -8,6 +8,17 @@
 <script src="https://seafang.github.io/fgo/js/data.js"></script>
 <script src="https://seafang.github.io/fgo/js/modal.js"></script>
 <script src="https://seafang.github.io/fgo/js/calc.js"></script>
+<script>
+	window.addEventListener('DOMContentLoaded', function() {
+		initiateResize();
+	});
+	
+	function initiateResize() {
+		let height = $("body").scrollHeight;
+		let frame = window.parent.document.getElementById("activeFrame");
+		frame.style.height = (height + 300) + "px";
+	}
+</script>
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
 <style>
