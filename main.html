@@ -20,7 +20,7 @@
 	});
 
 	function iframeResize() {
-		let height = document.getElementById("activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
+		let height = document.getElementById("activeFrame").contentWindow.document.body.scrollHeight;
 		let frame = document.getElementById("activeFrame");
 		frame.style.height = (height + 300) + "px";
 	}
