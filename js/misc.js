@@ -1,5 +1,5 @@
 // Load page
-$(document).ready(function () {
+$(document).ready(function() {
 	$("#defaultFrame").click();
 	iframeResize();
 });
