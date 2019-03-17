@@ -12,6 +12,10 @@ function pickEnemy(type, enemyID) {
 			return obj.id == enemyID;
 		});
 	}
+	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
+		$("#enemy-setup-collapsebtn").html("接疊▲");
+		$("#enemy-setup-collapsible").toggle(300);
+	}
 	$("#current-enemy-img").attr("src", enemyInfo[0].imgid)
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	if (enemyInfo[0].classes) {
@@ -23,7 +27,8 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
 	$("#current-enemy-alignment1").val(enemyInfo[0].alignment1);
 	$("#current-enemy-alignment2").val(enemyInfo[0].alignment2);
-	$.each(enemyInfo[0].trait, function(index, value) {
+	var trait = enemyInfo[0].trait;
+	$.each(trait, function(index, value) {
 		$("input.current-enemy-trait[value="+value+"]").prop("checked", true)
 	});
 }
@@ -65,7 +70,11 @@ function setEnemy(element) {
 	$(element).find(".enemy-attribute").html($("#current-enemy-attribute").val());
 	$(element).find(".enemy-alignment1").html($("#current-enemy-alignment1").val());
 	$(element).find(".enemy-alignment2").html($("#current-enemy-alignment2").val());
-	$(element).find(".enemy-trait").html($(".current-enemy-trait:checked").val().toString());
+	var trait = [];
+	$(".current-enemy-trait:checked").each(function() {
+		trait.push($(this).val())
+	});
+	$(element).find(".enemy-trait").html(trait.toString());
 }
 
 function resetEnemy(element) {
