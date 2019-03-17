@@ -16,7 +16,7 @@ function openFrame(url, tab) {
 	iframeResize();
 }
 
-function iframeResize() {
+/*function iframeResize() {
 	let height = $("#activeFrame").contents().find($("body")).scrollHeight;
 	$("#activeFrame").css("height", (height + 200) + "px");
 }
@@ -24,6 +24,17 @@ function iframeResize() {
 function initiateResize() {
 	let height = $("body").scrollHeight;
 	$("window").parentsUntil("body").find($("#activeFrame")).css("height", (height + 200) + "px");
+}*/
+
+function iframeResize() {
+	let height = $("#activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
+        $("iContent").style.height = (height + 300) + "px";
+}
+
+function initiateResize() {
+	let height = $("body").scrollHeight;
+	let frame = window.parent.document.getElementById("activeFrame");
+	frame.style.height = (height + 300) + "px";
 }
 	
 // Menu button
