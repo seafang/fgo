@@ -4,11 +4,11 @@ $(document).ready(function() {
 	iframeResize();
 });
 
-$(document).on("click", function() {
+$(document).on("scroll", function() {
 	iframeResize();
 });
 
-$("#activeFrame").contents().on("click", function() {
+$("#activeFrame").contents().on("scroll", function() {
 	iframeResize();
 });
 
