@@ -56,7 +56,8 @@ function setEnemy(element) {
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
 	} else {
-		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
+		var imgsrc = $("#current-enemy-img").attr("src");
+		$(element).find(".enemy-img").attr("src", imgsrc);
 	}
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-name").html("自訂敵人");
