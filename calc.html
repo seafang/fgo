@@ -18,8 +18,8 @@
 	});
 	
 	function updateCounter() {
-		var height = $("#enemy-info").height() + $("#servant-info").height() + $("#ce-info").height() +
-			$("#master-info").height() + $("#teammate-info").height() + $("#buff-info").height() + 600;
+		var height = $("#enemy-info").outerHeight() + $("#servant-info").outerHeight() + $("#ce-info").outerHeight() +
+			$("#master-info").outerHeight() + $("#teammate-info").outerHeight() + $("#buff-info").outerHeight() + 600;
 		$("#calc-counter").html(height);
 	}
 </script>
