@@ -1,12 +1,29 @@
 // Load page
-window.onload = function () {
+$(document).ready(function () {
+	iframeResize();
 	$("#defaultFrame").click();
-}
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+	iframeResize()
+	initiateResize()
+});
 
 function openFrame(url, tab) {
 	$("nav a").removeClass("active");
 	$(tab).addClass("active");
 	$("#activeFrame").attr("src", url);
+	iframeResize();
+}
+
+function iframeResize() {
+	let height = $("#activeFrame").contentWindow.find($("body")).scrollHeight;
+	$("#activeFrame").style.height = (height + 200) + "px";
+}
+
+function initiateResize() {
+	let height = $("body").scrollHeight;
+	window.parentsUntil("body").find($("#activeFrame")).style.height = (height + 200) + "px";
 }
 	
 // Menu button
