@@ -1,19 +1,17 @@
 // Load page
 $(document).ready(function () {
-	iframeResize();
 	$("#defaultFrame").click();
 });
 
-window.addEventListener('DOMContentLoaded', function() {
+/* window.addEventListener('DOMContentLoaded', function() {
 	iframeResize();
 	initiateResize();
-});
+});*/
 
 function openFrame(url, tab) {
 	$("nav a").removeClass("active");
 	$(tab).addClass("active");
 	$("#activeFrame").attr("src", url);
-	iframeResize();
 }
 
 /*function iframeResize() {
@@ -26,7 +24,7 @@ function initiateResize() {
 	$("window").parentsUntil("body").find($("#activeFrame")).css("height", (height + 200) + "px");
 }*/
 
-function iframeResize() {
+/* function iframeResize() {
 	let height = document.getElementById("activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
         let frame = document.getElementsByTagName("iframe")
 	frame.style.height = (height + 300) + "px";
@@ -36,7 +34,7 @@ function initiateResize() {
 	let height = $("body").scrollHeight;
 	let frame = window.parent.document.getElementById("activeFrame");
 	frame.style.height = (height + 300) + "px";
-}
+}*/
 	
 // Menu button
 $(document).ready(function() {
