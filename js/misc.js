@@ -48,12 +48,6 @@ function closeModal() {
 	$(".modal").hide();
 }
 
-/* window.onclick = function(event) {
-	if (event.target == $(".modal")) {
-		$(".modal").hide();
-	}
-};*/
-
 $(document).click(function(event) {
 	if (!$(event.target).closest(".modal-box, .modalbtn").length) {
 		$(".modal").hide();
