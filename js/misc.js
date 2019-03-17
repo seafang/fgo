@@ -5,8 +5,8 @@ $(document).ready(function () {
 });
 
 window.addEventListener('DOMContentLoaded', function() {
-	iframeResize()
-	initiateResize()
+	iframeResize();
+	initiateResize();
 });
 
 function openFrame(url, tab) {
@@ -17,13 +17,13 @@ function openFrame(url, tab) {
 }
 
 function iframeResize() {
-	let height = $("#activeFrame").contentWindow.find($("body")).scrollHeight;
-	$("#activeFrame").style.height = (height + 200) + "px";
+	let height = $("#activeFrame").contents().find($("body")).scrollHeight;
+	$("#activeFrame").css("height", (height + 200) + "px");
 }
 
 function initiateResize() {
 	let height = $("body").scrollHeight;
-	window.parentsUntil("body").find($("#activeFrame")).style.height = (height + 200) + "px";
+	window.parentsUntil("body").find($("#activeFrame")).css("height", (height + 200) + "px");
 }
 	
 // Menu button
@@ -45,16 +45,15 @@ $(document).scroll(function(){
 function toTop() {
 	$(document.body).scrollTop(0); // Safari
 	$(document.documentElement).scrollTop(0);
-};
+}
 
 // Modal
 function openModal(modal) {
 	$(modal).show();
 };
-
 function closeModal() {
 	$(".modal").hide();
-};
+}
 
 /* window.onclick = function(event) {
 	if (event.target == $(".modal")) {
