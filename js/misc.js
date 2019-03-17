@@ -1,7 +1,7 @@
 // Load page
 $(document).ready(function() {
 	$("#defaultFrame").click();
-	iframeResize();
+	$("#activeFrame").css("height", 1500);
 });
 
 $(document).scroll(function() {
