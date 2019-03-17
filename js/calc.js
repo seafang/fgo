@@ -23,7 +23,9 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
 	$("#current-enemy-alignment1").val(enemyInfo[0].alignment1);
 	$("#current-enemy-alignment2").val(enemyInfo[0].alignment2);
-	$("#current-enemy-trait").html(enemyInfo[0].trait.toString());
+	$.each(enemyInfo[0].trait, function(index, value) {
+		$("input.current-enemy-trait[value="+value+"]").prop("checked", true)
+	});
 }
 
 function resetCurrentEnemy() {
@@ -39,6 +41,7 @@ function resetCurrentEnemy() {
 		$("#enemy-setup-collapsebtn").html("接疊▲");
 		$("#enemy-setup-collapsible").toggle(300);
 	}
+	$(".current-enemy-trait").prop("checked", false);
 }
 
 function setEnemy(element) {
@@ -62,7 +65,7 @@ function setEnemy(element) {
 	$(element).find(".enemy-attribute").html($("#current-enemy-attribute").val());
 	$(element).find(".enemy-alignment1").html($("#current-enemy-alignment1").val());
 	$(element).find(".enemy-alignment2").html($("#current-enemy-alignment2").val());
-	$(element).find(".enemy-trait").html($("#current-enemy-trait").html());
+	$(element).find(".enemy-trait").html($(".current-enemy-trait:checked").val().toString());
 }
 
 function resetEnemy(element) {
