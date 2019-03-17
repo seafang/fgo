@@ -27,6 +27,7 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
 	$("#current-enemy-alignment1").val(enemyInfo[0].alignment1);
 	$("#current-enemy-alignment2").val(enemyInfo[0].alignment2);
+	$(".current-enemy-trait").prop("checked", false);
 	var trait = enemyInfo[0].trait;
 	$.each(trait, function(index, value) {
 		$("input.current-enemy-trait[value="+value+"]").prop("checked", true)
