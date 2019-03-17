@@ -35,6 +35,10 @@ function resetCurrentEnemy() {
 	$("#current-enemy-alignment1").val("秩序");
 	$("#current-enemy-alignment2").val("善");
 	$("#current-enemy-trait").html("");
+	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
+		$("#enemy-setup-collapsebtn").html("接疊▲");
+		$("#enemy-setup-collapsible").toggle(300);
+	}
 }
 
 function setEnemy(element) {
