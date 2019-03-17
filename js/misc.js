@@ -4,11 +4,11 @@ $(document).ready(function () {
 	iframeResize();
 });
 
-document.addEventListener("click", function() {
+$(document).on("click", function() {
 	iframeResize();
 });
 
-document.getElementById("activeFrame").contentWindow.document.addEventListener("click", function() {
+$("#activeFrame").contents().on("click", function() {
 	iframeResize();
 });
 
