@@ -10,6 +10,22 @@
 <title>FGO寶具傷害及NP計算</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://seafang.github.io/fgo/js/misc.js"></script>
+<script>
+	$(document).ready(function () {
+		iframeResize();
+	});
+
+	window.addEventListener('DOMContentLoaded', function() {
+		iframeResize();
+	});
+
+	function iframeResize() {
+		let height = document.getElementById("activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
+		let frame = document.getElementsByTagName("iframe");
+		frame.style.height = (height + 300) + "px";
+	}
+	
+</script>
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
 
