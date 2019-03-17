@@ -4,7 +4,7 @@ $(document).ready(function () {
 	iframeResize();
 });
 
-window.addEventListener("click", function() {
+document.addEventListener("click", function() {
 	iframeResize();
 });
 
