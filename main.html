@@ -15,14 +15,15 @@
 		iframeResize();
 	});
 
-	window.addEventListener('DOMContentLoaded', function() {
+	window.addEventListener("click", function() {
 		iframeResize();
 	});
 
 	function iframeResize() {
-		let height = document.getElementById("activeFrame").contentWindow.document.body.scrollHeight;
-		let frame = document.getElementById("activeFrame");
-		frame.style.height = (height + 200) + "px";
+		var height = $("#activeFrame").contents().height() + 100;
+		/*let frame = document.getElementById("activeFrame");
+		frame.style.height = (height + 200) + "px";*/
+		$("#activeFrame").css("height", height);
 	}
 </script>
 <link rel="stylesheet" href="style.css" />
