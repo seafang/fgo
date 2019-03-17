@@ -18,7 +18,6 @@ body {
 /*content structure*/
 section, iframe {
 	width: 100%;
-	height: 200%;
 	border: none;
 	overflow: hidden;
 	font-size: 12px;
