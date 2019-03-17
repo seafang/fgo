@@ -9,14 +9,14 @@
 <script src="https://seafang.github.io/fgo/js/modal.js"></script>
 <script src="https://seafang.github.io/fgo/js/calc.js"></script>
 <script>
-	window.addEventListener('DOMContentLoaded', function() {
-		initiateResize();
+	$(document).on("click", function() {
+		updateCounter();
 	});
 	
-	function initiateResize() {
-		let height = $("body").scrollHeight;
-		let frame = window.parent.document.getElementById("activeFrame");
-		frame.style.height = (height + 200) + "px";
+	function updateCounter() {
+		var height = $("#enemy-info").height() + $("#servant-info").height() + $("#ce-info").height() +
+			$("#master-info").height() + $("#teammate-info").height() + $("#buff-info").height() + 300;
+		$("#calc-counter").html(height);
 	}
 </script>
 <link rel="stylesheet" href="style.css" />
@@ -926,9 +926,10 @@
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
 		</div>
-		<div id="demo"></div>
 	</div>
 </div>
+
+<div class="counter" id="calc-counter"></div>
 <script>
 </script>
 </body>
