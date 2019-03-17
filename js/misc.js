@@ -1,7 +1,19 @@
 // Load page
 $(document).ready(function () {
 	$("#defaultFrame").click();
+	iframeResize();
 });
+
+window.addEventListener("click", function() {
+	iframeResize();
+});
+
+function iframeResize() {
+	var height = $("#activeFrame").contents().height() + 100;
+	/*let frame = document.getElementById("activeFrame");
+	frame.style.height = (height + 200) + "px";*/
+	$("#activeFrame").css("height", height);
+}
 
 /* window.addEventListener('DOMContentLoaded', function() {
 	iframeResize();
