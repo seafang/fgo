@@ -28,7 +28,8 @@ function initiateResize() {
 
 function iframeResize() {
 	let height = document.getElementById("activeFrame").contentWindow.document.getElementsByTagName("body").scrollHeight;
-        document.getElementsByTagName("iframe").style.height = (height + 300) + "px";
+        let frame = document.getElementsByTagName("iframe")
+	frame.style.height = (height + 300) + "px";
 }
 
 function initiateResize() {
