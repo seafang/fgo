@@ -4,7 +4,7 @@ $(document).ready(function() {
 	iframeResize();
 });
 
-$(document).on("scroll", function() {
+$(document).scroll(function() {
 	iframeResize();
 });
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 });
 
 // To top button
-$(document).scroll(function(){
+$(document).scroll(function() {
 	if ($(document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
 		$("#to_top").show();
 	} else {
