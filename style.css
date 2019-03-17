@@ -305,6 +305,11 @@ input[type="checkbox"] {
 	box-shadow: 0px 0px 5px darkblue;
 }
 
+/* Collapsible */
+#enemy-setup-collapsible {
+	display: none;
+}
+
 /*responsive layout*/
 @media screen and (min-width: 660px) {
 	nav a:hover {background-color: #282828; color: white;}
