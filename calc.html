@@ -98,14 +98,16 @@
 				<div class="element-30">		
 					<span>	
 					<label for="current-enemy-alignment1">屬性</label>	
-					<select class="narrow" id="current-enemy-alignment1" name="enemyalignment1">	
+					<select class="" id="current-enemy-alignment1" name="enemyalignment1">	
+						<option value="不適用">不適用</option>
 						<option value="秩序">秩序</option>
 						<option value="中立">中立</option>
 						<option value="混沌">混沌</option>
 					</select>	
 					</span>	
 					<span>	
-					<select class="narrow" id="current-enemy-alignment2" name="enemyalignment2">	
+					<select class="" id="current-enemy-alignment2" name="enemyalignment2">	
+						<option value="不適用">不適用</option>
 						<option value="善">善</option>
 						<option value="中庸">中庸</option>
 						<option value="惡">惡</option>
@@ -116,11 +118,58 @@
 					</span>	
 				</div>		
 			</div>			
-			<div class="row">			
-				<span>		
-				<a class="label">特性</a>		
-				<a class="element-100" id="current-enemy-trait"></a>		
-				</span>		
+			<div class="row">	
+				<div class="element-100">
+					<span class="label">特性</span>		
+					<input type="checkbox" class="current-enemy-trait" value="被「天地乖離開闢之星」所剋" checked="">
+					<span class="">被「天地乖離開闢之星」所剋</span>
+					<input type="checkbox" class="current-enemy-trait" value="被「人類神話・雷電降臨」所剋" checked="">
+					<span class="">被「人類神話・雷電降臨」所剋</span>
+					<input type="checkbox" class="current-enemy-trait" value="被「神秘神手」所剋" checked="">
+					<span class="">被「神秘神手」所剋</span>
+					<input type="checkbox" class="current-enemy-trait" value="星之力" checked="">
+					<span class="">星之力</span>
+					<input type="checkbox" class="current-enemy-trait" value="人型" checked="">
+					<span class="">人型</span>
+					<input type="checkbox" class="current-enemy-trait" value="從者" checked="">
+					<span class="">從者</span>
+					<input type="checkbox" class="current-enemy-trait" value="擬似從者" checked="">
+					<span class="">擬似從者</span>
+					<input type="checkbox" class="current-enemy-trait" value="亞從者" checked="">
+					<span class="">亞從者</span>
+					<input type="checkbox" class="current-enemy-trait" value="人類" checked="">
+					<span class="">人類</span>
+					<input type="checkbox" class="current-enemy-trait" value="神性" checked="">
+					<span class="">神性</span>
+					<input type="checkbox" class="current-enemy-trait" value="王" checked="">
+					<span class="">王</span>
+					<input type="checkbox" class="current-enemy-trait" value="羅馬" checked="">
+					<span class="">羅馬</span>
+					<input type="checkbox" class="current-enemy-trait" value="希臘神話系男性" checked="">
+					<span class="">希臘神話系男性</span>
+					<input type="checkbox" class="current-enemy-trait" value="人類威脅" checked="">
+					<span class="">人類威脅</span>
+					<input type="checkbox" class="current-enemy-trait" value="阿爾托莉亞臉" checked="">
+					<span class="">阿爾托莉亞臉</span>
+					<input type="checkbox" class="current-enemy-trait" value="亞瑟" checked="">
+					<span class="">亞瑟</span>
+					<input type="checkbox" class="current-enemy-trait" value="所愛之人" checked="">
+					<span class="">所愛之人</span>
+					<input type="checkbox" class="current-enemy-trait" value="騎乘" checked="">
+					<span class="">騎乘</span>
+					<input type="checkbox" class="current-enemy-trait" value="龍" checked="">
+					<span class="">龍</span>
+					<input type="checkbox" class="current-enemy-trait" value="魔性" checked="">
+					<span class="">魔性</span>
+					<input type="checkbox" class="current-enemy-trait" value="猛獸" checked="">
+					<span class="">猛獸</span>
+					<input type="checkbox" class="current-enemy-trait" value="死靈" checked="">
+					<span class="">死靈</span>
+					<input type="checkbox" class="current-enemy-trait" value="惡魔" checked="">
+					<span class="">惡魔</span>
+					<input type="checkbox" class="current-enemy-trait" value="超巨大" checked="">
+					<span class="">超巨大</span>
+				</div>
 			</div>			
 			<div class="row">			
 				<a class="left btn applybtn" onclick="setEnemy('#enemy1')">設為敵人I</a>		
@@ -146,6 +195,7 @@
 				<div class="element-20">
 					<span class="label">屬性</span>
 					<span class="enemy-alignment1" id="enemy1-alignment1"></span>
+					<span>, </span>
 					<span class="enemy-alignment2" id="enemy1-alignment2"></span>
 				</div>
 			</div>
@@ -170,6 +220,7 @@
 				<div class="element-20">
 					<span class="label">屬性</span>
 					<span class="enemy-alignment1" id="enemy2-alignment1"></span>
+					<span>, </span>
 					<span class="enemy-alignment2" id="enemy2-alignment2"></span>
 				</div>
 			</div>
@@ -194,6 +245,7 @@
 				<div class="element-20">
 					<span class="label">屬性</span>
 					<span class="enemy-alignment1" id="enemy3-alignment1"></span>
+					<span>, </span>
 					<span class="enemy-alignment2" id="enemy3-alignment2"></span>
 				</div>
 			</div>
