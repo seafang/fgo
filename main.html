@@ -121,7 +121,7 @@ nav a.active {
 <section>
 	<div class="row">
 		<span class="label">選擇存檔</span>
-		<select id="inventory-save"></select>
+		<select id="inventory-save" onchange="pickSave()"></select>
 		<span class="label">目前選擇</span>
 		<input type="text" id="save-title" placeholder="存檔名稱">
 		<span class="btn" id="read-save" onclick="readSave()">讀檔</span>
