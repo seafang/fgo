@@ -75,7 +75,7 @@ function setEnemy(element) {
 	$(".current-enemy-trait:checked").each(function() {
 		trait.push($(this).val())
 	});
-	$(element).find(".enemy-trait").html(trait.toString());
+	$(element).find(".enemy-trait").html(trait.join(", "));
 }
 
 function resetEnemy(element) {
@@ -137,7 +137,7 @@ function pickServant(servantID) {
 	$("#current-servant-gender").html(servantInfo[0].gender);
 	$("#current-servant-attribute").html(servantInfo[0].attribute);
 	$("#current-servant-alignment").html(servantInfo[0].alignment1 + ", " + servantInfo[0].alignment2);
-	$("#current-servant-trait").html(servantInfo[0].trait.toString());
+	$("#current-servant-trait").html(servantInfo[0].trait.join(", "));
 	setCurrentServantNP();
 	setSkill('#servant-skill1');
 	setSkill('#servant-skill2');
