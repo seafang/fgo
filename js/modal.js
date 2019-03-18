@@ -114,7 +114,7 @@ function loadServantImg() {
 	var imglist = "";	
 	$.each(servantID, function(index, value) {
 		imglist += "<img class='left servant-img' src='images/servant/" + value +
-		".webp' onclick='pickServant(1, " + value + ")' />"
+		".webp' onclick='pickServant(" + value + ")' />"
 	});
 	$("#servant-img").html(imglist);
 }
