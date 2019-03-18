@@ -102,7 +102,7 @@ function pickServant(servantID) {
 		$("#servant-setup-collapsebtn").html("接疊▲");
 		$("#servant-setup-collapsible").toggle(300);
 	}
-	$("#current-servant-img").attr("src", servantInfo[0].imgid);
+	$("#current-servant-img").attr("src", servantInfo[0].imgID);
 	$("#current-servant-name").html(servantInfo[0].name);
 	$("#current-servant-class").attr({
 		"src": "images/class/" + servantInfo[0].classes + ".png",
@@ -134,10 +134,10 @@ function pickServant(servantID) {
 	$("#current-servant-star").html(starHTML);
 	$("#current-servant-star").removeClass("dull");
 	setCurrentServantInfo();
-	$("#current-servant-gender").html(enemyInfo[0].gender);
-	$("#current-servant-attribute").html(enemyInfo[0].attribute);
-	$("#current-servant-alignment").html(enemyInfo[0].alignment1 + ", " + enemyInfo[0].alignment2);
-	$("#current-servant-trait").html(enemyInfo[0].trait.toString());
+	$("#current-servant-gender").html(servantInfo[0].gender);
+	$("#current-servant-attribute").html(servantInfo[0].attribute);
+	$("#current-servant-alignment").html(servantInfo[0].alignment1 + ", " + servantInfo[0].alignment2);
+	$("#current-servant-trait").html(servantInfo[0].trait.toString());
 	setCurrentServantNP();
 	setSkill('#servant-skill1');
 	setSkill('#servant-skill2');
