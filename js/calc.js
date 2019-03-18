@@ -16,7 +16,7 @@ function pickEnemy(type, enemyID) {
 		$("#enemy-setup-collapsebtn").html("接疊▲");
 		$("#enemy-setup-collapsible").toggle(300);
 	}
-	$("#current-enemy-img").attr("src", enemyInfo[0].imgid);
+	$("#current-enemy-img").attr("src", enemyInfo[0].imgID);
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
