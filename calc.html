@@ -261,19 +261,19 @@
 <div class="info" id="servant-info">
 	<div class="setup" id="servant-setup">
 		<div class="row">
-			<a class="modalbtn left btn" onclick="servant()">選擇從者</a>
+			<a class="modalbtn left btn" onclick="openModal('#servant-modal');initialServant();loadServantImg();">選擇從者</a>
 			<span class="resetbtn btn" onclick="resetServant()">重置</span>
 		</div>
 		<div class="row">
 			<div class="element-20 flex">
 				<img class="left profile-img" id="current-servant-img" src="images/logo_placeholder.jpg" />
-				<span class="element-20" id="servant-name">未選定從者</span>
+				<span class="element-20" id="current-servant-name">未選定從者</span>
 			</div>
 			<div class="element-25">
-					<img class="class-logo left" id="servant-class" src="images/class/Unknown.png" />
-					<span class="star left dull" data-star="">★★★★★</span>
-					<label for="servant-lv">等級</label>
-					<select class="narrow" id="servant-lv" name="servantlv">
+					<img class="class-logo left" id="current-servant-class" src="images/class/Unknown.png" />
+					<span class="star left dull" id="current-servant-star" data-star="">★★★★★</span>
+					<label for="current-servant-lv">等級</label>
+					<select class="narrow" id="current-servant-lv" name="servantlv">
 						<option value="default">預設</option>
 						<option value="100">100</option>
 						<option value="99">99</option>
@@ -378,8 +378,8 @@
 					</select>
 			</div>
 			<div class="element-50">
-				<label for="servant-nplv">寶具等級</label>
-				<select class="tight" id="servant-nplv" name="servantnplv">
+				<label for="current-servant-nplv">寶具等級</label>
+				<select class="tight" id="current-servant-nplv" name="servantnplv">
 					<option value="np1">1</option>
 					<option value="np2">2</option>
 					<option value="np3">3</option>
@@ -387,13 +387,13 @@
 					<option value="np5">5</option>
 				</select>
 				<span class="label">芙芙(ATK)</span>
-				<input type="number" class="narrow" id="servant-statup" name="servantstatup" value="0" min="0" max="2000">
+				<input type="number" class="narrow" id="current-servant-statup" name="servantstatup" value="0" min="0" max="2000">
 				<span class="label">剩餘HP(%)</span>
-				<input type="number" class="narrow" id="servant-hp" name="servanthp" value="100" min="0" max="100">
+				<input type="number" class="narrow" id="current-servant-hp" name="servanthp" value="100" min="0" max="100">
 				<input type="checkbox" name="checkrankup" value="true" onchange="setNPRankUp()">
 				<span class="label">寶具強化</span>
 				<label for="servant-npoc">寶具OC</label>
-				<select id="servant-npoc" name="servantnpoc">
+				<select id="current-servant-npoc" name="servantnpoc">
 					<option value="oc1">100%</option>
 					<option value="oc2">200%</option>
 					<option value="oc3">300%</option>
@@ -404,14 +404,14 @@
 		</div>
 		<div class="collapsible" id="servant-setup-collapsible">
 			<div class="row">			
-				<div class="element-20"><span class="label">性別</span><span id="servant-gender"></span></div>		
-				<div class="element-20"><span class="label">陣營</span><span id="servant-attribute"></span></div>		
-				<div class="element-20"><span class="label">屬性</span><span id="servant-alignment"></span></div>		
-				<div class="element-40"><span class="label">特性</span><span id="servant-trait"></span></div>		
+				<div class="element-20"><span class="label">性別</span><span id="current-servant-gender"></span></div>		
+				<div class="element-20"><span class="label">陣營</span><span id="current-servant-attribute"></span></div>		
+				<div class="element-20"><span class="label">屬性</span><span id="current-servant-alignment"></span></div>		
+				<div class="element-40"><span class="label">特性</span><span id="current-servant-trait"></span></div>		
 			</div>			
 			<div class="row">			
-				<div class="element-20"><span class="label">寶具</span><span id="servant-np"></span></div>		
-				<div class="element-40"><span class="label">效果</span><span id="servant-npdscrp"></span></div>		
+				<div class="element-20"><span class="label">寶具</span><span id="current-servant-np"></span></div>		
+				<div class="element-40"><span class="label">效果</span><span id="current-servant-npdscrp"></span></div>		
 			</div>			
 			<div class="detail servant-skill-detail" id="servant-skill1">			
 				<div class="row">			
@@ -961,17 +961,17 @@
 				<span class="btn resetbtn left" onclick="servantEnemyClassNone()">取消全選</span>
 			</div>
 			<div class="row">
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star0" value="0" onchange="servantEnemyStarChange(this, 0)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="0" onchange="servantEnemyStarChange(this, 0)" checked="">
 				<span class="star left">－</span>
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star1" value="1" onchange="servantEnemyStarChange(this, 1)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="1" onchange="servantEnemyStarChange(this, 1)" checked="">
 				<span class="star left">★</span>
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star2" value="2" onchange="servantEnemyStarChange(this, 2)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="2" onchange="servantEnemyStarChange(this, 2)" checked="">
 				<span class="star left">★★</span>
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star3" value="3" onchange="servantEnemyStarChange(this, 3)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="3" onchange="servantEnemyStarChange(this, 3)" checked="">
 				<span class="star left">★★★</span>
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star4" value="4" onchange="servantEnemyStarChange(this, 4)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="4" onchange="servantEnemyStarChange(this, 4)" checked="">
 				<span class="star left">★★★★</span>
-				<input type="checkbox" class="servant-enemy-star left" id="servant-enemy-star5" value="5" onchange="servantEnemyStarChange(this, 5)" checked="">
+				<input type="checkbox" class="servant-enemy-star left" value="5" onchange="servantEnemyStarChange(this, 5)" checked="">
 				<span class="star left">★★★★★</span>
 				<span class="btn setbtn left" onclick="servantEnemyStarAll()">全選</span>
 				<span class="btn resetbtn left" onclick="servantEnemyStarNone()">取消全選</span>
@@ -981,6 +981,203 @@
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
+		</div>
+	</div>
+</div>
+
+<!--Servant Modal-->
+<div class="modal" id="servant-modal">
+	<div class="modal-box" id="servant-modal-box">
+		<div class="row">
+			<span class="closebtn" onclick="closeModal();initialServant();">&times;</span>
+		</div>
+		<div class="modal-header">
+			<div class="row">
+				<img class="class-logo left servant-class" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantFilterChange(this, 'Saber')" />
+				<img class="class-logo left servant-class" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="servantFilterChange(this, 'Archer')" />
+				<img class="class-logo left servant-class" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="servantFilterChange(this, 'Lancer')" />
+				<img class="class-logo left servant-class" title="Rider" data-class="Rider" src="images/class/Rider.png" onclick="servantFilterChange(this, 'Rider')" />
+				<img class="class-logo left servant-class" title="Caster" data-class="Caster" src="images/class/Caster.png" onclick="servantFilterChange(this, 'Caster')" />
+				<img class="class-logo left servant-class" title="Assassin" data-class="Assassin" src="images/class/Assassin.png" onclick="servantFilterChange(this, 'Assassin')" />
+				<img class="class-logo left servant-class" title="Berserker" data-class="Berserker" src="images/class/Berserker.png" onclick="servantFilterChange(this, 'Berserker')" />
+				<img class="class-logo left servant-class" title="Shielder" data-class="Shielder" src="images/class/Shielder.png" onclick="servantFilterChange(this, 'Shielder')" />
+				<img class="class-logo left servant-class" title="Ruler" data-class="Ruler" src="images/class/Ruler.png" onclick="servantFilterChange(this, 'Ruler')" />
+				<img class="class-logo left servant-class" title="Avenger" data-class="Avenger" src="images/class/Avenger.png" onclick="servantFilterChange(this, 'Avenger')" />
+				<img class="class-logo left servant-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantFilterChange(this, 'Mooncancer')" />
+				<img class="class-logo left servant-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantFilterChange(this, 'Alterego')" />
+				<img class="class-logo left servant-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantFilterChange(this, 'Foreigner')" />
+				<span class="btn setbtn left" onclick="servantEnemyClassAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantEnemyClassNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<input type="checkbox" class="servant-star left" value="0" onchange="servantStarChange(this, 0)" checked="">
+				<span class="star left">－</span>
+				<input type="checkbox" class="servant-star left" value="1" onchange="servantStarChange(this, 1)" checked="">
+				<span class="star left">★</span>
+				<input type="checkbox" class="servant-star left" value="2" onchange="servantStarChange(this, 2)" checked="">
+				<span class="star left">★★</span>
+				<input type="checkbox" class="servant-star left" value="3" onchange="servantStarChange(this, 3)" checked="">
+				<span class="star left">★★★</span>
+				<input type="checkbox" class="servant-star left" value="4" onchange="servantStarChange(this, 4)" checked="">
+				<span class="star left">★★★★</span>
+				<input type="checkbox" class="servant-star left" value="5" onchange="servantStarChange(this, 5)" checked="">
+				<span class="star left">★★★★★</span>
+				<span class="btn setbtn left" onclick="servantStarAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantStarNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">分類</span>
+				<input type="checkbox" class="servant-type left" value="固有從者" onchange="servantTypeChange(this, '固有從者')" checked="">
+				<span class="left">固有從者</span>
+				<input type="checkbox" class="servant-type left" value="常駐" onchange="servantTypeChange(this, '常駐')" checked="">
+				<span class="left">常駐</span>
+				<input type="checkbox" class="servant-type left" value="劇情池限定" onchange="servantTypeChange(this, '劇情池限定')" checked="">
+				<span class="left">劇情池限定</span>
+				<input type="checkbox" class="servant-type left" value="友情池限定" onchange="servantTypeChange(this, '友情池限定')" checked="">
+				<span class="left">友情池限定</span>
+				<input type="checkbox" class="servant-type left" value="期間限定" onchange="servantTypeChange(this, '期間限定')" checked="">
+				<span class="left">期間限定</span>
+				<input type="checkbox" class="servant-type left" value="活動" onchange="servantTypeChange(this, '活動')" checked="">
+				<span class="left">活動</span>
+				<span class="btn setbtn left" onclick="servantTypeAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantTypeNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">陣營</span>
+				<input type="checkbox" class="servant-attribute left" value="天" onchange="servantAttributeChange(this, '天')" checked="">
+				<span class="left">天</span>
+				<input type="checkbox" class="servant-attribute left" value="地" onchange="servantAttributeChange(this, '地')" checked="">
+				<span class="left">地</span>
+				<input type="checkbox" class="servant-attribute left" value="人" onchange="servantAttributeChange(this, '人')" checked="">
+				<span class="left">人</span>
+				<input type="checkbox" class="servant-attribute left" value="星" onchange="servantAttributeChange(this, '星')" checked="">
+				<span class="left">星</span>
+				<input type="checkbox" class="servant-attribute left" value="獸" onchange="servantAttributeChange(this, '獸')" checked="">
+				<span class="left">獸</span>
+				<span class="btn setbtn left" onclick="servantAttributeAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantAttributeNone()">取消全選</span>
+				<span class="label">性別</span>
+				<input type="checkbox" class="servant-gender left" value="男性" onchange="servantGenderChange(this, '男性')" checked="">
+				<span class="left">男性</span>
+				<input type="checkbox" class="servant-gender left" value="女性" onchange="servantGenderChange(this, '女性')" checked="">
+				<span class="left">女性</span>
+				<input type="checkbox" class="servant-gender left" value="不明" onchange="servantGenderChange(this, '不明')" checked="">
+				<span class="left">不明</span>
+				<span class="btn setbtn left" onclick="servantGenderAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantGenderNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">屬性I</span>
+				<input type="checkbox" class="servant-alignment1 left" value="秩序" onchange="servantAlignment1Change(this, '秩序')" checked="">
+				<span class="left">秩序</span>
+				<input type="checkbox" class="servant-alignment1 left" value="中立" onchange="servantAlignment1Change(this, '中立')" checked="">
+				<span class="left">中立</span>
+				<input type="checkbox" class="servant-alignment1 left" value="混沌" onchange="servantAlignment1Change(this, '混沌')" checked="">
+				<span class="left">混沌</span>
+				<span class="btn setbtn left" onclick="servantAlignment1All()">全選</span>
+				<span class="btn resetbtn left" onclick="servantAlignment1None()">取消全選</span>
+				<span class="label">屬性II</span>
+				<input type="checkbox" class="servant-alignment2 left" value="善" onchange="servantAlignment2Change(this, '善')" checked="">
+				<span class="left">善</span>
+				<input type="checkbox" class="servant-alignment2 left" value="中庸" onchange="servantAlignment2Change(this, '中庸')" checked="">
+				<span class="left">中庸</span>
+				<input type="checkbox" class="servant-alignment2 left" value="惡" onchange="servantAlignment2Change(this, '惡')" checked="">
+				<span class="left">惡</span>
+				<input type="checkbox" class="servant-alignment2 left" value="狂" onchange="servantAlignment2Change(this, '狂')" checked="">
+				<span class="left">狂花嫁</span>
+				<input type="checkbox" class="servant-alignment2 left" value="花嫁" onchange="servantAlignment2Change(this, '花嫁')" checked="">
+				<span class="left">花嫁</span>
+				<input type="checkbox" class="servant-alignment2 left" value="夏" onchange="servantAlignment2Change(this, '夏')" checked="">
+				<span class="left">夏</span>
+				<span class="btn setbtn left" onclick="servantAlignment2All()">全選</span>
+				<span class="btn resetbtn left" onclick="servantAlignment2None()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">寶具卡色</span>
+				<input type="checkbox" class="servant-color left" value="Buster" onchange="servantColorChange(this, 'Buster')" checked="">
+				<span class="left">Buster</span>
+				<input type="checkbox" class="servant-color left" value="Art" onchange="servantColorChange(this, 'Art')" checked="">
+				<span class="left">Art</span>
+				<input type="checkbox" class="servant-color left" value="Quick" onchange="servantColorChange(this, 'Quick')" checked="">
+				<span class="left">Quick</span>
+				<span class="btn setbtn left" onclick="servantColorAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantColorNone()">取消全選</span>
+				<span class="label">寶具類別</span>
+				<input type="checkbox" class="servant-range left" value="全體" onchange="servantRangeChange(this, '全體')" checked="">
+				<span class="left">全體</span>
+				<input type="checkbox" class="servant-range left" value="單體" onchange="servantRangeChange(this, '單體')" checked="">
+				<span class="left">單體</span>
+				<span class="btn setbtn left" onclick="servantRangeAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantRangeNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">特攻</span>
+				<input type="checkbox" class="servant-ed left" value="無特攻" onchange="servantEDChange(this, '無特攻')" checked="">
+				<span class="left">無特攻</span>
+				<input type="checkbox" class="servant-ed left" value="Saber" onchange="servantEDChange(this, 'Saber')" checked="">
+				<span class="left">Saber</span>
+				<input type="checkbox" class="servant-ed left" value="Ruler" onchange="servantEDChange(this, 'Ruler')" checked="">
+				<span class="left">Ruler</span>
+				<input type="checkbox" class="servant-ed left" value="男性" onchange="servantEDChange(this, '男性')" checked="">
+				<span class="left">男性</span>
+				<input type="checkbox" class="servant-ed left" value="女性" onchange="servantEDChange(this, '女性')" checked="">
+				<span class="left">女性</span>
+				<input type="checkbox" class="servant-ed left" value="混沌" onchange="servantEDChange(this, '混沌')" checked="">
+				<span class="left">混沌</span>
+				<input type="checkbox" class="servant-ed left" value="惡" onchange="servantEDChange(this, '惡')" checked="">
+				<span class="left">惡</span>
+				<input type="checkbox" class="servant-ed left" value="天之力" onchange="servantEDChange(this, '天之力')" checked="">
+				<span class="left">天之力</span>
+				<input type="checkbox" class="servant-ed left" value="地之力" onchange="servantEDChange(this, '地之力')" checked="">
+				<span class="left">地之力</span>
+				<input type="checkbox" class="servant-ed left" value="人之力" onchange="servantEDChange(this, '人之力')" checked="">
+				<span class="left">人之力</span>
+				<input type="checkbox" class="servant-ed left" value="人型" onchange="servantEDChange(this, '人型')" checked="">
+				<span class="left">人型</span>
+				<input type="checkbox" class="servant-ed left" value="從者" onchange="servantEDChange(this, '從者')" checked="">
+				<span class="left">從者</span>
+				<input type="checkbox" class="servant-ed left" value="人類" onchange="servantEDChange(this, '人類')" checked="">
+				<span class="left">人類</span>
+				<input type="checkbox" class="servant-ed left" value="神性" onchange="servantEDChange(this, '神性')" checked="">
+				<span class="left">神性</span>
+				<input type="checkbox" class="servant-ed left" value="王" onchange="servantEDChange(this, '王')" checked="">
+				<span class="left">王</span>
+				<input type="checkbox" class="servant-ed left" value="羅馬" onchange="servantEDChange(this, '羅馬')" checked="">
+				<span class="left">羅馬</span>
+				<input type="checkbox" class="servant-ed left" value="希臘神話系男性" onchange="servantEDChange(this, '希臘神話系男性')" checked="">
+				<span class="left">希臘神話系男性</span>
+				<input type="checkbox" class="servant-ed left" value="人類威脅" onchange="servantEDChange(this, '人類威脅')" checked="">
+				<span class="left">人類威脅</span>
+				<input type="checkbox" class="servant-ed left" value="阿爾托莉亞臉" onchange="servantEDChange(this, '阿爾托莉亞臉')" checked="">
+				<span class="left">阿爾托莉亞臉</span>
+				<input type="checkbox" class="servant-ed left" value="亞瑟" onchange="servantEDChange(this, '亞瑟')" checked="">
+				<span class="left">亞瑟</span>
+				<input type="checkbox" class="servant-ed left" value="所愛之人" onchange="servantEDChange(this, '所愛之人')" checked="">
+				<span class="left">所愛之人</span>
+				<input type="checkbox" class="servant-ed left" value="騎乘" onchange="servantEDChange(this, '騎乘')" checked="">
+				<span class="left">騎乘</span>
+				<input type="checkbox" class="servant-ed left" value="龍" onchange="servantEDChange(this, '龍')" checked="">
+				<span class="left">龍</span>
+				<input type="checkbox" class="servant-ed left" value="魔性" onchange="servantEDChange(this, '魔性')" checked="">
+				<span class="left">魔性</span>
+				<input type="checkbox" class="servant-ed left" value="猛獸" onchange="servantEDChange(this, '猛獸')" checked="">
+				<span class="left">猛獸</span>
+				<input type="checkbox" class="servant-ed left" value="死靈" onchange="servantEDChange(this, '死靈')" checked="">
+				<span class="left">死靈</span>
+				<input type="checkbox" class="servant-ed left" value="惡魔" onchange="servantEDChange(this, '惡魔')" checked="">
+				<span class="left">惡魔</span>
+				<input type="checkbox" class="servant-ed left" value="超巨大" onchange="servantEDChange(this, '超巨大')" checked="">
+				<span class="left">超巨大</span>
+				<input type="checkbox" class="servant-ed left" value="毒" onchange="servantEDChange(this, '毒')" checked="">
+				<span class="left">毒</span>
+				<span class="btn setbtn left" onclick="servantEDAll()">全選</span>
+				<span class="btn resetbtn left" onclick="servantEDNone()">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="btn applybtn left" onclick="loadServantImg()">套用篩選</span>
+			</div>
+		</div>
+		<div class="modal-content" id="servant-img">
 		</div>
 	</div>
 </div>
