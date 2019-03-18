@@ -279,71 +279,71 @@ function servantAlignment2None() {
 }
 
 function servantColorChange(element, colorName) {
-	var newColor = servantFilter.color;
+	var newColor = servantFilter.npColor;
 	if ($(element).prop("checked")) {
 		newColor.push(colorName);
-		servantFilter.color = newColor;
+		servantFilter.npColor = newColor;
 	} else {
 		position = newColor.indexOf(colorName);
 		newColor.splice(position, 1);
-		servantFilter.color = newColor;
+		servantFilter.npColor = newColor;
 	}
 }
 
 function servantColorAll() {
 	$(".servant-color").prop("checked", true);
-	servantFilter.color = ["Buster", "Art", "Quick"];
+	servantFilter.npColor = ["Buster", "Art", "Quick"];
 }
 
 function servantColorNone() {
 	$(".servant-color").prop("checked", false);
-	servantFilter.color = [""];
+	servantFilter.npColor = [""];
 }
 
 function servantRangeChange(element, rangeName) {
-	var newRange = servantFilter.range;
+	var newRange = servantFilter.npRange;
 	if ($(element).prop("checked")) {
 		newRange.push(rangeName);
-		servantFilter.range = newRange;
+		servantFilter.npRange = newRange;
 	} else {
 		position = newRange.indexOf(rangeName);
 		newRange.splice(position, 1);
-		servantFilter.range = newRange;
+		servantFilter.npRange = newRange;
 	}
 }
 
 function servantRangeAll() {
 	$(".servant-range").prop("checked", true);
-	servantFilter.range = ["全體", "單體"];
+	servantFilter.npRange = ["全體", "單體"];
 }
 
 function servantRangeNone() {
 	$(".servant-range").prop("checked", false);
-	servantFilter.range = [""];
+	servantFilter.npRange = [""];
 }
 
 function servantEDChange(element, edName) {
-	var newED = servantFilter.ed;
+	var newED = servantFilter.extraDamage;
 	if ($(element).prop("checked")) {
 		newED.push(edName);
-		servantFilter.ed = newED;
+		servantFilter.extraDamage = newED;
 	} else {
 		position = newED.indexOf(edName);
 		newED.splice(position, 1);
-		servantFilter.ed = newED;
+		servantFilter.extraDamage = newED;
 	}
 }
 
 function servantEDAll() {
 	$(".servant-ed").prop("checked", true);
-	servantFilter.ed = ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
+	servantFilter.extraDamage = ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
 		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"];
 }
 
 function servantEDNone() {
 	$(".servant-ed").prop("checked", false);
-	servantFilter.ed = [""];
+	servantFilter.extraDamage = [""];
 }
 
 function initialServant() {
