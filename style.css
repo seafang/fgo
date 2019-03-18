@@ -216,6 +216,7 @@ input[type="checkbox"] {
 	width: 30px;
 	height: 16px;
 	border-radius: 16px;
+	margin: 2px;
 }
 .switch input { 
 	opacity: 0;
