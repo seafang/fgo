@@ -322,7 +322,7 @@ input:checked + .slider:before {
 	margin: 4px;
 	background-color: lightgray;
 }
-.servant-enemy-class, .serant-class {
+.servant-enemy-class, .servant-class {
 	cursor: pointer;
 }
 .closebtn {
