@@ -50,6 +50,7 @@ section, iframe {
 	padding: 1px;
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 }
 .row:after {
 	content: "";
@@ -246,7 +247,7 @@ input[type="checkbox"] {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	overflow: hidden;
 	background-color: rgb(0,0,0);
 	background-color: rgba(0,0,0,0.4);
 	-webkit-animation-name: fadeIn;
@@ -258,7 +259,7 @@ input[type="checkbox"] {
 	padding-top: 40px;
 }
 #servant-modal {
-	padding-top: 350px;
+	padding-top: 150px;
 }
 .modal-box {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
