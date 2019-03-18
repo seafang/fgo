@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://seafang.github.io/fgo/js/servant.json"></script>
+<script src="https://seafang.github.io/fgo/js/misc.js"></script>
+<script src="https://seafang.github.io/fgo/js/data.js"></script>
+<script src="https://seafang.github.io/fgo/js/inventory.js"></script>
+<script>
+
+</script>
+<link rel="stylesheet" href="style.css" />
+<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+<style>
+	html, body {
+		font-size: 13px;
+		height: 100%;
+		overflow: hidden;
+	}
+</style>
+</head>
+<body>
+
+<!--Filter Section-->
+<div class="header">
+	<div class="row">		
+		<img class="class-logo left inventory-class" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="inventoryClassChange(this, 'Saber')" />	
+		<img class="class-logo left inventory-class" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="inventoryClassChange(this, 'Archer')" />	
+		<img class="class-logo left inventory-class" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="inventoryClassChange(this, 'Lancer')" />	
+		<img class="class-logo left inventory-class" title="Rider" data-class="Rider" src="images/class/Rider.png" onclick="inventoryClassChange(this, 'Rider')" />	
+		<img class="class-logo left inventory-class" title="Caster" data-class="Caster" src="images/class/Caster.png" onclick="inventoryClassChange(this, 'Caster')" />	
+		<img class="class-logo left inventory-class" title="Assassin" data-class="Assassin" src="images/class/Assassin.png" onclick="inventoryClassChange(this, 'Assassin')" />	
+		<img class="class-logo left inventory-class" title="Berserker" data-class="Berserker" src="images/class/Berserker.png" onclick="inventoryClassChange(this, 'Berserker')" />	
+		<img class="class-logo left inventory-class" title="Shielder" data-class="Shielder" src="images/class/Shielder.png" onclick="inventoryClassChange(this, 'Shielder')" />	
+		<img class="class-logo left inventory-class" title="Ruler" data-class="Ruler" src="images/class/Ruler.png" onclick="inventoryClassChange(this, 'Ruler')" />	
+		<img class="class-logo left inventory-class" title="Avenger" data-class="Avenger" src="images/class/Avenger.png" onclick="inventoryClassChange(this, 'Avenger')" />	
+		<img class="class-logo left inventory-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="inventoryClassChange(this, 'Mooncancer')" />	
+		<img class="class-logo left inventory-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="inventoryClassChange(this, 'Alterego')" />	
+		<img class="class-logo left inventory-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="inventoryClassChange(this, 'Foreigner')" />	
+		<span class="btn setbtn left" onclick="inventoryClassAll()">全選</span>	
+		<span class="btn resetbtn left" onclick="inventoryClassNone()">取消全選</span>	
+	</div>		
+	<div class="row">		
+		<input type="checkbox" class="inventory-star left" value="0" id="inventory-star0" conchange="inventoryStarChange(this, 0)" checked="">	
+		<label for="inventory-star0" class="star left">－</label>	
+		<input type="checkbox" class="inventory-star left" value="1" id="inventory-star1" conchange="inventoryStarChange(this, 1)" checked="">	
+		<label for="inventory-star1" class="star left">★</label>	
+		<input type="checkbox" class="inventory-star left" value="2" id="inventory-star2" conchange="inventoryStarChange(this, 2)" checked="">	
+		<label for="inventory-star2" class="star left">★★</label>	
+		<input type="checkbox" class="inventory-star left" value="3" id="inventory-star3" conchange="inventoryStarChange(this, 3)" checked="">	
+		<label for="inventory-star3" class="star left">★★★</label>	
+		<input type="checkbox" class="inventory-star left" value="4" id="inventory-star4" conchange="inventoryStarChange(this, 4)" checked="">	
+		<label for="inventory-star4" class="star left">★★★★</label>	
+		<input type="checkbox" class="inventory-star left" value="5" id="inventory-star5" conchange="inventoryStarChange(this, 5)" checked="">	
+		<label for="inventory-star5" class="star left">★★★★★</label>	
+		<span class="btn setbtn left" onclick="inventoryStarAll()">全選</span>	
+		<span class="btn resetbtn left" onclick="inventoryStarNone()">取消全選</span>	
+	</div>		
+	<div class="row">		
+		<span class="label">分類</span>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type1" value="常駐" onchange="inventoryTypeChange(this, '常駐')" checked="">	
+		<label for="inventory-type1" class="left">常駐</label>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type2" value="劇情池限定" onchange="inventoryTypeChange(this, '劇情池限定')" checked="">	
+		<label for="inventory-type2" class="left">劇情池限定</label>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type3" value="友情池限定" onchange="inventoryTypeChange(this, '友情池限定')" checked="">	
+		<label for="inventory-type3" class="left">友情池限定</label>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type4" value="期間限定" onchange="inventoryTypeChange(this, '期間限定')" checked="">	
+		<label for="inventory-type4" class="left">期間限定</label>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type5" value="活動" onchange="inventoryTypeChange(this, '活動')" checked="">	
+		<label for="inventory-type5" class="left">活動</label>	
+		<input type="checkbox" class="inventory-type left" id="inventory-type6" value="固有從者" onchange="inventoryTypeChange(this, '固有從者')" checked="">	
+		<label for="inventory-type6" class="left">固有從者</label>	
+		<span class="btn setbtn left" onclick="inventoryTypeAll()">全選</span>	
+		<span class="btn resetbtn left" onclick="inventoryTypeNone()">取消全選</span>	
+	</div>		
+	<div class="row">		
+		<span class="label">寶具卡色</span>	
+		<input type="checkbox" class="inventory-color left" id="inventory-color-b" value="Buster" onchange="inventoryColorChange(this, 'Buster')" checked="">	
+		<label for="inventory-color-b" class="left">Buster</label>	
+		<input type="checkbox" class="inventory-color left" id="inventory-color-a" value="Art" onchange="inventoryColorChange(this, 'Art')" checked="">	
+		<label for="inventory-color-a" class="left">Art</label>	
+		<input type="checkbox" class="inventory-color left" id="inventory-color-q" value="Quick" onchange="inventoryColorChange(this, 'Quick')" checked="">	
+		<label for="inventory-color-q" class="left">Quick</label>	
+		<span class="btn setbtn left" onclick="inventoryColorAll()">全選</span>	
+		<span class="btn resetbtn left" onclick="inventoryColorNone()">取消全選</span>	
+		<span class="label">寶具類別</span>	
+		<input type="checkbox" class="inventory-range left" id="inventory-range-aoe" value="全體" onchange="inventoryRangeChange(this, '全體')" checked="">	
+		<label for="inventory-range-aoe" class="left">全體</label>	
+		<input type="checkbox" class="inventory-range left" id="inventory-range-single" value="單體" onchange="inventoryRangeChange(this, '單體')" checked="">	
+		<label for="inventory-range-single" class="left">單體</label>	
+		<input type="checkbox" class="inventory-range left" id="inventory-range-supp" value="輔助" onchange="inventoryRangeChange(this, '輔助')" checked="">	
+		<label for="inventory-range-supp" class="left">輔助</label>	
+		<span class="btn setbtn left" onclick="inventoryRangeAll()">全選</span>	
+		<span class="btn resetbtn left" onclick="inventoryRangeNone()">取消全選</span>	
+	</div>		
+	<div class="row">		
+		<label class="switch">	
+			<input type="checkbox" class="left" id="inventory-owned" value="true" onchange="inventoryFilterChange()" checked="">
+			<span class="slider"></span>
+		</label>	
+		<span class="left">僅包括已有從者</span>	
+	</div>
+	<div class="row">
+		<span class="btn applybtn left" onclick="loadInventoryImg()">套用篩選</span>
+	</div>
+	<div class="modal-content" id="inventory-img"></div>
+</div>
+
+</body>
+</html>
