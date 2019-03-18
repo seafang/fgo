@@ -171,7 +171,7 @@ label, .label, .btn {
 	color: gray;
 	font-size: 10px;
 }
-label, .label {
+label.label, .label {
 	display: inline-block;
 	background-color: black;
 	color: white;
