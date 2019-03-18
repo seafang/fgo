@@ -119,7 +119,15 @@ nav a.active {
 </nav>
 
 <section>
-<noscript><h1 style="font-size:5vw; color:red;">請先啟用JavaScript！</h1></noscript>
+	<div class="row">
+		<span class="label">選擇存檔</span>
+		<select id="inventory-save"></select>
+		<span class="label">目前選擇</span>
+		<input type="text" id="save-title">
+		<span class="btn" id="read-save" onclick="readSave()">讀檔</span>
+		<span class="btn" id="create-save" onclick="createSave()">存檔</span>
+		<span class="btn" id="clear-save" onclick="clearSave()">清空目前存檔</span>
+	</div>
 <br/>
 <iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
 
