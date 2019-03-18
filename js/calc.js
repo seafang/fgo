@@ -16,7 +16,7 @@ function pickEnemy(type, enemyID) {
 		$("#enemy-setup-collapsebtn").html("接疊▲");
 		$("#enemy-setup-collapsible").toggle(300);
 	}
-	$("#current-enemy-img").attr("src", enemyInfo[0].imgid)
+	$("#current-enemy-img").attr("src", enemyInfo[0].imgid);
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
@@ -43,7 +43,6 @@ function resetCurrentEnemy() {
 	$("#current-enemy-attribute").val("天");
 	$("#current-enemy-alignment1").val("秩序");
 	$("#current-enemy-alignment2").val("善");
-	$("#current-enemy-trait").html("");
 	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
 		$("#enemy-setup-collapsebtn").html("接疊▲");
 		$("#enemy-setup-collapsible").toggle(300);
@@ -89,4 +88,66 @@ function resetEnemy(element) {
 	$(element).find(".enemy-alignment1").html("");
 	$(element).find(".enemy-alignment2").html("");
 	$(element).find(".enemy-trait").html("");
+}
+
+// Set Servant
+var servantInfo = {};
+
+function pickServant(servantID) {
+	closeModal();
+	servantInfo = servants.filter(function(obj) {
+		return obj.id == servantID;
+	});
+	if ($("#servant-setup-collapsebtn").html() == "展開▼") {
+		$("#servant-setup-collapsebtn").html("接疊▲");
+		$("#servant-setup-collapsible").toggle(300);
+	}
+	$("#current-servant-img").attr("src", servantInfo[0].imgid);
+	$("#current-servant-name").html(servantInfo[0].name);
+	$("#current-servant-class").attr({
+		"src": "images/class/" + servantInfo[0].classes + ".png",
+		"data-class": servantInfo[0].classes
+	});
+	var starHTML = "";
+	switch (servantInfo[0].star) {
+		case 0:
+			starHTML = "-";
+			break;
+		case 1:
+			starHTML = "★";
+			break;
+		case 2:
+			starHTML = "★★";
+			break;
+		case 3:
+			starHTML = "★★★";
+			break;
+		case 4:
+			starHTML = "★★★★";
+			break;
+		case 5:
+			starHTML = "★★★★★";
+			break;
+		default:
+			starHTML = "Error";
+	}
+	$("#current-servant-star").html(starHTML);
+	$("#current-servant-star").removeClass("dull");
+	setCurrentServantInfo();
+	$("#current-servant-gender").html(enemyInfo[0].gender);
+	$("#current-servant-attribute").html(enemyInfo[0].attribute);
+	$("#current-servant-alignment").html(enemyInfo[0].alignment1 + ", " + enemyInfo[0].alignment2);
+	$("#current-servant-trait").html(enemyInfo[0].trait.toString());
+	setCurrentServantNP();
+	setSkill('#servant-skill1');
+	setSkill('#servant-skill2');
+	setSkill('#servant-skill3');
+}
+
+function resetServant() {
+	setCurrentServantInfo();
+	$("#current-servant-npoc").val("oc1");
+	setSkill('#servant-skill1');
+	setSkill('#servant-skill2');
+	setSkill('#servant-skill3');
 }
