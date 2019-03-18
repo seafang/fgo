@@ -215,6 +215,7 @@ input[type="checkbox"] {
 	display: inline-block;
 	width: 30px;
 	height: 16px;
+	border-radius: 16px;
 }
 .switch input { 
 	opacity: 0;
@@ -233,7 +234,6 @@ input[type="checkbox"] {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
-
 .slider:before {
 	position: absolute;
 	content: "";
@@ -246,15 +246,9 @@ input[type="checkbox"] {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
-
 input:checked + .slider {
 	background-color: #2196F3;
 }
-
-input:focus + .slider {
-	box-shadow: 0 0 2px #2196F3;
-}
-
 input:checked + .slider:before {
 	-webkit-transform: translateX(14px);
 	-ms-transform: translateX(14px);
