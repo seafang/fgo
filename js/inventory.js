@@ -10,8 +10,42 @@ let inventoryFilter = {
 function loadInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
 	$("#inventory-list").html("");
-	var list = "";	
-	$.each(filteredServant, function(servant) {
+	var list = "";
+	$.each(filteredServant, function(i) {
+		var row = $("#servant-inventory").insertRow(-1);
+		row.insertCell(-1).html(filteredServant[i].id);
+		row.insertCell(-1).html("<img class='profile-img' src='" + filteredServant[i].imgID + "' />");
+		row.insertCell(-1).html(filteredServant[i].name);
+		row.insertCell(-1).html("<img class='class-logo' src='images/class/" + filteredServant[i].classes + ".png' />");
+		var starHTML = "";
+		switch (filteredServant[i].star) {
+			case 0:
+				starHTML = "-";
+				break;
+			case 1:
+				starHTML = "★";
+				break;
+			case 2:
+				starHTML = "★★";
+				break;
+			case 3:
+				starHTML = "★★★";
+				break;
+			case 4:
+				starHTML = "★★★★";
+				break;
+			case 5:
+				starHTML = "★★★★★";
+				break;
+			default:
+				starHTML = "Error";
+		}
+		row.insertCell(-1).html("<span class='star'>" + starHTML + "</span>");
+		row.insertCell(-1).html();
+		row.insertCell(-1).html();
+		row.insertCell(-1).html();
+		row.insertCell(-1).html();
+		
 		list += "<img class='left servant-img' src='images/servant/" + value +
 		".webp' onclick='pickServant(" + value + ")' />"
 	});
