@@ -12,7 +12,7 @@ function loadInventory() {
 	/*clearServantInventoryTable();*/
 	var table = $("#servant-inventory");
 	filteredServant.forEach(function(servant) {					
-		var row = table.insertRow(-);				
+		var row = table.insertRow(-1);				
 		$(row).addClass("inventory-row");				
 		$(row).attr("id", "inventory-row-" + servant.id);				
 		row.insertCell(-1).innerHTML = servant.id;				
