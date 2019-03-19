@@ -47,28 +47,28 @@ function loadInventory() {
 			 "' value='true' onchanged=\inventoryToggle('this')\" checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow' id='inventory-lv-" + servant.id + "'>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight' id='nplv-" + servant.id + "'><option value='np1'>1</option><option value='np2'>2</option>" + 				
-			<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>;			
+			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";			
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + servant.id + "' value='0' min='0' max='2000'>";				
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + servant.id +				
-			' value='true' checked=''><span class='slider'></span></label>;			
+			"' value='true' checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + servant.id + "' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + servant.id + "'><option value='1'>1</option>" + 				
-			<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option> + 			
-			<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
+			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill1-rankup-" + servant.id +				
-			' value='true' onchange=\setSkillImg('this', 'skill1-')\" checked=''><span class='slider'></span></label>";			
+			"' value='true' onchange=\setSkillImg('this', 'skill1-')\" checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill2-" + servant.id + "' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim' id='skill2-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
-			<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option> + 			
-			<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
+			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill2-rankup-" + servant.id +				
-			' value='true' onchange=\setSkillImg('this', 'skill2-')\" checked=''><span class='slider'></span></label>";			
+			"' value='true' onchange=\setSkillImg('this', 'skill2-')\" checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill3-" + servant.id + "' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim' id='skill3-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
-			<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option> + 			
-			<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
+			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill3-rankup-" + servant.id +				
-			' value='true' onchange=\setSkillImg('this', 'skill3-')\" checked=''><span class='slider'></span></label>";			
+			"' value='true' onchange=\setSkillImg('this', 'skill3-')\" checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
