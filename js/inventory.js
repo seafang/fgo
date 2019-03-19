@@ -7,9 +7,15 @@ let inventoryFilter = {
 	npRange: ["全體", "單體", "輔助"]
 };
 
+function clearInventory() {
+	$("#servant-inventory").find(".inventory-row").each(function(){
+		$(this).remove();
+	});
+}
+
 function loadInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
-	/*clearServantInventoryTable();*/
+	clearInventory();
 	var table = document.getElementById("servant-inventory");
 	filteredServant.forEach(function(servant) {					
 		var row = table.insertRow(-1);				
@@ -47,10 +53,10 @@ function loadInventory() {
 			 "' value='true' onchanged=\inventoryToggle('this')\" checked=''><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow' id='inventory-lv-" + servant.id + "'>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight' id='nplv-" + servant.id + "'><option value='np1'>1</option><option value='np2'>2</option>" + 				
-			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";			
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + servant.id + "' value='0' min='0' max='2000'>";				
+			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + servant.id +				
-			"' value='true' checked=''><span class='slider'></span></label>";			
+			"' value='true' checked=''><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + servant.id + "' value='0' min='0' max='2000'>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + servant.id + "' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + servant.id + "'><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
