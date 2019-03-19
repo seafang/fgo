@@ -11,8 +11,8 @@ function loadInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
 	/*clearServantInventoryTable();*/
 	var table = $("#servant-inventory");
-	$.each(filteredServant, function(i) {
-		var row = table.insertRow(-1);
+	filteredServant.forEach(function(i) {
+		var row = table.insertRow(-);
 		$(row).addClass("inventory-row");
 		$(row).attr("id", "inventory-row-" + filteredServant[i].id);
 		row.insertCell(-1).innerHTML = filteredServant[i].id;			
