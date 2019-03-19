@@ -38,22 +38,22 @@ function initialSave() {
 	var currentStorage = save1;
 	var select = $("#inventory-save");
 	var option1, option2, option3, option4 = {};
-	if (save1.length > 0) {
+	if (save1 != null) {
 		option1 = {value: "save1", text: save1.title};
 	} else {
 		option1 = {value: "save1", text: "(無存檔)"};
 	}
-	if (save2.length > 0) {
+	if (save2 != null) {
 		option2 = {value: "save2", text: save2.title};
 	} else {
 		option2 = {value: "save2", text: "(無存檔)"};
 	}
-	if (save3.length > 0) {
+	if (save3 != null) {
 		option3 = {value: "save3", text: save3.title};
 	} else {
 		option3 = {value: "save3", text: "(無存檔)"};
 	}
-	if (save4.length > 0) {
+	if (save4 != null) {
 		option4 = {value: "save4", text: save4.title};
 	} else {
 		option4 = {value: "save4", text: "(無存檔)"};
