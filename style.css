@@ -45,6 +45,9 @@ section, iframe {
 #enemy3-detail {
 	border-left-color: maroon;
 }
+table {
+	width: 100%;
+}
 .row {
 	width: 100%;
 	padding: 1px;
