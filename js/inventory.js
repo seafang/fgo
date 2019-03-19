@@ -15,9 +15,9 @@ function loadInventory() {
 		var row = table.insertRow(-1);
 		$(row).addClass("inventory-row");
 		$(row).attr("id", "inventory-row-" + filteredServant[i].id);
-		row.insertCell(-1).innerHTML = filteredServant[i].id);			
+		row.insertCell(-1).innerHTML = filteredServant[i].id;			
 		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + filteredServant[i].imgID + "' />";			
-		row.insertCell(-1).innerHTML = filteredServant[i].name);			
+		row.insertCell(-1).innerHTML = filteredServant[i].name;			
 		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + filteredServant[i].classes + ".png' />";			
 		var starHTML = "";			
 		switch (filteredServant[i].star) {			
