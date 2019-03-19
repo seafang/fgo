@@ -9,7 +9,7 @@ let inventoryFilter = {
 
 function loadInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
-	clearServantInventoryTable();
+	/*clearServantInventoryTable();*/
 	var table = $("#servant-inventory");
 	$.each(filteredServant, function(i) {
 		var row = table.insertRow(-1);
