@@ -54,7 +54,7 @@ function loadInventory() {
 			<option value='np5'>5</option></select>";		
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + filteredServant[i].id + "' value='0' min='0' max='2000'>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + filteredServant[i].id +			
-			' value='true' checked=''>\<span class='slider'></span></label>);		
+			' value='true' checked=''>\<span class='slider'></span></label>";		
 		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + filteredServant[i].id + "' src='' />";			
 		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + filteredServant[i].id + "'>\			
 			<option value='1'>1</option>\		
