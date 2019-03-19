@@ -1,4 +1,4 @@
-// Load servant data
+// Load data
 var servants = JSON.parse(servant);
 
 // Filter function
@@ -7,16 +7,6 @@ var servants = JSON.parse(servant);
  * @param  {Object} filters: an object with the filter criteria as the property names
  * @return {Array}
  */
-
-/* function multiFilter(array, filters) {
-	var filterKeys = Object.keys(filters);
-	return array.filter(function (item) {
-		return filterKeys.every(function (key) {
-			if (!filters[key].length) return true;
-			return filters[key].includes(item[key]);
-		});
-	});
-}*/
 
 function multiFilter(array, filters) {
 	var filterKeys = Object.keys(filters);
@@ -35,6 +25,46 @@ function multiFilter(array, filters) {
 			return filters[key].includes(item[key]);
 		});
 	});
+}
+
+// Load save
+var save1 = localStorage.getItem("save1");
+var save2 = localStorage.getItem("save2");
+var save3 = localStorage.getItem("save3");
+var save4 = localStorage.getItem("save4");
+var currentStorage = {};
+
+function initialSave() {
+	var currentStorage = save1;
+	var select = $("#inventory-save");
+	var option1, option2, option3, option4 = {};
+	if (save1.length > 0) {
+		option1 = {value: "save1", text: save1.title};
+	} else {
+		option1 = {value: "save1", text: "(無存檔)"};
+	}
+	if (save2.length > 0) {
+		option2 = {value: "save2", text: save2.title};
+	} else {
+		option2 = {value: "save2", text: "(無存檔)"};
+	}
+	if (save3.length > 0) {
+		option3 = {value: "save3", text: save3.title};
+	} else {
+		option3 = {value: "save3", text: "(無存檔)"};
+	}
+	if (save4.length > 0) {
+		option4 = {value: "save4", text: save4.title};
+	} else {
+		option4 = {value: "save4", text: "(無存檔)"};
+	}
+	select.append($('<option>', option1));
+	select.append($('<option>', option2));
+	select.append($('<option>', option3));
+	select.append($('<option>', option4));
+}
+
+function pickSave() {
 }
 
 var lvDropDown = "<option value='default'>預設</option>\
