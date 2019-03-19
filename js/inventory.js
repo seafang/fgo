@@ -11,69 +11,69 @@ function loadInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
 	/*clearServantInventoryTable();*/
 	var table = $("#servant-inventory");
-	filteredServant.forEach(function(i) {
-		var row = table.insertRow(-);
-		$(row).addClass("inventory-row");
-		$(row).attr("id", "inventory-row-" + filteredServant[i].id);
-		row.insertCell(-1).innerHTML = filteredServant[i].id;			
-		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + filteredServant[i].imgID + "' />";			
-		row.insertCell(-1).innerHTML = filteredServant[i].name;			
-		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + filteredServant[i].classes + ".png' />";			
-		var starHTML = "";			
-		switch (filteredServant[i].star) {			
-			case 0:		
-				starHTML = "-";	
-				break;	
-			case 1:		
-				starHTML = "★";	
-				break;	
-			case 2:		
-				starHTML = "★★";	
-				break;	
-			case 3:		
-				starHTML = "★★★";	
-				break;	
-			case 4:		
-				starHTML = "★★★★";	
-				break;	
-			case 5:		
-				starHTML = "★★★★★";	
-				break;	
-			default:		
-				starHTML = "Error";	
-		}			
-		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='owned-" + filteredServant[i].id +			
-			 "' value='true' onchanged=\inventoryToggle('this')\" checked=''><span class='slider'></span></label>";		
-		row.insertCell(-1).innerHTML = "<select class='narrow' id='inventory-lv-" + filteredServant[i].id + "'>" + lvDropDown + "</select>";			
-		row.insertCell(-1).innerHTML = "<select class='tight' id='nplv-" + filteredServant[i].id + "'><option value='np1'>1</option><option value='np2'>2</option>" + 	
-			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";		
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + filteredServant[i].id + "' value='0' min='0' max='2000'>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + filteredServant[i].id +			
-			"' value='true' checked=''><span class='slider'></span></label>";		
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + filteredServant[i].id + "' src='' />";			
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + filteredServant[i].id + "'><option value='1'>1</option>" + 
-			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 	
-			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";		
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill1-rankup-" + filteredServant[i].id +			
-			"' value='true' onchange=\"setSkillImg('this', 'skill1-')\" checked=''><span class='slider'></span></label>";		
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill2-" + filteredServant[i].id + "' src='' />";			
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill2-lv-" + filteredServant[i].id + "'><option value='1'>1</option><option value='2'>2</option>" + 
-			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 	
-			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";		
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill2-rankup-" + filteredServant[i].id +			
-			"' value='true' onchange=\"setSkillImg('this', 'skill2-')\" checked=''><span class='slider'></span></label>";		
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill3-" + filteredServant[i].id + "' src='' />";			
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill3-lv-" + filteredServant[i].id + "'><option value='1'>1</option><option value='2'>2</option>" + 	
-			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 		
-			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";		
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill3-rankup-" + filteredServant[i].id +			
-			"' value='true' onchange=\"setSkillImg('this', 'skill3-')\" checked=''><span class='slider'></span></label>";		
-		row.insertCell(-1).innerHTML = "";			
-		row.insertCell(-1).innerHTML = "";			
-		row.insertCell(-1).innerHTML = "";			
-		row.insertCell(-1).innerHTML = "";			
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='event-ED-" + filteredServant[i].id + "' value='0' min='0'>";			
+	filteredServant.forEach(function(servant) {					
+		var row = table.insertRow(-);				
+		$(row).addClass("inventory-row");				
+		$(row).attr("id", "inventory-row-" + servant.id);				
+		row.insertCell(-1).innerHTML = servant.id;				
+		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
+		row.insertCell(-1).innerHTML = servant.name;				
+		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".png' />";				
+		var starHTML = "";				
+		switch (servant.star) {				
+			case 0:			
+				starHTML = "-";		
+				break;		
+			case 1:			
+				starHTML = "★";		
+				break;		
+			case 2:			
+				starHTML = "★★";		
+				break;		
+			case 3:			
+				starHTML = "★★★";		
+				break;		
+			case 4:			
+				starHTML = "★★★★";		
+				break;		
+			case 5:			
+				starHTML = "★★★★★";		
+				break;		
+			default:			
+				starHTML = "Error";		
+		}				
+		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='owned-" + servant.id +				
+			 "' value='true' onchanged=\inventoryToggle('this')\" checked=''><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<select class='narrow' id='inventory-lv-" + servant.id + "'>" + lvDropDown + "</select>";				
+		row.insertCell(-1).innerHTML = "<select class='tight' id='nplv-" + servant.id + "'><option value='np1'>1</option><option value='np2'>2</option>" + 				
+			<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>;			
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + servant.id + "' value='0' min='0' max='2000'>";				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + servant.id +				
+			' value='true' checked=''><span class='slider'></span></label>;			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + servant.id + "' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + servant.id + "'><option value='1'>1</option>" + 				
+			<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option> + 			
+			<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill1-rankup-" + servant.id +				
+			' value='true' onchange=\setSkillImg('this', 'skill1-')\" checked=''><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill2-" + servant.id + "' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim' id='skill2-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
+			<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option> + 			
+			<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill2-rankup-" + servant.id +				
+			' value='true' onchange=\setSkillImg('this', 'skill2-')\" checked=''><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill3-" + servant.id + "' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim' id='skill3-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
+			<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option> + 			
+			<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>;			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill3-rankup-" + servant.id +				
+			' value='true' onchange=\setSkillImg('this', 'skill3-')\" checked=''><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "";				
+		row.insertCell(-1).innerHTML = "";				
+		row.insertCell(-1).innerHTML = "";				
+		row.insertCell(-1).innerHTML = "";				
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='event-ED-" + servant.id + "' value='0' min='0'>";			
 	});
 }
 
