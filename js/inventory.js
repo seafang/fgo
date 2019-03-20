@@ -50,27 +50,27 @@ function generateInventory() {
 				starHTML = "Error";		
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true' onchanged=\inventoryToggle('this')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true' onchanged=\inventoryToggle('this')\"><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv'>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight nplv'><option value='np1'>1</option><option value='np2'>2</option>" + 				
 			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' checked='false'><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true'><span class='slider'></span></label>";
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000'>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv'><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' onchange=\setSkillImg('this', '.skill1')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' onchange=\setSkillImg('this', '.skill1')\"><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' onchange=\setSkillImg('this', '.skill2')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' onchange=\setSkillImg('this', '.skill2')\"><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3' src='' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' onchange=\setSkillImg('this', '.skill3')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' onchange=\setSkillImg('this', '.skill3')\"><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
