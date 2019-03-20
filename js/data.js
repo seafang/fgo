@@ -34,8 +34,8 @@ var save3 = localStorage.getItem("save3");
 var save4 = localStorage.getItem("save4");
 var currentSave = {};
 var option1, option2, option3, option4 = {};
-var bgServant = {};
-var bgCE = {};
+var bgServant = [];
+var bgCE = [];
 var title = "";
 
 function initialSaveList() {
@@ -107,8 +107,6 @@ function saveName() {
 function clearSave() {
 	if (currentSave.title != undefined) {
 		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
-			currentSave, bgServant, bgCE = {};
-			title = "";
 			localStorage.removeItem($("#inventory-save").val());
 			window.location.reload(true);
 		}
