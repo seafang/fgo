@@ -32,12 +32,14 @@ var save1 = localStorage.getItem("save1");
 var save2 = localStorage.getItem("save2");
 var save3 = localStorage.getItem("save3");
 var save4 = localStorage.getItem("save4");
-var currentStorage = {};
+var currentSave = {};
+var option1, option2, option3, option4 = {};
+var bgServant = {};
+var bgCE = {};
+var title = "";
 
-function initialSave() {
-	var currentStorage = save1;
+function initialSaveList() {
 	var select = $("#inventory-save");
-	var option1, option2, option3, option4 = {};
 	if (save1 != null) {
 		option1 = {value: "save1", text: save1.title};
 	} else {
@@ -62,9 +64,63 @@ function initialSave() {
 	select.append($('<option>', option2));
 	select.append($('<option>', option3));
 	select.append($('<option>', option4));
+	option1, option2, option3, option4 = {};
 }
 
-function pickSave() {
+function getSave() {
+	title = $("option:selected").html();
+	if (title == "(無存檔)") {
+		$("#save-title").val("");
+	} else {
+		$("#save-title").val(title);
+		switch ($("#inventory-save").val()) {				
+			case "save1":
+			default:
+				currentSave = save1;
+				break;		
+			case "save2":			
+				currentSave = save2;	
+				break;		
+			case "save3":			
+				currentSave = save3;		
+				break;		
+			case "save4":			
+				currentSave = save4;		
+				break;	
+		}
+		bgServant = currentSave.servant;
+		bgCE = currentSave.ce;
+		loadSave();
+	}
+}
+
+function saveName() {
+	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "	") {
+		alert("請先輸入存檔名稱！");
+	} else {
+		title = $("#save-title").val();
+		currentSave.title = title;
+		save($("#inventory-save").val());
+		initialSaveList();
+	}
+}
+	
+function clearSave() {
+	if (currentSave.title != "") {
+		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會還原至初始狀態")) {
+			currentSave, bgServant, bgCE = {};
+			title = "";
+			localStorage.removeItem($("#inventory-save").val());
+			save1 = localStorage.getItem("save1");
+			save2 = localStorage.getItem("save2");
+			save3 = localStorage.getItem("save3");
+			save4 = localStorage.getItem("save4");
+			initialSaveList();
+			loadInventory();
+		}
+	} else {
+		alert("存檔不存在！");
+	}
 }
 
 var lvDropDown = "<option value='default'>預設</option>\
