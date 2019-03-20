@@ -1,3 +1,4 @@
+// Generate inventory table
 let inventoryFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
@@ -49,37 +50,32 @@ function loadInventory() {
 				starHTML = "Error";		
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='owned-" + servant.id +				
-			 "' value='true' onchanged=\inventoryToggle('this')\" checked=''><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<select class='narrow' id='inventory-lv-" + servant.id + "'>" + lvDropDown + "</select>";				
-		row.insertCell(-1).innerHTML = "<select class='tight' id='nplv-" + servant.id + "'><option value='np1'>1</option><option value='np2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true' onchanged=\inventoryToggle('this')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv'>" + lvDropDown + "</select>";				
+		row.insertCell(-1).innerHTML = "<select class='tight nplv'><option value='np1'>1</option><option value='np2'>2</option>" + 				
 			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='np-rankup-" + servant.id +				
-			"' value='true' checked=''><span class='slider'></span></label>";
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='statup-" + servant.id + "' value='0' min='0' max='2000'>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill1-" + servant.id + "' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill1-lv-" + servant.id + "'><option value='1'>1</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' checked='false'><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000'>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv'><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill1-rankup-" + servant.id +				
-			"' value='true' onchange=\setSkillImg('this', 'skill1-')\" checked=''><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill2-" + servant.id + "' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill2-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' onchange=\setSkillImg('this', '.skill1')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill2-rankup-" + servant.id +				
-			"' value='true' onchange=\setSkillImg('this', 'skill2-')\" checked=''><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo' id='skill3-" + servant.id + "' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim' id='skill3-lv-" + servant.id + "'><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' onchange=\setSkillImg('this', '.skill2')\" checked='false'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3' src='' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' id='skill3-rankup-" + servant.id +				
-			"' value='true' onchange=\setSkillImg('this', 'skill3-')\" checked=''><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' onchange=\setSkillImg('this', '.skill3')\" checked='false'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow' id='event-ED-" + servant.id + "' value='0' min='0'>";			
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0'>";			
 	});
 }
 
@@ -203,4 +199,38 @@ function initialInventoryFilter() {
 	inventoryTypeAll();
 	inventoryColorAll();
 	inventoryRangeAll();
+}
+
+// Apply saved data
+function loadSave() {
+	if (bgServant == {}) {
+		break
+	}
+	$("#servant-inventory").find(".inventory-row").each(function(){
+		var rowID = $(this).find("td:first").html();
+		var servant = bgServant.filter(function(obj) {
+			return obj.id == rowID;
+		});
+		if (servant.data[0] == true) {
+			$(this).find(".owned").attr("checked", true);
+		}
+		$(this).find(".inventory-lv").val(servant.data[1]);
+		$(this).find(".nplv").val(servant.data[2]);
+		if (servant.data[3] == true) {
+			$(this).find(".np-rankup").attr("checked", true);
+		}
+		$(this).find(".statupv").val(servant.data[4]);
+		$(this).find(".skill1-lv").val(servant.data[5]);
+		if (servant.data[6] == true) {
+			$(this).find(".skill1-rankup").attr("checked", true);
+		}
+		$(this).find(".skill2-lv").val(servant.data[7]);
+		if (servant.data[8] == true) {
+			$(this).find(".skill2-rankup").attr("checked", true);
+		}
+		$(this).find(".skill3-lv").val(servant.data[9]);
+		if (servant.data[10] == true) {
+			$(this).find(".skill3-rankup").attr("checked", true);
+		}
+	});
 }
