@@ -90,7 +90,6 @@ function getSave() {
 		}
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
-		loadSave();
 	}
 }
 
@@ -107,16 +106,11 @@ function saveName() {
 	
 function clearSave() {
 	if (currentSave.title != "") {
-		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會還原至初始狀態")) {
+		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
 			currentSave, bgServant, bgCE = {};
 			title = "";
 			localStorage.removeItem($("#inventory-save").val());
-			save1 = localStorage.getItem("save1");
-			save2 = localStorage.getItem("save2");
-			save3 = localStorage.getItem("save3");
-			save4 = localStorage.getItem("save4");
-			initialSaveList();
-			loadInventory();
+			window.location.reload(true);
 		}
 	} else {
 		alert("存檔不存在！");
