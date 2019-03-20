@@ -28,18 +28,18 @@ function multiFilter(array, filters) {
 }
 
 // Load save
-var save1 = localStorage.getItem("save1");
-var save2 = localStorage.getItem("save2");
-var save3 = localStorage.getItem("save3");
-var save4 = localStorage.getItem("save4");
-var currentSave = {};
-var option1, option2, option3, option4 = {};
-var bgServant = [];
-var bgCE = [];
+var save1, save2, save3, save4, currentSave = {};
+var bgServant, bgCE = [];
 var title = "";
 
 function initialSaveList() {
+	var option1, option2, option3, option4 = {};
+	var save1 = localStorage.getItem("save1");
+	var save2 = localStorage.getItem("save2");
+	var save3 = localStorage.getItem("save3");
+	var save4 = localStorage.getItem("save4");
 	var select = $("#inventory-save");
+	select.html("");
 	if (save1 != null) {
 		option1 = {value: "save1", text: save1.title};
 	} else {
