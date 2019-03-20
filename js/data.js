@@ -94,7 +94,7 @@ function getSave() {
 }
 
 function saveName() {
-	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "	") {
+	if ($("#save-title").val() == "" || $("#save-title").val() == " ") {
 		alert("請先輸入存檔名稱！");
 	} else {
 		title = $("#save-title").val();
@@ -105,7 +105,7 @@ function saveName() {
 }
 	
 function clearSave() {
-	if (currentSave.title != "") {
+	if (currentSave.title != undefined) {
 		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
 			currentSave, bgServant, bgCE = {};
 			title = "";
