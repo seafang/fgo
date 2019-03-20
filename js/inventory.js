@@ -14,7 +14,7 @@ function clearInventory() {
 	});
 }
 
-function loadInventory() {
+function generateInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
 	clearInventory();
 	var table = document.getElementById("servant-inventory");
