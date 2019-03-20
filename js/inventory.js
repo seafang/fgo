@@ -203,7 +203,7 @@ function initialInventoryFilter() {
 
 // Apply saved data
 function loadSave() {
-	if (bgServant !== []) {
+	if (bgServant[0] !== undefined) {
 		$("#servant-inventory").find(".inventory-row").each(function(){
 			var rowID = $(this).find("td:first").html();
 			var servant = bgServant.filter(function(obj) {
