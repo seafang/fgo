@@ -11,7 +11,7 @@
 	$(document).ready(function() {
 		initialInventoryFilter();
 		loadInventory();
-		readInventory();
+		loadSave();
 	});
 </script>
 <link rel="stylesheet" href="style.css" />
@@ -106,7 +106,7 @@
 		<span class="left">僅包括已有從者</span>	
 	</div>
 	<div class="row">
-		<span class="btn applybtn left" onclick="loadInventory()">套用篩選</span>
+		<span class="btn applybtn left" onclick="loadInventory();loadSave();">套用篩選</span>
 	</div>
 </div>
 
