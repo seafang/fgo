@@ -15,8 +15,8 @@
 <script src="https://seafang.github.io/fgo/js/modal.js"></script>
 <script>
 	$(document).ready(function() {
-		initialSave();
-		pickSave();
+		initialSaveList();
+		getSave();
 	});
 </script>
 <link rel="stylesheet" href="style.css" />
@@ -127,11 +127,11 @@ nav a.active {
 <section>
 	<div class="row">
 		<span class="label">選擇存檔</span>
-		<select id="inventory-save" onchange="pickSave()"></select>
-		<span class="label">目前選擇</span>
-		<input type="text" id="save-title" placeholder="存檔名稱">
-		<span class="btn" id="read-save" onclick="readInventory()">讀檔</span>
-		<span class="btn" id="create-save" onclick="saveInventory()">存檔</span>
+		<select id="inventory-save" onchange="getSave()></select>
+		<span class="label">存檔名稱</span>
+		<input type="text" id="save-title" placeholder="未命名">
+		<span class="btn" id="create-save" onclick="saveName()">命名存檔</span>
+		<span class="btn" id="duplicate-save" onclick="saveName()">複製存檔</span>
 		<span class="btn" id="clear-save" onclick="clearSave()">清除目前存檔</span>
 	</div>
 <iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
