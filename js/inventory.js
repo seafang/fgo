@@ -215,7 +215,7 @@ function initialInventoryFilter() {
 
 // Apply saved data
 function loadSave() {
-	if (bgServant[0] !== undefined) {
+	if (bgServant !== undefined) {
 		$("#servant-inventory").find(".inventory-row").each(function(){
 			var rowID = $(this).find("td:first").html();
 			var servant = bgServant.filter(function(obj) {
@@ -254,7 +254,7 @@ function update(element) {
 	var row = $(element).parents("tr");
 	var rowID = $(row).find("td:first").html();
 	var info = {};
-	if (bgServant[0] !== undefined) {
+	if (bgServant !== undefined) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID; 
 		});
