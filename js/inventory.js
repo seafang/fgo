@@ -16,19 +16,33 @@ function clearInventory() {
 
 function generateInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
+	var npSymb = "";
 	clearInventory();
 	var table = document.getElementById("servant-inventory");
-	filteredServant.forEach(function(servant) {					
+	filteredServant.forEach(function(servant) {				
 		var row = table.insertRow(-1);				
 		$(row).addClass("inventory-row");				
 		$(row).attr("id", "inventory-row-" + servant.id);				
-		row.insertCell(-1).innerHTML = servant.id;				
+		row.insertCell(-1).innerHTML = servant.id;
+		switch (servant.npRange) {
+			case "單體":
+				npSymb = "♠";
+				break;
+			case "全體":
+				npSymb = "♦";
+				break;
+			case "輔助":
+				npSymb = "♥";
+				break;
+		}
 		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
-		row.insertCell(-1).innerHTML = servant.name;				
+		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + 
+			servant.name + "</span>";				
 		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".png' />";				
 		var starHTML = "";				
 		switch (servant.star) {				
-			case 0:			
+			case 0:
+			default:
 				starHTML = "-";		
 				break;		
 			case 1:			
@@ -45,9 +59,7 @@ function generateInventory() {
 				break;		
 			case 5:			
 				starHTML = "★★★★★";		
-				break;		
-			default:			
-				starHTML = "Error";		
+				break;				
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true' onchanged=\inventoryToggle('this')\"><span class='slider'></span></label>";			
@@ -232,4 +244,36 @@ function loadSave() {
 			}
 		});
 	}
+}
+
+// Update data
+$("select").change(update(this));
+$("input").change(update(this));
+
+function update(event) {
+	var row = this.parents("tr");
+	var rowID = $(row).find("td:first").html();
+	var info = {};
+	var position = bgServant.findIndex(function(obj) {
+		return obj.id == rowID; 
+	});
+	if (position !== -1) {
+		bgServant.splice(position, 1);
+	}
+	info.id = rowID;
+	info.data = [];
+	info.data[0] = $(row).find(".owned").is(":checked");
+	info.data[1] = $(row).find(".inventory-lv").val();
+	info.data[2] = $(row).find(".nplv").val();
+	info.data[3] = $(row).find(".np-rankup").is(":checked");
+	info.data[4] = $(row).find(".statupv").val();
+	info.data[5] = $(row).find(".skill1-lv").val();
+	info.data[6] = $(row).find(".skill1-rankup").is(":checked");
+	info.data[7] = $(row).find(".skill2-lv").val();
+	info.data[8] = $(row).find(".skill2-rankup").is(":checked");
+	info.data[9] = $(row).find(".skill3-lv").val();
+	info.data[10] = $(row).find(".skill3-rankup").is(":checked");
+	bgServant.push(info);
+	currentSave.servant = bgServant;
+	save();
 }
