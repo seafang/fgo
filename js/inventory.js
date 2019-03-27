@@ -254,11 +254,13 @@ function update(element) {
 	var row = $(element).parents("tr");
 	var rowID = $(row).find("td:first").html();
 	var info = {};
-	var position = bgServant.findIndex(function(obj) {
-		return obj.id == rowID; 
-	});
-	if (position !== -1) {
-		bgServant.splice(position, 1);
+	if (bgServant[0] !== undefined) {
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == rowID; 
+		});
+		if (position !== -1) {
+			bgServant.splice(position, 1);
+		}
 	}
 	info.id = rowID;
 	info.data = [];
