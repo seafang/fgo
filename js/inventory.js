@@ -250,8 +250,8 @@ function loadSave() {
 $("select").change(update(this));
 $("input").change(update(this));
 
-function update(event) {
-	var row = this.parents("tr");
+function update(element) {
+	var row = element.parents("tr");
 	var rowID = $(row).find("td:first").html();
 	var info = {};
 	var position = bgServant.findIndex(function(obj) {
