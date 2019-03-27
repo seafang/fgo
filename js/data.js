@@ -28,9 +28,8 @@ function multiFilter(array, filters) {
 }
 
 // Load save
-var save1, save2, save3, save4, currentSave = {};
+var currentSave = {};
 var bgServant, bgCE = [];
-var title = "";
 
 function initialSaveList() {
 	var option1, option2, option3, option4 = {};
@@ -64,30 +63,18 @@ function initialSaveList() {
 	select.append($('<option>', option2));
 	select.append($('<option>', option3));
 	select.append($('<option>', option4));
-	option1, option2, option3, option4 = {};
 }
 
 function getSave() {
-	title = $("option:selected").html();
+	var saveSlot = $("#inventory-save").val();
+	var title = $("option:selected").html();
 	if (title == "(無存檔)") {
 		$("#save-title").val("");
+		currentSave.saveSlot = saveSlot;
+		currentSave.title = "未命名";
 	} else {
 		$("#save-title").val(title);
-		switch ($("#inventory-save").val()) {				
-			case "save1":
-			default:
-				currentSave = save1;
-				break;		
-			case "save2":			
-				currentSave = save2;	
-				break;		
-			case "save3":			
-				currentSave = save3;		
-				break;		
-			case "save4":			
-				currentSave = save4;		
-				break;	
-		}
+		currentSave = localStorage.getItem(saveSlot);
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
 	}
@@ -97,14 +84,22 @@ function saveName() {
 	if ($("#save-title").val() == "" || $("#save-title").val() == " ") {
 		alert("請先輸入存檔名稱！");
 	} else {
-		title = $("#save-title").val();
+		var title = $("#save-title").val();
 		currentSave.title = title;
-		save($("#inventory-save").val());
+		save();
+		alert("存檔已被命名為" + title);
 		initialSaveList();
 	}
 }
-	
+
 function clearSave() {
+	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
+		localStorage.removeItem(currentSave.saveSlot);
+		window.location.reload(true);
+	}
+}
+
+/*function clearSave() {
 	if (currentSave.title != undefined) {
 		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
 			localStorage.removeItem($("#inventory-save").val());
@@ -113,6 +108,10 @@ function clearSave() {
 	} else {
 		alert("存檔不存在！");
 	}
+}*/
+
+function save() {
+	localStorage.setItem(currentSave.saveSlot, currentSave);
 }
 
 var lvDropDown = "<option value='default'>預設</option>\
