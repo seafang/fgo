@@ -5,7 +5,8 @@ let inventoryFilter = {
 	star: [0, 1, 2, 3, 4, 5],
 	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動", "固有從者"],
 	npColor: ["Buster", "Art", "Quick"],
-	npRange: ["全體", "單體", "輔助"]
+	npRange: ["全體", "單體", "輔助"],
+	owned: [true, false]
 };
 
 function clearInventory() {
@@ -36,7 +37,7 @@ function generateInventory() {
 				break;
 		}
 		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
-		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + 
+		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + " " + 
 			servant.name + "</span>";				
 		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".png' />";				
 		var starHTML = "";				
@@ -62,27 +63,27 @@ function generateInventory() {
 				break;				
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true' onchanged=\inventoryToggle('this')\"><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv'>" + lvDropDown + "</select>";				
-		row.insertCell(-1).innerHTML = "<select class='tight nplv'><option value='np1'>1</option><option value='np2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled>" + lvDropDown + "</select>";				
+		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='np1'>1</option><option value='np2'>2</option>" + 				
 			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true'><span class='slider'></span></label>";
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000'>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv'><option value='1'>1</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' disabled><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000' disabled>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1 dull' src='" + servant.skill1ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' onchange=\setSkillImg('this', '.skill1')\"><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' disabled><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2 dull' src='" + servant.skill2ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' onchange=\setSkillImg('this', '.skill2')\"><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3' src='' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv'><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' disabled><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3 dull' src='" + servant.skill3ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' onchange=\setSkillImg('this', '.skill3')\"><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' disabled><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";				
@@ -205,12 +206,27 @@ function inventoryRangeNone() {
 	inventoryFilter.npRange = [""];
 }
 
+function inventoryInclusiveChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		inventoryFilter.owned: [true];
+	} else {
+		inventoryFilter.owned: [true, false];
+	}
+}
+
+function inventoryInclusiveReset() {
+	$("#inventory-owned").prop("checked", false);
+	inventoryFilter.owned: [true, false];
+}
+
 function initialInventoryFilter() {
 	inventoryClassAll();
 	inventoryStarAll();
 	inventoryTypeAll();
 	inventoryColorAll();
 	inventoryRangeAll();
+	inventoryInclusiveReset();
 }
 
 // Apply saved data
@@ -221,26 +237,28 @@ function loadSave() {
 			var servant = bgServant.filter(function(obj) {
 				return obj.id == rowID;
 			});
-			if (servant.data[0] == true) {
-				$(this).find(".owned").attr("checked", true);
-			}
-			$(this).find(".inventory-lv").val(servant.data[1]);
-			$(this).find(".nplv").val(servant.data[2]);
-			if (servant.data[3] == true) {
-				$(this).find(".np-rankup").attr("checked", true);
-			}
-			$(this).find(".statupv").val(servant.data[4]);
-			$(this).find(".skill1-lv").val(servant.data[5]);
-			if (servant.data[6] == true) {
-				$(this).find(".skill1-rankup").attr("checked", true);
-			}
-			$(this).find(".skill2-lv").val(servant.data[7]);
-			if (servant.data[8] == true) {
-				$(this).find(".skill2-rankup").attr("checked", true);
-			}
-			$(this).find(".skill3-lv").val(servant.data[9]);
-			if (servant.data[10] == true) {
-				$(this).find(".skill3-rankup").attr("checked", true);
+			if (servant !== undefined) {
+				if (servant.data[0] == true) {
+					$(this).find(".owned").attr("checked", true);
+				}
+				$(this).find(".inventory-lv").val(servant.data[1]);
+				$(this).find(".nplv").val(servant.data[2]);
+				if (servant.data[3] == true) {
+					$(this).find(".np-rankup").attr("checked", true);
+				}
+				$(this).find(".statupv").val(servant.data[4]);
+				$(this).find(".skill1-lv").val(servant.data[5]);
+				if (servant.data[6] == true) {
+					$(this).find(".skill1-rankup").attr("checked", true);
+				}
+				$(this).find(".skill2-lv").val(servant.data[7]);
+				if (servant.data[8] == true) {
+					$(this).find(".skill2-rankup").attr("checked", true);
+				}
+				$(this).find(".skill3-lv").val(servant.data[9]);
+				if (servant.data[10] == true) {
+					$(this).find(".skill3-rankup").attr("checked", true);
+				}
 			}
 		});
 	}
@@ -249,6 +267,10 @@ function loadSave() {
 // Update data
 $("select").change(update(this));
 $("input").change(update(this));
+$(".owned").change(updateOwnership(this); enableOption(this));
+$(".skill1-rankup").change(updateSkillImg(this, 'skill1'));
+$(".skill2-rankup").change(updateSkillImg(this, 'skill2'));
+$(".skill3-rankup").change(updateSkillImg(this, 'skill3'));
 
 function update(element) {
 	var row = $(element).parents("tr");
@@ -279,3 +301,79 @@ function update(element) {
 	currentSave.servant = bgServant;
 	save();
 }
+
+function updateOwnership(element) {
+	var row = $(element).parents("tr");
+	var rowID = $(row).find("td:first").html();
+	var newValue = $(row).find(".owned").is(":checked");
+	var position = servants.findIndex(function(obj) {
+		return obj.id == rowID;
+	});
+	servants[position].owned = newValue;
+}
+
+function enableOption(element) {
+	var row = $(element).parents("tr");
+	var rowID = $(row).find("td:first").html();
+	if (element.is(":checked")) {
+		$(row).find(".inventory-lv").prop("disabled", false);
+		$(row).find(".nplv").prop("disabled", false);
+		$(row).find(".np-rankup").prop("disabled", false);
+		npRankUpCheck(row);
+		$(row).find(".statupv").prop("disabled", false);
+		$(row).find(".skill1-lv").prop("disabled", false);
+		$(row).find(".skill1-rankup").prop("disabled", false);
+		skillRankUpCheck(row, 'skill1');
+		$(row).find(".skill2-lv").prop("disabled", false);
+		$(row).find(".skill2-rankup").prop("disabled", false);
+		skillRankUpCheck(row, 'skill2');
+		$(row).find(".skill3-lv").prop("disabled", false);
+		$(row).find(".skill3-rankup").prop("disabled", false);
+		skillRankUpCheck(row, 'skill3');
+	} else {
+		$(row).find(".inventory-lv").prop("disabled", true);
+		$(row).find(".nplv").prop("disabled", true);
+		$(row).find(".np-rankup").prop("disabled", true);
+		$(row).find(".statupv").prop("disabled", true);
+		$(row).find(".skill1-lv").prop("disabled", true);
+		$(row).find(".skill1-rankup").prop("disabled", true);
+		$(row).find(".skill2-lv").prop("disabled", true);
+		$(row).find(".skill2-rankup").prop("disabled", true);
+		$(row).find(".skill3-lv").prop("disabled", true);
+		$(row).find(".skill3-rankup").prop("disabled", true);
+	}
+}	
+
+function npRankUpCheck(row) {
+	var rowID = $(row).find("td:first").html();
+	var target = servants.find(function(obj) {
+		return obj.id == rowID; 
+	});
+	if (target.npRankUp == false) {
+		$(row).find(".np-rankup").prop("disabled", true);
+	}
+}
+
+function skillRankUpCheck(row, skill) {
+	var rowID = $(row).find("td:first").html();
+	var target = servants.find(function(obj) {
+		return obj.id == rowID; 
+	});
+	if (target[skill + "RU"] == false) {
+		$(row).find("." + skill + "-rankup").prop("disabled", true);
+	}
+}	
+
+function updateSkillImg(element, skill) {
+	var row = $(element).parents("tr");
+	var rowID = $(row).find("td:first").html();
+	var target = servants.find(function(obj) {
+		return obj.id == rowID; 
+	});
+	if (element.is(":checked")) {
+		$(row).find("." + skill).attr("src", target[skill + 'RUImgID'])
+	} else {
+		$(row).find("." + skill).attr("src", target[skill + 'ImgID'])
+	}
+}
+
