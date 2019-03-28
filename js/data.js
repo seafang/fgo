@@ -31,7 +31,7 @@ function multiFilter(array, filters) {
 var currentSave = {};
 var bgServant, bgCE = [];
 
-function initialSaveList() {
+function generateSaveList() {
 	var option1, option2, option3, option4 = {};
 	var save1 = localStorage.getItem("save1");
 	var save2 = localStorage.getItem("save2");
@@ -72,23 +72,30 @@ function getSave() {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名";
+		currentSave.servant = [];
+		currentSave.ce = [];
+		save();
+		servantOwnershipNone();
+		/*ceOwnershipNone();*/
 	} else {
 		$("#save-title").val(title);
 		currentSave = localStorage.getItem(saveSlot);
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
+		servantOwnership();
+		/*ceOwnership();*/
 	}
 }
 
 function saveName() {
-	if ($("#save-title").val() == "" || $("#save-title").val() == " ") {
+	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "(無存檔)") {
 		alert("請先輸入存檔名稱！");
 	} else {
 		var title = $("#save-title").val();
 		currentSave.title = title;
 		save();
 		alert("存檔已被命名為" + title);
-		initialSaveList();
+		generateSaveList();
 	}
 }
 
@@ -112,6 +119,42 @@ function clearSave() {
 
 function save() {
 	localStorage.setItem(currentSave.saveSlot, currentSave);
+}
+
+function servantOwnershipNone() {
+	servants.forEach(function(servant) {
+		servant.owned = false;
+	});
+}
+
+function ceOwnershipNone() {
+	ce.forEach(function(essence) {
+		essence.owned = false;
+	});
+}
+
+function servantOwnership() {
+	servants.forEach(function(servant) {
+		var id = servant.id;
+		var target = bgServant.find(function(obj) {
+			return obj.id == id; 
+		});
+		if (target !== undefined) {
+			servant.owned = target.data[0];
+		}
+	});
+}
+			 
+function ceOwnership() {
+	ce.forEach(function(ce) {
+		var id = ce.id;
+		var target = bgCE.find(function(obj) {
+			return obj.id == id; 
+		});
+		if (target !== undefined) {
+			ce.owned = target.data[0];
+		}
+	});
 }
 
 var lvDropDown = "<option value='default'>預設</option>\
