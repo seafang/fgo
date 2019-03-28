@@ -267,7 +267,10 @@ function loadSave() {
 // Update data
 $("select").change(update(this));
 $("input").change(update(this));
-$(".owned").change(updateOwnership(this); enableOption(this););
+$(".owned").change(function() {
+	updateOwnership(this);
+	enableOption(this);
+});
 $(".skill1-rankup").change(updateSkillImg(this, 'skill1'));
 $(".skill2-rankup").change(updateSkillImg(this, 'skill2'));
 $(".skill3-rankup").change(updateSkillImg(this, 'skill3'));
