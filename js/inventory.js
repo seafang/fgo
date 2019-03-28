@@ -209,15 +209,15 @@ function inventoryRangeNone() {
 function inventoryInclusiveChange(element) {
 	var value = $(element).is(":checked");
 	if (value == true) {
-		inventoryFilter.owned: [true];
+		inventoryFilter.owned = [true];
 	} else {
-		inventoryFilter.owned: [true, false];
+		inventoryFilter.owned = [true, false];
 	}
 }
 
 function inventoryInclusiveReset() {
 	$("#inventory-owned").prop("checked", false);
-	inventoryFilter.owned: [true, false];
+	inventoryFilter.owned = [true, false];
 }
 
 function initialInventoryFilter() {
