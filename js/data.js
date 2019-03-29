@@ -33,10 +33,10 @@ var bgServant, bgCE = [];
 
 function generateSaveList() {
 	var option1, option2, option3, option4 = {};
-	var save1 = localStorage.getItem("save1");
-	var save2 = localStorage.getItem("save2");
-	var save3 = localStorage.getItem("save3");
-	var save4 = localStorage.getItem("save4");
+	var save1 = JSON.parse(localStorage.getItem("save1"));
+	var save2 = JSON.parse(localStorage.getItem("save2"));
+	var save3 = JSON.parse(localStorage.getItem("save3"));
+	var save4 = JSON.parse(localStorage.getItem("save4"));
 	var select = $("#inventory-save");
 	select.html("");
 	if (save1 != null) {
@@ -79,7 +79,7 @@ function getSave() {
 		/*ceOwnershipNone();*/
 	} else {
 		$("#save-title").val(title);
-		currentSave = localStorage.getItem(saveSlot);
+		currentSave = JSON.parse(localStorage.getItem(saveSlot));
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
 		servantOwnership();
@@ -102,6 +102,8 @@ function saveName() {
 function clearSave() {
 	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
 		localStorage.removeItem(currentSave.saveSlot);
+		currentSave = {};
+		bgServant, bgCE = [];
 		window.location.reload(true);
 	}
 }
@@ -118,11 +120,14 @@ function clearSave() {
 }*/
 
 function save() {
-	localStorage.setItem(currentSave.saveSlot, currentSave);
+	localStorage.setItem(currentSave.saveSlot, JSON.stringify(currentSave));
 }
 
 function servantOwnershipNone() {
 	servants.forEach(function(servant) {
+		if (servant.id == 1) {
+			servant.owned = true;
+		}
 		servant.owned = false;
 	});
 }
