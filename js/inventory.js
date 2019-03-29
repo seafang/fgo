@@ -115,7 +115,7 @@ function inventoryClassAll() {
 function inventoryClassNone() {
 	$(".inventory-class").removeClass("dull");
 	$(".inventory-class").addClass("dull");
-	inventoryFilter.classes = [""];
+	inventoryFilter.classes = [];
 }
 
 function inventoryStarChange(element, starNo) {
@@ -137,7 +137,7 @@ function inventoryStarAll() {
 
 function inventoryStarNone() {
 	$(".inventory-star").prop("checked", false);
-	inventoryFilter.star = [NaN];
+	inventoryFilter.star = [];
 }
 
 function inventoryTypeChange(element, typeName) {
@@ -159,7 +159,7 @@ function inventoryTypeAll() {
 
 function inventoryTypeNone() {
 	$(".inventory-type").prop("checked", false);
-	inventoryFilter.type = [""];
+	inventoryFilter.type = [];
 }
 
 function inventoryColorChange(element, colorName) {
@@ -181,7 +181,7 @@ function inventoryColorAll() {
 
 function inventoryColorNone() {
 	$(".inventory-color").prop("checked", false);
-	inventoryFilter.npColor = [""];
+	inventoryFilter.npColor = [];
 }
 
 function inventoryRangeChange(element, rangeName) {
@@ -203,7 +203,7 @@ function inventoryRangeAll() {
 
 function inventoryRangeNone() {
 	$(".inventory-range").prop("checked", false);
-	inventoryFilter.npRange = [""];
+	inventoryFilter.npRange = [];
 }
 
 function inventoryInclusiveChange(element) {
