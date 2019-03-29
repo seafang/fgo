@@ -164,7 +164,7 @@ function servantStarAll() {
 
 function servantStarNone() {
 	$(".servant-star").prop("checked", false);
-	servantFilter.star = [NaN];
+	servantFilter.star = [];
 }
 
 function servantTypeChange(element, typeName) {
