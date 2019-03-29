@@ -57,7 +57,7 @@ function servantEnemyClassAll() {
 function servantEnemyClassNone() {
 	$(".servant-enemy-class").removeClass("dull");
 	$(".servant-enemy-class").addClass("dull");
-	servantEnemyFilter.classes = [""];
+	servantEnemyFilter.classes = [];
 }
 
 function servantEnemyStarChange(element, starNo) {
@@ -142,7 +142,7 @@ function servantClassAll() {
 function servantClassNone() {
 	$(".servant-class").removeClass("dull");
 	$(".servant-class").addClass("dull");
-	servantFilter.classes = [""];
+	servantFilter.classes = [];
 }
 
 function servantStarChange(element, starNo) {
@@ -186,7 +186,7 @@ function servantTypeAll() {
 
 function servantTypeNone() {
 	$(".servant-type").prop("checked", false);
-	servantFilter.type = [""];
+	servantFilter.type = [];
 }
 
 function servantAttributeChange(element, attributeName) {
@@ -208,7 +208,7 @@ function servantAttributeAll() {
 
 function servantAttributeNone() {
 	$(".servant-attribute").prop("checked", false);
-	servantFilter.attribute = [""];
+	servantFilter.attribute = [];
 }
 
 function servantGenderChange(element, genderName) {
@@ -230,7 +230,7 @@ function servantGenderAll() {
 
 function servantGenderNone() {
 	$(".servant-gender").prop("checked", false);
-	servantFilter.gender = [""];
+	servantFilter.gender = [];
 }
 
 
@@ -253,7 +253,7 @@ function servantAlignment1All() {
 
 function servantAlignment1None() {
 	$(".servant-alignment1").prop("checked", false);
-	servantFilter.alignment1 = [""];
+	servantFilter.alignment1 = [];
 }
 
 function servantAlignment2Change(element, alignment2Name) {
@@ -275,7 +275,7 @@ function servantAlignment2All() {
 
 function servantAlignment2None() {
 	$(".servant-alignment2").prop("checked", false);
-	servantFilter.alignment2 = [""];
+	servantFilter.alignment2 = [];
 }
 
 function servantColorChange(element, colorName) {
@@ -297,7 +297,7 @@ function servantColorAll() {
 
 function servantColorNone() {
 	$(".servant-color").prop("checked", false);
-	servantFilter.npColor = [""];
+	servantFilter.npColor = [];
 }
 
 function servantRangeChange(element, rangeName) {
@@ -319,7 +319,7 @@ function servantRangeAll() {
 
 function servantRangeNone() {
 	$(".servant-range").prop("checked", false);
-	servantFilter.npRange = [""];
+	servantFilter.npRange = [];
 }
 
 function servantEDChange(element, edName) {
@@ -343,7 +343,7 @@ function servantEDAll() {
 
 function servantEDNone() {
 	$(".servant-ed").prop("checked", false);
-	servantFilter.extraDamage = [""];
+	servantFilter.extraDamage = [];
 }
 
 function initialServant() {
