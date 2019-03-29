@@ -29,10 +29,10 @@ function multiFilter(array, filters) {
 
 // Load save
 var currentSave = {};
-var bgServant, bgCE = [];
+var bgServant = [], bgCE = [];
 
 function generateSaveList() {
-	var option1, option2, option3, option4 = {};
+	var option1 = {}, option2 = {}, option3 = {}, option4 = {};
 	var save1 = JSON.parse(localStorage.getItem("save1"));
 	var save2 = JSON.parse(localStorage.getItem("save2"));
 	var save3 = JSON.parse(localStorage.getItem("save3"));
@@ -103,7 +103,7 @@ function clearSave() {
 	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
 		localStorage.removeItem(currentSave.saveSlot);
 		currentSave = {};
-		bgServant, bgCE = [];
+		bgServant = [], bgCE = [];
 		window.location.reload(true);
 	}
 }
