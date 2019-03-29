@@ -1,3 +1,8 @@
+var servants = parent.servants;
+var currentSave = parent.currentSave;
+var bgServant = parent.bgServant;
+var bgCE = parent.bgCE;
+
 // Generate inventory table
 let inventoryFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
@@ -302,6 +307,7 @@ function update(element) {
 	info.data[10] = $(row).find(".skill3-rankup").is(":checked");
 	bgServant.push(info);
 	currentSave.servant = bgServant;
+	parent.bgServant = bgServant;
 	save();
 }
 
@@ -313,6 +319,7 @@ function updateOwnership(element) {
 		return obj.id == rowID;
 	});
 	servants[position].owned = newValue;
+	parent.servants = servants;
 }
 
 function enableOption(element) {
