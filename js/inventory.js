@@ -69,17 +69,17 @@ function generateInventory() {
 			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' disabled><span class='slider'></span></label>";
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000' disabled>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1 dull' src='" + servant.skill1ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + servant.skill1ImgID + "' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' disabled><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2 dull' src='" + servant.skill2ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2-logo dull' src='" + servant.skill2ImgID + "' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' disabled><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3 dull' src='" + servant.skill3ImgID + "' />";				
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3-logo dull' src='" + servant.skill3ImgID + "' />";				
 		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
@@ -324,24 +324,31 @@ function enableOption(element) {
 		$(row).find(".np-rankup").prop("disabled", false);
 		npRankUpCheck(row);
 		$(row).find(".statupv").prop("disabled", false);
+		$(row).find(".skill1-logo").removeClass("dull");
 		$(row).find(".skill1-lv").prop("disabled", false);
 		$(row).find(".skill1-rankup").prop("disabled", false);
 		skillRankUpCheck(row, 'skill1');
+		$(row).find(".skill2-logo").removeClass("dull");
 		$(row).find(".skill2-lv").prop("disabled", false);
 		$(row).find(".skill2-rankup").prop("disabled", false);
 		skillRankUpCheck(row, 'skill2');
+		$(row).find(".skill3-logo").removeClass("dull");
 		$(row).find(".skill3-lv").prop("disabled", false);
 		$(row).find(".skill3-rankup").prop("disabled", false);
+		skillAvailable(row, 'skill3');
 		skillRankUpCheck(row, 'skill3');
 	} else {
 		$(row).find(".inventory-lv").prop("disabled", true);
 		$(row).find(".nplv").prop("disabled", true);
 		$(row).find(".np-rankup").prop("disabled", true);
 		$(row).find(".statupv").prop("disabled", true);
+		$(row).find(".skill1-logo").addClass("dull");
 		$(row).find(".skill1-lv").prop("disabled", true);
 		$(row).find(".skill1-rankup").prop("disabled", true);
+		$(row).find(".skill2-logo").addClass("dull");
 		$(row).find(".skill2-lv").prop("disabled", true);
 		$(row).find(".skill2-rankup").prop("disabled", true);
+		$(row).find(".skill3-logo").addClass("dull");
 		$(row).find(".skill3-lv").prop("disabled", true);
 		$(row).find(".skill3-rankup").prop("disabled", true);
 	}
@@ -356,6 +363,16 @@ function npRankUpCheck(row) {
 		$(row).find(".np-rankup").prop("disabled", true);
 	}
 }
+
+function skillAvailable(row, skill) {
+	var rowID = $(row).find("td:first").html();
+	var target = servants.find(function(obj) {
+		return obj.id == rowID; 
+	});
+	if (target[skill + "Name"] == "") {
+		$(row).find("." + skill + "-lv").prop("disabled", true);
+	}
+}	
 
 function skillRankUpCheck(row, skill) {
 	var rowID = $(row).find("td:first").html();
