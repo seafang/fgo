@@ -1,6 +1,3 @@
-// Load data
-var servants = JSON.parse(servant);
-
 // Filter function
 /**
  * @param  {Array}  array: the array to filter
@@ -28,9 +25,6 @@ function multiFilter(array, filters) {
 }
 
 // Load save
-var currentSave = {};
-var bgServant = [], bgCE = [];
-
 function generateSaveList() {
 	var option1 = {}, option2 = {}, option3 = {}, option4 = {};
 	var save1 = JSON.parse(localStorage.getItem("save1"));
