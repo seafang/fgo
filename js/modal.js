@@ -79,7 +79,7 @@ function servantEnemyStarAll() {
 
 function servantEnemyStarNone() {
 	$(".servant-enemy-star").prop("checked", false);
-	servantEnemyFilter.star = [NaN];
+	servantEnemyFilter.star = [];
 }
 
 function initialServantEnemy() {
