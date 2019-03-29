@@ -1,3 +1,8 @@
+var servants = parent.servants;
+var currentSave = parent.currentSave;
+var bgServant = parent.bgServant;
+var bgCE = parent.bgCE;
+
 // Set Enemy
 var enemyInfo = {};
 
