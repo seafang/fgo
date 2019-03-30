@@ -325,7 +325,7 @@ function updateOwnership(element) {
 function enableOption(element) {
 	var row = $(element).parents("tr");
 	var rowID = $(row).find("td:first").html();
-	if (element.is(":checked")) {
+	if ($(element).is(":checked")) {
 		$(row).find(".inventory-lv").prop("disabled", false);
 		$(row).find(".nplv").prop("disabled", false);
 		$(row).find(".np-rankup").prop("disabled", false);
@@ -363,7 +363,7 @@ function enableOption(element) {
 
 function npRankUpCheck(row) {
 	var rowID = $(row).find("td:first").html();
-	var target = servants.find(function(obj) {
+	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target.npRankUp == false) {
@@ -373,7 +373,7 @@ function npRankUpCheck(row) {
 
 function skillAvailable(row, skill) {
 	var rowID = $(row).find("td:first").html();
-	var target = servants.find(function(obj) {
+	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target[skill + "Name"] == "") {
@@ -383,7 +383,7 @@ function skillAvailable(row, skill) {
 
 function skillRankUpCheck(row, skill) {
 	var rowID = $(row).find("td:first").html();
-	var target = servants.find(function(obj) {
+	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target[skill + "RU"] == false) {
@@ -394,10 +394,10 @@ function skillRankUpCheck(row, skill) {
 function updateSkillImg(element, skill) {
 	var row = $(element).parents("tr");
 	var rowID = $(row).find("td:first").html();
-	var target = servants.find(function(obj) {
+	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
-	if (element.is(":checked")) {
+	if ($(element).is(":checked")) {
 		$(row).find("." + skill).attr("src", target[skill + 'RUImgID'])
 	} else {
 		$(row).find("." + skill).attr("src", target[skill + 'ImgID'])
