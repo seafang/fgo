@@ -3,6 +3,12 @@ var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
 
+$(document).ready(function() {
+	initialInventoryFilter();
+	generateInventory();
+	loadSave();
+});
+
 // Generate inventory table
 let inventoryFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
