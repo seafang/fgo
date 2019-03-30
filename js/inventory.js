@@ -276,15 +276,17 @@ function loadSave() {
 }
 
 // Update data
-$("select").change(update(this));
-$("input").change(update(this));
-$(".owned").change(function() {
-	updateOwnership(this);
-	enableOption(this);
+$(document).ready(function() {
+	$("select").change(update(this));
+	$("input").change(update(this));
+	$(".owned").change(function() {
+		updateOwnership(this);
+		enableOption(this);
+	});
+	$(".skill1-rankup").change(updateSkillImg(this, 'skill1'));
+	$(".skill2-rankup").change(updateSkillImg(this, 'skill2'));
+	$(".skill3-rankup").change(updateSkillImg(this, 'skill3'));
 });
-$(".skill1-rankup").change(updateSkillImg(this, 'skill1'));
-$(".skill2-rankup").change(updateSkillImg(this, 'skill2'));
-$(".skill3-rankup").change(updateSkillImg(this, 'skill3'));
 
 function update(element) {
 	var row = $(element).parents("tr");
