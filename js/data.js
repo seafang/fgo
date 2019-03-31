@@ -123,8 +123,9 @@ function servantOwnershipNone() {
 	servants.forEach(function(servant) {
 		if (servant.id == 1) {
 			servant.owned = true;
-		}
+		} else {
 		servant.owned = false;
+		}
 	});
 }
 
