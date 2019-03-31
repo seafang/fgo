@@ -371,7 +371,7 @@ function enableOption(element) {
 
 function npRankUpCheck(row) {
 	var rowID = Number($(row).find("td:first").html());
-	var target = $(servants).find(function(obj) {
+	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target.npRankUp == false) {
@@ -381,7 +381,7 @@ function npRankUpCheck(row) {
 
 function skillAvailable(row, skill) {
 	var rowID = Number($(row).find("td:first").html());
-	var target = $(servants).find(function(obj) {
+	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target[skill + "Name"] == "") {
@@ -391,7 +391,7 @@ function skillAvailable(row, skill) {
 
 function skillRankUpCheck(row, skill) {
 	var rowID = Number($(row).find("td:first").html());
-	var target = $(servants).find(function(obj) {
+	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if (target[skill + "RU"] == false) {
@@ -402,7 +402,7 @@ function skillRankUpCheck(row, skill) {
 function updateSkillImg(element, skill) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
-	var target = $(servants).find(function(obj) {
+	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
 	if ($(element).is(":checked")) {
