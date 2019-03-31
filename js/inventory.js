@@ -249,25 +249,25 @@ function loadSave() {
 				return obj.id == rowID;
 			});
 			if (servant !== undefined) {
-				if (servant.data[0] == true) {
+				if (servant[0].data[0] == true) {
 					$(this).find(".owned").attr("checked", true);
 				}
-				$(this).find(".inventory-lv").val(servant.data[1]);
-				$(this).find(".nplv").val(servant.data[2]);
-				if (servant.data[3] == true) {
+				$(this).find(".inventory-lv").val(servant[0].data[1]);
+				$(this).find(".nplv").val(servant[0].data[2]);
+				if (servant[0].data[3] == true) {
 					$(this).find(".np-rankup").attr("checked", true);
 				}
-				$(this).find(".statup").val(servant.data[4]);
-				$(this).find(".skill1-lv").val(servant.data[5]);
-				if (servant.data[6] == true) {
+				$(this).find(".statup").val(servant[0].data[4]);
+				$(this).find(".skill1-lv").val(servant[0].data[5]);
+				if (servant[0].data[6] == true) {
 					$(this).find(".skill1-rankup").attr("checked", true);
 				}
-				$(this).find(".skill2-lv").val(servant.data[7]);
-				if (servant.data[8] == true) {
+				$(this).find(".skill2-lv").val(servant[0].data[7]);
+				if (servant[0].data[8] == true) {
 					$(this).find(".skill2-rankup").attr("checked", true);
 				}
-				$(this).find(".skill3-lv").val(servant.data[9]);
-				if (servant.data[10] == true) {
+				$(this).find(".skill3-lv").val(servant[0].data[9]);
+				if (servant[0].data[10] == true) {
 					$(this).find(".skill3-rankup").attr("checked", true);
 				}
 			}
