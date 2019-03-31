@@ -277,15 +277,25 @@ function loadSave() {
 
 // Update data
 $(document).ready(function() {
-	$("select").change(update(this));
-	$("input").change(update(this));
+	$("select").change(function() {
+		update(this)
+	});
+	$("input").change(function() {
+		update(this)
+	});
 	$(".owned").change(function() {
 		updateOwnership(this);
 		enableOption(this);
 	});
-	$(".skill1-rankup").change(updateSkillImg(this, 'skill1'));
-	$(".skill2-rankup").change(updateSkillImg(this, 'skill2'));
-	$(".skill3-rankup").change(updateSkillImg(this, 'skill3'));
+	$(".skill1-rankup").change(function() {
+		updateSkillImg(this, 'skill1')
+	});
+	$(".skill2-rankup").change(function() {
+		updateSkillImg(this, 'skill2')
+	});
+	$(".skill3-rankup").change(function() {
+		updateSkillImg(this, 'skill3')
+	});
 });
 
 function update(element) {
