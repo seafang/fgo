@@ -349,6 +349,9 @@ function updateOwnership(element) {
 function enableOption(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
+	var skill1Toggle = $(row).find(".skill1-rankup");
+	var skill2Toggle = $(row).find(".skill2-rankup");
+	var skill3Toggle = $(row).find(".skill3-rankup");
 	if ($(element).is(":checked")) {
 		$(row).find(".inventory-lv").prop("disabled", false);
 		$(row).find(".nplv").prop("disabled", false);
@@ -359,15 +362,17 @@ function enableOption(element) {
 		$(row).find(".skill1-lv").prop("disabled", false);
 		$(row).find(".skill1-rankup").prop("disabled", false);
 		skillRankUpCheck(row, 'skill1');
+		updateSkillImg(skill1Toggle, 'skill1');
 		$(row).find(".skill2-logo").removeClass("dull");
 		$(row).find(".skill2-lv").prop("disabled", false);
 		$(row).find(".skill2-rankup").prop("disabled", false);
 		skillRankUpCheck(row, 'skill2');
+		updateSkillImg(skill2Toggle, 'skill2');
 		$(row).find(".skill3-logo").removeClass("dull");
 		$(row).find(".skill3-lv").prop("disabled", false);
 		$(row).find(".skill3-rankup").prop("disabled", false);
-		skillAvailable(row, 'skill3');
 		skillRankUpCheck(row, 'skill3');
+		updateSkillImg(skill3Toggle, 'skill3');
 	} else {
 		$(row).find(".inventory-lv").prop("disabled", true);
 		$(row).find(".nplv").prop("disabled", true);
@@ -393,16 +398,6 @@ function npRankUpCheck(row) {
 	if (target.npRankUp == false) {
 		$(row).find(".np-rankup").prop("disabled", true);
 	}
-}
-
-function skillAvailable(row, skill) {
-	var rowID = Number($(row).find("td:first").html());
-	var target = servants.find(function(obj) {
-		return obj.id == rowID; 
-	});
-	if (target[skill + "Name"] == "") {
-		$(row).find("." + skill + "-lv").prop("disabled", true);
-	}
 }	
 
 function skillRankUpCheck(row, skill) {
@@ -422,9 +417,15 @@ function updateSkillImg(element, skill) {
 		return obj.id == rowID; 
 	});
 	if ($(element).is(":checked")) {
-		$(row).find("." + skill + "-logo").attr("src", target[skill + 'RUImgID'])
+		$(row).find("." + skill + "-logo").attr("src", target[skill + "RUImgID"]);
+		if ($(row).find(".owned").is(":checked")) {
+			$(row).find("." + skill + "-lv").prop("disabled", false);
+		}
 	} else {
-		$(row).find("." + skill + "-logo").attr("src", target[skill + 'ImgID'])
+		$(row).find("." + skill + "-logo").attr("src", target[skill + "ImgID"]);
+		if (target[skill + "Name"] == "") {
+			$(row).find("." + skill + "-lv").prop("disabled", true);
+		}
 	}
 }
 
