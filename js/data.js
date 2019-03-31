@@ -66,7 +66,7 @@ function getSave() {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名";
-		currentSave.servant = [{"id":1, "data":[true, null, 3, false, null, null, false, null, false, null, false]}];
+		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false]}];
 		currentSave.ce = [];
 		save();
 		bgServant = currentSave.servant;
@@ -158,7 +158,7 @@ function ceOwnership() {
 	});
 }
 
-var lvDropDown = "<option value='default'>預設</option>\
+var lvDropDown = "<option value='0'>預設</option>\
 	<option value='100'>100</option>\
 	<option value='99'>99</option>\
 	<option value='98'>98</option>\
