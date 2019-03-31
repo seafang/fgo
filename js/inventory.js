@@ -416,9 +416,9 @@ function updateSkillImg(element, skill) {
 		return obj.id == rowID; 
 	});
 	if ($(element).is(":checked")) {
-		$(row).find("." + skill).attr("src", target[skill + 'RUImgID'])
+		$(row).find("." + skill + "-logo").attr("src", target[skill + 'RUImgID'])
 	} else {
-		$(row).find("." + skill).attr("src", target[skill + 'ImgID'])
+		$(row).find("." + skill + "-logo").attr("src", target[skill + 'ImgID'])
 	}
 }
 
