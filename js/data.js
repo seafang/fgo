@@ -36,22 +36,22 @@ function generateSaveList() {
 	if (save1 != null) {
 		option1 = {value: "save1", text: save1.title};
 	} else {
-		option1 = {value: "save1", text: "(無存檔)"};
+		option1 = {value: "save1", text: "<i>(未建立)</i>"};
 	}
 	if (save2 != null) {
 		option2 = {value: "save2", text: save2.title};
 	} else {
-		option2 = {value: "save2", text: "(無存檔)"};
+		option2 = {value: "save2", text: "<i>(未建立)</i>"};
 	}
 	if (save3 != null) {
 		option3 = {value: "save3", text: save3.title};
 	} else {
-		option3 = {value: "save3", text: "(無存檔)"};
+		option3 = {value: "save3", text: "<i>(未建立)</i>"};
 	}
 	if (save4 != null) {
 		option4 = {value: "save4", text: save4.title};
 	} else {
-		option4 = {value: "save4", text: "(無存檔)"};
+		option4 = {value: "save4", text: "<i>(未建立)</i>"};
 	}
 	select.append($('<option>', option1));
 	select.append($('<option>', option2));
@@ -62,7 +62,7 @@ function generateSaveList() {
 function getSave() {
 	var saveSlot = $("#inventory-save").val();
 	var title = $("option:selected").html();
-	if (title == "(無存檔)") {
+	if (title == "<i>(未建立)</i>") {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名";
@@ -86,36 +86,28 @@ function getSave() {
 }
 
 function saveName() {
-	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "(無存檔)") {
+	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "(未建立)") {
 		alert("請先輸入存檔名稱！");
 	} else {
 		var title = $("#save-title").val();
-		currentSave.title = title;
-		save();
-		alert("存檔已被命名為" + title);
-		generateSaveList();
+		if (confirm("命名目前存檔為： 「" + title + "」？")) {
+			currentSave.title = title;
+			save();
+			alert("存檔已被命名為" + title);
+			generateSaveList();
+		}
 	}
 }
 
 function clearSave() {
-	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
+	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理。")) {
 		localStorage.removeItem(currentSave.saveSlot);
 		currentSave = {};
 		bgServant = [], bgCE = [];
+		alert("存檔已被刪除。");
 		window.location.reload(true);
 	}
 }
-
-/*function clearSave() {
-	if (currentSave.title != undefined) {
-		if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理")) {
-			localStorage.removeItem($("#inventory-save").val());
-			window.location.reload(true);
-		}
-	} else {
-		alert("存檔不存在！");
-	}
-}*/
 
 function save() {
 	localStorage.setItem(currentSave.saveSlot, JSON.stringify(currentSave));
