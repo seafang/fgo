@@ -244,7 +244,7 @@ function initialInventoryFilter() {
 function loadSave() {
 	if (bgServant[0] !== undefined) {
 		$("#servant-inventory").find(".inventory-row").each(function(){
-			var rowID = $(this).find("td:first").html();
+			var rowID = Number($(this).find("td:first").html());
 			var servant = bgServant.filter(function(obj) {
 				return obj.id == rowID;
 			});
@@ -257,7 +257,7 @@ function loadSave() {
 				if (servant.data[3] == true) {
 					$(this).find(".np-rankup").attr("checked", true);
 				}
-				$(this).find(".statupv").val(servant.data[4]);
+				$(this).find(".statup").val(servant.data[4]);
 				$(this).find(".skill1-lv").val(servant.data[5]);
 				if (servant.data[6] == true) {
 					$(this).find(".skill1-rankup").attr("checked", true);
@@ -290,7 +290,7 @@ $(document).ready(function() {
 
 function update(element) {
 	var row = $(element).parents("tr");
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var info = {};
 	if (bgServant[0] !== undefined) {
 		var position = bgServant.findIndex(function(obj) {
@@ -306,7 +306,7 @@ function update(element) {
 	info.data[1] = $(row).find(".inventory-lv").val();
 	info.data[2] = $(row).find(".nplv").val();
 	info.data[3] = $(row).find(".np-rankup").is(":checked");
-	info.data[4] = $(row).find(".statupv").val();
+	info.data[4] = $(row).find(".statup").val();
 	info.data[5] = $(row).find(".skill1-lv").val();
 	info.data[6] = $(row).find(".skill1-rankup").is(":checked");
 	info.data[7] = $(row).find(".skill2-lv").val();
@@ -321,7 +321,7 @@ function update(element) {
 
 function updateOwnership(element) {
 	var row = $(element).parents("tr");
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var newValue = $(row).find(".owned").is(":checked");
 	var position = servants.findIndex(function(obj) {
 		return obj.id == rowID;
@@ -332,13 +332,13 @@ function updateOwnership(element) {
 
 function enableOption(element) {
 	var row = $(element).parents("tr");
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	if ($(element).is(":checked")) {
 		$(row).find(".inventory-lv").prop("disabled", false);
 		$(row).find(".nplv").prop("disabled", false);
 		$(row).find(".np-rankup").prop("disabled", false);
 		npRankUpCheck(row);
-		$(row).find(".statupv").prop("disabled", false);
+		$(row).find(".statup").prop("disabled", false);
 		$(row).find(".skill1-logo").removeClass("dull");
 		$(row).find(".skill1-lv").prop("disabled", false);
 		$(row).find(".skill1-rankup").prop("disabled", false);
@@ -356,7 +356,7 @@ function enableOption(element) {
 		$(row).find(".inventory-lv").prop("disabled", true);
 		$(row).find(".nplv").prop("disabled", true);
 		$(row).find(".np-rankup").prop("disabled", true);
-		$(row).find(".statupv").prop("disabled", true);
+		$(row).find(".statup").prop("disabled", true);
 		$(row).find(".skill1-logo").addClass("dull");
 		$(row).find(".skill1-lv").prop("disabled", true);
 		$(row).find(".skill1-rankup").prop("disabled", true);
@@ -370,7 +370,7 @@ function enableOption(element) {
 }	
 
 function npRankUpCheck(row) {
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
@@ -380,7 +380,7 @@ function npRankUpCheck(row) {
 }
 
 function skillAvailable(row, skill) {
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
@@ -390,7 +390,7 @@ function skillAvailable(row, skill) {
 }	
 
 function skillRankUpCheck(row, skill) {
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
@@ -401,7 +401,7 @@ function skillRankUpCheck(row, skill) {
 
 function updateSkillImg(element, skill) {
 	var row = $(element).parents("tr");
-	var rowID = $(row).find("td:first").html();
+	var rowID = Number($(row).find("td:first").html());
 	var target = $(servants).find(function(obj) {
 		return obj.id == rowID; 
 	});
