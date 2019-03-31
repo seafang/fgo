@@ -245,12 +245,17 @@ function loadSave() {
 	if (bgServant[0] !== undefined) {
 		$("#servant-inventory").find(".inventory-row").each(function(){
 			var rowID = Number($(this).find("td:first").html());
+			var ownershipToggle = $(this).find(".owned");
+			var skill1Toggle = $(this).find(".skill1-rankup");
+			var skill2Toggle = $(this).find(".skill2-rankup");
+			var skill3Toggle = $(this).find(".skill3-rankup");
 			var servant = bgServant.filter(function(obj) {
 				return obj.id == rowID;
 			});
 			if (servant[0] !== undefined) {
 				if (servant[0].data[0] == true) {
 					$(this).find(".owned").attr("checked", true);
+					enableOption(ownershipToggle);
 				}
 				$(this).find(".inventory-lv").val(servant[0].data[1]);
 				$(this).find(".nplv").val(servant[0].data[2]);
@@ -261,14 +266,17 @@ function loadSave() {
 				$(this).find(".skill1-lv").val(servant[0].data[5]);
 				if (servant[0].data[6] == true) {
 					$(this).find(".skill1-rankup").attr("checked", true);
+					updateSkillImg(skill1Toggle, 'skill1');
 				}
 				$(this).find(".skill2-lv").val(servant[0].data[7]);
 				if (servant[0].data[8] == true) {
 					$(this).find(".skill2-rankup").attr("checked", true);
+					updateSkillImg(skill2Toggle, 'skill2');
 				}
 				$(this).find(".skill3-lv").val(servant[0].data[9]);
 				if (servant[0].data[10] == true) {
 					$(this).find(".skill3-rankup").attr("checked", true);
+					updateSkillImg(skill3Toggle, 'skill3');
 				}
 			}
 		});
