@@ -66,10 +66,12 @@ function getSave() {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名";
-		currentSave.servant = [];
+		currentSave.servant = [{"id":1, "data":[true, null, 3, false, null, null, false, null, false, null, false]}];
 		currentSave.ce = [];
 		save();
+		bgServant = currentSave.servant;
 		servantOwnershipNone();
+		servantOwnership();
 		/*ceOwnershipNone();*/
 	} else {
 		$("#save-title").val(title);
@@ -121,11 +123,7 @@ function save() {
 
 function servantOwnershipNone() {
 	servants.forEach(function(servant) {
-		if (servant.id == 1) {
-			servant.owned = true;
-		} else {
 		servant.owned = false;
-		}
 	});
 }
 
