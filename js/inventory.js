@@ -76,8 +76,8 @@ function generateInventory() {
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled>" + lvDropDown + "</select>";				
-		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='np1'>1</option><option value='np2'>2</option>" + 				
-			"<option value='np3'>3</option><option value='np4'>4</option><option value='np5'>5</option></select>";	
+		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
+			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";	
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' disabled><span class='slider'></span></label>";
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000' disabled>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + servant.skill1ImgID + "' />";				
