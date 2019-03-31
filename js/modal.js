@@ -102,7 +102,8 @@ let servantFilter = {
 	npRange: ["全體", "單體"],
 	extraDamage: ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
-		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"]
+		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"],
+	owned: [true, false]
 };
 
 function loadServantImg() {
@@ -346,6 +347,20 @@ function servantEDNone() {
 	servantFilter.extraDamage = [];
 }
 
+function servantInclusiveChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		servantFilter.owned = [true];
+	} else {
+		servantFilter.owned = [true, false];
+	}
+}
+
+function servantInclusiveReset() {
+	$("#servant-owned").prop("checked", false);
+	servantFilter.owned = [true, false];
+}
+
 function initialServant() {
 	servantClassAll();
 	servantStarAll();
@@ -357,4 +372,5 @@ function initialServant() {
 	servantColorAll();
 	servantRangeAll();
 	servantEDAll();
+	servantInclusiveReset()
 }
