@@ -283,6 +283,7 @@ function loadSave() {
 
 // Update data
 $(document).ready(function() {
+	$("#inventory-row-1").find(".owned").prop("disabled", true);
 	$("select").change(function() {
 		update(this)
 	});
@@ -374,19 +375,32 @@ function enableOption(element) {
 		skillRankUpCheck(row, 'skill3');
 		updateSkillImg(skill3Toggle, 'skill3');
 	} else {
+		$(row).find(".inventory-lv").val(0);
 		$(row).find(".inventory-lv").prop("disabled", true);
+		$(row).find(".nplv").val(1);
 		$(row).find(".nplv").prop("disabled", true);
+		$(row).find(".np-rankup").prop("checked", false);
 		$(row).find(".np-rankup").prop("disabled", true);
+		$(row).find(".statup").val(0);
 		$(row).find(".statup").prop("disabled", true);
 		$(row).find(".skill1-logo").addClass("dull");
+		$(row).find(".skill1-lv").val(1);
 		$(row).find(".skill1-lv").prop("disabled", true);
+		$(row).find(".skill1-rankup").prop("checked", false);
 		$(row).find(".skill1-rankup").prop("disabled", true);
+		updateSkillImg(skill1Toggle, 'skill1');
 		$(row).find(".skill2-logo").addClass("dull");
+		$(row).find(".skill2-lv").val(1);
 		$(row).find(".skill2-lv").prop("disabled", true);
+		$(row).find(".skill2-rankup").prop("checked", false);
 		$(row).find(".skill2-rankup").prop("disabled", true);
+		updateSkillImg(skill2Toggle, 'skill2');
 		$(row).find(".skill3-logo").addClass("dull");
+		$(row).find(".skill3-lv").val(1);
 		$(row).find(".skill3-lv").prop("disabled", true);
+		$(row).find(".skill3-rankup").prop("checked", false);
 		$(row).find(".skill3-rankup").prop("disabled", true);
+		updateSkillImg(skill3Toggle, 'skill3');
 	}
 }	
 
