@@ -76,7 +76,9 @@ function getSave() {
 		currentSave = JSON.parse(localStorage.getItem(saveSlot));
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
+		servantOwnershipNone();
 		servantOwnership();
+		/*ceOwnershipNone();*/
 		/*ceOwnership();*/
 	}
 }
@@ -126,12 +128,6 @@ function servantOwnershipNone() {
 	});
 }
 
-function ceOwnershipNone() {
-	ce.forEach(function(essence) {
-		essence.owned = false;
-	});
-}
-
 function servantOwnership() {
 	servants.forEach(function(servant) {
 		var id = servant.id;
@@ -141,6 +137,13 @@ function servantOwnership() {
 		if (target !== undefined) {
 			servant.owned = target.data[0];
 		}
+	});
+}
+
+
+function ceOwnershipNone() {
+	ce.forEach(function(essence) {
+		essence.owned = false;
 	});
 }
 			 
