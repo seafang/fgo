@@ -248,7 +248,7 @@ function loadSave() {
 			var servant = bgServant.filter(function(obj) {
 				return obj.id == rowID;
 			});
-			if (servant !== undefined) {
+			if (servant[0] !== undefined) {
 				if (servant[0].data[0] == true) {
 					$(this).find(".owned").attr("checked", true);
 				}
