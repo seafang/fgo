@@ -36,22 +36,22 @@ function generateSaveList() {
 	if (save1 != null) {
 		option1 = {value: "save1", text: save1.title};
 	} else {
-		option1 = {value: "save1", text: "<i>(未建立)</i>"};
+		option1 = {value: "save1", text: "(未建立)"};
 	}
 	if (save2 != null) {
 		option2 = {value: "save2", text: save2.title};
 	} else {
-		option2 = {value: "save2", text: "<i>(未建立)</i>"};
+		option2 = {value: "save2", text: "(未建立)"};
 	}
 	if (save3 != null) {
 		option3 = {value: "save3", text: save3.title};
 	} else {
-		option3 = {value: "save3", text: "<i>(未建立)</i>"};
+		option3 = {value: "save3", text: "(未建立)"};
 	}
 	if (save4 != null) {
 		option4 = {value: "save4", text: save4.title};
 	} else {
-		option4 = {value: "save4", text: "<i>(未建立)</i>"};
+		option4 = {value: "save4", text: "(未建立)"};
 	}
 	select.append($('<option>', option1));
 	select.append($('<option>', option2));
@@ -62,7 +62,7 @@ function generateSaveList() {
 function getSave() {
 	var saveSlot = $("#inventory-save").val();
 	var title = $("option:selected").html();
-	if (title == "<i>(未建立)</i>") {
+	if (title == "(未建立)") {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名";
