@@ -166,7 +166,7 @@ function loadCESave() {
 		$("#ce-inventory").find(".ce-inventory-row").each(function(){
 			var rowID = Number($(this).find("td:first").html());
 			var ownershipToggle = $(this).find(".ce-owned");
-			var maxToggle = $(row).find(".ce-max");
+			var maxToggle = $(this).find(".ce-max");
 			var essence = bgCE.filter(function(obj) {
 				return obj.id == rowID;
 			});
