@@ -168,7 +168,7 @@ function loadCESave() {
 			var ownershipToggle = $(this).find(".ce-owned");
 			var maxToggle = $(row).find(".ce-max");
 			var essence = bgCE.filter(function(obj) {
-				return obj.ceID == rowID;
+				return obj.id == rowID;
 			});
 			if (essence[0] !== undefined) {
 				if (essence[0].data[0] == true) {
@@ -211,7 +211,7 @@ function updateCE(element) {
 	var info = {};
 	if (bgCE[0] !== undefined) {
 		var position = bgCE.findIndex(function(obj) {
-			return obj.ceID == rowID; 
+			return obj.id == rowID; 
 		});
 		if (position !== -1) {
 			bgCE.splice(position, 1);
