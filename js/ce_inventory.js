@@ -25,7 +25,7 @@ function clearCEInventory() {
 }
 
 function generateCEInventory() {
-	var filteredCE = multiFilter(essence, ceInventoryFilter);
+	var filteredCE = multiFilter(ce, ceInventoryFilter);
 	clearCEInventory();
 	var table = document.getElementById("ce-inventory");
 	filteredCE.forEach(function(essence) {				
