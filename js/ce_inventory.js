@@ -168,7 +168,7 @@ function loadCESave() {
 			var ownershipToggle = $(this).find(".ce-owned");
 			var maxToggle = $(row).find(".ce-max");
 			var essence = bgCE.filter(function(obj) {
-				return obj.id == rowID;
+				return obj.ceID == rowID;
 			});
 			if (essence[0] !== undefined) {
 				if (essence[0].data[0] == true) {
@@ -211,7 +211,7 @@ function updateCE(element) {
 	var info = {};
 	if (bgCE[0] !== undefined) {
 		var position = bgCE.findIndex(function(obj) {
-			return obj.id == rowID; 
+			return obj.ceID == rowID; 
 		});
 		if (position !== -1) {
 			bgCE.splice(position, 1);
@@ -256,7 +256,7 @@ function updateCEOwnership(element) {
 	var rowID = Number($(row).find("td:first").html());
 	var newValue = $(row).find(".ce-owned").is(":checked");
 	var position = ce.findIndex(function(obj) {
-		return obj.id == rowID;
+		return obj.ceID == rowID;
 	});
 	ce[position].owned = newValue;
 	parent.ce = ce;
@@ -286,7 +286,7 @@ function updateCEDscrp(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var target = ce.find(function(obj) {
-		return obj.id == rowID; 
+		return obj.ceID == rowID; 
 	});
 	if ($(element).is(":checked")) {
 		$(row).find(".ce-effect").html(target.maxEffect);
