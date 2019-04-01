@@ -10,9 +10,9 @@ $(document).ready(function() {
 
 // Generate ce inventory table
 let ceInventoryFilter = {
-	star: [1, 2, 3, 4, 5],
-	type: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
-	buff: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
+	ceStar: [1, 2, 3, 4, 5],
+	ceType: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
+	ceEffect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
@@ -71,73 +71,73 @@ function generateCEInventory() {
 }
 
 function ceInventoryStarChange(element, starNo) {
-	var newStar = ceInventoryFilter.star;
+	var newStar = ceInventoryFilter.ceStar;
 	if ($(element).prop("checked")) {
 		newStar.push(starNo);
-		ceInventoryFilter.star = newStar;
+		ceInventoryFilter.ceSstar = newStar;
 	} else {
 		position = newStar.indexOf(starNo);
 		newStar.splice(position, 1);
-		ceInventoryFilter.star = newStar;
+		ceInventoryFilter.ceStar = newStar;
 	}
 }
 
 function ceInventoryStarAll() {
 	$(".ce-inventory-star").prop("checked", true);
-	ceInventoryFilter.star = [1, 2, 3, 4, 5];
+	ceInventoryFilter.ceStar = [1, 2, 3, 4, 5];
 }
 
 function ceInventoryStarNone() {
 	$(".ce-inventory-star").prop("checked", false);
-	ceInventoryFilter.star = [];
+	ceInventoryFilter.ceStar = [];
 }
 
 function ceInventoryTypeChange(element, typeName) {
-	var newType = ceInventoryFilter.type;
+	var newType = ceInventoryFilter.ceType;
 	if ($(element).prop("checked")) {
 		newType.push(typeName);
-		ceInventoryFilter.type = newType;
+		ceInventoryFilter.ceType = newType;
 	} else {
 		position = newType.indexOf(typeName);
 		newType.splice(position, 1);
-		ceInventoryFilter.type = newType;
+		ceInventoryFilter.ceType = newType;
 	}
 }
 
 function ceInventoryTypeAll() {
 	$(".ce-inventory-type").prop("checked", true);
-	ceInventoryFilter.type = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
+	ceInventoryFilter.ceType = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
 }
 
 function ceInventoryTypeNone() {
 	$(".ce-inventory-type").prop("checked", false);
-	ceInventoryFilter.type = [];
+	ceInventoryFilter.ceType = [];
 }
 
-function ceInventoryBuffChange(element, buffName) {
-	var newBuff = ceInventoryFilter.buff;
-	if ($(element).prop("checked")) {
-		newBuff.push(buffName);
-		ceInventoryFilter.buff = newBuff;
-	} else {
-		position = newBuff.indexOf(buffName);
-		newBuff.splice(position, 1);
-		ceInventoryFilter.buff = newBuff;
-	}
-}
-
-function ceInventoryBuffAll() {
-	$(".ce-inventory-buff").prop("checked", true);
-	ceInventoryFilter.buff = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
+function ceInventoryEffectChange(element, effectName) {		
+	var newEffect = ceInventoryFilter.ceEffect;	
+	if ($(element).prop("checked")) {	
+		newEffect.push(effectName);
+		ceInventoryFilter.ceEffect = newEffect;
+	} else {	
+		position = newEffect.indexOf(effectName);
+		newEffect.splice(position, 1);
+		ceInventoryFilter.ceEffect = newEffect;
+	}	
+}		
+		
+function ceInventoryEffectAll() {		
+	$(".ce-inventory-effect").prop("checked", true);	
+	ceInventoryFilter.ceEffect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 	
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
-}
-
-function ceInventoryBuffNone() {
-	$(".ce-inventory-buff").prop("checked", false);
-	ceInventoryFilter.buff = [];
-}
+}		
+		
+function ceInventoryEffectNone() {		
+	$(".ce-inventory-effect").prop("checked", false);	
+	ceInventoryFilter.ceEffect = [];	
+}		
 
 function ceInventoryInclusiveChange(element) {
 	var value = $(element).is(":checked");
@@ -156,7 +156,7 @@ function ceInventoryInclusiveReset() {
 function initialCEInventoryFilter() {
 	ceInventoryStarAll();
 	ceInventoryTypeAll();
-	ceInventoryBuffAll();
+	ceInventoryEffectAll();
 	ceInventoryInclusiveReset();
 }
 
