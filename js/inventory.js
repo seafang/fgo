@@ -333,6 +333,7 @@ function update(element) {
 	bgServant.push(info);
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
+	parent.currentSave = currentSave;
 	save();
 }
 
