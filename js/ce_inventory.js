@@ -1,3 +1,4 @@
+var ce = parent.ce;
 var currentSave = parent.currentSave;
 var bgCE = parent.bgCE;
 
