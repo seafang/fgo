@@ -186,9 +186,9 @@ function loadCESave() {
 
 // Update ce data
 $(document).ready(function() {
-	$(".ce-default-max").find(".ce-max").each(function(){
+	$(".ce-default-max").find(".ce-max").each(function() {
 		$(this).prop("checked", true);
-	}
+	});
 	$("select").change(function() {
 		updateCE(this)
 	});
