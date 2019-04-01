@@ -75,7 +75,7 @@ function generateInventory() {
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true'><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled><option value='0'>預設</option>" + lvDropDown + "</select>";				
+		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";	
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' disabled><span class='slider'></span></label>";
