@@ -222,21 +222,21 @@ function updateCE(element) {
 	info.data[0] = $(row).find(".ce-owned").is(":checked");
 	info.data[1] = $(row).find(".ce-max").is(":checked");
 	var maxLV;
-	switch (essence.ceStar) {	
-			case 1:
+	switch ($(row).find(".star").html()) {	
+			case "★":
 			default:
 				maxLV = 50;		
 				break;		
-			case 2:			
+			case "★★":			
 				maxLV = 55;		
 				break;		
-			case 3:			
+			case "★★★":			
 				maxLV = 60;		
 				break;		
-			case 4:			
+			case "★★★★":			
 				maxLV = 80;		
 				break;		
-			case 5:			
+			case "★★★★★":			
 				maxLV = 100;		
 				break;				
 		}
