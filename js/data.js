@@ -72,7 +72,7 @@ function getSave() {
 		bgServant = currentSave.servant;
 		servantOwnershipNone();
 		servantOwnership();
-		/*ceOwnershipNone();*/
+		ceOwnershipNone();
 	} else {
 		$("#save-title").val(title);
 		currentSave = JSON.parse(localStorage.getItem(saveSlot));
@@ -80,8 +80,8 @@ function getSave() {
 		bgCE = currentSave.ce;
 		servantOwnershipNone();
 		servantOwnership();
-		/*ceOwnershipNone();*/
-		/*ceOwnership();*/
+		ceOwnershipNone();
+		ceOwnership();
 	}
 }
 
