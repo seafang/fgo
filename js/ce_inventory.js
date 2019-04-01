@@ -290,7 +290,7 @@ function updateCEDscrp(element) {
 	if ($(element).is(":checked")) {
 		$(row).find(".ce-effect").html(target.maxEffect);
 	} else {
-		$(row).find(".ce-effect").html(target.defaultEffect]);
+		$(row).find(".ce-effect").html(target.defaultEffect);
 	}
 }
 
