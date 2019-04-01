@@ -150,7 +150,8 @@ function ceOwnership() {
 	});
 }
 
-var lvDropDown = "<option value='100'>100</option>\
+var lvDropDown = "<option value='0'>預設</option>\
+	<option value='100'>100</option>\
 	<option value='99'>99</option>\
 	<option value='98'>98</option>\
 	<option value='97'>97</option>\
