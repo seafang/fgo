@@ -401,6 +401,7 @@ function enableOption(element) {
 		$(row).find(".skill3-rankup").prop("checked", false);
 		$(row).find(".skill3-rankup").prop("disabled", true);
 		updateSkillImg(skill3Toggle, 'skill3');
+		update(element);
 	}
 }	
 
