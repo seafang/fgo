@@ -296,6 +296,7 @@ $(document).ready(function() {
 });
 
 function pickCE(essenceID) {
+	closeModal();
 	ceInfo = ce.filter(function(obj) {
 		return obj.ceID == essenceID;
 	});
