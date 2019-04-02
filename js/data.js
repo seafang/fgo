@@ -72,6 +72,7 @@ function getSave() {
 		save();
 		generateSaveList()
 		bgServant = currentSave.servant;
+		bgMaster = currentSave.master;
 		servantOwnership();
 		ceOwnership();
 		masterOwnership();
