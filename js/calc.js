@@ -236,11 +236,11 @@ function setSkill(toggle, skill) {
 		if (!servantInfo[0][skill + "RUBuff"].some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
-			$("#use-" + skill).prop("disable", true);
-			$("#" + skill + "-lv").prop("disable", true);
+			$("#use-" + skill).prop("disabled", true);
+			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
-			$("#use-" + skill).prop("disable", false);
-			$("#" + skill + "-lv").prop("disable", false);
+			$("#use-" + skill).prop("disabled", false);
+			$("#" + skill + "-lv").prop("disabled", false);
 		}
 	} else {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "ImgID"]);
@@ -249,11 +249,11 @@ function setSkill(toggle, skill) {
 		if (!servantInfo[0][skill + "Buff"].some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
-			$("#use-" + skill).prop("disable", true);
-			$("#" + skill + "-lv").prop("disable", true);
+			$("#use-" + skill).prop("disabled", true);
+			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
-			$("#use-" + skill).prop("disable", false);
-			$("#" + skill + "-lv").prop("disable", false);
+			$("#use-" + skill).prop("disabled", false);
+			$("#" + skill + "-lv").prop("disabled", false);
 		}
 	}
 }
