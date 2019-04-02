@@ -373,7 +373,7 @@ let ceFilter = {
 
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
-	var ceID = filteredServant.map(function (essence) {
+	var ceID = filteredCE.map(function (essence) {
 		return ce.ceID
 	});
 	$("#ce-img").html("");
