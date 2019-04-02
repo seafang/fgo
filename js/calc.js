@@ -2,9 +2,10 @@ var servants = parent.servants;
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
+var modalCaller = "";
 
 // Set Enemy
-var enemyInfo = {};
+var enemyInfo = [];
 
 function pickEnemy(type, enemyID) {
 	closeModal();
@@ -116,6 +117,30 @@ $(document).ready(function() {
 
 function pickServant(servantID) {
 	closeModal();
+	switch (modalCaller) {
+		case "servant":
+			toServant(servantID);
+			break;
+		case "teammate1":
+			toTeammate(1, servantID);
+			break;
+		case "teammate2":
+			toTeammate(2, servantID);
+			break;
+		case "teammate3":
+			toTeammate(3, servantID);
+			break;
+		case "teammate4":
+			toTeammate(4, servantID);
+			break;
+		case "teammate5":
+			toTeammate(5, servantID);
+			break;
+	}
+	modalCaller = "";
+}
+
+function toServant(servantID) {
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
@@ -154,6 +179,7 @@ function pickServant(servantID) {
 	}
 	$("#current-servant-star").html(starHTML);
 	$("#current-servant-star").removeClass("dull");
+	$("#current-servant-star").attr("data-star", servantInfo[0].star);
 	$("#current-servant-rankup").prop("disabled", !servantInfo[0].npRankUp);
 	$("#current-servant-gender").html(servantInfo[0].gender);
 	$("#current-servant-attribute").html(servantInfo[0].attribute);
@@ -254,6 +280,102 @@ function setSkill(toggle, skill) {
 		} else {
 			$("#use-" + skill).prop("disabled", false);
 			$("#" + skill + "-lv").prop("disabled", false);
+		}
+	}
+}
+
+//Set Servant CE
+var ceInfo = [];
+var ceSave = [];
+
+$(document).ready(function() {
+	$("#servant-ce-max").change(function() {
+		setCurrentServantCEEffect(this);
+	});
+});
+
+function pickCE(essenceID) {
+	ceInfo = ce.filter(function(obj) {
+		return obj.ceID == essenceID;
+	});
+	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
+		$("#ce-setup-collapsebtn").html("接疊▲");
+		$("#ce-setup-collapsible").toggle(300);
+	}
+	$("#servant-ce-img").attr("src", ceInfo[0].ceImgID);
+	$("#servant-ce-name").html(ceInfo[0].ceName);
+	var starHTML = "";
+	switch (ceInfo[0].ceStar) {
+		case 1:
+			starHTML = "★";
+			break;
+		case 2:
+			starHTML = "★★";
+			break;
+		case 3:
+			starHTML = "★★★";
+			break;
+		case 4:
+			starHTML = "★★★★";
+			break;
+		case 5:
+			starHTML = "★★★★★";
+			break;
+		default:
+			starHTML = "Error";
+	}
+	$("#servant-ce-star").html(starHTML);
+	$("#servant-ce-star").removeClass("dull");
+	$("#servant-ce-star").attr("data-star", ceInfo[0].ceStar);
+	$("#servant-ce-max").prop("disabled", ceInfo[0].defaultMax);
+	ceSave = bgCE.filter(function(obj) {
+		return obj.id == essenceID;
+	});
+	setCurrentServantCE();
+	var ceToggle = $("#servant-ce-max");
+	setCurrentServantCEEffect(ceToggle);
+}
+
+function reapplyCE() {
+	setCurrentServantCE();
+	var ceToggle = $("#servant-ce-max");
+	setCurrentServantCEEffect(ceToggle);
+}
+
+function resetCE() {
+	ceInfo = [];
+	ceSave = [];
+	$("#servant-ce-img").attr("src", "");
+	$("#servant-ce-name").html("未選定禮裝");
+	$("#servant-ce-star").html("★★★★★");
+	$("#servant-ce-star").addClass("dull");
+	$("#servant-ce-star").attr("data-star", "");
+	$("#servant-ce-max").prop("checked", false);
+	$("#servant-ce-max").prop("disabled", false);
+	$("#servant-ce-lv").val(0);
+	$("#servant-ce-dscrp").html("");
+}
+
+function setCurrentServantCE() {
+	if (ceSave[0] != undefined) {
+		$("#servant-ce-max").attr("checked", ceSave[0].data[1]);
+		$("#servant-ce-lv").val(ceSave[0].data[2]);
+	} else {
+		if (ceInfo[0] != undefined) {
+			$("#servant-ce-max").attr("checked", ceInfo[0].defaultMax);
+		} else {
+			$("#servant-ce-max").attr("checked", false);
+		}
+		$("#servant-ce-lv").val(0);
+	}
+}
+
+function setCurrentServantCEEffect(toggle) {
+	if (ceInfo[0] != undefined) {
+		if ($(toggle).is(":checked")) {
+			$("#servant-ce-dscrp").html(ceInfo[0].maxEffect);
+		} else {
+			$("#servant-ce-dscrp").html(ceInfo[0].defaultEffect);
 		}
 	}
 }
