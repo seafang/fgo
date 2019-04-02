@@ -19,21 +19,6 @@ function loadServantEnemyImg() {
 	$("#servant-enemy-img").html(imglist);
 }
 
-/*function loadServantEnemyImg() {
-	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
-	var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
-		return servantEnemy.id
-	});
-	$("#servant-enemy-img").html("");
-	var imglist = "";
-	var arrayLength = servantEnemyID.length;
-	for (i = 0; i < arrayLength; i++) {
-		imglist += "<img class='left servant-img' src='images/servant/" + servantEnemyID[i] +
-		".webp' onclick='pickEnemy(1, " + servantEnemyID[i] + ")' />"
-	};
-	$("#servant-enemy-img").html(imglist);
-}*/
-
 function servantEnemyClassChange(element, className) {
 	var newClass = servantEnemyFilter.classes;
 	if ($(element).hasClass("dull")) {
@@ -372,5 +357,122 @@ function initialServant() {
 	servantColorAll();
 	servantRangeAll();
 	servantEDAll();
-	servantInclusiveReset()
+	servantInclusiveReset();
 }
+
+// CE modal
+let ceFilter = {
+	ceStar: [1, 2, 3, 4, 5],
+	ceType: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
+	ceEffect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
+	owned: [true, false]
+};
+
+function loadCEImg() {
+	var filteredCE = multiFilter(ce, ceFilter);
+	var ceID = filteredServant.map(function (essence) {
+		return ce.ceID
+	});
+	$("#ce-img").html("");
+	var imglist = "";	
+	$.each(ceID, function(index, value) {
+		imglist += "<img class='left ce-img' src='images/ce/" + value +
+		".webp' onclick='pickCE(" + value + ")' />"
+	});
+	$("#ce-img").html(imglist);
+}
+
+function ceStarChange(element, starNo) {
+	var newStar = ceFilter.ceStar;
+	if ($(element).prop("checked")) {
+		newStar.push(starNo);
+		ceFilter.ceStar = newStar;
+	} else {
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
+		ceFilter.ceStar = newStar;
+	}
+}
+
+function ceStarAll() {
+	$(".ce-star").prop("checked", true);
+	ceFilter.ceStar = [1, 2, 3, 4, 5];
+}
+
+function ceStarNone() {
+	$(".ce-star").prop("checked", false);
+	ceFilter.ceStar = [];
+}
+
+function ceTypeChange(element, typeName) {
+	var newType = ceFilter.ceType;
+	if ($(element).prop("checked")) {
+		newType.push(typeName);
+		ceFilter.ceType = newType;
+	} else {
+		position = newType.indexOf(typeName);
+		newType.splice(position, 1);
+		ceFilter.ceType = newType;
+	}
+}
+
+function ceTypeAll() {
+	$(".ce-type").prop("checked", true);
+	ceFilter.ceType = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
+}
+
+function ceTypeNone() {
+	$(".ce-type").prop("checked", false);
+	ceFilter.ceType = [];
+}
+
+function ceEffectChange(element, effect) {
+	var newEffect = ceFilter.ceEffect;
+	if ($(element).prop("checked")) {
+		newEffect.push(effect);
+		ceFilter.ceEffect = newEffect;
+	} else {
+		position = newEffect.indexOf(effect);
+		newEffect.splice(position, 1);
+		ceFilter.ceEffect = newEffect;
+	}
+}
+
+function ceEffectAll() {
+	$(".ce-effect").prop("checked", true);
+	ceFilter.ceEffect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
+}
+
+function ceEffectNone() {
+	$(".ce-effect").prop("checked", false);
+	ceFilter.ceEffect = [];
+}
+
+function ceInclusiveChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		ce.owned = [true];
+	} else {
+		ce.owned = [true, false];
+	}
+}
+
+function ceInclusiveReset() {
+	$("#modal-ce-owned").prop("checked", false);
+	ceFilter.owned = [true, false];
+}
+
+function initialCE() {
+	ceStarAll();
+	ceTypeAll();
+	ceEffectAll();
+	ceInclusiveReset();
+}
+
+
