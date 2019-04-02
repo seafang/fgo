@@ -274,7 +274,7 @@
 					<span class="star left dull" id="current-servant-star" data-star="">★★★★★</span>
 					<label class="label">等級</label>
 					<select class="narrow" id="current-servant-lv">
-						<option value="default">預設</option>
+						<option value="0">預設</option>
 						<option value="100">100</option>
 						<option value="99">99</option>
 						<option value="98">98</option>
@@ -391,7 +391,7 @@
 				<span class="label">剩餘HP(%)</span>
 				<input type="number" class="narrow" id="current-servant-hp" value="100" min="0" max="100">
 				<label class="switch">
-					<input type="checkbox" id="current-servant-rankup" value="true" onchange="setNPRankUp(this)">
+					<input type="checkbox" id="current-servant-rankup" value="true">
 					<span class="slider"></span>
 				</label>
 				<span class="label">寶具強化</span>
@@ -420,7 +420,7 @@
 				<div class="row">			
 					<div class="element-20">		
 						<img class="skill-img" id="skill1-img" src=""/>	
-						<span id="skill1-name"></span>	
+						<span class="skill-name" id="skill1-name"></span>	
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
@@ -456,7 +456,7 @@
 				</div>			
 				<div class="row">			
 					<span class="label">效果</span>		
-					<span id="skill1-dscrp"></span>		
+					<span class="skill-dscrp" id="skill1-dscrp"></span>		
 				</div>			
 			</div>
 			<br/>
@@ -464,7 +464,7 @@
 				<div class="row">			
 					<div class="element-20">		
 						<img class="skill-img" id="skill2-img" src=""/>	
-						<span id="skill2-name"></span>	
+						<span class="skill-name" id="skill2-name"></span>	
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
@@ -500,7 +500,7 @@
 				</div>			
 				<div class="row">			
 					<span class="label">效果</span>		
-					<span id="skill2-dscrp"></span>		
+					<span class="skill-dscrp" id="skill2-dscrp"></span>		
 				</div>
 			</div>
 			<br/>
@@ -508,7 +508,7 @@
 				<div class="row">			
 					<div class="element-20">		
 						<img class="skill-img" id="skill3-img" src=""/>	
-						<span id="skill3-name"></span>	
+						<span class="skill-name" id="skill3-name"></span>	
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
@@ -544,7 +544,7 @@
 				</div>			
 				<div class="row">			
 					<span class="label">效果</span>		
-					<span id="skill1-dscrp"></span>		
+					<span class="skill-dscrp" id="skill1-dscrp"></span>		
 				</div>
 			</div>
 		</div>
