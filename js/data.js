@@ -70,6 +70,7 @@ function getSave() {
 		currentSave.ce = [];
 		currentSave.master = [{"name":"迦勒底", "data":[true, 0]}];
 		save();
+		generateSaveList()
 		bgServant = currentSave.servant;
 		servantOwnership();
 		ceOwnership();
