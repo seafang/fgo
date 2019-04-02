@@ -68,20 +68,21 @@ function getSave() {
 		currentSave.title = "未命名";
 		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false]}];
 		currentSave.ce = [];
+		currentSave.master = [{"name":"迦勒底", "data":[true, 0]}];
 		save();
 		bgServant = currentSave.servant;
-		servantOwnershipNone();
 		servantOwnership();
-		ceOwnershipNone();
+		ceOwnership();
+		masterOwnership();
 	} else {
 		$("#save-title").val(title);
 		currentSave = JSON.parse(localStorage.getItem(saveSlot));
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
-		servantOwnershipNone();
+		bgMaster = currentSave.master;
 		servantOwnership();
-		ceOwnershipNone();
 		ceOwnership();
+		masterOwnership();
 	}
 }
 
@@ -103,7 +104,7 @@ function clearSave() {
 	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理。")) {
 		localStorage.removeItem(currentSave.saveSlot);
 		currentSave = {};
-		bgServant = [], bgCE = [];
+		bgServant = [], bgCE = [], bgMaster = [];
 		alert("存檔已被刪除。");
 		window.location.reload(true);
 	}
@@ -111,12 +112,6 @@ function clearSave() {
 
 function save() {
 	localStorage.setItem(currentSave.saveSlot, JSON.stringify(currentSave));
-}
-
-function servantOwnershipNone() {
-	servants.forEach(function(servant) {
-		servant.owned = false;
-	});
 }
 
 function servantOwnership() {
@@ -127,25 +122,36 @@ function servantOwnership() {
 		});
 		if (target !== undefined) {
 			servant.owned = target.data[0];
+		} else {
+			servant.owned = false;
 		}
-	});
-}
-
-
-function ceOwnershipNone() {
-	ce.forEach(function(essence) {
-		essence.owned = false;
 	});
 }
 			 
 function ceOwnership() {
-	ce.forEach(function(ce) {
-		var id = ce.id;
+	ce.forEach(function(essence) {
+		var id = essence.id;
 		var target = bgCE.find(function(obj) {
 			return obj.id == id; 
 		});
 		if (target !== undefined) {
-			ce.owned = target.data[0];
+			essence.owned = target.data[0];
+		} else {
+			essence.owned = false;
+		}
+	});
+}
+
+function masterOwnership() {
+	master.forEach(function(code) {
+		var name = code.name;
+		var target = bgMaster.find(function(obj) {
+			return obj.name == name; 
+		});
+		if (target !== undefined) {
+			code.owned = target.data[0];
+		} else {
+			code.owned = false;
 		}
 	});
 }
