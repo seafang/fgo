@@ -184,8 +184,8 @@ function resetServant() {
 	var skill2Toggle = $("#check-skill2-rankup");
 	var skill3Toggle = $("#check-skill3-rankup");
 	setSkill(skill1Toggle, 'skill1');
-	setSkill(skill1Toggle, 'skill1');
-	setSkill(skill1Toggle, 'skill1');
+	setSkill(skill2Toggle, 'skill2');
+	setSkill(skill3Toggle, 'skill3');
 }
 
 function setCurrentServantInfo() {
@@ -194,22 +194,27 @@ function setCurrentServantInfo() {
 		$("#current-servant-nplv").val(servantSave[0].data[2]);
 		$("#current-servant-statup").val(servantSave[0].data[4]);
 		$("#current-servant-hp").val(100);
-		if (servantSave[0].data[3] == true) {
-			$("#current-servant-rankup").attr("checked", true);
-		}
+		$("#current-servant-rankup").attr("checked", servantSave[0].data[3]);
 		$("#current-servant-npoc").val("oc1");
 		$("#skill1-lv").val(servantSave[0].data[5]);
-		if (servantSave[0].data[6] == true) {
-			$("#check-skill1-rankup").attr("checked", true);
-		}
+		$("#check-skill1-rankup").attr("checked", servantSave[0].data[6]);
 		$("#skill2-lv").val(servantSave[0].data[7]);
-		if (servantSave[0].data[8] == true) {
-			$("#check-skill2-rankup").attr("checked", true);
-		}
+		$("#check-skill2-rankup").attr("checked", servantSave[0].data[8]);
 		$("#skill3-lv").val(servantSave[0].data[9]);
-		if (servantSave[0].data[10] == true) {
-			$("#check-skill3-rankup").attr("checked", true);
-		}
+		$("#check-skill3-rankup").attr("checked", servantSave[0].data[10]);
+	} else {
+		$("#current-servant-lv").val(0);
+		$("#current-servant-nplv").val(1);
+		$("#current-servant-statup").val(0);
+		$("#current-servant-hp").val(100);
+		$("#current-servant-rankup").attr("checked", false);
+		$("#current-servant-npoc").val("oc1");
+		$("#skill1-lv").val(1);
+		$("#check-skill1-rankup").attr("checked", false);
+		$("#skill2-lv").val(1);
+		$("#check-skill2-rankup").attr("checked", false);
+		$("#skill3-lv").val(1);
+		$("#check-skill3-rankup").attr("checked", false);
 	}
 }
 
@@ -224,68 +229,31 @@ function setCurrentServantNP() {
 }
 
 function setSkill(toggle, skill) {
-	var section = $(toggle).parents(".servant-skill-detail");
 	if ($(toggle).is(":checked")) {
-		$(section).find(".skill-img").attr("src", servantInfo[0][skill + "RUImgID"]);
-		$(section).find(".skill-name").html(servantInfo[0][skill + "RUName"]);
-		$(section).find(".skill-dscrp").html(servantInfo[0][skill + "RUDscrp"]);
-		if (!servantInfo[0].skill1RUBuff.some(function(value) {
+		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "RUImgID"]);
+		$("#" + skill + "-name").html(servantInfo[0][skill + "RUName"]);
+		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "RUDscrp"]);
+		if (!servantInfo[0][skill + "RUBuff"].some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
-			$("#use-skill1").prop("disable", true);
-			$("#skill1-lv").prop("disable", true);
+			$("#use-" + skill).prop("disable", true);
+			$("#" + skill + "-lv").prop("disable", true);
 		} else {
-			$("#use-skill1").prop("disable", false);
-			$("#skill1-lv").prop("disable", false);
-		}
-		if (!servantInfo[0].skill2RUBuff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#use-skill2").prop("disable", true);
-			$("#skill2-lv").prop("disable", true);
-		} else {
-			$("#use-skill2").prop("disable", false);
-			$("#skill2-lv").prop("disable", false);
-		}
-		if (!servantInfo[0].skill3RUBuff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#use-skill3").prop("disable", true);
-			$("#skill3-lv").prop("disable", true);
-		} else {
-			$("#use-skill3").prop("disable", false);
-			$("#skill3-lv").prop("disable", false);
+			$("#use-" + skill).prop("disable", false);
+			$("#" + skill + "-lv").prop("disable", false);
 		}
 	} else {
-		$(section).find(".skill-img").attr("src", servantInfo[0][skill + "ImgID"]);
-		$(section).find(".skill-name").html(servantInfo[0][skill + "Name"]);
-		$(section).find(".skill-dscrp").html(servantInfo[0][skill + "Dscrp"]);
-		if (!servantInfo[0].skill1Buff.some(function(value) {
+		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "ImgID"]);
+		$("#" + skill + "-name").html(servantInfo[0][skill + "Name"]);
+		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "Dscrp"]);
+		if (!servantInfo[0][skill + "Buff"].some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
-			$("#use-skill1").prop("disable", true);
-			$("#skill1-lv").prop("disable", true);
+			$("#use-" + skill).prop("disable", true);
+			$("#" + skill + "-lv").prop("disable", true);
 		} else {
-			$("#use-skill1").prop("disable", false);
-			$("#skill1-lv").prop("disable", false);
-		}
-		if (!servantInfo[0].skill2Buff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#use-skill2").prop("disable", true);
-			$("#skill2-lv").prop("disable", true);
-		} else {
-			$("#use-skill2").prop("disable", false);
-			$("#skill2-lv").prop("disable", false);
-		}
-		if (!servantInfo[0].skill3Buff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#use-skill3").prop("disable", true);
-			$("#skill3-lv").prop("disable", true);
-		} else {
-			$("#use-skill3").prop("disable", false);
-			$("#skill3-lv").prop("disable", false);
+			$("#use-" + skill).prop("disable", false);
+			$("#" + skill + "-lv").prop("disable", false);
 		}
 	}
 }
