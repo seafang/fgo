@@ -163,7 +163,10 @@ function pickServant(servantID) {
 	$("#current-servant-np").addClass(servantInfo[0].npColor)
 	servantSave = bgServant.filter(function(obj) {
 		return obj.id == servantID;
-	});	
+	});
+	$("#check-skill1-rankup").prop("disabled", !servantInfo[0].skill1RU);
+	$("#check-skill2-rankup").prop("disabled", !servantInfo[0].skill2RU);
+	$("#check-skill3-rankup").prop("disabled", !servantInfo[0].skill3RU);
 	setCurrentServantInfo();
 	setCurrentServantNP();
 	var skill1Toggle = $("#check-skill1-rankup");
