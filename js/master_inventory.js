@@ -19,8 +19,8 @@ function generateMasterInventory() {
 	master.forEach(function(code) {				
 		var row = table.insertRow(-1);				
 		$(row).addClass("master-inventory-row");				
-		$(row).attr("id", "inventory-row-" + master.name);				
-		row.insertCell(-1).innerHTML = master.name;
+		$(row).attr("id", "inventory-row-" + master.masterName);				
+		row.insertCell(-1).innerHTML = master.masterName;
 		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + master.ceImgID1 + "' />" + 
 			"<img class='master-img' src='" + master.ceImgID2 + "' />";								
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned' value='true'><span class='slider'></span></label>";			
@@ -96,7 +96,7 @@ function updateMasterOwnership(element) {
 	var rowName = $(row).find("td:first").html();
 	var newValue = $(row).find(".master-owned").is(":checked");
 	var position = master.findIndex(function(obj) {
-		return obj.name == rowName;
+		return obj.masterName == rowName;
 	});
 	master[position].owned = newValue;
 	parent.master = master;
