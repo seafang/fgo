@@ -1,4 +1,5 @@
 var servants = parent.servants;
+var ce = parent.ce;
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
