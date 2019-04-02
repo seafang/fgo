@@ -285,23 +285,23 @@ function loadSave() {
 $(document).ready(function() {
 	$("#inventory-row-1").find(".owned").prop("disabled", true);
 	$("select").change(function() {
-		update(this)
+		update(this);
 	});
 	$("input").change(function() {
-		update(this)
+		update(this);
 	});
 	$(".owned").change(function() {
 		updateOwnership(this);
 		enableOption(this);
 	});
 	$(".skill1-rankup").change(function() {
-		updateSkillImg(this, 'skill1')
+		updateSkillImg(this, 'skill1');
 	});
 	$(".skill2-rankup").change(function() {
-		updateSkillImg(this, 'skill2')
+		updateSkillImg(this, 'skill2');
 	});
 	$(".skill3-rankup").change(function() {
-		updateSkillImg(this, 'skill3')
+		updateSkillImg(this, 'skill3');
 	});
 });
 
