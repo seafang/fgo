@@ -43,7 +43,8 @@ function toTop() {
 // Modal
 function openModal(modal) {
 	$(modal).show();
-};
+}
+
 function closeModal() {
 	$(".modal").hide();
 }
@@ -53,6 +54,10 @@ $(document).click(function(event) {
 		$(".modal").hide();
 	}
 });
+
+function setCaller(caller) {
+	modalCaller = caller;
+}
 
 // Collapsible
 function toggle(button, element) {
