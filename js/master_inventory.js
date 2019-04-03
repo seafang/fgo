@@ -19,20 +19,20 @@ function generateMasterInventory() {
 	master.forEach(function(code) {				
 		var row = table.insertRow(-1);				
 		$(row).addClass("master-inventory-row");				
-		$(row).attr("id", "inventory-row-" + master.masterName);				
-		row.insertCell(-1).innerHTML = master.masterName;
-		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + master.ceImgID1 + "' />" + 
-			"<img class='master-img' src='" + master.ceImgID2 + "' />";								
+		$(row).attr("id", "inventory-row-" + code.masterName);				
+		row.insertCell(-1).innerHTML = code.masterName;
+		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.ceImgID1 + "' />" + 
+			"<img class='master-img' src='" + code.ceImgID2 + "' />";								
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned' value='true'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow master-inventory-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + master.skill1ImgID + "' />";
-		row.insertCell(-1).innerHTML = master.skill1Dscrp;
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2-logo dull' src='" + master.skill2ImgID + "' />";
-		row.insertCell(-1).innerHTML = master.skill2Dscrp;
-		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3-logo dull' src='" + master.skill3ImgID + "' />";
-		row.insertCell(-1).innerHTML = master.skill3Dscrp;
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + code.skill1ImgID + "' />";
+		row.insertCell(-1).innerHTML = code.skill1Dscrp;
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2-logo dull' src='" + code.skill2ImgID + "' />";
+		row.insertCell(-1).innerHTML = code.skill2Dscrp;
+		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3-logo dull' src='" + code.skill3ImgID + "' />";
+		row.insertCell(-1).innerHTML = code.skill3Dscrp;
 	});
 }
 
