@@ -183,7 +183,12 @@ function toServant(servantID) {
 	$("#current-servant-star").html(starHTML);
 	$("#current-servant-star").removeClass("dull");
 	$("#current-servant-star").attr("data-star", servantInfo[0].star);
+	$("#current-servant-lv").prop("disabled", false);
+	$("#current-servant-nplv").prop("disabled", false);
+	$("#current-servant-statup").prop("disabled", false);
+	$("#current-servant-hp").prop("disabled", false);
 	$("#current-servant-rankup").prop("disabled", !servantInfo[0].npRankUp);
+	$("#current-servant-npoc").prop("disabled", false);
 	$("#current-servant-gender").html(servantInfo[0].gender);
 	$("#current-servant-attribute").html(servantInfo[0].attribute);
 	$("#current-servant-alignment").html(servantInfo[0].alignment1 + ", " + servantInfo[0].alignment2);
@@ -341,6 +346,7 @@ function pickCE(essenceID) {
 	$("#servant-ce-star").removeClass("dull");
 	$("#servant-ce-star").attr("data-star", ceInfo[0].ceStar);
 	$("#servant-ce-max").prop("disabled", ceInfo[0].defaultMax);
+	$("#servant-ce-lv").prop("disabled", false);
 	ceSave = bgCE.filter(function(obj) {
 		return obj.id == essenceID;
 	});
@@ -364,8 +370,9 @@ function resetCE() {
 	$("#servant-ce-star").addClass("dull");
 	$("#servant-ce-star").attr("data-star", "");
 	$("#servant-ce-max").prop("checked", false);
-	$("#servant-ce-max").prop("disabled", false);
+	$("#servant-ce-max").prop("disabled", true);
 	$("#servant-ce-lv").val(0);
+	$("#servant-ce-lv").prop("disabled", true);
 	$("#servant-ce-dscrp").html("");
 }
 
@@ -405,9 +412,9 @@ $(document).ready(function() {
 });
 
 function generateMasterSelection() {
-	$(master).each(function(code) {
+	$(master).each(function() {
 		var select = $("#master-name-selection");
-		var name = code.masterName;
+		var name = $(this).masterName;
 		var option = {value: name, text: name};
 		select.append($('<option>', option));
 	});
@@ -415,6 +422,10 @@ function generateMasterSelection() {
 
 function setMaster(element) {
 	if ($(element).val() == "none") {
+		if ($("#master-setup-collapsebtn").html() == "接疊▲") {
+			$("#master-setup-collapsebtn").html("展開▼");
+			$("#master-setup-collapsible").toggle(300);
+		}
 		masterInfo = [];
 		masterSave = [];
 		$("#master-img1").attr("src", "");
@@ -437,12 +448,17 @@ function setMaster(element) {
 		$("#master-skill2-dscrp").html("");
 		$("#master-skill3-dscrp").html("");
 	} else {
+		if ($("#master-setup-collapsebtn").html() == "展開▼") {
+			$("#master-setup-collapsebtn").html("接疊▲");
+			$("#master-setup-collapsible").toggle(300);
+		}
 		var name = $(element).val();
 		var masterInfo = master.filter(function(obj) {
 			return obj.masterName == name;
 		});
 		$("#master-img1").attr("src", masterInfo.masterImgID1);
 		$("#master-img2").attr("src", masterInfo.masterImgID2);
+		$("#master-lv").prop("disabled", false);
 		$("#master-skill1-logo").attr("src", masterInfo.skill1ImgID);
 		if (!masterInfo[0].skill1Buff.some(function(value) {
 			return value == "card" || value == "dmg"
