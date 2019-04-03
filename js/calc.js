@@ -9,6 +9,27 @@ var modalCaller = "";
 
 // Set Enemy
 var enemyInfo = [];
+var debuff = [];
+var enemy1Debuff = [], enemy2Debuff = [], enemy3Debuff = [];
+var enemy1Trait = [], enemy2Trait = [], enemy3Trait = [];
+
+$(document).ready(function() {
+	$(".current-enemy-debuff").change(function() {
+		updateDebuff();
+	});
+});
+
+function updateDebuff() {
+	debuff = [];
+	$(".current-enemy-debuff").each(function() {
+		if ($(this).is(":checked")) {
+			var obj = {};
+			obj.name = $(this).val();
+			obj.src = $(this).attr("data-src");
+			debuff.push(obj);
+		}
+	});
+}
 
 function pickEnemy(type, enemyID) {
 	closeModal();
@@ -59,7 +80,7 @@ function resetCurrentEnemy() {
 	$(".current-enemy-trait").prop("checked", false);
 }
 
-function setEnemy(element) {
+function setEnemy(element, enemyDebuff) {
 	$(element).show();
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
@@ -71,6 +92,12 @@ function setEnemy(element) {
 	} else {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
 	}
+	var debuffList = "";
+	$(debuff).each(function() {
+		debuffList += "<img class='debuff-logo left' src='" + $(this).src + "' />";
+	});
+	$(element).find(".enemy-debuff").html(debuffList);
+	window.enemyDebuff = debuff;
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".png";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
