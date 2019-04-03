@@ -1,8 +1,10 @@
 var servants = parent.servants;
 var ce = parent.ce;
+var master = parent.master;
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
+var bgMaster = parent.bgMaster;
 var modalCaller = "";
 
 // Set Enemy
@@ -223,10 +225,19 @@ function setCurrentServantInfo() {
 		$("#current-servant-hp").val(100);
 		$("#current-servant-rankup").attr("checked", servantSave[0].data[3]);
 		$("#current-servant-npoc").val("oc1");
+		$("#use-skill1").prop("checked", false);
+		$("#skill1-img").removeClass("dull");
+		$("#skill1-img").addClass("dull");
 		$("#skill1-lv").val(servantSave[0].data[5]);
 		$("#check-skill1-rankup").attr("checked", servantSave[0].data[6]);
+		$("#use-skill2").prop("checked", false);
+		$("#skill2-img").removeClass("dull");
+		$("#skill2-img").addClass("dull");
 		$("#skill2-lv").val(servantSave[0].data[7]);
 		$("#check-skill2-rankup").attr("checked", servantSave[0].data[8]);
+		$("#use-skill3").prop("checked", false);
+		$("#skill3-img").removeClass("dull");
+		$("#skill3-img").addClass("dull");
 		$("#skill3-lv").val(servantSave[0].data[9]);
 		$("#check-skill3-rankup").attr("checked", servantSave[0].data[10]);
 	} else {
@@ -379,5 +390,106 @@ function setCurrentServantCEEffect(toggle) {
 		} else {
 			$("#servant-ce-dscrp").html(ceInfo[0].defaultEffect);
 		}
+	}
+}
+
+//Set Master Mystic Code
+var masterInfo = [];
+var masterSave = [];
+
+$(document).ready(function() {
+	generateMasterSelection();
+	$("#master-name-selection").change(function() {
+		setMaster(this);
+	});
+});
+
+function generateMasterSelection() {
+	$(master).each(function(code) {
+		var select = $("#master-name-selection");
+		var name = code.masterName;
+		var option = {value: name, text: name};
+		select.append($('<option>', option));
+	});
+}
+
+function setMaster(element) {
+	if ($(element).val() == "none") {
+		masterInfo = [];
+		masterSave = [];
+		$("#master-img1").attr("src", "");
+		$("#master-img2").attr("src", "");
+		$("#master-lv").val(1);
+		$("#master-lv").prop("disabled", true);
+		$("#master-skill1-logo").attr("src", "");
+		$("#master-skill1-logo").removeClass("dull");
+		$("#check-master-skill1").prop("checked", false);
+		$("#check-master-skill1").prop("disabled", true);
+		$("#master-skill2-logo").attr("src", "");
+		$("#master-skill2-logo").removeClass("dull");
+		$("#check-master-skill2").prop("checked", false);
+		$("#check-master-skill2").prop("disabled", true);
+		$("#master-skill3-logo").attr("src", "");
+		$("#master-skill3-logo").removeClass("dull");
+		$("#check-master-skill3").prop("checked", false);
+		$("#check-master-skill3").prop("disabled", true);
+		$("#master-skill1-dscrp").html("");
+		$("#master-skill2-dscrp").html("");
+		$("#master-skill3-dscrp").html("");
+	} else {
+		var name = $(element).val();
+		var masterInfo = master.filter(function(obj) {
+			return obj.masterName == name;
+		});
+		$("#master-img1").attr("src", masterInfo.masterImgID1);
+		$("#master-img2").attr("src", masterInfo.masterImgID2);
+		$("#master-skill1-logo").attr("src", masterInfo.skill1ImgID);
+		if (!masterInfo[0].skill1Buff.some(function(value) {
+			return value == "card" || value == "dmg"
+		})) {
+			$("#check-master-skill1").prop("disabled", true);
+		} else {
+			$("#check-master-skill1").prop("disabled", false);
+		}
+		$("#master-skill2-logo").attr("src", masterInfo.skill2ImgID);
+		if (!masterInfo[0].skill2Buff.some(function(value) {
+			return value == "card" || value == "dmg"
+		})) {
+			$("#check-master-skill2").prop("disabled", true);
+		} else {
+			$("#check-master-skill2").prop("disabled", false);
+		}
+		$("#master-skill3-logo").attr("src", masterInfo.skill3ImgID);
+		if (!masterInfo[0].skill3Buff.some(function(value) {
+			return value == "card" || value == "dmg"
+		})) {
+			$("#check-master-skill3").prop("disabled", true);
+		} else {
+			$("#check-master-skill3").prop("disabled", false);
+		}
+		$("#master-skill1-dscrp").html(masterInfo.skill1Dscrp);
+		$("#master-skill2-dscrp").html(masterInfo.skill2Dscrp);
+		$("#master-skill3-dscrp").html(masterInfo.skill3Dscrp);
+		var masterSave = bgMaster.filter(function(obj) {
+			return obj.name == name;
+		});
+		applyMaster();
+	}
+}
+
+function applyMaster() {
+	$("#master-skill1-logo").removeClass("dull");
+	$("#master-skill1-logo").addClass("dull");
+	$("#check-master-skill1").prop("checked", false);
+	$("#master-skill2-logo").removeClass("dull");
+	$("#master-skill2-logo").addClass("dull");
+	$("#check-master-skill2").prop("checked", false);
+	$("#master-skill3-logo").removeClass("dull");
+	$("#master-skill3-logo").addClass("dull");
+	$("#check-master-skill3").prop("checked", false);
+	if (masterSave[0] != undefined) {
+		$("#master-lv").val(ceSave[0].data[1]);
+	} else {
+		$("#master-lv").val(1);
 	}
 }
