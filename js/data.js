@@ -68,7 +68,7 @@ function getSave() {
 		currentSave.title = "未命名存檔";
 		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false]}];
 		currentSave.ce = [];
-		currentSave.master = [{"name":"迦勒底", "data":[true, 0]}];
+		currentSave.master = [{"name":"迦勒底", "data":[true, 1]}];
 		save();
 		generateSaveList()
 		bgServant = currentSave.servant;
