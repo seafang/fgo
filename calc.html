@@ -166,11 +166,49 @@
 					<input type="checkbox" class="current-enemy-trait" id="current-enemy-trait25" value="超巨大">
 					<label for="current-enemy-trait25" class>超巨大</label>
 				</div>
-			</div>			
+			</div>	
+			<div class="row">	
+				<div class="element-100">
+					<span class="label">弱化狀態</span>		
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff1" data-src="images/debuff/charm.webp" value="魅惑">
+					<img class="debuff-logo" src="images/debuff/charm.webp" />
+					<label for="current-enemy-debuff1" class>魅惑</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff2" data-src="images/debuff/poison.webp" value="毒">
+					<img class="debuff-logo" src="images/debuff/poison.webp" />
+					<label for="current-enemy-debuff2" class>毒</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff3" data-src="images/debuff/toxic.webp" value="蝕毒">
+					<img class="debuff-logo" src="images/debuff/toxic.webp" />
+					<label for="current-enemy-debuff3" class>蝕毒</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff4" data-src="images/debuff/burn.webp" value="灼傷">
+					<img class="debuff-logo" src="images/debuff/burn.webp" />
+					<label for="current-enemy-debuff4" class>灼傷</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff5" data-src="images/debuff/spread_of_fire.webp" value="延燒">
+					<img class="debuff-logo" src="images/debuff/spread_of_fire.webp" />
+					<label for="current-enemy-debuff5" class>延燒</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff6" data-src="images/debuff/curse.webp" value="詛咒">
+					<img class="debuff-logo" src="images/debuff/curse.webp" />
+					<label for="current-enemy-debuff6" class>詛咒</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff7" data-src="images/debuff/evil_curse.webp" value="咒厄">
+					<img class="debuff-logo" src="images/debuff/evil_curse.webp" />
+					<label for="current-enemy-debuff7" class>咒厄</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff8" data-src="images/debuff/stun.webp" value="石化">
+					<img class="debuff-logo" src="images/debuff/stun.webp" />
+					<label for="current-enemy-debuff8" class>石化</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff9" data-src="images/debuff/stun.webp" value="晕眩">
+					<img class="debuff-logo" src="images/debuff/stun.webp" />
+					<label for="current-enemy-debuff9" class>晕眩</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff10" data-src="images/debuff/stun.webp" value="拘束">
+					<img class="debuff-logo" src="images/debuff/stun.webp" />
+					<label for="current-enemy-debuff10" class>拘束</label>
+					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff11" data-src="images/debuff/pig.webp" value="猪化">
+					<img class="debuff-logo" src="images/debuff/pig.webp" />
+					<label for="current-enemy-debuff11" class>猪化</label>
+				</div>
+			</div>
 			<div class="row">			
-				<a class="left btn applybtn" onclick="setEnemy('#enemy1')">設為敵人I</a>		
-				<a class="left btn applybtn" onclick="setEnemy('#enemy2')">設為敵人II</a>		
-				<a class="left btn applybtn" onclick="setEnemy('#enemy3')">設為敵人III</a>		
+				<a class="left btn applybtn" onclick="setEnemy('#enemy1', 'enemy1Debuff')">設為敵人I</a>		
+				<a class="left btn applybtn" onclick="setEnemy('#enemy2', 'enemy2Debuff')">設為敵人II</a>		
+				<a class="left btn applybtn" onclick="setEnemy('#enemy3', 'enemy3Debuff')">設為敵人III</a>		
 			</div>			
 		</div>
 	</div>
@@ -183,6 +221,7 @@
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy1-img" src="images/bg_logo.png" />
 					<span class="enemy-name left" id="enemy1-name"></span>
+					<span class="enemy-debuff" id="enemy1-debuff"></span>
 					<img class="enemy-class class-logo left" id="enemy1-class" src="images/class/Unknown.png" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy1-gender"></span></div>
@@ -208,6 +247,7 @@
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy2-img" src="images/bg_logo.png" />
 					<span class="enemy-name left" id="enemy2-name"></span>
+					<span class="enemy-debuff" id="enemy2-debuff"></span>
 					<img class="enemy-class class-logo left" id="enemy2-class" src="images/class/Unknown.png" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy2-gender"></span></div>
@@ -233,6 +273,7 @@
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy3-img" src="images/bg_logo.png" />
 					<span class="enemy-name left" id="enemy3-name"></span>
+					<span class="enemy-debuff" id="enemy3-debuff"></span>
 					<img class="enemy-class class-logo left" id="enemy3-class" src="images/class/Unknown.png" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy3-gender"></span></div>
@@ -248,15 +289,17 @@
 				<div class="element-100"><span class="label">特性</span><span class="enemy-trait" id="enemy3-trait"></span></div>
 			</div>
 		</div>
+		<br/>
 	</div>
 	<div class="setup" id="battelfield-setup">
-		<span class="resetbtn btn btnright" onclick="resetBattlefield()">取消選擇</span>
 		<div class="row">
 			<div class="element-100">
 				<span class="label">場地設定</span>	
 				<input type="checkbox" class="battlefield-type" id="battlefield-type1" value="燃燒">
+				<img class="battlefield-logo" src="images/battlefield/burning.webp" />
 				<label for="battlefield-type1" class>燃燒</label>
 				<input type="checkbox" class="battlefield-type" id="battlefield-type2" value="森林">
+				<img class="battlefield-logo" src="images/battlefield/forest.webp" />
 				<label for="battlefield-type2" class>森林</label>
 				<input type="checkbox" class="battlefield-type" id="battlefield-type3" value="山丘">
 				<label for="battlefield-type3" class>山丘</label>
@@ -267,6 +310,7 @@
 				<input type="checkbox" class="battlefield-type" id="battlefield-type6" value="沙灘·沙漠">
 				<label for="battlefield-type6" class>沙灘·沙漠</label>
 				<input type="checkbox" class="battlefield-type" id="battlefield-type7" value="水邊">
+				<img class="battlefield-logo" src="images/battlefield/waterside.webp" />
 				<label for="battlefield-type7" class>水邊</label>
 				<input type="checkbox" class="battlefield-type" id="battlefield-type8" value="岩山">
 				<label for="battlefield-type8" class>岩山</label>
@@ -277,7 +321,9 @@
 				<input type="checkbox" class="battlefield-type" id="battlefield-type11" value="山">
 				<label for="battlefield-type11" class>山</label>
 				<input type="checkbox" class="battlefield-type" id="battlefield-type12" value="陽光照射">
+				<img class="battlefield-logo" src="images/battlefield/sunlight.webp" />
 				<label for="battlefield-type12" class>陽光照射</label>
+				<span class="resetbtn btn btnright" onclick="resetBattlefield()">取消選擇</span>
 			</div>
 		</div>
 		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn" onclick="toggle(this, '#enemy-setup-collapsible')">展開▼</span>
