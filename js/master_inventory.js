@@ -21,8 +21,8 @@ function generateMasterInventory() {
 		$(row).addClass("master-inventory-row");				
 		$(row).attr("id", "inventory-row-" + code.masterName);				
 		row.insertCell(-1).innerHTML = code.masterName;
-		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.ceImgID1 + "' />" + 
-			"<img class='master-img' src='" + code.ceImgID2 + "' />";								
+		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.masterImgID1 + "' />" + 
+			"<img class='master-img' src='" + code.masterImgID2 + "' />";								
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned' value='true'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow master-inventory-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
