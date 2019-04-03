@@ -360,13 +360,13 @@ function resetCE() {
 
 function setCurrentServantCE() {
 	if (ceSave[0] != undefined) {
-		$("#servant-ce-max").attr("checked", ceSave[0].data[1]);
+		$("#servant-ce-max").prop("checked", ceSave[0].data[1]);
 		$("#servant-ce-lv").val(ceSave[0].data[2]);
 	} else {
 		if (ceInfo[0] != undefined) {
-			$("#servant-ce-max").attr("checked", ceInfo[0].defaultMax);
+			$("#servant-ce-max").prop("checked", ceInfo[0].defaultMax);
 		} else {
-			$("#servant-ce-max").attr("checked", false);
+			$("#servant-ce-max").prop("checked", false);
 		}
 		$("#servant-ce-lv").val(0);
 	}
