@@ -99,6 +99,36 @@ function resetEnemy(element) {
 	$(element).find(".enemy-trait").html("");
 }
 
+// Set Battlefield
+var battlefield = [];
+
+$(document).ready(function() {
+	$(".battlefield-type").change(function() {
+		updateBattlefield();
+	});
+	$("#battlefield-type11").change(function() {
+		if ($(this).is(":checked")) {
+			$("#battlefield-type8").prop("checked", true);
+		}
+	});
+});
+
+function updateBattlefield() {
+	battlefield = [];
+	$(".battlefield-type").each(function() {
+		if ($(this).is(":checked")) {
+			battlefield.push(this.value);
+		}
+	});
+}
+
+function resetBattlefield() {
+	battlefield = [];
+	$(".battlefield-type").each(function() {
+		$(this).prop("checked", false);
+	});
+}
+
 // Set Servant
 var servantInfo = [];
 var servantSave = [];
