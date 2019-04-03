@@ -275,7 +275,7 @@
 					<img class="class-logo left" id="current-servant-class" src="images/class/Unknown.png" />
 					<span class="star left dull" id="current-servant-star" data-star="">★★★★★</span>
 					<label class="label">等級</label>
-					<select class="narrow" id="current-servant-lv">
+					<select class="narrow" id="current-servant-lv" disabled>
 						<option value="0">預設</option>
 						<option value="100">100</option>
 						<option value="99">99</option>
@@ -381,7 +381,7 @@
 			</div>
 			<div class="element-50">
 				<label class="label">寶具等級</label>
-				<select class="tight" id="current-servant-nplv">
+				<select class="tight" id="current-servant-nplv" disabled>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -389,16 +389,16 @@
 					<option value="5">5</option>
 				</select>
 				<span class="label">芙芙(ATK)</span>
-				<input type="number" class="narrow" id="current-servant-statup" value="0" min="0" max="2000">
+				<input type="number" class="narrow" id="current-servant-statup" value="0" min="0" max="2000" disabled>
 				<span class="label">剩餘HP(%)</span>
-				<input type="number" class="narrow" id="current-servant-hp" value="100" min="0" max="100">
+				<input type="number" class="narrow" id="current-servant-hp" value="100" min="0" max="100" disabled>
 				<label class="switch">
-					<input type="checkbox" id="current-servant-rankup" value="true">
+					<input type="checkbox" id="current-servant-rankup" value="true" disabled>
 					<span class="slider"></span>
 				</label>
 				<span class="label">寶具強化</span>
 				<label class="label">寶具OC</label>
-				<select id="current-servant-npoc">
+				<select id="current-servant-npoc" disabled>
 					<option value="oc1">100%</option>
 					<option value="oc2">200%</option>
 					<option value="oc3">300%</option>
@@ -426,7 +426,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill1" value="true">
+							<input type="checkbox" id="use-skill1" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -434,7 +434,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill1-lv">	
+						<select class="narrow" id="skill1-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -450,7 +450,7 @@
 					</div>		
 					<div class="element-10">
 						<label class="switch">
-							<input type="checkbox" id="check-skill1-rankup" value="true">
+							<input type="checkbox" id="check-skill1-rankup" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>						    
@@ -470,7 +470,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill2" value="true">
+							<input type="checkbox" id="use-skill2" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -478,7 +478,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill2-lv">	
+						<select class="narrow" id="skill2-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -494,7 +494,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="check-skill2-rankup" value="true">
+							<input type="checkbox" id="check-skill2-rankup" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>	
@@ -514,7 +514,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill3" value="true">
+							<input type="checkbox" id="use-skill3" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -522,7 +522,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill3-lv">	
+						<select class="narrow" id="skill3-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -538,7 +538,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="check-skill3-rankup" value="true">
+							<input type="checkbox" id="check-skill3-rankup" value="true" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>	
@@ -572,7 +572,7 @@
 				</div>			
 				<div class="element-10">			
 					<label class="switch">
-						<input type="checkbox" id="servant-ce-max" value="true">
+						<input type="checkbox" id="servant-ce-max" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>	
@@ -580,7 +580,7 @@
 				<div class="element-10">			
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="servant-ce-lv">
+						<select class="narrow" id="servant-ce-lv" disabled>
 							<option value="0">預設</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -697,22 +697,22 @@
 <!--Master Section-->
 <div class="info" id="master-info">
 	<div class="setup" id="master-setup">
-		<div class="row">				
+		<div class="row">
+			<label class="label">御主禮裝</label>	
+			<select class="wide" id="master-name-selection">
+				<option value="none">不使用禮裝</option>
+			</select>
 			<span class="resetbtn btn" onclick="applyMaster()">還原數值</span>		
 		</div>				
 		<div class="collapsible" id="master-setup-collapsible">				
 			<div class="row">
 				<div class="element-20">
-					<label class="label">御主禮裝</label>	
-					<select class="wide" id="master-name-selection">
-						<option value="none">不使用禮裝</option>
-					</select>
+					<img class="master-img" id="master-img1" src="">
+					<img class="master-img" id="master-img2" src="">
 				</div>
-				<img class="master-img" id="master-img1" src="">
-				<img class="master-img" id="master-img2" src="">
 				<div class="element-20">					
 					<label class="label">等級</label>	
-					<select id="master-lv">	
+					<select id="master-lv" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -730,7 +730,7 @@
 				<div class="element-30">
 					<img class="skill-logo" id="master-skill1-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill1" value="true">
+						<input type="checkbox" id="check-master-skill1" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>
@@ -738,7 +738,7 @@
 				<div class="element-30">			
 					<img class="skill-logo" id="master-skill2-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill2" value="true">
+						<input type="checkbox" id="check-master-skill2" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>	
@@ -746,7 +746,7 @@
 				<div class="element-30">			
 					<img class="skill-logo" id="master-skill3-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill3" value="true">
+						<input type="checkbox" id="check-master-skill3" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>	
