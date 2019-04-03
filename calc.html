@@ -572,7 +572,7 @@
 				</div>			
 				<div class="element-10">			
 					<label class="switch">
-						<input type="checkbox" id="servant-ce-max" value="true" onchange="setCEEffect(this, 'servantCE', '#ce-dscrp')">
+						<input type="checkbox" id="servant-ce-max" value="true">
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>	
@@ -698,69 +698,76 @@
 <div class="info" id="master-info">
 	<div class="setup" id="master-setup">
 		<div class="row">				
-			<span class="resetbtn btn" onclick="reapplyCE(master)">還原數值</span>			
-			<span class="resetbtn btn" onclick="resetCE(master)">不使用禮裝</span>			
+			<span class="resetbtn btn" onclick="applyMaster()">還原數值</span>		
 		</div>				
-		<div class="collapsible" id="ce-setup-collapsible">				
+		<div class="collapsible" id="master-setup-collapsible">				
+			<div class="row">
+				<div class="element-20">
+					<label class="label">御主禮裝</label>	
+					<select class="wide" id="master-name-selection">
+						<option value="none">不使用禮裝</option>
+					</select>
+				</div>
+				<img class="master-img" id="master-img1" src="">
+				<img class="master-img" id="master-img2" src="">
+				<div class="element-20">					
+					<label class="label">等級</label>	
+					<select id="master-lv">	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>		
+				</div>			
+			</div>				
 			<div class="row">				
-				<span class="element-20" id="master-name"></span>			
-				<div class="element-20">			
-					<span>		
-						<label class="label" for="master-lv">等級</label>	
-						<select id="master-lv" name="masterlv">	
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>	
-					</span>		
+				<div class="element-30">
+					<img class="skill-logo" id="master-skill1-logo" src="" />
+					<label class="switch">
+						<input type="checkbox" id="check-master-skill1" value="true">
+						<span class="slider"></span>
+					</label>
+					<span class="label">使用技能</span>
+				</div>			
+				<div class="element-30">			
+					<img class="skill-logo" id="master-skill2-logo" src="" />
+					<label class="switch">
+						<input type="checkbox" id="check-master-skill2" value="true">
+						<span class="slider"></span>
+					</label>
+					<span class="label">使用技能</span>	
+				</div>			
+				<div class="element-30">			
+					<img class="skill-logo" id="master-skill3-logo" src="" />
+					<label class="switch">
+						<input type="checkbox" id="check-master-skill3" value="true">
+						<span class="slider"></span>
+					</label>
+					<span class="label">使用技能</span>	
 				</div>			
 			</div>				
 			<div class="row">				
 				<div class="element-30">			
-					<form>		
-						<input type="checkbox" name="check-master1" value="true" onchange="setMaster(1)">	
-						<img id="master1-img" src="" />	
-						<span id="master1-name"></span>	
-					</form>		
-				</div>			
-				<div class="element-30">			
-					<form>		
-						<input type="checkbox" name="check-master2" value="true" onchange="setMaster(2)">	
-						<img id="master2-img" src="" />	
-						<span id="master2-name"></span>	
-					</form>		
-				</div>			
-				<div class="element-30">			
-					<form>		
-						<input type="checkbox" name="check-master3" value="true" onchange="setMaster(3)">	
-						<img id="master3-img" src="" />	
-						<span id="master3-name"></span>	
-					</form>		
-				</div>			
-			</div>				
-			<div class="row">				
-				<div class="element-30">			
 					<span class="label">效果</span>		
-					<span id="master1-dscrp"></span>		
+					<span id="master-skill1-dscrp"></span>		
 				</div>			
 				<div class="element-30">			
 					<span class="label">效果</span>		
-					<span id="master1-dscrp"></span>		
+					<span id="master-skill2-dscrp"></span>		
 				</div>			
 				<div class="element-30">			
 					<span class="label">效果</span>		
-					<span id="master1-dscrp"></span>		
+					<span id="master-skill3-dscrp"></span>		
 				</div>			
 			</div>				
 		</div>
-		<br/>
+		<span class="btnright btn collapsebtn" id="master-setup-collapsebtn" onclick="toggle(this, '#master-setup-collapsible')">展開▼</span>
 	</div>
 </div>
 <br/>
