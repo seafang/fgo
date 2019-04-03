@@ -72,7 +72,7 @@ function updateMaster(element) {
 	var row = $(element).parents("tr");
 	var rowName = $(row).find("td:first").html();
 	var info = {};
-	if (bgServant[0] !== undefined) {
+	if (bgMaster[0] !== undefined) {
 		var position = bgMaster.findIndex(function(obj) {
 			return obj.name == rowName; 
 		});
