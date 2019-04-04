@@ -1,9 +1,39 @@
-// Servant enemy modal
+// Servant Enemy Modal
 let servantEnemyFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
 	star: [0, 1, 2, 3, 4, 5]
 };
+
+$(document).ready(function() {
+	$("#servant-enemy-modal-closebtn").click(function() {
+		closeModal();
+		initialServantEnemy();
+	});
+	$(".servant-enemy-class").click(function() {
+		var servantClass = $(this).attr("title");
+		servantEnemyClassChange(this, servantClass);
+	});
+	$("#servant-enemy-class-setbtn").click(function() {
+		servantEnemyClassAll();
+	});
+	$("#servant-enemy-class-resetbtn").click(function() {
+		servantEnemyClassNone();
+	});
+	$(".servant-enemy-star").change(function() {
+		var star = $(this).val();
+		servantEnemyStarChange(this, star);
+	});
+	$("#servant-enemy-star-setbtn").click(function() {
+		servantEnemyStarAll();
+	});
+	$("#servant-enemy-star-resetbtn").click(function() {
+		servantEnemyStarNone();
+	});
+	$("#servant-enemy-applybtn").click(function() {
+		loadServantEnemyImg();
+	});
+}
 
 function loadServantEnemyImg() {
 	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
@@ -73,7 +103,7 @@ function initialServantEnemy() {
 }
 
 
-//Servant modal
+// Servant Modal
 let servantFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
@@ -90,6 +120,119 @@ let servantFilter = {
 		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"],
 	owned: [true, false]
 };
+
+$(document).ready(function() {
+	$("#servant-enemy-modal-closebtn").click(function() {
+		closeModal();
+		initialServant();
+	});
+	$(".servant-class").click(function() {
+		var servantClass = $(this).attr("title");
+		servantClassChange(this, servantClass);
+	});
+	$("#servant-class-setbtn").click(function() {
+		servantClassAll();
+	});
+	$("#servant-class-resetbtn").click(function() {
+		servantClassNone();
+	});
+	$(".servant-star").change(function() {
+		var star = $(this).val();
+		servantStarChange(this, star);
+	});
+	$("#servant-star-setbtn").click(function() {
+		servantStarAll();
+	});
+	$("#servant-star-resetbtn").click(function() {
+		servantStarNone();
+	});
+	$(".servant-type").change(function() {
+		var type = $(this).val();
+		servantTypeChange(this, type);
+	});
+	$("#servant-type-setbtn").click(function() {
+		servantTypeAll();
+	});
+	$("#servant-type-resetbtn").click(function() {
+		servantTypeNone();
+	});
+	$(".servant-attribute").change(function() {
+		var attribute = $(this).val();
+		servantAttributeChange(this, attribute);
+	});
+	$("#servant-attribute-setbtn").click(function() {
+		servantAttributeAll();
+	});
+	$("#servant-attribute-resetbtn").click(function() {
+		servantAttributeNone();
+	});
+	$(".servant-gender").change(function() {
+		var gender = $(this).val();
+		servantGenderChange(this, gender);
+	});
+	$("#servant-gender-setbtn").click(function() {
+		servantGenderAll();
+	});
+	$("#servant-gender-resetbtn").click(function() {
+		servantGenderNone();
+	});
+	$(".servant-alignment1").change(function() {
+		var alignment1 = $(this).val();
+		servantAlignment1Change(this, alignment1);
+	});
+	$("#servant-alignment1-setbtn").click(function() {
+		servantAlignment1All();
+	});
+	$("#servant-alignment1-resetbtn").click(function() {
+		servantAlignment1None();
+	});
+	$(".servant-alignment2").change(function() {
+		var alignment2 = $(this).val();
+		servantAlignment2Change(this, alignment2);
+	});
+	$("#servant-alignment2-setbtn").click(function() {
+		servantAlignment2All();
+	});
+	$("#servant-alignment2-resetbtn").click(function() {
+		servantAlignment2None();
+	});
+	$(".servant-color").change(function() {
+		var color = $(this).val();
+		servantColorChange(this, color);
+	});
+	$("#servant-color-setbtn").click(function() {
+		servantColorAll();
+	});
+	$("#servant-color-resetbtn").click(function() {
+		servantColorNone();
+	});
+	$(".servant-range").change(function() {
+		var range = $(this).val();
+		servantRangeChange(this, range);
+	});
+	$("#servant-range-setbtn").click(function() {
+		servantRangeAll();
+	});
+	$("#servant-range-resetbtn").click(function() {
+		servantRangeNone();
+	});
+	$(".servant-ed").change(function() {
+		var ed = $(this).val();
+		servantEDChange(this, ed);
+	});
+	$("#servant-ed-setbtn").click(function() {
+		servantEDAll();
+	});
+	$("#servant-ed-resetbtn").click(function() {
+		servantEDNone();
+	});
+	$("#servant-owned").change(function() {
+		servantInclusiveChange(this);
+	});
+	$("#servant-applybtn").click(function() {
+		loadServantImg();
+	});
+}
 
 function loadServantImg() {
 	var filteredServant = multiFilter(servants, servantFilter);
@@ -360,7 +503,7 @@ function initialServant() {
 	servantInclusiveReset();
 }
 
-// CE modal
+// CE Modal
 let ceFilter = {
 	ceStar: [1, 2, 3, 4, 5],
 	ceType: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
@@ -370,6 +513,50 @@ let ceFilter = {
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
 	owned: [true, false]
 };
+
+
+$(document).ready(function() {
+	$("#ce-modal-closebtn").click(function() {
+		closeModal();
+		initialCE();
+	});
+	$(".ce-star").change(function() {
+		var star = $(this).val();
+		ceStarChange(this, star);
+	});
+	$("#ce-star-setbtn").click(function() {
+		ceStarAll();
+	});
+	$("#ce-star-resetbtn").click(function() {
+		ceStarNone();
+	});
+	$(".ce-type").change(function() {
+		var type = $(this).val();
+		ceTypeChange(this, type);
+	});
+	$("#ce-type-setbtn").click(function() {
+		ceTypeAll();
+	});
+	$("#ce-type-resetbtn").click(function() {
+		ceTypeNone();
+	});
+	$(".ce-effect").change(function() {
+		var effect = $(this).val();
+		ceEffectChange(this, effect);
+	});
+	$("#ce-effect-setbtn").click(function() {
+		ceEffectAll();
+	});
+	$("#ce-effect-resetbtn").click(function() {
+		ceEffectNone();
+	});
+	$("#modal-ce-owned").change(function() {
+		ceInclusiveChange(this);
+	});
+	$("#ce-applybtn").click(function() {
+		loadCEImg();
+	});
+}
 
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
