@@ -679,6 +679,9 @@ $(document).ready(function() {
 		loadTeammateImg();
 	});
 	$("#teammate1-resetbtn").click(function() {
+		if ($("#teammate-setup-collapsebtn").html() == "展開▼") {
+			$("#teammate-setup-collapsebtn").html("接疊▲");
+		}
 		resetTeammate("teammate1");
 	});
 	$("#teammate1-reapplybtn").click(function() {
