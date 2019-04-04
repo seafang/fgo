@@ -39,9 +39,9 @@
 <div class="info" id="enemy-info">
 	<div class="setup" id="enemy-setup">
 		<div class="row">
-			<a class="modalbtn left btn" onclick="openModal('#common-enemy-modal');initialCommonEnemy();loadCommonEnemyImg();">非從者敵人</a>
-			<a class="modalbtn left btn" onclick="openModal('#servant-enemy-modal');initialServantEnemy();loadServantEnemyImg();">從者敵人</a>
-			<a class="resetbtn left btn" onclick="resetCurrentEnemy()">自訂敵人</a>
+			<a class="modalbtn left btn" id="common-enemy-modalbtn">非從者敵人</a>
+			<a class="modalbtn left btn" id="servant-enemy-modalbtn">從者敵人</a>
+			<a class="resetbtn left btn" id="current-enemy-resetbtn">自訂敵人</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
 			<div class="row">			
@@ -206,9 +206,9 @@
 				</div>
 			</div>
 			<div class="row">			
-				<a class="left btn applybtn" onclick="setEnemy('#enemy1')">設為敵人I</a>		
-				<a class="left btn applybtn" onclick="setEnemy('#enemy2')">設為敵人II</a>		
-				<a class="left btn applybtn" onclick="setEnemy('#enemy3')">設為敵人III</a>		
+				<a class="left btn applybtn" id="enemy1-applytn">設為敵人I</a>		
+				<a class="left btn applybtn" id="enemy2-applytn">設為敵人II</a>		
+				<a class="left btn applybtn" id="enemy3-applytn">設為敵人III</a>		
 			</div>			
 		</div>
 	</div>
@@ -216,7 +216,7 @@
 		<br/>
 		<div class="detail enemy-detail" id="enemy1-detail">
 			<span class="bold indent-4">敵人I</span>
-			<span class="resetbtn btn btnright" onclick="resetEnemy('#enemy1')">清除</span>
+			<span class="resetbtn btn btnright" id="enemy1-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy1-img" src="images/bg_logo.png" />
@@ -242,7 +242,7 @@
 		<br/>
 		<div class="detail enemy-detail" id="enemy2-detail">
 			<span class="bold indent-4">敵人II</span>
-			<span class="resetbtn btn btnright" onclick="resetEnemy('#enemy2')">清除</span>
+			<span class="resetbtn btn btnright" id="enemy2-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy2-img" src="images/bg_logo.png" />
@@ -268,7 +268,7 @@
 		<br/>
 		<div class="detail enemy-detail" id="enemy3-detail">
 			<span class="bold indent-4">敵人III</span>
-			<span class="resetbtn btn btnright" onclick="resetEnemy('#enemy3')">清除</span>
+			<span class="resetbtn btn btnright" id="enemy3-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
 					<img class="left profile-img enemy-img" id="enemy3-img" src="images/bg_logo.png" />
@@ -323,10 +323,10 @@
 				<input type="checkbox" class="battlefield-type" id="battlefield-type12" value="陽光照射">
 				<img class="battlefield-logo" src="images/battlefield/sunlight.webp" />
 				<label for="battlefield-type12" class>陽光照射</label>
-				<span class="resetbtn btn btnright" onclick="resetBattlefield()">取消選擇</span>
+				<span class="resetbtn btn btnright" id="battlefield-resetbtn">取消選擇</span>
 			</div>
 		</div>
-		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn" onclick="toggle(this, '#enemy-setup-collapsible')">展開▼</span>
+		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
 	</div>
 </div>
 <br/>
@@ -335,8 +335,8 @@
 <div class="info" id="servant-info">
 	<div class="setup" id="servant-setup">
 		<div class="row">
-			<a class="modalbtn left btn" onclick="openModal('#servant-modal');setCaller('servant');initialServant();loadServantImg();">選擇從者</a>
-			<span class="resetbtn btn" onclick="resetServant()">還原數值</span>
+			<a class="modalbtn left btn" id="servant-modalbtn">選擇從者</a>
+			<span class="resetbtn btn" id="servant-resetbtn">還原數值</span>
 		</div>
 		<div class="row">
 			<div class="element-20 flex">
@@ -622,7 +622,7 @@
 				</div>
 			</div>
 		</div>
-		<span class="btnright btn collapsebtn" id="servant-setup-collapsebtn" onclick="toggle(this, '#servant-setup-collapsible')">展開▼</span>
+		<span class="btnright btn collapsebtn" id="servant-setup-collapsebtn">展開▼</span>
 	</div>
 </div>
 <br/>
@@ -631,9 +631,9 @@
 <div class="info" id="ce-info">
 	<div class="setup" id="ce-setup">
 		<div class="row">
-			<a class="modalbtn btn" onclick="openModal('#ce-modal');initialCE();loadCEImg();">選擇禮裝</a>
-			<span class="resetbtn btn" onclick="reapplyCE()">還原數值</span>
-			<span class="resetbtn btn" onclick="resetCE()">不使用禮裝</span>
+			<a class="modalbtn btn" id="servant-ce-modalbtn">選擇禮裝</a>
+			<span class="resetbtn btn" id="servant-ce-reapplybtn">還原數值</span>
+			<span class="resetbtn btn" id="servant-ce-resetbtn">不使用禮裝</span>
 		</div>
 		<div class="collapsible" id="ce-setup-collapsible">
 			<div class="row">				
@@ -761,7 +761,7 @@
 				<span id="servant-ce-dscrp"></span>			
 			</div>				
 		</div>
-		<span class="btnright btn collapsebtn" id="ce-setup-collapsebtn" onclick="toggle(this, '#ce-setup-collapsible')">展開▼</span>						   
+		<span class="btnright btn collapsebtn" id="ce-setup-collapsebtn">展開▼</span>						   
 	</div>
 </div>
 <br/>
@@ -774,7 +774,7 @@
 			<select class="wide" id="master-name-selection">
 				<option value="none">不使用禮裝</option>
 			</select>
-			<span class="resetbtn btn" onclick="applyMaster()">還原數值</span>		
+			<span class="resetbtn btn" id="master-resetbtn">還原數值</span>		
 		</div>				
 		<div class="collapsible" id="master-setup-collapsible">				
 			<div class="row">
@@ -839,7 +839,7 @@
 				</div>			
 			</div>				
 		</div>
-		<span class="btnright btn collapsebtn" id="master-setup-collapsebtn" onclick="toggle(this, '#master-setup-collapsible')">展開▼</span>
+		<span class="btnright btn collapsebtn" id="master-setup-collapsebtn">展開▼</span>
 	</div>
 </div>
 <br/>
@@ -847,106 +847,182 @@
 <!--Teammate Section-->
 <div class="info" id="teammate-info">
 	<div class="setup" id="teammate-setup">
-		<div class="teammate-info" id="teammate1">				
+		<div class="row">			
+			<a class="modalbtn left btn" id="teammate1-modalbtn">選擇隊友I</a>
+			<span class="resetbtn btn btnright" id="teammate1-reapplybtn">套用存檔</span>
+			<span class="resetbtn btn btnright" id="teammate1-resetbtn">&times;</span>	
+		</div>	
+		<div class="teammate-detail" id="teammate1">				
 			<div class="row">			
-				<a class="modalbtn left btn" onclick="teammate(1)">選擇隊友I</a>		
-				<span class="resetbtn btn btnright" onclick="resetTeammate(1)">清除</span>		
-			</div>			
-			<div class="row">			
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate1-skill1" value="true" onchange="setTeammateSkill(1, 1)">
-						<img id="teammate1-skill1-img" src="" /><span id="teammate1-skill1-name"></span>
-					</form>	
+				<div class="element-50">		
+					<img class="left teammate-img" src="" />	
+					<span class="teammate-name" id="teammate1-name">未選定隊友</span>	
+					<img class="class-logo left teammate-class" src="images/class/Unknown.png" />	
+					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
 				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate1-skill2" value="true" onchange="setTeammateSkill(1, 2)">
-						<img id="teammate1-skill2-img" src="" /><span id="teammate1-skill2-name"></span>
-					</form>	
-				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate1-skill3" value="true" onchange="setTeammateSkill(1, 3)">
-						<img id="teammate1-skill3-img" src="" /><span id="teammate1-skill3-name"></span>
-					</form>	
-				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate1-np" value="true" onchange="setTeammateNP(1)">
-						<img id="teammate1-np-img" src="" /><span id="teammate1-np-name"></span>
-					</form>	
+				<div class="element-50">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-np" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">寶解</span>	
+					<span class="label">寶具</span><span class="teammate-np-name"></span>	
+					<span class="label">效果</span><span id="teammate-np-dscrp"></span>	
 				</div>		
 			</div>			
 			<div class="row">			
-				<div class="element-25">		
-					<span class="label">效果</span>	
-					<span id="teammate1-skill1-dscrp"></span>	
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill1" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能一</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill1-img" src="" />	
+					<span class="teammate-skill1-name"></span>	
 				</div>		
-				<div class="element-25">		
-					<span class="label">效果</span>	
-					<span id="teammate1-skill2-dscrp"></span>	
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill2" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能二</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill2-img" src="" />	
+					<span class="teammate-skill2-name"></span>	
 				</div>		
-				<div class="element-25">		
-					<span class="label">效果</span>	
-					<span id="teammate1-skill3-dscrp"></span>	
-				</div>		
-				<div class="element-25">		
-					<span class="label">效果</span>	
-					<span id="teammate1-np-dscrp"></span>	
-				</div>		
-			</div>			
-		</div>				
-		<div class="teammate-info" id="teammate2">				
-			<div class="row">			
-				<a class="modalbtn left btn" onclick="teammate(2)">選擇隊友II</a>		
-				<span class="resetbtn btn btnright" onclick="resetTeammate(2)">清除</span>		
-			</div>			
-			<div class="row">			
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate2-skill1" value="true" onchange="setTeammateSkill(2, 1)">
-						<img id="teammate2-skill1-img" src="" /><span id="teammate2-skill1-name"></span>
-					</form>	
-				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate2-skill2" value="true" onchange="setTeammateSkill(2, 2)">
-						<img id="teammate2-skill2-img" src="" /><span id="teammate2-skill2-name"></span>
-					</form>	
-				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate2-skill3" value="true" onchange="setTeammateSkill(2, 3)">
-						<img id="teammate2-skill3-img" src="" /><span id="teammate2-skill3-name"></span>
-					</form>	
-				</div>		
-				<div class="element-25">		
-					<form>	
-						<input type="checkbox" name="teammate2-np" value="true" onchange="setTeammateNP(2)">
-						<img id="teammate2-np-img" src="" /><span id="teammate2-np-name"></span>
-					</form>	
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill3" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能三</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill3-img" src="" />	
+					<span class="teammate-skill3-name"></span>	
 				</div>		
 			</div>			
 			<div class="row">			
-				<div class="element-25">		
+				<div class="element-30">		
 					<span class="label">效果</span>	
-					<span id="teammate2-skill1-dscrp"></span>	
+					<span class="teammate-skill1-dscrp"></span>	
 				</div>		
-				<div class="element-25">		
+				<div class="element-30">		
 					<span class="label">效果</span>	
-					<span id="teammate2-skill2-dscrp"></span>	
+					<span class="teammate-skill2-dscrp"></span>	
 				</div>		
-				<div class="element-25">		
+				<div class="element-30">		
 					<span class="label">效果</span>	
-					<span id="teammate2-skill3-dscrp"></span>	
-				</div>		
-				<div class="element-25">		
-					<span class="label">效果</span>	
-					<span id="teammate2-np-dscrp"></span>	
+					<span class="teammate-skill3-dscrp"></span>	
 				</div>		
 			</div>			
 		</div>				
+		<a class="extendbtn left btn" id="teammate2-extendbtn">+</a>				
+		<div class="teammate-detail" id="teammate2">				
+			<div class="row">			
+				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友I</a>		
+				<span class="resetbtn btn btnright" id="teammate2-reapplybtn">套用存檔</span>		
+				<span class="resetbtn btn btnright" id="teammate2-resetbtn">&times;</span>		
+			</div>			
+			<div class="row">			
+				<div class="element-50">		
+					<img class="left teammate-img" src="" />	
+					<span class="teammate-name">未選定隊友</span>	
+					<img class="class-logo left teammate-class" src="images/class/Unknown.png" />	
+					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
+				</div>		
+				<div class="element-50">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-np" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">寶解</span>	
+					<span class="label">寶具</span><span class="teammate-np-name"></span>	
+					<span class="label">效果</span><span id="teammate-np-dscrp"></span>	
+				</div>		
+			</div>			
+			<div class="row">			
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill1" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能一</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill1-img" src="" />	
+					<span class="teammate-skill1-name"></span>	
+				</div>		
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill2" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能二</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill2-img" src="" />	
+					<span class="teammate-skill2-name"></span>	
+				</div>		
+				<div class="element-30">		
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill3" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">使用技能三</span>	
+					<label class="switch">	
+						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
+						<span class="slider"></span>
+					</label>	
+					<span class="label">技解</span>	
+					<img class="teammate-skill3-img" src="" />	
+					<span class="teammate-skill3-name"></span>	
+				</div>		
+			</div>			
+			<div class="row">			
+				<div class="element-30">		
+					<span class="label">效果</span>	
+					<span class="teammate-skill1-dscrp"></span>	
+				</div>		
+				<div class="element-30">		
+					<span class="label">效果</span>	
+					<span class="teammate-skill2-dscrp"></span>	
+				</div>		
+				<div class="element-30">		
+					<span class="label">效果</span>	
+					<span class="teammate-skill3-dscrp"></span>	
+				</div>		
+			</div>			
+		</div>				
+		<span class="btnright btn collapsebtn" id="teammate-setup-collapsebtn">展開▼</span>
 	</div>			
 </div>
 <br/>
