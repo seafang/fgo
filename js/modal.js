@@ -33,7 +33,7 @@ $(document).ready(function() {
 	$("#servant-enemy-applybtn").click(function() {
 		loadServantEnemyImg();
 	});
-}
+});
 
 function loadServantEnemyImg() {
 	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
@@ -115,14 +115,14 @@ let servantFilter = {
 	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
 	npColor: ["Buster", "Art", "Quick"],
 	npRange: ["全體", "單體"],
-	extraDamage: ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
+	extraDamage: ["無特攻", "Saber", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
 		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"],
 	owned: [true, false]
 };
 
 $(document).ready(function() {
-	$("#servant-enemy-modal-closebtn").click(function() {
+	$("#servant-modal-closebtn").click(function() {
 		closeModal();
 		initialServant();
 	});
@@ -232,7 +232,7 @@ $(document).ready(function() {
 	$("#servant-applybtn").click(function() {
 		loadServantImg();
 	});
-}
+});
 
 function loadServantImg() {
 	var filteredServant = multiFilter(servants, servantFilter);
@@ -503,6 +503,7 @@ function initialServant() {
 	servantInclusiveReset();
 }
 
+
 // CE Modal
 let ceFilter = {
 	ceStar: [1, 2, 3, 4, 5],
@@ -556,7 +557,7 @@ $(document).ready(function() {
 	$("#ce-applybtn").click(function() {
 		loadCEImg();
 	});
-}
+});
 
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
@@ -662,4 +663,401 @@ function initialCE() {
 	ceInclusiveReset();
 }
 
+
+// Teammate Modal
+let teammateFilter = {
+	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
+	star: [0, 1, 2, 3, 4, 5],
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],
+	attribute: ["天", "地", "人", "星", "獸"],
+	gender: ["男性", "女性", "不明"],
+	alignment1: ["秩序", "中立", "混沌"],
+	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
+	npColor: ["Buster", "Art", "Quick"],
+	npRange: ["全體", "單體", "輔助"],
+	owned: [true, false]
+};
+
+$(document).ready(function() {
+	$("#teammate-modal-closebtn").click(function() {
+		closeModal();
+		initialTeammate();
+	});
+	$(".teammate-class").click(function() {
+		var teammateClass = $(this).attr("title");
+		teammateClassChange(this, teammateClass);
+	});
+	$("#teammate-class-setbtn").click(function() {
+		teammateClassAll();
+	});
+	$("#teammate-class-resetbtn").click(function() {
+		teammateClassNone();
+	});
+	$(".teammate-star").change(function() {
+		var star = $(this).val();
+		teammateStarChange(this, star);
+	});
+	$("#teammate-star-setbtn").click(function() {
+		teammateStarAll();
+	});
+	$("#teammate-star-resetbtn").click(function() {
+		teammateStarNone();
+	});
+	$(".teammate-type").change(function() {
+		var type = $(this).val();
+		teammateTypeChange(this, type);
+	});
+	$("#teammate-type-setbtn").click(function() {
+		teammateTypeAll();
+	});
+	$("#teammate-type-resetbtn").click(function() {
+		teammateTypeNone();
+	});
+	$(".teammate-attribute").change(function() {
+		var attribute = $(this).val();
+		teammateAttributeChange(this, attribute);
+	});
+	$("#teammate-attribute-setbtn").click(function() {
+		teammateAttributeAll();
+	});
+	$("#teammate-attribute-resetbtn").click(function() {
+		teammateAttributeNone();
+	});
+	$(".teammate-gender").change(function() {
+		var gender = $(this).val();
+		teammateGenderChange(this, gender);
+	});
+	$("#teammate-gender-setbtn").click(function() {
+		teammateGenderAll();
+	});
+	$("#teammate-gender-resetbtn").click(function() {
+		teammateGenderNone();
+	});
+	$(".teammate-alignment1").change(function() {
+		var alignment1 = $(this).val();
+		teammateAlignment1Change(this, alignment1);
+	});
+	$("#teammate-alignment1-setbtn").click(function() {
+		teammateAlignment1All();
+	});
+	$("#teammate-alignment1-resetbtn").click(function() {
+		teammateAlignment1None();
+	});
+	$(".teammate-alignment2").change(function() {
+		var alignment2 = $(this).val();
+		teammateAlignment2Change(this, alignment2);
+	});
+	$("#teammate-alignment2-setbtn").click(function() {
+		teammateAlignment2All();
+	});
+	$("#teammate-alignment2-resetbtn").click(function() {
+		teammateAlignment2None();
+	});
+	$(".teammate-color").change(function() {
+		var color = $(this).val();
+		teammateColorChange(this, color);
+	});
+	$("#teammate-color-setbtn").click(function() {
+		teammateColorAll();
+	});
+	$("#teammate-color-resetbtn").click(function() {
+		teammateColorNone();
+	});
+	$(".teammate-range").change(function() {
+		var range = $(this).val();
+		teammateRangeChange(this, range);
+	});
+	$("#teammate-range-setbtn").click(function() {
+		teammateRangeAll();
+	});
+	$("#teammate-range-resetbtn").click(function() {
+		teammateRangeNone();
+	});
+	$(".teammate-ed").change(function() {
+		var ed = $(this).val();
+		teammateEDChange(this, ed);
+	});
+	$("#teammate-ed-setbtn").click(function() {
+		teammateEDAll();
+	});
+	$("#teammate-ed-resetbtn").click(function() {
+		teammateEDNone();
+	});
+	$("#teammate-owned").change(function() {
+		teammateInclusiveChange(this);
+	});
+	$("#teammate-applybtn").click(function() {
+		loadTeammateImg();
+	});
+});
+
+function loadTeammateImg() {
+	var filteredTeammate = multiFilter(teammates, teammateFilter);
+	var teammateID = filteredTeammate.map(function (teammate) {
+		return teammate.id
+	});
+	$("#teammate-img").html("");
+	var imglist = "";	
+	$.each(teammateID, function(index, value) {
+		imglist += "<img class='left teammate-img' src='images/teammate/" + value +
+		".webp' onclick='pickTeammate(" + value + ")' />"
+	});
+	$("#teammate-img").html(imglist);
+}
+
+function teammateClassChange(element, className) {
+	var newClass = teammateFilter.classes;
+	if ($(element).hasClass("dull")) {
+		$(element).removeClass("dull");
+		newClass.push(className);
+		teammateFilter.classes = newClass;
+	} else {
+		position = newClass.indexOf(className);
+		newClass.splice(position, 1);
+		$(element).addClass("dull");
+		teammateFilter.classes = newClass;
+	}
+}
+
+function teammateClassAll() {
+	$(".teammate-class").removeClass("dull");
+	teammateFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
+}
+
+function teammateClassNone() {
+	$(".teammate-class").removeClass("dull");
+	$(".teammate-class").addClass("dull");
+	teammateFilter.classes = [];
+}
+
+function teammateStarChange(element, starNo) {
+	var newStar = teammateFilter.star;
+	if ($(element).prop("checked")) {
+		newStar.push(starNo);
+		teammateFilter.star = newStar;
+	} else {
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
+		teammateFilter.star = newStar;
+	}
+}
+
+function teammateStarAll() {
+	$(".teammate-star").prop("checked", true);
+	teammateFilter.star = [0, 1, 2, 3, 4, 5];
+}
+
+function teammateStarNone() {
+	$(".teammate-star").prop("checked", false);
+	teammateFilter.star = [];
+}
+
+function teammateTypeChange(element, typeName) {
+	var newType = teammateFilter.type;
+	if ($(element).prop("checked")) {
+		newType.push(typeName);
+		teammateFilter.type = newType;
+	} else {
+		position = newType.indexOf(typeName);
+		newType.splice(position, 1);
+		teammateFilter.type = newType;
+	}
+}
+
+function teammateTypeAll() {
+	$(".teammate-type").prop("checked", true);
+	teammateFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
+}
+
+function teammateTypeNone() {
+	$(".teammate-type").prop("checked", false);
+	teammateFilter.type = [];
+}
+
+function teammateAttributeChange(element, attributeName) {
+	var newAttribute = teammateFilter.attribute;
+	if ($(element).prop("checked")) {
+		newAttribute.push(attributeName);
+		teammateFilter.attribute = newAttribute;
+	} else {
+		position = newAttribute.indexOf(attributeName);
+		newAttribute.splice(position, 1);
+		teammateFilter.attribute = newAttribute;
+	}
+}
+
+function teammateAttributeAll() {
+	$(".teammate-attribute").prop("checked", true);
+	teammateFilter.attribute = ["天", "地", "人", "星", "獸"];
+}
+
+function teammateAttributeNone() {
+	$(".teammate-attribute").prop("checked", false);
+	teammateFilter.attribute = [];
+}
+
+function teammateGenderChange(element, genderName) {
+	var newGender = teammateFilter.gender;
+	if ($(element).prop("checked")) {
+		newGender.push(genderName);
+		teammateFilter.gender = newGender;
+	} else {
+		position = newGender.indexOf(genderName);
+		newGender.splice(position, 1);
+		teammateFilter.gender = newGender;
+	}
+}
+
+function teammateGenderAll() {
+	$(".teammate-gender").prop("checked", true);
+	teammateFilter.gender = ["男性", "女性", "不明"];
+}
+
+function teammateGenderNone() {
+	$(".teammate-gender").prop("checked", false);
+	teammateFilter.gender = [];
+}
+
+
+function teammateAlignment1Change(element, alignment1Name) {
+	var newAlignment1 = teammateFilter.alignment1;
+	if ($(element).prop("checked")) {
+		newAlignment1.push(alignment1Name);
+		teammateFilter.alignment1 = newAlignment1;
+	} else {
+		position = newAlignment1.indexOf(alignment1Name);
+		newAlignment1.splice(position, 1);
+		teammateFilter.alignment1 = newAlignment1;
+	}
+}
+
+function teammateAlignment1All() {
+	$(".teammate-alignment1").prop("checked", true);
+	teammateFilter.alignment1 = ["秩序", "中立", "混沌"];
+}
+
+function teammateAlignment1None() {
+	$(".teammate-alignment1").prop("checked", false);
+	teammateFilter.alignment1 = [];
+}
+
+function teammateAlignment2Change(element, alignment2Name) {
+	var newAlignment2 = teammateFilter.alignment2;
+	if ($(element).prop("checked")) {
+		newAlignment2.push(alignment2Name);
+		teammateFilter.alignment2 = newAlignment2;
+	} else {
+		position = newAlignment2.indexOf(alignment2Name);
+		newAlignment2.splice(position, 1);
+		teammateFilter.alignment2 = newAlignment2;
+	}
+}
+
+function teammateAlignment2All() {
+	$(".teammate-alignment2").prop("checked", true);
+	teammateFilter.alignment2 = ["善", "中庸", "惡", "狂", "花嫁", "夏"];
+}
+
+function teammateAlignment2None() {
+	$(".teammate-alignment2").prop("checked", false);
+	teammateFilter.alignment2 = [];
+}
+
+function teammateColorChange(element, colorName) {
+	var newColor = teammateFilter.npColor;
+	if ($(element).prop("checked")) {
+		newColor.push(colorName);
+		teammateFilter.npColor = newColor;
+	} else {
+		position = newColor.indexOf(colorName);
+		newColor.splice(position, 1);
+		teammateFilter.npColor = newColor;
+	}
+}
+
+function teammateColorAll() {
+	$(".teammate-color").prop("checked", true);
+	teammateFilter.npColor = ["Buster", "Art", "Quick"];
+}
+
+function teammateColorNone() {
+	$(".teammate-color").prop("checked", false);
+	teammateFilter.npColor = [];
+}
+
+function teammateRangeChange(element, rangeName) {
+	var newRange = teammateFilter.npRange;
+	if ($(element).prop("checked")) {
+		newRange.push(rangeName);
+		teammateFilter.npRange = newRange;
+	} else {
+		position = newRange.indexOf(rangeName);
+		newRange.splice(position, 1);
+		teammateFilter.npRange = newRange;
+	}
+}
+
+function teammateRangeAll() {
+	$(".teammate-range").prop("checked", true);
+	teammateFilter.npRange = ["全體", "單體"];
+}
+
+function teammateRangeNone() {
+	$(".teammate-range").prop("checked", false);
+	teammateFilter.npRange = [];
+}
+
+function teammateEDChange(element, edName) {
+	var newED = teammateFilter.extraDamage;
+	if ($(element).prop("checked")) {
+		newED.push(edName);
+		teammateFilter.extraDamage = newED;
+	} else {
+		position = newED.indexOf(edName);
+		newED.splice(position, 1);
+		teammateFilter.extraDamage = newED;
+	}
+}
+
+function teammateEDAll() {
+	$(".teammate-ed").prop("checked", true);
+	teammateFilter.extraDamage = ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
+		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
+		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"];
+}
+
+function teammateEDNone() {
+	$(".teammate-ed").prop("checked", false);
+	teammateFilter.extraDamage = [];
+}
+
+function teammateInclusiveChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		teammateFilter.owned = [true];
+	} else {
+		teammateFilter.owned = [true, false];
+	}
+}
+
+function teammateInclusiveReset() {
+	$("#teammate-owned").prop("checked", false);
+	teammateFilter.owned = [true, false];
+}
+
+function initialTeammate() {
+	teammateClassAll();
+	teammateStarAll();
+	teammateTypeAll();
+	teammateAttributeAll();
+	teammateGenderAll();
+	teammateAlignment1All();
+	teammateAlignment2All();
+	teammateColorAll();
+	teammateRangeAll();
+	teammateEDAll();
+	teammateInclusiveReset();
+}
 
