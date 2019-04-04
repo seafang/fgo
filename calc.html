@@ -939,7 +939,7 @@
 		</div>
 		<div class="teammate-detail" id="teammate2">				
 			<div class="row">			
-				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友I</a>		
+				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友II</a>		
 				<span class="resetbtn btn btnright" id="teammate2-reapplybtn">套用存檔</span>		
 				<span class="resetbtn btn btnright" id="teammate2-resetbtn">&times;</span>		
 			</div>			
@@ -1120,44 +1120,44 @@
 <div class="modal" id="servant-enemy-modal">
 	<div class="modal-box" id="servant-enemy-modal-box">
 		<div class="row">
-			<span class="closebtn" onclick="closeModal();initialServantEnemy();">&times;</span>
+			<span class="closebtn" id="servant-enemy-modal-closebtn">&times;</span>
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left servant-enemy-class" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantEnemyClassChange(this, 'Saber')" />
-				<img class="class-logo left servant-enemy-class" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="servantEnemyClassChange(this, 'Archer')" />
-				<img class="class-logo left servant-enemy-class" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="servantEnemyClassChange(this, 'Lancer')" />
-				<img class="class-logo left servant-enemy-class" title="Rider" data-class="Rider" src="images/class/Rider.png" onclick="servantEnemyClassChange(this, 'Rider')" />
-				<img class="class-logo left servant-enemy-class" title="Caster" data-class="Caster" src="images/class/Caster.png" onclick="servantEnemyClassChange(this, 'Caster')" />
-				<img class="class-logo left servant-enemy-class" title="Assassin" data-class="Assassin" src="images/class/Assassin.png" onclick="servantEnemyClassChange(this, 'Assassin')" />
-				<img class="class-logo left servant-enemy-class" title="Berserker" data-class="Berserker" src="images/class/Berserker.png" onclick="servantEnemyClassChange(this, 'Berserker')" />
-				<img class="class-logo left servant-enemy-class" title="Shielder" data-class="Shielder" src="images/class/Shielder.png" onclick="servantEnemyClassChange(this, 'Shielder')" />
-				<img class="class-logo left servant-enemy-class" title="Ruler" data-class="Ruler" src="images/class/Ruler.png" onclick="servantEnemyClassChange(this, 'Ruler')" />
-				<img class="class-logo left servant-enemy-class" title="Avenger" data-class="Avenger" src="images/class/Avenger.png" onclick="servantEnemyClassChange(this, 'Avenger')" />
-				<img class="class-logo left servant-enemy-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantEnemyClassChange(this, 'Mooncancer')" />
-				<img class="class-logo left servant-enemy-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantEnemyClassChange(this, 'Alterego')" />
-				<img class="class-logo left servant-enemy-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantEnemyClassChange(this, 'Foreigner')" />
-				<span class="btn setbtn left" onclick="servantEnemyClassAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantEnemyClassNone()">取消全選</span>
+				<img class="class-logo left servant-enemy-class" title="Saber" src="images/class/Saber.png" />
+				<img class="class-logo left servant-enemy-class" title="Archer" src="images/class/Archer.png" />
+				<img class="class-logo left servant-enemy-class" title="Lancer" src="images/class/Lancer.png" />
+				<img class="class-logo left servant-enemy-class" title="Rider" src="images/class/Rider.png" />
+				<img class="class-logo left servant-enemy-class" title="Caster" src="images/class/Caster.png" />
+				<img class="class-logo left servant-enemy-class" title="Assassin" src="images/class/Assassin.png" />
+				<img class="class-logo left servant-enemy-class" title="Berserker" src="images/class/Berserker.png" />
+				<img class="class-logo left servant-enemy-class" title="Shielder" src="images/class/Shielder.png" />
+				<img class="class-logo left servant-enemy-class" title="Ruler" src="images/class/Ruler.png" />
+				<img class="class-logo left servant-enemy-class" title="Avenger" src="images/class/Avenger.png" />
+				<img class="class-logo left servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.png" />
+				<img class="class-logo left servant-enemy-class" title="Alterego" src="images/class/Alterego.png" />
+				<img class="class-logo left servant-enemy-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<span class="btn setbtn left" id="servant-enemy-class-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-enemy-class-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
-				<input type="checkbox" class="servant-enemy-star left" value="0" id="servant-enemy-star0" onchange="servantEnemyStarChange(this, 0)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="0" id="servant-enemy-star0" checked>
 				<label for="servant-enemy-star0" class="star left">－</label>
-				<input type="checkbox" class="servant-enemy-star left" value="1" id="servant-enemy-star1" onchange="servantEnemyStarChange(this, 1)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="1" id="servant-enemy-star1" checked>
 				<label for="servant-enemy-star1" class="star left">★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="2" id="servant-enemy-star2" onchange="servantEnemyStarChange(this, 2)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="2" id="servant-enemy-star2" checked>
 				<label for="servant-enemy-star2" class="star left">★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="3" id="servant-enemy-star3" onchange="servantEnemyStarChange(this, 3)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="3" id="servant-enemy-star3" checked>
 				<label for="servant-enemy-star3" class="star left">★★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="4" id="servant-enemy-star4" onchange="servantEnemyStarChange(this, 4)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="4" id="servant-enemy-star4" checked>
 				<label for="servant-enemy-star4" class="star left">★★★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="5" id="servant-enemy-star5" onchange="servantEnemyStarChange(this, 5)" checked>
+				<input type="checkbox" class="servant-enemy-star left" value="5" id="servant-enemy-star5" checked>
 				<label for="servant-enemy-star5" class="star left">★★★★★</label>
-				<span class="btn setbtn left" onclick="servantEnemyStarAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantEnemyStarNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-enemy-star-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-enemy-star-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
-				<span class="btn applybtn left" onclick="loadServantEnemyImg()">套用篩選</span>
+				<span class="btn applybtn left" id="servant-enemy-applybtn">套用篩選</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
@@ -1169,197 +1169,197 @@
 <div class="modal" id="servant-modal">
 	<div class="modal-box" id="servant-modal-box">
 		<div class="row">
-			<span class="closebtn" onclick="closeModal();initialServant();">&times;</span>
+			<span class="closebtn" id="servant-modal-closebtn">&times;</span>
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left servant-class" title="Saber" data-class="Saber" src="images/class/Saber.png" onclick="servantClassChange(this, 'Saber')" />
-				<img class="class-logo left servant-class" title="Archer" data-class="Archer" src="images/class/Archer.png" onclick="servantClassChange(this, 'Archer')" />
-				<img class="class-logo left servant-class" title="Lancer" data-class="Lancer" src="images/class/Lancer.png" onclick="servantClassChange(this, 'Lancer')" />
-				<img class="class-logo left servant-class" title="Rider" data-class="Rider" src="images/class/Rider.png" onclick="servantClassChange(this, 'Rider')" />
-				<img class="class-logo left servant-class" title="Caster" data-class="Caster" src="images/class/Caster.png" onclick="servantClassChange(this, 'Caster')" />
-				<img class="class-logo left servant-class" title="Assassin" data-class="Assassin" src="images/class/Assassin.png" onclick="servantClassChange(this, 'Assassin')" />
-				<img class="class-logo left servant-class" title="Berserker" data-class="Berserker" src="images/class/Berserker.png" onclick="servantClassChange(this, 'Berserker')" />
-				<img class="class-logo left servant-class" title="Shielder" data-class="Shielder" src="images/class/Shielder.png" onclick="servantClassChange(this, 'Shielder')" />
-				<img class="class-logo left servant-class" title="Ruler" data-class="Ruler" src="images/class/Ruler.png" onclick="servantClassChange(this, 'Ruler')" />
-				<img class="class-logo left servant-class" title="Avenger" data-class="Avenger" src="images/class/Avenger.png" onclick="servantClassChange(this, 'Avenger')" />
-				<img class="class-logo left servant-class" title="Mooncancer" data-class="Mooncancer" src="images/class/Mooncancer.png" onclick="servantClassChange(this, 'Mooncancer')" />
-				<img class="class-logo left servant-class" title="Alterego" data-class="Alterego" src="images/class/Alterego.png" onclick="servantClassChange(this, 'Alterego')" />
-				<img class="class-logo left servant-class" title="Foreigner" data-class="Foreigner" src="images/class/Foreigner.png" onclick="servantClassChange(this, 'Foreigner')" />
-				<span class="btn setbtn left" onclick="servantClassAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantClassNone()">取消全選</span>
+				<img class="class-logo left servant-class" title="Saber" src="images/class/Saber.png" />
+				<img class="class-logo left servant-class" title="Archer" src="images/class/Archer.png" />
+				<img class="class-logo left servant-class" title="Lancer" src="images/class/Lancer.png" />
+				<img class="class-logo left servant-class" title="Rider" src="images/class/Rider.png" />
+				<img class="class-logo left servant-class" title="Caster" src="images/class/Caster.png" />
+				<img class="class-logo left servant-class" title="Assassin" src="images/class/Assassin.png" />
+				<img class="class-logo left servant-class" title="Berserker" src="images/class/Berserker.png" />
+				<img class="class-logo left servant-class" title="Shielder" src="images/class/Shielder.png" />
+				<img class="class-logo left servant-class" title="Ruler" src="images/class/Ruler.png" />
+				<img class="class-logo left servant-class" title="Avenger" src="images/class/Avenger.png" />
+				<img class="class-logo left servant-class" title="Mooncancer" src="images/class/Mooncancer.png" />
+				<img class="class-logo left servant-class" title="Alterego" src="images/class/Alterego.png" />
+				<img class="class-logo left servant-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<span class="btn setbtn left" id="servant-class-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-class-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
-				<input type="checkbox" class="servant-star left" value="0" id="servant-star0" onchange="servantStarChange(this, 0)" checked>
+				<input type="checkbox" class="servant-star left" value="0" id="servant-star0" checked>
 				<label for="servant-star0" class="star left">－</label>
-				<input type="checkbox" class="servant-star left" value="1" id="servant-star1" onchange="servantStarChange(this, 1)" checked>
+				<input type="checkbox" class="servant-star left" value="1" id="servant-star1" checked>
 				<label for="servant-star1" class="star left">★</label>
-				<input type="checkbox" class="servant-star left" value="2" id="servant-star2" onchange="servantStarChange(this, 2)" checked>
+				<input type="checkbox" class="servant-star left" value="2" id="servant-star2" checked>
 				<label for="servant-star2" class="star left">★★</label>
-				<input type="checkbox" class="servant-star left" value="3" id="servant-star3" onchange="servantStarChange(this, 3)" checked>
+				<input type="checkbox" class="servant-star left" value="3" id="servant-star3" checked>
 				<label for="servant-star3" class="star left">★★★</label>
-				<input type="checkbox" class="servant-star left" value="4" id="servant-star4" onchange="servantStarChange(this, 4)" checked>
+				<input type="checkbox" class="servant-star left" value="4" id="servant-star4" checked>
 				<label for="servant-star4" class="star left">★★★★</label>
-				<input type="checkbox" class="servant-star left" value="5" id="servant-star5" onchange="servantStarChange(this, 5)" checked>
+				<input type="checkbox" class="servant-star left" value="5" id="servant-star5" checked>
 				<label for="servant-star5" class="star left">★★★★★</label>
-				<span class="btn setbtn left" onclick="servantStarAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantStarNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-star-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-star-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<span class="label">分類</span>
-				<input type="checkbox" class="servant-type left" id="servant-type1" value="常駐" onchange="servantTypeChange(this, '常駐')" checked>
+				<input type="checkbox" class="servant-type left" id="servant-type1" value="常駐" checked>
 				<label for="servant-type1" class="left">常駐</label>
-				<input type="checkbox" class="servant-type left" id="servant-type2" value="劇情池限定" onchange="servantTypeChange(this, '劇情池限定')" checked>
+				<input type="checkbox" class="servant-type left" id="servant-type2" value="劇情池限定" checked>
 				<label for="servant-type2" class="left">劇情池限定</label>
-				<input type="checkbox" class="servant-type left" id="servant-type3" value="友情池限定" onchange="servantTypeChange(this, '友情池限定')" checked>
+				<input type="checkbox" class="servant-type left" id="servant-type3" value="友情池限定" checked>
 				<label for="servant-type3" class="left">友情池限定</label>
-				<input type="checkbox" class="servant-type left" id="servant-type4" value="期間限定" onchange="servantTypeChange(this, '期間限定')" checked>
+				<input type="checkbox" class="servant-type left" id="servant-type4" value="期間限定" checked>
 				<label for="servant-type4" class="left">期間限定</label>
-				<input type="checkbox" class="servant-type left" id="servant-type5" value="活動" onchange="servantTypeChange(this, '活動')" checked>
+				<input type="checkbox" class="servant-type left" id="servant-type5" value="活動" checked>
 				<label for="servant-type5" class="left">活動</label>
-				<span class="btn setbtn left" onclick="servantTypeAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantTypeNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-type-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-type-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<span class="label">陣營</span>
-				<input type="checkbox" class="servant-attribute left" id="servant-attribute1" value="天" onchange="servantAttributeChange(this, '天')" checked>
+				<input type="checkbox" class="servant-attribute left" id="servant-attribute1" value="天" checked>
 				<label for="servant-attribute1" class="left">天</label>
-				<input type="checkbox" class="servant-attribute left" id="servant-attribute2" value="地" onchange="servantAttributeChange(this, '地')" checked>
+				<input type="checkbox" class="servant-attribute left" id="servant-attribute2" value="地" checked>
 				<label for="servant-attribute2" class="left">地</label>
-				<input type="checkbox" class="servant-attribute left" id="servant-attribute3" value="人" onchange="servantAttributeChange(this, '人')" checked>
+				<input type="checkbox" class="servant-attribute left" id="servant-attribute3" value="人" checked>
 				<label for="servant-attribute3" class="left">人</label>
-				<input type="checkbox" class="servant-attribute left" id="servant-attribute4" value="星" onchange="servantAttributeChange(this, '星')" checked>
+				<input type="checkbox" class="servant-attribute left" id="servant-attribute4" value="星" checked>
 				<label for="servant-attribute4" class="left">星</label>
-				<input type="checkbox" class="servant-attribute left" id="servant-attribute5" value="獸" onchange="servantAttributeChange(this, '獸')" checked>
+				<input type="checkbox" class="servant-attribute left" id="servant-attribute5" value="獸" checked>
 				<label for="servant-attribute5" class="left">獸</label>
-				<span class="btn setbtn left" onclick="servantAttributeAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantAttributeNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-attribute-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-attribute-resetbtn">取消全選</span>
 				<span class="label">性別</span>
-				<input type="checkbox" class="servant-gender left" id="servant-gender1" value="男性" onchange="servantGenderChange(this, '男性')" checked>
+				<input type="checkbox" class="servant-gender left" id="servant-gender1" value="男性" checked>
 				<label for="servant-gender1" class="left">男性</label>
-				<input type="checkbox" class="servant-gender left" id="servant-gender2" value="女性" onchange="servantGenderChange(this, '女性')" checked>
+				<input type="checkbox" class="servant-gender left" id="servant-gender2" value="女性" checked>
 				<label for="servant-gender2" class="left">女性</label>
-				<input type="checkbox" class="servant-gender left" id="servant-gender3" value="不明" onchange="servantGenderChange(this, '不明')" checked>
+				<input type="checkbox" class="servant-gender left" id="servant-gender3" value="不明" checked>
 				<label for="servant-gender3" class="left">不明</label>
-				<span class="btn setbtn left" onclick="servantGenderAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantGenderNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-gender-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-gender-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<span class="label">屬性I</span>
-				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-1" value="秩序" onchange="servantAlignment1Change(this, '秩序')" checked>
+				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-1" value="秩序" checked>
 				<label for="servant-alignment1-1" class="left">秩序</label>
-				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-2" value="中立" onchange="servantAlignment1Change(this, '中立')" checked>
+				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-2" value="中立" checked>
 				<label for="servant-alignment1-2" class="left">中立</label>
-				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-3" value="混沌" onchange="servantAlignment1Change(this, '混沌')" checked>
+				<input type="checkbox" class="servant-alignment1 left" id="servant-alignment1-3" value="混沌" checked>
 				<label for="servant-alignment1-3" class="left">混沌</label>
-				<span class="btn setbtn left" onclick="servantAlignment1All()">全選</span>
-				<span class="btn resetbtn left" onclick="servantAlignment1None()">取消全選</span>
+				<span class="btn setbtn left" id="servant-alignment1-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-alignment1-resetbtn">取消全選</span>
 				<span class="label">屬性II</span>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-1" value="善" onchange="servantAlignment2Change(this, '善')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-1" value="善" checked>
 				<label for="servant-alignment2-1" class="left">善</label>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-2" value="中庸" onchange="servantAlignment2Change(this, '中庸')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-2" value="中庸" checked>
 				<label for="servant-alignment2-2" class="left">中庸</label>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-3" value="惡" onchange="servantAlignment2Change(this, '惡')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-3" value="惡" checked>
 				<label for="servant-alignment2-3" class="left">惡</label>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-4" value="狂" onchange="servantAlignment2Change(this, '狂')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-4" value="狂" checked>
 				<label for="servant-alignment2-4" class="left">狂花嫁</label>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-5" value="花嫁" onchange="servantAlignment2Change(this, '花嫁')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-5" value="花嫁" checked>
 				<label for="servant-alignment2-5" class="left">花嫁</label>
-				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-6" value="夏" onchange="servantAlignment2Change(this, '夏')" checked>
+				<input type="checkbox" class="servant-alignment2 left" id="servant-alignment2-6" value="夏" checked>
 				<label for="servant-alignment2-6" class="left">夏</label>
-				<span class="btn setbtn left" onclick="servantAlignment2All()">全選</span>
-				<span class="btn resetbtn left" onclick="servantAlignment2None()">取消全選</span>
+				<span class="btn setbtn left" id="servant-alignment2-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-alignment2-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<span class="label">寶具卡色</span>
-				<input type="checkbox" class="servant-color left" id="servant-color-b" value="Buster" onchange="servantColorChange(this, 'Buster')" checked>
+				<input type="checkbox" class="servant-color left" id="servant-color-b" value="Buster" checked>
 				<label for="servant-color-b" class="left">Buster</label>
-				<input type="checkbox" class="servant-color left" id="servant-color-a" value="Art" onchange="servantColorChange(this, 'Art')" checked>
+				<input type="checkbox" class="servant-color left" id="servant-color-a" value="Art" checked>
 				<label for="servant-color-a" class="left">Art</label>
-				<input type="checkbox" class="servant-color left" id="servant-color-q" value="Quick" onchange="servantColorChange(this, 'Quick')" checked>
+				<input type="checkbox" class="servant-color left" id="servant-color-q" value="Quick" checked>
 				<label for="servant-color-q" class="left">Quick</label>
-				<span class="btn setbtn left" onclick="servantColorAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantColorNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-color-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-color-resetbtn">取消全選</span>
 				<span class="label">寶具類別</span>
-				<input type="checkbox" class="servant-range left" id="servant-range-aoe" value="全體" onchange="servantRangeChange(this, '全體')" checked>
+				<input type="checkbox" class="servant-range left" id="servant-range-aoe" value="全體" checked>
 				<label for="servant-range-aoe" class="left">全體</label>
-				<input type="checkbox" class="servant-range left" id="servant-range-single" value="單體" onchange="servantRangeChange(this, '單體')" checked>
+				<input type="checkbox" class="servant-range left" id="servant-range-single" value="單體" checked>
 				<label for="servant-range-single" class="left">單體</label>
-				<span class="btn setbtn left" onclick="servantRangeAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantRangeNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-range-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-range-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<span class="label">特攻</span>
-				<input type="checkbox" class="servant-ed left" id="servant-ed1" value="無特攻" onchange="servantEDChange(this, '無特攻')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed1" value="無特攻" checked>
 				<label  for="servant-ed1" class="left">無特攻</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed2" value="Saber" onchange="servantEDChange(this, 'Saber')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed2" value="Saber" checked>
 				<label  for="servant-ed2" class="left">Saber</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed3" value="Ruler" onchange="servantEDChange(this, 'Ruler')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed3" value="Ruler" checked>
 				<label  for="servant-ed3" class="left">Ruler</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed4" value="男性" onchange="servantEDChange(this, '男性')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed4" value="男性" checked>
 				<label  for="servant-ed4" class="left">男性</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed5" value="女性" onchange="servantEDChange(this, '女性')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed5" value="女性" checked>
 				<label  for="servant-ed5" class="left">女性</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed6" value="混沌" onchange="servantEDChange(this, '混沌')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed6" value="混沌" checked>
 				<label  for="servant-ed6" class="left">混沌</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed7" value="惡" onchange="servantEDChange(this, '惡')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed7" value="惡" checked>
 				<label  for="servant-ed7" class="left">惡</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed8" value="天之力" onchange="servantEDChange(this, '天之力')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed8" value="天之力" checked>
 				<label  for="servant-ed8" class="left">天之力</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed9" value="地之力" onchange="servantEDChange(this, '地之力')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed9" value="地之力" checked>
 				<label  for="servant-ed9" class="left">地之力</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed10" value="人之力" onchange="servantEDChange(this, '人之力')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed10" value="人之力" checked>
 				<label  for="servant-ed10" class="left">人之力</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed11" value="人型" onchange="servantEDChange(this, '人型')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed11" value="人型" checked>
 				<label  for="servant-ed11" class="left">人型</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed12" value="從者" onchange="servantEDChange(this, '從者')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed12" value="從者" checked>
 				<label  for="servant-ed12" class="left">從者</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed13" value="人類" onchange="servantEDChange(this, '人類')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed13" value="人類" checked>
 				<label  for="servant-ed13" class="left">人類</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed14" value="神性" onchange="servantEDChange(this, '神性')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed14" value="神性" checked>
 				<label  for="servant-ed14" class="left">神性</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed15" value="王" onchange="servantEDChange(this, '王')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed15" value="王" checked>
 				<label  for="servant-ed15" class="left">王</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed16" value="羅馬" onchange="servantEDChange(this, '羅馬')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed16" value="羅馬" checked>
 				<label  for="servant-ed16" class="left">羅馬</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed17" value="希臘神話系男性" onchange="servantEDChange(this, '希臘神話系男性')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed17" value="希臘神話系男性" checked>
 				<label  for="servant-ed17" class="left">希臘神話系男性</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed18" value="人類威脅" onchange="servantEDChange(this, '人類威脅')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed18" value="人類威脅" checked>
 				<label  for="servant-ed18" class="left">人類威脅</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed19" value="阿爾托莉亞臉" onchange="servantEDChange(this, '阿爾托莉亞臉')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed19" value="阿爾托莉亞臉" checked>
 				<label  for="servant-ed19" class="left">阿爾托莉亞臉</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed20" value="亞瑟" onchange="servantEDChange(this, '亞瑟')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed20" value="亞瑟" checked>
 				<label  for="servant-ed20" class="left">亞瑟</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed21" value="所愛之人" onchange="servantEDChange(this, '所愛之人')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed21" value="所愛之人" checked>
 				<label  for="servant-ed21" class="left">所愛之人</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed22" value="騎乘" onchange="servantEDChange(this, '騎乘')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed22" value="騎乘" checked>
 				<label  for="servant-ed22" class="left">騎乘</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed23" value="龍" onchange="servantEDChange(this, '龍')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed23" value="龍" checked>
 				<label  for="servant-ed23" class="left">龍</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed24" value="魔性" onchange="servantEDChange(this, '魔性')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed24" value="魔性" checked>
 				<label  for="servant-ed24" class="left">魔性</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed25" value="猛獸" onchange="servantEDChange(this, '猛獸')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed25" value="猛獸" checked>
 				<label  for="servant-ed25" class="left">猛獸</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed26" value="死靈" onchange="servantEDChange(this, '死靈')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed26" value="死靈" checked>
 				<label  for="servant-ed26" class="left">死靈</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed27" value="惡魔" onchange="servantEDChange(this, '惡魔')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed27" value="惡魔" checked>
 				<label  for="servant-ed27" class="left">惡魔</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed28" value="超巨大" onchange="servantEDChange(this, '超巨大')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed28" value="超巨大" checked>
 				<label  for="servant-ed28" class="left">超巨大</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed29" value="毒" onchange="servantEDChange(this, '毒')" checked>
+				<input type="checkbox" class="servant-ed left" id="servant-ed29" value="毒" checked>
 				<label  for="servant-ed29" class="left">毒</label>
-				<span class="btn setbtn left" onclick="servantEDAll()">全選</span>
-				<span class="btn resetbtn left" onclick="servantEDNone()">取消全選</span>
+				<span class="btn setbtn left" id="servant-ed-setbtn">全選</span>
+				<span class="btn resetbtn left" id="servant-ed-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<label class="switch">
-					<input type="checkbox" class="left" id="servant-owned" value="true" onchange="servantInclusiveChange(this)">
+					<input type="checkbox" class="left" id="servant-owned" value="true">
 					<span class="slider"></span>
 				</label>
 				<span class="left">僅包括已有從者</span>
 			</div>
 			<div class="row">
-				<span class="btn applybtn left" onclick="loadServantImg()">套用篩選</span>
+				<span class="btn applybtn left" id="servant-applybtn">套用篩選</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-img">
@@ -1371,112 +1371,112 @@
 <div class="modal" id="ce-modal">
 	<div class="modal-box" id="ce-modal-box">
 		<div class="row">
-			<span class="closebtn" onclick="closeModal();initialCE();">&times;</span>
+			<span class="closebtn" id="ce-modal-closebtn">&times;</span>
 		</div>
 		<div class="modal-header">
 			<div class="row">	
-				<input type="checkbox" class="ce-star left" value="1" id="ce-star1" conchange="ceStarChange(this, 1)" checked>
+				<input type="checkbox" class="ce-star left" value="1" id="ce-star1" checked>
 				<label for="ce-star1" class="star left">★</label>
-				<input type="checkbox" class="ce-star left" value="2" id="ce-star2" conchange="ceStarChange(this, 2)" checked>
+				<input type="checkbox" class="ce-star left" value="2" id="ce-star2" checked>
 				<label for="ce-star2" class="star left">★★</label>
-				<input type="checkbox" class="ce-star left" value="3" id="ce-star3" conchange="ceStarChange(this, 3)" checked>
+				<input type="checkbox" class="ce-star left" value="3" id="ce-star3" checked>
 				<label for="ce-star3" class="star left">★★★</label>
-				<input type="checkbox" class="ce-star left" value="4" id="ce-star4" conchange="ceStarChange(this, 4)" checked>
+				<input type="checkbox" class="ce-star left" value="4" id="ce-star4" checked>
 				<label for="ce-star4" class="star left">★★★★</label>
-				<input type="checkbox" class="ce-star left" value="5" id="ce-star5" conchange="ceStarChange(this, 5)" checked>
+				<input type="checkbox" class="ce-star left" value="5" id="ce-star5" checked>
 				<label for="ce-star5" class="star left">★★★★★</label>
-				<span class="btn setbtn left" onclick="ceStarAll()">全選</span>
-				<span class="btn resetbtn left" onclick="ceStarNone()">取消全選</span>
+				<span class="btn setbtn left" id="ce-star-setbtn">全選</span>
+				<span class="btn resetbtn left" id="ce-star-resetbtn">取消全選</span>
 			</div>	
 			<div class="row">	
 				<span class="label">分類</span>
-				<input type="checkbox" class="ce-type left" id="ce-type1" value="常駐" onchange="ceTypeChange(this, '常駐')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type1" value="常駐" checked>
 				<label for="ce-type1" class="left">常駐</label>
-				<input type="checkbox" class="ce-type left" id="ce-type2" value="常駐/活動" onchange="ceTypeChange(this, '常駐/活動')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type2" value="常駐/活動" checked>
 				<label for="ce-type2" class="left">常駐/活動</label>
-				<input type="checkbox" class="ce-type left" id="ce-type3" value="活動限定" onchange="ceTypeChange(this, '活動限定')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type3" value="活動限定" checked>
 				<label for="ce-type3" class="left">活動限定</label>
-				<input type="checkbox" class="ce-type left" id="ce-type4" value="期間限定" onchange="ceTypeChange(this, '期間限定')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type4" value="期間限定" checked>
 				<label for="ce-type4" class="left">期間限定</label>
-				<input type="checkbox" class="ce-type left" id="ce-type5" value="活動兌換" onchange="ceTypeChange(this, '活動兌換')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type5" value="活動兌換" checked>
 				<label for="ce-type5" class="left">活動兌換</label>
-				<input type="checkbox" class="ce-type left" id="ce-type6" value="羈絆禮裝" onchange="ceTypeChange(this, '羈絆禮裝')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type6" value="羈絆禮裝" checked>
 				<label for="ce-type6" class="left">羈絆禮裝</label>
-				<input type="checkbox" class="ce-type left" id="ce-type7" value="限時兌換" onchange="ceTypeChange(this, '限時兌換')" checked>
+				<input type="checkbox" class="ce-type left" id="ce-type7" value="限時兌換" checked>
 				<label for="ce-type7" class="left">限時兌換</label>
-				<span class="btn setbtn left" onclick="ceTypeAll()">全選</span>
-				<span class="btn resetbtn left" onclick="ceTypeNone()">取消全選</span>
+				<span class="btn setbtn left" id="ce-type-setbtn">全選</span>
+				<span class="btn resetbtn left" id="ce-type-resetbtn">取消全選</span>
 			</div>
 			<div class="row">	
 				<span class="label">禮裝效果</span>
-				<input type="checkbox" class="ce-effect left" id="ce-effect1" value="攻擊力" onchange="ceEffectChange(this, '攻擊力')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect1" value="攻擊力" checked>
 				<label for="ce-effect1" class="left">攻擊力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect2" value="Buster性能" onchange="ceEffectChange(this, 'Buster性能')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect2" value="Buster性能" checked>
 				<label for="ce-effect2" class="left">Buster性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect3" value="Art性能" onchange="ceEffectChange(this, 'Art性能')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect3" value="Art性能" checked>
 				<label for="ce-effect3" class="left">Art性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect4" value="Quick性能" onchange="ceEffectChange(this, 'Quick性能')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect4" value="Quick性能" checked>
 				<label for="ce-effect4" class="left">Quick性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect5" value="寶具威力" onchange="ceEffectChange(this, '寶具威力')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect5" value="寶具威力" checked>
 				<label for="ce-effect5" class="left">寶具威力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect6" value="起始NP" onchange="ceEffectChange(this, '起始NP')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect6" value="起始NP" checked>
 				<label for="ce-effect6" class="left">起始NP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect7" value="每回合NP" onchange="ceEffectChange(this, '每回合NP')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect7" value="每回合NP" checked>
 				<label for="ce-effect7" class="left">每回合NP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect8" value="NP獲得量" onchange="ceEffectChange(this, 'NP獲得量')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect8" value="NP獲得量" checked>
 				<label for="ce-effect8" class="left">NP獲得量</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect9" value="獲得爆擊星" onchange="ceEffectChange(this, '獲得爆擊星')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect9" value="獲得爆擊星" checked>
 				<label for="ce-effect9" class="left">獲得爆擊星</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect10" value="爆擊星掉落率" onchange="ceEffectChange(this, '爆擊星掉落率')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect10" value="爆擊星掉落率" checked>
 				<label for="ce-effect10" class="left">爆擊星掉落率</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect11" value="爆擊威力" onchange="ceEffectChange(this, '爆擊威力')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect11" value="爆擊威力" checked>
 				<label for="ce-effect11" class="left">爆擊威力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect12" value="爆擊星集中度" onchange="ceEffectChange(this, '爆擊星集中度')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect12" value="爆擊星集中度" checked>
 				<label for="ce-effect12" class="left">爆擊星集中度</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect13" value="特攻" onchange="ceEffectChange(this, '特攻')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect13" value="特攻" checked>
 				<label for="ce-effect13" class="left">特攻</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect14" value="傷害附加" onchange="ceEffectChange(this, '傷害附加')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect14" value="傷害附加" checked>
 				<label for="ce-effect14" class="left">傷害附加</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect15" value="防禦力" onchange="ceEffectChange(this, '防禦力')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect15" value="防禦力" checked>
 				<label for="ce-effect15" class="left">防禦力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect16" value="特防" onchange="ceEffectChange(this, '特防')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect16" value="特防" checked>
 				<label for="ce-effect16" class="left">特防</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect17" value="傷害減免" onchange="ceEffectChange(this, '傷害減免')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect17" value="傷害減免" checked>
 				<label for="ce-effect17" class="left">傷害減免</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect18" value="迴避" onchange="ceEffectChange(this, '迴避')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect18" value="迴避" checked>
 				<label for="ce-effect18" class="left">迴避</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect19" value="無敵" onchange="ceEffectChange(this, '無敵')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect19" value="無敵" checked>
 				<label for="ce-effect19" class="left">無敵</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect20" value="毅力" onchange="ceEffectChange(this, '毅力')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect20" value="毅力" checked>
 				<label for="ce-effect20" class="left">毅力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect21" value="必中" onchange="ceEffectChange(this, '必中')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect21" value="必中" checked>
 				<label for="ce-effect21" class="left">必中</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect22" value="無敵貫通" onchange="ceEffectChange(this, '無敵貫通')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect22" value="無敵貫通" checked>
 				<label for="ce-effect22" class="left">無敵貫通</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect23" value="目標集中" onchange="ceEffectChange(this, '目標集中')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect23" value="目標集中" checked>
 				<label for="ce-effect23" class="left">目標集中</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect24" value="HP" onchange="ceEffectChange(this, 'HP')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect24" value="HP" checked>
 				<label for="ce-effect24" class="left">HP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect25" value="狀態耐性" onchange="ceEffectChange(this, '狀態耐性')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect25" value="狀態耐性" checked>
 				<label for="ce-effect25" class="left">狀態耐性</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect26" value="狀態無效" onchange="ceEffectChange(this, '狀態無效')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect26" value="狀態無效" checked>
 				<label for="ce-effect26" class="left">狀態無效</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect27" value="狀態成功率" onchange="ceEffectChange(this, '狀態成功率')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect27" value="狀態成功率" checked>
 				<label for="ce-effect27" class="left">狀態成功率</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect28" value="其他" onchange="ceEffectChange(this, '其他')" checked>
+				<input type="checkbox" class="ce-effect left" id="ce-effect28" value="其他" checked>
 				<label for="ce-effect28" class="left">其他</label>
-				<span class="btn setbtn left" onclick="ceEffectAll()">全選</span>
-				<span class="btn resetbtn left" onclick="ceEffectNone()">取消全選</span>
+				<span class="btn setbtn left" id="ce-effect-setbtn">全選</span>
+				<span class="btn resetbtn left" id="ce-effect-resetbtn">取消全選</span>
 			</div>
 			<div class="row">
 				<label class="switch">
-					<input type="checkbox" class="left" id="modal-ce-owned" value="true" onchange="ceInclusiveChange(this)">
+					<input type="checkbox" class="left" id="modal-ce-owned" value="true">
 					<span class="slider"></span>
 				</label>
 				<span class="left">僅包括已有禮裝</span>
 			</div>
 			<div class="row">
-				<span class="btn applybtn left" onclick="loadCEImg()">套用篩選</span>
+				<span class="btn applybtn left" id="ce-applybtn">套用篩選</span>
 			</div>
 		</div>
 		<div class="modal-content" id="ce-img">
@@ -1485,8 +1485,6 @@
 </div>							   
 							   
 <div class="counter" id="calc-counter"></div>
-<script>
-</script>
 </body>
 </html>
 		
