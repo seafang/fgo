@@ -362,6 +362,10 @@ input:checked + .slider:before {
 	display: none;
 }
 
+.teammate-detail {
+	display: none;
+}
+
 /*responsive layout*/
 @media screen and (max-width: 660px) {
 	.element-10, .element-15, .element-20, .element-25, .element-30, .element-40, .element-50, .element-75 {float: none; width: 50%;}
