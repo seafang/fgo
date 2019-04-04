@@ -29,18 +29,15 @@ $(document).ready(function() {
 function toggleTeammate(button, element) {
 	if ($(button).html() == "接疊▲") {
 		$(button).html("展開▼");
+		$(".teammate-detail").hide(300);
 	} else {
 		$(button).html("接疊▲");
-	}
-	$(element).find(".teammate-detail").each(function() {
-		if ($(this).find("#teammate1-name").html() !== undefined) {
-			$(this).toggle(300);
-		} else {
-			if ($(this).find(".teammate-name").html() !== "未選定隊友") {
-				$(this).toggle(300);
+		$(element).find(".teammate-detail").each(function() {
+			if ($(this).find(".teammate-name").html() == "未選定隊友") {
+				$(this).show(300);
 			}
-		}
-	});
+		});
+	}
 }
 
 // Set Enemy
