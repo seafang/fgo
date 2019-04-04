@@ -32,11 +32,7 @@ function toggleTeammate(button, element) {
 		$(".teammate-detail").hide(300);
 	} else {
 		$(button).html("接疊▲");
-		$(element).find(".teammate-detail").each(function() {
-			if ($(this).find(".teammate-name").html() == "未選定隊友") {
-				$(this).show(300);
-			}
-		});
+		$(".allow-toggle").show(300);
 	}
 }
 
@@ -690,7 +686,7 @@ $(document).ready(function() {
 	});
 	$("#teammate2-extendbtn").click(function() {
 		$(this).hide();
-		$("#teammate2").show();
+		extend("teammate2");
 	});
 	$("#teammate2-modalbtn").click(function() {
 		openModal("#teammate-modal");
@@ -718,11 +714,17 @@ $(document).ready(function() {
 	});*/
 });
 
+function extend(element) {
+	$("#" + element).show();
+	$("#" + element).addClass("allow-toggle");
+}
+
 function resetTeammate(element) {
 	$("#" + element).hide();
-	$("#" + element + "-reapplybtn").hide();
-	$("#" + element + "-resetbtn").hide();
-	$("#" + element + "-extendbtn").show();
+	if (element != "teammate1") {
+		$("#" + element).removeClass("allow-toggle");
+		$("#" + element + "-extendbtn").show();
+	}
 }
 
 function pickTeammate(teammateID) {
