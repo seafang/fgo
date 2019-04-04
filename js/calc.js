@@ -556,10 +556,10 @@ function setMaster(element) {
 		var masterInfo = master.filter(function(obj) {
 			return obj.masterName == name;
 		});
-		$("#master-img1").attr("src", masterInfo.masterImgID1);
-		$("#master-img2").attr("src", masterInfo.masterImgID2);
+		$("#master-img1").attr("src", masterInfo[0].masterImgID1);
+		$("#master-img2").attr("src", masterInfo[0].masterImgID2);
 		$("#master-lv").prop("disabled", false);
-		$("#master-skill1-logo").attr("src", masterInfo.skill1ImgID);
+		$("#master-skill1-logo").attr("src", masterInfo[0].skill1ImgID);
 		if (!masterInfo[0].skill1Buff.some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
@@ -567,7 +567,7 @@ function setMaster(element) {
 		} else {
 			$("#check-master-skill1").prop("disabled", false);
 		}
-		$("#master-skill2-logo").attr("src", masterInfo.skill2ImgID);
+		$("#master-skill2-logo").attr("src", masterInfo[0].skill2ImgID);
 		if (!masterInfo[0].skill2Buff.some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
@@ -575,7 +575,7 @@ function setMaster(element) {
 		} else {
 			$("#check-master-skill2").prop("disabled", false);
 		}
-		$("#master-skill3-logo").attr("src", masterInfo.skill3ImgID);
+		$("#master-skill3-logo").attr("src", masterInfo[0].skill3ImgID);
 		if (!masterInfo[0].skill3Buff.some(function(value) {
 			return value == "card" || value == "dmg"
 		})) {
@@ -583,9 +583,9 @@ function setMaster(element) {
 		} else {
 			$("#check-master-skill3").prop("disabled", false);
 		}
-		$("#master-skill1-dscrp").html(masterInfo.skill1Dscrp);
-		$("#master-skill2-dscrp").html(masterInfo.skill2Dscrp);
-		$("#master-skill3-dscrp").html(masterInfo.skill3Dscrp);
+		$("#master-skill1-dscrp").html(masterInfo[0].skill1Dscrp);
+		$("#master-skill2-dscrp").html(masterInfo[0].skill2Dscrp);
+		$("#master-skill3-dscrp").html(masterInfo[0].skill3Dscrp);
 		var masterSave = bgMaster.filter(function(obj) {
 			return obj.name == name;
 		});
