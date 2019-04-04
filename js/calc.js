@@ -692,6 +692,18 @@ $(document).ready(function() {
 		$(this).hide();
 		$("#teammate2").show();
 	});
+	$("#teammate2-modalbtn").click(function() {
+		openModal("#teammate-modal");
+		setCaller("teammate2");
+		initialTeammate();
+		loadTeammateImg();
+	});
+	$("#teammate2-resetbtn").click(function() {
+		resetTeammate("teammate2");
+	});
+	$("#teammate2-reapplybtn").click(function() {
+		reapplyTeammate("teammate2");
+	});
 /*	$("#current-servant-rankup").change(function() {
 		setCurrentServantNP();
 	});
