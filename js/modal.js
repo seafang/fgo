@@ -21,7 +21,7 @@ $(document).ready(function() {
 		servantEnemyClassNone();
 	});
 	$(".servant-enemy-star").change(function() {
-		var star = $(this).val();
+		var star = Number($(this).val());
 		servantEnemyStarChange(this, star);
 	});
 	$("#servant-enemy-star-setbtn").click(function() {
@@ -137,7 +137,7 @@ $(document).ready(function() {
 		servantClassNone();
 	});
 	$(".servant-star").change(function() {
-		var star = $(this).val();
+		var star = Number($(this).val());
 		servantStarChange(this, star);
 	});
 	$("#servant-star-setbtn").click(function() {
@@ -522,7 +522,7 @@ $(document).ready(function() {
 		initialCE();
 	});
 	$(".ce-star").change(function() {
-		var star = $(this).val();
+		var star = Number($(this).val());
 		ceStarChange(this, star);
 	});
 	$("#ce-star-setbtn").click(function() {
@@ -695,7 +695,7 @@ $(document).ready(function() {
 		teammateClassNone();
 	});
 	$(".teammate-star").change(function() {
-		var star = $(this).val();
+		var star = Number($(this).val());
 		teammateStarChange(this, star);
 	});
 	$("#teammate-star-setbtn").click(function() {
