@@ -94,7 +94,7 @@ function setEnemy(element) {
 	}
 	var debuffList = "";
 	$(debuff).each(function() {
-		debuffList += "<img class='debuff-logo left' src='" + $(this).src + "' />";
+		debuffList += "<img class='debuff-logo left' src='" + $(this).attr("data-src") + "' />";
 	});
 	$(element).find(".enemy-debuff").html(debuffList);
 	switch (element) {
