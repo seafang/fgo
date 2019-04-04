@@ -80,7 +80,7 @@ function resetCurrentEnemy() {
 	$(".current-enemy-trait").prop("checked", false);
 }
 
-function setEnemy(element, enemyDebuff) {
+function setEnemy(element) {
 	$(element).show();
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
@@ -97,7 +97,17 @@ function setEnemy(element, enemyDebuff) {
 		debuffList += "<img class='debuff-logo left' src='" + $(this).src + "' />";
 	});
 	$(element).find(".enemy-debuff").html(debuffList);
-	window.enemyDebuff = debuff;
+	switch (element) {
+		case "#enemy1":
+			enemy1Debuff = debuff;
+			break;
+		case "#enemy2":
+			enemy2Debuff = debuff;
+			break;
+		case "#enemy3":
+			enemy3Debuff = debuff;
+			break;
+	}
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".png";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
@@ -111,6 +121,17 @@ function setEnemy(element, enemyDebuff) {
 	$(".current-enemy-trait:checked").each(function() {
 		trait.push($(this).val())
 	});
+	switch (element) {
+		case "#enemy1":
+			enemy1Trait = trait;
+			break;
+		case "#enemy2":
+			enemy2Trait = trait;
+			break;
+		case "#enemy3":
+			enemy3Trait = trait;
+			break;
+	}
 	$(element).find(".enemy-trait").html(trait.join(", "));
 }
 
@@ -118,12 +139,34 @@ function resetEnemy(element) {
 	$(element).hide();
 	$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
 	$(element).find(".enemy-name").html("");
+	switch (element) {
+		case "#enemy1":
+			enemy1Debuff = [];
+			break;
+		case "#enemy2":
+			enemy2Debuff = [];
+			break;
+		case "#enemy3":
+			enemy3Debuff = [];
+			break;
+	}
 	$(element).find(".enemy-class").attr("src", "images/class/Unknown.png");
 	$(element).find(".enemy-gender").html("");
 	$(element).find(".enemy-attribute").html("");
 	$(element).find(".enemy-alignment1").html("");
 	$(element).find(".enemy-alignment2").html("");
 	$(element).find(".enemy-trait").html("");
+	switch (element) {
+		case "#enemy1":
+			enemy1Trait = [];
+			break;
+		case "#enemy2":
+			enemy2Trait = [];
+			break;
+		case "#enemy3":
+			enemy3Trait = [];
+			break;
+	}
 }
 
 // Set Battlefield
