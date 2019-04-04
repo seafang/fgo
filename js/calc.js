@@ -187,7 +187,7 @@ function updateBattlefield() {
 	battlefield = [];
 	$(".battlefield-type").each(function() {
 		if ($(this).is(":checked")) {
-			battlefield.push(this.value);
+			battlefield.push($(this).val());
 		}
 	});
 }
@@ -512,9 +512,9 @@ $(document).ready(function() {
 });
 
 function generateMasterSelection() {
-	$(master).each(function() {
+	$(master).each(function(index, value) {
 		var select = $("#master-name-selection");
-		var name = $(this).masterName;
+		var name = value.masterName;
 		var option = {value: name, text: name};
 		select.append($('<option>', option));
 	});
