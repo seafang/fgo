@@ -7,6 +7,42 @@ var bgCE = parent.bgCE;
 var bgMaster = parent.bgMaster;
 var modalCaller = "";
 
+// Layout
+$(document).ready(function() {
+	$("#enemy-setup-collapsebtn").click(function() {
+		toggle(this, "#enemy-setup-collapsible");
+	});
+	$("#servant-setup-collapsebtn").click(function() {
+		toggle(this, "#servant-setup-collapsible");
+	});
+	$("#ce-setup-collapsebtn").click(function() {
+		toggle(this, "#ce-setup-collapsible");
+	});
+	$("#master-setup-collapsebtn").click(function() {
+		toggle(this, "#master-setup-collapsible");
+	});
+	$("#teammate-setup-collapsebtn").click(function() {
+		toggleTeammate(this, "#teammate-setup-collapsible");
+	});
+});
+
+function toggleTeammate(button, element) {
+	if ($(button).html() == "接疊▲") {
+		$(button).html("展開▼");
+	} else {
+		$(button).html("接疊▲");
+	}
+	$(element).find(".teammate-detail").each(function() {
+		if ($(this).find("#teammate1-name").html() !== undefined) {
+			$(this).toggle(300);
+		} else {
+			if ($(this).find(".teammate-name").html() !== "未選定隊友") {
+				$(this).toggle(300);
+			}
+		}
+	});
+}
+
 // Set Enemy
 var enemyInfo = [];
 var debuff = [];
@@ -14,8 +50,39 @@ var enemy1Debuff = [], enemy2Debuff = [], enemy3Debuff = [];
 var enemy1Trait = [], enemy2Trait = [], enemy3Trait = [];
 
 $(document).ready(function() {
+	$("#common-enemy-modalbtn").click(function() {
+		openModal("#common-enemy-modal");
+		initialCommonEnemy();
+		loadCommonEnemyImg();
+	});
+	$("#servant-enemy-modalbtn").click(function() {
+		openModal("#servant-enemy-modal");
+		initialServantEnemy();
+		loadServantEnemyImg();
+	});
+	$("#current-enemy-resetbtn").click(function() {
+		resetCurrentEnemy();
+	});
 	$(".current-enemy-debuff").change(function() {
 		updateDebuff();
+	});
+	$("#enemy1-applytn").click(function() {
+		setEnemy("#enemy1");
+	});
+	$("#enemy2-applytn").click(function() {
+		setEnemy("#enemy2");
+	});
+	$("#enemy3-applytn").click(function() {
+		setEnemy("#enemy3");
+	});
+	$("#enemy1-resetbtn").click(function() {
+		resetEnemy("#enemy1");
+	});
+	$("#enemy2-resetbtn").click(function() {
+		resetEnemy("#enemy2");
+	});
+	$("#enemy3-resetbtn").click(function() {
+		resetEnemy("#enemy3");
 	});
 });
 
@@ -181,6 +248,9 @@ $(document).ready(function() {
 			$("#battlefield-type8").prop("checked", true);
 		}
 	});
+	$("#battlefield-resetbtn").click(function() {
+		resetBattlefield();
+	});
 });
 
 function updateBattlefield() {
@@ -204,6 +274,14 @@ var servantInfo = [];
 var servantSave = [];
 
 $(document).ready(function() {
+	$("#servant-modalbtn").click(function() {
+		openModal("#servant-modal");
+		initialServant();
+		loadServantImg();
+	});
+	$("#servant-resetbtn").click(function() {
+		resetServant();
+	});
 	$("#current-servant-rankup").change(function() {
 		setCurrentServantNP();
 	});
@@ -219,31 +297,6 @@ $(document).ready(function() {
 });
 
 function pickServant(servantID) {
-	closeModal();
-	switch (modalCaller) {
-		case "servant":
-			toServant(servantID);
-			break;
-		case "teammate1":
-			toTeammate(1, servantID);
-			break;
-		case "teammate2":
-			toTeammate(2, servantID);
-			break;
-		case "teammate3":
-			toTeammate(3, servantID);
-			break;
-		case "teammate4":
-			toTeammate(4, servantID);
-			break;
-		case "teammate5":
-			toTeammate(5, servantID);
-			break;
-	}
-	modalCaller = "";
-}
-
-function toServant(servantID) {
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
@@ -401,11 +454,22 @@ function setSkill(toggle, skill) {
 	}
 }
 
-//Set Servant CE
+// Set Servant CE
 var ceInfo = [];
 var ceSave = [];
 
 $(document).ready(function() {
+	$("#servant-ce-modalbtn").click(function() {
+		openModal("#ce-modal");
+		initialCE();
+		loadCEImg();
+	});
+	$("#servant-ce-reapplybtn").click(function() {
+		reapplyCE();
+	});
+	$("#servant-ce-resetbtn").click(function() {
+		resetCE();
+	});
 	$("#servant-ce-max").change(function() {
 		setCurrentServantCEEffect(this);
 	});
@@ -500,7 +564,7 @@ function setCurrentServantCEEffect(toggle) {
 	}
 }
 
-//Set Master Mystic Code
+// Set Master Mystic Code
 var masterInfo = [];
 var masterSave = [];
 
@@ -508,6 +572,9 @@ $(document).ready(function() {
 	generateMasterSelection();
 	$("#master-name-selection").change(function() {
 		setMaster(this);
+	});
+	$("#master-resetbtn").click(function() {
+		applyMaster();
 	});
 });
 
@@ -609,3 +676,69 @@ function applyMaster() {
 		$("#master-lv").val(1);
 	}
 }
+
+// Set Teammates
+$(document).ready(function() {
+	$("#teammate1-modalbtn").click(function() {
+		openModal("#teammate-modal");
+		setCaller("teammate1");
+		initialTeammate();
+		loadTeammateImg();
+	});
+	$("#teammate1-resetbtn").click(function() {
+		resetTeammate("teammate1");
+	});
+	$("#teammate1-reapplybtn").click(function() {
+		reapplyTeammate("teammate1");
+	});
+	$("#teammate2-extendbtn").click(function() {
+		$(this).hide();
+		$("#teammate2").show();
+	});
+/*	$("#current-servant-rankup").change(function() {
+		setCurrentServantNP();
+	});
+	$("#check-skill1-rankup").change(function() {
+		setSkill(this, 'skill1');
+	});
+	$("#check-skill2-rankup").change(function() {
+		setSkill(this, 'skill2');
+	});
+	$("#check-skill3-rankup").change(function() {
+		setSkill(this, 'skill3');
+	});*/
+});
+
+function resetTeammate(element) {
+	$("#" + element).hide();
+	$("#" + element + "-reapplybtn").hide();
+	$("#" + element + "-resetbtn").hide();
+	$("#" + element + "-extendbtn").show();
+}
+
+function pickTeammate(teammateID) {
+	closeModal();
+	switch (modalCaller) {
+		case "teammate1":
+			toTeammate("teammate1", teammateID);
+			break;
+		case "teammate2":
+			toTeammate("teammate2", teammateID);
+			break;
+		case "teammate3":
+			toTeammate("teammate3", teammateID);
+			break;
+		case "teammate4":
+			toTeammate("teammate4", teammateID);
+			break;
+		case "teammate5":
+			toTeammate("teammate5", teammateID);
+			break;
+	}
+	modalCaller = "";
+}
+
+function toTeammate(element, teammateID) {
+	
+}
+	
