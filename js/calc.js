@@ -497,12 +497,6 @@ function pickCE(essenceID) {
 	$("#servant-ce-name").html(ceInfo[0].ceName);
 	var starHTML = "";
 	switch (ceInfo[0].ceStar) {
-		case 1:
-			starHTML = "★";
-			break;
-		case 2:
-			starHTML = "★★";
-			break;
 		case 3:
 			starHTML = "★★★";
 			break;
@@ -686,6 +680,8 @@ function applyMaster() {
 // Set Teammates
 var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
 var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
+var teammate1CEInfo = [], teammate2CEInfo = [], teammate3CEInfo = [], teammate4CEInfo = [], teammate5CEInfo = [];
+var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4CESave = [], teammate5CESave = [];
 
 $(document).ready(function() {
 	$("#teammate1-modalbtn").click(function() {
@@ -694,14 +690,23 @@ $(document).ready(function() {
 		initialTeammate();
 		loadTeammateImg();
 	});
+	$("#teammate1-ce-modalbtn").click(function() {
+		openModal("#teammate-ce-modal");
+		setCaller("teammate1");
+		initialTeammateCE();
+		loadTeammateCEImg();
+	});
+	$("#teammate1-reapplybtn").click(function() {
+		reapplyTeammate("teammate1");
+	});
+	$("#teammate1-ce-resetbtn").click(function() {
+		resetTeammateCE("teammate1");
+	});
 	$("#teammate1-resetbtn").click(function() {
 		if ($("#teammate-setup-collapsebtn").html() == "接疊▲") {
 			$("#teammate-setup-collapsebtn").html("展開▼");
 		}
 		resetTeammate("teammate1");
-	});
-	$("#teammate1-reapplybtn").click(function() {
-		reapplyTeammate("teammate1");
 	});
 	$("#teammate2-extendbtn").click(function() {
 		$(this).hide();
@@ -713,11 +718,20 @@ $(document).ready(function() {
 		initialTeammate();
 		loadTeammateImg();
 	});
-	$("#teammate2-resetbtn").click(function() {
-		resetTeammate("teammate2");
+	$("#teammate2-ce-modalbtn").click(function() {
+		openModal("#teammate-ce-modal");
+		setCaller("teammate2");
+		initialTeammateCE();
+		loadTeammateCEImg();
 	});
 	$("#teammate2-reapplybtn").click(function() {
 		reapplyTeammate("teammate2");
+	});
+	$("#teammate2-ce-resetbtn").click(function() {
+		resetTeammateCE("teammate2");
+	});
+	$("#teammate2-resetbtn").click(function() {
+		resetTeammate("teammate2");
 	});
 	$(".teammate-np-rankup").change(function() {
 		setTeammateNP(this);
@@ -801,7 +815,6 @@ function toTeammate(value, teammateID) {
 	}
 	section.find(".teammate-star").html(starHTML);
 	section.find(".teammate-star").removeClass("dull");
-	section.find(".teammate-star").attr("data-star", info[0].star);
 	section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);
 	section.find(".teammate-np-name").removeClass("Buster Art Quick");
 	section.find(".teammate-np-name").addClass(info[0].npColor);
@@ -833,11 +846,18 @@ function reapplyTeammate(value) {
 	setTeammateSkill(skill1Toggle, 'skill1');
 	setTeammateSkill(skill2Toggle, 'skill2');
 	setTeammateSkill(skill3Toggle, 'skill3');
+	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
+		setTeammateCE(value);
+		var ceToggle = section.find(".teammate-ce-max");
+		setTeammateCEEffect(ceToggle);
+	}
 }
 
 function resetTeammate(value) {
 	window[value + "Info"] = [];
 	window[value + "Save"] = [];
+	window[value + "CEInfo"] = [];
+	window[value + "CESave"] = [];
 	var section = $("#" + value);
 	section.hide();
 	if (value != "teammate1") {
@@ -852,7 +872,15 @@ function resetTeammate(value) {
 	});
 	section.find(".teammate-star").html("★★★★★");
 	section.find(".teammate-star").addClass("dull");
-	section.find(".teammate-star").attr("data-star", "");
+	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
+		section.find(".teammate-ce-img").attr("src", "");
+		section.find(".teammate-ce-name").html("未選定禮裝");
+		section.find(".teammate-ce-star").html("★★★★★");
+		section.find(".teammate-ce-star").addClass("dull");
+		section.find(".teammate-ce-max").prop("checked", false);
+		section.find(".teammate-ce-max").prop("disabled", true);
+		section.find(".teammate-ce-dscrp").html("");
+	}
 	section.find(".teammate-np").prop("checked", false);
 	section.find(".teammate-np").prop("disabled", true);
 	section.find(".teammate-np-rankup").prop("checked", false);
@@ -965,6 +993,103 @@ function setTeammateSkill(toggle, skill) {
 		} else {
 			section.find(".teammate-" + skill).prop("disabled", false);
 			section.find(".teammate-" + skill + "-lv").prop("disabled", false);
+		}
+	}
+}
+
+
+function pickTeammateCE(ceID) {
+	closeModal();
+	switch (modalCaller) {
+		case "teammate1":
+		default:
+			toTeammateCE("teammate1", ceID);
+			break;
+		case "teammate2":
+			toTeammateCE("teammate2", ceID);
+			break;
+		case "teammate3":
+			toTeammateCE("teammate3", ceID);
+			break;
+		case "teammate4":
+			toTeammateCE("teammate4", ceID);
+			break;
+		case "teammate5":
+			toTeammateCE("teammate5", ceID);
+			break;
+	}
+	modalCaller = "";
+}
+
+function toTeammateCE(value, ceID) {
+	var section = $("#" + value);
+	window[value + "CEInfo"] = ce.filter(function(obj) {
+		return obj.ceID == ceID;
+	});
+	var info = window[value + "CEInfo"];
+	section.find(".teammate-ce-img").attr("src", info[0].ceImgID);
+	section.find(".teammate-ce-name").html(info[0].ceName);
+	var starHTML = "";
+	switch (info[0].ceStar) {
+		case 3:
+			starHTML = "★★★";
+			break;
+		case 4:
+			starHTML = "★★★★";
+			break;
+		case 5:
+			starHTML = "★★★★★";
+			break;
+		default:
+			starHTML = "Error";
+	}
+	section.find(".teammate-ce-star").html(starHTML);
+	section.find(".teammate-ce-star").removeClass("dull");
+	section.find(".teammate-ce-max").prop("disabled", info[0].defaultMax);
+	window[value + "CESave"] = bgCE.filter(function(obj) {
+		return obj.id == essenceID;
+	});
+	setTeammateCE(value);
+	var ceToggle = section.find(".teammate-ce-max");
+	setTeammateCEEffect(ceToggle);
+}
+
+function resetTeammateCE(value) {
+	window[value + "CEInfo"] = [];
+	window[value + "CESave"] = [];
+	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
+		section.find(".teammate-ce-img").attr("src", "");
+		section.find(".teammate-ce-name").html("未選定禮裝");
+		section.find(".teammate-ce-star").html("★★★★★");
+		section.find(".teammate-ce-star").addClass("dull");
+		section.find(".teammate-ce-max").prop("checked", false);
+		section.find(".teammate-ce-max").prop("disabled", true);
+		section.find(".teammate-ce-dscrp").html("");
+	}
+}
+
+function setTeammateCE(value) {
+	var section = $("#" + value);
+	var save = window[value + "CESave"];
+	var info = window[value + "CEInfo"];
+	if (save[0] != undefined) {
+		section.find(".teammate-ce-max").prop("checked", save[0].data[1]);
+	} else {
+		if (ceInfo[0] != undefined) {
+			section.find(".teammate-ce-max").prop("checked", info[0].defaultMax);
+		} else {
+			section.find(".teammate-ce-max").prop("checked", false);
+		}
+	}	
+}
+
+function setTeammateCEEffect(toggle) {
+	var info = window[value + "CEInfo"];
+	if (info[0] != undefined) {
+		if ($(toggle).is(":checked")) {
+			section.find(".teammate-ce-dscrp").html(info[0].maxEffect);
+		} else {
+			section.find(".teammate-ce-dscrp").html(info[0].defaultEffect);
 		}
 	}
 }
