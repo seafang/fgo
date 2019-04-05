@@ -3,26 +3,10 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://seafang.github.io/fgo/js/servant.js"></script>
-<script src="https://seafang.github.io/fgo/js/misc.js"></script>
-<script src="https://seafang.github.io/fgo/js/data.js"></script>
-<script src="https://seafang.github.io/fgo/js/modal.js"></script>
-<script src="https://seafang.github.io/fgo/js/calc.js"></script>
-<script>
-	$(document).ready(function() {
-		updateCounter();
-	});
-	
-	$(document).click(function() {
-		updateCounter();
-	});
-	
-	function updateCounter() {
-		var height = $("#enemy-info").outerHeight() + $("#servant-info").outerHeight() + $("#ce-info").outerHeight() +
-			$("#master-info").outerHeight() + $("#teammate-info").outerHeight() + $("#buff-info").outerHeight() + 600;
-		$("#calc-counter").html(height);
-	}
-</script>
+<script src="js/misc.js"></script>
+<script src="js/data.js"></script>
+<script src="js/modal.js"></script>
+<script src="js/calc.js"></script>
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
 <style>
