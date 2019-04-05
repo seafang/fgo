@@ -1292,8 +1292,6 @@
 				<span class="label">特攻</span>
 				<input type="checkbox" class="servant-ed left" id="servant-ed1" value="無特攻" checked>
 				<label  for="servant-ed1" class="left">無特攻</label>
-				<input type="checkbox" class="servant-ed left" id="servant-ed2" value="Saber" checked>
-				<label  for="servant-ed2" class="left">Saber</label>
 				<input type="checkbox" class="servant-ed left" id="servant-ed3" value="Ruler" checked>
 				<label  for="servant-ed3" class="left">Ruler</label>
 				<input type="checkbox" class="servant-ed left" id="servant-ed4" value="男性" checked>
@@ -1348,6 +1346,8 @@
 				<label  for="servant-ed28" class="left">超巨大</label>
 				<input type="checkbox" class="servant-ed left" id="servant-ed29" value="毒" checked>
 				<label  for="servant-ed29" class="left">毒</label>
+				<input type="checkbox" class="servant-ed left" id="servant-ed30" value="Saber" checked>
+				<label  for="servant-ed30" class="left">Saber</label>
 				<span class="btn setbtn left" id="servant-ed-setbtn">全選</span>
 				<span class="btn resetbtn left" id="servant-ed-resetbtn">取消全選</span>
 			</div>
@@ -1483,7 +1483,151 @@
 		</div>
 	</div>
 </div>							   
-							   
+
+<!--Teammate Modal-->
+<div class="modal" id="teammate-modal">
+	<div class="modal-box" id="teammate-modal-box">
+		<div class="row">
+			<span class="closebtn" id="teammate-modal-closebtn">&times;</span>
+		</div>
+		<div class="modal-header">
+			<div class="row">
+				<img class="class-logo left teammate-class" title="Saber" src="images/class/Saber.png" />
+				<img class="class-logo left teammate-class" title="Archer" src="images/class/Archer.png" />
+				<img class="class-logo left teammate-class" title="Lancer" src="images/class/Lancer.png" />
+				<img class="class-logo left teammate-class" title="Rider" src="images/class/Rider.png" />
+				<img class="class-logo left teammate-class" title="Caster" src="images/class/Caster.png" />
+				<img class="class-logo left teammate-class" title="Assassin" src="images/class/Assassin.png" />
+				<img class="class-logo left teammate-class" title="Berserker" src="images/class/Berserker.png" />
+				<img class="class-logo left teammate-class" title="Shielder" src="images/class/Shielder.png" />
+				<img class="class-logo left teammate-class" title="Ruler" src="images/class/Ruler.png" />
+				<img class="class-logo left teammate-class" title="Avenger" src="images/class/Avenger.png" />
+				<img class="class-logo left teammate-class" title="Mooncancer" src="images/class/Mooncancer.png" />
+				<img class="class-logo left teammate-class" title="Alterego" src="images/class/Alterego.png" />
+				<img class="class-logo left teammate-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<span class="btn setbtn left" id="teammate-class-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-class-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<input type="checkbox" class="teammate-star left" value="0" id="teammate-star0" checked>
+				<label for="teammate-star0" class="star left">－</label>
+				<input type="checkbox" class="teammate-star left" value="1" id="teammate-star1" checked>
+				<label for="teammate-star1" class="star left">★</label>
+				<input type="checkbox" class="teammate-star left" value="2" id="teammate-star2" checked>
+				<label for="teammate-star2" class="star left">★★</label>
+				<input type="checkbox" class="teammate-star left" value="3" id="teammate-star3" checked>
+				<label for="teammate-star3" class="star left">★★★</label>
+				<input type="checkbox" class="teammate-star left" value="4" id="teammate-star4" checked>
+				<label for="teammate-star4" class="star left">★★★★</label>
+				<input type="checkbox" class="teammate-star left" value="5" id="teammate-star5" checked>
+				<label for="teammate-star5" class="star left">★★★★★</label>
+				<span class="btn setbtn left" id="teammate-star-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-star-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">分類</span>
+				<input type="checkbox" class="teammate-type left" id="teammate-type1" value="常駐" checked>
+				<label for="teammate-type1" class="left">常駐</label>
+				<input type="checkbox" class="teammate-type left" id="teammate-type2" value="劇情池限定" checked>
+				<label for="teammate-type2" class="left">劇情池限定</label>
+				<input type="checkbox" class="teammate-type left" id="teammate-type3" value="友情池限定" checked>
+				<label for="teammate-type3" class="left">友情池限定</label>
+				<input type="checkbox" class="teammate-type left" id="teammate-type4" value="期間限定" checked>
+				<label for="teammate-type4" class="left">期間限定</label>
+				<input type="checkbox" class="teammate-type left" id="teammate-type5" value="活動" checked>
+				<label for="teammate-type5" class="left">活動</label>
+				<input type="checkbox" class="teammate-type left" id="teammate-type6" value="固有從者" checked>
+				<label for="teammate-type6" class="left">固有從者</label>
+				<span class="btn setbtn left" id="teammate-type-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-type-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">陣營</span>
+				<input type="checkbox" class="teammate-attribute left" id="teammate-attribute1" value="天" checked>
+				<label for="teammate-attribute1" class="left">天</label>
+				<input type="checkbox" class="teammate-attribute left" id="teammate-attribute2" value="地" checked>
+				<label for="teammate-attribute2" class="left">地</label>
+				<input type="checkbox" class="teammate-attribute left" id="teammate-attribute3" value="人" checked>
+				<label for="teammate-attribute3" class="left">人</label>
+				<input type="checkbox" class="teammate-attribute left" id="teammate-attribute4" value="星" checked>
+				<label for="teammate-attribute4" class="left">星</label>
+				<input type="checkbox" class="teammate-attribute left" id="teammate-attribute5" value="獸" checked>
+				<label for="teammate-attribute5" class="left">獸</label>
+				<span class="btn setbtn left" id="teammate-attribute-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-attribute-resetbtn">取消全選</span>
+				<span class="label">性別</span>
+				<input type="checkbox" class="teammate-gender left" id="teammate-gender1" value="男性" checked>
+				<label for="teammate-gender1" class="left">男性</label>
+				<input type="checkbox" class="teammate-gender left" id="teammate-gender2" value="女性" checked>
+				<label for="teammate-gender2" class="left">女性</label>
+				<input type="checkbox" class="teammate-gender left" id="teammate-gender3" value="不明" checked>
+				<label for="teammate-gender3" class="left">不明</label>
+				<span class="btn setbtn left" id="teammate-gender-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-gender-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">屬性I</span>
+				<input type="checkbox" class="teammate-alignment1 left" id="teammate-alignment1-1" value="秩序" checked>
+				<label for="teammate-alignment1-1" class="left">秩序</label>
+				<input type="checkbox" class="teammate-alignment1 left" id="teammate-alignment1-2" value="中立" checked>
+				<label for="teammate-alignment1-2" class="left">中立</label>
+				<input type="checkbox" class="teammate-alignment1 left" id="teammate-alignment1-3" value="混沌" checked>
+				<label for="teammate-alignment1-3" class="left">混沌</label>
+				<span class="btn setbtn left" id="teammate-alignment1-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-alignment1-resetbtn">取消全選</span>
+				<span class="label">屬性II</span>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-1" value="善" checked>
+				<label for="teammate-alignment2-1" class="left">善</label>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-2" value="中庸" checked>
+				<label for="teammate-alignment2-2" class="left">中庸</label>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-3" value="惡" checked>
+				<label for="teammate-alignment2-3" class="left">惡</label>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-4" value="狂" checked>
+				<label for="teammate-alignment2-4" class="left">狂花嫁</label>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-5" value="花嫁" checked>
+				<label for="teammate-alignment2-5" class="left">花嫁</label>
+				<input type="checkbox" class="teammate-alignment2 left" id="teammate-alignment2-6" value="夏" checked>
+				<label for="teammate-alignment2-6" class="left">夏</label>
+				<span class="btn setbtn left" id="teammate-alignment2-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-alignment2-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<span class="label">寶具卡色</span>
+				<input type="checkbox" class="teammate-color left" id="teammate-color-b" value="Buster" checked>
+				<label for="teammate-color-b" class="left">Buster</label>
+				<input type="checkbox" class="teammate-color left" id="teammate-color-a" value="Art" checked>
+				<label for="teammate-color-a" class="left">Art</label>
+				<input type="checkbox" class="teammate-color left" id="teammate-color-q" value="Quick" checked>
+				<label for="teammate-color-q" class="left">Quick</label>
+				<span class="btn setbtn left" id="teammate-color-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-color-resetbtn">取消全選</span>
+				<span class="label">寶具類別</span>
+				<input type="checkbox" class="teammate-range left" id="teammate-range-aoe" value="全體" checked>
+				<label for="teammate-range-aoe" class="left">全體</label>
+				<input type="checkbox" class="teammate-range left" id="teammate-range-single" value="單體" checked>
+				<label for="teammate-range-single" class="left">單體</label>
+				<input type="checkbox" class="teammate-range left" id="teammate-range-support" value="輔助" checked>
+				<label for="teammate-range-support" class="left">輔助</label>
+				<span class="btn setbtn left" id="teammate-range-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-range-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<label class="switch">
+					<input type="checkbox" class="left" id="teammate-owned" value="true">
+					<span class="slider"></span>
+				</label>
+				<span class="left">僅包括已有從者</span>
+			</div>
+			<div class="row">
+				<span class="btn applybtn left" id="teammate-applybtn">套用篩選</span>
+			</div>
+		</div>
+		<div class="modal-content" id="teammate-img">
+		</div>
+	</div>
+</div>
+
+
 <div class="counter" id="calc-counter"></div>
 </body>
 </html>
