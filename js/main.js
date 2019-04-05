@@ -12,3 +12,8 @@ var masterBuff = JSON.parse(mysticCodeBuff);
 // Load save
 var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [];
+
+$(document).ready(function() {
+		generateSaveList();
+		getSave();
+});
