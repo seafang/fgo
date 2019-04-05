@@ -33,6 +33,9 @@ $(document).ready(function() {
 	$("#servant-enemy-applybtn").click(function() {
 		loadServantEnemyImg();
 	});
+});
+
+$(".servant-enemy-modal-img").ready(function() {
 	$(".servant-enemy-modal-img").click(function() {
 		var id = Number($(this).attr("data-id"));
 		pickEnemy(1, id);
@@ -236,6 +239,9 @@ $(document).ready(function() {
 	$("#servant-applybtn").click(function() {
 		loadServantImg();
 	});
+});
+
+$(".servant-modal-img").ready(function() {
 	$(".servant-modal-img").click(function() {
 		var id = Number($(this).attr("data-id"));
 		pickServant(id);
@@ -565,6 +571,9 @@ $(document).ready(function() {
 	$("#ce-applybtn").click(function() {
 		loadCEImg();
 	});
+});
+
+$(".ce-modal-img").ready(function() {
 	$(".ce-modal-img").click(function() {
 		var id = Number($(this).attr("data-id"));
 		pickCE(id);
@@ -792,6 +801,9 @@ $(document).ready(function() {
 	$("#teammate-applybtn").click(function() {
 		loadTeammateImg();
 	});
+});
+
+$(".teammate-modal-img").ready(function() {
 	$(".teammate-modal-img").click(function() {
 		var id = Number($(this).attr("data-id"));
 		pickTeammate(id);
