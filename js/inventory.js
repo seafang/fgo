@@ -110,7 +110,7 @@ function generateInventory() {
 		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
 		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + " " + 
 			servant.name + "</span>";				
-		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".png' />";				
+		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".webp' />";				
 		var starHTML = "";				
 		switch (servant.star) {				
 			case 0:
