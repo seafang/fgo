@@ -19,6 +19,46 @@ let ceInventoryFilter = {
 	owned: [true, false]
 };
 
+$(document).ready(function() {
+	$(".ce-inventory-star").change(function() {
+		var star = Number($(this).val());
+		ceInventoryStarChange(this, star);
+	});
+	$("#ce-inventory-star-setbtn").click(function() {
+		ceInventoryStarAll();
+	});
+	$("#ce-inventory-star-resetbtn").click(function() {
+		ceInventoryStarNone();
+	});
+	$(".ce-inventory-type").change(function() {
+		var type = $(this).val();
+		ceInventoryTypeChange(this, type);
+	});
+	$("#ce-inventory-type-setbtn").click(function() {
+		ceInventoryTypeAll();
+	});
+	$("#ce-inventory-type-resetbtn").click(function() {
+		ceInventoryTypeNone();
+	});
+	$(".ce-inventory-effect").change(function() {
+		var effect = $(this).val();
+		ceInventoryEffectChange(this, effect);
+	});
+	$("#ce-inventory-effect-setbtn").click(function() {
+		ceInventoryEffectAll();
+	});
+	$("#ce-inventory-effect-resetbtn").click(function() {
+		ceInventoryEffectNone();
+	});
+	$("#ce-inventory-owned").change(function() {
+		ceInventoryInclusiveChange(this);
+	});
+	$("#ce-inventory-applybtn").click(function() {
+		generateCEInventory();
+		loadCESave();
+	});
+});
+
 function clearCEInventory() {
 	$("#ce-inventory").find(".ce-inventory-row").each(function(){
 		$(this).remove();
