@@ -806,7 +806,7 @@ function loadTeammateImg() {
 	$("#teammate-img").html("");
 	var imglist = "";	
 	$.each(teammateID, function(index, value) {
-		imglist += "<img class='left teammate-img teammate-modal-img' src='images/teammate/" + value +
+		imglist += "<img class='left teammate-img teammate-modal-img' src='images/servant/" + value +
 		".webp' data-id='" + value + "' />"
 	});
 	$("#teammate-img").html(imglist);
