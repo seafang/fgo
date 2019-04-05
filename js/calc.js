@@ -155,8 +155,8 @@ function setEnemy(element) {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
 	}
 	var debuffList = "";
-	$(debuff).each(function() {
-		debuffList += "<img class='debuff-logo left' src='" + $(this).attr("data-src") + "' />";
+	$(debuff).each(function(key, value) {
+		debuffList += "<img class='debuff-logo left' src='" + value.src + "' />";
 	});
 	$(element).find(".enemy-debuff").html(debuffList);
 	switch (element) {
