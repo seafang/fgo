@@ -22,108 +22,108 @@
 <!--Filter Section-->
 <div class="header">
 	<div class="row">		
-		<input type="checkbox" class="ce-inventory-star left" value="1" id="ce-inventory-star1" conchange="ceInventoryStarChange(this, 1)" checked>	
+		<input type="checkbox" class="ce-inventory-star left" value="1" id="ce-inventory-star1" checked>	
 		<label for="ce-inventory-star1" class="star left">★</label>	
-		<input type="checkbox" class="ce-inventory-star left" value="2" id="ce-inventory-star2" conchange="ceInventoryStarChange(this, 2)" checked>	
+		<input type="checkbox" class="ce-inventory-star left" value="2" id="ce-inventory-star2" checked>	
 		<label for="ce-inventory-star2" class="star left">★★</label>	
-		<input type="checkbox" class="ce-inventory-star left" value="3" id="ce-inventory-star3" conchange="ceInventoryStarChange(this, 3)" checked>	
+		<input type="checkbox" class="ce-inventory-star left" value="3" id="ce-inventory-star3" checked>	
 		<label for="ce-inventory-star3" class="star left">★★★</label>	
-		<input type="checkbox" class="ce-inventory-star left" value="4" id="ce-inventory-star4" conchange="ceInventoryStarChange(this, 4)" checked>	
+		<input type="checkbox" class="ce-inventory-star left" value="4" id="ce-inventory-star4" checked>	
 		<label for="ce-inventory-star4" class="star left">★★★★</label>	
-		<input type="checkbox" class="ce-inventory-star left" value="5" id="ce-inventory-star5" conchange="ceInventoryStarChange(this, 5)" checked>	
+		<input type="checkbox" class="ce-inventory-star left" value="5" id="ce-inventory-star5" checked>	
 		<label for="ce-inventory-star5" class="star left">★★★★★</label>	
-		<span class="btn setbtn left" onclick="ceInventoryStarAll()">全選</span>	
-		<span class="btn resetbtn left" onclick="ceInventoryStarNone()">取消全選</span>	
+		<span class="btn setbtn left" id="ce-inventory-star-setbtn">全選</span>	
+		<span class="btn resetbtn left" id="ce-inventory-star-resetbtn">取消全選</span>	
 	</div>		
 	<div class="row">		
 		<span class="label">分類</span>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type1" value="常駐" onchange="ceInventoryTypeChange(this, '常駐')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type1" value="常駐" checked>	
 		<label for="ce-inventory-type1" class="left">常駐</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type2" value="常駐/活動" onchange="ceInventoryTypeChange(this, '常駐/活動')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type2" value="常駐/活動" checked>	
 		<label for="ce-inventory-type2" class="left">常駐/活動</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type3" value="活動限定" onchange="ceInventoryTypeChange(this, '活動限定')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type3" value="活動限定" checked>	
 		<label for="ce-inventory-type3" class="left">活動限定</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type4" value="期間限定" onchange="ceInventoryTypeChange(this, '期間限定')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type4" value="期間限定" checked>	
 		<label for="ce-inventory-type4" class="left">期間限定</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type5" value="活動兌換" onchange="ceInventoryTypeChange(this, '活動兌換')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type5" value="活動兌換" checked>	
 		<label for="ce-inventory-type5" class="left">活動兌換</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type6" value="羈絆禮裝" onchange="ceInventoryTypeChange(this, '羈絆禮裝')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type6" value="羈絆禮裝" checked>	
 		<label for="ce-inventory-type6" class="left">羈絆禮裝</label>	
-		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type7" value="限時兌換" onchange="ceInventoryTypeChange(this, '限時兌換')" checked>	
+		<input type="checkbox" class="ce-inventory-type left" id="ce-inventory-type7" value="限時兌換" checked>	
 		<label for="ce-inventory-type7" class="left">限時兌換</label>	
-		<span class="btn setbtn left" onclick="ceInventoryTypeAll()">全選</span>	
-		<span class="btn resetbtn left" onclick="ceInventoryTypeNone()">取消全選</span>	
+		<span class="btn setbtn left" id="ce-inventory-type-setbtn">全選</span>	
+		<span class="btn resetbtn left" id="ce-inventory-type-resetbtn">取消全選</span>	
 	</div>		
 	<div class="row">		
 		<span class="label">禮裝效果</span>	
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect1" value="攻擊力" onchange="ceInventoryEffectChange(this, '攻擊力')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect1" value="攻擊力" checked>
 		<label for="ce-inventory-effect1" class="left">攻擊力</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect2" value="Buster性能" onchange="ceInventoryEffectChange(this, 'Buster性能')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect2" value="Buster性能" checked>
 		<label for="ce-inventory-effect2" class="left">Buster性能</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect3" value="Art性能" onchange="ceInventoryEffectChange(this, 'Art性能')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect3" value="Art性能" checked>
 		<label for="ce-inventory-effect3" class="left">Art性能</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect4" value="Quick性能" onchange="ceInventoryEffectChange(this, 'Quick性能')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect4" value="Quick性能" checked>
 		<label for="ce-inventory-effect4" class="left">Quick性能</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect5" value="寶具威力" onchange="ceInventoryEffectChange(this, '寶具威力')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect5" value="寶具威力" checked>
 		<label for="ce-inventory-effect5" class="left">寶具威力</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect6" value="起始NP" onchange="ceInventoryEffectChange(this, '起始NP')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect6" value="起始NP" checked>
 		<label for="ce-inventory-effect6" class="left">起始NP</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect7" value="每回合NP" onchange="ceInventoryEffectChange(this, '每回合NP')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect7" value="每回合NP" checked>
 		<label for="ce-inventory-effect7" class="left">每回合NP</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect8" value="NP獲得量" onchange="ceInventoryEffectChange(this, 'NP獲得量')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect8" value="NP獲得量" checked>
 		<label for="ce-inventory-effect8" class="left">NP獲得量</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect9" value="獲得爆擊星" onchange="ceInventoryEffectChange(this, '獲得爆擊星')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect9" value="獲得爆擊星" checked>
 		<label for="ce-inventory-effect9" class="left">獲得爆擊星</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect10" value="爆擊星掉落率" onchange="ceInventoryEffectChange(this, '爆擊星掉落率')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect10" value="爆擊星掉落率" checked>
 		<label for="ce-inventory-effect10" class="left">爆擊星掉落率</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect11" value="爆擊威力" onchange="ceInventoryEffectChange(this, '爆擊威力')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect11" value="爆擊威力" checked>
 		<label for="ce-inventory-effect11" class="left">爆擊威力</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect12" value="爆擊星集中度" onchange="ceInventoryEffectChange(this, '爆擊星集中度')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect12" value="爆擊星集中度" checked>
 		<label for="ce-inventory-effect12" class="left">爆擊星集中度</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect13" value="特攻" onchange="ceInventoryEffectChange(this, '特攻')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect13" value="特攻" checked>
 		<label for="ce-inventory-effect13" class="left">特攻</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect14" value="傷害附加" onchange="ceInventoryEffectChange(this, '傷害附加')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect14" value="傷害附加" checked>
 		<label for="ce-inventory-effect14" class="left">傷害附加</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect15" value="防禦力" onchange="ceInventoryEffectChange(this, '防禦力')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect15" value="防禦力" checked>
 		<label for="ce-inventory-effect15" class="left">防禦力</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect16" value="特防" onchange="ceInventoryEffectChange(this, '特防')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect16" value="特防" checked>
 		<label for="ce-inventory-effect16" class="left">特防</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect17" value="傷害減免" onchange="ceInventoryEffectChange(this, '傷害減免')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect17" value="傷害減免" checked>
 		<label for="ce-inventory-effect17" class="left">傷害減免</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect18" value="迴避" onchange="ceInventoryEffectChange(this, '迴避')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect18" value="迴避" checked>
 		<label for="ce-inventory-effect18" class="left">迴避</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect19" value="無敵" onchange="ceInventoryEffectChange(this, '無敵')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect19" value="無敵" checked>
 		<label for="ce-inventory-effect19" class="left">無敵</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect20" value="毅力" onchange="ceInventoryEffectChange(this, '毅力')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect20" value="毅力" checked>
 		<label for="ce-inventory-effect20" class="left">毅力</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect21" value="必中" onchange="ceInventoryEffectChange(this, '必中')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect21" value="必中" checked>
 		<label for="ce-inventory-effect21" class="left">必中</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect22" value="無敵貫通" onchange="ceInventoryEffectChange(this, '無敵貫通')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect22" value="無敵貫通" checked>
 		<label for="ce-inventory-effect22" class="left">無敵貫通</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect23" value="目標集中" onchange="ceInventoryEffectChange(this, '目標集中')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect23" value="目標集中" checked>
 		<label for="ce-inventory-effect23" class="left">目標集中</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect24" value="HP" onchange="ceInventoryEffectChange(this, 'HP')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect24" value="HP" checked>
 		<label for="ce-inventory-effect24" class="left">HP</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect25" value="狀態耐性" onchange="ceInventoryEffectChange(this, '狀態耐性')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect25" value="狀態耐性" checked>
 		<label for="ce-inventory-effect25" class="left">狀態耐性</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect26" value="狀態無效" onchange="ceInventoryEffectChange(this, '狀態無效')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect26" value="狀態無效" checked>
 		<label for="ce-inventory-effect26" class="left">狀態無效</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect27" value="狀態成功率" onchange="ceInventoryEffectChange(this, '狀態成功率')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect27" value="狀態成功率" checked>
 		<label for="ce-inventory-effect27" class="left">狀態成功率</label>
-		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect28" value="其他" onchange="ceInventoryEffectChange(this, '其他')" checked>
+		<input type="checkbox" class="ce-inventory-effect left" id="ce-inventory-effect28" value="其他" checked>
 		<label for="ce-inventory-effect28" class="left">其他</label>
-		<span class="btn setbtn left" onclick="ceInventoryEffectAll()">全選</span>
-		<span class="btn resetbtn left" onclick="ceInventoryEffectNone()">取消全選</span>	
+		<span class="btn setbtn left" id="ce-inventory-effect-setbtn">全選</span>
+		<span class="btn resetbtn left" id="ce-inventory-effect-resetbtn">取消全選</span>	
 	</div>		
 	<div class="row">		
 		<label class="switch">	
-			<input type="checkbox" class="left" id="ce-inventory-owned" value="true" onchange="ceInventoryInclusiveChange(this)">
+			<input type="checkbox" class="left" id="ce-inventory-owned" value="true">
 			<span class="slider"></span>
 		</label>	
 		<span class="left">僅包括已有禮裝</span>	
 	</div>
 	<div class="row">
-		<span class="btn applybtn left" onclick="generateCEInventory();loadCESave();">套用篩選</span>
+		<span class="btn applybtn left" id="ce-inventory-applybtn">套用篩選</span>
 	</div>
 </div>
 
