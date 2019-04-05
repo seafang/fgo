@@ -20,6 +20,66 @@ let inventoryFilter = {
 	owned: [true, false]
 };
 
+$(document).ready(function() {
+	$(".inventory-class").click(function() {
+		var servantClass = $(this).attr("title");
+		inventoryClassChange(this, servantClass);
+	});
+	$("#inventory-class-setbtn").click(function() {
+		inventoryClassAll();
+	});
+	$("#inventory-class-resetbtn").click(function() {
+		inventoryClassNone();
+	});
+	$(".inventory-star").change(function() {
+		var star = Number($(this).val());
+		inventoryStarChange(this, star);
+	});
+	$("#inventory-star-setbtn").click(function() {
+		inventoryStarAll();
+	});
+	$("#inventory-star-resetbtn").click(function() {
+		inventoryStarNone();
+	});
+	$(".inventory-type").change(function() {
+		var type = $(this).val();
+		inventoryTypeChange(this, type);
+	});
+	$("#inventory-type-setbtn").click(function() {
+		inventoryTypeAll();
+	});
+	$("#inventory-type-resetbtn").click(function() {
+		inventoryTypeNone();
+	});
+	$(".inventory-color").change(function() {
+		var color = $(this).val();
+		inventoryColorChange(this, color);
+	});
+	$("#inventory-color-setbtn").click(function() {
+		inventoryColorAll();
+	});
+	$("#inventory-color-resetbtn").click(function() {
+		inventoryColorNone();
+	});
+	$(".inventory-range").change(function() {
+		var range = $(this).val();
+		inventoryRangeChange(this, range);
+	});
+	$("#inventory-range-setbtn").click(function() {
+		inventoryRangeAll();
+	});
+	$("#inventory-range-resetbtn").click(function() {
+		inventoryRangeNone();
+	});
+	$("#inventory-owned").change(function() {
+		inventoryInclusiveChange(this);
+	});
+	$("#inventory-applybtn").click(function() {
+		generateInventory();
+		loadSave();
+	});
+});
+
 function clearInventory() {
 	$("#servant-inventory").find(".inventory-row").each(function(){
 		$(this).remove();
