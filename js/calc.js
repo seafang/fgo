@@ -379,24 +379,24 @@ function setCurrentServantInfo() {
 		$("#current-servant-lv").val(servantSave[0].data[1]);
 		$("#current-servant-nplv").val(servantSave[0].data[2]);
 		$("#current-servant-statup").val(servantSave[0].data[4]);
-		$("#current-servant-rankup").attr("checked", servantSave[0].data[3]);
+		$("#current-servant-rankup").prop("checked", servantSave[0].data[3]);
 		$("#skill1-lv").val(servantSave[0].data[5]);
-		$("#check-skill1-rankup").attr("checked", servantSave[0].data[6]);
+		$("#check-skill1-rankup").prop("checked", servantSave[0].data[6]);
 		$("#skill2-lv").val(servantSave[0].data[7]);
-		$("#check-skill2-rankup").attr("checked", servantSave[0].data[8]);
+		$("#check-skill2-rankup").prop("checked", servantSave[0].data[8]);
 		$("#skill3-lv").val(servantSave[0].data[9]);
-		$("#check-skill3-rankup").attr("checked", servantSave[0].data[10]);
+		$("#check-skill3-rankup").prop("checked", servantSave[0].data[10]);
 	} else {
 		$("#current-servant-lv").val(0);
 		$("#current-servant-nplv").val(1);
 		$("#current-servant-statup").val(0);
-		$("#current-servant-rankup").attr("checked", false);
+		$("#current-servant-rankup").prop("checked", false);
 		$("#skill1-lv").val(1);
-		$("#check-skill1-rankup").attr("checked", false);
+		$("#check-skill1-rankup").prop("checked", false);
 		$("#skill2-lv").val(1);
-		$("#check-skill2-rankup").attr("checked", false);
+		$("#check-skill2-rankup").prop("checked", false);
 		$("#skill3-lv").val(1);
-		$("#check-skill3-rankup").attr("checked", false);
+		$("#check-skill3-rankup").prop("checked", false);
 	}
 	$("#current-servant-hp").val(100);
 	$("#current-servant-npoc").val(1);
@@ -874,21 +874,21 @@ function setTeammateInfo(value) {
 	var section = $("#" + value);
 	var save = window[value + "Save"];
 	if (save[0] != undefined) {
-		section.find(".teammate-np-rankup").attr("checked", save[0].data[3]);
+		section.find(".teammate-np-rankup").prop("checked", save[0].data[3]);
 		section.find(".teammate-skill1-lv").val(save[0].data[5]);
-		section.find(".teammate-skill1-rankup").attr("checked", save[0].data[6]);
+		section.find(".teammate-skill1-rankup").prop("checked", save[0].data[6]);
 		section.find(".teammate-skill2-lv").val(save[0].data[7]);
-		section.find(".teammate-skill2-rankup").attr("checked", save[0].data[8]);
+		section.find(".teammate-skill2-rankup").prop("checked", save[0].data[8]);
 		section.find(".teammate-skill3-lv").val(save[0].data[9]);
-		section.find(".teammate-skill3-rankup").attr("checked", save[0].data[10]);
+		section.find(".teammate-skill3-rankup").prop("checked", save[0].data[10]);
 	} else {
-		section.find(".teammate-np-rankup").attr("checked", false);
+		section.find(".teammate-np-rankup").prop("checked", false);
 		section.find(".teammate-skill1-lv").val(1);
-		section.find(".teammate-skill1-rankup").attr("checked", false);
+		section.find(".teammate-skill1-rankup").prop("checked", false);
 		section.find(".teammate-skill2-lv").val(1);
-		section.find(".teammate-skill2-rankup").attr("checked", false);
+		section.find(".teammate-skill2-rankup").prop("checked", false);
 		section.find(".teammate-skill3-lv").val(1);
-		section.find(".teammate-skill3-rankup").attr("checked", false);
+		section.find(".teammate-skill3-rankup").prop("checked", false);
 	}
 	section.find(".teammate-skill1").prop("checked", false);
 	section.find(".teammate-skill1-img").addClass("dull");
