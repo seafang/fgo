@@ -14,6 +14,6 @@ var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [];
 
 $(document).ready(function() {
-		generateSaveList();
-		getSave();
+	generateSaveList();
+	getSave();
 });
