@@ -525,7 +525,7 @@ function initialServant() {
 
 // CE Modal
 let ceFilter = {
-	ceStar: [1, 2, 3, 4, 5],
+	ceStar: [3, 4, 5],
 	ceType: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
 	ceEffect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
@@ -615,7 +615,7 @@ function ceStarChange(element, starNo) {
 
 function ceStarAll() {
 	$(".ce-star").prop("checked", true);
-	ceFilter.ceStar = [1, 2, 3, 4, 5];
+	ceFilter.ceStar = [3, 4, 5];
 }
 
 function ceStarNone() {
@@ -673,9 +673,9 @@ function ceEffectNone() {
 function ceInclusiveChange(element) {
 	var value = $(element).is(":checked");
 	if (value == true) {
-		ce.owned = [true];
+		ceFilter.owned = [true];
 	} else {
-		ce.owned = [true, false];
+		ceFilter.owned = [true, false];
 	}
 }
 
@@ -1064,3 +1064,166 @@ function initialTeammate() {
 	teammateInclusiveReset();
 }
 
+
+// Teammate CE Modal
+let teammateCEFilter = {
+	ceStar: [3, 4, 5],
+	ceType: ["常駐", "活動限定", "期間限定", "活動兌換", "羈絆禮裝"],
+	ceEffect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "特攻", "傷害附加"],
+	owned: [true, false],
+	ceDmgToTeam: [true]
+};
+
+
+$(document).ready(function() {
+	$("#teammate-ce-modal-closebtn").click(function() {
+		closeModal();
+	});
+	$(".teammate-ce-star").change(function() {
+		var star = Number($(this).val());
+		teammateCEStarChange(this, star);
+	});
+	$("#teammate-ce-star-setbtn").click(function() {
+		teammateCEStarAll();
+	});
+	$("#teammate-ce-star-resetbtn").click(function() {
+		teammateCEStarNone();
+	});
+	$(".teammate-ce-type").change(function() {
+		var type = $(this).val();
+		teammateCETypeChange(this, type);
+	});
+	$("#teammate-ce-type-setbtn").click(function() {
+		teammateCETypeAll();
+	});
+	$("#teammate-ce-type-resetbtn").click(function() {
+		teammateCETypeNone();
+	});
+	$(".teammate-ce-effect").change(function() {
+		var effect = $(this).val();
+		teammateCEEffectChange(this, effect);
+	});
+	$("#teammate-ce-effect-setbtn").click(function() {
+		teammateCEEffectAll();
+	});
+	$("#teammate-ce-effect-resetbtn").click(function() {
+		teammateCEEffectNone();
+	});
+	$("#modal-teammate-ce-owned").change(function() {
+		teammateCEInclusiveChange(this);
+	});
+	$("#teammate-ce-applybtn").click(function() {
+		loadTeammateCEImg();
+	});
+});
+
+function loadTeammateCEImg() {
+	var filteredCE = multiFilter(ce, teammateCEFilter);
+	var ceID = filteredCE.map(function(essence) {
+		return essence.ceID
+	});
+	$("#teammate-ce-img").html("");
+	var imglist = "";	
+	$.each(ceID, function(index, value) {
+		imglist += "<img class='left ce-img teammate-ce-modal-img' src='images/ce/" + value +
+		".webp' data-id='" + value + "' />"
+	});
+	$("#teammate-ce-img").html(imglist);
+	teammateCEBind();
+}
+
+function teammateCEBind() {
+	$(".teammate-ce-modal-img").ready(function() {
+		$(".teammate-ce-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickTeammateCE(id);
+		});
+	});
+}
+
+function teammateCEStarChange(element, starNo) {
+	var newStar = teammateCEFilter.ceStar;
+	if ($(element).prop("checked")) {
+		newStar.push(starNo);
+		teammateCEFilter.ceStar = newStar;
+	} else {
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
+		teammateCEFilter.ceStar = newStar;
+	}
+}
+
+function teammateCEStarAll() {
+	$(".teammate-ce-star").prop("checked", true);
+	teammateCEFilter.ceStar = [3, 4, 5];
+}
+
+function teammateCEStarNone() {
+	$(".teammate-ce-star").prop("checked", false);
+	teammateCEFilter.ceStar = [];
+}
+
+function teammateCETypeChange(element, typeName) {
+	var newType = teammateCEFilter.ceType;
+	if ($(element).prop("checked")) {
+		newType.push(typeName);
+		teammateCEFilter.ceType = newType;
+	} else {
+		position = newType.indexOf(typeName);
+		newType.splice(position, 1);
+		teammateCEFilter.ceType = newType;
+	}
+}
+
+function teammateCETypeAll() {
+	$(".teammate-ce-type").prop("checked", true);
+	teammateCEFilter.ceType = ["常駐", "活動限定", "期間限定", "活動兌換", "羈絆禮裝"];
+}
+
+function teammateCETypeNone() {
+	$(".teammate-ce-type").prop("checked", false);
+	teammateCEFilter.ceType = [];
+}
+
+function teammateCEEffectChange(element, effect) {
+	var newEffect = teammateCEFilter.ceEffect;
+	if ($(element).prop("checked")) {
+		newEffect.push(effect);
+		teammateCEFilter.ceEffect = newEffect;
+	} else {
+		position = newEffect.indexOf(effect);
+		newEffect.splice(position, 1);
+		teammateCEFilter.ceEffect = newEffect;
+	}
+}
+
+function teammateCEEffectAll() {
+	$(".teammate-ce-effect").prop("checked", true);
+	teammateCEFilter.ceEffect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "特攻", "傷害附加"];
+}
+
+function teammateCEEffectNone() {
+	$(".teammate-ce-effect").prop("checked", false);
+	teammateCEFilter.ceEffect = [];
+}
+
+function teammateCEInclusiveChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		teammateCEFilter.owned = [true];
+	} else {
+		teammateCEFilter.owned = [true, false];
+	}
+}
+
+function teammateCEInclusiveReset() {
+	$("#modal-teammate-ce-owned").prop("checked", false);
+	teammateCEFilter.owned = [true, false];
+}
+
+function initialTeammateCE() {
+	teammateCEStarAll();
+	teammateCETypeAll();
+	teammateCEEffectAll();
+	teammateCEInclusiveReset();
+}
