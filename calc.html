@@ -46,7 +46,7 @@
 		<div class="collapsible" id="enemy-setup-collapsible">
 			<div class="row">			
 				<div class="element-20 flex">		
-					<img class="left profile-img" id="current-enemy-img" src="images/bg_logo.png" />
+					<img class="left profile-img" id="current-enemy-img" src="images/bg_logo.webp" />
 					<span id="current-enemy-name">未選定/自訂敵人</span>	
 				</div>		
 				<div class="element-15">			
@@ -219,10 +219,10 @@
 			<span class="resetbtn btn btnright" id="enemy1-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
-					<img class="left profile-img enemy-img" id="enemy1-img" src="images/bg_logo.png" />
+					<img class="left profile-img enemy-img" id="enemy1-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy1-name"></span>
 					<span class="enemy-debuff" id="enemy1-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy1-class" src="images/class/Unknown.png" />
+					<img class="enemy-class class-logo left" id="enemy1-class" data-class="" src="images/class/Unknown.webp" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy1-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy1-attribute"></span></div>
@@ -245,10 +245,10 @@
 			<span class="resetbtn btn btnright" id="enemy2-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
-					<img class="left profile-img enemy-img" id="enemy2-img" src="images/bg_logo.png" />
+					<img class="left profile-img enemy-img" id="enemy2-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy2-name"></span>
 					<span class="enemy-debuff" id="enemy2-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy2-class" src="images/class/Unknown.png" />
+					<img class="enemy-class class-logo left" id="enemy2-class" data-class="" src="images/class/Unknown.webp" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy2-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy2-attribute"></span></div>
@@ -271,10 +271,10 @@
 			<span class="resetbtn btn btnright" id="enemy3-resetbtn">清除</span>
 			<div class="row">
 				<div class="element-20 flex">
-					<img class="left profile-img enemy-img" id="enemy3-img" src="images/bg_logo.png" />
+					<img class="left profile-img enemy-img" id="enemy3-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy3-name"></span>
 					<span class="enemy-debuff" id="enemy3-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy3-class" src="images/class/Unknown.png" />
+					<img class="enemy-class class-logo left" id="enemy3-class" data-class="" src="images/class/Unknown.webp" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy3-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy3-attribute"></span></div>
@@ -340,11 +340,11 @@
 		</div>
 		<div class="row">
 			<div class="element-20 flex">
-				<img class="left profile-img" id="current-servant-img" src="images/bg_logo.png" />
+				<img class="left profile-img" id="current-servant-img" src="images/bg_logo.webp" />
 				<span id="current-servant-name">未選定從者</span>
 			</div>
 			<div class="element-25">
-					<img class="class-logo left" id="current-servant-class" src="images/class/Unknown.png" />
+					<img class="class-logo left" id="current-servant-class" src="images/class/Unknown.webp" />
 					<span class="star left dull" id="current-servant-star" data-star="">★★★★★</span>
 					<label class="label">等級</label>
 					<select class="narrow" id="current-servant-lv" disabled>
@@ -857,7 +857,7 @@
 				<div class="element-50">		
 					<img class="left teammate-img" src="" />	
 					<span class="teammate-name">未選定隊友</span>	
-					<img class="class-logo left teammate-class" src="images/class/Unknown.png" />	
+					<img class="class-logo left teammate-class" data-class="" src="images/class/Unknown.webp" />	
 					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
 				</div>		
 				<div class="element-50">		
@@ -869,7 +869,7 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
 					<span class="label">寶解</span>	
 					<span class="label">寶具</span><span class="teammate-np-name"></span>	
 					<span class="label">效果</span><span id="teammate-np-dscrp"></span>	
@@ -885,7 +885,20 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>	
+					<select class="narrow teammate-skill1-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill1-img" src="" />	
 					<span class="teammate-skill1-name"></span>	
@@ -899,7 +912,20 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>	
+					<select class="narrow teammate-skill2-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill2-img" src="" />	
 					<span class="teammate-skill2-name"></span>	
@@ -913,7 +939,20 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>	
+					<select class="narrow teammate-skill3-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill3-img" src="" />	
 					<span class="teammate-skill3-name"></span>	
@@ -947,7 +986,7 @@
 				<div class="element-50">		
 					<img class="left teammate-img" src="" />	
 					<span class="teammate-name">未選定隊友</span>	
-					<img class="class-logo left teammate-class" src="images/class/Unknown.png" />	
+					<img class="class-logo left teammate-class" data-class="" src="images/class/Unknown.webp" />	
 					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
 				</div>		
 				<div class="element-50">		
@@ -959,7 +998,8 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>
 					<span class="label">寶解</span>	
 					<span class="label">寶具</span><span class="teammate-np-name"></span>	
 					<span class="label">效果</span><span id="teammate-np-dscrp"></span>	
@@ -975,7 +1015,20 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>	
+					<select class="narrow teammate-skill1-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill1-img" src="" />	
 					<span class="teammate-skill1-name"></span>	
@@ -989,7 +1042,20 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<label class="label">等級</label>	
+					<select class="narrow teammate-skill2-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill2-img" src="" />	
 					<span class="teammate-skill2-name"></span>	
@@ -1003,7 +1069,19 @@
 					<label class="switch">	
 						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
 						<span class="slider"></span>
-					</label>	
+					</label>
+					<select class="narrow teammate-skill3-lv" disabled>	
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
 					<span class="label">技解</span>	
 					<img class="teammate-skill3-img" src="" />	
 					<span class="teammate-skill3-name"></span>	
@@ -1124,19 +1202,19 @@
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left servant-enemy-class" title="Saber" src="images/class/Saber.png" />
-				<img class="class-logo left servant-enemy-class" title="Archer" src="images/class/Archer.png" />
-				<img class="class-logo left servant-enemy-class" title="Lancer" src="images/class/Lancer.png" />
-				<img class="class-logo left servant-enemy-class" title="Rider" src="images/class/Rider.png" />
-				<img class="class-logo left servant-enemy-class" title="Caster" src="images/class/Caster.png" />
-				<img class="class-logo left servant-enemy-class" title="Assassin" src="images/class/Assassin.png" />
-				<img class="class-logo left servant-enemy-class" title="Berserker" src="images/class/Berserker.png" />
-				<img class="class-logo left servant-enemy-class" title="Shielder" src="images/class/Shielder.png" />
-				<img class="class-logo left servant-enemy-class" title="Ruler" src="images/class/Ruler.png" />
-				<img class="class-logo left servant-enemy-class" title="Avenger" src="images/class/Avenger.png" />
-				<img class="class-logo left servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.png" />
-				<img class="class-logo left servant-enemy-class" title="Alterego" src="images/class/Alterego.png" />
-				<img class="class-logo left servant-enemy-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<img class="class-logo left servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo left servant-enemy-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo left servant-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo left servant-enemy-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo left servant-enemy-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo left servant-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo left servant-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo left servant-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo left servant-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo left servant-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo left servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo left servant-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo left servant-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
 				<span class="btn setbtn left" id="servant-enemy-class-setbtn">全選</span>
 				<span class="btn resetbtn left" id="servant-enemy-class-resetbtn">取消全選</span>
 			</div>
@@ -1173,19 +1251,19 @@
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left servant-class" title="Saber" src="images/class/Saber.png" />
-				<img class="class-logo left servant-class" title="Archer" src="images/class/Archer.png" />
-				<img class="class-logo left servant-class" title="Lancer" src="images/class/Lancer.png" />
-				<img class="class-logo left servant-class" title="Rider" src="images/class/Rider.png" />
-				<img class="class-logo left servant-class" title="Caster" src="images/class/Caster.png" />
-				<img class="class-logo left servant-class" title="Assassin" src="images/class/Assassin.png" />
-				<img class="class-logo left servant-class" title="Berserker" src="images/class/Berserker.png" />
-				<img class="class-logo left servant-class" title="Shielder" src="images/class/Shielder.png" />
-				<img class="class-logo left servant-class" title="Ruler" src="images/class/Ruler.png" />
-				<img class="class-logo left servant-class" title="Avenger" src="images/class/Avenger.png" />
-				<img class="class-logo left servant-class" title="Mooncancer" src="images/class/Mooncancer.png" />
-				<img class="class-logo left servant-class" title="Alterego" src="images/class/Alterego.png" />
-				<img class="class-logo left servant-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<img class="class-logo left servant-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo left servant-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo left servant-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo left servant-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo left servant-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo left servant-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo left servant-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo left servant-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo left servant-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo left servant-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo left servant-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo left servant-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo left servant-class" title="Foreigner" src="images/class/Foreigner.webp" />
 				<span class="btn setbtn left" id="servant-class-setbtn">全選</span>
 				<span class="btn resetbtn left" id="servant-class-resetbtn">取消全選</span>
 			</div>
@@ -1492,19 +1570,19 @@
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left teammate-class" title="Saber" src="images/class/Saber.png" />
-				<img class="class-logo left teammate-class" title="Archer" src="images/class/Archer.png" />
-				<img class="class-logo left teammate-class" title="Lancer" src="images/class/Lancer.png" />
-				<img class="class-logo left teammate-class" title="Rider" src="images/class/Rider.png" />
-				<img class="class-logo left teammate-class" title="Caster" src="images/class/Caster.png" />
-				<img class="class-logo left teammate-class" title="Assassin" src="images/class/Assassin.png" />
-				<img class="class-logo left teammate-class" title="Berserker" src="images/class/Berserker.png" />
-				<img class="class-logo left teammate-class" title="Shielder" src="images/class/Shielder.png" />
-				<img class="class-logo left teammate-class" title="Ruler" src="images/class/Ruler.png" />
-				<img class="class-logo left teammate-class" title="Avenger" src="images/class/Avenger.png" />
-				<img class="class-logo left teammate-class" title="Mooncancer" src="images/class/Mooncancer.png" />
-				<img class="class-logo left teammate-class" title="Alterego" src="images/class/Alterego.png" />
-				<img class="class-logo left teammate-class" title="Foreigner" src="images/class/Foreigner.png" />
+				<img class="class-logo left teammate-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo left teammate-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo left teammate-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo left teammate-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo left teammate-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo left teammate-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo left teammate-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo left teammate-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo left teammate-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo left teammate-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo left teammate-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo left teammate-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo left teammate-class" title="Foreigner" src="images/class/Foreigner.webp" />
 				<span class="btn setbtn left" id="teammate-class-setbtn">全選</span>
 				<span class="btn resetbtn left" id="teammate-class-resetbtn">取消全選</span>
 			</div>
