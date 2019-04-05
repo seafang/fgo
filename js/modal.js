@@ -33,18 +33,22 @@ $(document).ready(function() {
 	$("#servant-enemy-applybtn").click(function() {
 		loadServantEnemyImg();
 	});
+	$(".servant-enemy-modal-img").click(function() {
+		var id = Number($(this).attr("data-id"));
+		pickEnemy(1, id);
+	});
 });
 
 function loadServantEnemyImg() {
 	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
-	var servantEnemyID = filteredServantEnemy.map(function (servantEnemy) {
+	var servantEnemyID = filteredServantEnemy.map(function(servantEnemy) {
 		return servantEnemy.id
 	});
 	$("#servant-enemy-img").html("");
 	var imglist = "";	
 	$.each(servantEnemyID, function(index, value) {
-		imglist += "<img class='left servant-img' src='images/servant/" + value +
-		".webp' onclick='pickEnemy(1, " + value + ")' />"
+		imglist += "<img class='left servant-img servant-enemy-modal-img' src='images/servant/" + value +
+		".webp' data-id='" + value + "' />"
 	});
 	$("#servant-enemy-img").html(imglist);
 }
@@ -115,9 +119,9 @@ let servantFilter = {
 	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
 	npColor: ["Buster", "Art", "Quick"],
 	npRange: ["全體", "單體"],
-	extraDamage: ["無特攻", "Saber", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
+	extraDamage: ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
-		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"],
+		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒", "Saber"],
 	owned: [true, false]
 };
 
@@ -232,18 +236,22 @@ $(document).ready(function() {
 	$("#servant-applybtn").click(function() {
 		loadServantImg();
 	});
+	$(".servant-modal-img").click(function() {
+		var id = Number($(this).attr("data-id"));
+		pickServant(id);
+	});
 });
 
 function loadServantImg() {
 	var filteredServant = multiFilter(servants, servantFilter);
-	var servantID = filteredServant.map(function (servant) {
+	var servantID = filteredServant.map(function(servant) {
 		return servant.id
 	});
 	$("#servant-img").html("");
 	var imglist = "";	
 	$.each(servantID, function(index, value) {
-		imglist += "<img class='left servant-img' src='images/servant/" + value +
-		".webp' onclick='pickServant(" + value + ")' />"
+		imglist += "<img class='left servant-img servant-modal-img' src='images/servant/" + value +
+		".webp' data-id='" + value + "' />"
 	});
 	$("#servant-img").html(imglist);
 }
@@ -465,9 +473,9 @@ function servantEDChange(element, edName) {
 
 function servantEDAll() {
 	$(".servant-ed").prop("checked", true);
-	servantFilter.extraDamage = ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
+	servantFilter.extraDamage = ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
-		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"];
+		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒", "Saber"];
 }
 
 function servantEDNone() {
@@ -557,18 +565,22 @@ $(document).ready(function() {
 	$("#ce-applybtn").click(function() {
 		loadCEImg();
 	});
+	$(".ce-modal-img").click(function() {
+		var id = Number($(this).attr("data-id"));
+		pickCE(id);
+	});
 });
 
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
-	var ceID = filteredCE.map(function (essence) {
+	var ceID = filteredCE.map(function(essence) {
 		return essence.ceID
 	});
 	$("#ce-img").html("");
 	var imglist = "";	
 	$.each(ceID, function(index, value) {
-		imglist += "<img class='left ce-img' src='images/ce/" + value +
-		".webp' onclick='pickCE(" + value + ")' />"
+		imglist += "<img class='left ce-img ce-modal-img' src='images/ce/" + value +
+		".webp' data-id='" + value + "' />"
 	});
 	$("#ce-img").html(imglist);
 }
@@ -669,7 +681,7 @@ let teammateFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
 	star: [0, 1, 2, 3, 4, 5],
-	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動", "固有從者"],
 	attribute: ["天", "地", "人", "星", "獸"],
 	gender: ["男性", "女性", "不明"],
 	alignment1: ["秩序", "中立", "混沌"],
@@ -774,34 +786,28 @@ $(document).ready(function() {
 	$("#teammate-range-resetbtn").click(function() {
 		teammateRangeNone();
 	});
-	$(".teammate-ed").change(function() {
-		var ed = $(this).val();
-		teammateEDChange(this, ed);
-	});
-	$("#teammate-ed-setbtn").click(function() {
-		teammateEDAll();
-	});
-	$("#teammate-ed-resetbtn").click(function() {
-		teammateEDNone();
-	});
 	$("#teammate-owned").change(function() {
 		teammateInclusiveChange(this);
 	});
 	$("#teammate-applybtn").click(function() {
 		loadTeammateImg();
 	});
+	$(".teammate-modal-img").click(function() {
+		var id = Number($(this).attr("data-id"));
+		pickTeammate(id);
+	});
 });
 
 function loadTeammateImg() {
-	var filteredTeammate = multiFilter(teammates, teammateFilter);
-	var teammateID = filteredTeammate.map(function (teammate) {
+	var filteredTeammate = multiFilter(servants, teammateFilter);
+	var teammateID = filteredTeammate.map(function(teammate) {
 		return teammate.id
 	});
 	$("#teammate-img").html("");
 	var imglist = "";	
 	$.each(teammateID, function(index, value) {
-		imglist += "<img class='left teammate-img' src='images/teammate/" + value +
-		".webp' onclick='pickTeammate(" + value + ")' />"
+		imglist += "<img class='left teammate-img teammate-modal-img' src='images/teammate/" + value +
+		".webp' data-id='" + value + "' />"
 	});
 	$("#teammate-img").html(imglist);
 }
@@ -868,7 +874,7 @@ function teammateTypeChange(element, typeName) {
 
 function teammateTypeAll() {
 	$(".teammate-type").prop("checked", true);
-	teammateFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
+	teammateFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動", "固有從者"];
 }
 
 function teammateTypeNone() {
@@ -1001,36 +1007,12 @@ function teammateRangeChange(element, rangeName) {
 
 function teammateRangeAll() {
 	$(".teammate-range").prop("checked", true);
-	teammateFilter.npRange = ["全體", "單體"];
+	teammateFilter.npRange = ["全體", "單體", "輔助"];
 }
 
 function teammateRangeNone() {
 	$(".teammate-range").prop("checked", false);
 	teammateFilter.npRange = [];
-}
-
-function teammateEDChange(element, edName) {
-	var newED = teammateFilter.extraDamage;
-	if ($(element).prop("checked")) {
-		newED.push(edName);
-		teammateFilter.extraDamage = newED;
-	} else {
-		position = newED.indexOf(edName);
-		newED.splice(position, 1);
-		teammateFilter.extraDamage = newED;
-	}
-}
-
-function teammateEDAll() {
-	$(".teammate-ed").prop("checked", true);
-	teammateFilter.extraDamage = ["無特攻", "Saber", "Ruler", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
-		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
-		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒"];
-}
-
-function teammateEDNone() {
-	$(".teammate-ed").prop("checked", false);
-	teammateFilter.extraDamage = [];
 }
 
 function teammateInclusiveChange(element) {
@@ -1057,7 +1039,6 @@ function initialTeammate() {
 	teammateAlignment2All();
 	teammateColorAll();
 	teammateRangeAll();
-	teammateEDAll();
 	teammateInclusiveReset();
 }
 
