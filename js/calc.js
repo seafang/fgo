@@ -1,14 +1,23 @@
 var servants = parent.servants;
 var ce = parent.ce;
 var master = parent.master;
+
+var skillBuff = parent.skillBuff;
+var npBuff = parent.npBuff;
+var atk = parent.atk;
+var ceBuff = parent.ceBuff;
+var masterBuff = parent.masterBuff;
+
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
 var bgMaster = parent.bgMaster;
+
 var modalCaller = "";
 
 // Layout
 $(document).ready(function() {
+	updateCounter();
 	$("#enemy-setup-collapsebtn").click(function() {
 		toggle(this, "#enemy-setup-collapsible");
 	});
@@ -25,6 +34,16 @@ $(document).ready(function() {
 		toggleTeammate(this, "#teammate-setup-collapsible");
 	});
 });
+
+$(document).click(function() {
+	updateCounter();
+});
+
+function updateCounter() {
+	var height = $("#enemy-info").outerHeight() + $("#servant-info").outerHeight() + $("#ce-info").outerHeight() +
+		$("#master-info").outerHeight() + $("#teammate-info").outerHeight() + $("#buff-info").outerHeight() + 600;
+	$("#calc-counter").html(height);
+}
 
 function toggleTeammate(button, element) {
 	if ($(button).html() == "接疊▲") {
