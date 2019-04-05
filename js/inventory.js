@@ -156,7 +156,8 @@ function generateInventory() {
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' disabled><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "";				
-		row.insertCell(-1).innerHTML = "";				
+		row.insertCell(-1).innerHTML = "";	
+		row.insertCell(-1).innerHTML = "";
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0'>";			
 	});
 }
