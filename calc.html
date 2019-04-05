@@ -833,18 +833,32 @@
 	<div class="setup" id="teammate-setup">
 		<div class="row">			
 			<a class="modalbtn left btn" id="teammate1-modalbtn">選擇隊友I</a>
-			<span class="resetbtn btn btnright" id="teammate1-reapplybtn">套用存檔</span>
+			<a class="modalbtn left btn" id="teammate1-ce-modalbtn">選擇禮裝</a>
+			<span class="resetbtn btn" id="teammate1-reapplybtn">套用存檔</span>
+			<span class="resetbtn btn btnright" id="teammate1-ce-resetbtn">移除禮裝</span>
 			<span class="resetbtn btn btnright" id="teammate1-resetbtn">&times;</span>	
 		</div>	
 		<div class="teammate-detail allow-toggle" id="teammate1">				
 			<div class="row">			
-				<div class="element-50">		
+				<div class="element-30">		
 					<img class="left teammate-img" src="" />	
 					<span class="teammate-name">未選定隊友</span>	
 					<img class="class-logo left teammate-class" data-class="" src="images/class/Unknown.webp" />	
-					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
-				</div>		
-				<div class="element-50">		
+					<span class="star left dull teammate-star">★★★★★</span>	
+				</div>
+				<div class="element-30">		
+					<img class="ce-img teammate-ce-img" src=""/>		
+					<span class="teammate-ce-name">未選定禮裝</span>
+					<span class="star left dull teammate-ce-star" >★★★★★</span>
+					<label class="switch">
+						<input type="checkbox" class="teammate-ce-max" value="true" disabled>
+						<span class="slider"></span>
+					</label>
+					<span class="label">滿破</span>
+					<span class="label">效果</span>
+					<span class="teammate-ce-dscrp"></span>
+				</div>
+				<div class="element-30">		
 					<label class="switch">	
 						<input type="checkbox" class="teammate-np" value="true" disabled>
 						<span class="slider"></span>
@@ -962,18 +976,32 @@
 		</div>
 		<div class="teammate-detail" id="teammate2">				
 			<div class="row">			
-				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友II</a>		
-				<span class="resetbtn btn btnright" id="teammate2-reapplybtn">套用存檔</span>		
+				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友II</a>
+				<a class="modalbtn left btn" id="teammate2-ce-modalbtn">選擇禮裝</a>
+				<span class="resetbtn btn" id="teammate2-reapplybtn">套用存檔</span>
+				<span class="resetbtn btn btnright" id="teammate2-ce-resetbtn">移除禮裝</span>
 				<span class="resetbtn btn btnright" id="teammate2-resetbtn">&times;</span>		
 			</div>			
 			<div class="row">			
-				<div class="element-50">		
+				<div class="element-30">		
 					<img class="left teammate-img" src="" />	
 					<span class="teammate-name">未選定隊友</span>	
 					<img class="class-logo left teammate-class" data-class="" src="images/class/Unknown.webp" />	
 					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
-				</div>		
-				<div class="element-50">		
+				</div>
+				<div class="element-30">		
+					<img class="ce-img teammate-ce-img" src=""/>		
+					<span class="teammate-ce-name">未選定禮裝</span>
+					<span class="star left dull teammate-ce-star" >★★★★★</span>
+					<label class="switch">
+						<input type="checkbox" class="teammate-ce-max" value="true" disabled>
+						<span class="slider"></span>
+					</label>
+					<span class="label">滿破</span>
+					<span class="label">效果</span>
+					<span class="teammate-ce-dscrp"></span>
+				</div>
+				<div class="element-30">		
 					<label class="switch">	
 						<input type="checkbox" class="teammate-np" value="true" disabled>
 						<span class="slider"></span>
@@ -1436,11 +1464,7 @@
 			<span class="closebtn" id="ce-modal-closebtn">&times;</span>
 		</div>
 		<div class="modal-header">
-			<div class="row">	
-				<input type="checkbox" class="ce-star left" value="1" id="ce-star1" checked>
-				<label for="ce-star1" class="star left">★</label>
-				<input type="checkbox" class="ce-star left" value="2" id="ce-star2" checked>
-				<label for="ce-star2" class="star left">★★</label>
+			<div class="row">
 				<input type="checkbox" class="ce-star left" value="3" id="ce-star3" checked>
 				<label for="ce-star3" class="star left">★★★</label>
 				<input type="checkbox" class="ce-star left" value="4" id="ce-star4" checked>
@@ -1689,6 +1713,72 @@
 	</div>
 </div>
 
+<!--Teammate CE Modal-->
+<div class="modal" id="teammate-ce-modal">
+	<div class="modal-box" id="teammate-ce-modal-box">
+		<div class="row">
+			<span class="closebtn" id="teammate-ce-modal-closebtn">&times;</span>
+		</div>
+		<div class="modal-header">
+			<div class="row">
+				<input type="checkbox" class="teammate-ce-star left" value="3" id="teammate-ce-star3" checked>
+				<label for="teammate-ce-star3" class="star left">★★★</label>
+				<input type="checkbox" class="teammate-ce-star left" value="4" id="teammate-ce-star4" checked>
+				<label for="teammate-ce-star4" class="star left">★★★★</label>
+				<input type="checkbox" class="teammate-ce-star left" value="5" id="teammate-ce-star5" checked>
+				<label for="teammate-ce-star5" class="star left">★★★★★</label>
+				<span class="btn setbtn left" id="teammate-ce-star-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-ce-star-resetbtn">取消全選</span>
+			</div>	
+			<div class="row">	
+				<span class="label">分類</span>
+				<input type="checkbox" class="teammate-ce-type left" id="teammate-ce-type1" value="常駐" checked>
+				<label for="teammate-ce-type1" class="left">常駐</label>
+				<input type="checkbox" class="teammate-ce-type left" id="teammate-ce-type2" value="活動限定" checked>
+				<label for="teammate-ce-type2" class="left">活動限定</label>
+				<input type="checkbox" class="teammate-ce-type left" id="teammate-ce-type3" value="期間限定" checked>
+				<label for="teammate-ce-type3" class="left">期間限定</label>
+				<input type="checkbox" class="teammate-ce-type left" id="teammate-ce-type4" value="活動兌換" checked>
+				<label for="teammate-ce-type4" class="left">活動兌換</label>
+				<input type="checkbox" class="teammate-ce-type left" id="teammate-ce-type5" value="羈絆禮裝" checked>
+				<label for="teammate-ce-type5" class="left">羈絆禮裝</label>
+				<span class="btn setbtn left" id="teammate-ce-type-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-ce-type-resetbtn">取消全選</span>
+			</div>
+			<div class="row">	
+				<span class="label">禮裝效果</span>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect1" value="攻擊力" checked>
+				<label for="teammate-ce-effect1" class="left">攻擊力</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect2" value="Buster性能" checked>
+				<label for="teammate-ce-effect2" class="left">Buster性能</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect3" value="Art性能" checked>
+				<label for="teammate-ce-effect3" class="left">Art性能</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect4" value="Quick性能" checked>
+				<label for="teammate-ce-effect4" class="left">Quick性能</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect5" value="寶具威力" checked>
+				<label for="teammate-ce-effect5" class="left">寶具威力</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect6" value="特攻" checked>
+				<label for="teammate-ce-effect6" class="left">特攻</label>
+				<input type="checkbox" class="teammate-ce-effect left" id="teammate-ce-effect7" value="傷害附加" checked>
+				<label for="teammate-ce-effect7" class="left">傷害附加</label>
+				<span class="btn setbtn left" id="teammate-ce-effect-setbtn">全選</span>
+				<span class="btn resetbtn left" id="teammate-ce-effect-resetbtn">取消全選</span>
+			</div>
+			<div class="row">
+				<label class="switch">
+					<input type="checkbox" class="left" id="modal-teammate-ce-owned" value="true">
+					<span class="slider"></span>
+				</label>
+				<span class="left">僅包括已有禮裝</span>
+			</div>
+			<div class="row">
+				<span class="btn applybtn left" id="teammate-ce-applybtn">套用篩選</span>
+			</div>
+		</div>
+		<div class="modal-content" id="teammate-ce-img">
+		</div>
+	</div>
+</div>
 
 <div class="counter" id="calc-counter"></div>
 </body>
