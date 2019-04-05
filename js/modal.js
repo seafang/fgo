@@ -8,7 +8,6 @@ let servantEnemyFilter = {
 $(document).ready(function() {
 	$("#servant-enemy-modal-closebtn").click(function() {
 		closeModal();
-		initialServantEnemy();
 	});
 	$(".servant-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -135,7 +134,6 @@ let servantFilter = {
 $(document).ready(function() {
 	$("#servant-modal-closebtn").click(function() {
 		closeModal();
-		initialServant();
 	});
 	$(".servant-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -245,13 +243,6 @@ $(document).ready(function() {
 	});
 });
 
-$(".servant-modal-img").ready(function() {
-	$(".servant-modal-img").click(function() {
-		var id = Number($(this).attr("data-id"));
-		pickServant(id);
-	});
-});
-
 function loadServantImg() {
 	var filteredServant = multiFilter(servants, servantFilter);
 	var servantID = filteredServant.map(function(servant) {
@@ -264,6 +255,16 @@ function loadServantImg() {
 		".webp' data-id='" + value + "' />"
 	});
 	$("#servant-img").html(imglist);
+	servantBind();
+}
+
+function servantBind() {
+	$(".servant-modal-img").ready(function() {
+		$(".servant-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickServant(id);
+		});
+	});
 }
 
 function servantClassChange(element, className) {
@@ -537,7 +538,6 @@ let ceFilter = {
 $(document).ready(function() {
 	$("#ce-modal-closebtn").click(function() {
 		closeModal();
-		initialCE();
 	});
 	$(".ce-star").change(function() {
 		var star = Number($(this).val());
@@ -577,13 +577,6 @@ $(document).ready(function() {
 	});
 });
 
-$(".ce-modal-img").ready(function() {
-	$(".ce-modal-img").click(function() {
-		var id = Number($(this).attr("data-id"));
-		pickCE(id);
-	});
-});
-
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
 	var ceID = filteredCE.map(function(essence) {
@@ -596,6 +589,16 @@ function loadCEImg() {
 		".webp' data-id='" + value + "' />"
 	});
 	$("#ce-img").html(imglist);
+	ceBind();
+}
+
+function ceBind() {
+	$(".ce-modal-img").ready(function() {
+		$(".ce-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickCE(id);
+		});
+	});
 }
 
 function ceStarChange(element, starNo) {
@@ -807,13 +810,6 @@ $(document).ready(function() {
 	});
 });
 
-$(".teammate-modal-img").ready(function() {
-	$(".teammate-modal-img").click(function() {
-		var id = Number($(this).attr("data-id"));
-		pickTeammate(id);
-	});
-});
-
 function loadTeammateImg() {
 	var filteredTeammate = multiFilter(servants, teammateFilter);
 	var teammateID = filteredTeammate.map(function(teammate) {
@@ -826,6 +822,16 @@ function loadTeammateImg() {
 		".webp' data-id='" + value + "' />"
 	});
 	$("#teammate-img").html(imglist);
+	teammateBind();
+}
+
+function teammateBind() {
+	$(".teammate-modal-img").ready(function() {
+		$(".teammate-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickTeammate(id);
+		});
+	});
 }
 
 function teammateClassChange(element, className) {
