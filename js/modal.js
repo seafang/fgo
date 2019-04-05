@@ -35,13 +35,6 @@ $(document).ready(function() {
 	});
 });
 
-$(".servant-enemy-modal-img").ready(function() {
-	$(".servant-enemy-modal-img").click(function() {
-		var id = Number($(this).attr("data-id"));
-		pickEnemy(1, id);
-	});
-});
-
 function loadServantEnemyImg() {
 	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
 	var servantEnemyID = filteredServantEnemy.map(function(servantEnemy) {
@@ -54,7 +47,18 @@ function loadServantEnemyImg() {
 		".webp' data-id='" + value + "' />"
 	});
 	$("#servant-enemy-img").html(imglist);
+	servantEnemyBind();
 }
+
+function servantEnemyBind() {
+	$(".servant-enemy-modal-img").ready(function() {
+		$(".servant-enemy-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickEnemy(1, id);
+		});
+	});
+}
+
 
 function servantEnemyClassChange(element, className) {
 	var newClass = servantEnemyFilter.classes;
