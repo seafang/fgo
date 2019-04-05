@@ -110,8 +110,10 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
+		$("#current-enemy-class").attr("data-class", enemyInfo[0].classes);
 	} else {
 		$("#current-enemy-class").val("Saber");
+		$("#current-enemy-class").attr("data-class", "Saber");
 	}
 	$("#current-enemy-gender").val(enemyInfo[0].gender);
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
@@ -126,7 +128,7 @@ function pickEnemy(type, enemyID) {
 }
 
 function resetCurrentEnemy() {
-	$("#current-enemy-img").attr("src", "images/bg_logo.png");
+	$("#current-enemy-img").attr("src", "images/bg_logo.webp");
 	$("#current-enemy-name").html("未選定/自訂敵人");
 	$("#current-enemy-class").val("Saber");
 	$("#current-enemy-gender").val("男性");
@@ -143,7 +145,7 @@ function resetCurrentEnemy() {
 function setEnemy(element) {
 	$(element).show();
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
-		$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
+		$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
 	} else {
 		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
 	}
@@ -159,6 +161,7 @@ function setEnemy(element) {
 	$(element).find(".enemy-debuff").html(debuffList);
 	switch (element) {
 		case "#enemy1":
+		default:
 			enemy1Debuff = debuff;
 			break;
 		case "#enemy2":
@@ -168,7 +171,7 @@ function setEnemy(element) {
 			enemy3Debuff = debuff;
 			break;
 	}
-	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".png";
+	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
 		alt: $("#current-enemy-class").val()
@@ -183,6 +186,7 @@ function setEnemy(element) {
 	});
 	switch (element) {
 		case "#enemy1":
+		default:
 			enemy1Trait = trait;
 			break;
 		case "#enemy2":
@@ -197,10 +201,11 @@ function setEnemy(element) {
 
 function resetEnemy(element) {
 	$(element).hide();
-	$(element).find(".enemy-img").attr("src", "images/bg_logo.png");
+	$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
 	$(element).find(".enemy-name").html("");
 	switch (element) {
 		case "#enemy1":
+		default:
 			enemy1Debuff = [];
 			break;
 		case "#enemy2":
@@ -210,7 +215,7 @@ function resetEnemy(element) {
 			enemy3Debuff = [];
 			break;
 	}
-	$(element).find(".enemy-class").attr("src", "images/class/Unknown.png");
+	$(element).find(".enemy-class").attr("src", "images/class/Unknown.webp");
 	$(element).find(".enemy-gender").html("");
 	$(element).find(".enemy-attribute").html("");
 	$(element).find(".enemy-alignment1").html("");
@@ -218,6 +223,7 @@ function resetEnemy(element) {
 	$(element).find(".enemy-trait").html("");
 	switch (element) {
 		case "#enemy1":
+		default:
 			enemy1Trait = [];
 			break;
 		case "#enemy2":
@@ -300,7 +306,7 @@ function pickServant(servantID) {
 	$("#current-servant-img").attr("src", servantInfo[0].imgID);
 	$("#current-servant-name").html(servantInfo[0].name);
 	$("#current-servant-class").attr({
-		"src": "images/class/" + servantInfo[0].classes + ".png",
+		"src": "images/class/" + servantInfo[0].classes + ".webp",
 		"data-class": servantInfo[0].classes
 	});
 	var starHTML = "";
@@ -373,31 +379,18 @@ function setCurrentServantInfo() {
 		$("#current-servant-lv").val(servantSave[0].data[1]);
 		$("#current-servant-nplv").val(servantSave[0].data[2]);
 		$("#current-servant-statup").val(servantSave[0].data[4]);
-		$("#current-servant-hp").val(100);
 		$("#current-servant-rankup").attr("checked", servantSave[0].data[3]);
-		$("#current-servant-npoc").val("oc1");
-		$("#use-skill1").prop("checked", false);
-		$("#skill1-img").removeClass("dull");
-		$("#skill1-img").addClass("dull");
 		$("#skill1-lv").val(servantSave[0].data[5]);
 		$("#check-skill1-rankup").attr("checked", servantSave[0].data[6]);
-		$("#use-skill2").prop("checked", false);
-		$("#skill2-img").removeClass("dull");
-		$("#skill2-img").addClass("dull");
 		$("#skill2-lv").val(servantSave[0].data[7]);
 		$("#check-skill2-rankup").attr("checked", servantSave[0].data[8]);
-		$("#use-skill3").prop("checked", false);
-		$("#skill3-img").removeClass("dull");
-		$("#skill3-img").addClass("dull");
 		$("#skill3-lv").val(servantSave[0].data[9]);
 		$("#check-skill3-rankup").attr("checked", servantSave[0].data[10]);
 	} else {
 		$("#current-servant-lv").val(0);
 		$("#current-servant-nplv").val(1);
 		$("#current-servant-statup").val(0);
-		$("#current-servant-hp").val(100);
 		$("#current-servant-rankup").attr("checked", false);
-		$("#current-servant-npoc").val("oc1");
 		$("#skill1-lv").val(1);
 		$("#check-skill1-rankup").attr("checked", false);
 		$("#skill2-lv").val(1);
@@ -405,6 +398,14 @@ function setCurrentServantInfo() {
 		$("#skill3-lv").val(1);
 		$("#check-skill3-rankup").attr("checked", false);
 	}
+	$("#current-servant-hp").val(100);
+	$("#current-servant-npoc").val(1);
+	$("#use-skill1").prop("checked", false);
+	$("#skill1-img").addClass("dull");
+	$("#use-skill2").prop("checked", false);
+	$("#skill2-img").addClass("dull");
+	$("#use-skill3").prop("checked", false);
+	$("#skill3-img").addClass("dull");
 }
 
 function setCurrentServantNP() {
@@ -422,9 +423,7 @@ function setSkill(toggle, skill) {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "RUImgID"]);
 		$("#" + skill + "-name").html(servantInfo[0][skill + "RUName"]);
 		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "RUDscrp"]);
-		if (!servantInfo[0][skill + "RUBuff"].some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
+		if (!servantInfo[0][skill + "RUDmgBuff"] == false) {
 			$("#use-" + skill).prop("disabled", true);
 			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
@@ -435,9 +434,7 @@ function setSkill(toggle, skill) {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "ImgID"]);
 		$("#" + skill + "-name").html(servantInfo[0][skill + "Name"]);
 		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "Dscrp"]);
-		if (!servantInfo[0][skill + "Buff"].some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
+		if (!servantInfo[0][skill + "DmgBuff"] == false) {
 			$("#use-" + skill).prop("disabled", true);
 			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
@@ -654,13 +651,10 @@ function setMaster(element) {
 }
 
 function applyMaster() {
-	$("#master-skill1-logo").removeClass("dull");
 	$("#master-skill1-logo").addClass("dull");
 	$("#check-master-skill1").prop("checked", false);
-	$("#master-skill2-logo").removeClass("dull");
 	$("#master-skill2-logo").addClass("dull");
 	$("#check-master-skill2").prop("checked", false);
-	$("#master-skill3-logo").removeClass("dull");
 	$("#master-skill3-logo").addClass("dull");
 	$("#check-master-skill3").prop("checked", false);
 	if (masterSave[0] != undefined) {
@@ -671,6 +665,9 @@ function applyMaster() {
 }
 
 // Set Teammates
+var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
+var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
+
 $(document).ready(function() {
 	$("#teammate1-modalbtn").click(function() {
 		openModal("#teammate-modal");
@@ -703,18 +700,18 @@ $(document).ready(function() {
 	$("#teammate2-reapplybtn").click(function() {
 		reapplyTeammate("teammate2");
 	});
-/*	$("#current-servant-rankup").change(function() {
-		setCurrentServantNP();
+	$(".teammate-np-rankup").change(function() {
+		setTeammateNP(this);
 	});
-	$("#check-skill1-rankup").change(function() {
-		setSkill(this, 'skill1');
+	$(".teammate-skill1-rankup").change(function() {
+		setTeammateSkill(this, 'skill1');
 	});
-	$("#check-skill2-rankup").change(function() {
-		setSkill(this, 'skill2');
+	$(".teammate-skill2-rankup").change(function() {
+		setTeammateSkill(this, 'skill2');
 	});
-	$("#check-skill3-rankup").change(function() {
-		setSkill(this, 'skill3');
-	});*/
+	$(".teammate-skill3-rankup").change(function() {
+		setTeammateSkill(this, 'skill3');
+	});
 });
 
 function extend(element) {
@@ -722,18 +719,11 @@ function extend(element) {
 	$("#" + element).addClass("allow-toggle");
 }
 
-function resetTeammate(element) {
-	$("#" + element).hide();
-	if (element != "teammate1") {
-		$("#" + element).removeClass("allow-toggle");
-		$("#" + element + "-extendbtn").show();
-	}
-}
-
 function pickTeammate(teammateID) {
 	closeModal();
 	switch (modalCaller) {
 		case "teammate1":
+		default:
 			toTeammate("teammate1", teammateID);
 			break;
 		case "teammate2":
@@ -752,7 +742,210 @@ function pickTeammate(teammateID) {
 	modalCaller = "";
 }
 
-function toTeammate(element, teammateID) {
-	
+function toTeammate(value, teammateID) {
+	var section = $("#" + value);
+	window[value + "Info"] = servants.filter(function(obj) {
+		return obj.id == teammateID;
+	});
+	var info = window[value + "Info"];
+	if ($("#teammate-setup-collapsebtn").html() == "展開▼") {
+		$("#teammate-setup-collapsebtn").click();
+	}
+	section.find(".teammate-img").attr("src", info[0].imgID);
+	section.find(".teammate-name").html(info[0].name);
+	section.find(".teammate-class").attr({
+		"src": "images/class/" + info[0].classes + ".webp",
+		"data-class": info[0].classes
+	});
+	var starHTML = "";
+	switch (info[0].star) {
+		case 0:
+			starHTML = "-";
+			break;
+		case 1:
+			starHTML = "★";
+			break;
+		case 2:
+			starHTML = "★★";
+			break;
+		case 3:
+			starHTML = "★★★";
+			break;
+		case 4:
+			starHTML = "★★★★";
+			break;
+		case 5:
+			starHTML = "★★★★★";
+			break;
+		default:
+			starHTML = "Error";
+	}
+	section.find(".teammate-star").html(starHTML);
+	section.find(".teammate-star").removeClass("dull");
+	section.find(".teammate-star").attr("data-star", info[0].star);
+	section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);
+	section.find(".teammate-np-name").removeClass("Buster Art Quick");
+	section.find(".teammate-np-name").addClass(info[0].npColor);
+	window[value + "Save"] = bgServant.filter(function(obj) {
+		return obj.id == teammateID;
+	});
+	section.find(".teammate-skill1-rankup").prop("disabled", !info[0].skill1RU);
+	section.find(".teammate-skill2-rankup").prop("disabled", !info[0].skill2RU);
+	section.find(".teammate-skill3-rankup").prop("disabled", !info[0].skill3RU);
+	setTeammateInfo(value);
+	var npToggle = section.find(".teammate-np-rankup");
+	var skill1Toggle = section.find(".teammate-skill1-rankup");
+	var skill2Toggle = section.find(".teammate-skill2-rankup");
+	var skill3Toggle = section.find(".teammate-skill3-rankup");
+	setTeammateNP(npToggle);
+	setTeammateSkill(skill1Toggle, 'skill1');
+	setTeammateSkill(skill2Toggle, 'skill2');
+	setTeammateSkill(skill3Toggle, 'skill3');
 }
-	
+
+function reapplyTeammate(value) {
+	setTeammateInfo(value);
+	var section = $("#" + value);
+	var npToggle = section.find(".teammate-np-rankup");
+	var skill1Toggle = section.find(".teammate-skill1-rankup");
+	var skill2Toggle = section.find(".teammate-skill2-rankup");
+	var skill3Toggle = section.find(".teammate-skill3-rankup");
+	setTeammateNP(npToggle);
+	setTeammateSkill(skill1Toggle, 'skill1');
+	setTeammateSkill(skill2Toggle, 'skill2');
+	setTeammateSkill(skill3Toggle, 'skill3');
+}
+
+function resetTeammate(value) {
+	window[value + "Info"] = [];
+	window[value + "Save"] = [];
+	var section = $("#" + value);
+	section.hide();
+	if (value != "teammate1") {
+		section.removeClass("allow-toggle");
+		$("#" + value + "-extendbtn").show();
+	}
+	section.find(".teammate-img").attr("src", "");
+	section.find(".teammate-name").html("");
+	section.find(".teammate-class").attr({
+		"src": "images/class/Unknown.webp",
+		"data-class": ""
+	});
+	section.find(".teammate-star").html("★★★★★");
+	section.find(".teammate-star").addClass("dull");
+	section.find(".teammate-star").attr("data-star", "");
+	section.find(".teammate-np").prop("checked", false);
+	section.find(".teammate-np").prop("disabled", true);
+	section.find(".teammate-np-rankup").prop("checked", false);
+	section.find(".teammate-np-rankup").prop("disabled", true);
+	section.find(".teammate-np-name").removeClass("Buster Art Quick");
+	section.find(".teammate-np-name").html("");
+	section.find(".teammate-np-dscrp").html("");
+	section.find(".teammate-skill1").prop("checked", true);
+	section.find(".teammate-skill1").prop("disabled", true);
+	section.find(".teammate-skill1-rankup").prop("checked", true);
+	section.find(".teammate-skill1-rankup").prop("disabled", true);
+	section.find(".teammate-skill1-lv").val(1);
+	section.find(".teammate-skill1-lv").prop("disabled", true);
+	section.find(".teammate-skill1-img").attr("src", "");
+	section.find(".teammate-skill1-name").html("");
+	section.find(".teammate-skill1-dscrp").html("");
+	section.find(".teammate-skill2").prop("checked", true);
+	section.find(".teammate-skill2").prop("disabled", true);
+	section.find(".teammate-skill2-rankup").prop("checked", true);
+	section.find(".teammate-skill2-rankup").prop("disabled", true);
+	section.find(".teammate-skill2-lv").val(1);
+	section.find(".teammate-skill2-lv").prop("disabled", true);
+	section.find(".teammate-skill2-img").attr("src", "");
+	section.find(".teammate-skill2-name").html("");
+	section.find(".teammate-skill2-dscrp").html("");
+	section.find(".teammate-skill3").prop("checked", true);
+	section.find(".teammate-skill3").prop("disabled", true);
+	section.find(".teammate-skill3-rankup").prop("checked", true);
+	section.find(".teammate-skill3-rankup").prop("disabled", true);
+	section.find(".teammate-skill3-lv").val(1);
+	section.find(".teammate-skill3-lv").prop("disabled", true);
+	section.find(".teammate-skill3-img").attr("src", "");
+	section.find(".teammate-skill3-name").html("");
+	section.find(".teammate-skill3-dscrp").html("");
+}
+
+function setTeammateInfo(value) {
+	var section = $("#" + value);
+	var save = window[value + "Save"];
+	if (save[0] != undefined) {
+		section.find(".teammate-np-rankup").attr("checked", save[0].data[3]);
+		section.find(".teammate-skill1-lv").val(save[0].data[5]);
+		section.find(".teammate-skill1-rankup").attr("checked", save[0].data[6]);
+		section.find(".teammate-skill2-lv").val(save[0].data[7]);
+		section.find(".teammate-skill2-rankup").attr("checked", save[0].data[8]);
+		section.find(".teammate-skill3-lv").val(save[0].data[9]);
+		section.find(".teammate-skill3-rankup").attr("checked", save[0].data[10]);
+	} else {
+		section.find(".teammate-np-rankup").attr("checked", false);
+		section.find(".teammate-skill1-lv").val(1);
+		section.find(".teammate-skill1-rankup").attr("checked", false);
+		section.find(".teammate-skill2-lv").val(1);
+		section.find(".teammate-skill2-rankup").attr("checked", false);
+		section.find(".teammate-skill3-lv").val(1);
+		section.find(".teammate-skill3-rankup").attr("checked", false);
+	}
+	section.find(".teammate-skill1").prop("checked", false);
+	section.find(".teammate-skill1-img").addClass("dull");
+	section.find(".teammate-skill2").prop("checked", false);
+	section.find(".teammate-skill2-img").addClass("dull");
+	section.find(".teammate-skill3").prop("checked", false);
+	section.find(".teammate-skill3-img").addClass("dull");
+}
+
+function setTeammateNP(toggle) {
+	var section = $(toggle).parents(".teammate-detail");
+	var value = section.attr("id");
+	var info = window[value + "Info"];
+	if ($(toggle).is(":checked")) {
+		section.find(".teammate-np-name").html(info[0].np + " " + info[0].npRURank);
+		section.find(".teammate-np-dscrp").html(info[0].npRUDscrp);
+		if (info[0].npRUDmgToTeam == false) {
+			section.find(".teammate-np").prop("disabled", true);
+		} else {
+			section.find(".teammate-np").prop("disabled", false);
+		}
+	} else {
+		section.find(".teammate-np-name").html(info[0].np + " " + info[0].npRank);
+		section.find(".teammate-np-dscrp").html(info[0].npDscrp);
+		if (info[0].npDmgToTeam == false) {
+			section.find(".teammate-np").prop("disabled", true);
+		} else {
+			section.find(".teammate-np").prop("disabled", false);
+		}
+	}
+}
+
+function setTeammateSkill(toggle, skill) {
+	var section = $(toggle).parents(".teammate-detail");
+	var value = section.attr("id");
+	var info = window[value + "Info"];
+	if ($(toggle).is(":checked")) {
+		section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + "RUImgID"]);
+		section.find(".teammate-" + skill + "-name").html(info[0][skill + "RUName"]);
+		section.find(".teammate-" + skill + "-dscrp").html(info[0][skill + "RUDscrp"]);
+		if (info[0][skill + "RUDmgToTeam"] == false) {
+			section.find(".teammate-" + skill).prop("disabled", true);
+			section.find(".teammate-" + skill + "-lv").prop("disabled", true);
+		} else {
+			section.find(".teammate-" + skill).prop("disabled", false);
+			section.find(".teammate-" + skill + "-lv").prop("disabled", false);
+		}
+	} else {
+		section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + "ImgID"]);
+		section.find(".teammate-" + skill + "-name").html(info[0][skill + "Name"]);
+		section.find(".teammate-" + skill + "-dscrp").html(info[0][skill + "Dscrp"]);
+		if (info[0][skill + "DmgToTeam"] == false) {
+			section.find(".teammate-" + skill).prop("disabled", true);
+			section.find(".teammate-" + skill + "-lv").prop("disabled", true);
+		} else {
+			section.find(".teammate-" + skill).prop("disabled", false);
+			section.find(".teammate-" + skill + "-lv").prop("disabled", false);
+		}
+	}
+}
