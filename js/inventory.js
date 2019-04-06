@@ -81,7 +81,7 @@ $(document).ready(function() {
 });
 
 function clearInventory() {
-	$("#servant-inventory").find(".inventory-row").each(function(){
+	$("#servant-inventory").find(".inventory-row").each(function() {
 		$(this).remove();
 	});
 }
@@ -158,7 +158,7 @@ function generateInventory() {
 		row.insertCell(-1).innerHTML = "";				
 		row.insertCell(-1).innerHTML = "";	
 		row.insertCell(-1).innerHTML = "";
-		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0'>";			
+		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0' disabled>";			
 	});
 }
 
@@ -337,6 +337,7 @@ function loadSave() {
 					$(this).find(".skill3-rankup").attr("checked", true);
 					updateSkillImg(skill3Toggle, 'skill3');
 				}
+				$(row).find(".event-ED").val(servant[0].data[18]);
 			}
 		});
 	}
@@ -344,6 +345,9 @@ function loadSave() {
 
 // Update data
 $(document).ready(function() {
+	$("#inventory-event-buff-resetbtn").click(function() {
+		clearInventoryEventBuff();
+	});
 	$("#inventory-row-1").find(".owned").prop("disabled", true);
 	$("select").change(function() {
 		update(this);
@@ -391,6 +395,7 @@ function update(element) {
 	info.data[8] = $(row).find(".skill2-rankup").is(":checked");
 	info.data[9] = Number($(row).find(".skill3-lv").val());
 	info.data[10] = $(row).find(".skill3-rankup").is(":checked");
+	info.data[18] = Number($(row).find(".event-ED").val());
 	bgServant.push(info);
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
@@ -436,6 +441,7 @@ function enableOption(element) {
 		$(row).find(".skill3-rankup").prop("disabled", false);
 		skillRankUpCheck(row, 'skill3');
 		updateSkillImg(skill3Toggle, 'skill3');
+		$(row).find(".event-ED").prop("disabled", false);
 	} else {
 		$(row).find(".inventory-lv").val(0);
 		$(row).find(".inventory-lv").prop("disabled", true);
@@ -463,6 +469,8 @@ function enableOption(element) {
 		$(row).find(".skill3-rankup").prop("checked", false);
 		$(row).find(".skill3-rankup").prop("disabled", true);
 		updateSkillImg(skill3Toggle, 'skill3');
+		$(row).find(".event-ED").val(0);
+		$(row).find(".event-ED").prop("disabled", true);
 		update(element);
 	}
 }	
@@ -506,3 +514,17 @@ function updateSkillImg(element, skill) {
 	}
 }
 
+function clearInventoryEventBuff() {
+	$("#servant-inventory").find(".inventory-row").each(function() {
+		$(this).find(".event-ED").val(0)
+	});
+	if (bgServant[0] !== undefined) {
+		$(bgServant).each(function() {
+			$(this).data[18] = 0;
+		});
+		currentSave.servant = bgServant;
+		parent.bgServant = bgServant;
+		parent.currentSave = currentSave;
+		save();
+	}
+}
