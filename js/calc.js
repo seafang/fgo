@@ -293,9 +293,13 @@ var servantSave = [];
 
 $(document).ready(function() {
 	$("#servant-modalbtn").click(function() {
-		openModal("#servant-modal");
-		initialServant();
-		loadServantImg();
+		if ($("#enemy1-name").html() != "" || $("#enemy2-name").html() != "" || $("#enemy3-name").html() != "") {
+			openModal("#servant-modal");
+			initialServant();
+			loadServantImg();
+		} else {
+			alert("請先設定敵人！");
+		}
 	});
 	$("#servant-resetbtn").click(function() {
 		resetServant();
@@ -315,6 +319,7 @@ $(document).ready(function() {
 });
 
 function pickServant(servantID) {
+	closeModal();
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
@@ -418,7 +423,7 @@ function setCurrentServantInfo() {
 		$("#check-skill3-rankup").prop("checked", false);
 	}
 	$("#current-servant-hp").val(100);
-	$("#current-servant-npoc").val(1);
+	$("#current-servant-npoc").val("oc1");
 	$("#use-skill1").prop("checked", false);
 	$("#skill1-img").addClass("dull");
 	$("#use-skill2").prop("checked", false);
@@ -442,7 +447,7 @@ function setSkill(toggle, skill) {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "RUImgID"]);
 		$("#" + skill + "-name").html(servantInfo[0][skill + "RUName"]);
 		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "RUDscrp"]);
-		if (!servantInfo[0][skill + "RUDmgBuff"] == false) {
+		if (servantInfo[0][skill + "RUDmgBuff"] == false) {
 			$("#use-" + skill).prop("disabled", true);
 			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
@@ -453,7 +458,7 @@ function setSkill(toggle, skill) {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "ImgID"]);
 		$("#" + skill + "-name").html(servantInfo[0][skill + "Name"]);
 		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "Dscrp"]);
-		if (!servantInfo[0][skill + "DmgBuff"] == false) {
+		if (servantInfo[0][skill + "DmgBuff"] == false) {
 			$("#use-" + skill).prop("disabled", true);
 			$("#" + skill + "-lv").prop("disabled", true);
 		} else {
@@ -469,9 +474,13 @@ var ceSave = [];
 
 $(document).ready(function() {
 	$("#servant-ce-modalbtn").click(function() {
-		openModal("#ce-modal");
-		initialCE();
-		loadCEImg();
+		if ($("#current-servant-name").html() != "未選定從者") {
+			openModal("#ce-modal");
+			initialCE();
+			loadCEImg();
+		} else {
+			alert("請先設定從者！");
+		}
 	});
 	$("#servant-ce-reapplybtn").click(function() {
 		reapplyCE();
@@ -573,6 +582,11 @@ var masterSave = [];
 
 $(document).ready(function() {
 	generateMasterSelection();
+	$("#master-name-selection").click(function() {
+		if ($("#current-servant-name").html() == "未選定從者") {
+			alert("請先設定從者！");
+		}
+	});
 	$("#master-name-selection").change(function() {
 		setMaster(this);
 	});
@@ -685,16 +699,24 @@ var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4C
 
 $(document).ready(function() {
 	$("#teammate1-modalbtn").click(function() {
-		openModal("#teammate-modal");
-		setCaller("teammate1");
-		initialTeammate();
-		loadTeammateImg();
+		if ($("#current-servant-name").html() != "未選定從者") {
+			openModal("#teammate-modal");
+			setCaller("teammate1");
+			initialTeammate();
+			loadTeammateImg();
+		} else {
+			alert("請先設定從者！");
+		}
 	});
 	$("#teammate1-ce-modalbtn").click(function() {
-		openModal("#teammate-ce-modal");
-		setCaller("teammate1");
-		initialTeammateCE();
-		loadTeammateCEImg();
+		if ($("#teammate1 .teammate-name").html() != "未選定隊友") {
+			openModal("#teammate-ce-modal");
+			setCaller("teammate1");
+			initialTeammateCE();
+			loadTeammateCEImg();
+		} else {
+			alert("請先設定隊友！");
+		}
 	});
 	$("#teammate1-reapplybtn").click(function() {
 		reapplyTeammate("teammate1");
@@ -713,16 +735,24 @@ $(document).ready(function() {
 		extend("teammate2");
 	});
 	$("#teammate2-modalbtn").click(function() {
-		openModal("#teammate-modal");
-		setCaller("teammate2");
-		initialTeammate();
-		loadTeammateImg();
+		if ($("#current-servant-name").html() != "未選定從者") {
+			openModal("#teammate-modal");
+			setCaller("teammate2");
+			initialTeammate();
+			loadTeammateImg();
+		} else {
+			alert("請先設定從者！");
+		}
 	});
 	$("#teammate2-ce-modalbtn").click(function() {
-		openModal("#teammate-ce-modal");
-		setCaller("teammate2");
-		initialTeammateCE();
-		loadTeammateCEImg();
+		if ($("#teammate1 .teammate-name").html() != "未選定隊友") {
+			openModal("#teammate-ce-modal");
+			setCaller("teammate2");
+			initialTeammateCE();
+			loadTeammateCEImg();
+		} else {
+			alert("請先設定隊友！");
+		}
 	});
 	$("#teammate2-reapplybtn").click(function() {
 		reapplyTeammate("teammate2");
@@ -865,7 +895,7 @@ function resetTeammate(value) {
 		$("#" + value + "-extendbtn").show();
 	}
 	section.find(".teammate-img").attr("src", "");
-	section.find(".teammate-name").html("");
+	section.find(".teammate-name").html("未選定隊友");
 	section.find(".teammate-class").attr({
 		"src": "images/class/Unknown.webp",
 		"data-class": ""
@@ -1093,3 +1123,15 @@ function setTeammateCEEffect(toggle) {
 		}
 	}
 }
+
+// Update Buff
+$(document).ready(function() {
+	$("#battlefield-setup input:checkbox").change(function() {
+		updateBuff();
+	});
+});
+
+function updateBuff() {
+	
+}
+
