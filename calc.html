@@ -449,12 +449,12 @@
 				<span class="label">剩餘HP(%)</span>
 				<input type="number" class="narrow" id="current-servant-hp" value="100" min="0" max="100" disabled>
 				<label class="switch">
-					<input type="checkbox" id="current-servant-rankup" value="true" disabled>
+					<input type="checkbox" class="update-trigger" id="current-servant-rankup" value="true" disabled>
 					<span class="slider"></span>
 				</label>
 				<span class="label">寶具強化</span>
 				<label class="label">寶具OC</label>
-				<select id="current-servant-npoc" disabled>
+				<select class="update-trigger" id="current-servant-npoc" disabled>
 					<option value="oc1">100%</option>
 					<option value="oc2">200%</option>
 					<option value="oc3">300%</option>
@@ -482,7 +482,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill1" value="true" disabled>
+							<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -490,7 +490,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill1-lv" disabled>	
+						<select class="narrow update-trigger" id="skill1-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -506,7 +506,7 @@
 					</div>		
 					<div class="element-10">
 						<label class="switch">
-							<input type="checkbox" id="check-skill1-rankup" value="true" disabled>
+							<input type="checkbox" class="update-trigger" id="check-skill1-rankup" value="skill1" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>						    
@@ -526,7 +526,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill2" value="true" disabled>
+							<input type="checkbox" class="use-skill" id="use-skill2" value="skill2" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -534,7 +534,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill2-lv" disabled>	
+						<select class="narrow update-trigger" id="skill2-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -550,7 +550,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="check-skill2-rankup" value="true" disabled>
+							<input type="checkbox" class="update-trigger" id="check-skill2-rankup" value="skill2" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>	
@@ -570,7 +570,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="use-skill3" value="true" disabled>
+							<input type="checkbox" class="use-skill" id="use-skill3" value="skill3" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">使用技能</span>
@@ -578,7 +578,7 @@
 					<div class="element-20">		
 					<span>		
 						<label class="label">等級</label>	
-						<select class="narrow" id="skill3-lv" disabled>	
+						<select class="narrow update-trigger" id="skill3-lv" disabled>	
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -594,7 +594,7 @@
 					</div>		
 					<div class="element-10">		
 						<label class="switch">
-							<input type="checkbox" id="check-skill3-rankup" value="true" disabled>
+							<input type="checkbox" class="update-trigger" id="check-skill3-rankup" value="skill3" disabled>
 							<span class="slider"></span>
 						</label>
 						<span class="label">技能強化</span>	
@@ -876,12 +876,12 @@
 			<div class="row">			
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1" value="true" disabled>
+						<input type="checkbox" class="teammate-skill1" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能一</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill1-rankup" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
@@ -903,12 +903,12 @@
 				</div>		
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2" value="true" disabled>
+						<input type="checkbox" class="teammate-skill2" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能二</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill2-rankup" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
@@ -930,12 +930,12 @@
 				</div>		
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3" value="true" disabled>
+						<input type="checkbox" class="teammate-skill3" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能三</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill3-rankup" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
@@ -1020,12 +1020,12 @@
 			<div class="row">			
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1" value="true" disabled>
+						<input type="checkbox" class="teammate-skill1" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能一</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill1-rankup" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
@@ -1047,12 +1047,12 @@
 				</div>		
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2" value="true" disabled>
+						<input type="checkbox" class="teammate-skill2" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能二</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill2-rankup" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
@@ -1074,12 +1074,12 @@
 				</div>		
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3" value="true" disabled>
+						<input type="checkbox" class="teammate-skill3" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用技能三</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-skill3-rankup" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>
 					<select class="narrow teammate-skill3-lv" disabled>	
