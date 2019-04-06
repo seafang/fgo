@@ -337,7 +337,7 @@ function loadSave() {
 					$(this).find(".skill3-rankup").attr("checked", true);
 					updateSkillImg(skill3Toggle, 'skill3');
 				}
-				$(row).find(".event-ED").val(servant[0].data[18]);
+				$(this).find(".event-ED").val(servant[0].data[18]);
 			}
 		});
 	}
