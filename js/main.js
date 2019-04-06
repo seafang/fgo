@@ -7,6 +7,7 @@ var skillBuff = JSON.parse(servantSkillBuff);
 var npBuff = JSON.parse(servantNPBuff);
 var atk = JSON.parse(servantATK);
 var ceBuff =  JSON.parse(craftEssenceBuff);
+var ceAtk = JSON.parse(craftEssenceATK);
 var masterBuff = JSON.parse(mysticCodeBuff);
 
 // Load save
