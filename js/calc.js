@@ -6,6 +6,7 @@ var skillBuff = parent.skillBuff;
 var npBuff = parent.npBuff;
 var atk = parent.atk;
 var ceBuff = parent.ceBuff;
+var ceAtk = parent.ceAtk;
 var masterBuff = parent.masterBuff;
 
 var currentSave = parent.currentSave;
@@ -290,6 +291,7 @@ function resetBattlefield() {
 // Set Servant
 var servantInfo = [];
 var servantSave = [];
+var skillBuffList = [], npBuffList = [];
 
 $(document).ready(function() {
 	$("#servant-modalbtn").click(function() {
@@ -323,6 +325,8 @@ function pickServant(servantID) {
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
+	skillBuffList = multiFilter(skillBuff, {id: servantID});
+	npBuffList = multiFilter(npBuff, {id: servantID});
 	if ($("#servant-setup-collapsebtn").html() == "展開▼") {
 		$("#servant-setup-collapsebtn").html("接疊▲");
 		$("#servant-setup-collapsible").toggle(300);
@@ -382,9 +386,9 @@ function pickServant(servantID) {
 	var skill1Toggle = $("#check-skill1-rankup");
 	var skill2Toggle = $("#check-skill2-rankup");
 	var skill3Toggle = $("#check-skill3-rankup");
-	setSkill(skill1Toggle, 'skill1');
-	setSkill(skill2Toggle, 'skill2');
-	setSkill(skill3Toggle, 'skill3');
+	setSkill(skill1Toggle);
+	setSkill(skill2Toggle);
+	setSkill(skill3Toggle);
 }
 
 function resetServant() {
@@ -393,9 +397,9 @@ function resetServant() {
 	var skill1Toggle = $("#check-skill1-rankup");
 	var skill2Toggle = $("#check-skill2-rankup");
 	var skill3Toggle = $("#check-skill3-rankup");
-	setSkill(skill1Toggle, 'skill1');
-	setSkill(skill2Toggle, 'skill2');
-	setSkill(skill3Toggle, 'skill3');
+	setSkill(skill1Toggle);
+	setSkill(skill2Toggle);
+	setSkill(skill3Toggle);
 }
 
 function setCurrentServantInfo() {
@@ -442,7 +446,8 @@ function setCurrentServantNP() {
 	}
 }
 
-function setSkill(toggle, skill) {
+function setSkill(toggle) {
+	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
 		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "RUImgID"]);
 		$("#" + skill + "-name").html(servantInfo[0][skill + "RUName"]);
@@ -471,6 +476,7 @@ function setSkill(toggle, skill) {
 // Set Servant CE
 var ceInfo = [];
 var ceSave = [];
+var ceBuffList = [];
 
 $(document).ready(function() {
 	$("#servant-ce-modalbtn").click(function() {
@@ -491,6 +497,9 @@ $(document).ready(function() {
 	$("#servant-ce-max").change(function() {
 		setCurrentServantCEEffect(this);
 	});
+	$("#servant-ce-lv").change(function() {
+		updateCEAtk();
+	});
 });
 
 function pickCE(essenceID) {
@@ -498,6 +507,7 @@ function pickCE(essenceID) {
 	ceInfo = ce.filter(function(obj) {
 		return obj.ceID == essenceID;
 	});
+	ceBuffList = multiFilter(ceBuff, {ceID: essenceID});
 	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
 		$("#ce-setup-collapsebtn").html("接疊▲");
 		$("#ce-setup-collapsible").toggle(300);
@@ -540,6 +550,7 @@ function reapplyCE() {
 function resetCE() {
 	ceInfo = [];
 	ceSave = [];
+	ceBuffList = [];
 	$("#servant-ce-img").attr("src", "");
 	$("#servant-ce-name").html("未選定禮裝");
 	$("#servant-ce-star").html("★★★★★");
@@ -550,6 +561,7 @@ function resetCE() {
 	$("#servant-ce-lv").val(0);
 	$("#servant-ce-lv").prop("disabled", true);
 	$("#servant-ce-dscrp").html("");
+	updateCEAtk();
 }
 
 function setCurrentServantCE() {
@@ -564,6 +576,7 @@ function setCurrentServantCE() {
 		}
 		$("#servant-ce-lv").val(0);
 	}
+	updateCEAtk();
 }
 
 function setCurrentServantCEEffect(toggle) {
@@ -579,6 +592,7 @@ function setCurrentServantCEEffect(toggle) {
 // Set Master Mystic Code
 var masterInfo = [];
 var masterSave = [];
+var masterBuffList = [];
 
 $(document).ready(function() {
 	generateMasterSelection();
@@ -612,6 +626,7 @@ function setMaster(element) {
 		}
 		masterInfo = [];
 		masterSave = [];
+		masterBuffList = [];
 		$("#master-img1").attr("src", "");
 		$("#master-img2").attr("src", "");
 		$("#master-lv").val(1);
@@ -637,9 +652,10 @@ function setMaster(element) {
 			$("#master-setup-collapsible").toggle(300);
 		}
 		var name = $(element).val();
-		var masterInfo = master.filter(function(obj) {
+		masterInfo = master.filter(function(obj) {
 			return obj.masterName == name;
 		});
+		masterBuffList = multiFilter(masterBuff, {masterName: name});
 		$("#master-img1").attr("src", masterInfo[0].masterImgID1);
 		$("#master-img2").attr("src", masterInfo[0].masterImgID2);
 		$("#master-lv").prop("disabled", false);
@@ -670,7 +686,7 @@ function setMaster(element) {
 		$("#master-skill1-dscrp").html(masterInfo[0].skill1Dscrp);
 		$("#master-skill2-dscrp").html(masterInfo[0].skill2Dscrp);
 		$("#master-skill3-dscrp").html(masterInfo[0].skill3Dscrp);
-		var masterSave = bgMaster.filter(function(obj) {
+		masterSave = bgMaster.filter(function(obj) {
 			return obj.name == name;
 		});
 		applyMaster();
@@ -694,8 +710,12 @@ function applyMaster() {
 // Set Teammates
 var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
 var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
+var teammate1skillSet = {no: []}, teammate2skillSet = {no: []}, teammate3skillSet = {no: []}, teammate4skillSet = {no: []}, teammate5skillSet = {no: []};
+var teammate1SkillBuffList = [], teammate2SkillBuffList = [], teammate3SkillBuffList = [], teammate4SkillBuffList = [], teammate5SkillBuffList = [];
+var teammate1NPBuffList = [], teammate2NPBuffList = [], teammate3NPBuffList = [], teammate4NPBuffList = [], teammate5NPBuffList = [];
 var teammate1CEInfo = [], teammate2CEInfo = [], teammate3CEInfo = [], teammate4CEInfo = [], teammate5CEInfo = [];
 var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4CESave = [], teammate5CESave = [];
+var teammate1CEBuffList = [], teammate2CEBuffList = [], teammate3CEBuffList = [], teammate4CEBuffList = [], teammate5CEBuffList = [];
 
 $(document).ready(function() {
 	$("#teammate1-modalbtn").click(function() {
@@ -767,13 +787,13 @@ $(document).ready(function() {
 		setTeammateNP(this);
 	});
 	$(".teammate-skill1-rankup").change(function() {
-		setTeammateSkill(this, 'skill1');
+		setTeammateSkill(this);
 	});
 	$(".teammate-skill2-rankup").change(function() {
-		setTeammateSkill(this, 'skill2');
+		setTeammateSkill(this);
 	});
 	$(".teammate-skill3-rankup").change(function() {
-		setTeammateSkill(this, 'skill3');
+		setTeammateSkill(this);
 	});
 });
 
@@ -810,6 +830,8 @@ function toTeammate(value, teammateID) {
 	window[value + "Info"] = servants.filter(function(obj) {
 		return obj.id == teammateID;
 	});
+	window[value + "SkillBuffList"] = multiFilter(skillBuff, {id: teammateID});
+	window[value + "NPBuffList"] = multiFilter(npBuff, {id: teammateID});
 	var info = window[value + "Info"];
 	if ($("#teammate-setup-collapsebtn").html() == "展開▼") {
 		$("#teammate-setup-collapsebtn").click();
@@ -860,9 +882,9 @@ function toTeammate(value, teammateID) {
 	var skill2Toggle = section.find(".teammate-skill2-rankup");
 	var skill3Toggle = section.find(".teammate-skill3-rankup");
 	setTeammateNP(npToggle);
-	setTeammateSkill(skill1Toggle, 'skill1');
-	setTeammateSkill(skill2Toggle, 'skill2');
-	setTeammateSkill(skill3Toggle, 'skill3');
+	setTeammateSkill(skill1Toggle);
+	setTeammateSkill(skill2Toggle);
+	setTeammateSkill(skill3Toggle);
 }
 
 function reapplyTeammate(value) {
@@ -873,9 +895,9 @@ function reapplyTeammate(value) {
 	var skill2Toggle = section.find(".teammate-skill2-rankup");
 	var skill3Toggle = section.find(".teammate-skill3-rankup");
 	setTeammateNP(npToggle);
-	setTeammateSkill(skill1Toggle, 'skill1');
-	setTeammateSkill(skill2Toggle, 'skill2');
-	setTeammateSkill(skill3Toggle, 'skill3');
+	setTeammateSkill(skill1Toggle);
+	setTeammateSkill(skill2Toggle);
+	setTeammateSkill(skill3Toggle);
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
 		setTeammateCE(value);
 		var ceToggle = section.find(".teammate-ce-max");
@@ -888,6 +910,9 @@ function resetTeammate(value) {
 	window[value + "Save"] = [];
 	window[value + "CEInfo"] = [];
 	window[value + "CESave"] = [];
+	window[value + "SkillBuffList"] = [];
+	window[value + "NPBuffList"] = [];
+	window[value + "CEBuffList"] = [];
 	var section = $("#" + value);
 	section.hide();
 	if (value != "teammate1") {
@@ -998,9 +1023,10 @@ function setTeammateNP(toggle) {
 	}
 }
 
-function setTeammateSkill(toggle, skill) {
+function setTeammateSkill(toggle) {
 	var section = $(toggle).parents(".teammate-detail");
 	var value = section.attr("id");
+	var skill = $(toggle).val();
 	var info = window[value + "Info"];
 	if ($(toggle).is(":checked")) {
 		section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + "RUImgID"]);
@@ -1056,6 +1082,7 @@ function toTeammateCE(value, ceID) {
 	window[value + "CEInfo"] = ce.filter(function(obj) {
 		return obj.ceID == ceID;
 	});
+	window[value + "CEBuffList"] = multiFilter(ceBuff, {"ceID": ceID});
 	var info = window[value + "CEInfo"];
 	section.find(".teammate-ce-img").attr("src", info[0].ceImgID);
 	section.find(".teammate-ce-name").html(info[0].ceName);
@@ -1087,6 +1114,7 @@ function toTeammateCE(value, ceID) {
 function resetTeammateCE(value) {
 	window[value + "CEInfo"] = [];
 	window[value + "CESave"] = [];
+	window[value + "CEBuffList"] = [];
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
 		section.find(".teammate-ce-img").attr("src", "");
 		section.find(".teammate-ce-name").html("未選定禮裝");
@@ -1125,13 +1153,118 @@ function setTeammateCEEffect(toggle) {
 }
 
 // Update Buff
+var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [];
+var skillSet = {no: []};
+
 $(document).ready(function() {
 	$("#battlefield-setup input:checkbox").change(function() {
 		updateBuff();
 	});
+	$("#current-servant-nplv").change(function() {
+		if (servantInfo[0].id == 15) {
+			updateBuff();
+		}
+	});
+	$(".update-trigger").change(function() {
+		updateBuff();
+	});
+	$(".use-skill").change(function() {
+		updateSkillSet(this);
+		updateBuff();
+	});
 });
 
+function updateSkillSet(toggle) {
+	var skill = $(toggle).val();
+	if ($(toggle).is(":checked")) {
+		skillSet.no.push(skill);
+	} else {
+		var position = skillSet.no.indexOf(skill);
+		skillSet.no.splice(position, 1);
+	}
+}
+
 function updateBuff() {
+	$("#buff-info").find("input").each(function() {
+		$(this).val(0);
+	});
+	updateCEAtk();
+	updateSkillBuff();
+	updateNPBuff();
+	updateCEBuff();
+	updateMasterBuff();
+	$(".teammate-detail").each(function() {
+		if ($(this).find(".teammate-name").html() != "未選定隊友") {
+			updateTeammateSkillBuff(this);
+			updateTeammateNPBuff(this);
+			if ($(this).find(".teammate-ce-name").html() != "未選定禮裝") {
+				updateTeammateCEBuff(this);
+			}
+		}
+	});
+}
+
+function updateCEAtk() {
+	if (ceInfo[0] === undefined) {
+		$("#ce-atk").val(0);
+	} else if (ceInfo[0].defaultMax == true) {
+		$("#ce-atk").val(ceInfo[0].maxAtk);
+	} else {
+		var maxLV;
+		switch (ceInfo[0].ceStar) {
+			case 3:
+				maxLV = 60;
+				break;
+			case 4:
+				maxLV = 80;
+				break;
+			case 5:
+			default:
+				maxLV = 100;
+				break;
+		}
+		if (!$("#servant-ce-max").is(":checked")) {
+			maxLV = 20;
+		}
+		if (Number($("#servant-ce-lv").val()) > maxLV) {
+			$("#servant-ce-lv").val(maxLV);
+		}
+		var sum = ceInfo[0].defaultAtk + ceInfo[0].maxAtk;
+		var lvRef = ceAtk.filter(function(obj) {
+			return obj.sum == sum.toString();
+		});
+		var lv = $("#servant-ce-lv").val();
+		if (lv == "0") {
+			lv = "20";
+		}
+		$("#ce-atk").val(lvRef[0][lv]);
+	}		
+}
+
+function updateSkillBuff() {
 	
 }
 
+function updateNPBuff() {
+	
+}
+
+function updateCEBuff() {
+	
+}
+
+function updateMasterBuff() {
+	
+}
+
+function updateTeammateSkillBuff(section) {
+	
+}
+
+function updateTeammateNPBuff(section) {
+	
+}
+
+function updateTeammateCEBuff(section) {
+	
+}
