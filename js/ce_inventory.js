@@ -308,8 +308,8 @@ function enableCEOption(element) {
 	if ($(element).is(":checked")) {
 		if (!$(row).hasClass("ce-default-max")) {
 			$(row).find(".ce-max").prop("disabled", false);
+			$(row).find(".ce-inventory-lv").prop("disabled", false);
 		}
-		$(row).find(".ce-inventory-lv").prop("disabled", false);
 	} else {
 		if (!$(row).hasClass("ce-default-max")) {
 			$(row).find(".ce-max").prop("checked", false);
