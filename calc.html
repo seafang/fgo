@@ -1122,73 +1122,122 @@
 <!--Buff Section-->
 <div class="info" id="buff-info">
 	<div class="row">				
-	<a class="element-20 bold">Buff結算</a>			
-	<span class="resetbtn btn" onclick="resetBuff()">還原數值</span>			
-	</div>				
-	<div class="row">				
-		<div class="element-20">			
-			<form>		
+		<a class="element-20 bold">Buff結算</a>
+	</div>
+	<div class="buff-summary" id="common-buff">
+		<div class="row">
+			<a class="element-20">[全體]</a>
+			<span class="resetbtn btn" id="common-buff-resetbtn">還原數值</span>			
+		</div>				
+		<div class="row">				
+			<div class="element-20">					
 				<span class="label">禮裝ATK</span>	
-				<input type="number" class="narrow" id="ce-atk" name="ceatk" value="0" min="0" max="2400">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="ce-atk" value="0" min="0" max="2400">		
+			</div>			
+			<div class="element-20">					
 				<span class="label">攻擊力提升(%)</span>	
-				<input type="number" class="narrow" id="atk-buff" name="atkbuff" value="0" min="0" max="100">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
-				<span class="label">防禦力下降(%)</span>	
-				<input type="number" class="narrow" id="def-debuff" name="defdebuff" value="0" min="0" max="100">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="atk-buff" value="0" min="0">		
+			</div>				
+			<div class="element-20">					
 				<span class="label">傷害附加</span>	
-				<input type="number" class="narrow" id="add-atk" name="add-atk" value="0" min="0">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
-				<span class="label">傷害減免</span>	
-				<input type="number" class="narrow" id="red-atk" name="red-atk" value="0" min="0">	
-			</form>		
-		</div>			
-	</div>				
-	<div class="row">				
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="add-atk" value="0" min="0">		
+			</div>	
+		</div>
+		<div class="row">				
+			<div class="element-20">					
 				<span class="label">寶具威力提升(%)</span>	
-				<input type="number" class="narrow" id="np-buff" name="npbuff" value="0" min="0">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="np-buff" value="0" min="0">			
+			</div>			
+			<div class="element-20">					
 				<span class="label">活動攻擊加成(%)</span>	
-				<input type="number" class="narrow" id="event-buff" name="eventbuff" value="0" min="0">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="event-buff" value="0" min="0">		
+			</div>			
+			<div class="element-20">					
 				<span class="label">Buster性能(%)</span>	
-				<input type="number" class="narrow" id="buster-buff" name="busterbuff" value="0" min="0">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="buster-buff" value="0" min="0">		
+			</div>			
+			<div class="element-20">				
 				<span class="label">Art性能(%)</span>	
-				<input type="number" class="narrow" id="art-buff" name="artbuff" value="0" min="0">	
-			</form>		
-		</div>			
-		<div class="element-20">			
-			<form>		
+				<input type="number" class="narrow" id="art-buff" value="0" min="0">		
+			</div>			
+			<div class="element-20">					
 				<span class="label">Quick性能(%)</span>	
-				<input type="number" class="narrow" id="quick-buff" name="quickbuff" value="0" min="0">	
-			</form>		
-		</div>			
-	</div>				
+				<input type="number" class="narrow" id="quick-buff" value="0" min="0">		
+			</div>
+		</div>
+	</div>	
+	<div class="buff-summary" id="enemy1-buff">
+		<div class="row">
+			<a class="element-20">[敵人I]</a>
+			<span class="resetbtn btn" id="enemy1-buff-resetbtn">還原數值</span>			
+		</div>
+		<div class="row">
+			<div class="element-20">					
+				<span class="label">防禦力下降(%)</span>	
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+			</div>
+			<div class="element-20">					
+				<span class="label">傷害減免</span>	
+				<input type="number" class="narrow red-atk" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">技能特攻</span>	
+				<input type="number" class="narrow skill-ed" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">寶具特攻</span>	
+				<input type="number" class="narrow np-ed" value="0" min="0">		
+			</div>
+		</div>
+	</div>
+	<div class="buff-summary" id="enemy2-buff">
+		<div class="row">
+			<a class="element-20">[敵人II]</a>
+			<span class="resetbtn btn" id="enemy2-buff-resetbtn">還原數值</span>			
+		</div>
+		<div class="row">
+			<div class="element-20">					
+				<span class="label">防禦力下降(%)</span>	
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+			</div>
+			<div class="element-20">					
+				<span class="label">傷害減免</span>	
+				<input type="number" class="narrow red-atk" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">技能特攻</span>	
+				<input type="number" class="narrow skill-ed" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">寶具特攻</span>	
+				<input type="number" class="narrow np-ed" value="0" min="0">		
+			</div>
+		</div>
+	</div>
+	<div class="buff-summary" id="enemy3-buff">
+		<div class="row">
+			<a class="element-20">[敵人III]</a>
+			<span class="resetbtn btn" id="enemy3-buff-resetbtn">還原數值</span>			
+		</div>
+		<div class="row">
+			<div class="element-20">					
+				<span class="label">防禦力下降(%)</span>	
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+			</div>
+			<div class="element-20">					
+				<span class="label">傷害減免</span>	
+				<input type="number" class="narrow red-atk" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">技能特攻</span>	
+				<input type="number" class="narrow skill-ed" value="0" min="0">		
+			</div>
+			<div class="element-20">					
+				<span class="label">寶具特攻</span>	
+				<input type="number" class="narrow np-ed" value="0" min="0">		
+			</div>
+		</div>
+	</div>
 </div>
 <br/>
 	
