@@ -520,7 +520,7 @@ function clearInventoryEventBuff() {
 	});
 	if (bgServant[0] !== undefined) {
 		$(bgServant).each(function() {
-			$(this).data[18] = 0;
+			this.data[18] = 0;
 		});
 		currentSave.servant = bgServant;
 		parent.bgServant = bgServant;
