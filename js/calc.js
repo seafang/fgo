@@ -328,13 +328,13 @@ function pickServant(servantID) {
 	});
 	skillBuffList = multiFilter(skillBuff, {
 		id: [servantID],
-		toSelf: true,
+		toSelf: [true],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
 	});
 	npBuffList = multiFilter(npBuff, {
 		id: [servantID],
-		toSelf: true,
-		buffFirst: true,
+		toSelf: [true],
+		buffFirst: [true],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
 	});
 	if ($("#servant-setup-collapsebtn").html() == "展開▼") {
@@ -523,7 +523,7 @@ function pickCE(essenceID) {
 	});
 	ceBuffList = multiFilter(ceBuff, {
 		ceID: [essenceID],
-		toSelf: true,
+		toSelf: [true],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
@@ -1358,9 +1358,9 @@ function updatePreReq() {
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
-			skillRU: checkRU,
-			selective: useStrict,
-			afterDefeat: includeAfterDefeat
+			skillRU: [checkRU],
+			selective: [useStrict],
+			afterDefeat: [includeAfterDefeat]
 		});
 		$(activeSkillBuff).each(function() {
 			if (this.effect == "alignment1") {
@@ -1388,9 +1388,9 @@ function updateSkillBuff() {
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
-			skillRU: checkRU,
-			chance: useStrict,
-			afterDefeat: includeAfterDefeat
+			skillRU: [checkRU],
+			chance: [useStrict],
+			afterDefeat: [includeAfterDefeat]
 		});
 		$(activeSkillBuff).each(function() {
 			var test = true;
@@ -1519,8 +1519,8 @@ function updateNPBuff() {
 	}
 	var checkRU = $("#current-servant-rankup").is(":checked");
 	var activeNPBuff = multiFilter(npBuffList, {
-		npRU: checkRU,
-		chance: useStrict
+		npRU: [checkRU],
+		chance: [useStrict]
 	});
 	$(activeNPBuff).each(function() {
 		if (this.effect == "dmg") {		
