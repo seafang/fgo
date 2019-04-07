@@ -1352,7 +1352,7 @@ function updatePassiveBuff() {
 function updatePreReq() {
 	$(skillSet).each(function() {
 		var lv = $("#" + this + "-lv").val();
-		var checkRU = $("#check-" + skill + "-rankup").is(":checked");
+		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: this,
 			skillRU: checkRU,
@@ -1382,7 +1382,7 @@ function updatePreReq() {
 function updateSkillBuff() {
 	$(skillSet).each(function() {
 		var lv = $("#" + this + "-lv").val();
-		var checkRU = $("#check-" + skill + "-rankup").is(":checked");
+		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: this,
 			skillRU: checkRU,
