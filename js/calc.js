@@ -327,12 +327,12 @@ function pickServant(servantID) {
 		return obj.id == servantID;
 	});
 	skillBuffList = multiFilter(skillBuff, {
-		id: servantID,
+		id: [servantID],
 		toSelf: true,
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
 	});
 	npBuffList = multiFilter(npBuff, {
-		id: servantID,
+		id: [servantID],
 		toSelf: true,
 		buffFirst: true,
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
@@ -399,6 +399,7 @@ function pickServant(servantID) {
 	setSkill(skill1Toggle);
 	setSkill(skill2Toggle);
 	setSkill(skill3Toggle);
+	updatePassiveBuff();
 }
 
 function resetServant() {
@@ -410,6 +411,7 @@ function resetServant() {
 	setSkill(skill1Toggle);
 	setSkill(skill2Toggle);
 	setSkill(skill3Toggle);
+	updatePassiveBuff();
 }
 
 function setCurrentServantInfo() {
@@ -520,7 +522,7 @@ function pickCE(essenceID) {
 		return obj.ceID == essenceID;
 	});
 	ceBuffList = multiFilter(ceBuff, {
-		ceID: essenceID,
+		ceID: [essenceID],
 		toSelf: true,
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
@@ -556,12 +558,14 @@ function pickCE(essenceID) {
 	setCurrentServantCE();
 	var ceToggle = $("#servant-ce-max");
 	setCurrentServantCEEffect(ceToggle);
+	updateBuff();
 }
 
 function reapplyCE() {
 	setCurrentServantCE();
 	var ceToggle = $("#servant-ce-max");
 	setCurrentServantCEEffect(ceToggle);
+	updateBuff();
 }
 
 function resetCE() {
@@ -578,7 +582,7 @@ function resetCE() {
 	$("#servant-ce-lv").val(0);
 	$("#servant-ce-lv").prop("disabled", true);
 	$("#servant-ce-dscrp").html("");
-	updateCEAtk();
+	updateBuff();
 }
 
 function setCurrentServantCE() {
@@ -593,7 +597,6 @@ function setCurrentServantCE() {
 		}
 		$("#servant-ce-lv").val(0);
 	}
-	updateCEAtk();
 }
 
 function setCurrentServantCEEffect(toggle) {
@@ -673,7 +676,7 @@ function setMaster(element) {
 			return obj.masterName == name;
 		});
 		masterBuffList = multiFilter(masterBuff, {
-			masterName: name,
+			masterName: [name],
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
@@ -852,13 +855,13 @@ function toTeammate(value, teammateID) {
 		return obj.id == teammateID;
 	});
 	window[value + "SkillBuffList"] = multiFilter(skillBuff, {
-		id: teammateID,
+		id: [teammateID],
 		range: ["team", "single", "all-enemy", "single-enemy"],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
 	window[value + "NPBuffList"] = multiFilter(npBuff, {
-		id: teammateID,
+		id: [teammateID],
 		range: ["team", "single", "all-enemy", "single-enemy"],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
@@ -1114,7 +1117,7 @@ function toTeammateCE(value, ceID) {
 		return obj.ceID == ceID;
 	});
 	window[value + "CEBuffList"] = multiFilter(ceBuff, {
-		"ceID": ceID,
+		"ceID": [ceID],
 		range: ["team", "all-enemy", "single-enemy"],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
@@ -1240,9 +1243,6 @@ function updateSkillSet(toggle) {
 function updateBuff() {
 	tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 	tempEnemyTrait = [];
-	$("#buff-info").find("input").each(function() {
-		$(this).val(0);
-	});
 	updateCEAtk();
 	updateEventBuff();
 	updatePassiveBuff();
@@ -1306,6 +1306,9 @@ function updateEventBuff() {
 }
 
 function updatePassiveBuff() {
+	$("#buff-info").find("input").each(function() {
+		$(this).val(0);
+	});
 	var buster = Number($("#Buster-buff").val());	
 	buster += servantInfo[0].passiveBuster;
 	if ($("#current-servant-rankup").is(":checked")) {
@@ -1354,7 +1357,7 @@ function updatePreReq() {
 		var lv = $("#" + this + "-lv").val();
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
-			no: this,
+			no: [this],
 			skillRU: checkRU,
 			selective: useStrict,
 			afterDefeat: includeAfterDefeat
@@ -1384,7 +1387,7 @@ function updateSkillBuff() {
 		var lv = $("#" + this + "-lv").val();
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
-			no: this,
+			no: [this],
 			skillRU: checkRU,
 			chance: useStrict,
 			afterDefeat: includeAfterDefeat
