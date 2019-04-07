@@ -1189,7 +1189,7 @@ function setTeammateCEEffect(toggle) {
 }
 
 // Update Buff
-var skillSet = {no: []};
+var skillSet = [];
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
 var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
@@ -1230,10 +1230,10 @@ $(document).ready(function() {
 function updateSkillSet(toggle) {
 	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
-		skillSet.no.push(skill);
+		skillSet.push(skill);
 	} else {
-		var position = skillSet.no.indexOf(skill);
-		skillSet.no.splice(position, 1);
+		var position = skillSet.indexOf(skill);
+		skillSet.splice(position, 1);
 	}
 }
 
