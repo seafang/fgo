@@ -41,8 +41,9 @@ $(document).click(function() {
 });
 
 function updateCounter() {
-	var height = $("#enemy-info").outerHeight() + $("#servant-info").outerHeight() + $("#ce-info").outerHeight() +
-		$("#master-info").outerHeight() + $("#teammate-info").outerHeight() + $("#buff-info").outerHeight() + 600;
+	var height = $("#enemy-info").outerHeight() + $("#environment-info").outerHeight() + $("#servant-info").outerHeight() +
+		$("#ce-info").outerHeight() + $("#master-info").outerHeight() + $("#teammate-info").outerHeight() + 
+		$("#buff-info").outerHeight() + 600;
 	$("#calc-counter").html(height);
 }
 
@@ -325,8 +326,17 @@ function pickServant(servantID) {
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
-	skillBuffList = multiFilter(skillBuff, {id: servantID});
-	npBuffList = multiFilter(npBuff, {id: servantID});
+	skillBuffList = multiFilter(skillBuff, {
+		id: servantID,
+		toSelf: true,
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
+	});
+	npBuffList = multiFilter(npBuff, {
+		id: servantID,
+		toSelf: true,
+		buffFirst: true,
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
+	});
 	if ($("#servant-setup-collapsebtn").html() == "展開▼") {
 		$("#servant-setup-collapsebtn").html("接疊▲");
 		$("#servant-setup-collapsible").toggle(300);
@@ -414,6 +424,7 @@ function setCurrentServantInfo() {
 		$("#check-skill2-rankup").prop("checked", servantSave[0].data[8]);
 		$("#skill3-lv").val(servantSave[0].data[9]);
 		$("#check-skill3-rankup").prop("checked", servantSave[0].data[10]);
+		updateEventBuff();
 	} else {
 		$("#current-servant-lv").val(0);
 		$("#current-servant-nplv").val(1);
@@ -425,9 +436,10 @@ function setCurrentServantInfo() {
 		$("#check-skill2-rankup").prop("checked", false);
 		$("#skill3-lv").val(1);
 		$("#check-skill3-rankup").prop("checked", false);
+		$("#event-buff").val(0);
 	}
 	$("#current-servant-hp").val(100);
-	$("#current-servant-npoc").val("oc1");
+	$("#current-servant-npoc").val("1");
 	$("#use-skill1").prop("checked", false);
 	$("#skill1-img").addClass("dull");
 	$("#use-skill2").prop("checked", false);
@@ -507,7 +519,12 @@ function pickCE(essenceID) {
 	ceInfo = ce.filter(function(obj) {
 		return obj.ceID == essenceID;
 	});
-	ceBuffList = multiFilter(ceBuff, {ceID: essenceID});
+	ceBuffList = multiFilter(ceBuff, {
+		ceID: essenceID,
+		toSelf: true,
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+	});
 	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
 		$("#ce-setup-collapsebtn").html("接疊▲");
 		$("#ce-setup-collapsible").toggle(300);
@@ -655,7 +672,11 @@ function setMaster(element) {
 		masterInfo = master.filter(function(obj) {
 			return obj.masterName == name;
 		});
-		masterBuffList = multiFilter(masterBuff, {masterName: name});
+		masterBuffList = multiFilter(masterBuff, {
+			masterName: name,
+			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+		});
 		$("#master-img1").attr("src", masterInfo[0].masterImgID1);
 		$("#master-img2").attr("src", masterInfo[0].masterImgID2);
 		$("#master-lv").prop("disabled", false);
@@ -830,8 +851,18 @@ function toTeammate(value, teammateID) {
 	window[value + "Info"] = servants.filter(function(obj) {
 		return obj.id == teammateID;
 	});
-	window[value + "SkillBuffList"] = multiFilter(skillBuff, {id: teammateID});
-	window[value + "NPBuffList"] = multiFilter(npBuff, {id: teammateID});
+	window[value + "SkillBuffList"] = multiFilter(skillBuff, {
+		id: teammateID,
+		range: ["team", "single", "all-enemy", "single-enemy"],
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+	});
+	window[value + "NPBuffList"] = multiFilter(npBuff, {
+		id: teammateID,
+		range: ["team", "single", "all-enemy", "single-enemy"],
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+	});
 	var info = window[value + "Info"];
 	if ($("#teammate-setup-collapsebtn").html() == "展開▼") {
 		$("#teammate-setup-collapsebtn").click();
@@ -1082,7 +1113,12 @@ function toTeammateCE(value, ceID) {
 	window[value + "CEInfo"] = ce.filter(function(obj) {
 		return obj.ceID == ceID;
 	});
-	window[value + "CEBuffList"] = multiFilter(ceBuff, {"ceID": ceID});
+	window[value + "CEBuffList"] = multiFilter(ceBuff, {
+		"ceID": ceID,
+		range: ["team", "all-enemy", "single-enemy"],
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+	});
 	var info = window[value + "CEInfo"];
 	section.find(".teammate-ce-img").attr("src", info[0].ceImgID);
 	section.find(".teammate-ce-name").html(info[0].ceName);
@@ -1153,12 +1189,29 @@ function setTeammateCEEffect(toggle) {
 }
 
 // Update Buff
-var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [];
 var skillSet = {no: []};
+var useStrict = [true, false];
+var includeAfterDefeat = [true, false];
+var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+var tempEnemyTrait = [];
 
 $(document).ready(function() {
 	$("#battlefield-setup input:checkbox").change(function() {
 		updateBuff();
+	});
+	$("#use-strict-mode").change(function() {
+		if ($(this).is(":checked")) {
+			useStrict = [false];
+		} else {
+			useStrict = [true, false];
+		}	
+	});
+	$("#include-after-defeat").change(function() {
+		if ($(this).is(":checked")) {
+			includeAfterDefeat = [true, false];
+		} else {
+			includeAfterDefeat = [false];
+		}	
 	});
 	$("#current-servant-nplv").change(function() {
 		if (servantInfo[0].id == 15) {
@@ -1185,10 +1238,15 @@ function updateSkillSet(toggle) {
 }
 
 function updateBuff() {
+	tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+	tempEnemyTrait = [];
 	$("#buff-info").find("input").each(function() {
 		$(this).val(0);
 	});
 	updateCEAtk();
+	updateEventBuff();
+	updatePassiveBuff();
+	updatePreReq();
 	updateSkillBuff();
 	updateNPBuff();
 	updateCEBuff();
@@ -1241,12 +1299,331 @@ function updateCEAtk() {
 	}		
 }
 
+function updateEventBuff() {
+	if (servantSave[0] != undefined) {
+		$("#event-buff").val(servantSave[0].data[18]);
+	}
+}
+
+function updatePassiveBuff() {
+	var buster = Number($("#Buster-buff").val());	
+	buster += servantInfo[0].passiveBuster;
+	if ($("#current-servant-rankup").is(":checked")) {
+		buster += servantInfo[0].npBusterRU;
+	} else {
+		buster += servantInfo[0].npBuster;
+	}
+	$("#Buster-buff").val(buster);
+	var art = Number($("#Art-buff").val());	
+	art += servantInfo[0].passiveArt;
+	if ($("#current-servant-rankup").is(":checked")) {
+		art += servantInfo[0].npArtRU;
+	} else {
+		art += servantInfo[0].npArt;
+	}
+	$("#Art-buff").val(art);
+	var quick = Number($("#Quick-buff").val());	
+	quick += servantInfo[0].passiveQuick;
+	if ($("#current-servant-rankup").is(":checked")) {
+		quick += servantInfo[0].npQuickRU;
+	} else {
+		quick += servantInfo[0].npQuick;
+	}
+	$("#Quick-buff").val(quick);
+	var divinity = Number($("#add-atk").val());	
+	divinity += servantInfo[0].divinity;	
+	$("#add-atk").val(divinity);
+	var npdmg = Number($("#np-buff").val());	
+	if ($("#current-servant-rankup").is(":checked")) {
+		npdmg += servantInfo[0].npDmgUpRU;
+	} else {
+		npdmg += servantInfo[0].npDmgUp;
+	}	
+	$("#np-buff").val(npdmg);
+	var atk = Number($("#atk-buff").val());	
+	if ($("#current-servant-rankup").is(":checked")) {
+		atk += servantInfo[0].npAtkRU;
+	} else {
+		atk += servantInfo[0].npAtk;
+	}	
+	$("#atk-buff").val(atk);
+}
+
+function updatePreReq() {
+	$(skillSet).each(function() {
+		var lv = $("#" + this + "-lv").val();
+		var checkRU = $("#check-" + skill + "-rankup").is(":checked");
+		var activeSkillBuff = multiFilter(skillBuffList, {
+			no: this,
+			skillRU: checkRU,
+			selective: useStrict,
+			afterDefeat: includeAfterDefeat
+		});
+		$(activeSkillBuff).each(function() {
+			if (this.effect == "alignment1") {
+				tempAlignment1.push(this.corrDetail);
+			}
+			if (this.effect == "alignment2") {
+				tempAlignment2.push(this.corrDetail);
+			}
+			if (this.effect == "trait") {
+				tempTrait.push(this.corrDetail);
+			}
+			if (this.effect == "igndef") {
+				ignoreDef = true;
+			}
+			if (this.effect == "enemytrait") {
+				tempEnemyTrait.push(this.corrDetail);
+			}
+		});
+	});
+}
+
 function updateSkillBuff() {
-	
+	$(skillSet).each(function() {
+		var lv = $("#" + this + "-lv").val();
+		var checkRU = $("#check-" + skill + "-rankup").is(":checked");
+		var activeSkillBuff = multiFilter(skillBuffList, {
+			no: this,
+			skillRU: checkRU,
+			chance: useStrict,
+			afterDefeat: includeAfterDefeat
+		});
+		$(activeSkillBuff).each(function() {
+			var test = true;
+			if (this.selective == true) {
+				if (this.lookUp == "env") {
+					if (!battlefield.some(function(env) {
+						return env == buff.corrDetail;
+					})) {
+						test = false;
+					}
+				}
+			}
+			if (test = true) {
+				if (this.effect == "dmg") {		
+					var value = Number($("#atk-buff").val());	
+					value += this[lv];	
+					$("#atk-buff").val(value);	
+				}		
+				if (this.effect == "adddmg") {		
+					var value = Number($("#add-atk").val());	
+					value += this[lv];	
+					$("#add-atk").val(value);	
+				}		
+				if (this.effect == "npdmg") {		
+					var value = Number($("#np-buff").val());	
+					value += this[lv];	
+					$("#np-buff").val(value);	
+				}		
+				if (this.effect == "buster") {		
+					var value = Number($("#Buster-buff").val());	
+					value += this[lv];	
+					$("#Buster-buff").val(value);	
+				}		
+				if (this.effect == "art") {		
+					var value = Number($("#Art-buff").val());	
+					value += this[lv];	
+					$("#Art-buff").val(value);	
+				}		
+				if (this.effect == "quick") {		
+					var value = Number($("#Quick-buff").val());	
+					value += this[lv];	
+					$("#Quick-buff").val(value);	
+				}		
+				if (this.effect == "def") {		
+					updateDefDebuff(this, 'enemy1', lv);	
+					if (this.range == "all-enemy") {	
+						updateDefDebuff(this, 'enemy2', lv);
+						updateDefDebuff(this, 'enemy3', lv);
+					}	
+				}		
+				if (this.effect == "ed") {		
+					updateSkillED(this, 'enemy1', lv);	
+					updateSkillED(this, 'enemy2', lv);	
+					updateSkillED(this, 'enemy3', lv);	
+				}		
+			}
+		});
+	});
+}
+
+function updateDefDebuff(buff, enemy, lv) {
+	var field = $("#" + enemy + "-buff").find(".def-debuff");
+	var value = Number($(field).val());
+	value += buff[lv];
+	$(field).val(value);
+}
+
+function updateSkillED(buff, enemy, lv) {
+	var test = false;
+	switch (buff.lookUp) {
+		case "class":
+			if (buff.corrDetail == $("#" + enemy + "-class").attr("alt")) {
+				test = true;
+			}
+			break;
+		case "gender":
+			if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
+				test = true;
+			}
+			break;
+		case "alignment1":
+			if (buff.corrDetail == $("#" + enemy + "-alignment1").html()) {
+				test = true;
+			}
+			break;
+		case "alignment2":
+			if (buff.corrDetail == $("#" + enemy + "-alignment2").html()) {
+				test = true;
+			}
+			break;
+		case "trait":
+			var traitList = window[enemy + "Trait"]
+			if (traitList.some(function(trait) {
+				return trait == buff.corrDetail;
+			})) {
+				test = true;
+			} else if (tempEnemyTrait.some(function(trait) {
+				return trait == buff.corrDetail;
+			})) {
+				test = true;
+			} 
+			break;
+		case "debuff":
+			var debuffList = window[enemy + "Debuff"]
+			if (debuffList.some(function(debuff) {
+				return debuff == buff.corrDetail;
+			})) {
+				test = true;
+			}
+			break;
+		default:
+			alert("Skill ED error");
+	}
+	if (test == true) {
+		var field = $("#" + enemy + "-buff").find(".skill-ed");
+		var value = Number($(field).val());
+		value += buff[lv];
+		$(field).val(value);
+	}	
 }
 
 function updateNPBuff() {
-	
+	var oclv = $("#current-servant-npoc").val();
+	if (servantInfo[0].id == 15) {
+		oclv = $("#current-servant-nplv").val();
+	}
+	var checkRU = $("#current-servant-rankup").is(":checked");
+	var activeNPBuff = multiFilter(npBuffList, {
+		npRU: checkRU,
+		chance: useStrict
+	});
+	$(activeNPBuff).each(function() {
+		if (this.effect == "dmg") {		
+			var value = Number($("#atk-buff").val());	
+			value += this[lv];	
+			$("#atk-buff").val(value);	
+		}		
+		if (this.effect == "adddmg") {		
+			var value = Number($("#add-atk").val());	
+			value += this[lv];	
+			$("#add-atk").val(value);	
+		}		
+		if (this.effect == "npdmg") {		
+			var value = Number($("#np-buff").val());	
+			value += this[lv];	
+			$("#np-buff").val(value);	
+		}		
+		if (this.effect == "buster") {		
+			var value = Number($("#Buster-buff").val());	
+			value += this[lv];	
+			$("#Buster-buff").val(value);	
+		}		
+		if (this.effect == "art") {		
+			var value = Number($("#Art-buff").val());	
+			value += this[lv];	
+			$("#Art-buff").val(value);	
+		}		
+		if (this.effect == "quick") {		
+			var value = Number($("#Quick-buff").val());	
+			value += this[lv];	
+			$("#Quick-buff").val(value);	
+		}		
+		if (this.effect == "def") {		
+			updateNPDefDebuff(this, 'enemy1', oclv);	
+			if (this.range == "all-enemy") {	
+				updateNPDefDebuff(this, 'enemy2', oclv);
+				updateNPDefDebuff(this, 'enemy3', oclv);
+			}	
+		}		
+		if (this.effect == "ed") {		
+			updateNPED(this, 'enemy1', oclv);	
+			updateNPED(this, 'enemy2', oclv);	
+			updateNPED(this, 'enemy3', oclv);	
+		}
+	});
+}
+
+function updateNPDefDebuff(buff, enemy, oclv) {
+	var field = $("#" + enemy + "-buff").find(".def-debuff");
+	var value = Number($(field).val());
+	value += buff[oclv];
+	$(field).val(value);
+}
+
+function updateNPED(buff, enemy, oclv) {
+	var test = false;
+	switch (buff.lookUp) {
+		case "class":
+			if (buff.corrDetail == $("#" + enemy + "-class").attr("alt")) {
+				test = true;
+			}
+			break;
+		case "gender":
+			if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
+				test = true;
+			}
+			break;
+		case "alignment1":
+			if (buff.corrDetail == $("#" + enemy + "-alignment1").html()) {
+				test = true;
+			}
+			break;
+		case "alignment2":
+			if (buff.corrDetail == $("#" + enemy + "-alignment2").html()) {
+				test = true;
+			}
+			break;
+		case "trait":
+			var traitList = window[enemy + "Trait"]
+			if (traitList.some(function(trait) {
+				return trait == buff.corrDetail;
+			})) {
+				test = true;
+			} else if (tempEnemyTrait.some(function(trait) {
+				return trait == buff.corrDetail;
+			})) {
+				test = true;
+			}
+			break;
+		case "debuff":
+			var debuffList = window[enemy + "Debuff"]
+			if (debuffList.some(function(debuff) {
+				return debuff == buff.corrDetail;
+			})) {
+				test = true;
+			}
+			break;
+		default:
+			alert("NP ED error");
+	}
+	if (test == true) {
+		var field = $("#" + enemy + "-buff").find(".np-ed");
+		var value = Number($(field).val());
+		value += buff[oclv];
+		$(field).val(value);
+	}	
 }
 
 function updateCEBuff() {
