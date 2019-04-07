@@ -1359,8 +1359,8 @@ function updatePreReq() {
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
 			skillRU: [checkRU],
-			selective: [useStrict],
-			afterDefeat: [includeAfterDefeat]
+			selective: useStrict,
+			afterDefeat: includeAfterDefeat
 		});
 		$(activeSkillBuff).each(function() {
 			if (this.effect == "alignment1") {
@@ -1389,8 +1389,8 @@ function updateSkillBuff() {
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
 			skillRU: [checkRU],
-			chance: [useStrict],
-			afterDefeat: [includeAfterDefeat]
+			chance: useStrict,
+			afterDefeat: includeAfterDefeat
 		});
 		$(activeSkillBuff).each(function() {
 			var test = true;
@@ -1520,7 +1520,7 @@ function updateNPBuff() {
 	var checkRU = $("#current-servant-rankup").is(":checked");
 	var activeNPBuff = multiFilter(npBuffList, {
 		npRU: [checkRU],
-		chance: [useStrict]
+		chance: useStrict
 	});
 	$(activeNPBuff).each(function() {
 		if (this.effect == "dmg") {		
