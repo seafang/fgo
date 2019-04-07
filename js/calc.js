@@ -399,7 +399,7 @@ function pickServant(servantID) {
 	setSkill(skill1Toggle);
 	setSkill(skill2Toggle);
 	setSkill(skill3Toggle);
-	updatePassiveBuff();
+	updateBuff();
 }
 
 function resetServant() {
@@ -411,7 +411,7 @@ function resetServant() {
 	setSkill(skill1Toggle);
 	setSkill(skill2Toggle);
 	setSkill(skill3Toggle);
-	updatePassiveBuff();
+	updateBuff();
 }
 
 function setCurrentServantInfo() {
@@ -558,6 +558,7 @@ function pickCE(essenceID) {
 	setCurrentServantCE();
 	var ceToggle = $("#servant-ce-max");
 	setCurrentServantCEEffect(ceToggle);
+	updateCEAtk();
 	updateBuff();
 }
 
@@ -565,6 +566,7 @@ function reapplyCE() {
 	setCurrentServantCE();
 	var ceToggle = $("#servant-ce-max");
 	setCurrentServantCEEffect(ceToggle);
+	updateCEAtk();
 	updateBuff();
 }
 
@@ -582,6 +584,7 @@ function resetCE() {
 	$("#servant-ce-lv").val(0);
 	$("#servant-ce-lv").prop("disabled", true);
 	$("#servant-ce-dscrp").html("");
+	updateCEAtk();
 	updateBuff();
 }
 
@@ -1243,8 +1246,6 @@ function updateSkillSet(toggle) {
 function updateBuff() {
 	tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 	tempEnemyTrait = [];
-	updateCEAtk();
-	updateEventBuff();
 	updatePassiveBuff();
 	updatePreReq();
 	updateSkillBuff();
