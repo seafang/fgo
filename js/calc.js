@@ -1357,7 +1357,7 @@ function updatePreReq() {
 		var lv = $("#" + this + "-lv").val();
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
-			no: [this],
+			no: [this.toString()],
 			skillRU: checkRU,
 			selective: useStrict,
 			afterDefeat: includeAfterDefeat
@@ -1387,7 +1387,7 @@ function updateSkillBuff() {
 		var lv = $("#" + this + "-lv").val();
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
-			no: [this],
+			no: [this.toString()],
 			skillRU: checkRU,
 			chance: useStrict,
 			afterDefeat: includeAfterDefeat
