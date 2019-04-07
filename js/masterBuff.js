@@ -1,1 +1,1 @@
-mysticCodeBuff = '[{"masterName":"迦勒底","no":"skill2","range":"single","effect":"dmg","lookUp":"","corrDetail":"","rateFixed":false,"lv1":30,"lv2":32,"lv3":34,"lv4":36,"lv5":38,"lv6":40,"lv7":42,"lv8":44,"lv9":46,"lv10":50}]';
+mysticCodeBuff = '[{"1":30,"2":32,"3":34,"4":36,"5":38,"6":40,"7":42,"8":44,"9":46,"10":50,"masterName":"迦勒底","no":"skill2","range":"single","effect":"dmg","lookUp":"","corrDetail":"","rateFixed":false}]';
