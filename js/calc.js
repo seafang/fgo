@@ -40,6 +40,10 @@ $(document).click(function() {
 	updateCounter();
 });
 
+$(document).scroll(function() {
+	updateCounter();
+});
+
 function updateCounter() {
 	var height = $("#enemy-info").outerHeight() + $("#environment-info").outerHeight() + $("#servant-info").outerHeight() +
 		$("#ce-info").outerHeight() + $("#master-info").outerHeight() + $("#teammate-info").outerHeight() + 
