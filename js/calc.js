@@ -182,7 +182,6 @@ function setEnemy(element) {
 	$(element).find(".enemy-debuff").html(debuffList);
 	switch (element) {
 		case "#enemy1":
-		default:
 			enemy1Debuff = debuff;
 			break;
 		case "#enemy2":
@@ -190,6 +189,8 @@ function setEnemy(element) {
 			break;
 		case "#enemy3":
 			enemy3Debuff = debuff;
+			break;
+		default:
 			break;
 	}
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
@@ -207,7 +208,6 @@ function setEnemy(element) {
 	});
 	switch (element) {
 		case "#enemy1":
-		default:
 			enemy1Trait = trait;
 			break;
 		case "#enemy2":
@@ -216,8 +216,11 @@ function setEnemy(element) {
 		case "#enemy3":
 			enemy3Trait = trait;
 			break;
+		default:
+			break;
 	}
 	$(element).find(".enemy-trait").html(trait.join(", "));
+	updateBuff();
 }
 
 function resetEnemy(element) {
@@ -226,7 +229,6 @@ function resetEnemy(element) {
 	$(element).find(".enemy-name").html("");
 	switch (element) {
 		case "#enemy1":
-		default:
 			enemy1Debuff = [];
 			break;
 		case "#enemy2":
@@ -234,6 +236,8 @@ function resetEnemy(element) {
 			break;
 		case "#enemy3":
 			enemy3Debuff = [];
+			break;
+		default:
 			break;
 	}
 	$(element).find(".enemy-class").attr("src", "images/class/Unknown.webp");
@@ -244,7 +248,6 @@ function resetEnemy(element) {
 	$(element).find(".enemy-trait").html("");
 	switch (element) {
 		case "#enemy1":
-		default:
 			enemy1Trait = [];
 			break;
 		case "#enemy2":
@@ -253,7 +256,10 @@ function resetEnemy(element) {
 		case "#enemy3":
 			enemy3Trait = [];
 			break;
+		default:
+			break;
 	}
+	updateBuff();
 }
 
 // Set Battlefield
@@ -368,7 +374,7 @@ function pickServant(servantID) {
 			starHTML = "★★★★★";
 			break;
 		default:
-			starHTML = "Error";
+			break;
 	}
 	$("#current-servant-star").html(starHTML);
 	$("#current-servant-star").removeClass("dull");
@@ -545,7 +551,7 @@ function pickCE(essenceID) {
 			starHTML = "★★★★★";
 			break;
 		default:
-			starHTML = "Error";
+			break;
 	}
 	$("#servant-ce-star").html(starHTML);
 	$("#servant-ce-star").removeClass("dull");
@@ -833,7 +839,6 @@ function pickTeammate(teammateID) {
 	closeModal();
 	switch (modalCaller) {
 		case "teammate1":
-		default:
 			toTeammate("teammate1", teammateID);
 			break;
 		case "teammate2":
@@ -847,6 +852,8 @@ function pickTeammate(teammateID) {
 			break;
 		case "teammate5":
 			toTeammate("teammate5", teammateID);
+			break;
+		default:
 			break;
 	}
 	modalCaller = "";
@@ -900,7 +907,7 @@ function toTeammate(value, teammateID) {
 			starHTML = "★★★★★";
 			break;
 		default:
-			starHTML = "Error";
+			break;
 	}
 	section.find(".teammate-star").html(starHTML);
 	section.find(".teammate-star").removeClass("dull");
@@ -1095,7 +1102,6 @@ function pickTeammateCE(ceID) {
 	closeModal();
 	switch (modalCaller) {
 		case "teammate1":
-		default:
 			toTeammateCE("teammate1", ceID);
 			break;
 		case "teammate2":
@@ -1109,6 +1115,8 @@ function pickTeammateCE(ceID) {
 			break;
 		case "teammate5":
 			toTeammateCE("teammate5", ceID);
+			break;
+		default:
 			break;
 	}
 	modalCaller = "";
@@ -1140,7 +1148,7 @@ function toTeammateCE(value, ceID) {
 			starHTML = "★★★★★";
 			break;
 		default:
-			starHTML = "Error";
+			break;
 	}
 	section.find(".teammate-ce-star").html(starHTML);
 	section.find(".teammate-ce-star").removeClass("dull");
@@ -1364,20 +1372,24 @@ function updatePreReq() {
 			afterDefeat: includeAfterDefeat
 		});
 		$(activeSkillBuff).each(function() {
-			if (this.effect == "alignment1") {
-				tempAlignment1.push(this.corrDetail);
-			}
-			if (this.effect == "alignment2") {
-				tempAlignment2.push(this.corrDetail);
-			}
-			if (this.effect == "trait") {
-				tempTrait.push(this.corrDetail);
-			}
-			if (this.effect == "igndef") {
-				ignoreDef = true;
-			}
-			if (this.effect == "enemytrait") {
-				tempEnemyTrait.push(this.corrDetail);
+			switch (this.effect) {
+				case "alignment1":
+					tempAlignment1.push(this.corrDetail);
+					break;
+				case "alignment2":
+					tempAlignment2.push(this.corrDetail);
+					break;
+				case "trait":
+					tempTrait.push(this.corrDetail);
+					break;
+				case "igndef":
+					ignoreDef = true;
+					break;
+				case "enemytrait":
+					tempEnemyTrait.push(this.corrDetail);
+					break;
+				default:
+					break;
 			}
 		});
 	});
@@ -1405,47 +1417,51 @@ function updateSkillBuff() {
 				}
 			}
 			if (test = true) {
-				if (this.effect == "dmg") {		
-					var value = Number($("#atk-buff").val());	
-					value += this[lv];	
-					$("#atk-buff").val(value);	
-				}		
-				if (this.effect == "adddmg") {		
-					var value = Number($("#add-atk").val());	
-					value += this[lv];	
-					$("#add-atk").val(value);	
-				}		
-				if (this.effect == "npdmg") {		
-					var value = Number($("#np-buff").val());	
-					value += this[lv];	
-					$("#np-buff").val(value);	
-				}		
-				if (this.effect == "buster") {		
-					var value = Number($("#Buster-buff").val());	
-					value += this[lv];	
-					$("#Buster-buff").val(value);	
-				}		
-				if (this.effect == "art") {		
-					var value = Number($("#Art-buff").val());	
-					value += this[lv];	
-					$("#Art-buff").val(value);	
-				}		
-				if (this.effect == "quick") {		
-					var value = Number($("#Quick-buff").val());	
-					value += this[lv];	
-					$("#Quick-buff").val(value);	
-				}		
-				if (this.effect == "def") {		
-					updateDefDebuff(this, 'enemy1', lv);	
-					if (this.range == "all-enemy") {	
-						updateDefDebuff(this, 'enemy2', lv);
-						updateDefDebuff(this, 'enemy3', lv);
-					}	
-				}		
-				if (this.effect == "ed") {		
-					updateSkillED(this, 'enemy1', lv);	
-					updateSkillED(this, 'enemy2', lv);	
-					updateSkillED(this, 'enemy3', lv);	
+				switch (this.effect) {
+					case "dmg":
+						var value = Number($("#atk-buff").val());	
+						value += this[lv];	
+						$("#atk-buff").val(value);
+						break;
+					case "adddmg":		
+						var value = Number($("#add-atk").val());	
+						value += this[lv];	
+						$("#add-atk").val(value);
+						break;
+					case "npdmg":	
+						var value = Number($("#np-buff").val());	
+						value += this[lv];	
+						$("#np-buff").val(value);
+						break;
+					case "buster":		
+						var value = Number($("#Buster-buff").val());	
+						value += this[lv];	
+						$("#Buster-buff").val(value);
+						break;
+					case "art":	
+						var value = Number($("#Art-buff").val());	
+						value += this[lv];	
+						$("#Art-buff").val(value);
+						break;
+					case "quick":
+						var value = Number($("#Quick-buff").val());	
+						value += this[lv];	
+						$("#Quick-buff").val(value);
+						break;
+					case "def":
+						updateDefDebuff(this, 'enemy1', lv);	
+						if (this.range == "all-enemy") {	
+							updateDefDebuff(this, 'enemy2', lv);
+							updateDefDebuff(this, 'enemy3', lv);
+						}
+						break;
+					case "ed":		
+						updateSkillED(this, 'enemy1', lv);	
+						updateSkillED(this, 'enemy2', lv);	
+						updateSkillED(this, 'enemy3', lv);
+						break;
+					default:
+						break;
 				}		
 			}
 		});
@@ -1503,7 +1519,7 @@ function updateSkillED(buff, enemy, lv) {
 			}
 			break;
 		default:
-			alert("Skill ED error");
+			break;
 	}
 	if (test == true) {
 		var field = $("#" + enemy + "-buff").find(".skill-ed");
@@ -1524,47 +1540,51 @@ function updateNPBuff() {
 		chance: useStrict
 	});
 	$(activeNPBuff).each(function() {
-		if (this.effect == "dmg") {		
-			var value = Number($("#atk-buff").val());	
-			value += this[lv];	
-			$("#atk-buff").val(value);	
-		}		
-		if (this.effect == "adddmg") {		
-			var value = Number($("#add-atk").val());	
-			value += this[lv];	
-			$("#add-atk").val(value);	
-		}		
-		if (this.effect == "npdmg") {		
-			var value = Number($("#np-buff").val());	
-			value += this[lv];	
-			$("#np-buff").val(value);	
-		}		
-		if (this.effect == "buster") {		
-			var value = Number($("#Buster-buff").val());	
-			value += this[lv];	
-			$("#Buster-buff").val(value);	
-		}		
-		if (this.effect == "art") {		
-			var value = Number($("#Art-buff").val());	
-			value += this[lv];	
-			$("#Art-buff").val(value);	
-		}		
-		if (this.effect == "quick") {		
-			var value = Number($("#Quick-buff").val());	
-			value += this[lv];	
-			$("#Quick-buff").val(value);	
-		}		
-		if (this.effect == "def") {		
-			updateNPDefDebuff(this, 'enemy1', oclv);	
-			if (this.range == "all-enemy") {	
-				updateNPDefDebuff(this, 'enemy2', oclv);
-				updateNPDefDebuff(this, 'enemy3', oclv);
-			}	
-		}		
-		if (this.effect == "ed") {		
-			updateNPED(this, 'enemy1', oclv);	
-			updateNPED(this, 'enemy2', oclv);	
-			updateNPED(this, 'enemy3', oclv);	
+		switch (this.effect) {
+			case "dmg":		
+				var value = Number($("#atk-buff").val());	
+				value += this[lv];	
+				$("#atk-buff").val(value);
+				break;
+			case "adddmg":		
+				var value = Number($("#add-atk").val());	
+				value += this[lv];	
+				$("#add-atk").val(value);
+				break;
+			case "npdmg":	
+				var value = Number($("#np-buff").val());	
+				value += this[lv];	
+				$("#np-buff").val(value);
+				break;
+			case "buster":		
+				var value = Number($("#Buster-buff").val());	
+				value += this[lv];	
+				$("#Buster-buff").val(value);
+				break;
+			case "art":	
+				var value = Number($("#Art-buff").val());	
+				value += this[lv];	
+				$("#Art-buff").val(value);
+				break;
+			case "quick":	
+				var value = Number($("#Quick-buff").val());	
+				value += this[lv];	
+				$("#Quick-buff").val(value);
+				break;
+			case "def":	
+				updateNPDefDebuff(this, 'enemy1', oclv);	
+				if (this.range == "all-enemy") {	
+					updateNPDefDebuff(this, 'enemy2', oclv);
+					updateNPDefDebuff(this, 'enemy3', oclv);
+				}
+				break;
+			case "ed":	
+				updateNPED(this, 'enemy1', oclv);	
+				updateNPED(this, 'enemy2', oclv);	
+				updateNPED(this, 'enemy3', oclv);
+				break;
+			default:
+				break;
 		}
 	});
 }
@@ -1620,7 +1640,7 @@ function updateNPED(buff, enemy, oclv) {
 			}
 			break;
 		default:
-			alert("NP ED error");
+			break;
 	}
 	if (test == true) {
 		var field = $("#" + enemy + "-buff").find(".np-ed");
