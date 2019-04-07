@@ -206,7 +206,7 @@
 					<img class="left profile-img enemy-img" id="enemy1-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy1-name"></span>
 					<span class="enemy-debuff" id="enemy1-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy1-class" data-class="" src="images/class/Unknown.webp" />
+					<img class="enemy-class class-logo left" id="enemy1-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy1-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy1-attribute"></span></div>
@@ -232,7 +232,7 @@
 					<img class="left profile-img enemy-img" id="enemy2-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy2-name"></span>
 					<span class="enemy-debuff" id="enemy2-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy2-class" data-class="" src="images/class/Unknown.webp" />
+					<img class="enemy-class class-logo left" id="enemy2-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy2-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy2-attribute"></span></div>
@@ -258,7 +258,7 @@
 					<img class="left profile-img enemy-img" id="enemy3-img" src="images/bg_logo.webp" />
 					<span class="enemy-name left" id="enemy3-name"></span>
 					<span class="enemy-debuff" id="enemy3-debuff"></span>
-					<img class="enemy-class class-logo left" id="enemy3-class" data-class="" src="images/class/Unknown.webp" />
+					<img class="enemy-class class-logo left" id="enemy3-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-20"><span class="label">性別</span><span class="enemy-gender" id="enemy3-gender"></span></div>
 				<div class="element-20"><span class="label">陣營</span><span class="enemy-attribute" id="enemy3-attribute"></span></div>
@@ -275,6 +275,12 @@
 		</div>
 		<br/>
 	</div>
+	<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
+</div>
+<br/>
+
+<!--Environment Section-->
+<div class="info" id="environment-info">
 	<div class="setup" id="battelfield-setup">
 		<div class="row">
 			<div class="element-100">
@@ -310,11 +316,25 @@
 				<span class="resetbtn btn btnright" id="battlefield-resetbtn">取消選擇</span>
 			</div>
 		</div>
-		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
+	</div>
+	<div class="setup" id="misc-setup">
+		<div class="row">
+			<div class="element-50">
+				<label class="switch">
+					<input type="checkbox" id="use-strict-mode" value="true">
+					<span class="slider"></span>
+				</label>
+				<span class="label">使用嚴格模式</span>
+				<label class="switch">
+					<input type="checkbox" id="include-after-defeat" value="true" checked>
+					<span class="slider"></span>
+				</label>
+				<span class="label">計入退埸後發動之效果</span>
+			</div>
+		</div>
 	</div>
 </div>
-<br/>
-
+	
 <!--Servant Section-->
 <div class="info" id="servant-info">
 	<div class="setup" id="servant-setup">
@@ -455,11 +475,11 @@
 				<span class="label">寶具強化</span>
 				<label class="label">寶具OC</label>
 				<select class="update-trigger" id="current-servant-npoc" disabled>
-					<option value="oc1">100%</option>
-					<option value="oc2">200%</option>
-					<option value="oc3">300%</option>
-					<option value="oc4">400%</option>
-					<option value="oc5">500%</option>
+					<option value="1">100%</option>
+					<option value="2">200%</option>
+					<option value="3">300%</option>
+					<option value="4">400%</option>
+					<option value="5">500%</option>
 				</select>
 			</div>
 		</div>
@@ -1126,7 +1146,7 @@
 	</div>
 	<div class="buff-summary" id="common-buff">
 		<div class="row">
-			<a class="element-20">[全體]</a>
+			<a class="element-20">[對全體敵人]</a>
 			<span class="resetbtn btn" id="common-buff-resetbtn">還原數值</span>			
 		</div>				
 		<div class="row">				
@@ -1154,21 +1174,21 @@
 			</div>			
 			<div class="element-20">					
 				<span class="label">Buster性能(%)</span>	
-				<input type="number" class="narrow" id="buster-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Buster-buff" value="0" min="0">		
 			</div>			
 			<div class="element-20">				
 				<span class="label">Art性能(%)</span>	
-				<input type="number" class="narrow" id="art-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Art-buff" value="0" min="0">		
 			</div>			
 			<div class="element-20">					
 				<span class="label">Quick性能(%)</span>	
-				<input type="number" class="narrow" id="quick-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Quick-buff" value="0" min="0">		
 			</div>
 		</div>
 	</div>	
 	<div class="buff-summary" id="enemy1-buff">
 		<div class="row">
-			<a class="element-20">[敵人I]</a>
+			<a class="element-20">[對敵人I]</a>
 			<span class="resetbtn btn" id="enemy1-buff-resetbtn">還原數值</span>			
 		</div>
 		<div class="row">
@@ -1181,7 +1201,7 @@
 				<input type="number" class="narrow red-atk" value="0" min="0">		
 			</div>
 			<div class="element-20">					
-				<span class="label">技能特攻</span>	
+				<span class="label">技能/禮裝特攻</span>	
 				<input type="number" class="narrow skill-ed" value="0" min="0">		
 			</div>
 			<div class="element-20">					
@@ -1192,7 +1212,7 @@
 	</div>
 	<div class="buff-summary" id="enemy2-buff">
 		<div class="row">
-			<a class="element-20">[敵人II]</a>
+			<a class="element-20">[對敵人II]</a>
 			<span class="resetbtn btn" id="enemy2-buff-resetbtn">還原數值</span>			
 		</div>
 		<div class="row">
@@ -1216,7 +1236,7 @@
 	</div>
 	<div class="buff-summary" id="enemy3-buff">
 		<div class="row">
-			<a class="element-20">[敵人III]</a>
+			<a class="element-20">[對敵人III]</a>
 			<span class="resetbtn btn" id="enemy3-buff-resetbtn">還原數值</span>			
 		</div>
 		<div class="row">
