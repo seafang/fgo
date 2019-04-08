@@ -220,7 +220,9 @@ function setEnemy(element) {
 			break;
 	}
 	$(element).find(".enemy-trait").html(trait.join(", "));
-	updateBuff();
+	if (servantInfo[0] !== undefined) {
+		updateBuff();
+	}
 }
 
 function resetEnemy(element) {
