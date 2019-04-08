@@ -334,6 +334,7 @@
 		</div>
 	</div>
 </div>
+<br/>
 	
 <!--Servant Section-->
 <div class="info" id="servant-info">
@@ -850,6 +851,12 @@
 
 <!--Teammate Section-->
 <div class="info" id="teammate-info">
+	<div class="row">
+		<a class="actionbtn left btn" id="add-Lord">使用孔明</a>
+		<a class="actionbtn left btn" id="add-Merlin">使用梅林</a>
+		<a class="actionbtn left btn" id="add-Tamamo">使用玉藻前</a>
+		<a class="actionbtn left btn" id="add-Skadi">使用斯卡蒂</a>
+	</div>
 	<div class="setup" id="teammate-setup">
 		<div class="row">			
 			<a class="modalbtn left btn teammate-modalbtn" data-teammate="teammate1">選擇隊友I</a>
@@ -890,7 +897,7 @@
 					</label>
 					<span class="label">寶解</span>
 					<label class="label">等級</label>
-					<select class="tight" class="update-trigger teammate-nplv" disabled>
+					<select class="tight update-trigger teammate-nplv" disabled>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1050,7 +1057,7 @@
 					<label class="label">等級</label>
 					<span class="label">寶解</span>
 					<label class="label">等級</label>
-					<select class="tight" class="update-trigger teammate-nplv" disabled>
+					<select class="tight update-trigger teammate-nplv" disabled>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1185,7 +1192,7 @@
 			</div>			
 			<div class="element-20">					
 				<span class="label">攻擊力提升(%)</span>	
-				<input type="number" class="narrow" id="atk-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="atk-buff" value="0" min="0" step="0.1">		
 			</div>				
 			<div class="element-20">					
 				<span class="label">傷害附加</span>	
@@ -1195,7 +1202,7 @@
 		<div class="row">				
 			<div class="element-20">					
 				<span class="label">寶具威力提升(%)</span>	
-				<input type="number" class="narrow" id="np-buff" value="0" min="0">			
+				<input type="number" class="narrow" id="np-buff" value="0" min="0" step="0.1">			
 			</div>			
 			<div class="element-20">					
 				<span class="label">活動攻擊加成(%)</span>	
@@ -1203,15 +1210,15 @@
 			</div>			
 			<div class="element-20">					
 				<span class="label">Buster性能(%)</span>	
-				<input type="number" class="narrow" id="Buster-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Buster-buff" value="0" min="0" step="0.1">		
 			</div>			
 			<div class="element-20">				
 				<span class="label">Art性能(%)</span>	
-				<input type="number" class="narrow" id="Art-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Art-buff" value="0" min="0" step="0.1">		
 			</div>			
 			<div class="element-20">					
 				<span class="label">Quick性能(%)</span>	
-				<input type="number" class="narrow" id="Quick-buff" value="0" min="0">		
+				<input type="number" class="narrow" id="Quick-buff" value="0" min="0" step="0.1">		
 			</div>
 		</div>
 	</div>	
@@ -1222,7 +1229,7 @@
 		<div class="row">
 			<div class="element-20">					
 				<span class="label">防禦力下降(%)</span>	
-				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">傷害減免</span>	
@@ -1230,11 +1237,11 @@
 			</div>
 			<div class="element-20">					
 				<span class="label">技能/禮裝特攻</span>	
-				<input type="number" class="narrow skill-ed" value="0" min="0">		
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">寶具特攻</span>	
-				<input type="number" class="narrow np-ed" value="0" min="0">		
+				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
 			</div>
 		</div>
 	</div>
@@ -1245,7 +1252,7 @@
 		<div class="row">
 			<div class="element-20">					
 				<span class="label">防禦力下降(%)</span>	
-				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">傷害減免</span>	
@@ -1253,11 +1260,11 @@
 			</div>
 			<div class="element-20">					
 				<span class="label">技能/禮裝特攻</span>	
-				<input type="number" class="narrow skill-ed" value="0" min="0">		
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">寶具特攻</span>	
-				<input type="number" class="narrow np-ed" value="0" min="0">		
+				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
 			</div>
 		</div>
 	</div>
@@ -1268,7 +1275,7 @@
 		<div class="row">
 			<div class="element-20">					
 				<span class="label">防禦力下降(%)</span>	
-				<input type="number" class="narrow def-debuff" value="0" min="0" max="100">		
+				<input type="number" class="narrow def-debuff" value="0" min="0" max="100" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">傷害減免</span>	
@@ -1276,11 +1283,11 @@
 			</div>
 			<div class="element-20">					
 				<span class="label">技能/禮裝特攻</span>	
-				<input type="number" class="narrow skill-ed" value="0" min="0">		
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
 			</div>
 			<div class="element-20">					
 				<span class="label">寶具特攻</span>	
-				<input type="number" class="narrow np-ed" value="0" min="0">		
+				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
 			</div>
 		</div>
 	</div>
@@ -1288,11 +1295,7 @@
 <br/>
 	
 <div class="row">
-	<a class="actionbtn left btn" onclick="addLord()">孔明Buff</a>
-	<a class="actionbtn left btn" onclick="addMerlin()">梅林Buff</a>
-	<a class="actionbtn left btn" onclick="addTamamo()">玉藻前Buff</a>
-	<a class="actionbtn left btn" onclick="addSkadi()">斯卡蒂Buff</a>
-	<a class="actionbtn left btn" onclick="npCalc()">計算</a>
+	<a class="left btn" id="calcbtn">計算</a>
 </div>
 <br/>
 
