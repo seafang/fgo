@@ -1133,8 +1133,8 @@ function setSupport(teammateID) {
 	var slot = "";
 	var list = ["teammate1", "teammate2", "teammate3", "teammate4", "teammate5"];
 	var i = -1;
-	var empty = false
-	while (empty = false) {
+	var empty = false;
+	while (empty == false) {
 		i++;
 		var section = $("#" + list[i]);
 		if ($(section).find(".teammate-name").html() == "未選定隊友") {
