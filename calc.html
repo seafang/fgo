@@ -457,7 +457,7 @@
 			</div>
 			<div class="element-50">
 				<label class="label">寶具等級</label>
-				<select class="tight" id="current-servant-nplv" disabled>
+				<select class="tight" class="update-trigger" id="current-servant-nplv" disabled>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -648,7 +648,7 @@
 				</div>			
 				<div class="element-10">			
 					<label class="switch">
-						<input type="checkbox" id="servant-ce-max" value="true" disabled>
+						<input type="checkbox" class="update-trigger" id="servant-ce-max" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>	
@@ -788,7 +788,7 @@
 				</div>
 				<div class="element-20">					
 					<label class="label">等級</label>	
-					<select id="master-lv" disabled>	
+					<select class="update-trigger" id="master-lv" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -806,7 +806,7 @@
 				<div class="element-30">
 					<img class="skill-logo" id="master-skill1-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill1" value="true" disabled>
+						<input type="checkbox" class="check-master-skill" id="check-master-skill1" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>
@@ -814,7 +814,7 @@
 				<div class="element-30">			
 					<img class="skill-logo" id="master-skill2-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill2" value="true" disabled>
+						<input type="checkbox" class="check-master-skill" id="check-master-skill2" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>	
@@ -822,7 +822,7 @@
 				<div class="element-30">			
 					<img class="skill-logo" id="master-skill3-logo" src="" />
 					<label class="switch">
-						<input type="checkbox" id="check-master-skill3" value="true" disabled>
+						<input type="checkbox" class="check-master-skill" id="check-master-skill3" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">使用技能</span>	
@@ -852,11 +852,11 @@
 <div class="info" id="teammate-info">
 	<div class="setup" id="teammate-setup">
 		<div class="row">			
-			<a class="modalbtn left btn" id="teammate1-modalbtn">選擇隊友I</a>
-			<a class="modalbtn left btn" id="teammate1-ce-modalbtn">選擇禮裝</a>
-			<span class="resetbtn btn" id="teammate1-reapplybtn">套用存檔</span>
-			<span class="resetbtn btn btnright" id="teammate1-ce-resetbtn">移除禮裝</span>
-			<span class="resetbtn btn btnright" id="teammate1-resetbtn">&times;</span>	
+			<a class="modalbtn left btn teammate-modalbtn" data-teammate="teammate1">選擇隊友I</a>
+			<a class="modalbtn left btn teammate-ce-modalbtn" data-teammate="teammate1">選擇禮裝</a>
+			<span class="resetbtn btn teammate-reapplybtn" data-teammate="teammate1">套用存檔</span>
+			<span class="resetbtn btn btnright teammate-ce-resetbtn" data-teammate="teammate1">移除禮裝</span>
+			<span class="resetbtn btn btnright teammate-resetbtn" data-teammate="teammate1">&times;</span>	
 		</div>	
 		<div class="teammate-detail allow-toggle" id="teammate1">				
 			<div class="row">			
@@ -871,7 +871,7 @@
 					<span class="teammate-ce-name">未選定禮裝</span>
 					<span class="star left dull teammate-ce-star" >★★★★★</span>
 					<label class="switch">
-						<input type="checkbox" class="teammate-ce-max" value="true" disabled>
+						<input type="checkbox" class="teammate-ce-max update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>
@@ -880,15 +880,31 @@
 				</div>
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-np" value="true" disabled>
+						<input type="checkbox" class="teammate-np update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-np-rankup update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>
-					<span class="label">寶解</span>	
+					<span class="label">寶解</span>
+					<label class="label">等級</label>
+					<select class="tight" class="update-trigger teammate-nplv" disabled>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<label class="label">OC</label>
+					<select class="update-trigger teammate-npoc" disabled>
+						<option value="1">100%</option>
+						<option value="2">200%</option>
+						<option value="3">300%</option>
+						<option value="4">400%</option>
+						<option value="5">500%</option>
+					</select>
 					<span class="label">寶具</span><span class="teammate-np-name"></span>	
 					<span class="label">效果</span><span class="teammate-np-dscrp"></span>	
 				</div>		
@@ -901,11 +917,11 @@
 					</label>	
 					<span class="label">使用技能一</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1-rankup" value="skill1" disabled>
+						<input type="checkbox" class="teammate-skill1-rankup update-trigger" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
-					<select class="narrow teammate-skill1-lv" disabled>	
+					<select class="narrow teammate-skill1-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -928,11 +944,11 @@
 					</label>	
 					<span class="label">使用技能二</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2-rankup" value="skill2" disabled>
+						<input type="checkbox" class="teammate-skill2-rankup update-trigger" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
-					<select class="narrow teammate-skill2-lv" disabled>	
+					<select class="narrow teammate-skill2-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -955,11 +971,11 @@
 					</label>	
 					<span class="label">使用技能三</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3-rankup" value="skill3" disabled>
+						<input type="checkbox" class="teammate-skill3-rankup update-trigger" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
-					<select class="narrow teammate-skill3-lv" disabled>	
+					<select class="narrow teammate-skill3-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -991,16 +1007,16 @@
 				</div>		
 			</div>
 			<div class="row">
-				<a class="extendbtn left btn" id="teammate2-extendbtn">+</a>
+				<a class="extendbtn left btn teammate-extendbtn" data-teammate="teammate2">+</a>
 			</div>
 		</div>
 		<div class="teammate-detail" id="teammate2">				
 			<div class="row">			
-				<a class="modalbtn left btn" id="teammate2-modalbtn">選擇隊友II</a>
-				<a class="modalbtn left btn" id="teammate2-ce-modalbtn">選擇禮裝</a>
-				<span class="resetbtn btn" id="teammate2-reapplybtn">套用存檔</span>
-				<span class="resetbtn btn btnright" id="teammate2-ce-resetbtn">移除禮裝</span>
-				<span class="resetbtn btn btnright" id="teammate2-resetbtn">&times;</span>		
+				<a class="modalbtn left btn teammate-modalbtn" data-teammate="teammate2">選擇隊友II</a>
+				<a class="modalbtn left btn teammate-ce-modalbtn" data-teammate="teammate2">選擇禮裝</a>
+				<span class="resetbtn btn teammate-reapplybtn" data-teammate="teammate2">套用存檔</span>
+				<span class="resetbtn btn btnright teammate-ce-resetbtn" data-teammate="teammate2">移除禮裝</span>
+				<span class="resetbtn btn btnright teammate-resetbtn" data-teammate="teammate2">&times;</span>		
 			</div>			
 			<div class="row">			
 				<div class="element-30">		
@@ -1014,7 +1030,7 @@
 					<span class="teammate-ce-name">未選定禮裝</span>
 					<span class="star left dull teammate-ce-star" >★★★★★</span>
 					<label class="switch">
-						<input type="checkbox" class="teammate-ce-max" value="true" disabled>
+						<input type="checkbox" class="teammate-ce-max update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>
@@ -1023,16 +1039,32 @@
 				</div>
 				<div class="element-30">		
 					<label class="switch">	
-						<input type="checkbox" class="teammate-np" value="true" disabled>
+						<input type="checkbox" class="teammate-np update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>	
 					<span class="label">使用</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-np-rankup" value="true" disabled>
+						<input type="checkbox" class="teammate-np-rankup update-trigger" value="true" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>
-					<span class="label">寶解</span>	
+					<span class="label">寶解</span>
+					<label class="label">等級</label>
+					<select class="tight" class="update-trigger teammate-nplv" disabled>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+					<label class="label">OC</label>
+					<select class="update-trigger teammate-npoc" disabled>
+						<option value="1">100%</option>
+						<option value="2">200%</option>
+						<option value="3">300%</option>
+						<option value="4">400%</option>
+						<option value="5">500%</option>
+					</select>
 					<span class="label">寶具</span><span class="teammate-np-name"></span>	
 					<span class="label">效果</span><span class="teammate-np-dscrp"></span>	
 				</div>		
@@ -1045,11 +1077,11 @@
 					</label>	
 					<span class="label">使用技能一</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1-rankup" value="skill1" disabled>
+						<input type="checkbox" class="teammate-skill1-rankup update-trigger" value="skill1" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
-					<select class="narrow teammate-skill1-lv" disabled>	
+					<select class="narrow teammate-skill1-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1072,11 +1104,11 @@
 					</label>	
 					<span class="label">使用技能二</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2-rankup" value="skill2" disabled>
+						<input type="checkbox" class="teammate-skill2-rankup update-trigger" value="skill2" disabled>
 						<span class="slider"></span>
 					</label>
 					<label class="label">等級</label>	
-					<select class="narrow teammate-skill2-lv" disabled>	
+					<select class="narrow teammate-skill2-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1099,10 +1131,10 @@
 					</label>	
 					<span class="label">使用技能三</span>	
 					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3-rankup" value="skill3" disabled>
+						<input type="checkbox" class="teammate-skill3-rankup update-trigger" value="skill3" disabled>
 						<span class="slider"></span>
 					</label>
-					<select class="narrow teammate-skill3-lv" disabled>	
+					<select class="narrow teammate-skill3-lv update-trigger" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
