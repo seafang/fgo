@@ -656,6 +656,7 @@ function setMaster(element) {
 		masterInfo = [];
 		masterSave = [];
 		masterBuffList = [];
+		masterSkillSet = [];
 		$("#master-img1").attr("src", "");
 		$("#master-img2").attr("src", "");
 		$("#master-lv").val(1);
@@ -743,7 +744,6 @@ function applyMaster() {
 // Set Teammates
 var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
 var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
-var teammate1skillSet = {no: []}, teammate2skillSet = {no: []}, teammate3skillSet = {no: []}, teammate4skillSet = {no: []}, teammate5skillSet = {no: []};
 var teammate1SkillBuffList = [], teammate2SkillBuffList = [], teammate3SkillBuffList = [], teammate4SkillBuffList = [], teammate5SkillBuffList = [];
 var teammate1NPBuffList = [], teammate2NPBuffList = [], teammate3NPBuffList = [], teammate4NPBuffList = [], teammate5NPBuffList = [];
 var teammate1CEInfo = [], teammate2CEInfo = [], teammate3CEInfo = [], teammate4CEInfo = [], teammate5CEInfo = [];
@@ -751,81 +751,52 @@ var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4C
 var teammate1CEBuffList = [], teammate2CEBuffList = [], teammate3CEBuffList = [], teammate4CEBuffList = [], teammate5CEBuffList = [];
 
 $(document).ready(function() {
-	$("#teammate1-modalbtn").click(function() {
+	$(".teammate-modalbtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
 		if ($("#current-servant-name").html() != "未選定從者") {
 			openModal("#teammate-modal");
-			setCaller("teammate1");
+			setCaller(teammate);
 			initialTeammate();
 			loadTeammateImg();
 		} else {
 			alert("請先設定從者！");
 		}
 	});
-	$("#teammate1-ce-modalbtn").click(function() {
-		if ($("#teammate1 .teammate-name").html() != "未選定隊友") {
+	$(".teammate-ce-modalbtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
+		if ($("#" + teammate + " .teammate-name").html() != "未選定隊友") {
 			openModal("#teammate-ce-modal");
-			setCaller("teammate1");
+			setCaller(teammate);
 			initialTeammateCE();
 			loadTeammateCEImg();
 		} else {
 			alert("請先設定隊友！");
 		}
 	});
-	$("#teammate1-reapplybtn").click(function() {
-		reapplyTeammate("teammate1");
+	$(".teammate-reapplybtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
+		reapplyTeammate(teammate);
 	});
-	$("#teammate1-ce-resetbtn").click(function() {
-		resetTeammateCE("teammate1");
+	$(".teammate-ce-resetbtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
+		resetTeammateCE(teammate);
 	});
-	$("#teammate1-resetbtn").click(function() {
+	$(".teammate-resetbtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
 		if ($("#teammate-setup-collapsebtn").html() == "接疊▲") {
 			$("#teammate-setup-collapsebtn").html("展開▼");
 		}
-		resetTeammate("teammate1");
+		resetTeammate(teammate);
 	});
-	$("#teammate2-extendbtn").click(function() {
+	$(".teammate-extendbtn").click(function() {
+		var teammate = $(this).attr("data-teammate");
 		$(this).hide();
-		extend("teammate2");
-	});
-	$("#teammate2-modalbtn").click(function() {
-		if ($("#current-servant-name").html() != "未選定從者") {
-			openModal("#teammate-modal");
-			setCaller("teammate2");
-			initialTeammate();
-			loadTeammateImg();
-		} else {
-			alert("請先設定從者！");
-		}
-	});
-	$("#teammate2-ce-modalbtn").click(function() {
-		if ($("#teammate1 .teammate-name").html() != "未選定隊友") {
-			openModal("#teammate-ce-modal");
-			setCaller("teammate2");
-			initialTeammateCE();
-			loadTeammateCEImg();
-		} else {
-			alert("請先設定隊友！");
-		}
-	});
-	$("#teammate2-reapplybtn").click(function() {
-		reapplyTeammate("teammate2");
-	});
-	$("#teammate2-ce-resetbtn").click(function() {
-		resetTeammateCE("teammate2");
-	});
-	$("#teammate2-resetbtn").click(function() {
-		resetTeammate("teammate2");
+		extend(teammate);
 	});
 	$(".teammate-np-rankup").change(function() {
 		setTeammateNP(this);
 	});
-	$(".teammate-skill1-rankup").change(function() {
-		setTeammateSkill(this);
-	});
-	$(".teammate-skill2-rankup").change(function() {
-		setTeammateSkill(this);
-	});
-	$(".teammate-skill3-rankup").change(function() {
+	$(".teammate-skill-rankup").change(function() {
 		setTeammateSkill(this);
 	});
 });
@@ -912,6 +883,8 @@ function toTeammate(value, teammateID) {
 	section.find(".teammate-star").html(starHTML);
 	section.find(".teammate-star").removeClass("dull");
 	section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);
+	section.find(".teammate-nplv").prop("disabled", false);
+	section.find(".teammate-npoc").prop("disabled", false);
 	section.find(".teammate-np-name").removeClass("Buster Art Quick");
 	section.find(".teammate-np-name").addClass(info[0].npColor);
 	window[value + "Save"] = bgServant.filter(function(obj) {
@@ -954,6 +927,7 @@ function resetTeammate(value) {
 	window[value + "Save"] = [];
 	window[value + "CEInfo"] = [];
 	window[value + "CESave"] = [];
+	window[value + "SkillSet"] = [];
 	window[value + "SkillBuffList"] = [];
 	window[value + "NPBuffList"] = [];
 	window[value + "CEBuffList"] = [];
@@ -984,6 +958,10 @@ function resetTeammate(value) {
 	section.find(".teammate-np").prop("disabled", true);
 	section.find(".teammate-np-rankup").prop("checked", false);
 	section.find(".teammate-np-rankup").prop("disabled", true);
+	section.find(".teammate-nplv").val(1);
+	section.find(".teammate-nplv").prop("disabled", true);
+	section.find(".teammate-npoc").val(1);
+	section.find(".teammate-npoc").prop("disabled", true);
 	section.find(".teammate-np-name").removeClass("Buster Art Quick");
 	section.find(".teammate-np-name").html("");
 	section.find(".teammate-np-dscrp").html("");
@@ -1036,6 +1014,8 @@ function setTeammateInfo(value) {
 		section.find(".teammate-skill3-lv").val(1);
 		section.find(".teammate-skill3-rankup").prop("checked", false);
 	}
+	section.find(".teammate-nplv").val(1);
+	section.find(".teammate-npoc").val(1);
 	section.find(".teammate-skill1").prop("checked", false);
 	section.find(".teammate-skill1-img").addClass("dull");
 	section.find(".teammate-skill2").prop("checked", false);
@@ -1204,6 +1184,8 @@ function setTeammateCEEffect(toggle) {
 
 // Update Buff
 var skillSet = [];
+var masterSkillSet = [];
+var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
 var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
@@ -1227,11 +1209,6 @@ $(document).ready(function() {
 			includeAfterDefeat = [false];
 		}	
 	});
-	$("#current-servant-nplv").change(function() {
-		if (servantInfo[0].id == 15) {
-			updateBuff();
-		}
-	});
 	$(".update-trigger").change(function() {
 		updateBuff();
 	});
@@ -1239,15 +1216,53 @@ $(document).ready(function() {
 		updateSkillSet(this);
 		updateBuff();
 	});
+	$(".check-master-skill").change(function() {
+		updateMasterSkillSet(this);
+		updateBuff();
+	});
+	$(".teammate-skill1").change(function() {
+		updateTeammateSkillSet(this);
+		updateBuff();
+	});
+	$(".teammate-skill2").change(function() {
+		updateTeammateSkillSet(this);
+		updateBuff();
+	});
+	$(".teammate-skill3").change(function() {
+		updateTeammateSkillSet(this);
+		updateBuff();
+	});
 });
 
 function updateSkillSet(toggle) {
+	var skill = $(toggle).val();
+	if ($(toggle).is(":checked")) {
+		masterSkillSet.push(skill);
+	} else {
+		var position = masterSkillSet.indexOf(skill);
+		masterSkillSet.splice(position, 1);
+	}
+}
+
+function updateMasterSkillSet(toggle) {
 	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
 		skillSet.push(skill);
 	} else {
 		var position = skillSet.indexOf(skill);
 		skillSet.splice(position, 1);
+	}
+}
+
+function updateTeammateSkillSet(toggle) {
+	var skill = $(toggle).val();
+	var teammate = $(toggle).parents(".teammate-detail").attr("id");
+	var skillset = window[teammate + "SkillSet"];
+	if ($(toggle).is(":checked")) {
+		skillset.push(skill);
+	} else {
+		var position = skillset.indexOf(skill);
+		skillset.splice(position, 1);
 	}
 }
 
@@ -1374,7 +1389,6 @@ function updatePassiveBuff() {
 
 function updateSkillPreReq() {
 	$(skillSet).each(function() {
-		var lv = $("#" + this + "-lv").val();
 		var checkRU = $("#check-" + this + "-rankup").is(":checked");
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
@@ -1404,15 +1418,38 @@ function updateSkillPreReq() {
 			}
 		});
 	});
-	
 }
 
 function updateNPPreReq() {
-	
+	var checkRU = $("#current-servant-rankup").is(":checked");
+	var activeNPBuff = multiFilter(npBuffList, {
+		npRU: [checkRU],
+		chance: useStrict
+	});
+	$(activeNPBuff).each(function() {
+		switch (this.effect) {
+			case "alignment1":
+				tempAlignment1.push(this.corrDetail);
+				break;
+			case "alignment2":
+				tempAlignment2.push(this.corrDetail);
+				break;
+			case "trait":
+				tempTrait.push(this.corrDetail);
+				break;
+			case "igndef":
+				ignoreDef = true;
+				break;
+			case "enemytrait":
+				tempEnemyTrait.push(this.corrDetail);
+				break;
+			default:
+				break;
+		}
+	});	
 }
 
 function updateCEPreReq() {
-	var checkRU = $("#servant-ce-max").is(":checked");
 	var activeCEBuff = multiFilter(ceBuffList, {
 		chance: useStrict,
 		afterDefeat: includeAfterDefeat
@@ -1429,15 +1466,88 @@ function updateCEPreReq() {
 }
 
 function updateTeammateSkillPreReq(section) {
-	
+	var teammate = $(section).attr("id");
+	var skillset = window[teammate + "SkillSet"];
+	var buffList = window[teammate + "SkillBuffList"];
+	$(skillset).each(function() {
+		var checkRU = $(section).find(".teammate-" + this + "-rankup").is(":checked");
+		var activeSkillBuff = multiFilter(buffList, {
+			no: [this.toString()],
+			skillRU: [checkRU],
+			chance: useStrict,
+			afterDefeat: includeAfterDefeat
+		});
+		$(activeSkillBuff).each(function() {
+			switch (this.effect) {
+				case "alignment1":
+					tempAlignment1.push(this.corrDetail);
+					break;
+				case "alignment2":
+					tempAlignment2.push(this.corrDetail);
+					break;
+				case "trait":
+					tempTrait.push(this.corrDetail);
+					break;
+				case "igndef":
+					ignoreDef = true;
+					break;
+				case "enemytrait":
+					tempEnemyTrait.push(this.corrDetail);
+					break;
+				default:
+					break;
+			}
+		});
+	});
 }
 
 function updateTeammateNPPreReq(section) {
-	
+	var teammate = $(section).attr("id");
+	var checkRU = $(section).find(".teammate-np-rankup").is(":checked");
+	var buffList = window[teammate + "NPBuffList"];
+	var activeNPBuff = multiFilter(buffList, {
+		npRU: [checkRU],
+		chance: useStrict
+	});
+	$(activeNPBuff).each(function() {
+		switch (this.effect) {
+			case "alignment1":
+				tempAlignment1.push(this.corrDetail);
+				break;
+			case "alignment2":
+				tempAlignment2.push(this.corrDetail);
+				break;
+			case "trait":
+				tempTrait.push(this.corrDetail);
+				break;
+			case "igndef":
+				ignoreDef = true;
+				break;
+			case "enemytrait":
+				tempEnemyTrait.push(this.corrDetail);
+				break;
+			default:
+				break;
+		}
+	});
 }
 
 function updateTeammateCEPreReq(section) {
-	
+	var teammate = $(section).attr("id");
+	var buffList = window[teammate + "CEBuffList"];
+	var activeCEBuff = multiFilter(buffList, {
+		chance: useStrict,
+		afterDefeat: includeAfterDefeat
+	});
+	$(activeCEBuff).each(function() {
+		switch (this.effect) {			
+			case "igndef":
+				ignoreDef = true;
+				break;
+			default:
+				break;
+		}
+	});	
 }
 
 function updateSkillBuff() {
@@ -1575,16 +1685,19 @@ function updateSkillED(buff, enemy, lv) {
 }
 
 function updateNPBuff() {
+	var nplv = $("#current-servant-nplv").val();
 	var oclv = $("#current-servant-npoc").val();
-	if (servantInfo[0].id == 15) {
-		oclv = $("#current-servant-nplv").val();
-	}
 	var checkRU = $("#current-servant-rankup").is(":checked");
 	var activeNPBuff = multiFilter(npBuffList, {
 		npRU: [checkRU],
 		chance: useStrict
 	});
 	$(activeNPBuff).each(function() {
+		if (this.npLV == true) {
+			var lv = nplv;
+		} else {
+			var lv = oclv;
+		}
 		switch (this.effect) {
 			case "dmg":		
 				var value = Number($("#atk-buff").val());	
@@ -1617,16 +1730,16 @@ function updateNPBuff() {
 				$("#Quick-buff").val(value);
 				break;
 			case "def":	
-				updateNPDefDebuff(this, 'enemy1', oclv);	
+				updateNPDefDebuff(this, 'enemy1', lv);	
 				if (this.range == "all-enemy") {	
-					updateNPDefDebuff(this, 'enemy2', oclv);
-					updateNPDefDebuff(this, 'enemy3', oclv);
+					updateNPDefDebuff(this, 'enemy2', lv);
+					updateNPDefDebuff(this, 'enemy3', lv);
 				}
 				break;
 			case "ed":	
-				updateNPED(this, 'enemy1', oclv);	
-				updateNPED(this, 'enemy2', oclv);	
-				updateNPED(this, 'enemy3', oclv);
+				updateNPED(this, 'enemy1', lv);	
+				updateNPED(this, 'enemy2', lv);	
+				updateNPED(this, 'enemy3', lv);
 				break;
 			default:
 				break;
@@ -1634,14 +1747,14 @@ function updateNPBuff() {
 	});
 }
 
-function updateNPDefDebuff(buff, enemy, oclv) {
+function updateNPDefDebuff(buff, enemy, lv) {
 	var field = $("#" + enemy + "-buff").find(".def-debuff");
 	var value = Number($(field).val());
-	value += buff[oclv];
+	value += buff[lv];
 	$(field).val(value);
 }
 
-function updateNPED(buff, enemy, oclv) {
+function updateNPED(buff, enemy, lv) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
@@ -1690,7 +1803,7 @@ function updateNPED(buff, enemy, oclv) {
 	if (test == true) {
 		var field = $("#" + enemy + "-buff").find(".np-ed");
 		var value = Number($(field).val());
-		value += buff[oclv];
+		value += buff[lv];
 		$(field).val(value);
 	}	
 }
@@ -1819,41 +1932,280 @@ function updateCEED(buff, enemy, lv) {
 }
 
 function updateMasterBuff() {
-	
+	var lv = $("#master-lv").val();
+	$(masterSkillSet).each(function() {
+		switch (this.effect) {			
+			case "dmg":		
+				var value = Number($("#atk-buff").val());	
+				value += this[lv];	
+				$("#atk-buff").val(value);	
+				break;	
+			case "adddmg":		
+				var value = Number($("#add-atk").val());	
+				value += this[lv];	
+				$("#add-atk").val(value);	
+				break;	
+			case "npdmg":		
+				var value = Number($("#np-buff").val());	
+				value += this[lv];	
+				$("#np-buff").val(value);	
+				break;	
+			case "buster":		
+				var value = Number($("#Buster-buff").val());	
+				value += this[lv];	
+				$("#Buster-buff").val(value);	
+				break;	
+			case "art":		
+				var value = Number($("#Art-buff").val());	
+				value += this[lv];	
+				$("#Art-buff").val(value);	
+				break;	
+			case "quick":		
+				var value = Number($("#Quick-buff").val());	
+				value += this[lv];	
+				$("#Quick-buff").val(value);	
+				break;
+			default:		
+				break;	
+		}			
+	});
 }
 
 function updateTeammateSkillBuff(section) {
-	
-}
-
-function updateTeammateSkillDefDebuff(section, buff, enemy, lv) {
-	
-}
-
-function updateTeammateSkillED(section, buff, enemy, lv) {
-	
+	var teammate = $(section).attr("id");
+	var skillset = window[teammate + "SkillSet"];
+	var buffList = window[teammate + "SkillBuffList"];
+	$(skillset).each(function() {
+		var lv = $(section).find(".teammate-" + this + "-lv").val();
+		var checkRU = $(section).find(".teammate-" + this + "-rankup").is(":checked");
+		var activeSkillBuff = multiFilter(buffList, {
+			no: [this.toString()],
+			skillRU: [checkRU],
+			chance: useStrict,
+			afterDefeat: includeAfterDefeat
+		});
+		$(activeSkillBuff).each(function() {
+			var test = true;
+			if (this.selective == true) {
+				switch (this.lookUp) {
+					case "class":
+						if (servantInfo[0].classes != this.corrDetail) {
+							test = false;
+						}
+						break;
+					case "gender":
+						if (servantInfo[0].gender != this.corrDetail) {
+							test = false;
+						}
+						break;
+					case "alignment1":
+						if (servantInfo[0].alignment1 != this.corrDetail) {
+							if (!tempAlignment1.some(function(value) {
+								return value == this.corrDetail;
+							})) {
+								test = false;
+							}
+						}
+						break;
+					case "alignment2":
+						if (servantInfo[0].alignment2 != this.corrDetail) {
+							if (!tempAlignment2.some(function(value) {
+								return value == this.corrDetail;
+							})) {
+								test = false;
+							}
+						}
+						break;
+					case "trait":
+						if (!servantInfo[0].trait.some(function(value) {
+						    	return value == this.corrDetail;
+						})) {
+							if (!tempTrait.some(function(value) {
+								return value == this.corrDetail;
+							})) {
+								test = false;
+							}
+						}
+						break;
+				}
+			}
+			if (test = true) {
+				switch (this.effect) {
+					case "dmg":
+						var value = Number($("#atk-buff").val());	
+						value += this[lv];	
+						$("#atk-buff").val(value);
+						break;
+					case "adddmg":		
+						var value = Number($("#add-atk").val());	
+						value += this[lv];	
+						$("#add-atk").val(value);
+						break;
+					case "npdmg":	
+						var value = Number($("#np-buff").val());	
+						value += this[lv];	
+						$("#np-buff").val(value);
+						break;
+					case "buster":		
+						var value = Number($("#Buster-buff").val());	
+						value += this[lv];	
+						$("#Buster-buff").val(value);
+						break;
+					case "art":	
+						var value = Number($("#Art-buff").val());	
+						value += this[lv];	
+						$("#Art-buff").val(value);
+						break;
+					case "quick":
+						var value = Number($("#Quick-buff").val());	
+						value += this[lv];	
+						$("#Quick-buff").val(value);
+						break;
+					case "def":
+						updateDefDebuff(this, 'enemy1', lv);	
+						if (this.range == "all-enemy") {	
+							updateDefDebuff(this, 'enemy2', lv);
+							updateDefDebuff(this, 'enemy3', lv);
+						}
+						break;
+					case "ed":		
+						updateSkillED(this, 'enemy1', lv);	
+						updateSkillED(this, 'enemy2', lv);	
+						updateSkillED(this, 'enemy3', lv);
+						break;
+					default:
+						break;
+				}		
+			}
+		});
+	});
 }
 
 function updateTeammateNPBuff(section) {
-	
-}
-
-function updateTeammateNPDefDebuff(section, buff, enemy, lv) {
-	
-}
-
-function updateTeammateNPED(section, buff, enemy, lv) {
-	
+	var teammate = $(section).attr("id");
+	var nplv = $(section).find(".teammate-nplv").val();
+	var oclv = $(section).find(".teammate-npoc").val();
+	var checkRU = $(section).find(".teammate-np-rankup").is(":checked");
+	var buffList = window[teammate + "NPBuffList"];
+	var activeNPBuff = multiFilter(buffList, {
+		npRU: [checkRU],
+		chance: useStrict
+	});
+	$(activeNPBuff).each(function() {
+		if (this.npLV == true) {
+			var lv = nplv;
+		} else {
+			var lv = oclv;
+		}
+		switch (this.effect) {
+			case "dmg":		
+				var value = Number($("#atk-buff").val());	
+				value += this[lv];	
+				$("#atk-buff").val(value);
+				break;
+			case "adddmg":		
+				var value = Number($("#add-atk").val());	
+				value += this[lv];	
+				$("#add-atk").val(value);
+				break;
+			case "npdmg":	
+				var value = Number($("#np-buff").val());	
+				value += this[lv];	
+				$("#np-buff").val(value);
+				break;
+			case "buster":		
+				var value = Number($("#Buster-buff").val());	
+				value += this[lv];	
+				$("#Buster-buff").val(value);
+				break;
+			case "art":	
+				var value = Number($("#Art-buff").val());	
+				value += this[lv];	
+				$("#Art-buff").val(value);
+				break;
+			case "quick":	
+				var value = Number($("#Quick-buff").val());	
+				value += this[lv];	
+				$("#Quick-buff").val(value);
+				break;
+			case "def":	
+				updateNPDefDebuff(this, 'enemy1', lv);	
+				if (this.range == "all-enemy") {	
+					updateNPDefDebuff(this, 'enemy2', lv);
+					updateNPDefDebuff(this, 'enemy3', lv);
+				}
+				break;
+			case "ed":	
+				updateNPED(this, 'enemy1', lv);	
+				updateNPED(this, 'enemy2', lv);	
+				updateNPED(this, 'enemy3', lv);
+				break;
+			default:
+				break;
+		}
+	});
 }
 
 function updateTeammateCEBuff(section) {
-	
-}
-
-function updateTeammateCEDefDebuff(section, buff, enemy, lv) {
-	
-}
-
-function updateTeammateCEED(section, buff, enemy, lv) {
-	
+	var teammate = $(section).attr("id");
+	var checkRU = $(section).find(".teammate-ce-max").is(":checked");
+	var buffList = window[teammate + "CEBuffList"];
+	var lv;
+	if (checkRU == true) {
+		lv = "max";
+	} else {
+		lv = "default";
+	}
+	var activeCEBuff = multiFilter(buffList, {
+		chance: useStrict,
+		afterDefeat: includeAfterDefeat
+	});
+	$(activeCEBuff).each(function() {
+		switch (this.effect) {			
+			case "dmg":		
+				var value = Number($("#atk-buff").val());	
+				value += this[lv];	
+				$("#atk-buff").val(value);	
+				break;	
+			case "adddmg":		
+				var value = Number($("#add-atk").val());	
+				value += this[lv];	
+				$("#add-atk").val(value);	
+				break;	
+			case "npdmg":		
+				var value = Number($("#np-buff").val());	
+				value += this[lv];	
+				$("#np-buff").val(value);	
+				break;	
+			case "buster":		
+				var value = Number($("#Buster-buff").val());	
+				value += this[lv];	
+				$("#Buster-buff").val(value);	
+				break;	
+			case "art":		
+				var value = Number($("#Art-buff").val());	
+				value += this[lv];	
+				$("#Art-buff").val(value);	
+				break;	
+			case "quick":		
+				var value = Number($("#Quick-buff").val());	
+				value += this[lv];	
+				$("#Quick-buff").val(value);	
+				break;	
+			case "def":		
+				updateCEDefDebuff(this, 'enemy1', lv);	
+				if (this.range == "all-enemy") {	
+					updateCEDefDebuff(this, 'enemy2', lv);
+					updateCEDefDebuff(this, 'enemy3', lv);
+				}	
+				break;	
+			case "ed":		
+				updateCEED(this, 'enemy1', lv);	
+				updateCEED(this, 'enemy2', lv);	
+				updateCEED(this, 'enemy3', lv);	
+				break;	
+			default:		
+				break;
+		}
+	});
 }
