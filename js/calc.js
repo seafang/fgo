@@ -832,6 +832,18 @@ $(document).ready(function() {
 	$(".teammate-skill-rankup").change(function() {
 		setTeammateSkill(this);
 	});
+	$("#add-Lord").click(function() {
+		setSupport(37);
+	});
+	$("#add-Merlin").click(function() {
+		setSupport(150);
+	});
+	$("#add-Tamamo").click(function() {
+		setSupport(62);
+	});
+	$("#add-Lord").click(function() {
+		setSupport(215);
+	});
 });
 
 function extend(element) {
@@ -1117,6 +1129,20 @@ function setTeammateSkill(toggle) {
 	}
 }
 
+function setSupport(teammateID) {
+	var slot = "";
+	var list = ["teammate1", "teammate2", "teammate3", "teammate4", "teammate5"];
+	var i = -1;
+	var empty = false
+	while (empty = false) {
+		i++;
+		var section = $("#" + list[i]);
+		if ($(section).find(".teammate-name").html() == "未選定隊友") {
+			empty = true;
+		}
+	});
+	toTeammate(list[i], teammateID, true);
+}
 
 function pickTeammateCE(ceID) {
 	closeModal();
