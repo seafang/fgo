@@ -36,7 +36,7 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on( "click", "scroll", function() {
+$(document).on( "click", function() {
 	updateCounter();
 });
 
