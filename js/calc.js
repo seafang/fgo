@@ -337,13 +337,15 @@ function pickServant(servantID) {
 	skillBuffList = multiFilter(skillBuff, {
 		id: [servantID],
 		toSelf: [true],
-		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "hpdmg"]
 	});
 	npBuffList = multiFilter(npBuff, {
 		id: [servantID],
 		toSelf: [true],
 		buffFirst: [true],
-		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "class", "trait"]
+		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
+			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
 	if ($("#servant-setup-collapsebtn").html() == "展開▼") {
 		$("#servant-setup-collapsebtn").html("接疊▲");
@@ -1190,7 +1192,7 @@ var masterSkillSet = [];
 var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
-var tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+var tempClass = "", tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 var tempEnemyTrait = [];
 
 $(document).ready(function() {
@@ -1269,7 +1271,7 @@ function updateTeammateSkillSet(toggle) {
 }
 
 function updateBuff() {
-	tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+	tempClass = "", tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 	tempEnemyTrait = [];
 	updatePassiveBuff();
 	updateSkillPreReq();
@@ -1400,6 +1402,9 @@ function updateSkillPreReq() {
 		});
 		$(activeSkillBuff).each(function() {
 			switch (this.effect) {
+				case "class":
+					tempClass = this.corrDetail;
+					break;
 				case "alignment1":
 					tempAlignment1.push(this.corrDetail);
 					break;
@@ -1565,12 +1570,16 @@ function updateSkillBuff() {
 		$(activeSkillBuff).each(function() {
 			var test = true;
 			if (this.selective == true) {
-				if (this.lookUp == "env") {
-					if (!battlefield.some(function(env) {
-						return env == buff.corrDetail;
-					})) {
-						test = false;
-					}
+				switch (this.lookUp) {
+					case "env":
+						if (!battlefield.some(function(env) {
+							return env == buff.corrDetail;
+						})) {
+							test = false;
+						}
+						break;
+					default:
+						break;
 				}
 			}
 			if (test = true) {
@@ -1616,6 +1625,16 @@ function updateSkillBuff() {
 						updateSkillED(this, 'enemy1', lv);	
 						updateSkillED(this, 'enemy2', lv);	
 						updateSkillED(this, 'enemy3', lv);
+						break;
+					case "hpdmg":
+						var hp = Number($("#current-servant-hp").val());
+						if (hp <= 50) {
+							var value = Number($("#atk-buff").val());	
+							var lower = this[lv];
+							var total = (50 - hp) * 4 / 10 + lower;
+							value += Number(total.toFixed(1));
+							$("#atk-buff").val(value);
+						}
 						break;
 					default:
 						break;
@@ -1700,51 +1719,66 @@ function updateNPBuff() {
 		} else {
 			var lv = oclv;
 		}
-		switch (this.effect) {
-			case "dmg":		
-				var value = Number($("#atk-buff").val());	
-				value += this[lv];	
-				$("#atk-buff").val(value);
-				break;
-			case "adddmg":		
-				var value = Number($("#add-atk").val());	
-				value += this[lv];	
-				$("#add-atk").val(value);
-				break;
-			case "npdmg":	
-				var value = Number($("#np-buff").val());	
-				value += this[lv];	
-				$("#np-buff").val(value);
-				break;
-			case "buster":		
-				var value = Number($("#Buster-buff").val());	
-				value += this[lv];	
-				$("#Buster-buff").val(value);
-				break;
-			case "art":	
-				var value = Number($("#Art-buff").val());	
-				value += this[lv];	
-				$("#Art-buff").val(value);
-				break;
-			case "quick":	
-				var value = Number($("#Quick-buff").val());	
-				value += this[lv];	
-				$("#Quick-buff").val(value);
-				break;
-			case "def":	
-				updateNPDefDebuff(this, 'enemy1', lv);	
-				if (this.range == "all-enemy") {	
-					updateNPDefDebuff(this, 'enemy2', lv);
-					updateNPDefDebuff(this, 'enemy3', lv);
-				}
-				break;
-			case "ed":	
-				updateNPED(this, 'enemy1', lv);	
-				updateNPED(this, 'enemy2', lv);	
-				updateNPED(this, 'enemy3', lv);
-				break;
-			default:
-				break;
+		var test = true;
+		if (this.selective == true) {
+			switch (this.lookUp) {
+				case "skill":
+					var skill = this.corrDetail;
+					if (!$("#use-" + skill).is(":checked")) {
+						test = false;
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		if (test = true) {
+			switch (this.effect) {			
+				case "dmg":		
+					var value = Number($("#atk-buff").val());	
+					value += this[lv];	
+					$("#atk-buff").val(value);	
+					break;	
+				case "adddmg":		
+					var value = Number($("#add-atk").val());	
+					value += this[lv];	
+					$("#add-atk").val(value);	
+					break;	
+				case "npdmg":		
+					var value = Number($("#np-buff").val());	
+					value += this[lv];	
+					$("#np-buff").val(value);	
+					break;	
+				case "buster":		
+					var value = Number($("#Buster-buff").val());	
+					value += this[lv];	
+					$("#Buster-buff").val(value);	
+					break;	
+				case "art":		
+					var value = Number($("#Art-buff").val());	
+					value += this[lv];	
+					$("#Art-buff").val(value);	
+					break;	
+				case "quick":		
+					var value = Number($("#Quick-buff").val());	
+					value += this[lv];	
+					$("#Quick-buff").val(value);	
+					break;	
+				case "def":		
+					updateNPDefDebuff(this, 'enemy1', lv);	
+					if (this.range == "all-enemy") {	
+						updateNPDefDebuff(this, 'enemy2', lv);
+						updateNPDefDebuff(this, 'enemy3', lv);
+					}	
+					break;	
+				case "ed":		
+					updateNPED(this, 'enemy1', lv);	
+					updateNPED(this, 'enemy2', lv);	
+					updateNPED(this, 'enemy3', lv);	
+					break;	
+				default:		
+					break;	
+			}			
 		}
 	});
 }
@@ -1936,40 +1970,45 @@ function updateCEED(buff, enemy, lv) {
 function updateMasterBuff() {
 	var lv = $("#master-lv").val();
 	$(masterSkillSet).each(function() {
-		switch (this.effect) {			
-			case "dmg":		
-				var value = Number($("#atk-buff").val());	
-				value += this[lv];	
-				$("#atk-buff").val(value);	
-				break;	
-			case "adddmg":		
-				var value = Number($("#add-atk").val());	
-				value += this[lv];	
-				$("#add-atk").val(value);	
-				break;	
-			case "npdmg":		
-				var value = Number($("#np-buff").val());	
-				value += this[lv];	
-				$("#np-buff").val(value);	
-				break;	
-			case "buster":		
-				var value = Number($("#Buster-buff").val());	
-				value += this[lv];	
-				$("#Buster-buff").val(value);	
-				break;	
-			case "art":		
-				var value = Number($("#Art-buff").val());	
-				value += this[lv];	
-				$("#Art-buff").val(value);	
-				break;	
-			case "quick":		
-				var value = Number($("#Quick-buff").val());	
-				value += this[lv];	
-				$("#Quick-buff").val(value);	
-				break;
-			default:		
-				break;	
-		}			
+		var activeBuff = multiFilter(masterBuffList, {
+			no: [this.toString()],
+		});
+		$(activeBuff).each(function() {
+			switch (this.effect) {			
+				case "dmg":		
+					var value = Number($("#atk-buff").val());	
+					value += this[lv];	
+					$("#atk-buff").val(value);	
+					break;	
+				case "adddmg":		
+					var value = Number($("#add-atk").val());	
+					value += this[lv];	
+					$("#add-atk").val(value);	
+					break;	
+				case "npdmg":		
+					var value = Number($("#np-buff").val());	
+					value += this[lv];	
+					$("#np-buff").val(value);	
+					break;	
+				case "buster":		
+					var value = Number($("#Buster-buff").val());	
+					value += this[lv];	
+					$("#Buster-buff").val(value);	
+					break;	
+				case "art":		
+					var value = Number($("#Art-buff").val());	
+					value += this[lv];	
+					$("#Art-buff").val(value);	
+					break;	
+				case "quick":		
+					var value = Number($("#Quick-buff").val());	
+					value += this[lv];	
+					$("#Quick-buff").val(value);	
+					break;	
+				default:		
+					break;	
+			}			
+		});	
 	});
 }
 
@@ -2099,51 +2138,66 @@ function updateTeammateNPBuff(section) {
 		} else {
 			var lv = oclv;
 		}
-		switch (this.effect) {
-			case "dmg":		
-				var value = Number($("#atk-buff").val());	
-				value += this[lv];	
-				$("#atk-buff").val(value);
-				break;
-			case "adddmg":		
-				var value = Number($("#add-atk").val());	
-				value += this[lv];	
-				$("#add-atk").val(value);
-				break;
-			case "npdmg":	
-				var value = Number($("#np-buff").val());	
-				value += this[lv];	
-				$("#np-buff").val(value);
-				break;
-			case "buster":		
-				var value = Number($("#Buster-buff").val());	
-				value += this[lv];	
-				$("#Buster-buff").val(value);
-				break;
-			case "art":	
-				var value = Number($("#Art-buff").val());	
-				value += this[lv];	
-				$("#Art-buff").val(value);
-				break;
-			case "quick":	
-				var value = Number($("#Quick-buff").val());	
-				value += this[lv];	
-				$("#Quick-buff").val(value);
-				break;
-			case "def":	
-				updateNPDefDebuff(this, 'enemy1', lv);	
-				if (this.range == "all-enemy") {	
-					updateNPDefDebuff(this, 'enemy2', lv);
-					updateNPDefDebuff(this, 'enemy3', lv);
-				}
-				break;
-			case "ed":	
-				updateNPED(this, 'enemy1', lv);	
-				updateNPED(this, 'enemy2', lv);	
-				updateNPED(this, 'enemy3', lv);
-				break;
-			default:
-				break;
+		var test = true;
+		if (this.selective == true) {
+			switch (this.lookUp) {
+				case "skill":
+					var skill = this.corrDetail;
+					if (!$("#use-" + skill).is(":checked")) {
+						test = false;
+					}
+					break;
+				default:
+					break;
+			}
+		}
+		if (test = true) {
+			switch (this.effect) {			
+				case "dmg":		
+					var value = Number($("#atk-buff").val());	
+					value += this[lv];	
+					$("#atk-buff").val(value);	
+					break;	
+				case "adddmg":		
+					var value = Number($("#add-atk").val());	
+					value += this[lv];	
+					$("#add-atk").val(value);	
+					break;	
+				case "npdmg":		
+					var value = Number($("#np-buff").val());	
+					value += this[lv];	
+					$("#np-buff").val(value);	
+					break;	
+				case "buster":		
+					var value = Number($("#Buster-buff").val());	
+					value += this[lv];	
+					$("#Buster-buff").val(value);	
+					break;	
+				case "art":		
+					var value = Number($("#Art-buff").val());	
+					value += this[lv];	
+					$("#Art-buff").val(value);	
+					break;	
+				case "quick":		
+					var value = Number($("#Quick-buff").val());	
+					value += this[lv];	
+					$("#Quick-buff").val(value);	
+					break;	
+				case "def":		
+					updateNPDefDebuff(this, 'enemy1', lv);	
+					if (this.range == "all-enemy") {	
+						updateNPDefDebuff(this, 'enemy2', lv);
+						updateNPDefDebuff(this, 'enemy3', lv);
+					}	
+					break;	
+				case "ed":		
+					updateNPED(this, 'enemy1', lv);	
+					updateNPED(this, 'enemy2', lv);	
+					updateNPED(this, 'enemy3', lv);	
+					break;	
+				default:		
+					break;	
+			}			
 		}
 	});
 }
