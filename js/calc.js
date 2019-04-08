@@ -1239,20 +1239,20 @@ $(document).ready(function() {
 function updateSkillSet(toggle) {
 	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
-		masterSkillSet.push(skill);
+		skillSet.push(skill);
 	} else {
-		var position = masterSkillSet.indexOf(skill);
-		masterSkillSet.splice(position, 1);
+		var position = skillSet.indexOf(skill);
+		skillSet.splice(position, 1);
 	}
 }
 
 function updateMasterSkillSet(toggle) {
 	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
-		skillSet.push(skill);
+		masterSkillSet.push(skill);
 	} else {
-		var position = skillSet.indexOf(skill);
-		skillSet.splice(position, 1);
+		var position = masterSkillSet.indexOf(skill);
+		masterSkillSet.splice(position, 1);
 	}
 }
 
