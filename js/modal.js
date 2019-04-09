@@ -829,7 +829,7 @@ function teammateBind() {
 	$(".teammate-modal-img").ready(function() {
 		$(".teammate-modal-img").click(function() {
 			var id = Number($(this).attr("data-id"));
-			pickTeammate(id, false);
+			pickTeammate(modalCaller, id, false);
 		});
 	});
 }
