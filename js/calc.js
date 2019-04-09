@@ -322,7 +322,7 @@ function pickServant(servantID) {
 		$("#current-servant-name").html(servantInfo[0].name);		
 		$("#current-servant-class").attr({		
 			src: "images/class/" + servantInfo[0].classes + ".webp",	
-			data-class: servantInfo[0].classes	
+			"data-class": servantInfo[0].classes	
 		});		
 		var starHTML = "";		
 		switch (servantInfo[0].star) {		
@@ -814,7 +814,7 @@ function pickTeammate(value, teammateID, brute) {
 		section.find(".teammate-name").html(info[0].name);		
 		section.find(".teammate-class").attr({		
 			src: "images/class/" + info[0].classes + ".webp",	
-			data-class: info[0].classes	
+			"data-class": info[0].classes	
 		});		
 		var starHTML = "";		
 		switch (info[0].star) {		
