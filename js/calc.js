@@ -270,11 +270,12 @@ function resetBattlefield() {
 // Set Servant
 var servantInfo = [];
 var servantSave = [];
+var servantAffList = [], servantMult = [], servantAttrAffList = [];
 var skillBuffList = [], npBuffList = [];
 
 $(document).ready(function() {
 	$("#servant-modalbtn").click(function() {
-		if ($("#enemy1-name").html() != "" || $("#enemy2-name").html() != "" || $("#enemy3-name").html() != "") {
+		if ($("#enemy1-name").html() != "") {
 			openModal("#servant-modal");
 			initialServant();
 			loadServantImg();
@@ -314,7 +315,16 @@ function pickServant(servantID) {
 			buffFirst: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
-		});		
+		});
+		servantAffList = affinity.map(function(value) {
+			return value.classes == servantInfo[0].class;
+		});
+		servantMult = multiplier.map(function(value) {
+			return value.classes == serantInfo[0].class;
+		});
+		servantAttrAffList = attrAffinity.map(function(value) {
+			return value.attribute == serantInfo[0].attribute;
+		});
 		if ($("#servant-setup-collapsebtn").html() == "展開▼") {		
 			$("#servant-setup-collapsebtn").click();	
 		}		
@@ -2310,3 +2320,21 @@ function updateTeammateCEBuff(section) {
 		});				
 	}
 }
+
+// Calculation
+var enemy1Result = [], enemy2Result = [], enemy3Result = [];
+
+$(document).ready(function() {
+	$("#calcbtn").click(function() {
+		if ($("#enemy1-name").html() != "" && $("#current-servant-name").html() != "未選定從者") {
+			calculation();
+		} else {
+			alert("請先設定敵人及從者！");
+		}
+	});
+});
+
+function calculation() {
+	
+}
+
