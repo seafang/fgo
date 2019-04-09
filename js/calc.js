@@ -108,23 +108,13 @@ $(document).ready(function() {
 	$(".current-enemy-debuff").change(function() {
 		updateDebuff();
 	});
-	$("#enemy1-applytn").click(function() {
-		setEnemy("#enemy1");
+	$(".enemy-applytn").click(function() {
+		var enemy = $(this).attr("data-value");
+		setEnemy(enemy);
 	});
-	$("#enemy2-applytn").click(function() {
-		setEnemy("#enemy2");
-	});
-	$("#enemy3-applytn").click(function() {
-		setEnemy("#enemy3");
-	});
-	$("#enemy1-resetbtn").click(function() {
-		resetEnemy("#enemy1");
-	});
-	$("#enemy2-resetbtn").click(function() {
-		resetEnemy("#enemy2");
-	});
-	$("#enemy3-resetbtn").click(function() {
-		resetEnemy("#enemy3");
+	$(".enemy-resetbtn").click(function() {
+		var enemy = $(this).attr("data-value");
+		resetEnemy(enemy);
 	});
 });
 
@@ -152,8 +142,7 @@ function pickEnemy(type, enemyID) {
 		});
 	}
 	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
-		$("#enemy-setup-collapsebtn").html("接疊▲");
-		$("#enemy-setup-collapsible").toggle(300);
+		$("#enemy-setup-collapsebtn").click();
 	}
 	$("#current-enemy-img").attr("src", enemyInfo[0].imgID);
 	$("#current-enemy-name").html(enemyInfo[0].name);
@@ -185,13 +174,13 @@ function resetCurrentEnemy() {
 	$("#current-enemy-alignment1").val("秩序");
 	$("#current-enemy-alignment2").val("善");
 	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
-		$("#enemy-setup-collapsebtn").html("接疊▲");
-		$("#enemy-setup-collapsible").toggle(300);
+		$("#enemy-setup-collapsebtn").click();
 	}
 	$(".current-enemy-trait").prop("checked", false);
 }
 
-function setEnemy(element) {
+function setEnemy(enemy) {
+	var element = $("#" + enemy);
 	$(element).show();
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
@@ -208,19 +197,7 @@ function setEnemy(element) {
 		debuffList += "<img class='debuff-logo left' src='" + value.src + "' />";
 	});
 	$(element).find(".enemy-debuff").html(debuffList);
-	switch (element) {
-		case "#enemy1":
-			enemy1Debuff = debuff;
-			break;
-		case "#enemy2":
-			enemy2Debuff = debuff;
-			break;
-		case "#enemy3":
-			enemy3Debuff = debuff;
-			break;
-		default:
-			break;
-	}
+	window[enemy + "Debuff"] = debuff;
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
@@ -234,61 +211,26 @@ function setEnemy(element) {
 	$(".current-enemy-trait:checked").each(function() {
 		trait.push($(this).val())
 	});
-	switch (element) {
-		case "#enemy1":
-			enemy1Trait = trait;
-			break;
-		case "#enemy2":
-			enemy2Trait = trait;
-			break;
-		case "#enemy3":
-			enemy3Trait = trait;
-			break;
-		default:
-			break;
-	}
+	window[enemy + "Trait"] = trait;
 	$(element).find(".enemy-trait").html(trait.join(", "));
 	if (servantInfo[0] !== undefined) {
 		updateBuff();
 	}
 }
 
-function resetEnemy(element) {
+function resetEnemy(enemy) {
+	var element = $("#" + enemy);
 	$(element).hide();
 	$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
 	$(element).find(".enemy-name").html("");
-	switch (element) {
-		case "#enemy1":
-			enemy1Debuff = [];
-			break;
-		case "#enemy2":
-			enemy2Debuff = [];
-			break;
-		case "#enemy3":
-			enemy3Debuff = [];
-			break;
-		default:
-			break;
-	}
+	window[enemy + "Debuff"] = [];
 	$(element).find(".enemy-class").attr("src", "images/class/Unknown.webp");
 	$(element).find(".enemy-gender").html("");
 	$(element).find(".enemy-attribute").html("");
 	$(element).find(".enemy-alignment1").html("");
 	$(element).find(".enemy-alignment2").html("");
 	$(element).find(".enemy-trait").html("");
-	switch (element) {
-		case "#enemy1":
-			enemy1Trait = [];
-			break;
-		case "#enemy2":
-			enemy2Trait = [];
-			break;
-		case "#enemy3":
-			enemy3Trait = [];
-			break;
-		default:
-			break;
-	}
+	window[enemy + "Trait"] = [];
 	updateBuff();
 }
 
@@ -364,18 +306,17 @@ function pickServant(servantID) {
 			id: [servantID],	
 			toSelf: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				class, "alignment1", "alignment2", "trait", "igndef", "enemytrait", "hpdmg"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "hpdmg"]
 		});		
 		npBuffList = multiFilter(npBuff, {		
 			id: [servantID],	
 			toSelf: [true],	
 			buffFirst: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				class, "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
 		if ($("#servant-setup-collapsebtn").html() == "展開▼") {		
-			$("#servant-setup-collapsebtn").html("接疊▲");	
-			$("#servant-setup-collapsible").toggle(300);	
+			$("#servant-setup-collapsebtn").click();	
 		}		
 		$("#current-servant-img").attr("src", servantInfo[0].imgID);		
 		$("#current-servant-name").html(servantInfo[0].name);		
@@ -561,8 +502,7 @@ function pickCE(essenceID) {
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
 	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
-		$("#ce-setup-collapsebtn").html("接疊▲");
-		$("#ce-setup-collapsible").toggle(300);
+		$("#ce-setup-collapsebtn").click();
 	}
 	$("#servant-ce-img").attr("src", ceInfo[0].ceImgID);
 	$("#servant-ce-name").html(ceInfo[0].ceName);
@@ -677,8 +617,7 @@ function generateMasterSelection() {
 function setMaster(element) {
 	if ($(element).val() == "none") {
 		if ($("#master-setup-collapsebtn").html() == "接疊▲") {
-			$("#master-setup-collapsebtn").html("展開▼");
-			$("#master-setup-collapsible").toggle(300);
+			$("#master-setup-collapsebtn").click();
 		}
 		masterInfo = [];
 		masterSave = [];
@@ -705,8 +644,7 @@ function setMaster(element) {
 		$("#master-skill3-dscrp").html("");
 	} else {
 		if ($("#master-setup-collapsebtn").html() == "展開▼") {
-			$("#master-setup-collapsebtn").html("接疊▲");
-			$("#master-setup-collapsible").toggle(300);
+			$("#master-setup-collapsebtn").click();
 		}
 		var name = $(element).val();
 		masterInfo = master.filter(function(obj) {
@@ -860,13 +798,13 @@ function pickTeammate(value, teammateID, brute) {
 			id: [teammateID],	
 			range: ["team", "single", "all-enemy", "single-enemy"],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				class, "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
 		window[value + "NPBuffList"] = multiFilter(npBuff, {		
 			id: [teammateID],	
 			range: ["team", "single", "all-enemy", "single-enemy"],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				class, "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
 		var info = window[value + "Info"];		
 		if ($("#teammate-setup-collapsebtn").html() == "展開▼") {		
