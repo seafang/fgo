@@ -342,14 +342,8 @@ $(document).ready(function() {
 	$("#current-servant-rankup").change(function() {
 		setCurrentServantNP();
 	});
-	$("#check-skill1-rankup").change(function() {
-		setSkill(this, 'skill1');
-	});
-	$("#check-skill2-rankup").change(function() {
-		setSkill(this, 'skill2');
-	});
-	$("#check-skill3-rankup").change(function() {
-		setSkill(this, 'skill3');
+	$(".check-skill-rankup").change(function() {
+		setSkill(this, $(this).val());
 	});
 });
 
@@ -481,12 +475,8 @@ function setCurrentServantInfo() {
 	}
 	$("#current-servant-hp").val(100);
 	$("#current-servant-npoc").val("1");
-	$("#use-skill1").prop("checked", false);
-	$("#skill1-img").addClass("dull");
-	$("#use-skill2").prop("checked", false);
-	$("#skill2-img").addClass("dull");
-	$("#use-skill3").prop("checked", false);
-	$("#skill3-img").addClass("dull");
+	$(".use-skill").prop("checked", false);
+	$(".skill-img").addClass("dull");
 }
 
 function setCurrentServantNP() {
@@ -851,31 +841,9 @@ function extend(element) {
 	$("#" + element).addClass("allow-toggle");
 }
 
-function pickTeammate(teammateID, brute) {
+function pickTeammate(value, teammateID, brute) {
 	closeModal();
-	switch (modalCaller) {
-		case "teammate1":
-			toTeammate("teammate1", teammateID, brute);
-			break;
-		case "teammate2":
-			toTeammate("teammate2", teammateID, brute);
-			break;
-		case "teammate3":
-			toTeammate("teammate3", teammateID, brute);
-			break;
-		case "teammate4":
-			toTeammate("teammate4", teammateID, brute);
-			break;
-		case "teammate5":
-			toTeammate("teammate5", teammateID, brute);
-			break;
-		default:
-			break;
-	}
 	modalCaller = "";
-}
-
-function toTeammate(value, teammateID, brute) {
 	var section = $("#" + value);
 	window[value + "Info"] = servants.filter(function(obj) {
 		return obj.id == teammateID;
@@ -944,6 +912,8 @@ function toTeammate(value, teammateID, brute) {
 		section.find(".teammate-skill3-rankup").prop("disabled", !info[0].skill3RU);
 		if (brute === false) {
 			setTeammateInfo(value);
+		} else {
+			setSupportInfo(value);
 		}
 		var npToggle = section.find(".teammate-np-rankup");		
 		var skill1Toggle = section.find(".teammate-skill1-rankup");		
@@ -952,7 +922,10 @@ function toTeammate(value, teammateID, brute) {
 		setTeammateNP(npToggle);		
 		setTeammateSkill(skill1Toggle);		
 		setTeammateSkill(skill2Toggle);		
-		setTeammateSkill(skill3Toggle);		
+		setTeammateSkill(skill3Toggle);
+		if (brute === true) {
+			toggleAllSkills(value);
+		}
 	}
 }
 
@@ -1141,34 +1114,47 @@ function setSupport(teammateID) {
 			empty = true;
 		}
 	});
-	toTeammate(list[i], teammateID, true);
+	pickTeammate(list[i], teammateID, true);
 }
 
-function pickTeammateCE(ceID) {
-	closeModal();
-	switch (modalCaller) {
-		case "teammate1":
-			toTeammateCE("teammate1", ceID);
-			break;
-		case "teammate2":
-			toTeammateCE("teammate2", ceID);
-			break;
-		case "teammate3":
-			toTeammateCE("teammate3", ceID);
-			break;
-		case "teammate4":
-			toTeammateCE("teammate4", ceID);
-			break;
-		case "teammate5":
-			toTeammateCE("teammate5", ceID);
-			break;
-		default:
-			break;
+function setSupportInfo(value) {
+	var section = $("#" + value);
+	if (!section.find(".teammate-np-rankup").prop("disabled")) {
+		section.find(".teammate-np-rankup").prop("checked", true);
 	}
-	modalCaller = "";
+	section.find(".teammate-skill1-lv").val(10);
+	if (!section.find(".teammate-skill1-rankup").prop("disabled")) {
+		section.find(".teammate-skill1-rankup").prop("checked", true);
+	}
+	section.find(".teammate-skill2-lv").val(10);
+	if (!section.find(".teammate-skill2-rankup").prop("disabled")) {
+		section.find(".teammate-skill2-rankup").prop("checked", true);
+	}
+	section.find(".teammate-skill3-lv").val(10);
+	if (!section.find(".teammate-skill3-rankup").prop("disabled")) {
+		section.find(".teammate-skill3-rankup").prop("checked", true);
+	}
+	section.find(".teammate-skill1-img").addClass("dull");
+	section.find(".teammate-skill2-img").addClass("dull");
+	section.find(".teammate-skill3-img").addClass("dull");
 }
 
-function toTeammateCE(value, ceID) {
+function toggleAllSkills(value) {
+	var section = $("#" + value);
+	if (!section.find(".teammate-skill1").prop("disabled")) {
+		section.find(".teammate-skill1").click();
+	}
+	if (!section.find(".teammate-skill2").prop("disabled")) {
+		section.find(".teammate-skill2").click();
+	}
+	if (!section.find(".teammate-skill3").prop("disabled")) {
+		section.find(".teammate-skill3").click();
+	}
+}
+
+function pickTeammateCE(value, ceID) {
+	closeModal();
+	modalCaller = "";
 	var section = $("#" + value);
 	window[value + "CEInfo"] = ce.filter(function(obj) {
 		return obj.ceID == ceID;
@@ -1279,22 +1265,35 @@ $(document).ready(function() {
 		updateBuff();
 	});
 	$(".use-skill").change(function() {
+		var skill = $(this).val();
+		var img = $("#" + skill + "-img");
+		if($(this).is(":checked")) {
+			$(img).removeClass("dull");
+		} else {
+			$(img).addClass("dull");
+		}
 		updateSkillSet(this);
 		updateBuff();
 	});
 	$(".check-master-skill").change(function() {
+		var skill = $(this).val();
+		var img = $("#master-" + skill + "-logo");
+		if($(this).is(":checked")) {
+			$(img).removeClass("dull");
+		} else {
+			$(img).addClass("dull");
+		}
 		updateMasterSkillSet(this);
 		updateBuff();
 	});
-	$(".teammate-skill1").change(function() {
-		updateTeammateSkillSet(this);
-		updateBuff();
-	});
-	$(".teammate-skill2").change(function() {
-		updateTeammateSkillSet(this);
-		updateBuff();
-	});
-	$(".teammate-skill3").change(function() {
+	$(".teammate-skill").change(function() {
+		var skill = $(this).val();
+		var img = $(this).parents(".teammate-detail").find(".teammate-" + skill + "-img");
+		if($(this).is(":checked")) {
+			$(img).removeClass("dull");
+		} else {
+			$(img).addClass("dull");
+		}
 		updateTeammateSkillSet(this);
 		updateBuff();
 	});
