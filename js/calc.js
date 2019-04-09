@@ -1055,7 +1055,7 @@ function setSupport(teammateID) {
 		if ($(section).find(".teammate-name").html() == "未選定隊友") {
 			empty = true;
 		}
-	});
+	}
 	pickTeammate(list[i], teammateID, true);
 }
 
