@@ -1,3 +1,7 @@
+var affinity = parent.affinity;
+var multiplier = parent.multiplier;
+var attrAffinity = parent.attrAffinity;
+
 var servants = parent.servants;
 var ce = parent.ce;
 var master = parent.master;
@@ -1721,8 +1725,16 @@ function updateSkillED(buff, enemy, lv) {
 			}
 			break;
 		case "gender":
-			if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
-				test = true;
+			if ($.isArray(buff.corrDetail)) {
+				if (buff.corrDetail.some(function(gender) {
+					return gender == $("#" + enemy + "-gender").html();
+				})) {
+					test = true;
+				}
+			} else {
+				if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
+					test = true;
+				}
 			}
 			break;
 		case "alignment1":
@@ -1738,11 +1750,11 @@ function updateSkillED(buff, enemy, lv) {
 		case "trait":
 			var traitList = window[enemy + "Trait"]
 			if (traitList.some(function(trait) {
-				return trait == buff.corrDetail;
+				return buff.corrDetail.includes(trait) === true;
 			})) {
 				test = true;
 			} else if (tempEnemyTrait.some(function(trait) {
-				return trait == buff.corrDetail;
+				return buff.corrDetail.includes(trait) === true;
 			})) {
 				test = true;
 			} 
@@ -1860,8 +1872,16 @@ function updateNPED(buff, enemy, lv) {
 			}
 			break;
 		case "gender":
-			if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
-				test = true;
+			if ($.isArray(buff.corrDetail)) {
+				if (buff.corrDetail.some(function(gender) {
+					return gender == $("#" + enemy + "-gender").html();
+				})) {
+					test = true;
+				}
+			} else {
+				if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
+					test = true;
+				}
 			}
 			break;
 		case "alignment1":
@@ -1877,11 +1897,11 @@ function updateNPED(buff, enemy, lv) {
 		case "trait":
 			var traitList = window[enemy + "Trait"]
 			if (traitList.some(function(trait) {
-				return trait == buff.corrDetail;
+				return buff.corrDetail.includes(trait) === true;
 			})) {
 				test = true;
 			} else if (tempEnemyTrait.some(function(trait) {
-				return trait == buff.corrDetail;
+				return buff.corrDetail.includes(trait) === true;
 			})) {
 				test = true;
 			}
@@ -2104,8 +2124,16 @@ function updateTeammateSkillBuff(section) {
 						}
 						break;
 					case "gender":
-						if (servantInfo[0].gender != this.corrDetail) {
-							test = false;
+						if ($.isArray(this.corrDetail)) {
+							if (!this.corrDetail.some(function(gender) {
+								return gender == servantInfo[0].gender;
+							})) {
+								test = false;
+							}
+						} else {
+							if (servantInfo[0].gender != this.corrDetail) {
+								test = false;
+							}
 						}
 						break;
 					case "alignment1":
