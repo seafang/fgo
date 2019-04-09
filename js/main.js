@@ -1,4 +1,8 @@
 // Load data
+var affinity = JSON.parse(classAdvantage);
+var multiplier = JSON.parse(classBaseMultiplier);
+var attrAffinity = JSON.parse(attributeAdvantage);
+
 var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
 var master = JSON.parse(mysticCode);
