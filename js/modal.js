@@ -1136,7 +1136,7 @@ function teammateCEBind() {
 	$(".teammate-ce-modal-img").ready(function() {
 		$(".teammate-ce-modal-img").click(function() {
 			var id = Number($(this).attr("data-id"));
-			pickTeammateCE(id);
+			pickTeammateCE(modalCaller, id);
 		});
 	});
 }
