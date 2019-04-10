@@ -860,9 +860,7 @@ function pickTeammate(value, teammateID, brute) {
 		}		
 		section.find(".teammate-star").html(starHTML);		
 		section.find(".teammate-star").removeClass("dull");		
-		section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);		
-		section.find(".teammate-nplv").prop("disabled", false);		
-		section.find(".teammate-npoc").prop("disabled", false);		
+		section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);				
 		section.find(".teammate-np-name").removeClass("Buster Art Quick");		
 		section.find(".teammate-np-name").addClass(info[0].npColor);		
 		window[value + "Save"] = bgServant.filter(function(obj) {		
@@ -1019,16 +1017,24 @@ function setTeammateNP(toggle) {
 		section.find(".teammate-np-dscrp").html(info[0].npRUDscrp);
 		if (info[0].npRUDmgToTeam == false) {
 			section.find(".teammate-np").prop("disabled", true);
+			section.find(".teammate-nplv").prop("disabled", true);		
+			section.find(".teammate-npoc").prop("disabled", true);
 		} else {
 			section.find(".teammate-np").prop("disabled", false);
+			section.find(".teammate-nplv").prop("disabled", false);		
+			section.find(".teammate-npoc").prop("disabled", false);
 		}
 	} else {
 		section.find(".teammate-np-name").html(info[0].np + " " + info[0].npRank);
 		section.find(".teammate-np-dscrp").html(info[0].npDscrp);
 		if (info[0].npDmgToTeam == false) {
 			section.find(".teammate-np").prop("disabled", true);
+			section.find(".teammate-nplv").prop("disabled", true);		
+			section.find(".teammate-npoc").prop("disabled", true);
 		} else {
 			section.find(".teammate-np").prop("disabled", false);
+			section.find(".teammate-nplv").prop("disabled", false);		
+			section.find(".teammate-npoc").prop("disabled", false);
 		}
 	}
 }
@@ -2383,7 +2389,7 @@ function calcDmg(enemy) {
 		atk = servantAtkList[0][servantLV];
 	}
 	var totalAtk = atk + parseInt($("#current-servant-statup").val()) +  parseInt($("#ce-atk").val());
-	var npLv = $("current-servant-nplv").val();
+	var npLv = $("#current-servant-nplv").val();
 	var npMultiplier;
 	if ($("#current-servant-rankup").is(":checked")) {
 		npMultiplier = servantInfo[0]["np" + npLv + "RU"] / 100;
@@ -2446,6 +2452,7 @@ function calcDmg(enemy) {
 		lv: $("#current-servant-lv").find("option:selected").html(),
 		atk: totalAtk,
 		np: npLv,
+		npmult: npMultiplier * 100,
 		oc: $("#current-servant-npoc").find("option:selected").html(),
 		nped: npEDBuff * 100,
 		npbuff: npDmgBuff * 100,
@@ -2500,6 +2507,7 @@ function generateResultTable(enemy) {
 		row.insertCell(-1).innerHTML = result.lv;
 		row.insertCell(-1).innerHTML = result.atk;
 		row.insertCell(-1).innerHTML = result.np;
+		row.insertCell(-1).innerHTML = result.npmult;
 		row.insertCell(-1).innerHTML = result.oc;
 		row.insertCell(-1).innerHTML = result.nped;
 		row.insertCell(-1).innerHTML = result.npbuff;
