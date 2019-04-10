@@ -24,6 +24,12 @@ function multiFilter(array, filters) {
 	});
 }
 
+function sortArray(array, key) {
+	array.sort(function(a, b) {
+		return a[key] - b[key];
+	});
+}
+
 // Load save
 function generateSaveList() {
 	var option1 = {}, option2 = {}, option3 = {}, option4 = {};
