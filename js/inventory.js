@@ -349,6 +349,7 @@ $(document).ready(function() {
 		clearInventoryEventBuff();
 	});
 	$("#inventory-row-1").find(".owned").prop("disabled", true);
+	$("#inventory-row-1").find(".nplv").prop("disabled", true);
 	$("select").change(function() {
 		update(this);
 	});
