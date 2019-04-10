@@ -475,13 +475,13 @@
 					<span class="slider"></span>
 				</label>
 				<span class="label">寶具強化</span>
-				<label class="label">寶具OC</label>
+				<label class="label">寶具OC(%)</label>
 				<select class="update-trigger" id="current-servant-npoc" disabled>
-					<option value="1">100%</option>
-					<option value="2">200%</option>
-					<option value="3">300%</option>
-					<option value="4">400%</option>
-					<option value="5">500%</option>
+					<option value="1">100</option>
+					<option value="2">200</option>
+					<option value="3">300</option>
+					<option value="4">400</option>
+					<option value="5">500</option>
 				</select>
 			</div>
 		</div>
@@ -1298,12 +1298,16 @@
 <!--Result Section-->
 <div class="row">
 	<a class="left btn" id="calcbtn">計算</a>
-	<span class="resetbtn btn btnright" id="result-resetbtn">清除結果</span>
+	<span class="resetbtn btn btnright" id="result-resetbtn">清除所有結果</span>
 </div>
 <br/>
 <div class="result" id="enemy1-result">
-	<div>敵人I： <span class="enemy1-result-title"></span></div>
-	<table class="enemy-table" id="enemy1-table">
+	<div class="row">
+		敵人I： 
+		<span class="enemy1-result-title"></span>
+		<span class="resetbtn btn btnright table-resetbtn" data-value="enemy1">清除結果</span>
+	</div>
+	<table class="enemy-table" id="enemy1-table" data-value="enemy1">
 		<tr>	
 			<th>排名</th>
 			<th>從者</th>
@@ -1317,7 +1321,7 @@
 			<th>寶具威力</th>
 			<th>指令卡性能</th>
 			<th>攻擊力</th>
-			<th>敵方防禦</th>
+			<th>敵方減防</th>
 			<th>最小傷害</th>
 			<th>平均傷害</th>
 			<th>最大傷害</th>
@@ -1327,8 +1331,12 @@
 </div>
 <br/>
 <div class="result" id="enemy2-result">
-	<div>敵人II： <span class="enemy2-result-title"></span></div>
-	<table class="enemy-table" id="enemy2-table">
+	<div class="row">
+		敵人II： 
+		<span class="enemy2-result-title"></span>
+		<span class="resetbtn btn btnright table-resetbtn" data-value="enemy2">清除結果</span>
+	</div>
+	<table class="enemy-table" id="enemy2-table" data-value="enemy2">
 		<tr>	
 			<th>排名</th>
 			<th>從者</th>
@@ -1342,7 +1350,7 @@
 			<th>寶具威力</th>
 			<th>指令卡性能</th>
 			<th>攻擊力</th>
-			<th>敵方防禦</th>
+			<th>敵方減防</th>
 			<th>最小傷害</th>
 			<th>平均傷害</th>
 			<th>最大傷害</th>
@@ -1352,22 +1360,26 @@
 </div>
 <br/>
 <div class="result" id="enemy3-result">
-	<div>敵人III： <span class="enemy3-result-title"></span></div>
-	<table class="enemy-table" id="enemy3-table">
+	<div class="row">
+		敵人III： 
+		<span class="enemy3-result-title"></span>
+		<span class="resetbtn btn btnright table-resetbtn" data-value="enemy3">清除結果</span>
+	</div>
+	<table class="enemy-table" id="enemy3-table" data-value="enemy3">
 		<tr>	
 			<th>排名</th>
 			<th>從者</th>
 			<th>職階</th>
-			<th>等級</th>
+			<th>等級(Lv.)</th>
 			<th>ATK</th>
-			<th>寶具</th>
-			<th>倍率</th>
-			<th>OC</th>
-			<th>寶具特攻</th>
-			<th>寶具威力</th>
-			<th>指令卡性能</th>
-			<th>攻擊力</th>
-			<th>敵方防禦</th>
+			<th>寶具(Lv.)</th>
+			<th>倍率(%)</th>
+			<th>OC(%)</th>
+			<th>寶具特攻(%)</th>
+			<th>寶具威力(%)</th>
+			<th>指令卡性能(%)</th>
+			<th>攻擊力(%)</th>
+			<th>敵方減防</th>
 			<th>最小傷害</th>
 			<th>平均傷害</th>
 			<th>最大傷害</th>
