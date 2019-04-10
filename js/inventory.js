@@ -88,11 +88,11 @@ function clearInventory() {
 
 function generateInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
-	var npSymb = "";
 	clearInventory();
 	var table = document.getElementById("servant-inventory");
 	filteredServant.forEach(function(servant) {				
-		var row = table.insertRow(-1);				
+		var row = table.insertRow(-1);
+		var npSymb = "";
 		$(row).addClass("inventory-row");				
 		$(row).attr("id", "inventory-row-" + servant.id);				
 		row.insertCell(-1).innerHTML = servant.id;
