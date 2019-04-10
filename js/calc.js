@@ -8,7 +8,7 @@ var master = parent.master;
 
 var skillBuff = parent.skillBuff;
 var npBuff = parent.npBuff;
-var atk = parent.atk;
+var servantAtk = parent.servantAtk;
 var ceBuff = parent.ceBuff;
 var ceAtk = parent.ceAtk;
 var masterBuff = parent.masterBuff;
@@ -270,7 +270,7 @@ function resetBattlefield() {
 // Set Servant
 var servantInfo = [];
 var servantSave = [];
-var servantAffList = [], servantMult = [], servantAttrAffList = [];
+var servantAffList = [], servantMult = [], servantAttrAffList = [], servantAtkList = [];
 var skillBuffList = [], npBuffList = [];
 
 $(document).ready(function() {
@@ -316,14 +316,17 @@ function pickServant(servantID) {
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
-		servantAffList = affinity.map(function(value) {
+		servantAffList = affinity.filter(function(value) {
 			return value.classes == servantInfo[0].class;
 		});
-		servantMult = multiplier.map(function(value) {
+		servantMult = multiplier.filter(function(value) {
 			return value.classes == serantInfo[0].class;
 		});
-		servantAttrAffList = attrAffinity.map(function(value) {
+		servantAttrAffList = attrAffinity.filter(function(value) {
 			return value.attribute == serantInfo[0].attribute;
+		});
+		servantAtkList = servantAtk.filter(function(value) {
+			return value.id == servantInfo[0].id;
 		});
 		if ($("#servant-setup-collapsebtn").html() == "展開▼") {		
 			$("#servant-setup-collapsebtn").click();	
@@ -1192,7 +1195,7 @@ var masterSkillSet = [];
 var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
-var tempClass = "", tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+var tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 var tempEnemyTrait = [];
 
 $(document).ready(function() {
@@ -1284,7 +1287,7 @@ function updateTeammateSkillSet(toggle) {
 }
 
 function updateBuff() {
-	tempClass = "", tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+	tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
 	tempEnemyTrait = [];
 	updatePassiveBuff();
 	updateSkillPreReq();
@@ -1416,7 +1419,9 @@ function updateSkillPreReq() {
 		$(activeSkillBuff).each(function() {
 			switch (this.effect) {
 				case "class":
-					tempClass = this.corrDetail;
+					tempAffinity = affinity.filter(function(value) {
+						return value.classes = this.corrDetail;
+					});
 					break;
 				case "alignment1":
 					tempAlignment1.push(this.corrDetail);
@@ -2323,6 +2328,7 @@ function updateTeammateCEBuff(section) {
 
 // Calculation
 var enemy1Result = [], enemy2Result = [], enemy3Result = [];
+var queryCount = 0;
 
 $(document).ready(function() {
 	$("#calcbtn").click(function() {
@@ -2332,9 +2338,176 @@ $(document).ready(function() {
 			alert("請先設定敵人及從者！");
 		}
 	});
+	$("#result-resetbtn").click(function() {
+		clearAllResult();
+	});
+	$(".table-resetbtn").click(function() {
+		var enemy = $(this).attr("data-value");
+		clearResultTable(enemy);
+	});
+	$(".result-delbtn").click(function() {
+		var table = $(this).parents(".enemy-table");
+		var query = $(this).attr("data-query");
+		deleteQuery(table, query);
+	});
 });
 
 function calculation() {
-	
+	var enemyList = ["enemy1", "enemy2", "enemy3"];
+	queryCount++;
+	$(enemyList).each(function() {
+		if ($("#" + this).find(".enemy-name").html() != "") {
+			calcDmg(this);
+		}
+	});
+}
+
+function calcDmg(enemy) {
+	var servantLv = $("#current-servant-lv").val();
+	var atk;
+	if (servantLv == "0") {
+		atk = servantInfo[0].atk;
+	} else {
+		atk = servantAtkList[0][servantLV];
+	}
+	var totalAtk = atk + parseInt($("#current-servant-statup").val()) +  parseInt($("#ce-atk").val());
+	var npLv = $("current-servant-nplv").val();
+	var npMultiplier;
+	if ($("#current-servant-rankup").is(":checked")) {
+		npMultiplier = servantInfo[0]["np" + npLv + "RU"] / 100;
+	} else {
+		npMultiplier = servantInfo[0]["np" + npLv] / 100;
+	}
+	var npColor = servantInfo[0].npColor;
+	var cardMultiplier;
+	switch (npColor) {
+		case "Buster":
+			cardMultiplier = 1.5;
+			break;
+		case "Art":
+			cardMultiplier = 1;
+			break;
+		case "Quick":
+			cardMultiplier = 0.8;
+			break;
+		default:
+			break;
+	}
+	var cardBuff = parseFloat($("#" + npColor + "-buff").val()) / 100;
+	var classMultiplier = servantMult[0].multiplier;
+	var enemyClass = $("#" + enemy + "-class").attr("alt");
+	var affMultiplier;
+	if (tempAffinity[0] !== undefined) {
+		affMultiplier = tempAffinity[0][enemyClass];
+	} else {
+		affMultiplier = servantAffList[0][enemyClass];
+	}
+	var advantage;
+	if (affMultiplier > 1) {
+		advantage = "weak";
+	} else if (affMultiplier < 1) {
+		advantage = "resist";
+	}
+	var enemyAttr = $("#" + enemy + "-attribute").html();
+	var attrAffMultiplier = servantAttrAffList[0][enemyAttr];
+	var atkBuff = parseFloat($("#atk-buff").val()) / 100;
+	var defDebuff = parseFloat($("#" + enemy + "-buff").find(".def-debuff").val()) / 100;
+	var npDmgBuff = [ parseFloat($("#np-buff").val()) + parseFloat($("#event-buff").val()) +
+		parseFloat($("#" + enemy + "-buff").find(".skill-ed").val()) ] / 100;
+	var npEDBuff = parseFloat($("#" + enemy + "-buff").find(".np-ed").val()) / 100;
+	var addDmg = parseInt($("#add-atk").val());
+	var redDmg = parseInt($("#" + enemy + "-buff").find(".red-atk").val());
+	var minOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff * 0.9 + ( addDmg - redDmg );
+	minOutput = Number(minOutput.toFixed(0));
+	var avgOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff + ( addDmg - redDmg );
+	avgOutput = Number(avgOutput.toFixed(0));
+	var maxOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff * 1.1 + ( addDmg - redDmg );
+	maxOutput = Number(maxOutput.toFixed(0));
+	var output = {
+		query: queryCount,
+		name: servantInfo[0].name,
+		color: npColor,
+		classes: servantInfo[0].classes,
+		lv: $("#current-servant-lv").find("option:selected").html(),
+		atk: totalAtk,
+		np: npLv,
+		oc: $("#current-servant-npoc").find("option:selected").html(),
+		nped: npEDBuff * 100,
+		npbuff: npDmgBuff * 100,
+		cardbuff: cardBuff * 100,
+		atkbuff: atkBuff * 100,
+		defdebuff: defDebuff * 100,
+		min: minOutput,
+		avg: avgOutput,
+		max: maxOutput,
+		adv: advantage
+	};
+	window[enemy + "Result"].push(output);
+	generateResultTable(enemy);
+}
+
+function clearAllResult() {
+	var enemyList = ["enemy1", "enemy2", "enemy3"];
+	$(enemyList).each(function() {
+		var table = $("#" + this + "-table");
+		$(table).parents(".result").hide();
+		$(table).find(".result-row").each(function() {
+			$(this).remove();
+		});
+	});
+	queryCount = 0;
+}
+
+function clearResultTable(enemy) {
+	var table = $("#" + enemy + "-table");
+	$(table).parents(".result").hide();
+	$(table).find(".result-row").each(function() {
+		$(this).remove();
+	});
+}
+
+function generateResultTable(enemy) {
+	var table = document.getElementById(enemy + "-table");
+	$(table).parents(".result").show();
+	$("#" + enemy + "-result-title").html($("#" + enemy + "-detail").find(".enemy-name").html());
+	clearResultTable(enemy);
+	sortArray(window[enemy + "Result"], "avg");
+	var i = 0;
+	window[enemy + "Result"].forEach(function(result) {
+		i++;
+		var row = table.insertRow(-1);
+		$(row).addClass("result-row");
+		$(row).addClass("result-row-" + result.query);
+		row.insertCell(-1).innerHTML = i;
+		row.insertCell(-1).innerHTML = "<span class='" + result.color + "'>" + result.name + "</span>";
+		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + result.classes + ".webp' />";
+		row.insertCell(-1).innerHTML = result.lv;
+		row.insertCell(-1).innerHTML = result.atk;
+		row.insertCell(-1).innerHTML = result.np;
+		row.insertCell(-1).innerHTML = result.oc;
+		row.insertCell(-1).innerHTML = result.nped;
+		row.insertCell(-1).innerHTML = result.npbuff;
+		row.insertCell(-1).innerHTML = result.cardbuff;
+		row.insertCell(-1).innerHTML = result.atkbuff;
+		row.insertCell(-1).innerHTML = result.defdebuff;
+		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.min + "</span>";
+		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.avg + "</span>";
+		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.max + "</span>";
+		row.insertCell(-1).innerHTML = "<span class='delbtn result-delbtn' data-query='" + result.query + "'>&times;</span>";
+	});
+}
+
+function deleteQuery(table, query) {
+	var row = $(table).find(".result-row-" + query);
+	$(row).remove();
+	var newList = window[enemy + "Result"];
+	var position = newList.indexOf(function(result) {
+		return result.query == query;
+	});
+	newList.splice(position, 1);
+	window[enemy + "Result"] = newList;
 }
 
