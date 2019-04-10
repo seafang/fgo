@@ -216,6 +216,9 @@ function setEnemy(enemy) {
 	if (servantInfo[0] !== undefined) {
 		updateBuff();
 	}
+	if ($("#" + enemy + "-result-title").html() != "") {
+		$("#" + enemy + "-result").find(".table-resetbtn").click();
+	}
 }
 
 function resetEnemy(enemy) {
@@ -232,6 +235,9 @@ function resetEnemy(enemy) {
 	$(element).find(".enemy-trait").html("");
 	window[enemy + "Trait"] = [];
 	updateBuff();
+	if ($("#" + enemy + "-result-title").html() != "") {
+		$("#" + enemy + "-result").find(".table-resetbtn").click();
+	}
 }
 
 // Set Battlefield
@@ -2467,6 +2473,7 @@ function clearResultTable(enemy) {
 	$(table).find(".result-row").each(function() {
 		$(this).remove();
 	});
+	$("#" + enemy + "-result-title").html("");
 }
 
 function generateResultTable(enemy) {
