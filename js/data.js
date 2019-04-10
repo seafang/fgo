@@ -61,7 +61,7 @@ function generateSaveList() {
 
 function getSave() {
 	var saveSlot = $("#inventory-save").val();
-	var title = $("option:selected").html();
+	var title = $("#inventory-save").find("option:selected").html();
 	if (title == "(未建立)") {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
