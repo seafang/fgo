@@ -1298,7 +1298,9 @@ function updateBuff() {
 	updatePassiveBuff();
 	updateSkillPreReq();
 	updateNPPreReq();
-	updateCEPreReq();
+	if (ceInfo[0] !== undefined) {
+		updateCEPreReq();
+	}
 	$(".teammate-detail").each(function() {
 		if ($(this).find(".teammate-name").html() != "未選定隊友") {
 			updateTeammateSkillPreReq(this);
@@ -1310,8 +1312,12 @@ function updateBuff() {
 	});
 	updateSkillBuff();
 	updateNPBuff();
-	updateCEBuff();
-	updateMasterBuff();
+	if (ceInfo[0] !== undefined) {
+		updateCEBuff();
+	}
+	if (masterInfo[0] !== undefined) {
+		updateMasterBuff();
+	}
 	$(".teammate-detail").each(function() {
 		if ($(this).find(".teammate-name").html() != "未選定隊友") {
 			updateTeammateSkillBuff(this);
