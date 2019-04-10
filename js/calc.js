@@ -40,14 +40,14 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on( "click", function() {
+$(document).on("click", function() {
 	updateCounter();
 });
 
 function updateCounter() {
 	var height = $("#enemy-info").outerHeight() + $("#environment-info").outerHeight() + $("#servant-info").outerHeight() +
 		$("#ce-info").outerHeight() + $("#master-info").outerHeight() + $("#teammate-info").outerHeight() + 
-		$("#buff-info").outerHeight() + 600;
+		$("#buff-info").outerHeight() + $("#result-section").outerHeight() + 600;
 	$("#calc-counter").html(height);
 }
 
