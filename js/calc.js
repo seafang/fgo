@@ -326,10 +326,10 @@ function pickServant(servantID) {
 			return value.classes == servantInfo[0].class;
 		});
 		servantMult = multiplier.filter(function(value) {
-			return value.classes == serantInfo[0].class;
+			return value.classes == servantInfo[0].class;
 		});
 		servantAttrAffList = attrAffinity.filter(function(value) {
-			return value.attribute == serantInfo[0].attribute;
+			return value.attribute == servantInfo[0].attribute;
 		});
 		servantAtkList = servantAtk.filter(function(value) {
 			return value.id == servantInfo[0].id;
