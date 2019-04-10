@@ -323,10 +323,10 @@ function pickServant(servantID) {
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
 		servantAffList = affinity.filter(function(value) {
-			return value.classes == servantInfo[0].class;
+			return value.classes == servantInfo[0].classes;
 		});
 		servantMult = multiplier.filter(function(value) {
-			return value.classes == servantInfo[0].class;
+			return value.classes == servantInfo[0].classes;
 		});
 		servantAttrAffList = attrAffinity.filter(function(value) {
 			return value.attribute == servantInfo[0].attribute;
@@ -719,7 +719,7 @@ function applyMaster() {
 	$("#master-skill3-logo").addClass("dull");
 	$("#check-master-skill3").prop("checked", false);
 	if (masterSave[0] != undefined) {
-		$("#master-lv").val(ceSave[0].data[1]);
+		$("#master-lv").val(masterSave[0].data[1]);
 	} else {
 		$("#master-lv").val(1);
 	}
