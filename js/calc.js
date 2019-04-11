@@ -2436,13 +2436,13 @@ function calcDmg(enemy) {
 	var addDmg = parseInt($("#add-atk").val());
 	var redDmg = parseInt($("#" + enemy + "-buff").find(".red-atk").val());
 	var minOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff * 0.9 + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff * 0.9 + ( addDmg - redDmg );
 	minOutput = Number(minOutput.toFixed(0));
 	var avgOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff + ( addDmg - redDmg );
 	avgOutput = Number(avgOutput.toFixed(0));
 	var maxOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npDmgBuff * 1.1 + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff * 1.1 + ( addDmg - redDmg );
 	maxOutput = Number(maxOutput.toFixed(0));
 	var output = {
 		query: queryCount,
