@@ -5,11 +5,29 @@
  * @return {Array}
  */
 
-function multiFilter(array, filters) {
+/*function multiFilter(array, filters) {
 	var filterKeys = Object.keys(filters);
 	return array.filter(function(item) {
 		return filterKeys.every(function(key) {
 			if (!filters[key].length) return true;
+			if (Array.isArray(item[key])) {
+				var test = [];
+				item[key].forEach(function(value) {
+					test.push(filters[key].includes(value));  
+				});
+				return test.some(function (value){
+					return true === value;
+				});
+			}
+			return filters[key].includes(item[key]);
+		});
+	});
+}*/
+
+function multiFilter(array, filters) {
+	var filterKeys = Object.keys(filters);
+	return array.filter(function(item) {
+		return filterKeys.every(function(key) {
 			if (Array.isArray(item[key])) {
 				var test = [];
 				item[key].forEach(function(value) {
