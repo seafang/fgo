@@ -50,7 +50,7 @@ function closeModal() {
 }
 
 $(document).click(function(event) {
-	if (!$(event.target).closest(".modal-box, .modalbtn").length) {
+	if (!$(event.target).closest(".modal-box, .modalbtn, #to_top").length) {
 		$(".modal").hide();
 	}
 });
