@@ -9,7 +9,8 @@ body {
 	font-weight: 300;
 }
 
-/*content structure*/
+
+/* Content Structure */
 section, iframe {
 	width: 100%;
 	min-width: 100%;
@@ -116,7 +117,8 @@ table {
 	display: none;
 }
 
-/*user interface*/
+
+/* User Interface */
 .label, .btn {
 	font-weight: 500;
 }
@@ -154,18 +156,20 @@ table {
 	background-color: white;
 	color: black;
 	border-color: black;
+	width: 100px;
+	padding: 1px 35px;
 }
 .applybtn:hover {
 	background-color: black;
 	color: white;
 }
 .modalbtn {
-	background-color: mediumseagreen;
+	background-color: #c07dff;
 	color: white;
 }
 .modalbtn:hover {
-	background-color: darkgreen;
-	border-color: darkgreen;
+	background-color: green;
+	border-color: green;
 }
 .collapsebtn {
 	background-color: lightgray;
@@ -212,6 +216,7 @@ input.narrow {
 }
 input[type="checkbox"] {
 	width: auto;
+	margin: 0px 2px 0px 7px;
 }
 .switch {
 	position: relative;
@@ -259,7 +264,8 @@ input:checked + .slider:before {
 	transform: translateX(14px);
 }
 
-/*image & logo*/
+
+/* Image & Logo */
 #header-logo {
 	width: 70px;
 }
@@ -286,7 +292,8 @@ input:checked + .slider:before {
 	border-color: lightgray;
 }
 
-/*modal*/
+
+/* Modal */
 .modal {
 	display: none;
 	position: fixed;
@@ -297,7 +304,7 @@ input:checked + .slider:before {
 	height: 100%;
 	overflow: hidden;
 	background-color: rgb(0,0,0);
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0,0,0,0.7);
 	-webkit-animation-name: fadeIn;
 	-webkit-animation-duration: 0.3s;
 	animation-name: fadeIn;
@@ -319,12 +326,17 @@ input:checked + .slider:before {
 }
 .modal-header {
 	border-style: solid;
-	border-color: gray;
-	border-width: 2px;
-	padding: 5px;
+	border-color: black;
+	border-width: 1px;
 	border-radius: 5px;
+	padding: 0px 0px 10px 0px;
 	margin: 4px;
-	background-color: lightgray;
+	justify-content: center;
+}
+.modal-filter-header {
+	background-color: #ff4a4a;
+	color: white;
+	margin-bottom: 10px;
 }
 .servant-enemy-class, .servant-class {
 	cursor: pointer;
@@ -346,7 +358,8 @@ input:checked + .slider:before {
 	cursor: pointer;
 }
 .modal .servant-img:hover {
-	box-shadow: 0px 0px 5px darkblue;
+	background: #8cc1ff;
+	box-shadow: 0px 0px 5px #8cc1ff;
 }
 @-webkit-keyframes fadeIn {
   from {opacity: 0} 
@@ -357,6 +370,7 @@ input:checked + .slider:before {
   to {opacity: 1}
 }
 
+
 /* Collapsible */
 .collapsible {
 	display: none;
@@ -366,7 +380,8 @@ input:checked + .slider:before {
 	display: none;
 }
 
-/*responsive layout*/
+
+/* Responsive Layout */
 @media screen and (max-width: 660px) {
 	.element-10, .element-15, .element-20, .element-25, .element-30, .element-40, .element-50, .element-75 {float: none; width: 50%;}
 }
