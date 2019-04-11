@@ -273,8 +273,8 @@
 			<div class="row">
 				<div class="element-100"><span class="label">特性</span><span class="enemy-trait" id="enemy3-trait"></span></div>
 			</div>
-		</div>
 		<br/>
+		</div>
 	</div>
 	<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
 </div>
@@ -1304,8 +1304,8 @@
 <div id="result-section">
 	<div class="result" id="enemy1-result">
 		<div class="row">
-			敵人I： 
-			<span class="enemy1-result-title"></span>
+			<span class="label">敵人I</span>
+			<span id="enemy1-result-title"></span>
 			<span class="resetbtn btn btnright table-resetbtn" data-value="enemy1">清除結果</span>
 		</div>
 		<table class="enemy-table" id="enemy1-table" data-value="enemy1">
@@ -1333,8 +1333,8 @@
 	<br/>
 	<div class="result" id="enemy2-result">
 		<div class="row">
-			敵人II： 
-			<span class="enemy2-result-title"></span>
+			<span class="label">敵人II</span>
+			<span id="enemy2-result-title"></span>
 			<span class="resetbtn btn btnright table-resetbtn" data-value="enemy2">清除結果</span>
 		</div>
 			<table class="enemy-table" id="enemy2-table" data-value="enemy2">
@@ -1362,8 +1362,8 @@
 	<br/>
 	<div class="result" id="enemy3-result">
 		<div class="row">
-			敵人III： 
-			<span class="enemy3-result-title"></span>
+			<span class="label">敵人III</span>
+			<span id="enemy3-result-title"></span>
 			<span class="resetbtn btn btnright table-resetbtn" data-value="enemy3">清除結果</span>
 		</div>
 		<table class="enemy-table" id="enemy3-table" data-value="enemy3">
@@ -1394,51 +1394,52 @@
 <!--Servant Enemy Modal-->
 <div class="modal" id="servant-enemy-modal">
 	<div class="modal-box" id="servant-enemy-modal-box">
-		<div class="row">
-			<span class="closebtn" id="servant-enemy-modal-closebtn">&times;</span>
+		<div class="row modal-filter-header">
+			篩選
 		</div>
 		<div class="modal-header">
 			<div class="row">
-				<img class="class-logo left servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
-				<img class="class-logo left servant-enemy-class" title="Archer" src="images/class/Archer.webp" />
-				<img class="class-logo left servant-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
-				<img class="class-logo left servant-enemy-class" title="Rider" src="images/class/Rider.webp" />
-				<img class="class-logo left servant-enemy-class" title="Caster" src="images/class/Caster.webp" />
-				<img class="class-logo left servant-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
-				<img class="class-logo left servant-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
-				<img class="class-logo left servant-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
-				<img class="class-logo left servant-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
-				<img class="class-logo left servant-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
-				<img class="class-logo left servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
-				<img class="class-logo left servant-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
-				<img class="class-logo left servant-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
-				<span class="btn setbtn left" id="servant-enemy-class-setbtn">全選</span>
-				<span class="btn resetbtn left" id="servant-enemy-class-resetbtn">取消全選</span>
+				<img class="class-logo servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo servant-enemy-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo servant-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo servant-enemy-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo servant-enemy-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo servant-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo servant-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo servant-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo servant-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo servant-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo servant-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo servant-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<span class="btn setbtn” id="servant-enemy-class-setbtn">全選</span>
+				<span class="btn resetbtn” id="servant-enemy-class-resetbtn">取消</span>
 			</div>
 			<div class="row">
-				<input type="checkbox" class="servant-enemy-star left" value="0" id="servant-enemy-star0" checked>
-				<label for="servant-enemy-star0" class="star left">－</label>
-				<input type="checkbox" class="servant-enemy-star left" value="1" id="servant-enemy-star1" checked>
-				<label for="servant-enemy-star1" class="star left">★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="2" id="servant-enemy-star2" checked>
-				<label for="servant-enemy-star2" class="star left">★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="3" id="servant-enemy-star3" checked>
-				<label for="servant-enemy-star3" class="star left">★★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="4" id="servant-enemy-star4" checked>
-				<label for="servant-enemy-star4" class="star left">★★★★</label>
-				<input type="checkbox" class="servant-enemy-star left" value="5" id="servant-enemy-star5" checked>
-				<label for="servant-enemy-star5" class="star left">★★★★★</label>
-				<span class="btn setbtn left" id="servant-enemy-star-setbtn">全選</span>
-				<span class="btn resetbtn left" id="servant-enemy-star-resetbtn">取消全選</span>
+				<input type="checkbox" class="servant-enemy-star” value="0" id="servant-enemy-star0" checked>
+				<label for="servant-enemy-star0" class="star”>－</label>
+				<input type="checkbox" class="servant-enemy-star” value="1" id="servant-enemy-star1" checked>
+				<label for="servant-enemy-star1" class="star”>★</label>
+				<input type="checkbox" class="servant-enemy-star” value="2" id="servant-enemy-star2" checked>
+				<label for="servant-enemy-star2" class="star”>★★</label>
+				<input type="checkbox" class="servant-enemy-star” value="3" id="servant-enemy-star3" checked>
+				<label for="servant-enemy-star3" class="star”>★★★</label>
+				<input type="checkbox" class="servant-enemy-star” value="4" id="servant-enemy-star4" checked>
+				<label for="servant-enemy-star4" class="star”>★★★★</label>
+				<input type="checkbox" class="servant-enemy-star” value="5" id="servant-enemy-star5" checked>
+				<label for="servant-enemy-star5" class="star”>★★★★★</label>
+				<span class="btn setbtn” id="servant-enemy-star-setbtn">全選</span>
+				<span class="btn resetbtn” id="servant-enemy-star-resetbtn">取消</span>
 			</div>
 			<div class="row">
-				<span class="btn applybtn left" id="servant-enemy-applybtn">套用篩選</span>
+				<span class="btn applybtn” id="servant-enemy-applybtn">套用</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
 		</div>
 	</div>
 </div>
+
 
 <!--Servant Modal-->
 <div class="modal" id="servant-modal">
