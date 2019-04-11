@@ -65,6 +65,9 @@ table {
 	display: flex;
 	align-items: center;
 }
+.center {
+	justify-content: center;
+}
 .left {
 	float: left;
 }
@@ -164,7 +167,7 @@ table {
 	color: white;
 }
 .modalbtn {
-	background-color: #c07dff;
+	background-color: #2fbe2f;
 	color: white;
 }
 .modalbtn:hover {
@@ -331,7 +334,6 @@ input:checked + .slider:before {
 	border-radius: 5px;
 	padding: 0px 0px 10px 0px;
 	margin: 4px;
-	justify-content: center;
 }
 .modal-filter-header {
 	background-color: #ff4a4a;
