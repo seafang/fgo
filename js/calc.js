@@ -47,7 +47,7 @@ $(document).on("click", function() {
 function updateCounter() {
 	var height = $("#enemy-info").outerHeight() + $("#environment-info").outerHeight() + $("#servant-info").outerHeight() +
 		$("#ce-info").outerHeight() + $("#master-info").outerHeight() + $("#teammate-info").outerHeight() + 
-		$("#buff-info").outerHeight() + $("#result-section").outerHeight() + 600;
+		$("#buff-info").outerHeight() + $("#result-section").outerHeight() + 1000;
 	$("#calc-counter").html(height);
 }
 
@@ -235,9 +235,6 @@ function resetEnemy(enemy) {
 	$(element).find(".enemy-trait").html("");
 	window[enemy + "Trait"] = [];
 	updateBuff();
-	if ($("#" + enemy + "-result-title").html() != "") {
-		$("#" + enemy + "-result").find(".table-resetbtn").click();
-	}
 }
 
 // Set Battlefield
@@ -2491,9 +2488,9 @@ function clearResultTable(enemy) {
 
 function generateResultTable(enemy) {
 	var table = document.getElementById(enemy + "-table");
+	clearResultTable(enemy);
 	$(table).parents(".result").show();
 	$("#" + enemy + "-result-title").html($("#" + enemy + "-detail").find(".enemy-name").html());
-	clearResultTable(enemy);
 	sortArray(window[enemy + "Result"], "avg");
 	var i = 0;
 	window[enemy + "Result"].forEach(function(result) {
