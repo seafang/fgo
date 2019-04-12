@@ -184,6 +184,9 @@ table {
 	padding: 1px 5px;
 	margin: 0px 2px;
 }
+#enemy-setup label {
+	margin-right: 20px;
+}
 select, option, input {
 	font-family: "Noto Sans TC", sans-serif;
 	font-weight: 300;
