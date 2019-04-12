@@ -29,7 +29,7 @@ $(document).ready(function() {
 	$("#servant-enemy-star-resetbtn").click(function() {
 		servantEnemyStarNone();
 	});
-	$("#servant-enemy-applybtn").click(function() {
+	$("#servant-enemy-filterbtn").click(function() {
 		loadServantEnemyImg();
 	});
 });
@@ -42,7 +42,7 @@ function loadServantEnemyImg() {
 	$("#servant-enemy-img").html("");
 	var imglist = "";	
 	$.each(servantEnemyID, function(index, value) {
-		imglist += "<img class='left servant-img servant-enemy-modal-img' src='images/servant/" + value +
+		imglist += "<img class='servant-img servant-enemy-modal-img' src='images/servant/" + value +
 		".webp' data-id='" + value + "' />"
 	});
 	$("#servant-enemy-img").html(imglist);
