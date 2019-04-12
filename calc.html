@@ -196,6 +196,7 @@
 				<a class="left btn applybtn enemy-applytn" data-value="enemy3">設為敵人III</a>		
 			</div>			
 		</div>
+		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
 	</div>
 	<div id="enemy1">
 		<br/>
@@ -276,7 +277,6 @@
 		<br/>
 		</div>
 	</div>
-	<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
 </div>
 <br/>
 
@@ -1416,23 +1416,35 @@
 				<span class="btn resetbtn" id="servant-enemy-class-resetbtn">取消</span>
 			</div>
 			<div class="row center">
-				<input type="checkbox" class="servant-enemy-star” value="0" id="servant-enemy-star0" checked>
-				<label for="servant-enemy-star0" class="star”>－</label>
-				<input type="checkbox" class="servant-enemy-star” value="1" id="servant-enemy-star1" checked>
-				<label for="servant-enemy-star1" class="star”>★</label>
-				<input type="checkbox" class="servant-enemy-star” value="2" id="servant-enemy-star2" checked>
-				<label for="servant-enemy-star2" class="star”>★★</label>
-				<input type="checkbox" class="servant-enemy-star” value="3" id="servant-enemy-star3" checked>
-				<label for="servant-enemy-star3" class="star”>★★★</label>
-				<input type="checkbox" class="servant-enemy-star” value="4" id="servant-enemy-star4" checked>
-				<label for="servant-enemy-star4" class="star”>★★★★</label>
-				<input type="checkbox" class="servant-enemy-star” value="5" id="servant-enemy-star5" checked>
-				<label for="servant-enemy-star5" class="star”>★★★★★</label>
+				<label class="checkbox">
+					<span class="star">－</span>
+					<input type="checkbox" class="servant-enemy-star" value="0" checked>
+				</label>
+				<label class="checkbox">
+					<span class="star">★</span>
+					<input type="checkbox" class="servant-enemy-star" value="1" checked>
+				</label>
+				<label class="checkbox">
+					<span class="star">★★</span>
+					<input type="checkbox" class="servant-enemy-star" value="2" checked>
+				</label>
+				<label class="checkbox">
+					<span class="star">★★★</span>
+					<input type="checkbox" class="servant-enemy-star" value="3" checked>
+				</label>
+				<label class="checkbox">
+					<span class="star">★★★★</span>
+					<input type="checkbox" class="servant-enemy-star" value="4" checked>
+				</label>
+				<label class="checkbox">
+					<span class="star">★★★★★</span>
+					<input type="checkbox" class="servant-enemy-star" value="5" checked>
+				</label>
 				<span class="btn setbtn" id="servant-enemy-star-setbtn">全選</span>
 				<span class="btn resetbtn" id="servant-enemy-star-resetbtn">取消</span>
 			</div>
 			<div class="row center">
-				<span class="btn applybtn" id="servant-enemy-applybtn">套用</span>
+				<span class="btn filterbtn" id="servant-enemy-filterbtn">套用</span>
 			</div>
 		</div>
 		<div class="modal-content" id="servant-enemy-img">
