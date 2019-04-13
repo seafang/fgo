@@ -247,10 +247,10 @@ span.label {
 .label {
 	display: inline-block;
 	white-space: nowrap;
-	background-color: #929292;
-	font-weight: 400;
+	background-color: #8d8d8d;
+	font-weight: 500;
 	color: white;
-	padding: 1px 5px;
+	padding: 0px 15px;
 	margin: 10px 2px;
 	cursor: context-menu;
 }
