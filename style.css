@@ -31,17 +31,17 @@ section, iframe {
 	display: none;
 }
 .detail {
-	border-left: 5px solid;
+	border-left: 8px solid;
 	padding: 2px 4px;
 }
 #enemy1-detail {
-	border-left-color: green;
+	border-left-color: orange;
 }
 #enemy2-detail {
-	border-left-color: royal blue;
+	border-left-color: royalblue;
 }
 #enemy3-detail {
-	border-left-color: maroon;
+	border-left-color: #d20000;
 }
 table {
 	width: 100%;
@@ -73,6 +73,9 @@ table {
 }
 .inner {
 	margin-bottom: 10px;
+}
+.element-5 {
+	flex-grow: 1;
 }
 .element-10 {
 	flex-grow: 2;
@@ -112,7 +115,10 @@ table {
 	flex-wrap: wrap;
 }
 .list label {
-	margin-right: 20px;
+	margin-right: 10px;
+}
+span.label {
+	margin-right: 6px;
 }
 .counter {
 	display: none;
@@ -141,15 +147,13 @@ table {
 
 
 /* User Interface */
-.label, .btn {
-	font-weight: 500;
-}
 .btn {
 	cursor: pointer;
 	padding: 1px 4px;
 	margin: 3px;
 	border: 1px solid;
 	border-radius: 4px;
+	font-weight: 500;
 }
 .btnright {
 	float: right;
@@ -207,10 +211,13 @@ table {
 	border-radius: 0px 0px 4px 4px;
 	color: #777;
 	font-size: 10px;
+	font-weight: 200;
 }
 .label {
 	display: inline-block;
-	background-color: #A7A7A7;
+	white-space: nowrap;
+	background-color: #929292;
+	font-weight: 400;
 	color: white;
 	padding: 1px 5px;
 	margin: 0px 2px;
@@ -290,10 +297,10 @@ input.narrow {
 	display: block;
 }
 .checkbox .checkmark:after {
-	left: 3px;
-	top: 0px;
-	width: 5px;
-	height: 9px;
+	left: 4px;
+	top: 1px;
+	width: 4px;
+	height: 8px;
 	border: solid white;
 	border-width: 0 2px 2px 0;
 	-webkit-transform: rotate(40deg);
@@ -338,7 +345,7 @@ input.narrow {
 	transition: .3s;
 }
 input:disabled + .slider::before {
-	background-color: lightgray;
+	background-color: #c7c7c7;
 }
 input:checked + .slider {
 	background-color: #2196F3;
@@ -365,6 +372,9 @@ input:checked + .slider:before {
 .debuff-logo {
 	width: 14px;
 	margin-right: 2px;
+}
+.battlefield-logo {
+	width: 20px
 }
 .dull {
 	filter: brightness(50%);
