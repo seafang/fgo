@@ -23,9 +23,9 @@
 <div class="info" id="enemy-info">
 	<div class="setup" id="enemy-setup">
 		<div class="row">
-			<a class="modalbtn btn" id="common-enemy-modalbtn">非從者敵人</a>
-			<a class="modalbtn btn" id="servant-enemy-modalbtn">從者敵人</a>
-			<a class="resetbtn btn" id="current-enemy-resetbtn">自訂敵人</a>
+			<a class="btn modalbtn" id="common-enemy-modalbtn">非從者敵人</a>
+			<a class="btn modalbtn" id="servant-enemy-modalbtn">從者敵人</a>
+			<a class="btn resetbtn" id="current-enemy-resetbtn">自訂敵人</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
 			<div class="row">			
@@ -93,185 +93,219 @@
 					</select>
 				</div>		
 			</div>			
-			<div class="row">
-				<span class="label">特性</span>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="被「天地乖離開闢之星」所剋">
-					<span class="checkmark"></span>
-					被「天地乖離開闢之星」所剋
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="被「人類神話・雷電降臨」所剋">
-					<span class="checkmark"></span>
-					被「人類神話・雷電降臨」所剋
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="被「神秘神手」所剋">
-					<span class="checkmark"></span>
-					被「神秘神手」所剋
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="星之力">
-					<span class="checkmark"></span>
-					星之力
-				</label>
-			</div>
-			<div class="row">
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="人型">
-					<span class="checkmark"></span>
-					人型
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="從者">
-					<span class="checkmark"></span>
-					從者
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="擬似從者">
-					<span class="checkmark"></span>
-					擬似從者
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="亞從者">
-					<span class="checkmark"></span>
-					亞從者
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="神性">
-					<span class="checkmark"></span>
-					神性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="王">
-					<span class="checkmark"></span>
-					王
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="騎乘">
-					<span class="checkmark"></span>
-					騎乘
-				</label>
-			</div>
-			<div class="row">
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="羅馬">
-					<span class="checkmark"></span>
-					羅馬
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="希臘神話系男性">
-					<span class="checkmark"></span>
-					希臘神話系男性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="人類威脅">
-					<span class="checkmark"></span>
-					人類威脅
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="阿爾托莉亞臉">
-					<span class="checkmark"></span>
-					阿爾托莉亞臉
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="亞瑟">
-					<span class="checkmark"></span>
-					亞瑟
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="伊莉雅">
-					<span class="checkmark"></span>
-					伊莉雅
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="所愛之人">
-					<span class="checkmark"></span>
-					所愛之人
-				</label>
-			</div>
-			<div class="row">
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="龍">
-					<span class="checkmark"></span>
-					龍
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="魔性">
-					<span class="checkmark"></span>
-					魔性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="超巨大">
-					<span class="checkmark"></span>
-					超巨大
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="死靈">
-					<span class="checkmark"></span>
-					死靈
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="惡魔">
-					<span class="checkmark"></span>
-					惡魔
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="猛獸">
-					<span class="checkmark"></span>
-					猛獸
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="current-enemy-trait" value="人類">
-					<span class="checkmark"></span>
-					人類
-				</label>
+			<div class="row inner">
+				<div class="flex listlbl">
+					<span class="label">特性</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="被「天地乖離開闢之星」所剋">
+						<span class="checkmark"></span>
+						被「天地乖離開闢之星」所剋
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="被「人類神話・雷電降臨」所剋">
+						<span class="checkmark"></span>
+						被「人類神話・雷電降臨」所剋
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="被「神秘神手」所剋">
+						<span class="checkmark"></span>
+						被「神秘神手」所剋
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="星之力">
+						<span class="checkmark"></span>
+						星之力
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="人型">
+						<span class="checkmark"></span>
+						人型
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="從者">
+						<span class="checkmark"></span>
+						從者
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="擬似從者">
+						<span class="checkmark"></span>
+						擬似從者
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="亞從者">
+						<span class="checkmark"></span>
+						亞從者
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="神性">
+						<span class="checkmark"></span>
+						神性
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="王">
+						<span class="checkmark"></span>
+						王
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="騎乘">
+						<span class="checkmark"></span>
+						騎乘
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="羅馬">
+						<span class="checkmark"></span>
+						羅馬
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="希臘神話系男性">
+						<span class="checkmark"></span>
+						希臘神話系男性
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="人類威脅">
+						<span class="checkmark"></span>
+						人類威脅
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="阿爾托莉亞臉">
+						<span class="checkmark"></span>
+						阿爾托莉亞臉
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="亞瑟">
+						<span class="checkmark"></span>
+						亞瑟
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="伊莉雅">
+						<span class="checkmark"></span>
+						伊莉雅
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="所愛之人">
+						<span class="checkmark"></span>
+						所愛之人
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="龍">
+						<span class="checkmark"></span>
+						龍
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="魔性">
+						<span class="checkmark"></span>
+						魔性
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="超巨大">
+						<span class="checkmark"></span>
+						超巨大
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="死靈">
+						<span class="checkmark"></span>
+						死靈
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="惡魔">
+						<span class="checkmark"></span>
+						惡魔
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="猛獸">
+						<span class="checkmark"></span>
+						猛獸
+					</label>	
+					<label class="checkbox">	
+						<input type="checkbox" class="current-enemy-trait" value="人類">
+						<span class="checkmark"></span>
+						人類
+					</label>
+				</div>	
 			</div>	
-			<div class="row">	
-				<div class="element-100">
-					<span class="label">弱化狀態</span>		
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff1" data-src="images/debuff/charm.webp" value="魅惑">
-					<img class="debuff-logo" src="images/debuff/charm.webp" />
-					<label for="current-enemy-debuff1" class>魅惑</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff2" data-src="images/debuff/poison.webp" value="毒">
-					<img class="debuff-logo" src="images/debuff/poison.webp" />
-					<label for="current-enemy-debuff2" class>毒</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff3" data-src="images/debuff/toxic.webp" value="蝕毒">
-					<img class="debuff-logo" src="images/debuff/toxic.webp" />
-					<label for="current-enemy-debuff3" class>蝕毒</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff4" data-src="images/debuff/burn.webp" value="灼傷">
-					<img class="debuff-logo" src="images/debuff/burn.webp" />
-					<label for="current-enemy-debuff4" class>灼傷</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff5" data-src="images/debuff/spread_of_fire.webp" value="延燒">
-					<img class="debuff-logo" src="images/debuff/spread_of_fire.webp" />
-					<label for="current-enemy-debuff5" class>延燒</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff6" data-src="images/debuff/curse.webp" value="詛咒">
-					<img class="debuff-logo" src="images/debuff/curse.webp" />
-					<label for="current-enemy-debuff6" class>詛咒</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff7" data-src="images/debuff/evil_curse.webp" value="咒厄">
-					<img class="debuff-logo" src="images/debuff/evil_curse.webp" />
-					<label for="current-enemy-debuff7" class>咒厄</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff8" data-src="images/debuff/stun.webp" value="石化">
-					<img class="debuff-logo" src="images/debuff/stun.webp" />
-					<label for="current-enemy-debuff8" class>石化</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff9" data-src="images/debuff/stun.webp" value="晕眩">
-					<img class="debuff-logo" src="images/debuff/stun.webp" />
-					<label for="current-enemy-debuff9" class>晕眩</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff10" data-src="images/debuff/stun.webp" value="拘束">
-					<img class="debuff-logo" src="images/debuff/stun.webp" />
-					<label for="current-enemy-debuff10" class>拘束</label>
-					<input type="checkbox" class="current-enemy-debuff" id="current-enemy-debuff11" data-src="images/debuff/pig.webp" value="猪化">
-					<img class="debuff-logo" src="images/debuff/pig.webp" />
-					<label for="current-enemy-debuff11" class>猪化</label>
+			<div class="row inner">	
+				<div class="flex listlbl">
+					<span class="label">弱化狀態</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/charm.webp" value="魅惑">
+						<img class="debuff-logo" src="images/debuff/charm.webp" />
+						<span class="checkmark"></span>
+						魅惑
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/poison.webp" value="毒">
+						<img class="debuff-logo" src="images/debuff/poison.webp" />
+						<span class="checkmark"></span>
+						毒
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/toxic.webp" value="蝕毒">
+						<img class="debuff-logo" src="images/debuff/toxic.webp" />
+						<span class="checkmark"></span>
+						蝕毒
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/burn.webp" value="灼傷">
+						<img class="debuff-logo" src="images/debuff/burn.webp" />
+						<span class="checkmark"></span>
+						灼傷
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/spread_of_fire.webp" value="延燒">
+						<img class="debuff-logo" src="images/debuff/spread_of_fire.webp" />
+						<span class="checkmark"></span>
+						延燒
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/curse.webp" value="詛咒">
+						<img class="debuff-logo" src="images/debuff/curse.webp" />
+						<span class="checkmark"></span>
+						詛咒
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/evil_curse.webp" value="咒厄">
+						<img class="debuff-logo" src="images/debuff/evil_curse.webp" />
+						<span class="checkmark"></span>
+						咒厄
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/stun.webp" value="石化">
+						<img class="debuff-logo" src="images/debuff/stun.webp" />
+						<span class="checkmark"></span>
+						石化
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/stun.webp" value="晕眩">
+						<img class="debuff-logo" src="images/debuff/stun.webp" />
+						<span class="checkmark"></span>
+						晕眩
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/stun.webp" value="拘束">
+						<img class="debuff-logo" src="images/debuff/stun.webp" />
+						<span class="checkmark"></span>
+						拘束
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="current-enemy-debuff" data-src="images/debuff/pig.webp" value="猪化">
+						<img class="debuff-logo" src="images/debuff/pig.webp" />
+						<span class="checkmark"></span>
+						猪化
+					</label>
 				</div>
 			</div>
-			<div class="row">			
-				<a class="left btn applybtn enemy-applytn" data-value="enemy1">設為敵人I</a>		
-				<a class="left btn applybtn enemy-applytn" data-value="enemy2">設為敵人II</a>		
-				<a class="left btn applybtn enemy-applytn" data-value="enemy3">設為敵人III</a>		
+			<br/>
+			<div class="row center">			
+				<a class="btn enemy-applybtn" data-value="enemy1">設為敵人I</a>		
+				<a class="btn enemy-applybtn" data-value="enemy2">設為敵人II</a>		
+				<a class="btn enemy-applybtn" data-value="enemy3">設為敵人III</a>		
 			</div>			
 		</div>
-		<span class="btnright btn collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
+		<span class="btn btnright collapsebtn" id="enemy-setup-collapsebtn">展開▼</span>
 	</div>
 	<div id="enemy1">
 		<br/>
@@ -1473,7 +1507,7 @@
 			<div class="row center modal-filter-header">
 				篩選
 			</div>
-			<div class="row center">
+			<div class="row center inner">
 				<img class="class-logo servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
 				<img class="class-logo servant-enemy-class" title="Archer" src="images/class/Archer.webp" />
 				<img class="class-logo servant-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
@@ -1490,7 +1524,7 @@
 				<span class="btn setbtn" id="servant-enemy-class-setbtn">全選</span>
 				<span class="btn resetbtn" id="servant-enemy-class-resetbtn">取消</span>
 			</div>
-			<div class="row center">
+			<div class="row center inner">
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="0" checked>
 					<span class="checkmark"></span>
