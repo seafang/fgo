@@ -330,7 +330,7 @@
 	</div>
 	<div id="enemy1">
 		<br/>
-		<div class="detail enemy-detail" id="enemy1-detail">
+		<div class="enemy-detail" id="enemy1-detail">
 			<span class="bold indent-4">敵人I</span>
 			<a class="btn btnright resetbtn enemy-resetbtn" data-value="enemy1">清除</a>
 			<div class="row">
@@ -338,7 +338,7 @@
 					<img class="profile-img enemy-img" id="enemy1-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy1-name"></span>
 					<span class="enemy-debuff" id="enemy1-debuff"></span>
-					<img class="enemy-class class-logo-small space" id="enemy1-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy1-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
 					<span class="label">性別</span>
@@ -363,7 +363,7 @@
 	</div>
 	<div id="enemy2">
 		<br/>
-		<div class="detail enemy-detail" id="enemy2-detail">
+		<div class="enemy-detail" id="enemy2-detail">
 			<span class="bold indent-4">敵人II</span>
 			<a class="btn btnright resetbtn enemy-resetbtn" data-value="enemy2">清除</a>
 			<div class="row">
@@ -371,7 +371,7 @@
 					<img class="profile-img enemy-img" id="enemy2-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy2-name"></span>
 					<span class="enemy-debuff" id="enemy2-debuff"></span>
-					<img class="enemy-class class-logo-small space" id="enemy2-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy2-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
 					<span class="label">性別</span>
@@ -396,7 +396,7 @@
 	</div>
 	<div id="enemy3">
 		<br/>
-		<div class="detail enemy-detail" id="enemy3-detail">
+		<div class="enemy-detail" id="enemy3-detail">
 			<span class="bold indent-4">敵人III</span>
 			<a class="btn btnright resetbtn enemy-resetbtn" data-value="enemy3">清除</a>
 			<div class="row">
@@ -404,7 +404,7 @@
 					<img class="profile-img enemy-img" id="enemy3-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy3-name"></span>
 					<span class="enemy-debuff" id="enemy3-debuff"></span>
-					<img class="enemy-class class-logo-small space" id="enemy3-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy3-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
 					<span class="label">性別</span>
@@ -521,7 +521,7 @@
 					<input type="checkbox" id="use-strict-mode">
 					<span class="slider"></span>
 				</label>
-				<span class="label">無視有機率發動之效果</span>
+				<span class="label space-right-wide">無視有機率發動之效果</span>
 				<label class="switch">
 					<input type="checkbox" id="include-after-defeat" checked>
 					<span class="slider"></span>
@@ -544,8 +544,8 @@
 			<div class="element-30 flex">
 				<img class="profile-img" id="current-servant-img" src="images/bg_logo.webp" />
 				<span id="current-servant-name">未選定從者</span>
-				<img class="class-logo-small space" id="current-servant-class" src="images/class/Unknown.webp" />
-				<span class="star space dull" id="current-servant-star" data-star="">★★★★★</span>
+				<img class="class-logo-small space-left" id="current-servant-class" src="images/class/Unknown.webp" />
+				<span class="star space-left dull" id="current-servant-star" data-star="">★★★★★</span>
 			</div>
 			<div class="element-20">
 				<label for="current-servant-lv" class="label">等級</label>	
@@ -692,7 +692,7 @@
 					<span class="label">屬性</span>
 					<span id="current-servant-alignment"></span>
 				</div>		
-				<div class="element-40">
+				<div class="element-40 flex">
 					<span class="label">特性</span>
 					<span id="current-servant-trait"></span>
 				</div>		
@@ -716,49 +716,50 @@
 					<input type="number" class="" id="current-servant-hp" value="100" min="0" max="100" step="0.00001" disabled>
 				</div>
 			</div>			
-			<div class="detail servant-skill-detail" id="servant-skill1">			
+			<div class="servant-skill-detail" id="servant-skill1">			
 				<div class="column">
-					<div class="element-10">		
-						<label class="switch">
-							<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">使用技能</span>
-					</div>		
-					<div class="element-10">	
-						<label class="label">等級</label>	
-						<select class="narrow update-trigger skill-lv" id="skill1-lv" disabled>	
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>	
-					</div>		
-					<div class="element-10">
-						<label class="switch">
-							<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill1-rankup" value="skill1" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">強化</span>						    
+					<div class="column-row flex">
+						<div class="column-element">
+							<label class="switch">
+								<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
+								<span class="slider"></span>
+							</label>
+							<span class="label">使用技能</span>
+						</div>
+						<div class="column-element">
+							<label class="label">等級</label>	
+							<select class="narrow update-trigger skill-lv" id="skill1-lv" disabled>	
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+							</select>
+						</div>
+						<div class="column-element">
+							<label class="switch">
+								<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill1-rankup" value="skill1" disabled>
+								<span class="slider"></span>
+							</label>
+							<span class="label">強化</span>
+						</div>
 					</div>
-					<div class="element-30">		
+					<div class="column-row flex">		
 						<img class="skill-img" id="skill1-img" src=""/>	
-						<span id="skill1-name"></span>	
+						<span id="skill1-name bold"></span>	
 					</div>		
-					<div class="element-40">			
-						<span class="label">效果</span>		
+					<div class="column-row flex">		
 						<span id="skill1-dscrp"></span>
 					</div>
 				</div>			
 			</div>
 			<br/>
-			<div class="detail servant-skill-detail" id="servant-skill2">
+			<div class="servant-skill-detail" id="servant-skill2">
 				<div class="row">			
 					<div class="element-20">		
 						<img class="skill-img" id="skill2-img" src=""/>	
@@ -802,7 +803,7 @@
 				</div>
 			</div>
 			<br/>
-			<div class="detail servant-skill-detail" id="servant-skill3">
+			<div class="servant-skill-detail" id="servant-skill3">
 				<div class="row">			
 					<div class="element-20">		
 						<img class="skill-img" id="skill3-img" src=""/>	
