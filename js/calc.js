@@ -1554,6 +1554,11 @@ function updateNPPreReq() {
 	});
 	$(activeNPBuff).each(function() {
 		switch (this.effect) {
+			case "class":
+				tempAffinity = affinity.filter(function(value) {
+					return value.classes = this.corrDetail;
+				});
+				break;
 			case "alignment1":
 				tempAlignment1.push(this.corrDetail);
 				break;
