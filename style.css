@@ -71,6 +71,9 @@ table {
 .right {
 	float: right;
 }
+.inner {
+	margin-bottom: 10px;
+}
 .bold {
 	font-weight: bold;
 }
@@ -102,7 +105,17 @@ table {
 	flex-grow: 1;
 }
 .indent-4 {
-	padding-left: 4px
+	padding-left: 4px;
+}
+.listlbl {
+	width: 10%;
+}
+.list {
+	width: 90%;
+	flex-wrap: wrap;
+}
+.list label {
+	margin-right: 20px;
 }
 .counter {
 	display: none;
@@ -153,12 +166,12 @@ table {
 	background-color: black;
 	color: white;
 }
-.applybtn {
+.enemy-applytn {
 	background-color: white;
 	color: black;
 	border-color: black;
 }
-.applybtn:hover {
+.enemy-applytn:hover {
 	background-color: black;
 	color: white;
 }
@@ -174,18 +187,16 @@ table {
 	background-color: #f1f1f1;
 	border-style: none;
 	border-radius: 0px 0px 4px 4px;
-	color: gray;
+	color: #777;
 	font-size: 10px;
 }
 .label {
 	display: inline-block;
-	background-color: #5D5D5D;
+	background-color: #A7A7A7;
 	color: white;
 	padding: 1px 5px;
 	margin: 0px 2px;
-}
-#enemy-setup label {
-	margin-right: 20px;
+	cursor: context-menu;
 }
 select, option, input {
 	font-family: "Noto Sans TC", sans-serif;
@@ -218,7 +229,6 @@ input.narrow {
 	position: relative;
 	margin-left: 5px;
 	padding-left: 18px;
-	cursor: pointer;
 	font-size: 13px;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -228,7 +238,6 @@ input.narrow {
 .checkbox input {
 	position: absolute;
 	opacity: 0;
-	cursor: pointer;
 	height: 0;
 	width: 0;
 }
@@ -239,13 +248,20 @@ input.narrow {
 	height: 13px;
 	width: 13px;
 	background-color: #cacaca;
+	border: 1px solid;
 	border-radius: 2px;
 }
+.checkbox:disabled input ~ .checkmark {
+	background-color: #c8c8c8;
+	border: none;
+}
 .checkbox:hover input ~ .checkmark {
-	background-color: #b3b3b3;
+	background-color: #efefef;
+	border-color: #2196F3;
 }
 .checkbox input:checked ~ .checkmark {
 	background-color: #2196F3;
+	border: none;
 }
 .checkmark:after {
 	content: "";
@@ -303,6 +319,9 @@ input.narrow {
 	-webkit-transition: .3s;
 	transition: .3s;
 }
+input:disabled + .slider::before {
+	background-color: lightgray;
+}
 input:checked + .slider {
 	background-color: #2196F3;
 }
@@ -323,6 +342,10 @@ input:checked + .slider:before {
 	vertical-align: middle;
 	margin: 1px;
 }
+.debuff-logo {
+	width: 14px;
+	margin-right: 2px;
+}
 .dull {
 	filter: brightness(50%);
 }
@@ -332,7 +355,7 @@ input:checked + .slider:before {
 	font-size: 110%;
 }
 .profile-img {
-	width: 60px;
+	width: 50px;
 	margin: 4px;
 	background-color: white;
 	border: 1px solid lightgray;
