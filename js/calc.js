@@ -20,7 +20,7 @@ var bgMaster = parent.bgMaster;
 
 var modalCaller = "";
 
-// Layout
+/* Layout */
 $(document).ready(function() {
 	updateCounter();
 	$("#enemy-setup-collapsebtn").click(function() {
@@ -40,6 +40,7 @@ $(document).ready(function() {
 	});
 });
 
+// Update page height
 $(document).on("click", function() {
 	updateCounter();
 });
@@ -62,17 +63,22 @@ function toggleTeammate(button, element) {
 }
 
 
-// Misc
+/* Misc */
+// Check if any servant appears more than twice on the team
 function countDuplicate(newID) {
 	var test = false;
 	var list = [];
 	var count = 0;
 	var team = ["servantInfo", "teammate1Info", "teammate2Info", "teammate3Info", "teammate4Info", "teammate5Info"];
+	
+	// Loop through the team for a complete lsit of teammates
 	$(team).each(function() {
 		if(window[this][0] !== undefined) {
 			list.push(window[this][0].id);
 		}
 	});
+	
+	// Check if the newly-selected servant are already on the team
 	$(list).each(function() {
 		if (newID == this) {
 			count++;
@@ -85,13 +91,14 @@ function countDuplicate(newID) {
 }
 
 
-// Set Enemy
+/* Set Enemy */
 var enemyInfo = [];
 var debuff = [];
 var enemy1Debuff = [], enemy2Debuff = [], enemy3Debuff = [];
 var enemy1Trait = [], enemy2Trait = [], enemy3Trait = [];
 
 $(document).ready(function() {
+	// Open modals
 	$("#common-enemy-modalbtn").click(function() {
 		openModal("#common-enemy-modal");
 		initialCommonEnemy();
@@ -102,22 +109,49 @@ $(document).ready(function() {
 		initialServantEnemy();
 		loadServantEnemyImg();
 	});
+	
+	// Clear current enemy setup
 	$("#current-enemy-resetbtn").click(function() {
 		resetCurrentEnemy();
 	});
+	
+	// Clear debuff setup
 	$(".current-enemy-debuff").change(function() {
 		updateDebuff();
 	});
-	$(".enemy-applytn").click(function() {
+	
+	// Set enemy
+	$(".enemy-applybtn").click(function() {
 		var enemy = $(this).attr("data-value");
-		setEnemy(enemy);
+		
+		// If the enemy has changed, removed all previous calculation results
+		if ($("#" + enemy + "-result-title").html() != "") {
+			if (confirm("重新選擇敵人後對應的計算結果將會被清除，是否繼續？")) {
+				$("#" + enemy + "-result").find(".table-resetbtn").click();
+				setEnemy(enemy);
+			}
+		} else {
+			setEnemy(enemy);
+		}
 	});
+	
+	// Remove enemy
 	$(".enemy-resetbtn").click(function() {
 		var enemy = $(this).attr("data-value");
-		resetEnemy(enemy);
+		
+		// Removed all previous calculation results
+		if ($("#" + enemy + "-result-title").html() != "") {
+			if (confirm("清除後對應的計算結果亦不會保留，是否繼續？")) {
+				$("#" + enemy + "-result").find(".table-resetbtn").click();
+				resetEnemy(enemy);
+			}
+		} else {
+			resetEnemy(enemy);
+		}
 	});
 });
 
+// Update debuff list
 function updateDebuff() {
 	debuff = [];
 	$(".current-enemy-debuff").each(function() {
@@ -130,22 +164,35 @@ function updateDebuff() {
 	});
 }
 
+// Retrieve selected enemy's info
 function pickEnemy(type, enemyID) {
 	closeModal();
-	if (type === 1) {
-		enemyInfo = servants.filter(function(obj) {
-			return obj.id == enemyID;
-		});
-	} else {
-		enemyInfo = commons.filter(function(obj) {
-			return obj.id == enemyID;
-		});
+	
+	// Determine if the enemy is servant or not
+	switch (type) {
+		case 1:
+			enemyInfo = servants.filter(function(obj) {
+				return obj.id == enemyID;
+			});
+			break;
+		case 2:
+			enemyInfo = commons.filter(function(obj) {
+				return obj.id == enemyID;
+			});
+			break;
+		default:
+			break;
 	}
+	
+	// Reveal the collapsed section if it is hiden
 	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
 		$("#enemy-setup-collapsebtn").click();
 	}
+	
 	$("#current-enemy-img").attr("src", enemyInfo[0].imgID);
 	$("#current-enemy-name").html(enemyInfo[0].name);
+	
+	// Set class to 'Saber' if it's a non-servant enemy without pre-designated class
 	if (enemyInfo[0].classes) {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
 		$("#current-enemy-class").attr("data-class", enemyInfo[0].classes);
@@ -153,18 +200,21 @@ function pickEnemy(type, enemyID) {
 		$("#current-enemy-class").val("Saber");
 		$("#current-enemy-class").attr("data-class", "Saber");
 	}
+	
 	$("#current-enemy-gender").val(enemyInfo[0].gender);
 	$("#current-enemy-attribute").val(enemyInfo[0].attribute);
 	$("#current-enemy-alignment1").val(enemyInfo[0].alignment1);
 	$("#current-enemy-alignment2").val(enemyInfo[0].alignment2);
+	
+	// Loop through the trait list and check all corresponding traits
 	$(".current-enemy-trait").prop("checked", false);
-	var trait = [];
 	var trait = enemyInfo[0].trait;
-	$.each(trait, function(index, value) {
+	$(trait).each(function(index, value) {
 		$("input.current-enemy-trait[value=" + value + "]").prop("checked", true)
 	});
 }
 
+// Initialise enemy setup
 function resetCurrentEnemy() {
 	$("#current-enemy-img").attr("src", "images/bg_logo.webp");
 	$("#current-enemy-name").html("未選定/自訂敵人");
@@ -179,9 +229,12 @@ function resetCurrentEnemy() {
 	$(".current-enemy-trait").prop("checked", false);
 }
 
+// Set the enemy
 function setEnemy(enemy) {
 	var element = $("#" + enemy);
 	$(element).show();
+	
+	// Check if is customising enemy
 	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
 	} else {
@@ -192,21 +245,29 @@ function setEnemy(enemy) {
 	} else {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
 	}
+	
+	// Display debuffs as logo, update enemy debuff lsit
 	var debuffList = "";
 	$(debuff).each(function(key, value) {
-		debuffList += "<img class='debuff-logo left' src='" + value.src + "' />";
+		debuffList += "<img class='debuff-logo' src='" + value.src + "' />";
 	});
 	$(element).find(".enemy-debuff").html(debuffList);
 	window[enemy + "Debuff"] = debuff;
+	
+	// Display class as logo
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
 		alt: $("#current-enemy-class").val()
 	});
+	
+	
 	$(element).find(".enemy-gender").html($("#current-enemy-gender").val());
 	$(element).find(".enemy-attribute").html($("#current-enemy-attribute").val());
 	$(element).find(".enemy-alignment1").html($("#current-enemy-alignment1").val());
 	$(element).find(".enemy-alignment2").html($("#current-enemy-alignment2").val());
+	
+	// Display trait as string list, update enemy trait list
 	var trait = [];
 	$(".current-enemy-trait:checked").each(function() {
 		trait.push($(this).val())
@@ -216,11 +277,9 @@ function setEnemy(enemy) {
 	if (servantInfo[0] !== undefined) {
 		updateBuff();
 	}
-	if ($("#" + enemy + "-result-title").html() != "") {
-		$("#" + enemy + "-result").find(".table-resetbtn").click();
-	}
 }
 
+// Remove enemy
 function resetEnemy(enemy) {
 	var element = $("#" + enemy);
 	$(element).hide();
@@ -237,23 +296,29 @@ function resetEnemy(enemy) {
 	updateBuff();
 }
 
-// Set Battlefield
+/* Set Battlefield */
 var battlefield = [];
 
 $(document).ready(function() {
+	// Update battlefield list
 	$(".battlefield-type").change(function() {
 		updateBattlefield();
 	});
+	
+	// If 'rock mountain' is selected, automatically select 'mountain' as well
 	$("#battlefield-type11").change(function() {
 		if ($(this).is(":checked")) {
 			$("#battlefield-type8").prop("checked", true);
 		}
 	});
+	
+	// Reset battelfield
 	$("#battlefield-resetbtn").click(function() {
 		resetBattlefield();
 	});
 });
 
+// Update battlefield
 function updateBattlefield() {
 	battlefield = [];
 	$(".battlefield-type").each(function() {
@@ -263,6 +328,7 @@ function updateBattlefield() {
 	});
 }
 
+// Reset battlefield
 function resetBattlefield() {
 	battlefield = [];
 	$(".battlefield-type").each(function() {
@@ -270,13 +336,14 @@ function resetBattlefield() {
 	});
 }
 
-// Set Servant
+/* Set Servant */
 var servantInfo = [];
 var servantSave = [];
 var servantAffList = [], servantMult = [], servantAttrAffList = [], servantAtkList = [];
 var skillBuffList = [], npBuffList = [];
 
 $(document).ready(function() {
+	// Check if enemy is set, open modal box
 	$("#servant-modalbtn").click(function() {
 		if ($("#enemy1-name").html() != "") {
 			openModal("#servant-modal");
@@ -286,22 +353,31 @@ $(document).ready(function() {
 			alert("請先設定敵人！");
 		}
 	});
+	
+	// Revert changes made
 	$("#servant-resetbtn").click(function() {
 		resetServant();
 	});
+	
+	// Update NP info
 	$("#current-servant-rankup").change(function() {
 		setCurrentServantNP();
 	});
+	
+	// Update skill info & logo
 	$(".check-skill-rankup").change(function() {
 		setSkill(this, $(this).val());
 	});
 });
 
+// Retrieve servant info
 function pickServant(servantID) {
 	closeModal();
 	servantInfo = servants.filter(function(obj) {
 		return obj.id == servantID;
 	});
+	
+	// Check duplication, retrieve skill, np & multipliers info
 	if (countDuplicate(servantInfo[0].id)) {
 		servantInfo = [];
 		alert("重複從者！請檢查隊伍組成。");
@@ -331,11 +407,16 @@ function pickServant(servantID) {
 		servantAtkList = servantAtk.filter(function(value) {
 			return value.id == servantInfo[0].id;
 		});
+		
+		// Reveal collapsible section if hiden
 		if ($("#servant-setup-collapsebtn").html() == "展開▼") {		
 			$("#servant-setup-collapsebtn").click();	
-		}		
+		}
+		
 		$("#current-servant-img").attr("src", servantInfo[0].imgID);		
-		$("#current-servant-name").html(servantInfo[0].name);		
+		$("#current-servant-name").html(servantInfo[0].name);
+		
+		// Display class & star as logo
 		$("#current-servant-class").attr({		
 			src: "images/class/" + servantInfo[0].classes + ".webp",	
 			"data-class": servantInfo[0].classes	
@@ -365,49 +446,52 @@ function pickServant(servantID) {
 		}		
 		$("#current-servant-star").html(starHTML);		
 		$("#current-servant-star").removeClass("dull");		
-		$("#current-servant-star").attr("data-star", servantInfo[0].star);		
-		$("#current-servant-lv").prop("disabled", false);		
-		$("#current-servant-nplv").prop("disabled", false);		
-		$("#current-servant-statup").prop("disabled", false);		
-		$("#current-servant-hp").prop("disabled", false);		
-		$("#current-servant-rankup").prop("disabled", !servantInfo[0].npRankUp);		
-		$("#current-servant-npoc").prop("disabled", false);		
+		$("#current-servant-star").attr("data-star", servantInfo[0].star);
+		
 		$("#current-servant-gender").html(servantInfo[0].gender);		
 		$("#current-servant-attribute").html(servantInfo[0].attribute);		
 		$("#current-servant-alignment").html(servantInfo[0].alignment1 + ", " + servantInfo[0].alignment2);		
-		$("#current-servant-trait").html(servantInfo[0].trait.join(", "));		
-		$("#current-servant-np").removeClass("Buster Art Quick")		
-		$("#current-servant-np").addClass(servantInfo[0].npColor)		
+		$("#current-servant-trait").html(servantInfo[0].trait.join(", "));
+		$("#current-servant-np").removeClass("Buster Art Quick")
+		$("#current-servant-np").addClass(servantInfo[0].npColor)
+		
+		// Determine if NP rank-up is available
+		$("#servant-setup").find("input").prop("disabled", false);
+		$("#servant-setup").find("select").prop("disabled", false);		
+		$("#current-servant-rankup").prop("disabled", !servantInfo[0].npRankUp);
+		
+		// Retrieve saved servant data
 		servantSave = bgServant.filter(function(obj) {		
 			return obj.id == servantID;	
-		});		
-		$("#check-skill1-rankup").prop("disabled", !servantInfo[0].skill1RU);		
-		$("#check-skill2-rankup").prop("disabled", !servantInfo[0].skill2RU);		
-		$("#check-skill3-rankup").prop("disabled", !servantInfo[0].skill3RU);		
-		setCurrentServantInfo();		
-		setCurrentServantNP();		
-		var skill1Toggle = $("#check-skill1-rankup");		
-		var skill2Toggle = $("#check-skill2-rankup");		
-		var skill3Toggle = $("#check-skill3-rankup");		
-		setSkill(skill1Toggle);		
-		setSkill(skill2Toggle);		
-		setSkill(skill3Toggle);		
+		});
+		setCurrentServantInfo();	
+		setCurrentServantNP();
+		
+		// Determine if skill rank-ups are available
+		var skilllist = ["skill1", "skill2", "skill3"]
+		$(skilllist).each(function() {
+			var toggle = $("#check-" + this + "-rankup");
+			toggle.prop("disabled", !servantInfo[0][skill + "RU"]);
+			setSkill(toggle);
+		});
+		
 		updateBuff();		
 	}
 }
 
+// Revert changes made
 function resetServant() {
 	setCurrentServantInfo();
 	setCurrentServantNP();
-	var skill1Toggle = $("#check-skill1-rankup");
-	var skill2Toggle = $("#check-skill2-rankup");
-	var skill3Toggle = $("#check-skill3-rankup");
-	setSkill(skill1Toggle);
-	setSkill(skill2Toggle);
-	setSkill(skill3Toggle);
+	var skilllist = ["skill1", "skill2", "skill3"]
+	$(skilllist).each(function() {
+		var toggle = $("#check-" + this + "-rankup");
+		setSkill(toggle);
+	});
 	updateBuff();
 }
 
+// Check if servant is owned, apply saved data
 function setCurrentServantInfo() {
 	if (servantSave[0] != undefined) {
 		$("#current-servant-lv").val(servantSave[0].data[1]);
@@ -509,7 +593,7 @@ $(document).ready(function() {
 function pickCE(essenceID) {
 	closeModal();
 	ceInfo = ce.filter(function(obj) {
-		return obj.ceID == essenceID;
+		return obj.id == essenceID;
 	});
 	ceBuffList = multiFilter(ceBuff, {
 		ceID: [essenceID],
@@ -520,10 +604,10 @@ function pickCE(essenceID) {
 	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
 		$("#ce-setup-collapsebtn").click();
 	}
-	$("#servant-ce-img").attr("src", ceInfo[0].ceImgID);
-	$("#servant-ce-name").html(ceInfo[0].ceName);
+	$("#servant-ce-img").attr("src", ceInfo[0].imgID);
+	$("#servant-ce-name").html(ceInfo[0].name);
 	var starHTML = "";
-	switch (ceInfo[0].ceStar) {
+	switch (ceInfo[0].star) {
 		case 3:
 			starHTML = "★★★";
 			break;
@@ -538,7 +622,7 @@ function pickCE(essenceID) {
 	}
 	$("#servant-ce-star").html(starHTML);
 	$("#servant-ce-star").removeClass("dull");
-	$("#servant-ce-star").attr("data-star", ceInfo[0].ceStar);
+	$("#servant-ce-star").attr("data-star", ceInfo[0].star);
 	$("#servant-ce-max").prop("disabled", ceInfo[0].defaultMax);
 	$("#servant-ce-lv").prop("disabled", false);
 	ceSave = bgCE.filter(function(obj) {
@@ -664,15 +748,15 @@ function setMaster(element) {
 		}
 		var name = $(element).val();
 		masterInfo = master.filter(function(obj) {
-			return obj.masterName == name;
+			return obj.name == name;
 		});
 		masterBuffList = multiFilter(masterBuff, {
 			masterName: [name],
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
-		$("#master-img1").attr("src", masterInfo[0].masterImgID1);
-		$("#master-img2").attr("src", masterInfo[0].masterImgID2);
+		$("#master-img1").attr("src", masterInfo[0].imgID1);
+		$("#master-img2").attr("src", masterInfo[0].imgID2);
 		$("#master-lv").prop("disabled", false);
 		$("#master-skill1-logo").attr("src", masterInfo[0].skill1ImgID);
 		if (!masterInfo[0].skill1Buff.some(function(value) {
@@ -1121,7 +1205,7 @@ function pickTeammateCE(value, ceID) {
 	modalCaller = "";
 	var section = $("#" + value);
 	window[value + "CEInfo"] = ce.filter(function(obj) {
-		return obj.ceID == ceID;
+		return obj.id == ceID;
 	});
 	window[value + "CEBuffList"] = multiFilter(ceBuff, {
 		"ceID": [ceID],
@@ -1130,10 +1214,10 @@ function pickTeammateCE(value, ceID) {
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
 	var info = window[value + "CEInfo"];
-	section.find(".teammate-ce-img").attr("src", info[0].ceImgID);
-	section.find(".teammate-ce-name").html(info[0].ceName);
+	section.find(".teammate-ce-img").attr("src", info[0].imgID);
+	section.find(".teammate-ce-name").html(info[0].name);
 	var starHTML = "";
-	switch (info[0].ceStar) {
+	switch (info[0].star) {
 		case 3:
 			starHTML = "★★★";
 			break;
@@ -1339,7 +1423,7 @@ function updateCEAtk() {
 		$("#ce-atk").val(ceInfo[0].maxAtk);
 	} else {
 		var maxLV;
-		switch (ceInfo[0].ceStar) {
+		switch (ceInfo[0].star) {
 			case 3:
 				maxLV = 60;
 				break;
@@ -1895,8 +1979,8 @@ function updateNPED(buff, enemy, lv) {
 
 function updateCEBuff() {
 	var test = true;
-	if (ceInfo[0].ceType == "羈絆禮裝") {
-		if (ceInfo[0].ceCorrSerID != servantInfo[0].id) {
+	if (ceInfo[0].type == "羈絆禮裝") {
+		if (ceInfo[0].corrSerID != servantInfo[0].id) {
 			test = false;
 		}
 	}
@@ -2272,8 +2356,8 @@ function updateTeammateCEBuff(section) {
 	var test = true;
 	var info = window[teammate + "Info"];
 	var essence = window[teammate + "CEInfo"];
-	if (essence[0].ceType == "羈絆禮裝") {
-		if (essence[0].ceCorrSerID != info[0].id) {
+	if (essence[0].type == "羈絆禮裝") {
+		if (essence[0].corrSerID != info[0].id) {
 			test = false;
 		}
 	}
