@@ -31,8 +31,9 @@ section, iframe {
 	display: none;
 }
 .detail {
-	border-left: 8px solid;
-	padding: 2px 4px;
+	width: 33%;
+	border: 1px solid darkgray;
+	padding: 2px;
 }
 #enemy1-detail {
 	border-left-color: orange;
@@ -58,6 +59,13 @@ table {
 	display: table;
 	clear: both;
 }
+.column {
+	padding: 1px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
+}
 .flex {
 	display: flex;
 	align-items: center;
@@ -73,6 +81,9 @@ table {
 }
 .inner {
 	margin-bottom: 10px;
+}
+.innerwide {
+	margin-bottom: 20px;
 }
 .element-5 {
 	flex-grow: 1;
@@ -104,9 +115,6 @@ table {
 .element-100 {
 	flex-grow: 1;
 }
-.indent-4 {
-	padding-left: 4px;
-}
 .listlbl {
 	width: 10%;
 }
@@ -114,18 +122,24 @@ table {
 	width: 90%;
 	flex-wrap: wrap;
 }
-.list label {
-	margin-right: 10px;
-}
-span.label {
-	margin-right: 6px;
-}
 .counter {
 	display: none;
 }
 
 
 /* Element */
+.list label {
+	margin-right: 10px;
+}
+span.label {
+	margin-right: 6px;
+}
+.indent-4 {
+	padding-left: 4px;
+}
+.space {
+	margin-left: 20px;
+}
 .bold {
 	font-weight: bold;
 }
@@ -322,7 +336,6 @@ input.narrow {
 }
 .slider {
 	position: absolute;
-	cursor: pointer;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -436,17 +449,17 @@ input:checked + .slider:before {
 .servant-enemy-class, .servant-class {
 	cursor: pointer;
 }
-.closebtn {
+/*.closebtn {
 	color: #aaaaaa;
 	font-size: 20px;
 	font-weight: bolder;
 	margin-left: auto;
+	cursor: pointer;
 }
 .closebtn:hover, .closebtn:focus {
 	color: #000;
 	text-decoration: none;
-	cursor: pointer;
-}
+}*/
 .modal .servant-img {
 	width: 60px;
 	margin: 4px;
