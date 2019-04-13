@@ -74,9 +74,6 @@ table {
 .inner {
 	margin-bottom: 10px;
 }
-.bold {
-	font-weight: bold;
-}
 .element-10 {
 	flex-grow: 2;
 }
@@ -119,6 +116,27 @@ table {
 }
 .counter {
 	display: none;
+}
+
+
+/* Element */
+.bold {
+	font-weight: bold;
+}
+.Buster {
+	color: Red;
+}
+.Art {
+	color: Blue;
+}
+.Quick {
+	color: Green;
+}
+.weak {
+	color: Red;
+}
+.resist {
+	color: Blue;
 }
 
 
@@ -166,12 +184,12 @@ table {
 	background-color: black;
 	color: white;
 }
-.enemy-applytn {
+.enemy-applybtn {
 	background-color: white;
 	color: black;
 	border-color: black;
 }
-.enemy-applytn:hover {
+.enemy-applybtn:hover {
 	background-color: black;
 	color: white;
 }
@@ -247,7 +265,7 @@ input.narrow {
 	left: 3px;
 	height: 13px;
 	width: 13px;
-	background-color: #cacaca;
+	background-color: white;
 	border: 1px solid;
 	border-radius: 2px;
 }
@@ -337,10 +355,12 @@ input:checked + .slider:before {
 	width: 70px;
 }
 .class-logo {
-	height: 30px;
 	width: 30px;
 	vertical-align: middle;
 	margin: 1px;
+}
+.class-logo-small {
+	width: 25px;
 }
 .debuff-logo {
 	width: 14px;
@@ -355,7 +375,7 @@ input:checked + .slider:before {
 	font-size: 110%;
 }
 .profile-img {
-	width: 50px;
+	width: 60px;
 	margin: 4px;
 	background-color: white;
 	border: 1px solid lightgray;
@@ -396,7 +416,6 @@ input:checked + .slider:before {
 .modal-header {
 	border: 1px solid black;
 	border-radius: 5px;
-	padding: 0px 0px 10px 0px;
 	margin: 4px;
 }
 .modal-filter-header {
