@@ -10,9 +10,9 @@ $(document).ready(function() {
 
 // Generate ce inventory table
 let ceInventoryFilter = {
-	ceStar: [1, 2, 3, 4, 5],
-	ceType: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
-	ceEffect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
+	star: [1, 2, 3, 4, 5],
+	type: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
+	effect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
@@ -72,12 +72,12 @@ function generateCEInventory() {
 	filteredCE.forEach(function(essence) {				
 		var row = table.insertRow(-1);				
 		$(row).addClass("ce-inventory-row");				
-		$(row).attr("id", "ce-inventory-row-" + essence.ceID);				
-		row.insertCell(-1).innerHTML = essence.ceID;
-		row.insertCell(-1).innerHTML = "<img class='essence-img' src='" + essence.ceImgID + "' />";				
-		row.insertCell(-1).innerHTML = essence.ceName;								
+		$(row).attr("id", "ce-inventory-row-" + essence.id);				
+		row.insertCell(-1).innerHTML = essence.id;
+		row.insertCell(-1).innerHTML = "<img class='essence-img' src='" + essence.imgID + "' />";				
+		row.insertCell(-1).innerHTML = essence.name;								
 		var starHTML = "";				
-		switch (essence.ceStar) {	
+		switch (essence.star) {	
 			case 1:
 			default:
 				starHTML = "★";		
@@ -111,64 +111,64 @@ function generateCEInventory() {
 }
 
 function ceInventoryStarChange(element, starNo) {
-	var newStar = ceInventoryFilter.ceStar;
+	var newStar = ceInventoryFilter.star;
 	if ($(element).prop("checked")) {
 		newStar.push(starNo);
-		ceInventoryFilter.ceSstar = newStar;
+		ceInventoryFilter.star = newStar;
 	} else {
 		position = newStar.indexOf(starNo);
 		newStar.splice(position, 1);
-		ceInventoryFilter.ceStar = newStar;
+		ceInventoryFilter.star = newStar;
 	}
 }
 
 function ceInventoryStarAll() {
 	$(".ce-inventory-star").prop("checked", true);
-	ceInventoryFilter.ceStar = [1, 2, 3, 4, 5];
+	ceInventoryFilter.star = [1, 2, 3, 4, 5];
 }
 
 function ceInventoryStarNone() {
 	$(".ce-inventory-star").prop("checked", false);
-	ceInventoryFilter.ceStar = [];
+	ceInventoryFilter.star = [];
 }
 
 function ceInventoryTypeChange(element, typeName) {
-	var newType = ceInventoryFilter.ceType;
+	var newType = ceInventoryFilter.type;
 	if ($(element).prop("checked")) {
 		newType.push(typeName);
-		ceInventoryFilter.ceType = newType;
+		ceInventoryFilter.type = newType;
 	} else {
 		position = newType.indexOf(typeName);
 		newType.splice(position, 1);
-		ceInventoryFilter.ceType = newType;
+		ceInventoryFilter.type = newType;
 	}
 }
 
 function ceInventoryTypeAll() {
 	$(".ce-inventory-type").prop("checked", true);
-	ceInventoryFilter.ceType = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
+	ceInventoryFilter.type = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
 }
 
 function ceInventoryTypeNone() {
 	$(".ce-inventory-type").prop("checked", false);
-	ceInventoryFilter.ceType = [];
+	ceInventoryFilter.type = [];
 }
 
 function ceInventoryEffectChange(element, effectName) {		
-	var newEffect = ceInventoryFilter.ceEffect;	
+	var newEffect = ceInventoryFilter.effect;	
 	if ($(element).prop("checked")) {	
 		newEffect.push(effectName);
-		ceInventoryFilter.ceEffect = newEffect;
+		ceInventoryFilter.effect = newEffect;
 	} else {	
 		position = newEffect.indexOf(effectName);
 		newEffect.splice(position, 1);
-		ceInventoryFilter.ceEffect = newEffect;
+		ceInventoryFilter.effect = newEffect;
 	}	
 }		
 		
 function ceInventoryEffectAll() {		
 	$(".ce-inventory-effect").prop("checked", true);	
-	ceInventoryFilter.ceEffect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 	
+	ceInventoryFilter.effect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 	
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
@@ -176,7 +176,7 @@ function ceInventoryEffectAll() {
 		
 function ceInventoryEffectNone() {		
 	$(".ce-inventory-effect").prop("checked", false);	
-	ceInventoryFilter.ceEffect = [];	
+	ceInventoryFilter.effect = [];	
 }		
 
 function ceInventoryInclusiveChange(element) {
@@ -326,7 +326,7 @@ function updateCEDscrp(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var target = ce.find(function(obj) {
-		return obj.ceID == rowID; 
+		return obj.id == rowID; 
 	});
 	if ($(element).is(":checked")) {
 		$(row).find(".ce-effect").html(target.maxEffect);
