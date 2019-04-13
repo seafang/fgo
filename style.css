@@ -30,10 +30,9 @@ section, iframe {
 #enemy1, #enemy2, #enemy3 {
 	display: none;
 }
-.detail {
-	width: 33%;
-	border: 1px solid darkgray;
-	padding: 2px;
+.enemy-detail {
+	border-left: 8px solid;
+	padding: 2px 4px;
 }
 #enemy1-detail {
 	border-left-color: orange;
@@ -43,6 +42,12 @@ section, iframe {
 }
 #enemy3-detail {
 	border-left-color: #d20000;
+}
+.servant-skill-detail {
+	width: 30%;
+	border: 1px solid darkgray;
+	padding: 2px;
+	margin: 5px;
 }
 table {
 	width: 100%;
@@ -65,6 +70,15 @@ table {
 	flex-direction: column;
 	align-items: center;
 	flex-wrap: wrap;
+}
+.column-row {
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 10px 0;
+}
+.column-element {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 .flex {
 	display: flex;
@@ -137,8 +151,11 @@ span.label {
 .indent-4 {
 	padding-left: 4px;
 }
-.space {
-	margin-left: 20px;
+.space-left {
+	margin-left: 10px;
+}
+.space-right-wide {
+	margin-right: 30px;
 }
 .bold {
 	font-weight: bold;
@@ -234,7 +251,7 @@ span.label {
 	font-weight: 400;
 	color: white;
 	padding: 1px 5px;
-	margin: 0px 2px;
+	margin: 10px 2px;
 	cursor: context-menu;
 }
 select, option, input {
@@ -399,9 +416,13 @@ input:checked + .slider:before {
 }
 .profile-img {
 	width: 60px;
-	margin: 4px;
+	margin: 4px 10px 4px 4px;
 	background-color: white;
 	border: 1px solid lightgray;
+}
+.skill-img {
+	margin-right: 30px;
+	width: 50px;
 }
 
 
