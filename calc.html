@@ -28,7 +28,7 @@
 			<a class="btn resetbtn" id="current-enemy-resetbtn">自訂敵人</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
-			<div class="row">			
+			<div class="row inner">			
 				<div class="element-20 flex">		
 					<img class="profile-img" id="current-enemy-img" src="images/bg_logo.webp" />
 					<span id="current-enemy-name">未選定/自訂敵人</span>	
@@ -341,21 +341,21 @@
 					<img class="enemy-class class-logo-small space-left" id="enemy1-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
-					<span class="label">性別</span>
+					<span class="infotag">性別</span>
 					<span class="enemy-gender" id="enemy1-gender"></span>
 				</div>
 				<div class="element-10">
-					<span class="label">陣營</span>
+					<span class="infotag">陣營</span>
 					<span class="enemy-attribute" id="enemy1-attribute"></span>
 				</div>
 				<div class="element-15">
-					<span class="label">屬性</span>
+					<span class="infotag">屬性</span>
 					<span class="enemy-alignment1" id="enemy1-alignment1"></span>
 					<span>, </span>
 					<span class="enemy-alignment2" id="enemy1-alignment2"></span>
 				</div>
 				<div class="element-40 flex">
-					<span class="label">特性</span>
+					<span class="infotag">特性</span>
 					<span class="enemy-trait" id="enemy1-trait"></span>
 				</div>
 			</div>
@@ -374,21 +374,21 @@
 					<img class="enemy-class class-logo-small space-left" id="enemy2-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
-					<span class="label">性別</span>
+					<span class="infotag">性別</span>
 					<span class="enemy-gender" id="enemy2-gender"></span>
 				</div>
 				<div class="element-10">
-					<span class="label">陣營</span>
+					<span class="infotag">陣營</span>
 					<span class="enemy-attribute" id="enemy2-attribute"></span>
 				</div>
 				<div class="element-15">
-					<span class="label">屬性</span>
+					<span class="infotag">屬性</span>
 					<span class="enemy-alignment1" id="enemy2-alignment1"></span>
 					<span>, </span>
 					<span class="enemy-alignment2" id="enemy2-alignment2"></span>
 				</div>
 				<div class="element-40 flex">
-					<span class="label">特性</span>
+					<span class="infotag">特性</span>
 					<span class="enemy-trait" id="enemy2-trait"></span>
 				</div>
 			</div>
@@ -407,21 +407,21 @@
 					<img class="enemy-class class-logo-small space-left" id="enemy3-class" src="images/class/Unknown.webp" alt="" />
 				</div>
 				<div class="element-10">
-					<span class="label">性別</span>
+					<span class="infotag">性別</span>
 					<span class="enemy-gender" id="enemy3-gender"></span>
 				</div>
 				<div class="element-10">
-					<span class="label">陣營</span>
+					<span class="infotag">陣營</span>
 					<span class="enemy-attribute" id="enemy3-attribute"></span>
 				</div>
 				<div class="element-15">
-					<span class="label">屬性</span>
+					<span class="infotag">屬性</span>
 					<span class="enemy-alignment1" id="enemy3-alignment1"></span>
 					<span>, </span>
 					<span class="enemy-alignment2" id="enemy3-alignment2"></span>
 				</div>
 				<div class="element-40 flex">
-					<span class="label">特性</span>
+					<span class="infotag">特性</span>
 					<span class="enemy-trait" id="enemy3-trait"></span>
 				</div>
 			</div>
@@ -681,24 +681,24 @@
 		<div class="collapsible" id="servant-setup-collapsible">
 			<div class="row innerwide">			
 				<div class="element-20">
-					<span class="label">性別</span>
+					<span class="infotag">性別</span>
 					<span id="current-servant-gender"></span>
 				</div>		
 				<div class="element-20">
-					<span class="label">陣營</span>
+					<span class="infotag">陣營</span>
 					<span id="current-servant-attribute"></span>
 				</div>		
 				<div class="element-20">
-					<span class="label">屬性</span>
+					<span class="infotag">屬性</span>
 					<span id="current-servant-alignment"></span>
 				</div>		
 				<div class="element-40 flex">
-					<span class="label">特性</span>
+					<span class="infotag">特性</span>
 					<span id="current-servant-trait"></span>
 				</div>		
 			</div>			
 			<div class="row innerwide">
-				<div class="element-20">
+				<div class="element-20 flex">
 					<label class="switch">
 						<input type="checkbox" class="update-trigger" id="current-servant-rankup" disabled>
 						<span class="slider"></span>
@@ -715,135 +715,137 @@
 					<span class="label">剩餘HP(%)</span>
 					<input type="number" class="" id="current-servant-hp" value="100" min="0" max="100" step="0.00001" disabled>
 				</div>
-			</div>			
-			<div class="servant-skill-detail" id="servant-skill1">			
-				<div class="column">
-					<div class="column-row flex">
-						<div class="column-element">
-							<label class="switch">
-								<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
-								<span class="slider"></span>
-							</label>
-							<span class="label">使用技能</span>
-						</div>
-						<div class="column-element">
-							<label class="label">等級</label>	
-							<select class="narrow update-trigger skill-lv" id="skill1-lv" disabled>	
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10">10</option>
-							</select>
-						</div>
-						<div class="column-element">
-							<label class="switch">
-								<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill1-rankup" value="skill1" disabled>
-								<span class="slider"></span>
-							</label>
-							<span class="label">強化</span>
-						</div>
-					</div>
-					<div class="column-row flex">		
-						<img class="skill-img" id="skill1-img" src=""/>	
-						<span id="skill1-name bold"></span>	
-					</div>		
-					<div class="column-row flex">		
-						<span id="skill1-dscrp"></span>
-					</div>
-				</div>			
 			</div>
-			<br/>
-			<div class="servant-skill-detail" id="servant-skill2">
-				<div class="row">			
-					<div class="element-20">		
-						<img class="skill-img" id="skill2-img" src=""/>	
-						<span id="skill2-name"></span>	
-					</div>		
-					<div class="element-10">		
-						<label class="switch">
-							<input type="checkbox" class="use-skill" id="use-skill2" value="skill2" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">使用技能</span>
-					</div>		
-					<div class="element-20">		
-					<span>		
-						<label class="label">等級</label>	
-						<select class="narrow update-trigger skill-lv" id="skill2-lv" disabled>	
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>	
-					</span>		
-					</div>		
-					<div class="element-10">		
-						<label class="switch">
-							<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill2-rankup" value="skill2" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">技能強化</span>	
-					</div>		
-				</div>			
-				<div class="row">			
-					<span class="label">效果</span>		
-					<span id="skill2-dscrp"></span>		
-				</div>
-			</div>
-			<br/>
-			<div class="servant-skill-detail" id="servant-skill3">
-				<div class="row">			
-					<div class="element-20">		
-						<img class="skill-img" id="skill3-img" src=""/>	
-						<span id="skill3-name"></span>	
-					</div>		
-					<div class="element-10">		
-						<label class="switch">
-							<input type="checkbox" class="use-skill" id="use-skill3" value="skill3" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">使用技能</span>
-					</div>		
-					<div class="element-20">		
-					<span>		
-						<label class="label">等級</label>	
-						<select class="narrow update-trigger skill-lv" id="skill3-lv" disabled>	
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-						</select>	
-					</span>		
-					</div>		
-					<div class="element-10">		
-						<label class="switch">
-							<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill3-rankup" value="skill3" disabled>
-							<span class="slider"></span>
-						</label>
-						<span class="label">技能強化</span>	
-					</div>		
-				</div>			
-				<div class="row">			
-					<span class="label">效果</span>		
-					<span id="skill3-dscrp"></span>		
+			<div class="row">
+				<div class="servant-skill-detail" id="servant-skill1">					
+					<div class="column">				
+						<div class="column-row flex">			
+							<div class="column-element">		
+								<label class="switch">	
+									<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
+									<span class="slider"></span>
+								</label>	
+								<span class="label">使用技能</span>	
+							</div>		
+							<div class="column-element">		
+								<label class="label">等級</label>	
+								<select class="narrow update-trigger skill-lv" id="skill1-lv" disabled>	
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+								</select>	
+							</div>		
+							<div class="column-element">		
+								<label class="switch">	
+									<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill1-rankup" value="skill1" disabled>
+									<span class="slider"></span>
+								</label>	
+								<span class="label">強化</span>	
+							</div>		
+						</div>			
+						<div class="column-row flex">			
+							<img class="skill-img" id="skill1-img" src=""/>		
+							<span id="skill1-name bold"></span>		
+						</div>			
+						<div class="column-row flex">			
+							<span id="skill1-dscrp"></span>		
+						</div>			
+					</div>				
+				</div>					
+				<br/>					
+				<div class="servant-skill-detail" id="servant-skill2">					
+					<div class="row">				
+						<div class="element-20">			
+							<img class="skill-img" id="skill2-img" src=""/>		
+							<span id="skill2-name"></span>		
+						</div>			
+						<div class="element-10">			
+							<label class="switch">		
+								<input type="checkbox" class="use-skill" id="use-skill2" value="skill2" disabled>	
+								<span class="slider"></span>	
+							</label>		
+							<span class="label">使用技能</span>		
+						</div>			
+						<div class="element-20">			
+						<span>			
+							<label class="label">等級</label>		
+							<select class="narrow update-trigger skill-lv" id="skill2-lv" disabled>		
+								<option value="1">1</option>	
+								<option value="2">2</option>	
+								<option value="3">3</option>	
+								<option value="4">4</option>	
+								<option value="5">5</option>	
+								<option value="6">6</option>	
+								<option value="7">7</option>	
+								<option value="8">8</option>	
+								<option value="9">9</option>	
+								<option value="10">10</option>	
+							</select>		
+						</span>			
+						</div>			
+						<div class="element-10">			
+							<label class="switch">		
+								<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill2-rankup" value="skill2" disabled>	
+								<span class="slider"></span>	
+							</label>		
+							<span class="label">技能強化</span>		
+						</div>			
+					</div>				
+					<div class="row">				
+						<span class="label">效果</span>			
+						<span id="skill2-dscrp"></span>			
+					</div>				
+				</div>					
+				<br/>					
+				<div class="servant-skill-detail" id="servant-skill3">					
+					<div class="row">				
+						<div class="element-20">			
+							<img class="skill-img" id="skill3-img" src=""/>		
+							<span id="skill3-name"></span>		
+						</div>			
+						<div class="element-10">			
+							<label class="switch">		
+								<input type="checkbox" class="use-skill" id="use-skill3" value="skill3" disabled>	
+								<span class="slider"></span>	
+							</label>		
+							<span class="label">使用技能</span>		
+						</div>			
+						<div class="element-20">			
+						<span>			
+							<label class="label">等級</label>		
+							<select class="narrow update-trigger skill-lv" id="skill3-lv" disabled>		
+								<option value="1">1</option>	
+								<option value="2">2</option>	
+								<option value="3">3</option>	
+								<option value="4">4</option>	
+								<option value="5">5</option>	
+								<option value="6">6</option>	
+								<option value="7">7</option>	
+								<option value="8">8</option>	
+								<option value="9">9</option>	
+								<option value="10">10</option>	
+							</select>		
+						</span>			
+						</div>			
+						<div class="element-10">			
+							<label class="switch">		
+								<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill3-rankup" value="skill3" disabled>	
+								<span class="slider"></span>	
+							</label>		
+							<span class="label">技能強化</span>		
+						</div>			
+					</div>				
+					<div class="row">				
+						<span class="label">效果</span>			
+						<span id="skill3-dscrp"></span>			
+					</div>				
 				</div>
 			</div>
 		</div>
