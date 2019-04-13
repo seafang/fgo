@@ -393,7 +393,7 @@ function pickServant(servantID) {
 			toSelf: [true],	
 			buffFirst: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "npmult", "hpmult"]
 		});
 		servantAffList = affinity.filter(function(value) {
 			return value.classes == servantInfo[0].classes;
@@ -1289,6 +1289,7 @@ var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], team
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
 var tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+var servantNPAddMult = {};
 var tempEnemyTrait = [];
 
 $(document).ready(function() {
@@ -1381,6 +1382,7 @@ function updateTeammateSkillSet(toggle) {
 
 function updateBuff() {
 	tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
+	servantNPAddMult = {};
 	tempEnemyTrait = [];
 	updatePassiveBuff();
 	updateSkillPreReq();
@@ -1567,6 +1569,24 @@ function updateNPPreReq() {
 			case "enemytrait":
 				tempEnemyTrait.push(this.corrDetail);
 				break;
+			case "npmult":
+				servantNPAddMult.type = this.effect;
+				servantNPAddMult.npLV = this.npLV;
+				servantNPAddMult[1] = this[1];
+				servantNPAddMult[2] = this[2];
+				servantNPAddMult[3] = this[3];
+				servantNPAddMult[4] = this[4];
+				servantNPAddMult[5] = this[5];
+				break;
+			case "hpmult":
+				servantNPAddMult.type = this.effect;
+				servantNPAddMult.npLV = this.npLV;
+				servantNPAddMult[1] = this[1];
+				servantNPAddMult[2] = this[2];
+				servantNPAddMult[3] = this[3];
+				servantNPAddMult[4] = this[4];
+				servantNPAddMult[5] = this[5];
+				break;
 			default:
 				break;
 		}
@@ -1745,7 +1765,7 @@ function updateSkillBuff() {
 						break;
 					case "hpdmg":
 						var hp = Number($("#current-servant-hp").val());
-						if (hp <= 50) {
+						if (hp <= 50 && hp > 0) {
 							var value = Number($("#atk-buff").val());	
 							var lower = this[lv];
 							var total = (50 - hp) * 4 / 10 + lower;
@@ -2469,13 +2489,50 @@ function calcDmg(enemy) {
 	} else {
 		atk = servantAtkList[0][servantLV];
 	}
-	var totalAtk = atk + parseInt($("#current-servant-statup").val()) +  parseInt($("#ce-atk").val());
+	var atkStatUp = parseInt($("#current-servant-statup").val());
+	if (atkStatUp > 2000) {
+		atkStatUp = 2000
+	} else if (atkStatUp < 0) {
+		atkStatUp = 0
+	}
+	var ceAtk = parseInt($("#ce-atk").val());
+	if (ceAtk > 2400) {
+		ceAtk = 2400
+	} else if (ceAtk < 0) {
+		ceAtk = 0
+	}
+	var totalAtk = atk + atkStatUp + ceAtk;
 	var npLv = $("#current-servant-nplv").val();
 	var npMultiplier;
 	if ($("#current-servant-rankup").is(":checked")) {
 		npMultiplier = servantInfo[0]["np" + npLv + "RU"] / 100;
 	} else {
 		npMultiplier = servantInfo[0]["np" + npLv] / 100;
+	}
+	var multLV;
+	if (servantNPAddMult.npLV !== undefined) {
+		if (servantNPAddMult.npLV) {
+			multLV = npLv;
+		} else {
+			multLV = $("#current-servant-npoc").val();
+		}
+	}
+	switch (servantNPAddMult.type) {
+		case undefined:
+			break;
+		case "npmult":
+			npMultiplier += servantNPAddMult[multLV];
+			break;
+		case "hpmult":
+			var hp = Number($("#current-servant-hp").val());
+			if (hp < 0) {
+				hp = Math.abs(hp);
+			} else if (hp > 100) {
+				hp = 100;
+			}
+			var addMult = servantNPAddMult[multLV] * [ 1 - ( hp / 100 ) ];
+			npMultiplier += addMult;
+			break;
 	}
 	var npColor = servantInfo[0].npColor;
 	var cardMultiplier;
@@ -2517,13 +2574,13 @@ function calcDmg(enemy) {
 	var addDmg = parseInt($("#add-atk").val());
 	var redDmg = parseInt($("#" + enemy + "-buff").find(".red-atk").val());
 	var minOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff * 0.9 + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff * 0.9 + ( addDmg - redDmg );
 	minOutput = Number(minOutput.toFixed(0));
 	var avgOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff + ( addDmg - redDmg );
 	avgOutput = Number(avgOutput.toFixed(0));
 	var maxOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * (1 + npDmgBuff) * npEDBuff * 1.1 + ( addDmg - redDmg );
+		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff * 1.1 + ( addDmg - redDmg );
 	maxOutput = Number(maxOutput.toFixed(0));
 	var output = {
 		query: queryCount,
