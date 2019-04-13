@@ -471,7 +471,7 @@ function pickServant(servantID) {
 		var skilllist = ["skill1", "skill2", "skill3"]
 		$(skilllist).each(function() {
 			var toggle = $("#check-" + this + "-rankup");
-			toggle.prop("disabled", !servantInfo[0][skill + "RU"]);
+			toggle.prop("disabled", !servantInfo[0][this + "RU"]);
 			setSkill(toggle);
 		});
 		
@@ -510,12 +510,8 @@ function setCurrentServantInfo() {
 		$("#current-servant-nplv").val(1);
 		$("#current-servant-statup").val(0);
 		$("#current-servant-rankup").prop("checked", false);
-		$("#skill1-lv").val(1);
-		$("#check-skill1-rankup").prop("checked", false);
-		$("#skill2-lv").val(1);
-		$("#check-skill2-rankup").prop("checked", false);
-		$("#skill3-lv").val(1);
-		$("#check-skill3-rankup").prop("checked", false);
+		$(".skill-lv").val(1);
+		$(".check-skill-rankup").prop("checked", false);
 		$("#event-buff").val(0);
 	}
 	$("#current-servant-hp").val(100);
