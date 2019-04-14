@@ -1,3 +1,13 @@
+/* Misc */
+function toggleFilter(button, element) {
+	if ($(button).html() == "+") {
+		$(button).html("-");
+	} else {
+		$(button).html("+");
+	}
+	$(element).toggle(300);
+}
+
 /* Servant Enemy Modal */
 let servantEnemyFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
@@ -139,6 +149,10 @@ let servantFilter = {
 $(document).ready(function() {
 	$("#servant-modal-closebtn").click(function() {
 		closeModal();
+	});
+	
+	$("#servant-modal-filter-toggle").click(function() {
+		toggleFilter(this, "#servant-modal-filter-content");
 	});
 	
 	// Change in class filtering criteria
