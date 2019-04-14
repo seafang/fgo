@@ -487,17 +487,23 @@ input:checked + .slider:before {
 .servant-enemy-class, .servant-class {
 	cursor: pointer;
 }
-/*.closebtn {
+.modal-filter-box {
+	border: 1px solid darkgray;
+}
+.modal-filter-header {
+	background-color: grey;
+}
+.filter-toggle {
 	color: #aaaaaa;
 	font-size: 20px;
 	font-weight: bolder;
 	margin-left: auto;
 	cursor: pointer;
 }
-.closebtn:hover, .closebtn:focus {
+.filter-toggle:hover, .filter-toggle:focus {
 	color: #000;
 	text-decoration: none;
-}*/
+}
 .modal .servant-img {
 	width: 60px;
 	margin: 4px;
@@ -524,6 +530,11 @@ input:checked + .slider:before {
 
 .teammate-detail {
 	display: none;
+}
+
+.modal-filter-content {
+	display: none;
+	padding: 5px;
 }
 
 
