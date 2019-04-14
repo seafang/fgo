@@ -61,10 +61,10 @@ function setCaller(caller) {
 
 // Collapsible
 function toggle(button, element) {
-	if ($(button).html() == "接疊▲") {
-		$(button).html("展開▼");
+	if ($(button).html() == "接疊 ▲") {
+		$(button).html("展開 ▼");
 	} else {
-		$(button).html("接疊▲");
+		$(button).html("接疊 ▲");
 	}
 	$(element).toggle(300);
 }
