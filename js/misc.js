@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 // To top button
 $(document).scroll(function() {
-	if ($(document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
+	if (window.pageYOffset > 50 || $(document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
 		$("#to_top").show();
 	} else {
 		$("#to_top").hide();
@@ -43,7 +43,7 @@ function toTop() {
 // Modal
 function openModal(modal) {
 	if (modal != "#servant-enemy-modal" && modal != "#common-enemy-modal") {
-		var position = $(document.documentElement).scrollTop();
+		var position = window.pageYOffset || $(parent.document.body).scrollTop() || $(parent.document.documentElement).scrollTop();
 		$(modal).css("padding-top", ( position + 100 ) + "px");
 	}
 	$(modal).show();
