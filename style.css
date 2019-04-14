@@ -391,10 +391,13 @@ input.narrow {
 	transition: .3s;
 }
 input:disabled + .slider::before {
-	background-color: #c7c7c7;
+	background-color: #bebebe;
 }
 input:checked + .slider {
 	background-color: #2196F3;
+}
+input:checked:disabled + .slider {
+	background-color: #207FCB;
 }
 input:checked + .slider:before {
 	-webkit-transform: translateX(14px);
@@ -489,19 +492,21 @@ input:checked + .slider:before {
 }
 .modal-filter-box {
 	border: 1px solid darkgray;
+	width: 95%;
 }
-.modal-filter-header {
-	background-color: grey;
+.modal-filter-box-header {
+	background-color: lightgrey;
 }
 .filter-toggle {
-	color: #aaaaaa;
+	color: white;
 	font-size: 20px;
 	font-weight: bolder;
 	margin-left: auto;
+	margin-right: 10px;
 	cursor: pointer;
 }
 .filter-toggle:hover, .filter-toggle:focus {
-	color: #000;
+	color: #e5e5e5;
 	text-decoration: none;
 }
 .modal .setbtn {
