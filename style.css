@@ -342,11 +342,11 @@ input.narrow {
 }
 .checkbox:hover input ~ .checkmark {
 	background-color: #efefef;
-	border-color: #6BBCFF;
+	border-color: #54B2FF;
 }
 .checkbox input:checked ~ .checkmark {
-	background-color: #6BBCFF;
-	border-color: #6BBCFF;
+	background-color: #54B2FF;
+	border-color: #54B2FF;
 }
 .checkmark:after {
 	content: "";
@@ -407,7 +407,7 @@ input:disabled + .slider::before {
 	background-color: #bebebe;
 }
 input:checked + .slider {
-	background-color: #2196F3;
+	background-color: #54B2FF;
 }
 input:checked:disabled + .slider {
 	background-color: #207FCB;
