@@ -44,7 +44,7 @@ function toTop() {
 function openModal(modal) {
 	if (modal != "#servant-enemy-modal" && modal != "#common-enemy-modal") {
 		var position = window.pageYOffset || $(parent.document.body).scrollTop() || $(parent.document.documentElement).scrollTop();
-		$(modal).css("padding-top", ( position + 100 ) + "px");
+		$(modal).css("padding-top", ( position + 40 ) + "px");
 	}
 	$(modal).show();
 }
