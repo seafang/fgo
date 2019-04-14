@@ -1,7 +1,7 @@
 /* Misc */
 function toggleFilter(button, element) {
 	if ($(button).html() == "+") {
-		$(button).html("-");
+		$(button).html("–");
 	} else {
 		$(button).html("+");
 	}
