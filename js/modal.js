@@ -151,8 +151,8 @@ $(document).ready(function() {
 		closeModal();
 	});
 	
-	$("#servant-modal-filter-toggle").click(function() {
-		toggleFilter(this, "#servant-modal-filter-content");
+	$("#servant-modal-filter-box-toggle").click(function() {
+		toggleFilter(this, "#servant-modal-filter-box-content");
 	});
 	
 	// Change in class filtering criteria
