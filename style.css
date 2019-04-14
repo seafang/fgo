@@ -158,7 +158,7 @@ span.label {
 .space-left {
 	margin-left: 20px;
 }
-.space-right-wide {
+span.space-right-wide, .space-right-wide {
 	margin-right: 30px;
 }
 .bold {
