@@ -617,7 +617,7 @@ function pickCE(essenceID) {
 	
 	// Filter useful CE buffs
 	ceBuffList = multiFilter(ceBuff, {
-		ceID: [essenceID],
+		id: [essenceID],
 		toSelf: [true],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
@@ -752,7 +752,7 @@ $(document).ready(function() {
 function generateMasterSelection() {
 	$(master).each(function(index, value) {
 		var select = $("#master-name-selection");
-		var name = value.masterName;
+		var name = value.name;
 		var option = {value: name, text: name};
 		select.append($('<option>', option));
 	});
@@ -799,7 +799,7 @@ function setMaster(element) {
 		
 		// Filter useful skill buffs
 		masterBuffList = multiFilter(masterBuff, {
-			masterName: [name],
+			name: [name],
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
@@ -1246,7 +1246,7 @@ function pickTeammateCE(value, ceID) {
 	
 	// Filter useful CE buffs
 	window[value + "CEBuffList"] = multiFilter(ceBuff, {
-		"ceID": [ceID],
+		id: [ceID],
 		range: ["team", "all-enemy", "single-enemy"],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
@@ -1282,7 +1282,7 @@ function pickTeammateCE(value, ceID) {
 	
 	// Retrieve saved CE data
 	window[value + "CESave"] = bgCE.filter(function(obj) {
-		return obj.id == essenceID;
+		return obj.id == ceID;
 	});
 	
 	var ceToggle = section.find(".teammate-ce-max");
