@@ -153,7 +153,7 @@ table {
 
 /* Element */
 .list label {
-	margin-right: 10px;
+	margin: 1px 10px 2px 5px;
 }
 span.label {
 	margin-right: 6px;
@@ -280,6 +280,9 @@ span.space-right-wide, .space-right-wide {
 	margin: 10px;
 	cursor: context-menu;
 }
+.label-simple {
+	margin-left: 5px;
+}
 select, option, input {
 	font-family: "Noto Sans TC", sans-serif;
 	font-weight: 300;
@@ -339,11 +342,11 @@ input.narrow {
 }
 .checkbox:hover input ~ .checkmark {
 	background-color: #efefef;
-	border-color: #2196F3;
+	border-color: #6BBCFF;
 }
 .checkbox input:checked ~ .checkmark {
-	background-color: #2196F3;
-	border-color: #2196F3;
+	background-color: #6BBCFF;
+	border-color: #6BBCFF;
 }
 .checkmark:after {
 	content: "";
@@ -476,9 +479,6 @@ input:checked + .slider:before {
 #servant-enemy-modal, #common-enemy-modal {
 	padding-top: 40px;
 }
-#servant-modal {
-	padding-top: 150px;
-}
 .modal-box {
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 	background-color: white;
@@ -495,31 +495,35 @@ input:checked + .slider:before {
 .modal-filter-header {
 	background-color: #ff4a4a;
 	color: white;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 0;
 	margin-bottom: 10px;
 }
 .servant-enemy-class, .servant-class {
 	cursor: pointer;
 }
 .modal-filter-box {
-	border: 1px solid lightgray;
-	width: 95%;
+	border: 1px solid #d7d7d7;
+	width: 98%;
 }
 .modal-filter-box-header {
-	background-color: lightgray;
+	border: 2px solid #ff4a4a;
 }
 .modal-filter-box-content {
-	padding: 5px;
+	display: none;
+	padding: 5px 5px 10px 5px;
 }
 .filter-box-toggle {
-	color: white;
+	color: #ff4a4a;
 	font-size: 20px;
-	font-weight: bolder;
-	margin-left: auto;
-	margin-right: 10px;
+	font-weight: 900;
 	cursor: pointer;
+	width: 100%;
+	padding-left: 97%;
 }
 .filter-box-toggle:hover, .filter-box-toggle:focus {
-	color: #e5e5e5;
+	color: #ffa8a8;
 	text-decoration: none;
 }
 .modal .setbtn {
