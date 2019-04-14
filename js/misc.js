@@ -47,6 +47,11 @@ function openModal(modal) {
 
 function closeModal() {
 	$(".modal").hide();
+	$(".filter-box-toggle").each() {
+		if($(this).html() == "–") {
+			$(this).click();
+		}
+	});
 }
 
 $(document).click(function(event) {
