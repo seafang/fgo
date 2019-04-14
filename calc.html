@@ -1766,296 +1766,305 @@
 				<a class="btn setbtn" id="servant-type-setbtn">全選</a>
 				<a class="btn resetbtn" id="servant-type-resetbtn">取消</a>
 			</div>
-			<div class="row justify-even inner">
-				<div class="flex center">
-					<span class="label">陣營</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-attribute" value="天" checked>
-						<span class="checkmark"></span>
-						天
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-attribute" value="地" checked>
-						<span class="checkmark"></span>
-						地
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-attribute" value="人" checked>
-						<span class="checkmark"></span>
-						人
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-attribute" value="星" checked>
-						<span class="checkmark"></span>
-						星
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-attribute" value="獸" checked>
-						<span class="checkmark"></span>
-						獸
-					</label>	
-					<a class="btn setbtn" id="servant-attribute-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-attribute-resetbtn">取消</a>	
+			<div class="modal-filter-box">
+				<div class="row modal-filter-header">
+					<a class="filter-toggle" id="servant-modal-filter-toggle">+</a>
 				</div>
-				<div class="flex center">
-					<span class="label">性別</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-gender" value="男性" checked>
-						<span class="checkmark"></span>
-						男性
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-gender" value="女性" checked>
-						<span class="checkmark"></span>
-						女性
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-gender" value="不明" checked>
-						<span class="checkmark"></span>
-						不明
-					</label>	
-					<a class="btn setbtn" id="servant-gender-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-gender-resetbtn">取消</a>	
+				<div class="modal-filter-content" id="servant-modal-filter-content">
+					<div class="row justify-even inner">			
+						<div class="flex center">		
+							<span class="label">陣營</span>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-attribute" value="天" checked>
+								<span class="checkmark"></span>
+								天
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-attribute" value="地" checked>
+								<span class="checkmark"></span>
+								地
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-attribute" value="人" checked>
+								<span class="checkmark"></span>
+								人
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-attribute" value="星" checked>
+								<span class="checkmark"></span>
+								星
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-attribute" value="獸" checked>
+								<span class="checkmark"></span>
+								獸
+							</label>	
+							<a class="btn setbtn" id="servant-attribute-setbtn">全選</a>	
+							<a class="btn resetbtn" id="servant-attribute-resetbtn">取消</a>	
+						</div>		
+						<div class="flex center">		
+							<span class="label">性別</span>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-gender" value="男性" checked>
+								<span class="checkmark"></span>
+								男性
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-gender" value="女性" checked>
+								<span class="checkmark"></span>
+								女性
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-gender" value="不明" checked>
+								<span class="checkmark"></span>
+								不明
+							</label>	
+							<a class="btn setbtn" id="servant-gender-setbtn">全選</a>	
+							<a class="btn resetbtn" id="servant-gender-resetbtn">取消</a>	
+						</div>		
+					</div>			
+					<div class="row center inner">					
+						<span class="label">屬性I</span>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment1" value="秩序" checked>
+							<span class="checkmark"></span>
+							秩序
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment1" value="中立" checked>
+							<span class="checkmark"></span>
+							中立
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment1" value="混沌" checked>
+							<span class="checkmark"></span>
+							混沌
+						</label>	
+						<a class="btn setbtn" id="servant-alignment1-setbtn">全選</a>	
+						<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>
+					</div>
+					<div class="row center inner">		
+						<span class="label">屬性II</span>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="善" checked>
+							<span class="checkmark"></span>
+							善
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="中庸" checked>
+							<span class="checkmark"></span>
+							中庸
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="惡" checked>
+							<span class="checkmark"></span>
+							惡
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="狂" checked>
+							<span class="checkmark"></span>
+							狂花嫁
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="花嫁" checked>
+							<span class="checkmark"></span>
+							花嫁
+						</label>	
+						<label class="checkbox">	
+							<input type="checkbox" class="servant-alignment2" value="夏" checked>
+							<span class="checkmark"></span>
+							夏
+						</label>	
+						<a class="btn setbtn" id="servant-alignment2-setbtn">全選</a>	
+						<a class="btn resetbtn" id="servant-alignment2-resetbtn">取消</a>		
+					</div>			
+					<div class="row justify-even inner">			
+						<div class="flex center">		
+							<span class="label">寶具卡色</span>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-color" value=" Buster " checked>
+								<span class="checkmark"></span>
+								Buster
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-color" value="Art" checked>
+								<span class="checkmark"></span>
+								Art
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-color" value="Quick" checked>
+								<span class="checkmark"></span>
+								Quick
+							</label>	
+							<a class="btn setbtn" id="servant-color-setbtn">全選</a>	
+							<a class="btn resetbtn" id="servant-color-resetbtn">取消</a>	
+						</div>		
+						<div class="flex center">		
+							<span class="label">寶具類別</span>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-range" value="全體" checked>
+								<span class="checkmark"></span>
+								全體
+							</label>	
+							<label class="checkbox">	
+								<input type="checkbox" class="servant-range" value="單體" checked>
+								<span class="checkmark"></span>
+								單體
+							</label>	
+							<a class="btn setbtn" id="servant-range-setbtn">全選</a>	
+							<a class="btn resetbtn" id="servant-range-resetbtn">取消</a>	
+						</div>		
+					</div>			
+					<div class="row center inner">
+						<div class="listlbl">
+							<span class="label">特攻</span>
+						</div>
+						<div class="flex list">
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="Ruler" checked>	
+								<span class="checkmark"></span>	
+								無特攻	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="Saber" checked>	
+								<span class="checkmark"></span>	
+								Saber	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="男性" checked>	
+								<span class="checkmark"></span>	
+								男性	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="女性" checked>	
+								<span class="checkmark"></span>	
+								女性	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="混沌" checked>	
+								<span class="checkmark"></span>	
+								混沌	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="惡" checked>	
+								<span class="checkmark"></span>	
+								惡	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="天之力" checked>	
+								<span class="checkmark"></span>	
+								天之力	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="地之力" checked>	
+								<span class="checkmark"></span>	
+								地之力	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="人之力" checked>	
+								<span class="checkmark"></span>	
+								人之力	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="人型" checked>	
+								<span class="checkmark"></span>	
+								人型	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="從者" checked>	
+								<span class="checkmark"></span>	
+								從者	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="人類" checked>	
+								<span class="checkmark"></span>	
+								人類	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="神性" checked>	
+								<span class="checkmark"></span>	
+								神性	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="王" checked>	
+								<span class="checkmark"></span>	
+								王	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="羅馬" checked>	
+								<span class="checkmark"></span>	
+								羅馬	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="希臘神話系男性" checked>	
+								<span class="checkmark"></span>	
+								希臘神話系男性	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="人類威脅" checked>	
+								<span class="checkmark"></span>	
+								人類威脅	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="阿爾托莉亞臉" checked>	
+								<span class="checkmark"></span>	
+								阿爾托莉亞臉	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="亞瑟" checked>	
+								<span class="checkmark"></span>	
+								亞瑟	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="所愛之人" checked>	
+								<span class="checkmark"></span>	
+								所愛之人	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="騎乘" checked>	
+								<span class="checkmark"></span>	
+								騎乘	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="龍" checked>	
+								<span class="checkmark"></span>	
+								龍	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="魔性" checked>	
+								<span class="checkmark"></span>	
+								魔性	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="猛獸" checked>	
+								<span class="checkmark"></span>	
+								猛獸	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="死靈" checked>	
+								<span class="checkmark"></span>	
+								死靈	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="惡魔" checked>	
+								<span class="checkmark"></span>	
+								惡魔	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="超巨大" checked>	
+								<span class="checkmark"></span>	
+								超巨大	
+							</label>		
+							<label class="checkbox">		
+								<input type="checkbox" class="servant-ed" value="毒" checked>	
+								<span class="checkmark"></span>	
+								毒	
+							</label>		
+							<a class="btn setbtn" id="servant-ed-setbtn">全選</a>		
+							<a class="btn resetbtn" id="servant-ed-resetbtn">取消</a>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="row justify-even inner">
-				<div class="flex center">
-					<span class="label">屬性I</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment1" value="秩序" checked>
-						<span class="checkmark"></span>
-						秩序
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment1" value="中立" checked>
-						<span class="checkmark"></span>
-						中立
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment1" value="混沌" checked>
-						<span class="checkmark"></span>
-						混沌
-					</label>	
-					<a class="btn setbtn" id="servant-alignment1-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>	
-				</div>
-				<div class="flex center">
-					<span class="label">屬性II</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="善" checked>
-						<span class="checkmark"></span>
-						善
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="中庸" checked>
-						<span class="checkmark"></span>
-						中庸
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="惡" checked>
-						<span class="checkmark"></span>
-						惡
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="狂" checked>
-						<span class="checkmark"></span>
-						狂花嫁
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="花嫁" checked>
-						<span class="checkmark"></span>
-						花嫁
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-alignment2" value="夏" checked>
-						<span class="checkmark"></span>
-						夏
-					</label>	
-					<a class="btn setbtn" id="servant-alignment2-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-alignment2-resetbtn">取消</a>	
-				</div>
-			</div>
-			<div class="row justify-even inner">
-				<div class="flex center">
-					<span class="label">寶具卡色</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-color" value=" Buster " checked>
-						<span class="checkmark"></span>
-						Buster
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-color" value="Art" checked>
-						<span class="checkmark"></span>
-						Art
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-color" value="Quick" checked>
-						<span class="checkmark"></span>
-						Quick
-					</label>	
-					<a class="btn setbtn" id="servant-color-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-color-resetbtn">取消</a>
-				</div>
-				<div class="flex center">
-					<span class="label">寶具類別</span>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-range" value="全體" checked>
-						<span class="checkmark"></span>
-						全體
-					</label>	
-					<label class="checkbox">	
-						<input type="checkbox" class="servant-range" value="單體" checked>
-						<span class="checkmark"></span>
-						單體
-					</label>	
-					<a class="btn setbtn" id="servant-range-setbtn">全選</a>	
-					<a class="btn resetbtn" id="servant-range-resetbtn">取消</a>
-				</div>
-			</div>
-			<div class="row center inner">
-				<span class="label">特攻</span>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="Ruler" checked>
-					<span class="checkmark"></span>
-					無特攻
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="Saber" checked>
-					<span class="checkmark"></span>
-					Saber
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="男性" checked>
-					<span class="checkmark"></span>
-					男性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="女性" checked>
-					<span class="checkmark"></span>
-					女性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="混沌" checked>
-					<span class="checkmark"></span>
-					混沌
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="惡" checked>
-					<span class="checkmark"></span>
-					惡
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="天之力" checked>
-					<span class="checkmark"></span>
-					天之力
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="地之力" checked>
-					<span class="checkmark"></span>
-					地之力
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="人之力" checked>
-					<span class="checkmark"></span>
-					人之力
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="人型" checked>
-					<span class="checkmark"></span>
-					人型
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="從者" checked>
-					<span class="checkmark"></span>
-					從者
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="人類" checked>
-					<span class="checkmark"></span>
-					人類
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="神性" checked>
-					<span class="checkmark"></span>
-					神性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="王" checked>
-					<span class="checkmark"></span>
-					王
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="羅馬" checked>
-					<span class="checkmark"></span>
-					羅馬
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="希臘神話系男性" checked>
-					<span class="checkmark"></span>
-					希臘神話系男性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="人類威脅" checked>
-					<span class="checkmark"></span>
-					人類威脅
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="阿爾托莉亞臉" checked>
-					<span class="checkmark"></span>
-					阿爾托莉亞臉
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="亞瑟" checked>
-					<span class="checkmark"></span>
-					亞瑟
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="所愛之人" checked>
-					<span class="checkmark"></span>
-					所愛之人
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="騎乘" checked>
-					<span class="checkmark"></span>
-					騎乘
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="龍" checked>
-					<span class="checkmark"></span>
-					龍
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="魔性" checked>
-					<span class="checkmark"></span>
-					魔性
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="猛獸" checked>
-					<span class="checkmark"></span>
-					猛獸
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="死靈" checked>
-					<span class="checkmark"></span>
-					死靈
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="惡魔" checked>
-					<span class="checkmark"></span>
-					惡魔
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="超巨大" checked>
-					<span class="checkmark"></span>
-					超巨大
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="servant-ed" value="毒" checked>
-					<span class="checkmark"></span>
-					毒
-				</label>
-				<a class="btn setbtn" id="servant-ed-setbtn">全選</a>
-				<a class="btn resetbtn" id="servant-ed-resetbtn">取消</a>
 			</div>
 			<div class="row center inner">
 				<label class="switch">
