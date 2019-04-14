@@ -1823,7 +1823,7 @@
 							</div>				
 						</div>					
 						<div class="row center">					
-							<span class="label">屬性I</span>				
+							<span class="label">屬性 I</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="servant-alignment1" value="秩序" checked>			
 								<span class="checkmark"></span>			
@@ -1843,7 +1843,7 @@
 							<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>				
 						</div>					
 						<div class="row center">					
-							<span class="label">屬性II</span>				
+							<span class="label">屬性 II</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="servant-alignment2" value="善" checked>			
 								<span class="checkmark"></span>			
@@ -2071,7 +2071,7 @@
 					<input type="checkbox" id="servant-owned">
 					<span class="slider"></span>
 				</label>
-				<span>僅包括已有從者</span>
+				<span class="label-simple">僅包括已有從者</span>
 			</div>
 			<div class="row center">
 				<a class="btn filterbtn" id="servant-filterbtn">套用</a>
@@ -2081,113 +2081,232 @@
 		</div>
 	</div>
 </div>
-
+	
+	
 <!--CE Modal-->
 <div class="modal" id="ce-modal">
 	<div class="modal-box" id="ce-modal-box">
-		<div class="row">
-			<span class="closebtn" id="ce-modal-closebtn">&times;</span>
-		</div>
 		<div class="modal-header">
-			<div class="row">
-				<input type="checkbox" class="ce-star left" value="3" id="ce-star3" checked>
-				<label for="ce-star3" class="star left">★★★</label>
-				<input type="checkbox" class="ce-star left" value="4" id="ce-star4" checked>
-				<label for="ce-star4" class="star left">★★★★</label>
-				<input type="checkbox" class="ce-star left" value="5" id="ce-star5" checked>
-				<label for="ce-star5" class="star left">★★★★★</label>
-				<span class="btn setbtn left" id="ce-star-setbtn">全選</span>
-				<span class="btn resetbtn left" id="ce-star-resetbtn">取消全選</span>
+			<div class="row center modal-filter-header">
+				篩選
+			</div>
+			<div class="row center">
+				<label class="checkbox">
+					<input type="checkbox" class="ce-star" value="3" checked>
+					<span class="checkmark"></span>
+					<span class="star">★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-star" value="4" checked>
+					<span class="checkmark"></span>
+					<span class="star">★★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-star" value="5" checked>
+					<span class="checkmark"></span>
+					<span class="star">★★★★★</span>
+				</label>
+				<a class="btn setbtn" id="ce-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="ce-star-resetbtn">取消</a>
 			</div>	
-			<div class="row">	
+			<div class="row center">	
 				<span class="label">分類</span>
-				<input type="checkbox" class="ce-type left" id="ce-type1" value="常駐" checked>
-				<label for="ce-type1" class="left">常駐</label>
-				<input type="checkbox" class="ce-type left" id="ce-type2" value="常駐/活動" checked>
-				<label for="ce-type2" class="left">常駐/活動</label>
-				<input type="checkbox" class="ce-type left" id="ce-type3" value="活動限定" checked>
-				<label for="ce-type3" class="left">活動限定</label>
-				<input type="checkbox" class="ce-type left" id="ce-type4" value="期間限定" checked>
-				<label for="ce-type4" class="left">期間限定</label>
-				<input type="checkbox" class="ce-type left" id="ce-type5" value="活動兌換" checked>
-				<label for="ce-type5" class="left">活動兌換</label>
-				<input type="checkbox" class="ce-type left" id="ce-type6" value="羈絆禮裝" checked>
-				<label for="ce-type6" class="left">羈絆禮裝</label>
-				<input type="checkbox" class="ce-type left" id="ce-type7" value="限時兌換" checked>
-				<label for="ce-type7" class="left">限時兌換</label>
-				<span class="btn setbtn left" id="ce-type-setbtn">全選</span>
-				<span class="btn resetbtn left" id="ce-type-resetbtn">取消全選</span>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="常駐" checked>
+					<span class="checkmark"></span>
+					常駐
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="常駐/活動" checked>
+					<span class="checkmark"></span>
+					常駐/活動
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="活動限定" checked>
+					<span class="checkmark"></span>
+					活動限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="期間限定" checked>
+					<span class="checkmark"></span>
+					期間限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="活動兌換" checked>
+					<span class="checkmark"></span>
+					活動兌換
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="羈絆禮裝" checked>
+					<span class="checkmark"></span>
+					羈絆禮裝
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="ce-type" value="限時兌換" checked>
+					<span class="checkmark"></span>
+					限時兌換
+				</label>
+				<a class="btn setbtn" id="ce-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="ce-type-resetbtn">取消</a>
 			</div>
-			<div class="row">	
-				<span class="label">禮裝效果</span>
-				<input type="checkbox" class="ce-effect left" id="ce-effect1" value="攻擊力" checked>
-				<label for="ce-effect1" class="left">攻擊力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect2" value="Buster性能" checked>
-				<label for="ce-effect2" class="left">Buster性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect3" value="Art性能" checked>
-				<label for="ce-effect3" class="left">Art性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect4" value="Quick性能" checked>
-				<label for="ce-effect4" class="left">Quick性能</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect5" value="寶具威力" checked>
-				<label for="ce-effect5" class="left">寶具威力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect6" value="起始NP" checked>
-				<label for="ce-effect6" class="left">起始NP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect7" value="每回合NP" checked>
-				<label for="ce-effect7" class="left">每回合NP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect8" value="NP獲得量" checked>
-				<label for="ce-effect8" class="left">NP獲得量</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect9" value="獲得爆擊星" checked>
-				<label for="ce-effect9" class="left">獲得爆擊星</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect10" value="爆擊星掉落率" checked>
-				<label for="ce-effect10" class="left">爆擊星掉落率</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect11" value="爆擊威力" checked>
-				<label for="ce-effect11" class="left">爆擊威力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect12" value="爆擊星集中度" checked>
-				<label for="ce-effect12" class="left">爆擊星集中度</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect13" value="特攻" checked>
-				<label for="ce-effect13" class="left">特攻</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect14" value="傷害附加" checked>
-				<label for="ce-effect14" class="left">傷害附加</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect15" value="防禦力" checked>
-				<label for="ce-effect15" class="left">防禦力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect16" value="特防" checked>
-				<label for="ce-effect16" class="left">特防</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect17" value="傷害減免" checked>
-				<label for="ce-effect17" class="left">傷害減免</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect18" value="迴避" checked>
-				<label for="ce-effect18" class="left">迴避</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect19" value="無敵" checked>
-				<label for="ce-effect19" class="left">無敵</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect20" value="毅力" checked>
-				<label for="ce-effect20" class="left">毅力</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect21" value="必中" checked>
-				<label for="ce-effect21" class="left">必中</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect22" value="無敵貫通" checked>
-				<label for="ce-effect22" class="left">無敵貫通</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect23" value="目標集中" checked>
-				<label for="ce-effect23" class="left">目標集中</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect24" value="HP" checked>
-				<label for="ce-effect24" class="left">HP</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect25" value="狀態耐性" checked>
-				<label for="ce-effect25" class="left">狀態耐性</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect26" value="狀態無效" checked>
-				<label for="ce-effect26" class="left">狀態無效</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect27" value="狀態成功率" checked>
-				<label for="ce-effect27" class="left">狀態成功率</label>
-				<input type="checkbox" class="ce-effect left" id="ce-effect28" value="其他" checked>
-				<label for="ce-effect28" class="left">其他</label>
-				<span class="btn setbtn left" id="ce-effect-setbtn">全選</span>
-				<span class="btn resetbtn left" id="ce-effect-resetbtn">取消全選</span>
+			<div class="row center">
+				<div class="listlbl">				
+					<span class="label">禮裝效果</span>		
+				</div>				
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="攻擊力" checked>
+						<span class="checkmark"></span>
+						攻擊力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="Buster性能" checked>
+						<span class="checkmark"></span>
+						Buster性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="Art性能" checked>
+						<span class="checkmark"></span>
+						Art性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="Quick性能" checked>
+						<span class="checkmark"></span>
+						Quick性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="寶具威力" checked>
+						<span class="checkmark"></span>
+						寶具威力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="起始NP" checked>
+						<span class="checkmark"></span>
+						起始NP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="每回合NP" checked>
+						<span class="checkmark"></span>
+						每回合NP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="NP獲得量" checked>
+						<span class="checkmark"></span>
+						NP獲得量
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="獲得爆擊星" checked>
+						<span class="checkmark"></span>
+						獲得爆擊星
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="爆擊星掉落率" checked>
+						<span class="checkmark"></span>
+						爆擊星掉落率
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="爆擊威力" checked>
+						<span class="checkmark"></span>
+						爆擊威力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="爆擊星集中度" checked>
+						<span class="checkmark"></span>
+						爆擊星集中度
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="特攻" checked>
+						<span class="checkmark"></span>
+						特攻
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="傷害附加" checked>
+						<span class="checkmark"></span>
+						傷害附加
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="防禦力" checked>
+						<span class="checkmark"></span>
+						防禦力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="特防" checked>
+						<span class="checkmark"></span>
+						特防
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="傷害減免" checked>
+						<span class="checkmark"></span>
+						傷害減免
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="迴避" checked>
+						<span class="checkmark"></span>
+						迴避
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="無敵" checked>
+						<span class="checkmark"></span>
+						無敵
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="毅力" checked>
+						<span class="checkmark"></span>
+						毅力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="必中" checked>
+						<span class="checkmark"></span>
+						必中
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="無敵貫通" checked>
+						<span class="checkmark"></span>
+						無敵貫通
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="目標集中" checked>
+						<span class="checkmark"></span>
+						目標集中
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="HP" checked>
+						<span class="checkmark"></span>
+						HP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="狀態耐性" checked>
+						<span class="checkmark"></span>
+						狀態耐性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="狀態無效" checked>
+						<span class="checkmark"></span>
+						狀態無效
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="狀態成功率" checked>
+						<span class="checkmark"></span>
+						狀態成功率
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-effect" value="其他" checked>
+						<span class="checkmark"></span>
+						其他
+					</label>
+					<a class="btn setbtn" id="ce-effect-setbtn">全選</a>
+					<a class="btn resetbtn" id="ce-effect-resetbtn">取消</a>
+				</div>
 			</div>
-			<div class="row">
+			<div class="row center inner">
 				<label class="switch">
-					<input type="checkbox" class="left" id="modal-ce-owned">
+					<input type="checkbox" id="modal-ce-owned">
 					<span class="slider"></span>
 				</label>
-				<span class="left">僅包括已有禮裝</span>
+				<span class="label-simple">僅包括已有禮裝</span>
 			</div>
-			<div class="row">
-				<span class="btn applybtn left" id="ce-applybtn">套用篩選</span>
+			<div class="row center">
+				<a class="btn filterbtn" id="ce-filterbtn">套用篩選</a>
 			</div>
 		</div>
 		<div class="modal-content" id="ce-img">
@@ -2327,7 +2446,7 @@
 					<input type="checkbox" class="left" id="teammate-owned">
 					<span class="slider"></span>
 				</label>
-				<span class="left">僅包括已有從者</span>
+				<span class="label-simple">僅包括已有從者</span>
 			</div>
 			<div class="row">
 				<span class="btn applybtn left" id="teammate-applybtn">套用篩選</span>
@@ -2394,7 +2513,7 @@
 					<input type="checkbox" class="left" id="modal-teammate-ce-owned">
 					<span class="slider"></span>
 				</label>
-				<span class="left">僅包括已有禮裝</span>
+				<span class="label-simple">僅包括已有禮裝</span>
 			</div>
 			<div class="row">
 				<span class="btn applybtn left" id="teammate-ce-applybtn">套用篩選</span>
