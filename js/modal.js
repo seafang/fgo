@@ -16,10 +16,6 @@ let servantEnemyFilter = {
 };
 
 $(document).ready(function() {
-	$("#servant-enemy-modal-closebtn").click(function() {
-		closeModal();
-	});
-	
 	// Change in class filtering criteria
 	$(".servant-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -146,11 +142,7 @@ let servantFilter = {
 	owned: [true, false]
 };
 
-$(document).ready(function() {
-	$("#servant-modal-closebtn").click(function() {
-		closeModal();
-	});
-	
+$(document).ready(function() {	
 	$("#servant-modal-filter-box-toggle").click(function() {
 		toggleFilter(this, "#servant-modal-filter-box-content");
 	});
@@ -569,11 +561,7 @@ let ceFilter = {
 };
 
 
-$(document).ready(function() {
-	$("#ce-modal-closebtn").click(function() {
-		closeModal();
-	});
-	
+$(document).ready(function() {	
 	// Change in star filtering criteria
 	$(".ce-star").change(function() {
 		var star = Number($(this).val());
@@ -616,7 +604,7 @@ $(document).ready(function() {
 	});
 	
 	// Apply filters and generate image list
-	$("#ce-applybtn").click(function() {
+	$("#ce-filterbtn").click(function() {
 		loadCEImg();
 	});
 });
@@ -751,12 +739,7 @@ let teammateFilter = {
 	owned: [true, false]
 };
 
-$(document).ready(function() {
-	$("#teammate-modal-closebtn").click(function() {
-		closeModal();
-		initialTeammate();
-	});
-	
+$(document).ready(function() {	
 	// Change in class filtering criteria
 	$(".teammate-class").click(function() {
 		var teammateClass = $(this).attr("title");
