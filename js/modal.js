@@ -267,7 +267,7 @@ $(document).ready(function() {
 	});
 	
 	// Apply filter & generate new image list
-	$("#servant-applybtn").click(function() {
+	$("#servant-filterbtn").click(function() {
 		loadServantImg();
 	});
 });
