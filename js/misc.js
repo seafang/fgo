@@ -51,7 +51,7 @@ function openModal(modal) {
 
 function closeModal() {
 	$(".modal").hide();
-	$(".filter-box-toggle").each() {
+	$(".filter-box-toggle").each(function() {
 		if($(this).html() == "–") {
 			$(this).click();
 		}
