@@ -53,11 +53,11 @@ function updateCounter() {
 }
 
 function toggleTeammate(button, element) {
-	if ($(button).html() == "接疊▲") {
-		$(button).html("展開▼");
+	if ($(button).html() == "接疊 ▲") {
+		$(button).html("展開 ▼");
 		$(".teammate-detail").hide(300);
 	} else {
-		$(button).html("接疊▲");
+		$(button).html("接疊 ▲");
 		$(".allow-toggle").show(300);
 	}
 }
@@ -185,7 +185,7 @@ function pickEnemy(type, enemyID) {
 	}
 	
 	// Reveal the collapsed section if it is hiden
-	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
+	if ($("#enemy-setup-collapsebtn").html() == "展開 ▼") {
 		$("#enemy-setup-collapsebtn").click();
 	}
 	
@@ -223,7 +223,7 @@ function resetCurrentEnemy() {
 	$("#current-enemy-attribute").val("天");
 	$("#current-enemy-alignment1").val("秩序");
 	$("#current-enemy-alignment2").val("善");
-	if ($("#enemy-setup-collapsebtn").html() == "展開▼") {
+	if ($("#enemy-setup-collapsebtn").html() == "展開 ▼") {
 		$("#enemy-setup-collapsebtn").click();
 	}
 	$(".current-enemy-trait").prop("checked", false);
@@ -273,7 +273,12 @@ function setEnemy(enemy) {
 		trait.push($(this).val())
 	});
 	window[enemy + "Trait"] = trait;
-	$(element).find(".enemy-trait").html(trait.join(", "));
+	var string = trait.join(", ");
+	if (string.length !== 0) {
+		$(element).find(".enemy-trait").html(string);
+	} else {
+		$(element).find(".enemy-trait").html("無");
+	}
 	if (servantInfo[0] !== undefined) {
 		updateBuff();
 	}
@@ -336,6 +341,7 @@ function resetBattlefield() {
 	});
 }
 
+
 /* Set Servant */
 var servantInfo = [];
 var servantSave = [];
@@ -382,12 +388,15 @@ function pickServant(servantID) {
 		servantInfo = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		// Filter useful skill buffs
 		skillBuffList = multiFilter(skillBuff, {		
 			id: [servantID],	
 			toSelf: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "hpdmg"]
-		});		
+		});
+		
+		// Filter useful NP buffs
 		npBuffList = multiFilter(npBuff, {		
 			id: [servantID],	
 			toSelf: [true],	
@@ -395,6 +404,8 @@ function pickServant(servantID) {
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "npmult", "hpmult"]
 		});
+		
+		// Filter ATK info, affinity, attribute affinity and class multipliers
 		servantAffList = affinity.filter(function(value) {
 			return value.classes == servantInfo[0].classes;
 		});
@@ -408,8 +419,8 @@ function pickServant(servantID) {
 			return value.id == servantInfo[0].id;
 		});
 		
-		// Reveal collapsible section if hiden
-		if ($("#servant-setup-collapsebtn").html() == "展開▼") {		
+		// Reveal set-up section if hiden
+		if ($("#servant-setup-collapsebtn").html() == "展開 ▼") {		
 			$("#servant-setup-collapsebtn").click();	
 		}
 		
@@ -494,6 +505,7 @@ function resetServant() {
 // Check if servant is owned, apply saved data
 function setCurrentServantInfo() {
 	if (servantSave[0] != undefined) {
+		// Apply saved data, update event buff
 		$("#current-servant-lv").val(servantSave[0].data[1]);
 		$("#current-servant-nplv").val(servantSave[0].data[2]);
 		$("#current-servant-statup").val(servantSave[0].data[4]);
@@ -506,6 +518,7 @@ function setCurrentServantInfo() {
 		$("#check-skill3-rankup").prop("checked", servantSave[0].data[10]);
 		updateEventBuff();
 	} else {
+		// Initialise all fields
 		$("#current-servant-lv").val(0);
 		$("#current-servant-nplv").val(1);
 		$("#current-servant-statup").val(0);
@@ -516,53 +529,54 @@ function setCurrentServantInfo() {
 	}
 	$("#current-servant-hp").val(100);
 	$("#current-servant-npoc").val("1");
-	$(".use-skill").prop("checked", false);
-	$(".skill-img").addClass("dull");
+	$(".use-skill").each(function() {
+		if ($(this).is(":checked")) {
+			$(this).click();
+		}
+	});
 }
 
+// Check if NP rank-up is toggled, set NP name & description accordingly
 function setCurrentServantNP() {
+	var keyword = "";
 	if ($("#current-servant-rankup").is(":checked")) {
-		$("#current-servant-np").html(servantInfo[0].np + " " + servantInfo[0].npRURank);
-		$("#current-servant-npdscrp").html(servantInfo[0].npRUDscrp);
-	} else {
-		$("#current-servant-np").html(servantInfo[0].np + " " + servantInfo[0].npRank);
-		$("#current-servant-npdscrp").html(servantInfo[0].npDscrp);
+		keyword = "RU";
 	}
+	$("#current-servant-np").html(servantInfo[0].np + " " + servantInfo[0]["np" + keyword + "Rank"]);
+	$("#current-servant-npdscrp").html(servantInfo[0]["np" + keyword + "Dscrp"]);
 }
 
+// Check if skill rank-up is toggled, set skill logo, name & description accordingly
 function setSkill(toggle) {
 	var skill = $(toggle).val();
+	var keyword = "";
 	if ($(toggle).is(":checked")) {
-		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "RUImgID"]);
-		$("#" + skill + "-name").html(servantInfo[0][skill + "RUName"]);
-		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "RUDscrp"]);
-		if (servantInfo[0][skill + "RUDmgBuff"] == false) {
-			$("#use-" + skill).prop("disabled", true);
-			$("#" + skill + "-lv").prop("disabled", true);
-		} else {
-			$("#use-" + skill).prop("disabled", false);
-			$("#" + skill + "-lv").prop("disabled", false);
-		}
-	} else {
-		$("#" + skill + "-img").attr("src", servantInfo[0][skill + "ImgID"]);
-		$("#" + skill + "-name").html(servantInfo[0][skill + "Name"]);
-		$("#" + skill + "-dscrp").html(servantInfo[0][skill + "Dscrp"]);
-		if (servantInfo[0][skill + "DmgBuff"] == false) {
-			$("#use-" + skill).prop("disabled", true);
-			$("#" + skill + "-lv").prop("disabled", true);
-		} else {
-			$("#use-" + skill).prop("disabled", false);
-			$("#" + skill + "-lv").prop("disabled", false);
+		keyword = "RU";
+	}
+	$("#" + skill + "-img").attr("src", servantInfo[0][skill + keyword + "ImgID"]);
+	$("#" + skill + "-name").html(servantInfo[0][skill + keyword + "Name"]);
+	$("#" + skill + "-dscrp").html(servantInfo[0][skill + keyword + "Dscrp"]);
+	
+	// Determine if skill should be disabled
+	var check = !servantInfo[0][skill + keyword + "DmgBuff"];
+	if (check) {
+		// Uncheck skill if it is unavailable & checked
+		if ($("#use-" + skill).is(":checked")) {
+			$("#use-" + skill).click();
 		}
 	}
+	$("#use-" + skill).prop("disabled", check);
+	$("#" + skill + "-lv").prop("disabled", check);
 }
 
-// Set Servant CE
+
+/* Set Servant CE */
 var ceInfo = [];
 var ceSave = [];
 var ceBuffList = [];
 
 $(document).ready(function() {
+	// Check if servant is set, open modal box
 	$("#servant-ce-modalbtn").click(function() {
 		if ($("#current-servant-name").html() != "未選定從者") {
 			openModal("#ce-modal");
@@ -572,36 +586,52 @@ $(document).ready(function() {
 			alert("請先設定從者！");
 		}
 	});
+	
+	// Revert changes made
 	$("#servant-ce-reapplybtn").click(function() {
 		reapplyCE();
 	});
+	
+	// Remove CE
 	$("#servant-ce-resetbtn").click(function() {
 		resetCE();
 	});
+	
+	// Update CE description on change in max-status
 	$("#servant-ce-max").change(function() {
 		setCurrentServantCEEffect(this);
 	});
+	
+	// Update CE ATK on change in CE Lv
 	$("#servant-ce-lv").change(function() {
 		updateCEAtk();
 	});
 });
 
+// Retrieve CE info
 function pickCE(essenceID) {
 	closeModal();
 	ceInfo = ce.filter(function(obj) {
 		return obj.id == essenceID;
 	});
+	
+	// Filter useful CE buffs
 	ceBuffList = multiFilter(ceBuff, {
 		ceID: [essenceID],
 		toSelf: [true],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
-	if ($("#ce-setup-collapsebtn").html() == "展開▼") {
+	
+	// Reveal set-up section if hiden
+	if ($("#ce-setup-collapsebtn").html() == "展開 ▼") {
 		$("#ce-setup-collapsebtn").click();
 	}
+	
 	$("#servant-ce-img").attr("src", ceInfo[0].imgID);
 	$("#servant-ce-name").html(ceInfo[0].name);
+	
+	// Display star info as logo
 	var starHTML = "";
 	switch (ceInfo[0].star) {
 		case 3:
@@ -619,8 +649,13 @@ function pickCE(essenceID) {
 	$("#servant-ce-star").html(starHTML);
 	$("#servant-ce-star").removeClass("dull");
 	$("#servant-ce-star").attr("data-star", ceInfo[0].star);
-	$("#servant-ce-max").prop("disabled", ceInfo[0].defaultMax);
-	$("#servant-ce-lv").prop("disabled", false);
+	
+	// Check if the CE is max at default
+	var defaultMax = ceInfo[0].defaultMax;
+	$("#servant-ce-max").prop("disabled", defaultMax);
+	$("#servant-ce-lv").prop("disabled", defaultMax);
+	
+	// Retrieve saved CE data
 	ceSave = bgCE.filter(function(obj) {
 		return obj.id == essenceID;
 	});
@@ -631,6 +666,7 @@ function pickCE(essenceID) {
 	updateBuff();
 }
 
+// Revert changes made
 function reapplyCE() {
 	setCurrentServantCE();
 	var ceToggle = $("#servant-ce-max");
@@ -639,6 +675,7 @@ function reapplyCE() {
 	updateBuff();
 }
 
+// Remove chosen CE
 function resetCE() {
 	ceInfo = [];
 	ceSave = [];
@@ -657,11 +694,14 @@ function resetCE() {
 	updateBuff();
 }
 
+// Check if CE is owned, apply saved data
 function setCurrentServantCE() {
 	if (ceSave[0] != undefined) {
+		// Apply saved data
 		$("#servant-ce-max").prop("checked", ceSave[0].data[1]);
 		$("#servant-ce-lv").val(ceSave[0].data[2]);
 	} else {
+		// Initialise all fields
 		if (ceInfo[0] != undefined) {
 			$("#servant-ce-max").prop("checked", ceInfo[0].defaultMax);
 		} else {
@@ -671,6 +711,7 @@ function setCurrentServantCE() {
 	}
 }
 
+// Check if CE is maxed, set CE description accordingly
 function setCurrentServantCEEffect(toggle) {
 	if (ceInfo[0] != undefined) {
 		if ($(toggle).is(":checked")) {
@@ -681,26 +722,33 @@ function setCurrentServantCEEffect(toggle) {
 	}
 }
 
-// Set Master Mystic Code
+
+/* Set Master Mystic Code */
 var masterInfo = [];
 var masterSave = [];
 var masterBuffList = [];
 
 $(document).ready(function() {
+	// Check if servant is set, open modal box
 	generateMasterSelection();
 	$("#master-name-selection").click(function() {
 		if ($("#current-servant-name").html() == "未選定從者") {
 			alert("請先設定從者！");
 		}
 	});
+	
+	// Apply chosen mystic code's info
 	$("#master-name-selection").change(function() {
 		setMaster(this);
 	});
+	
+	// Remove chosen mystic code
 	$("#master-resetbtn").click(function() {
 		applyMaster();
 	});
 });
 
+// Generate mystic code dropdown list
 function generateMasterSelection() {
 	$(master).each(function(index, value) {
 		var select = $("#master-name-selection");
@@ -710,77 +758,69 @@ function generateMasterSelection() {
 	});
 }
 
+// Check if mystic code is chosen, retrieve mystic code info
 function setMaster(element) {
 	if ($(element).val() == "none") {
-		if ($("#master-setup-collapsebtn").html() == "接疊▲") {
+		// Hide set-up section
+		if ($("#master-setup-collapsebtn").html() == "接疊 ▲") {
 			$("#master-setup-collapsebtn").click();
 		}
+		
+		// Clear all arrays
 		masterInfo = [];
 		masterSave = [];
 		masterBuffList = [];
 		masterSkillSet = [];
+		
+		// Initialise all fields
 		$("#master-img1").attr("src", "");
 		$("#master-img2").attr("src", "");
 		$("#master-lv").val(1);
 		$("#master-lv").prop("disabled", true);
-		$("#master-skill1-logo").attr("src", "");
-		$("#master-skill1-logo").removeClass("dull");
-		$("#check-master-skill1").prop("checked", false);
-		$("#check-master-skill1").prop("disabled", true);
-		$("#master-skill2-logo").attr("src", "");
-		$("#master-skill2-logo").removeClass("dull");
-		$("#check-master-skill2").prop("checked", false);
-		$("#check-master-skill2").prop("disabled", true);
-		$("#master-skill3-logo").attr("src", "");
-		$("#master-skill3-logo").removeClass("dull");
-		$("#check-master-skill3").prop("checked", false);
-		$("#check-master-skill3").prop("disabled", true);
-		$("#master-skill1-dscrp").html("");
-		$("#master-skill2-dscrp").html("");
-		$("#master-skill3-dscrp").html("");
+		
+		var skilllist = ["skill1", "skill2", "skill3"];
+		$(skilllist).each(function() {
+			$("#master-" + this + "-logo").attr("src", "");
+			$("#master-" + this + "-logo").removeClass("dull");
+			$("#check-master-" + this).prop("checked", false);
+			$("#check-master-" + this).prop("disabled", true);
+			$("#master-" + this + "-dscrp").html("");
+		});
 	} else {
-		if ($("#master-setup-collapsebtn").html() == "展開▼") {
+		// Reveal set-up section if hiden
+		if ($("#master-setup-collapsebtn").html() == "展開 ▼") {
 			$("#master-setup-collapsebtn").click();
 		}
+		
 		var name = $(element).val();
 		masterInfo = master.filter(function(obj) {
 			return obj.name == name;
 		});
+		
+		// Filter useful skill buffs
 		masterBuffList = multiFilter(masterBuff, {
 			masterName: [name],
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});
+		
+		// Apply mystic code info
 		$("#master-img1").attr("src", masterInfo[0].imgID1);
 		$("#master-img2").attr("src", masterInfo[0].imgID2);
 		$("#master-lv").prop("disabled", false);
-		$("#master-skill1-logo").attr("src", masterInfo[0].skill1ImgID);
-		if (!masterInfo[0].skill1Buff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#check-master-skill1").prop("disabled", true);
-		} else {
-			$("#check-master-skill1").prop("disabled", false);
-		}
-		$("#master-skill2-logo").attr("src", masterInfo[0].skill2ImgID);
-		if (!masterInfo[0].skill2Buff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#check-master-skill2").prop("disabled", true);
-		} else {
-			$("#check-master-skill2").prop("disabled", false);
-		}
-		$("#master-skill3-logo").attr("src", masterInfo[0].skill3ImgID);
-		if (!masterInfo[0].skill3Buff.some(function(value) {
-			return value == "card" || value == "dmg"
-		})) {
-			$("#check-master-skill3").prop("disabled", true);
-		} else {
-			$("#check-master-skill3").prop("disabled", false);
-		}
-		$("#master-skill1-dscrp").html(masterInfo[0].skill1Dscrp);
-		$("#master-skill2-dscrp").html(masterInfo[0].skill2Dscrp);
-		$("#master-skill3-dscrp").html(masterInfo[0].skill3Dscrp);
+		
+		// Set skill logos, determine if skills need to be disabled
+		var skilllist = ["skill1", "skill2", "skill3"];
+		$(skilllist).each(function() {
+			$("#master-" + this + "-logo").attr("src", masterInfo[0][this + "ImgID"]);
+			var allow = !masterInfo[0][this + "Buff"].some(function(value) {
+				return value == "card" || value == "dmg"
+			});
+			$("#check-master-" + this).prop("disabled", allow);
+			$("#master-" + this + "-dscrp").html(masterInfo[0][this + "Dscrp"]);
+		});
+		
+		// Retrieve saved mystic code data
 		masterSave = bgMaster.filter(function(obj) {
 			return obj.name == name;
 		});
@@ -788,13 +828,13 @@ function setMaster(element) {
 	}
 }
 
+// Retrieve saved mystic code data
 function applyMaster() {
-	$("#master-skill1-logo").addClass("dull");
-	$("#check-master-skill1").prop("checked", false);
-	$("#master-skill2-logo").addClass("dull");
-	$("#check-master-skill2").prop("checked", false);
-	$("#master-skill3-logo").addClass("dull");
-	$("#check-master-skill3").prop("checked", false);
+	var skilllist = ["skill1", "skill2", "skill3"];
+	$(skilllist).each(function() {
+		$("#master-" + this + "-logo").addClass("dull");
+		$("#check-master-" + this).prop("checked", false);
+	});
 	if (masterSave[0] != undefined) {
 		$("#master-lv").val(masterSave[0].data[1]);
 	} else {
@@ -802,7 +842,8 @@ function applyMaster() {
 	}
 }
 
-// Set Teammates
+
+/* Set Teammates */
 var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
 var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
 var teammate1SkillBuffList = [], teammate2SkillBuffList = [], teammate3SkillBuffList = [], teammate4SkillBuffList = [], teammate5SkillBuffList = [];
@@ -812,6 +853,7 @@ var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4C
 var teammate1CEBuffList = [], teammate2CEBuffList = [], teammate3CEBuffList = [], teammate4CEBuffList = [], teammate5CEBuffList = [];
 
 $(document).ready(function() {
+	// Check if servant is chosen, open modal box
 	$(".teammate-modalbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
 		if ($("#current-servant-name").html() != "未選定從者") {
@@ -823,6 +865,8 @@ $(document).ready(function() {
 			alert("請先設定從者！");
 		}
 	});
+	
+	// Check if teammate is chosen, open CE modal box
 	$(".teammate-ce-modalbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
 		if ($("#" + teammate + " .teammate-name").html() != "未選定隊友") {
@@ -834,32 +878,44 @@ $(document).ready(function() {
 			alert("請先設定隊友！");
 		}
 	});
+	
+	// Revert changes made
 	$(".teammate-reapplybtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
 		reapplyTeammate(teammate);
 	});
+	
+	// Remove teammate CE
 	$(".teammate-ce-resetbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
 		resetTeammateCE(teammate);
 	});
+	
+	// Remove teammate
 	$(".teammate-resetbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
-		if ($("#teammate-setup-collapsebtn").html() == "接疊▲") {
-			$("#teammate-setup-collapsebtn").html("展開▼");
+		if ($("#teammate-setup-collapsebtn").html() == "接疊 ▲") {
+			$("#teammate-setup-collapsebtn").html("展開 ▼");
 		}
 		resetTeammate(teammate);
 	});
+	
+	// Reveal additional teammate slot
 	$(".teammate-extendbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
 		$(this).hide();
 		extend(teammate);
 	});
+	
+	// Retrieve teammate info
 	$(".teammate-np-rankup").change(function() {
 		setTeammateNP(this);
 	});
 	$(".teammate-skill-rankup").change(function() {
 		setTeammateSkill(this);
 	});
+	
+	// Set common support servant as teammate
 	$("#add-Lord").click(function() {
 		setSupport(37);
 	});
@@ -874,11 +930,13 @@ $(document).ready(function() {
 	});
 });
 
+// Reveal additional teammate slot
 function extend(element) {
 	$("#" + element).show();
 	$("#" + element).addClass("allow-toggle");
 }
 
+// Retrieve teammate info
 function pickTeammate(value, teammateID, brute) {
 	closeModal();
 	modalCaller = "";
@@ -886,10 +944,13 @@ function pickTeammate(value, teammateID, brute) {
 	window[value + "Info"] = servants.filter(function(obj) {
 		return obj.id == teammateID;
 	});
+	
+	// Check if chosen servant is duplicated
 	if (countDuplicate(window[value + "Info"][0].id)) {
 		window[value + "Info"] = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		// Filter useful NP and skill buffs
 		window[value + "SkillBuffList"] = multiFilter(skillBuff, {		
 			id: [teammateID],	
 			range: ["team", "single", "all-enemy", "single-enemy"],	
@@ -902,12 +963,17 @@ function pickTeammate(value, teammateID, brute) {
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
-		var info = window[value + "Info"];		
-		if ($("#teammate-setup-collapsebtn").html() == "展開▼") {		
+		var info = window[value + "Info"];
+		
+		// Reveal set-up section if hiden
+		if ($("#teammate-setup-collapsebtn").html() == "展開 ▼") {		
 			$("#teammate-setup-collapsebtn").click();	
-		}		
+		}
+		
 		section.find(".teammate-img").attr("src", info[0].imgID);		
-		section.find(".teammate-name").html(info[0].name);		
+		section.find(".teammate-name").html(info[0].name);
+		
+		// Display class & star info as logo
 		section.find(".teammate-class").attr({		
 			src: "images/class/" + info[0].classes + ".webp",	
 			"data-class": info[0].classes	
@@ -936,46 +1002,62 @@ function pickTeammate(value, teammateID, brute) {
 				break;
 		}		
 		section.find(".teammate-star").html(starHTML);		
-		section.find(".teammate-star").removeClass("dull");		
-		section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);				
+		section.find(".teammate-star").removeClass("dull");
+		
+		// Determine if NP rank-up is available
+		section.find(".teammate-np-rankup").prop("disabled", !info[0].npRankUp);
+		
+		// Visualise NP color
 		section.find(".teammate-np-name").removeClass("Buster Art Quick");		
-		section.find(".teammate-np-name").addClass(info[0].npColor);		
+		section.find(".teammate-np-name").addClass(info[0].npColor);
+		
+		if (brute) {
+			// If teammate is added as common support, max out all stats
+			setSupportInfo(value);
+		} else {
+			// Assume a support teammate, hence set all stats as initial
+			setTeammateInfo(value);	
+		}
+		
+		// Retrieve saved teammate data
 		window[value + "Save"] = bgServant.filter(function(obj) {		
 			return obj.id == teammateID;	
+		});
+		
+		// Determine if NP rank-up is available
+		var npToggle = section.find(".teammate-np-rankup");
+		setTeammateNP(npToggle);
+		
+		// Determine if skill rank-up is available
+		var skilllist = ["skill1", "skill2", "skill3"];
+		$(skilllist).each(function() {
+			var skillToggle = section.find(".teammate-" + this + "-rankup");
+			skillToggle.prop("disabled", !info[0][this + "RU"]);
+			setTeammateSkill(skillToggle);
 		});		
-		section.find(".teammate-skill1-rankup").prop("disabled", !info[0].skill1RU);		
-		section.find(".teammate-skill2-rankup").prop("disabled", !info[0].skill2RU);		
-		section.find(".teammate-skill3-rankup").prop("disabled", !info[0].skill3RU);
-		if (brute === false) {
-			setTeammateInfo(value);
-		} else {
-			setSupportInfo(value);
-		}
-		var npToggle = section.find(".teammate-np-rankup");		
-		var skill1Toggle = section.find(".teammate-skill1-rankup");		
-		var skill2Toggle = section.find(".teammate-skill2-rankup");		
-		var skill3Toggle = section.find(".teammate-skill3-rankup");		
-		setTeammateNP(npToggle);		
-		setTeammateSkill(skill1Toggle);		
-		setTeammateSkill(skill2Toggle);		
-		setTeammateSkill(skill3Toggle);
-		if (brute === true) {
+		
+		// If teammate is added as common support, toggle all skills
+		if (brute) {
 			toggleAllSkills(value);
 		}
 	}
 }
 
+// Revert changes made
 function reapplyTeammate(value) {
 	setTeammateInfo(value);
 	var section = $("#" + value);
+	
 	var npToggle = section.find(".teammate-np-rankup");
-	var skill1Toggle = section.find(".teammate-skill1-rankup");
-	var skill2Toggle = section.find(".teammate-skill2-rankup");
-	var skill3Toggle = section.find(".teammate-skill3-rankup");
 	setTeammateNP(npToggle);
-	setTeammateSkill(skill1Toggle);
-	setTeammateSkill(skill2Toggle);
-	setTeammateSkill(skill3Toggle);
+	
+	var skilllist = ["skill1", "skill2", "skill3"];
+	$(skilllist).each(function() {
+		var skillToggle = section.find(".teammate-" + this + "-rankup");
+		setTeammateSkill(skillToggle);
+	});
+	
+	// If CE is set, apply saved data
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
 		setTeammateCE(value);
 		var ceToggle = section.find(".teammate-ce-max");
@@ -983,15 +1065,15 @@ function reapplyTeammate(value) {
 	}
 }
 
+// Remove teammate
 function resetTeammate(value) {
+	// Clear all arrays
 	window[value + "Info"] = [];
 	window[value + "Save"] = [];
-	window[value + "CEInfo"] = [];
-	window[value + "CESave"] = [];
 	window[value + "SkillSet"] = [];
 	window[value + "SkillBuffList"] = [];
 	window[value + "NPBuffList"] = [];
-	window[value + "CEBuffList"] = [];
+	
 	var section = $("#" + value);
 	section.hide();
 	if (value != "teammate1") {
@@ -1006,58 +1088,42 @@ function resetTeammate(value) {
 	});
 	section.find(".teammate-star").html("★★★★★");
 	section.find(".teammate-star").addClass("dull");
+	
+	// If CE is set, remove CE
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
-		section.find(".teammate-ce-img").attr("src", "");
-		section.find(".teammate-ce-name").html("未選定禮裝");
-		section.find(".teammate-ce-star").html("★★★★★");
-		section.find(".teammate-ce-star").addClass("dull");
-		section.find(".teammate-ce-max").prop("checked", false);
-		section.find(".teammate-ce-max").prop("disabled", true);
-		section.find(".teammate-ce-dscrp").html("");
+		resetTeammateCE(value);
 	}
-	section.find(".teammate-np").prop("checked", false);
-	section.find(".teammate-np").prop("disabled", true);
-	section.find(".teammate-np-rankup").prop("checked", false);
-	section.find(".teammate-np-rankup").prop("disabled", true);
+	
+	// Initialise all fields
+	section.find(":input").each(function() {
+		$(this).prop("disabled", true);
+	});
+	section.find(":checkbox").each(function() {
+		$(this).prop("checked", false);
+	});
+	section.find("select").each(function() {
+		$(this).prop("disabled", true);
+	});
 	section.find(".teammate-nplv").val(1);
-	section.find(".teammate-nplv").prop("disabled", true);
 	section.find(".teammate-npoc").val(1);
-	section.find(".teammate-npoc").prop("disabled", true);
 	section.find(".teammate-np-name").removeClass("Buster Art Quick");
 	section.find(".teammate-np-name").html("");
 	section.find(".teammate-np-dscrp").html("");
-	section.find(".teammate-skill1").prop("checked", false);
-	section.find(".teammate-skill1").prop("disabled", true);
-	section.find(".teammate-skill1-rankup").prop("checked", false);
-	section.find(".teammate-skill1-rankup").prop("disabled", true);
-	section.find(".teammate-skill1-lv").val(1);
-	section.find(".teammate-skill1-lv").prop("disabled", true);
-	section.find(".teammate-skill1-img").attr("src", "");
-	section.find(".teammate-skill1-name").html("");
-	section.find(".teammate-skill1-dscrp").html("");
-	section.find(".teammate-skill2").prop("checked", false);
-	section.find(".teammate-skill2").prop("disabled", true);
-	section.find(".teammate-skill2-rankup").prop("checked", false);
-	section.find(".teammate-skill2-rankup").prop("disabled", true);
-	section.find(".teammate-skill2-lv").val(1);
-	section.find(".teammate-skill2-lv").prop("disabled", true);
-	section.find(".teammate-skill2-img").attr("src", "");
-	section.find(".teammate-skill2-name").html("");
-	section.find(".teammate-skill2-dscrp").html("");
-	section.find(".teammate-skill3").prop("checked", false);
-	section.find(".teammate-skill3").prop("disabled", true);
-	section.find(".teammate-skill3-rankup").prop("checked", false);
-	section.find(".teammate-skill3-rankup").prop("disabled", true);
-	section.find(".teammate-skill3-lv").val(1);
-	section.find(".teammate-skill3-lv").prop("disabled", true);
-	section.find(".teammate-skill3-img").attr("src", "");
-	section.find(".teammate-skill3-name").html("");
-	section.find(".teammate-skill3-dscrp").html("");
+	
+	var skilllist = ["skill1", "skill2", "skill3"];
+	$(skilllist).each(function() {
+		section.find(".teammate-" + this + "-lv").val(1);
+		section.find(".teammate-" + this + "-img").attr("src", "");
+		section.find(".teammate-" + this + "-name").html("");
+		section.find(".teammate-" + this + "-dscrp").html("");
+	});
 }
 
+// Check if teammate is owned, retrieve saved teammate data
 function setTeammateInfo(value) {
 	var section = $("#" + value);
 	var save = window[value + "Save"];
+	var skilllist = ["skill1", "skill2", "skill3"];
 	if (save[0] != undefined) {
 		section.find(".teammate-np-rankup").prop("checked", save[0].data[3]);
 		section.find(".teammate-skill1-lv").val(save[0].data[5]);
@@ -1068,84 +1134,65 @@ function setTeammateInfo(value) {
 		section.find(".teammate-skill3-rankup").prop("checked", save[0].data[10]);
 	} else {
 		section.find(".teammate-np-rankup").prop("checked", false);
-		section.find(".teammate-skill1-lv").val(1);
-		section.find(".teammate-skill1-rankup").prop("checked", false);
-		section.find(".teammate-skill2-lv").val(1);
-		section.find(".teammate-skill2-rankup").prop("checked", false);
-		section.find(".teammate-skill3-lv").val(1);
-		section.find(".teammate-skill3-rankup").prop("checked", false);
+		$(skilllist).each(function() {
+			section.find(".teammate-" + this + "-lv").val(1);
+			section.find(".teammate-" + this + "-rankup").prop("checked", false);
+		});
 	}
 	section.find(".teammate-nplv").val(1);
 	section.find(".teammate-npoc").val(1);
-	section.find(".teammate-skill1").prop("checked", false);
-	section.find(".teammate-skill1-img").addClass("dull");
-	section.find(".teammate-skill2").prop("checked", false);
-	section.find(".teammate-skill2-img").addClass("dull");
-	section.find(".teammate-skill3").prop("checked", false);
-	section.find(".teammate-skill3-img").addClass("dull");
+	$(skilllist).each(function() {
+		section.find(".teammate-" + this).prop("checked", false);
+		section.find(".teammate-" + this + "-img").addClass("dull");
+	});
 }
 
+// Check if NP rank-up is toggled, set NP name & description accordingly
 function setTeammateNP(toggle) {
 	var section = $(toggle).parents(".teammate-detail");
 	var value = section.attr("id");
 	var info = window[value + "Info"];
+	var keyword = "";
 	if ($(toggle).is(":checked")) {
-		section.find(".teammate-np-name").html(info[0].np + " " + info[0].npRURank);
-		section.find(".teammate-np-dscrp").html(info[0].npRUDscrp);
-		if (info[0].npRUDmgToTeam == false) {
-			section.find(".teammate-np").prop("disabled", true);
-			section.find(".teammate-nplv").prop("disabled", true);		
-			section.find(".teammate-npoc").prop("disabled", true);
-		} else {
-			section.find(".teammate-np").prop("disabled", false);
-			section.find(".teammate-nplv").prop("disabled", false);		
-			section.find(".teammate-npoc").prop("disabled", false);
-		}
-	} else {
-		section.find(".teammate-np-name").html(info[0].np + " " + info[0].npRank);
-		section.find(".teammate-np-dscrp").html(info[0].npDscrp);
-		if (info[0].npDmgToTeam == false) {
-			section.find(".teammate-np").prop("disabled", true);
-			section.find(".teammate-nplv").prop("disabled", true);		
-			section.find(".teammate-npoc").prop("disabled", true);
-		} else {
-			section.find(".teammate-np").prop("disabled", false);
-			section.find(".teammate-nplv").prop("disabled", false);		
-			section.find(".teammate-npoc").prop("disabled", false);
-		}
+		keyword = "RU";
 	}
+	section.find(".teammate-np-name").html(info[0].np + " " + info[0]["np" + keyword + "Rank"]);
+	section.find(".teammate-np-dscrp").html(info[0]["np" + keyword + "Dscrp"]);
+	
+	// Determine if NP should be disabled
+	var check = !info[0]["np" + keyword + "DmgToTeam"];
+	section.find(".teammate-np").prop("disabled", check);
+	section.find(".teammate-nplv").prop("disabled", check);
+	section.find(".teammate-npoc").prop("disabled", check);
 }
 
+// Check if skill rank-up is toggled, set skill logo, name & description accordingly
 function setTeammateSkill(toggle) {
 	var section = $(toggle).parents(".teammate-detail");
 	var value = section.attr("id");
 	var skill = $(toggle).val();
 	var info = window[value + "Info"];
+	var keyword = "";
 	if ($(toggle).is(":checked")) {
-		section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + "RUImgID"]);
-		section.find(".teammate-" + skill + "-name").html(info[0][skill + "RUName"]);
-		section.find(".teammate-" + skill + "-dscrp").html(info[0][skill + "RUDscrp"]);
-		if (info[0][skill + "RUDmgToTeam"] == false) {
-			section.find(".teammate-" + skill).prop("disabled", true);
-			section.find(".teammate-" + skill + "-lv").prop("disabled", true);
-		} else {
-			section.find(".teammate-" + skill).prop("disabled", false);
-			section.find(".teammate-" + skill + "-lv").prop("disabled", false);
-		}
-	} else {
-		section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + "ImgID"]);
-		section.find(".teammate-" + skill + "-name").html(info[0][skill + "Name"]);
-		section.find(".teammate-" + skill + "-dscrp").html(info[0][skill + "Dscrp"]);
-		if (info[0][skill + "DmgToTeam"] == false) {
-			section.find(".teammate-" + skill).prop("disabled", true);
-			section.find(".teammate-" + skill + "-lv").prop("disabled", true);
-		} else {
-			section.find(".teammate-" + skill).prop("disabled", false);
-			section.find(".teammate-" + skill + "-lv").prop("disabled", false);
+		keyword = "RU";
+	}
+	section.find(".teammate-" + skill + "-img").attr("src", info[0][skill + keyword + "ImgID"]);
+	section.find(".teammate-" + skill + "-name").html(info[0][skill + keyword + "Name"]);
+	section.find(".teammate-" + skill + "-dscrp").html(info[0][skill + keyword + "Dscrp"]);
+	
+	// Determine if skill should be disabled
+	var check = !info[0][skill + keyword + "DmgToTeam"];
+	if (check) {
+		// Uncheck skill if it is unavailable & checked
+		if (section.find(".teammate-" + this).is(":checked")) {
+			section.find(".teammate-" + this).click();
 		}
 	}
+	section.find(".teammate-" + skill).prop("disabled", check);
+	section.find(".teammate-" + skill + "-lv").prop("disabled", check);
 }
 
+// Set common support as teammate at the first available slot
 function setSupport(teammateID) {
 	var slot = "";
 	var list = ["teammate1", "teammate2", "teammate3", "teammate4", "teammate5"];
@@ -1161,41 +1208,34 @@ function setSupport(teammateID) {
 	pickTeammate(list[i], teammateID, true);
 }
 
+// Max out all skills' stats for common support teammate
 function setSupportInfo(value) {
 	var section = $("#" + value);
-	if (!section.find(".teammate-np-rankup").prop("disabled")) {
-		section.find(".teammate-np-rankup").prop("checked", true);
-	}
-	section.find(".teammate-skill1-lv").val(10);
-	if (!section.find(".teammate-skill1-rankup").prop("disabled")) {
-		section.find(".teammate-skill1-rankup").prop("checked", true);
-	}
-	section.find(".teammate-skill2-lv").val(10);
-	if (!section.find(".teammate-skill2-rankup").prop("disabled")) {
-		section.find(".teammate-skill2-rankup").prop("checked", true);
-	}
-	section.find(".teammate-skill3-lv").val(10);
-	if (!section.find(".teammate-skill3-rankup").prop("disabled")) {
-		section.find(".teammate-skill3-rankup").prop("checked", true);
-	}
-	section.find(".teammate-skill1-img").addClass("dull");
-	section.find(".teammate-skill2-img").addClass("dull");
-	section.find(".teammate-skill3-img").addClass("dull");
+	
+	var npToggle = section.find(".teammate-np-rankup");
+	npToggle.prop("checked", !npToggle.prop("disabled"));
+	
+	var skilllist = ["skill1", "skill2", "skill3"];
+	$(skilllist).each(function() {
+		section.find(".teammate-" + this + "-lv").val(10);
+		var toggle = section.find(".teammate-" + this + "-rankup");
+		toggle.prop("checked", !toggle.prop("disabled"));
+		section.find(".teammate-" + this + "-img").addClass("dull");
+	});
 }
 
+// Toggle all skills for common support teammate
 function toggleAllSkills(value) {
 	var section = $("#" + value);
-	if (!section.find(".teammate-skill1").prop("disabled")) {
-		section.find(".teammate-skill1").click();
-	}
-	if (!section.find(".teammate-skill2").prop("disabled")) {
-		section.find(".teammate-skill2").click();
-	}
-	if (!section.find(".teammate-skill3").prop("disabled")) {
-		section.find(".teammate-skill3").click();
-	}
+	var skilllist = ["skill1", "skill2", "skill3"];
+	$(skilllist).each(function() {
+		if (!section.find(".teammate-" + this).prop("disabled")) {
+			section.find(".teammate-" + this).click();
+		}
+	});
 }
 
+// Retrieve CE info
 function pickTeammateCE(value, ceID) {
 	closeModal();
 	modalCaller = "";
@@ -1203,15 +1243,20 @@ function pickTeammateCE(value, ceID) {
 	window[value + "CEInfo"] = ce.filter(function(obj) {
 		return obj.id == ceID;
 	});
+	
+	// Filter useful CE buffs
 	window[value + "CEBuffList"] = multiFilter(ceBuff, {
 		"ceID": [ceID],
 		range: ["team", "all-enemy", "single-enemy"],
 		effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",
 			"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 	});
+	
 	var info = window[value + "CEInfo"];
 	section.find(".teammate-ce-img").attr("src", info[0].imgID);
 	section.find(".teammate-ce-name").html(info[0].name);
+	
+	// Display star info as logo
 	var starHTML = "";
 	switch (info[0].star) {
 		case 3:
@@ -1228,19 +1273,30 @@ function pickTeammateCE(value, ceID) {
 	}
 	section.find(".teammate-ce-star").html(starHTML);
 	section.find(".teammate-ce-star").removeClass("dull");
+	
+	// Check if CE is max by default
 	section.find(".teammate-ce-max").prop("disabled", info[0].defaultMax);
+	
+	// Assume CE equiped by a support teammate, hence set stats as initial
+	setTeammateCE(value);
+	
+	// Retrieve saved CE data
 	window[value + "CESave"] = bgCE.filter(function(obj) {
 		return obj.id == essenceID;
 	});
-	setTeammateCE(value);
+	
 	var ceToggle = section.find(".teammate-ce-max");
 	setTeammateCEEffect(ceToggle);
 }
 
+// Remove teammate CE
 function resetTeammateCE(value) {
+	// Clear all array
 	window[value + "CEInfo"] = [];
 	window[value + "CESave"] = [];
 	window[value + "CEBuffList"] = [];
+	
+	var section = $("#" + value);
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
 		section.find(".teammate-ce-img").attr("src", "");
 		section.find(".teammate-ce-name").html("未選定禮裝");
@@ -1252,6 +1308,7 @@ function resetTeammateCE(value) {
 	}
 }
 
+// Apply saved CE info
 function setTeammateCE(value) {
 	var section = $("#" + value);
 	var save = window[value + "CESave"];
@@ -1267,6 +1324,7 @@ function setTeammateCE(value) {
 	}	
 }
 
+// Determine if CE is maxed, set CE description accordingly
 function setTeammateCEEffect(toggle) {
 	var info = window[value + "CEInfo"];
 	if (info[0] != undefined) {
@@ -1278,7 +1336,8 @@ function setTeammateCEEffect(toggle) {
 	}
 }
 
-// Update Buff
+
+/* Update Buff */
 var skillSet = [];
 var masterSkillSet = [];
 var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
