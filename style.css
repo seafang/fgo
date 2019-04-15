@@ -106,6 +106,9 @@ table {
 .inner {
 	margin-bottom: 10px;
 }
+.under {
+	margin-top: 10px;
+}
 .innerwide {
 	margin-bottom: 20px;
 }
@@ -161,6 +164,9 @@ span.label {
 .indent-4 {
 	padding-left: 4px;
 }
+.narrow-right {
+	margin-right: 10px;
+}
 .space-left {
 	margin-left: 20px;
 }
@@ -209,12 +215,12 @@ span.space-right-wide, .space-right-wide {
 	background-color: red;
 	color: white;
 }
-.setbtn {
+.setbtn, .actionbtn {
 	background-color: white;
 	color: blue;
 	border-color: blue;
 }
-.setbtn:hover {
+.setbtn:hover, .actionbtn:hover {
 	background-color: blue;
 	color: white;
 }
@@ -289,6 +295,9 @@ select, option, input {
 }
 select {
 	width: 70px;
+}
+select.broad {
+	width: 140px;
 }
 select.wide {
 	width: 100px;
@@ -447,7 +456,7 @@ input:checked + .slider:before {
 	text-shadow: 0px 0px 1px #000000;
 	font-size: 110%;
 }
-.profile-img {
+.profile-img, .ce-profile-img {
 	width: 60px;
 	margin: 4px 20px 4px 4px;
 	background-color: white;
@@ -456,6 +465,9 @@ input:checked + .slider:before {
 .skill-img {
 	margin-right: 30px;
 	width: 50px;
+}
+.master-img {
+	width: 100px;
 }
 
 
@@ -529,14 +541,20 @@ input:checked + .slider:before {
 .modal .setbtn {
 	margin-left: 10px;
 }
-.modal .servant-img {
-	width: 60px;
-	margin: 4px;
+.servant-modal-img, .ce-modal-img {
 	cursor: pointer;
 }
-.modal .servant-img:hover {
+.servant-modal-img:hover, .ce-modal-img:hover {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
+}
+.servant-modal-img {
+	width: 60px;
+	margin: 4px;
+}
+.ce-modal-img {
+	width: 60px;
+	margin: 4px;
 }
 @-webkit-keyframes fadeIn {
   from {opacity: 0} 
