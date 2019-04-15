@@ -680,7 +680,7 @@ function resetCE() {
 	ceInfo = [];
 	ceSave = [];
 	ceBuffList = [];
-	$("#servant-ce-img").attr("src", "");
+	$("#servant-ce-img").attr("src", "images/bg_logo.webp");
 	$("#servant-ce-name").html("未選定禮裝");
 	$("#servant-ce-star").html("★★★★★");
 	$("#servant-ce-star").addClass("dull");
@@ -1186,8 +1186,8 @@ function setTeammateSkill(toggle) {
 	var check = !info[0][skill + keyword + "DmgToTeam"];
 	if (check) {
 		// Uncheck skill if it is unavailable & checked
-		if (section.find(".teammate-" + this).is(":checked")) {
-			section.find(".teammate-" + this).click();
+		if (section.find(".teammate-" + value).is(":checked")) {
+			section.find(".teammate-" + value).click();
 		}
 	}
 	section.find(".teammate-" + skill).prop("disabled", check);
