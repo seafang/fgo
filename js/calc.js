@@ -784,6 +784,7 @@ function setMaster(element) {
 			$("#master-" + this + "-logo").removeClass("dull");
 			$("#check-master-" + this).prop("checked", false);
 			$("#check-master-" + this).prop("disabled", true);
+			$("#master-" + this + "-name").html("");
 			$("#master-" + this + "-dscrp").html("");
 		});
 	} else {
@@ -817,6 +818,7 @@ function setMaster(element) {
 				return value == "card" || value == "dmg"
 			});
 			$("#check-master-" + this).prop("disabled", allow);
+			$("#master-" + this + "-name").html(masterInfo[0][this + "Name"]);
 			$("#master-" + this + "-dscrp").html(masterInfo[0][this + "Dscrp"]);
 		});
 		
