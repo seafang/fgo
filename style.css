@@ -44,7 +44,7 @@ section, iframe {
 #enemy3-detail {
 	border-left-color: #d20000;
 }
-.servant-skill-detail {
+.servant-skill-detail, .master-skill-detail {
 	width: 30%;
 	border: 1px solid darkgray;
 	padding: 2px;
