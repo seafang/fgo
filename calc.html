@@ -28,7 +28,7 @@
 			<a class="btn resetbtn" id="current-enemy-resetbtn">自訂敵人</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
-			<div class="row inner">			
+			<div class="row inner under">			
 				<div class="element-20 flex">		
 					<img class="profile-img" id="current-enemy-img" src="images/bg_logo.webp" />
 					<span id="current-enemy-name">未選定/自訂敵人</span>	
@@ -538,13 +538,13 @@
 			<a class="btn modalbtn" id="servant-modalbtn">選擇從者</a>
 			<a class="btn resetbtn" id="servant-resetbtn">還原數值</a>
 		</div>
-		<div class="row inner">
+		<div class="row inner under">
 			<div class="element-30 flex">
 				<img class="profile-img" id="current-servant-img" src="images/bg_logo.webp" />
 				<div class="flex justify-even">
 					<span id="current-servant-name">未選定從者</span>
-					<img class="class-logo-small" id="current-servant-class" src="images/class/Unknown.webp" />
-					<span class="star dull" id="current-servant-star" data-star="">★★★★★</span>
+					<img class="class-logo-small space-left" id="current-servant-class" src="images/class/Unknown.webp" />
+					<span class="star space-left dull" id="current-servant-star" data-star="">★★★★★</span>
 				</div>
 			</div>
 			<div class="element-20">
@@ -845,7 +845,7 @@
 				</div>
 			</div>
 		</div>
-		<span class="btnright btn collapsebtn" id="servant-setup-collapsebtn">展開 ▼</span>
+		<a class="btn btnright collapsebtn" id="servant-setup-collapsebtn">展開 ▼</a>
 	</div>
 </div>
 <br/>
@@ -854,28 +854,28 @@
 <div class="info" id="ce-info">
 	<div class="setup" id="ce-setup">
 		<div class="row">
-			<a class="modalbtn btn" id="servant-ce-modalbtn">選擇禮裝</a>
-			<span class="resetbtn btn" id="servant-ce-reapplybtn">還原數值</span>
-			<span class="resetbtn btn" id="servant-ce-resetbtn">不使用禮裝</span>
+			<a class="btn modalbtn" id="servant-ce-modalbtn">選擇禮裝</a>
+			<a class="btn resetbtn" id="servant-ce-reapplybtn">還原數值</a>
+			<a class="btn resetbtn" id="servant-ce-resetbtn">不使用禮裝</a>
 		</div>
 		<div class="collapsible" id="ce-setup-collapsible">
-			<div class="row">				
-				<div class="element-25">			
-					<img class="ce-img" id="servant-ce-img" src=""/>		
+			<div class="row under">				
+				<div class="element-30 flex">			
+					<img class="ce-profile-img" id="servant-ce-img" src="" />		
 					<span id="servant-ce-name">未選定禮裝</span>
-					<span class="star left dull" id="servant-ce-star" data-star="">★★★★★</span>
+					<span class="star space-left dull" id="servant-ce-star" data-star="">★★★★★</span>
 				</div>			
-				<div class="element-10">			
+				<div class="element-10 flex">			
 					<label class="switch">
-						<input type="checkbox" class="update-trigger" id="servant-ce-max" disabled>
+						<input type="checkbox" class="update-trigger" id="servant-ce-max" disabled />
 						<span class="slider"></span>
 					</label>
 					<span class="label">滿破</span>	
 				</div>			
 				<div class="element-10">			
 					<span>		
-						<label class="label">等級</label>	
-						<select class="narrow" id="servant-ce-lv" disabled>
+						<label for="servant-ce-lv" class="label">等級</label>	
+						<select class="alim" id="servant-ce-lv" disabled>
 							<option value="0">預設</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -979,12 +979,14 @@
 							<option value="100">100</option>
 						</select>	
 					</span>		
-				</div>			
-				<span class="label">禮裝效果</span>
-				<span id="servant-ce-dscrp"></span>			
+				</div>
+				<div class="element-50 flex">
+					<span class="infotag">效果</span>
+					<span id="servant-ce-dscrp"></span>
+				</div>
 			</div>				
 		</div>
-		<span class="btnright btn collapsebtn" id="ce-setup-collapsebtn">展開 ▼</span>						   
+		<a class="btn btnright collapsebtn" id="ce-setup-collapsebtn">展開 ▼</a>						   
 	</div>
 </div>
 <br/>
@@ -993,21 +995,21 @@
 <div class="info" id="master-info">
 	<div class="setup" id="master-setup">
 		<div class="row">
-			<label class="label">御主禮裝</label>	
-			<select class="wide" id="master-name-selection">
+			<label for="master-name-selection" class="label">御主禮裝</label>	
+			<select class="broad narrow-right" id="master-name-selection">
 				<option value="none">不使用禮裝</option>
 			</select>
-			<span class="resetbtn btn" id="master-resetbtn">還原數值</span>		
+			<a class="btn resetbtn" id="master-resetbtn">還原數值</a>		
 		</div>				
 		<div class="collapsible" id="master-setup-collapsible">				
-			<div class="row">
-				<div class="element-20">
-					<img class="master-img" id="master-img1" src="">
-					<img class="master-img" id="master-img2" src="">
+			<div class="row inner center">
+				<div>
+					<img class="master-img" id="master-img1" src="" />
+					<img class="master-img" id="master-img2" src="" />
 				</div>
-				<div class="element-20">					
-					<label class="label">等級</label>	
-					<select class="update-trigger" id="master-lv" disabled>	
+				<div class="space-left">					
+					<label for="master-lv" class="label">等級</label>	
+					<select class="tight update-trigger" id="master-lv" disabled>	
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1020,60 +1022,83 @@
 						<option value="10">10</option>
 					</select>		
 				</div>			
-			</div>				
-			<div class="row">				
-				<div class="element-30">
-					<img class="skill-logo" id="master-skill1-logo" src="" />
-					<label class="switch">
-						<input type="checkbox" class="check-master-skill" id="check-master-skill1" value="skill1" disabled>
-						<span class="slider"></span>
-					</label>
-					<span class="label">使用技能</span>
-				</div>			
-				<div class="element-30">			
-					<img class="skill-logo" id="master-skill2-logo" src="" />
-					<label class="switch">
-						<input type="checkbox" class="check-master-skill" id="check-master-skill2" value="skill2" disabled>
-						<span class="slider"></span>
-					</label>
-					<span class="label">使用技能</span>	
-				</div>			
-				<div class="element-30">			
-					<img class="skill-logo" id="master-skill3-logo" src="" />
-					<label class="switch">
-						<input type="checkbox" class="check-master-skill" id="check-master-skill3" value="skill3" disabled>
-						<span class="slider"></span>
-					</label>
-					<span class="label">使用技能</span>	
-				</div>			
-			</div>				
-			<div class="row">				
-				<div class="element-30">			
-					<span class="label">效果</span>		
-					<span id="master-skill1-dscrp"></span>		
-				</div>			
-				<div class="element-30">			
-					<span class="label">效果</span>		
-					<span id="master-skill2-dscrp"></span>		
-				</div>			
-				<div class="element-30">			
-					<span class="label">效果</span>		
-					<span id="master-skill3-dscrp"></span>		
-				</div>			
-			</div>				
+			</div>
+			<div class="row justify-even stretch">
+				<div class="master-skill-detail">
+					<div class="column">				
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
+									<input type="checkbox" class="check-master-skill" id="check-master-skill1" value="skill1" disabled>
+									<span class="slider"></span>
+								</label>
+								<span class="label">使用技能</span>
+							</div>
+						</div>
+						<div class="column-row flex">
+							<img class="skill-logo" id="master-skill1-logo" src="" />
+							<span class="bold" id="master-skill1-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="master-skill1-dscrp"></span>
+						</div>
+					</div>
+				</div>
+				<div class="master-skill-detail">
+					<div class="column">				
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
+									<input type="checkbox" class="check-master-skill" id="check-master-skill2" value="skill2" disabled>
+									<span class="slider"></span>
+								</label>
+								<span class="label">使用技能</span>
+							</div>
+						</div>
+						<div class="column-row flex">
+							<img class="skill-logo" id="master-skill2-logo" src="" />
+							<span class="bold" id="master-skill2-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="master-skill2-dscrp"></span>
+						</div>
+					</div>
+				</div>
+				<div class="master-skill-detail">
+					<div class="column">				
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
+									<input type="checkbox" class="check-master-skill" id="check-master-skill3" value="skill3" disabled>
+									<span class="slider"></span>
+								</label>
+								<span class="label">使用技能</span>
+							</div>
+						</div>
+						<div class="column-row flex">
+							<img class="skill-logo" id="master-skill3-logo" src="" />
+							<span class="bold" id="master-skill3-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="master-skill3-dscrp"></span>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<span class="btnright btn collapsebtn" id="master-setup-collapsebtn">展開 ▼</span>
+		<a class="btn btnright collapsebtn" id="master-setup-collapsebtn">展開 ▼</a>
 	</div>
 </div>
 <br/>
 
+
 <!--Teammate Section-->
 <div class="info" id="teammate-info">
-	<div class="row">
-		<a class="actionbtn left btn" id="add-Lord">使用孔明</a>
-		<a class="actionbtn left btn" id="add-Merlin">使用梅林</a>
-		<a class="actionbtn left btn" id="add-Tamamo">使用玉藻前</a>
-		<a class="actionbtn left btn" id="add-Skadi">使用斯卡蒂</a>
+	<div class="row inner">
+		<a class="btn actionbtn" id="add-Lord">使用孔明</a>
+		<a class="btn actionbtn" id="add-Merlin">使用梅林</a>
+		<a class="btn actionbtn" id="add-Tamamo">使用玉藻前</a>
+		<a class="btn actionbtn" id="add-Skadi">使用斯卡蒂</a>
 	</div>
 	<div class="setup" id="teammate-setup">
 		<div class="row">			
@@ -1235,162 +1260,6 @@
 				<a class="extendbtn left btn teammate-extendbtn" data-teammate="teammate2">+</a>
 			</div>
 		</div>
-		<div class="teammate-detail" id="teammate2">				
-			<div class="row">			
-				<a class="modalbtn left btn teammate-modalbtn" data-teammate="teammate2">選擇隊友II</a>
-				<a class="modalbtn left btn teammate-ce-modalbtn" data-teammate="teammate2">選擇禮裝</a>
-				<span class="resetbtn btn teammate-reapplybtn" data-teammate="teammate2">套用存檔</span>
-				<span class="resetbtn btn btnright teammate-ce-resetbtn" data-teammate="teammate2">移除禮裝</span>
-				<span class="resetbtn btn btnright teammate-resetbtn" data-teammate="teammate2">&times;</span>		
-			</div>			
-			<div class="row">			
-				<div class="element-30">		
-					<img class="left teammate-img" src="" />	
-					<span class="teammate-name">未選定隊友</span>	
-					<img class="class-logo left teammate-class" data-class="" src="images/class/Unknown.webp" />	
-					<span class="star left dull teammate-star" data-star="">★★★★★</span>	
-				</div>
-				<div class="element-30">		
-					<img class="ce-img teammate-ce-img" src=""/>		
-					<span class="teammate-ce-name">未選定禮裝</span>
-					<span class="star left dull teammate-ce-star" >★★★★★</span>
-					<label class="switch">
-						<input type="checkbox" class="teammate-ce-max update-trigger" disabled>
-						<span class="slider"></span>
-					</label>
-					<span class="label">滿破</span>
-					<span class="label">效果</span>
-					<span class="teammate-ce-dscrp"></span>
-				</div>
-				<div class="element-30">		
-					<label class="switch">	
-						<input type="checkbox" class="teammate-np update-trigger" disabled>
-						<span class="slider"></span>
-					</label>	
-					<span class="label">使用</span>	
-					<label class="switch">	
-						<input type="checkbox" class="teammate-np-rankup update-trigger" disabled>
-						<span class="slider"></span>
-					</label>
-					<label class="label">等級</label>
-					<span class="label">寶解</span>
-					<label class="label">等級</label>
-					<select class="tight update-trigger teammate-nplv" disabled>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-					<label class="label">OC</label>
-					<select class="update-trigger teammate-npoc" disabled>
-						<option value="1">100%</option>
-						<option value="2">200%</option>
-						<option value="3">300%</option>
-						<option value="4">400%</option>
-						<option value="5">500%</option>
-					</select>
-					<span class="label">寶具</span><span class="teammate-np-name"></span>	
-					<span class="label">效果</span><span class="teammate-np-dscrp"></span>	
-				</div>		
-			</div>			
-			<div class="row">			
-				<div class="element-30">		
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill teammate-skill1" value="skill1" disabled>
-						<span class="slider"></span>
-					</label>	
-					<span class="label">使用技能一</span>	
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill1-rankup update-trigger" value="skill1" disabled>
-						<span class="slider"></span>
-					</label>
-					<label class="label">等級</label>	
-					<select class="narrow teammate-skill1-lv update-trigger" disabled>	
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-					</select>
-					<span class="label">技解</span>	
-					<img class="teammate-skill1-img" src="" />	
-					<span class="teammate-skill1-name"></span>	
-				</div>		
-				<div class="element-30">		
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill teammate-skill2" value="skill2" disabled>
-						<span class="slider"></span>
-					</label>	
-					<span class="label">使用技能二</span>	
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill2-rankup update-trigger" value="skill2" disabled>
-						<span class="slider"></span>
-					</label>
-					<label class="label">等級</label>	
-					<select class="narrow teammate-skill2-lv update-trigger" disabled>	
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-					</select>
-					<span class="label">技解</span>	
-					<img class="teammate-skill2-img" src="" />	
-					<span class="teammate-skill2-name"></span>	
-				</div>		
-				<div class="element-30">		
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill teammate-skill3" value="skill3" disabled>
-						<span class="slider"></span>
-					</label>	
-					<span class="label">使用技能三</span>	
-					<label class="switch">	
-						<input type="checkbox" class="teammate-skill3-rankup update-trigger" value="skill3" disabled>
-						<span class="slider"></span>
-					</label>
-					<select class="narrow teammate-skill3-lv update-trigger" disabled>	
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-						<option value="9">9</option>
-						<option value="10">10</option>
-					</select>
-					<span class="label">技解</span>	
-					<img class="teammate-skill3-img" src="" />	
-					<span class="teammate-skill3-name"></span>	
-				</div>		
-			</div>			
-			<div class="row">			
-				<div class="element-30">		
-					<span class="label">效果</span>	
-					<span class="teammate-skill1-dscrp"></span>	
-				</div>		
-				<div class="element-30">		
-					<span class="label">效果</span>	
-					<span class="teammate-skill2-dscrp"></span>	
-				</div>		
-				<div class="element-30">		
-					<span class="label">效果</span>	
-					<span class="teammate-skill3-dscrp"></span>	
-				</div>		
-			</div>			
-		</div>				
 		<span class="btnright btn collapsebtn" id="teammate-setup-collapsebtn">展開 ▼</span>
 	</div>			
 </div>
@@ -2149,8 +2018,8 @@
 				<a class="btn setbtn" id="ce-type-setbtn">全選</a>
 				<a class="btn resetbtn" id="ce-type-resetbtn">取消</a>
 			</div>
-			<div class="row center">
-				<div class="listlbl">				
+			<div class="row center inner">
+				<div class="listlbl indent-4">				
 					<span class="label">禮裝效果</span>		
 				</div>				
 				<div class="flex list">
