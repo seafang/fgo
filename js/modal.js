@@ -854,7 +854,7 @@ $(document).ready(function() {
 	});
 	
 	// Apply filters and generate image list
-	$("#teammate-applybtn").click(function() {
+	$("#teammate-filterbtn").click(function() {
 		loadTeammateImg();
 	});
 });
@@ -1116,10 +1116,6 @@ let teammateCEFilter = {
 };
 
 $(document).ready(function() {
-	$("#teammate-ce-modal-closebtn").click(function() {
-		closeModal();
-	});
-	
 	// Change in star filtering criteria
 	$(".teammate-ce-star").change(function() {
 		var star = Number($(this).val());
@@ -1162,7 +1158,7 @@ $(document).ready(function() {
 	});
 	
 	// Apply filters and generate image list
-	$("#teammate-ce-applybtn").click(function() {
+	$("#teammate-ce-filterbtn").click(function() {
 		loadTeammateCEImg();
 	});
 });
