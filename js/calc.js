@@ -917,6 +917,11 @@ $(document).ready(function() {
 		setTeammateSkill(this);
 	});
 	
+	// Enable NP toggles
+	$(".teammate-np").change(function() {
+		enableTeammateNP(this);
+	});
+	
 	// Set common support servant as teammate
 	$("#add-Lord").click(function() {
 		setSupport(37);
@@ -1082,7 +1087,7 @@ function resetTeammate(value) {
 		section.removeClass("allow-toggle");
 		$("#" + value + "-extendbtn").show();
 	}
-	section.find(".teammate-img").attr("src", "");
+	section.find(".teammate-img").attr("src", "images/bg_logo.webp");
 	section.find(".teammate-name").html("未選定隊友");
 	section.find(".teammate-class").attr({
 		"src": "images/class/Unknown.webp",
@@ -1166,6 +1171,13 @@ function setTeammateNP(toggle) {
 	section.find(".teammate-np").prop("disabled", check);
 	section.find(".teammate-nplv").prop("disabled", check);
 	section.find(".teammate-npoc").prop("disabled", check);
+}
+
+function enableTeammateNP(toggle) {
+	var section = $(toggle).parents(".teammate-detail");
+	var check = $(toggle).is(":checked");
+	section.find(".teammate-nplv").prop("disabled", check);
+	section.find(".teammate-npoc").prop("disabled", check);	
 }
 
 // Check if skill rank-up is toggled, set skill logo, name & description accordingly
@@ -1258,24 +1270,6 @@ function pickTeammateCE(value, ceID) {
 	section.find(".teammate-ce-img").attr("src", info[0].imgID);
 	section.find(".teammate-ce-name").html(info[0].name);
 	
-	// Display star info as logo
-	var starHTML = "";
-	switch (info[0].star) {
-		case 3:
-			starHTML = "★★★";
-			break;
-		case 4:
-			starHTML = "★★★★";
-			break;
-		case 5:
-			starHTML = "★★★★★";
-			break;
-		default:
-			break;
-	}
-	section.find(".teammate-ce-star").html(starHTML);
-	section.find(".teammate-ce-star").removeClass("dull");
-	
 	// Check if CE is max by default
 	section.find(".teammate-ce-max").prop("disabled", info[0].defaultMax);
 	
@@ -1300,9 +1294,8 @@ function resetTeammateCE(value) {
 	
 	var section = $("#" + value);
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
-		section.find(".teammate-ce-img").attr("src", "");
+		section.find(".teammate-ce-img").attr("src", "images/class/Unknown.webp");
 		section.find(".teammate-ce-name").html("未選定禮裝");
-		section.find(".teammate-ce-star").html("★★★★★");
 		section.find(".teammate-ce-star").addClass("dull");
 		section.find(".teammate-ce-max").prop("checked", false);
 		section.find(".teammate-ce-max").prop("disabled", true);
@@ -1467,7 +1460,9 @@ function updateBuff() {
 	$(".teammate-detail").each(function() {
 		if ($(this).find(".teammate-name").html() != "未選定隊友") {
 			updateTeammateSkillBuff(this);
-			updateTeammateNPBuff(this);
+			if ($(this).find(".teammate-np").is(":checked")) {
+				updateTeammateNPBuff(this);
+			}
 			if ($(this).find(".teammate-ce-name").html() != "未選定禮裝") {
 				updateTeammateCEBuff(this);
 			}
