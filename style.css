@@ -44,12 +44,19 @@ section, iframe {
 #enemy3-detail {
 	border-left-color: #d20000;
 }
-.servant-skill-detail, .master-skill-detail {
+.servant-skill-detail, .master-skill-detail, .teammate-skill-detail {
 	width: 30%;
 	border: 1px solid darkgray;
 	padding: 2px;
 	margin: 5px;
 	background-color: white;
+}
+.teammate-ce-detail {
+	width: 30%;
+	border: 1px solid darkgray;
+	padding: 2px;
+	margin: 5px;
+	background-color: lightyellow;
 }
 table {
 	width: 100%;
@@ -102,6 +109,7 @@ table {
 }
 .right {
 	float: right;
+	margin-left: auto;
 }
 .inner {
 	margin-bottom: 10px;
@@ -138,9 +146,6 @@ table {
 }
 .element-75 {
 	flex-grow: 15;
-}
-.element-100 {
-	flex-grow: 1;
 }
 .listlbl {
 	width: 10%;
@@ -202,16 +207,16 @@ span.space-right-wide, .space-right-wide {
 	border-radius: 4px;
 	font-weight: 500;
 }
-.btnright {
-	float: right;
-	margin-left: auto;
-}
-.resetbtn {
+.resetbtn, .deletebtn {
 	background-color: white;
 	color: red;
 	border-color: red;
 }
-.resetbtn:hover {
+.deletebtn {
+	font-weight: 1000;
+	padding: 0 5px;
+}
+.resetbtn:hover, .deletebtn:hover {
 	background-color: red;
 	color: white;
 }
@@ -245,13 +250,17 @@ span.space-right-wide, .space-right-wide {
 	background-color: black;
 	color: white;
 }
-.modalbtn {
+.modalbtn, .extendbtn {
 	background-color: #48a948;
 	color: white;
 }
-.modalbtn:hover {
+.modalbtn:hover, .extendbtn:hover {
 	background-color: green;
 	border-color: green;
+}
+.extendbtn {
+	font-weight: 1000;
+	padding: 0 5px;
 }
 .collapsebtn {
 	background-color: #f1f1f1;
@@ -456,15 +465,14 @@ input:checked + .slider:before {
 	text-shadow: 0px 0px 1px #000000;
 	font-size: 110%;
 }
-.profile-img, .ce-profile-img {
+.profile-img, .ce-profile-img, .teammate-img, .teammate-ce-img {
 	width: 60px;
 	margin: 4px 20px 4px 4px;
 	background-color: white;
 	border: 1px solid lightgray;
 }
 .skill-img {
-	margin-right: 30px;
-	width: 50px;
+	width: 40px;
 }
 .master-img {
 	width: 100px;
@@ -548,11 +556,11 @@ input:checked + .slider:before {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
 }
-.servant-modal-img {
+.servant-modal-img, .teammate-modal-img {
 	width: 60px;
 	margin: 4px;
 }
-.ce-modal-img {
+.ce-modal-img, .teammate-ce-modal-img {
 	width: 60px;
 	margin: 4px;
 }
