@@ -731,8 +731,9 @@ var masterBuffList = [];
 $(document).ready(function() {
 	// Check if servant is set, open modal box
 	generateMasterSelection();
-	$("#master-name-selection").click(function() {
+	$("#master-name-selection").change(function() {
 		if ($("#current-servant-name").html() == "未選定從者") {
+			$("#master-name-selection").val("none");
 			alert("請先設定從者！");
 		}
 	});
@@ -1565,7 +1566,7 @@ function updateSkillPreReq() {
 		var activeSkillBuff = multiFilter(skillBuffList, {
 			no: [this.toString()],
 			skillRU: [checkRU],
-			selective: useStrict,
+			chance: useStrict,
 			afterDefeat: includeAfterDefeat
 		});
 		$(activeSkillBuff).each(function() {
@@ -2506,7 +2507,7 @@ var enemy1Result = [], enemy2Result = [], enemy3Result = [];
 var queryCount = 0;
 
 $(document).ready(function() {
-	$("#calcbtn").click(function() {
+	$("#calc-calcbtn").click(function() {
 		if ($("#enemy1-name").html() != "" && $("#current-servant-name").html() != "未選定從者") {
 			calculation();
 		} else {
