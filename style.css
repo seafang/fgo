@@ -51,8 +51,11 @@ section, iframe {
 	margin: 5px;
 	background-color: white;
 }
+.teammate-np-detail {
+	flex-grow: 14;
+}
 .teammate-ce-detail {
-	width: 30%;
+	flex-grow: 6;
 	border: 1px solid darkgray;
 	padding: 2px;
 	margin: 5px;
@@ -94,6 +97,9 @@ table {
 .flex {
 	display: flex;
 	align-items: center;
+}
+.fixed {
+	wrap: nowrap
 }
 .stretch {
 	align-items: stretch;
@@ -150,6 +156,9 @@ table {
 }
 .element-50 {
 	flex-grow: 10;
+}
+.element-60 {
+	flex-grow: 12;
 }
 .element-75 {
 	flex-grow: 15;
@@ -282,6 +291,17 @@ span.space-right-wide, .space-right-wide {
 	border-top: none;
 	padding: 0px 8px;
 	margin-top: 4px;
+}
+.calcbtn {
+	font-size: 14px;
+	font-weight: 500;
+	background-color: black;
+	color: white;
+	border: none;
+	padding: 5px 100px;
+}
+.calcbtn:hover {
+	background-color: orange;
 }
 .label {
 	display: inline-block;
