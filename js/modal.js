@@ -739,7 +739,11 @@ let teammateFilter = {
 	owned: [true, false]
 };
 
-$(document).ready(function() {	
+$(document).ready(function() {
+	$("#teammate-modal-filter-box-toggle").click(function() {
+		toggleFilter(this, "#teammate-modal-filter-box-content");
+	});
+	
 	// Change in class filtering criteria
 	$(".teammate-class").click(function() {
 		var teammateClass = $(this).attr("title");
