@@ -1169,10 +1169,9 @@ function setTeammateNP(toggle) {
 	// Determine if NP should be disabled
 	var check = !info[0]["np" + keyword + "DmgToTeam"];
 	section.find(".teammate-np").prop("disabled", check);
-	section.find(".teammate-nplv").prop("disabled", check);
-	section.find(".teammate-npoc").prop("disabled", check);
 }
 
+// Enable NP toggles
 function enableTeammateNP(toggle) {
 	var section = $(toggle).parents(".teammate-detail");
 	var check = $(toggle).is(":checked");
@@ -1294,7 +1293,7 @@ function resetTeammateCE(value) {
 	
 	var section = $("#" + value);
 	if (section.find(".teammate-ce-name").html() != "未選定禮裝") {
-		section.find(".teammate-ce-img").attr("src", "images/class/Unknown.webp");
+		section.find(".teammate-ce-img").attr("src", "images/bg_logo.webp");
 		section.find(".teammate-ce-name").html("未選定禮裝");
 		section.find(".teammate-ce-star").addClass("dull");
 		section.find(".teammate-ce-max").prop("checked", false);
