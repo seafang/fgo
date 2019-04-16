@@ -114,11 +114,18 @@ table {
 .inner {
 	margin-bottom: 10px;
 }
+.innerborder {
+	border-bottom: 1px solid gray;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
 .under {
 	margin-top: 10px;
 }
 .innerwide {
+	border-bottom: 1px solid gray;
 	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 .element-5 {
 	flex-grow: 1;
@@ -153,6 +160,9 @@ table {
 .list {
 	width: 90%;
 	flex-wrap: wrap;
+}
+.listend {
+	margin-right: 10%;
 }
 .counter {
 	display: none;
@@ -214,7 +224,7 @@ span.space-right-wide, .space-right-wide {
 }
 .deletebtn {
 	font-weight: 1000;
-	padding: 0 5px;
+	padding: 0 3px;
 }
 .resetbtn:hover, .deletebtn:hover {
 	background-color: red;
@@ -260,7 +270,7 @@ span.space-right-wide, .space-right-wide {
 }
 .extendbtn {
 	font-weight: 1000;
-	padding: 0 5px;
+	padding: 4px 10px;
 }
 .collapsebtn {
 	background-color: #f1f1f1;
@@ -549,10 +559,10 @@ input:checked + .slider:before {
 .modal .setbtn {
 	margin-left: 10px;
 }
-.servant-modal-img, .ce-modal-img {
+.servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img {
 	cursor: pointer;
 }
-.servant-modal-img:hover, .ce-modal-img:hover {
+.servant-modal-img:hover, .ce-modal-img:hover, .teammate-modal-img:hover, .teammate-ce-modal-img:hover {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
 }
