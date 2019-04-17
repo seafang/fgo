@@ -53,12 +53,18 @@
 
 <section>
 	<div class="row" id="save-container">
-		<span class="save-label">選擇存檔</span>
-		<select id="inventory-save"></select>
-		<span class="save-label">存檔名稱</span>
-		<input type="text" id="save-title" placeholder="請輸入名字">
-		<a class="btn" id="create-save">重新命名</a>
-		<a class="btn" id="clear-save">刪除存檔</a>
+		<div class="save-element">
+			<span class="save-label">選擇存檔</span>
+			<select id="inventory-save"></select>
+		</div>
+		<div class="save-element">
+			<span class="save-label">存檔名稱</span>
+			<input type="text" id="save-title" placeholder="請輸入名字">
+		</div>
+		<div class="save-element">
+			<a class="btn" id="create-save">重新命名</a>
+			<a class="btn" id="clear-save">刪除存檔</a>
+		</div>
 	</div>
 	<iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
 
