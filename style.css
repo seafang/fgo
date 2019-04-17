@@ -69,11 +69,10 @@ nav .active {
 	height: 25px;
 	width: 200px;
 }
-#inventory-save {
-	margin-right: 50px;
-}
-#save-title {
-	margin-right: 20px;
+.save-element {
+	margin: 5px 10px;
+	white-space: nowrap;
+	wrap: nowrap;
 }
 #create-save, #clear-save {
 	color: white;
@@ -237,7 +236,7 @@ td {
 	align-items: center;
 }
 .fixed {
-	wrap: nowrap
+	wrap: nowrap;
 }
 .stretch {
 	align-items: stretch;
