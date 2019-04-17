@@ -2628,6 +2628,9 @@ function calcDmg(enemy) {
 	var npDmgBuff = [ parseFloat($("#np-buff").val()) + parseFloat($("#event-buff").val()) +
 		parseFloat($("#" + enemy + "-buff").find(".skill-ed").val()) ] / 100;
 	var npEDBuff = parseFloat($("#" + enemy + "-buff").find(".np-ed").val()) / 100;
+	if (npEDBuff < 1) {
+		npEDBuff = 1;
+	}
 	var addDmg = parseInt($("#add-atk").val());
 	var redDmg = parseInt($("#" + enemy + "-buff").find(".red-atk").val());
 	var minOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
@@ -2712,7 +2715,7 @@ function generateResultTable(enemy) {
 		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.min + "</span>";
 		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.avg + "</span>";
 		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.max + "</span>";
-		row.insertCell(-1).innerHTML = "<span class='delbtn result-delbtn' data-query='" + result.query + "'>&times;</span>";
+		row.insertCell(-1).innerHTML = "<a class='result-delbtn' data-query='" + result.query + "'>&times;</a>";
 	});
 }
 
