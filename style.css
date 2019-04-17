@@ -61,8 +61,40 @@ section, iframe {
 	margin: 5px;
 	background-color: lightyellow;
 }
+.table-container {
+	overflow-x: auto;
+}
 table {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
 	width: 100%;
+}
+tr:first-child {
+	background-color: #0032c8;
+	border: 1px solid;
+	color: white;
+}
+tr:first-child:hover {
+	background-color: #0032c8;
+}
+tr:hover {
+	background-color: #f6f6f6;
+}
+th, td {
+	text-align: center;
+	padding: 4px 8px;
+	white-space: nowrap;
+}
+th {
+	border: 1px solid;
+	height: 30px;
+}
+.enemy-table th:last-child {
+	width: 30px;
+}
+td {
+	border-bottom: 1px solid #ddd;
 }
 .row {
 	width: 100%;
@@ -301,7 +333,16 @@ span.space-right-wide, .space-right-wide {
 	padding: 5px 100px;
 }
 .calcbtn:hover {
-	background-color: orange;
+	background-color: #02bed0;
+}
+.result-delbtn {
+	font-weight: 500;
+	color: #b8b8b8;
+	cursor: pointer;
+}
+.result-delbtn:hover {
+	color: red;
+	font-weight: 1000;
 }
 .label {
 	display: inline-block;
@@ -324,6 +365,18 @@ span.space-right-wide, .space-right-wide {
 	padding: 0px 10px;
 	margin: 10px;
 	cursor: context-menu;
+}
+#enemy1-tag {
+	border-color: orange;
+	background: #ffeece;
+}
+#enemy2-tag {
+	border-color: royalblue;
+	background-color: #d3deff;
+}
+#enemy3-tag {
+	border-color: #d20000;
+	background-color: #ffe1e1;
 }
 .label-simple {
 	margin-left: 5px;
