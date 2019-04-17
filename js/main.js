@@ -14,11 +14,71 @@ var ceBuff =  JSON.parse(craftEssenceBuff);
 var ceAtk = JSON.parse(craftEssenceATK);
 var masterBuff = JSON.parse(mysticCodeBuff);
 
-// Load save
 var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [];
 
 $(document).ready(function() {
+	$("#defaultFrame").click();		// Open the default iframe (calc.html)
+	$("#activeFrame").css("height", 1500);		// Set the iframe initial height
+	
+	// Generate save list
 	generateSaveList();
+	
+	// Retrieve saved data and maintain in the background
 	getSave();
+	
+	// Open corresponding frame
+	$(".menu-button").click(function() {
+		var url = "https://seafang.github.io/fgo/" + $(this).attr("data-src") + ".html";
+		openFrame(url, this);
+	});
+	
+	$("#inventory-save").click(function() {
+		getSave();
+	});
+	
+	$("#create-save").click(function() {
+		saveName();
+	});
+	
+	$("#clear-save").click(function() {
+		clearSave();
+	});
+	
+	$("#to_top").click(function() {
+		toTop();
+	});
 });
+
+// Update iframe height on scroll
+$(document).scroll(function() {
+	iframeResize();
+});
+
+// Retrieve iframe content height and update the iframe height
+function iframeResize() {
+	var frameHeight = $("#activeFrame").contents().find(".counter").html();
+	$("#activeFrame").css("height", frameHeight);
+}
+
+// Open new iframe
+function openFrame(url, tab) {
+	$(".menu-button").removeClass("active");
+	$(tab).addClass("active");
+	$("#activeFrame").attr("src", url);
+}
+
+// Control display of return to top button
+$(document).scroll(function() {
+	if (window.pageYOffset > 50 || $(document.body).scrollTop() > 50 || $(document.documentElement).scrollTop() > 50) {
+		$("#to_top").show();
+	} else {
+		$("#to_top").hide();
+	}
+});
+
+// Return to top function
+function toTop() {
+	$(document.body).scrollTop(0); // Safari
+	$(document.documentElement).scrollTop(0);
+}
