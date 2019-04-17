@@ -41,11 +41,11 @@ function generateMasterInventory() {
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + code.skill1ImgID + "' />";
-		row.insertCell(-1).innerHTML = code.skill1Dscrp;
+		row.insertCell(-1).innerHTML = "<div>" + code.skill1Dscrp + "</div>";
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2-logo dull' src='" + code.skill2ImgID + "' />";
-		row.insertCell(-1).innerHTML = code.skill2Dscrp;
+		row.insertCell(-1).innerHTML = "<div>" + code.skill1Dscrp + "</div>";
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3-logo dull' src='" + code.skill3ImgID + "' />";
-		row.insertCell(-1).innerHTML = code.skill3Dscrp;
+		row.insertCell(-1).innerHTML = "<div>" + code.skill1Dscrp + "</div>";
 	});
 }
 
