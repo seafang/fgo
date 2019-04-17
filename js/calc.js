@@ -2826,5 +2826,10 @@ function deleteQuery(table, query) {
 	});
 	newList.splice(position, 1);
 	window[enemy + "Result"] = newList;
+	
+	// Check if the table is empty after row removal, hide the table if true
+	if (newList[0] === undefined) {
+		$(".table-resetbtn").find("[data-value='" + enemy + "']").click();
+	}
 }
 
