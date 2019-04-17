@@ -49,6 +49,9 @@ nav .active {
 	background-color: white;
 	color: #5D5D5D;
 }
+nav .right {
+	display: flex;
+}
 
 /* Save Managing Area */
 #save-container {
@@ -195,9 +198,9 @@ th {
 	border: 1px solid;
 	height: 30px;
 }
-#master-inventory td:nth-child(6), #master-inventory td:nth-child(8), #master-inventory td:nth-child(10) {
+#master-inventory td > div {
 	width: 300px;
-	white-space: initial;
+	white-space: normal;
 }
 .enemy-table th:last-child {
 	width: 30px;
@@ -797,7 +800,8 @@ servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover, .t
 		flex-direction: column;
 	}
 	nav .right {
-		white-space: initial;
+		width: 100%;
+		display: initial;
 	}
 	.menu-button {
 		width: 100%;
