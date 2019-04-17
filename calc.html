@@ -1404,7 +1404,7 @@
 			</div>
 			<div class="element-20">					
 				<label class="label">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">		
 			</div>
 		</div>
 	</div>
@@ -1427,7 +1427,7 @@
 			</div>
 			<div class="element-20">					
 				<label class="label">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">		
 			</div>
 		</div>
 	</div>
@@ -1450,7 +1450,7 @@
 			</div>
 			<div class="element-20">					
 				<label class="label">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="0" min="0" step="0.1">		
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">
 			</div>
 		</div>
 	</div>
@@ -1458,7 +1458,7 @@
 <br/>
 
 <!--Result Section-->
-<div class="row">
+<div class="row center">
 	<a class="btn calcbtn" id="calc-calcbtn">計算</a>
 </div>
 <br/>
@@ -1470,95 +1470,107 @@
 <div id="result-section">
 	<div class="result" id="enemy1-result">
 		<div class="row">
-			<span class="infotag">敵人 I</span>
+			<span class="infotag" id="enemy1-tag">敵人 I</span>
 			<span id="enemy1-result-title"></span>
 			<div class="right">
-				<span class="btn resetbtn table-resetbtn" data-value="enemy1">清除結果</span>
+				<span class="btn resetbtn table-resetbtn" data-value="enemy1">清除</span>
 			</div>
 		</div>
-		<table class="enemy-table" id="enemy1-table" data-value="enemy1">
-			<tr>	
-				<th>排名</th>
-				<th>從者</th>
-				<th>職階</th>
-				<th>等級</th>
-				<th>ATK</th>
-				<th>寶具</th>
-				<th>倍率(%)</th>
-				<th>OC(%)</th>
-				<th>寶具特攻(%)</th>
-				<th>寶具威力(%)</th>
-				<th>指令卡性能(%)</th>
-				<th>攻擊力(%)</th>
-				<th>敵方減防</th>
-				<th>最小傷害</th>
-				<th>平均傷害</th>
-				<th>最大傷害</th>
-				<th></th>
-			</tr>
-		</table>		
+		<div class="table-container">
+			<table class="enemy-table" id="enemy1-table" data-value="enemy1">
+				<tbody>
+					<tr>	
+						<th>排名</th>
+						<th>從者</th>
+						<th>職階</th>
+						<th>等級</th>
+						<th>ATK</th>
+						<th>寶具</th>
+						<th>倍率(%)</th>
+						<th>OC(%)</th>
+						<th>寶具特攻(%)</th>
+						<th>寶具威力(%)</th>
+						<th>指令卡性能(%)</th>
+						<th>攻擊力(%)</th>
+						<th>敵方減防</th>
+						<th>最小傷害</th>
+						<th>平均傷害</th>
+						<th>最大傷害</th>
+						<th></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<br/>
 	<div class="result" id="enemy2-result">
 		<div class="row">
-			<span class="infotag">敵人 II</span>
+			<span class="infotag" id="enemy2-tag">敵人 II</span>
 			<span id="enemy2-result-title"></span>
 			<div class="right">
-				<span class="btn resetbtn table-resetbtn" data-value="enemy2">清除結果</span>
+				<span class="btn resetbtn table-resetbtn" data-value="enemy2">清除</span>
 			</div>
 		</div>
+		<div class="table-container">
 			<table class="enemy-table" id="enemy2-table" data-value="enemy2">
-			<tr>	
-				<th>排名</th>
-				<th>從者</th>
-				<th>職階</th>
-				<th>等級</th>
-				<th>ATK</th>
-				<th>寶具</th>
-				<th>倍率(%)</th>
-				<th>OC(%)</th>
-				<th>寶具特攻(%)</th>
-				<th>寶具威力(%)</th>
-				<th>指令卡性能(%)</th>
-				<th>攻擊力(%)</th>
-				<th>敵方減防</th>
-				<th>最小傷害</th>
-				<th>平均傷害</th>
-				<th>最大傷害</th>
-				<th></th>
-			</tr>
-		</table>		
+				<tbody>
+					<tr>	
+						<th>排名</th>
+						<th>從者</th>
+						<th>職階</th>
+						<th>等級</th>
+						<th>ATK</th>
+						<th>寶具</th>
+						<th>倍率(%)</th>
+						<th>OC(%)</th>
+						<th>寶具特攻(%)</th>
+						<th>寶具威力(%)</th>
+						<th>指令卡性能(%)</th>
+						<th>攻擊力(%)</th>
+						<th>敵方減防</th>
+						<th>最小傷害</th>
+						<th>平均傷害</th>
+						<th>最大傷害</th>
+						<th></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>		
 	</div>
 	<br/>
 	<div class="result" id="enemy3-result">
 		<div class="row">
-			<span class="infotag">敵人 III</span>
+			<span class="infotag" id="enemy3-tag">敵人 III</span>
 			<span id="enemy3-result-title"></span>
 			<div class="right">
-				<span class="btn resetbtn table-resetbtn" data-value="enemy3">清除結果</span>
+				<span class="btn resetbtn table-resetbtn" data-value="enemy3">清除</span>
 			</div>
 		</div>
-		<table class="enemy-table" id="enemy3-table" data-value="enemy3">
-			<tr>	
-				<th>排名</th>
-				<th>從者</th>
-				<th>職階</th>
-				<th>等級</th>
-				<th>ATK</th>
-				<th>寶具</th>
-				<th>倍率(%)</th>
-				<th>OC(%)</th>
-				<th>寶具特攻(%)</th>
-				<th>寶具威力(%)</th>
-				<th>指令卡性能(%)</th>
-				<th>攻擊力(%)</th>
-				<th>敵方減防</th>
-				<th>最小傷害</th>
-				<th>平均傷害</th>
-				<th>最大傷害</th>
-				<th></th>
-			</tr>	
-		</table>		
+		<div class="table-container">
+			<table class="enemy-table" id="enemy3-table" data-value="enemy3">
+				<tbody>
+					<tr>	
+						<th>排名</th>
+						<th>從者</th>
+						<th>職階</th>
+						<th>等級</th>
+						<th>ATK</th>
+						<th>寶具</th>
+						<th>倍率(%)</th>
+						<th>OC(%)</th>
+						<th>寶具特攻(%)</th>
+						<th>寶具威力(%)</th>
+						<th>指令卡性能(%)</th>
+						<th>攻擊力(%)</th>
+						<th>敵方減防</th>
+						<th>最小傷害</th>
+						<th>平均傷害</th>
+						<th>最大傷害</th>
+						<th></th>
+					</tr>
+				</tbody>
+			</table>
+		</div>		
 	</div>
 </div>
 
