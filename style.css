@@ -73,11 +73,6 @@ table {
 	border-spacing: 0;
 	width: 100%;
 }
-tr:first-child {
-	background-color: #0032c8;
-	border: 1px solid;
-	color: white;
-}
 tr:first-child:hover {
 	background-color: #0032c8;
 }
@@ -90,6 +85,8 @@ th, td {
 	white-space: nowrap;
 }
 th {
+	background-color: #0032c8;
+	color: white;
 	border: 1px solid;
 	height: 30px;
 }
@@ -635,12 +632,16 @@ input:checked + .slider:before {
 .modal .setbtn {
 	margin-left: 10px;
 }
-.servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img {
+servant-enemy-modal-img, .servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img {
 	cursor: pointer;
 }
-.servant-modal-img:hover, .ce-modal-img:hover, .teammate-modal-img:hover, .teammate-ce-modal-img:hover {
+servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover, .teammate-modal-img:hover, .teammate-ce-modal-img:hover {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
+}
+.servant-enemy-modal-img {
+	width: 60px;
+	margin: 4px;
 }
 .servant-modal-img, .teammate-modal-img {
 	width: 60px;
