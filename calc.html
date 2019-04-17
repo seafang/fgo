@@ -1346,7 +1346,7 @@
 		</div>
 	</div>
 	<div class="buff-summary innerborder" id="common-buff">			
-		<div class="row">				
+		<div class="row justify-between">				
 			<div class="element-20">					
 				<label for="ce-atk" class="label">禮裝ATK</label>	
 				<input type="number" class="narrow" id="ce-atk" value="0" min="0" max="2400">		
@@ -1360,7 +1360,21 @@
 				<input type="number" class="narrow" id="add-atk" value="0" min="0">		
 			</div>	
 		</div>
-		<div class="row">				
+		<div class="row justify-between">
+			<div class="element-20">					
+				<label for="Buster-buff" class="label">Buster性能(%)</label>	
+				<input type="number" class="narrow" id="Buster-buff" value="0" min="0" step="0.1">		
+			</div>			
+			<div class="element-20">					
+				<label for="Art-buff" class="label">Art性能(%)</label>	
+				<input type="number" class="narrow" id="Art-buff" value="0" min="0" step="0.1">
+			</div>				
+			<div class="element-20">					
+				<label for="Quick-buff" class="label">Quick性能(%)</label>	
+				<input type="number" class="narrow" id="Quick-buff" value="0" min="0" step="0.1">
+			</div>	
+		</div>
+		<div class="row justify-between">				
 			<div class="element-20">					
 				<label for="np-buff" class="label">寶具威力提升(%)</label>	
 				<input type="number" class="narrow" id="np-buff" value="0" min="0" step="0.1">			
@@ -1368,20 +1382,6 @@
 			<div class="element-20">					
 				<label for="event-buff" class="label">活動攻擊加成(%)</label>	
 				<input type="number" class="narrow" id="event-buff" value="0" min="0">		
-			</div>			
-			<div class="element-60 justify-even flex fixed">
-				<div>
-					<label for="Buster-buff" class="label">Buster性能(%)</label>	
-					<input type="number" class="narrow" id="Buster-buff" value="0" min="0" step="0.1">
-				</div>
-				<div>
-					<label for="Art-buff" class="label">Art性能(%)</label>	
-					<input type="number" class="narrow" id="Art-buff" value="0" min="0" step="0.1">
-				</div>
-				<div>
-					<label for="Quick-buff" class="label">Quick性能(%)</label>	
-					<input type="number" class="narrow" id="Quick-buff" value="0" min="0" step="0.1">
-				</div>
 			</div>
 		</div>
 	</div>	
