@@ -403,7 +403,7 @@ function pickServant(servantID) {
 			toSelf: [true],	
 			buffFirst: [true],	
 			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
-				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "npmult", "hpmult"]
+				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "npmult", "hpmult", "skilled"]
 		});
 		
 		// Filter ATK info, affinity, attribute affinity and class multipliers
@@ -1553,6 +1553,9 @@ function updatePassiveBuff() {
 	$("#buff-info").find("input").each(function() {
 		$(this).val(0);
 	});
+	$(".np-ed").each(function() {
+		$(this).val(100);
+	});
 	
 	// Update Buster buff, includes both passive skills & NP fixed-value buffs
 	var buster = Number($("#Buster-buff").val());	
@@ -2031,10 +2034,11 @@ function updateNPBuff() {
 						updateNPDefDebuff(this, 'enemy3', lv);
 					}	
 					break;	
-				case "ed":		
-					updateNPED(this, 'enemy1', lv);	
-					updateNPED(this, 'enemy2', lv);	
-					updateNPED(this, 'enemy3', lv);	
+				case "ed":
+				case "skilled":
+					updateNPED(this, 'enemy1', lv, this.effect);	
+					updateNPED(this, 'enemy2', lv, this.effect);	
+					updateNPED(this, 'enemy3', lv, this.effect);	
 					break;	
 				default:		
 					break;	
@@ -2052,7 +2056,7 @@ function updateNPDefDebuff(buff, enemy, lv) {
 }
 
 // Update ED buffs by NP
-function updateNPED(buff, enemy, lv) {
+function updateNPED(buff, enemy, lv, category) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
@@ -2106,12 +2110,17 @@ function updateNPED(buff, enemy, lv) {
 		default:
 			break;
 	}
-	if (test == true) {
+	if (test == true && category == "ed") {			// Standard NP ED given as NP buff
 		var field = $("#" + enemy + "-buff").find(".np-ed");
 		var value = Number($(field).val());
 		value += buff[lv];
 		$(field).val(value);
-	}	
+	} else if (test == true && category == "skilled") {		// Skill ED given by NP buff (Beni-enma)
+		var field = $("#" + enemy + "-buff").find(".skill-ed");
+		var value = Number($(field).val());
+		value += buff[lv];
+		$(field).val(value);
+	}
 }
 
 // Update CE buffs
