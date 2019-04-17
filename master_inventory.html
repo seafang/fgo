@@ -19,27 +19,25 @@
 <body>
 
 <!--Table Section-->
-<div class="content">
-	<table id="master-inventory" class="inventory">
-		<tr>	
-			<th rowspan="2">名稱</th>
-			<th rowspan="2"></th>
-			<th rowspan="2">擁有</th>
-			<th rowspan="2">等級</th>
-			<th colspan="2">技能一</th>
-			<th colspan="2">技能二</th>
-			<th colspan="2">技能三</th>
-    	</tr>
-    	<tr>
-			<th></th>
-			<th>效果</th>
-			<th></th>
-			<th>效果</th>
-			<th></th>
-			<th>效果</th>
-		</tr>		
-	</table>		
+<div class="content" id="master-inventory-content">
+	<div class="table-container">
+		<table id="master-inventory" class="inventory">
+			<tbody>
+				<tr>	
+					<th>名稱</th>
+					<th></th>
+					<th>擁有</th>
+					<th>等級</th>
+					<th colspan="2">技能一</th>
+					<th colspan="2">技能二</th>
+					<th colspan="2">技能三</th>
+    				</tr>
+			</tbody>
+		</table>
+		<br/>
+	</div>
 </div>
 
+<div class="counter" id="master-inventory-counter"></div>
 </body>
 </html>
