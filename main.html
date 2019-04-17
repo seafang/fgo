@@ -27,84 +27,6 @@
 <script src="js/misc.js"></script>
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
-
-<style>
-header {
-	background-color: #f1f1f1;
-	padding: 2px;
-	height: 90px;
-}
-
-footer {			
-	background-color: #5D5D5D;
-	padding: 10px 10px;
-	text-align: left;
-	color: white;
-}
-
-/*top navigation box*/
-nav {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #5D5D5D;
-	border: none;
-}
-nav a {
-	float: left;
-	display: block;
-	text-align: center;
-	padding: 5px 10px;
-	line-height: 2;
-	text-decoration: none;
-	color: white;
-	font-size: 14px;
-	font-weight: 500;
-	cursor: pointer;
-}
-nav a.right {
-	float: right;
-}
-nav a.left:active, nav a.right:active {
-	background-color: white;
-	color: #5D5D5D;
-}
-nav a.active {
-	background-color: white;
-	color: #5D5D5D;
-}
-
-/*return to top button*/
-#to_top {
-	position: fixed;
-	z-index: 99;
-	right: 0;
-	bottom: 40px;
-	display: none;
-	background-color: #A7A7A7;
-	text-align: center;
-	font-size: 14px;
-	color: white;
-	text-decoration: none;
-	padding: 5px;
-	cursor: pointer;
-}
-#to_top:active {
-	background-color: white;
-	color: #5D5D5D;
-}
-	
-/*responsive layout*/
-@media screen and (min-width: 660px) {
-	nav a:hover {background-color: royalblue; color: white;}
-	#to_top:hover {background-color: royalblue; color: white;}
-}
-@media screen and (max-width: 660px) {
-	header {font-size: 2vw;}
-	nav a, nav a.right {float: none; width: 100%;}
-}
-</style>
 </head>
 <body>
 
@@ -116,34 +38,32 @@ nav a.active {
 
 <!-- top navigation box -->
 <nav>
-	<a class="menu">≡</a>
-	<div id="menu-content">
-		<a class="left" onclick="openFrame('https://seafang.github.io/fgo/inventory.html', this)">從者管理</a>
-		<a class="left" onclick="openFrame('https://seafang.github.io/fgo/ce_inventory.html', this)">禮裝管理</a>
-		<a class="left" onclick="openFrame('https://seafang.github.io/fgo/master_inventory.html', this)">御主禮裝管理</a>
-		<a class="left" id="defaultFrame" onclick="openFrame('https://seafang.github.io/fgo/calc.html', this)">寶傷計算</a>
-		<a class="left" onclick="openFrame('https://seafang.github.io/fgo/rank.html', this)">寶傷排名</a>
-		<a class="left" onclick="openFrame('https://seafang.github.io/fgo/npcalc.html', this)">NP計算</a>
-		<a class="right" onclick="openFrame('https://seafang.github.io/fgo/update.html', this)">更新紀錄</a>
-		<a class="right" onclick="openFrame('https://seafang.github.io/fgo/formula.html', this)">FGO公式</a>
-		<a class="right" onclick="openFrame('https://seafang.github.io/fgo/instruction.html', this)">使用說明</a>
+	<a class="menu-button" data-src="inventory">從者管理</a>
+	<a class="menu-button" data-src="ce_inventory">禮裝管理</a>
+	<a class="menu-button" data-src="master_inventory">魔術禮裝管理</a>
+	<a class="menu-button" id="defaultFrame" data-src="calc">寶傷計算</a>
+	<a class="menu-button" data-src="rank">寶傷排名</a>
+	<a class="menu-button" data-src="npcalc">NP計算</a>
+	<div class="right">
+		<a class="menu-button" data-src="instruction">使用說明</a>
+		<a class="menu-button" data-src="formula">FGO公式</a>
+		<a class="menu-button" data-src="update">更新紀錄</a>
 	</div>
 </nav>
 
 <section>
-	<div class="row">
-		<span class="label">選擇存檔</span>
-		<select id="inventory-save" onchange="getSave()"></select>
-		<span class="label">存檔名稱</span>
+	<div class="row" id="save-container">
+		<span class="save-label">選擇存檔</span>
+		<select id="inventory-save"></select>
+		<span class="save-label">存檔名稱</span>
 		<input type="text" id="save-title" placeholder="請輸入名字">
-		<span class="btn" id="create-save" onclick="saveName()">重新命名</span>
-		<span class="btn" id="clear-save" onclick="clearSave()">刪除存檔</span>
+		<a class="btn" id="create-save">重新命名</a>
+		<a class="btn" id="clear-save">刪除存檔</a>
 	</div>
-<iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
+	<iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
 
-<!-- return to top button -->
-<a onclick="toTop()" id="to_top">回到頂部</a>
-<br/>
+	<a id="to_top">回到頂部</a>
+	<br/>
 </section>
 
 <!-- footer -->
