@@ -195,6 +195,10 @@ th {
 	border: 1px solid;
 	height: 30px;
 }
+#master-inventory td:nth-child(6), #master-inventory td:nth-child(8), #master-inventory td:nth-child(10) {
+	width: 300px;
+	white-space: initial;
+}
 .enemy-table th:last-child {
 	width: 30px;
 }
