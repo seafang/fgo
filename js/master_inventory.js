@@ -36,8 +36,8 @@ function generateMasterInventory() {
 		row.insertCell(-1).innerHTML = code.name;
 		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.imgID1 + "' />" + 
 			"<img class='master-img' src='" + code.imgID2 + "' />";								
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned' value='true'><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<select class='narrow master-inventory-lv' disabled><option value='1'>1</option>" + 				
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<select class='tight master-inventory-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + code.skill1ImgID + "' />";
