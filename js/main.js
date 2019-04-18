@@ -18,8 +18,6 @@ var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [];
 
 $(document).ready(function() {
-	$("#defaultFrame").click();		// Open the default iframe (calc.html)
-	$("#activeFrame").css("height", 1500);		// Set the iframe initial height
 	
 	// Generate save list
 	generateSaveList();
@@ -48,6 +46,9 @@ $(document).ready(function() {
 	$("#to_top").click(function() {
 		toTop();
 	});
+	
+	$("#defaultFrame").click();		// Open the default iframe (calc.html)
+	$("#activeFrame").css("height", 1500);		// Set the iframe initial height
 });
 
 // Update iframe height on scroll
