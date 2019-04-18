@@ -347,6 +347,7 @@ var servantInfo = [];
 var servantSave = [];
 var servantAffList = [], servantMult = [], servantAttrAffList = [], servantAtkList = [];
 var skillBuffList = [], npBuffList = [];
+var skillSet = ["default"];
 
 $(document).ready(function() {
 	// Check if enemy is set, open modal box
@@ -388,6 +389,8 @@ function pickServant(servantID) {
 		servantInfo = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		skillSet = ["default"];
+		
 		// Filter useful skill buffs by ID, buffs that are effective to oneself & damage related buffs
 		skillBuffList = multiFilter(skillBuff, {		
 			id: [servantID],	
@@ -493,6 +496,7 @@ function pickServant(servantID) {
 
 // Revert changes made
 function resetServant() {
+	skillSet = ["default"];	
 	setCurrentServantInfo();
 	setCurrentServantNP();
 	var skilllist = ["skill1", "skill2", "skill3"]
@@ -728,6 +732,7 @@ function setCurrentServantCEEffect(toggle) {
 var masterInfo = [];
 var masterSave = [];
 var masterBuffList = [];
+var masterSkillSet = [];
 
 $(document).ready(function() {
 	// Check if servant is set, open modal box
@@ -850,6 +855,7 @@ function applyMaster() {
 /* Set Teammates */
 var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
 var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
+var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
 var teammate1SkillBuffList = [], teammate2SkillBuffList = [], teammate3SkillBuffList = [], teammate4SkillBuffList = [], teammate5SkillBuffList = [];
 var teammate1NPBuffList = [], teammate2NPBuffList = [], teammate3NPBuffList = [], teammate4NPBuffList = [], teammate5NPBuffList = [];
 var teammate1CEInfo = [], teammate2CEInfo = [], teammate3CEInfo = [], teammate4CEInfo = [], teammate5CEInfo = [];
@@ -959,6 +965,8 @@ function pickTeammate(value, teammateID, brute) {
 		window[value + "Info"] = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		window[value + "SkillSet"] = [];
+		
 		// Filter useful NP and skill buffs by ID, effective to teammates & dmage related
 		window[value + "SkillBuffList"] = multiFilter(skillBuff, {		
 			id: [teammateID],	
@@ -1054,6 +1062,8 @@ function pickTeammate(value, teammateID, brute) {
 
 // Revert changes made
 function reapplyTeammate(value) {
+	window[value + "SkillSet"] = [];
+	
 	setTeammateInfo(value);
 	var section = $("#" + value);
 	
@@ -1334,9 +1344,6 @@ function setTeammateCEEffect(toggle) {
 
 
 /* Update Buff */
-var skillSet = [];
-var masterSkillSet = [];
-var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
 var tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [], ignoreDef = false;
@@ -1645,8 +1652,11 @@ function updatePassiveBuff() {
 
 // Update prerequisite skill buffs
 function updateSkillPreReq() {
-	$(skillSet).each(function() {			// Loop through each skill in effecct
-		var checkRU = $("#check-" + this + "-rankup").is(":checked");
+	$(skillSet).each(function() {			// Loop through each skill in effect
+		var checkRU = false;
+		if (this !== "default") {
+			checkRU = $("#check-" + this + "-rankup").is(":checked");
+		}
 		var activeSkillBuff = multiFilter(skillBuffList, {	// Filter useful buffs by rank up status and settings
 			no: [this.toString()],
 			skillRU: [checkRU],
@@ -2092,32 +2102,22 @@ function updateNPED(buff, enemy, lv, category) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			if (buff.corrDetail == $("#" + enemy + "-class").attr("alt")) {
-				test = true;
-			}
+			test =  ( buff.corrDetail == $("#" + enemy + "-class").attr("alt") );
 			break;
 		case "gender":
 			if ($.isArray(buff.corrDetail)) {
-				if (buff.corrDetail.some(function(gender) {
+				test =  buff.corrDetail.some(function(gender) {
 					return gender == $("#" + enemy + "-gender").html();
-				})) {
-					test = true;
-				}
+				});
 			} else {
-				if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
-					test = true;
-				}
+				test = ( buff.corrDetail == $("#" + enemy + "-gender").html() );
 			}
 			break;
 		case "alignment1":
-			if (buff.corrDetail == $("#" + enemy + "-alignment1").html()) {
-				test = true;
-			}
+			test =  ( buff.corrDetail == $("#" + enemy + "-alignment1").html() );
 			break;
 		case "alignment2":
-			if (buff.corrDetail == $("#" + enemy + "-alignment2").html()) {
-				test = true;
-			}
+			test = ( buff.corrDetail == $("#" + enemy + "-alignment2").html() );
 			break;
 		case "trait":
 			var traitList = window[enemy + "Trait"]
@@ -2133,16 +2133,42 @@ function updateNPED(buff, enemy, lv, category) {
 			break;
 		case "debuff":
 			var debuffList = window[enemy + "Debuff"]
-			if (debuffList.some(function(debuff) {
+			test = debuffList.some(function(debuff) {
 				return debuff == buff.corrDetail;
-			})) {
-				test = true;
-			}
+			});
+		case "compound":				// Compound criteria (Mysterious Heroine X [Alter])
+			var testTable = [];
+			$(buff.corrDetail).each(function() {
+				switch (this.cat) {
+					case "class":	
+						testTable.push(this.detail == $("#" + enemy + "-class").attr("alt"))
+						break;
+					case "trait":		
+						var traitList = window[enemy + "Trait"];
+						if (traitList.some(function(trait) {	
+							return this.detail.includes(trait) === true;
+						})) {	
+							testTable.push(true);
+						} else if (tempEnemyTrait.some(function(trait) {	
+							return this.detail.includes(trait) === true;
+						})) {	
+							testTable.push(true);
+						} else {
+							testTable.push(false);
+						}
+						break;
+					default:
+						break;
+				}
+			});
+			test = testTable.every(function(value) {
+				return value === true;
+			});
 			break;
 		default:
 			break;
 	}
-	if (test == true && category == "ed") {			// Standard NP ED given as NP buff
+	if (test == true && category == "ed") {				// Standard NP ED given as NP buff
 		var field = $("#" + enemy + "-buff").find(".np-ed");
 		var value = Number($(field).val());
 		value += buff[lv];
@@ -2239,24 +2265,15 @@ function updateCEED(buff, enemy, lv) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			if (buff.corrDetail == $("#" + enemy + "-class").attr("alt")) {
-				test = true;
-			}
+			test = ( buff.corrDetail == $("#" + enemy + "-class").attr("alt") );
 			break;
 		case "gender":
-			if (buff.corrDetail == $("#" + enemy + "-gender").html()) {
-				test = true;
-			}
-			break;
+			test = ( buff.corrDetail == $("#" + enemy + "-gender").html() );
 		case "alignment1":
-			if (buff.corrDetail == $("#" + enemy + "-alignment1").html()) {
-				test = true;
-			}
+			test = ( buff.corrDetail == $("#" + enemy + "-alignment1").html() );
 			break;
 		case "alignment2":
-			if (buff.corrDetail == $("#" + enemy + "-alignment2").html()) {
-				test = true;
-			}
+			test = ( buff.corrDetail == $("#" + enemy + "-alignment2").html() );
 			break;
 		case "trait":
 			var traitList = window[enemy + "Trait"]
@@ -2272,11 +2289,9 @@ function updateCEED(buff, enemy, lv) {
 			break;
 		case "debuff":
 			var debuffList = window[enemy + "Debuff"]
-			if (debuffList.some(function(debuff) {
+			test = debuffList.some(function(debuff) {
 				return debuff == buff.corrDetail;
-			})) {
-				test = true;
-			}
+			});
 			break;
 		default:
 			break;
@@ -2354,50 +2369,38 @@ function updateTeammateSkillBuff(section) {
 			if (this.selective == true) {			// Check if buff is selective
 				switch (this.lookUp) {
 					case "class":			// Class-specific buff
-						if (servantInfo[0].classes != this.corrDetail) {
-							test = false;
-						}
+						test = ( servantInfo[0].classes == this.corrDetail );
 						break;
 					case "gender":			// Gender-specific buff
 						if ($.isArray(this.corrDetail)) {
-							if (!this.corrDetail.some(function(gender) {
+							test = this.corrDetail.some(function(gender) {
 								return gender == servantInfo[0].gender;
-							})) {
-								test = false;
-							}
+							});
 						} else {
-							if (servantInfo[0].gender != this.corrDetail) {
-								test = false;
-							}
+							test = ( servantInfo[0].gender == this.corrDetail );
 						}
 						break;
 					case "alignment1":		// Alignment-specific buff
 						if (servantInfo[0].alignment1 != this.corrDetail) {
-							if (!tempAlignment1.some(function(value) {	// Check temporary alignment
+							test = tempAlignment1.some(function(value) {	// Check temporary alignment
 								return value == this.corrDetail;
-							})) {
-								test = false;
-							}
+							});
 						}
 						break;
 					case "alignment2":
 						if (servantInfo[0].alignment2 != this.corrDetail) {
-							if (!tempAlignment2.some(function(value) {
+							test = tempAlignment2.some(function(value) {
 								return value == this.corrDetail;
-							})) {
-								test = false;
-							}
+							});
 						}
 						break;
 					case "trait":		// Trait-specific buff
 						if (!servantInfo[0].trait.some(function(value) {
 						    	return value == this.corrDetail;
 						})) {
-							if (!tempTrait.some(function(value) {		// Check temporary traits
+							test = tempTrait.some(function(value) {		// Check temporary traits
 								return value == this.corrDetail;
-							})) {
-								test = false;
-							}
+							});
 						}
 						break;
 				}
@@ -2476,9 +2479,7 @@ function updateTeammateNPBuff(section) {
 			switch (this.lookUp) {
 				case "skill":			// NP buffs that required prerequisite skills (Ereshkigal)
 					var skill = this.corrDetail;
-					if (!$("#use-" + skill).is(":checked")) {
-						test = false;
-					}
+					test = $("#use-" + skill).is(":checked"));
 					break;
 				default:
 					break;
