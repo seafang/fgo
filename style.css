@@ -55,13 +55,13 @@ nav .right {
 
 /* Save Managing Area */
 #save-container {
-	background-color: #aaa;
-	border: 2px solid #8c8c8c;
+	background-color: #e1e1e1;
+	border: 2px dashed #8c8c8c;
 	width: 99.6%;
 	margin: 15px 2px;
 	padding: 10px 1px;
 	justify-content: center;
-	color: white;
+	color: black;
 }
 .save-label {
 	font-weight: 500;
@@ -200,6 +200,10 @@ th {
 }
 #master-inventory td > div {
 	width: 300px;
+	white-space: normal;
+}
+#ce-inventory td > div {
+	width: 500px;
 	white-space: normal;
 }
 .enemy-table th:last-child {
@@ -481,6 +485,12 @@ span.space-right-wide, .space-right-wide {
 	margin: 10px;
 	cursor: context-menu;
 }
+.highlight {
+	background: #ffffb4;
+}
+.alarm {
+	background: #ffb4b4
+}
 #enemy1-tag {
 	border-color: orange;
 	background: #ffeece;
@@ -674,6 +684,22 @@ input:checked + .slider:before {
 }
 .master-img {
 	width: 100px;
+}
+
+
+/* Inventory */
+.inventory-header {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 4px;
+}
+.inventory-filter-header {
+	background-color: #ffca4a;
+	color: white;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 0;
+	margin-bottom: 10px;
 }
 
 
