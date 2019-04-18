@@ -2479,7 +2479,7 @@ function updateTeammateNPBuff(section) {
 			switch (this.lookUp) {
 				case "skill":			// NP buffs that required prerequisite skills (Ereshkigal)
 					var skill = this.corrDetail;
-					test = $("#use-" + skill).is(":checked"));
+					test = $("#use-" + skill).is(":checked");
 					break;
 				default:
 					break;
