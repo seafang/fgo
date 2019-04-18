@@ -1406,6 +1406,10 @@ $(document).ready(function() {
 		updateTeammateSkillSet(this);
 		updateBuff();
 	});
+	
+	$("#buff-info input").change(function() {
+		labelHighlight(this);
+	});
 });
 
 // Includes servant skills toggled into skill set array
@@ -1449,6 +1453,17 @@ function updateBuff() {
 	servantNPAddMult = {};
 	tempEnemyTrait = [];
 	
+	// Clear all input fields
+	$("#buff-info").find("input").each(function() {
+		$(this).val(0);
+	});
+	$(".np-ed").each(function() {
+		$(this).val(100);
+	});
+	$("#buff-info").find(".label").each(function() {
+		$(this).removeClass("highlight");
+	});
+	
 	// Update passive skill buff
 	updatePassiveBuff();
 	
@@ -1478,6 +1493,7 @@ function updateBuff() {
 	
 	// If CE is set, update buffs
 	if (ceInfo[0] !== undefined) {
+		updateCEAtk();
 		updateCEBuff();
 	}
 	
@@ -1498,6 +1514,30 @@ function updateBuff() {
 			}
 		}
 	});
+	
+	$("#buff-info").find(".label").each(function() {
+		labelHighlight(this);
+	});
+}
+
+// Highlight active buff fields, put alarm on incorrect input
+function labelHighlight(field) {
+	$(field).siblings(".label").removeClass("alarm highlight");
+	
+	var min = Number.NEGATIVE_INFINITY;		// Set minimum value for different fields, negative infinity by default
+	if ($(field).hasClass("np-ed")) {		// 100 for NP ED
+		value = 100;
+	} else if (
+		$(field).hasClass("ce-atk") || $(field).hasClass("red-atk") || $(field).hasClass("skill-ed") ||
+		$(field).attr("id") == "add-atk" || $(field).attr("id") == "event-buff"		// 0 for fields that disallow negative values
+	) {
+		value = 0;
+	}
+	if (Number($(field).val()) > min && Number($(field).val()) !== 0) {		// Highlight if higher than minimum & non-0
+		$(field).siblings(".label").addClass("highlight");
+	} else if (Number($(field).val()) < min) {						// Alarm if smaller than minimum
+		$(field).siblings(".label").addClass("alarm");
+	}
 }
 
 // Update CE ATK
@@ -1549,14 +1589,6 @@ function updateEventBuff() {
 
 // Update passive skill buffs
 function updatePassiveBuff() {
-	// Clear all input fields
-	$("#buff-info").find("input").each(function() {
-		$(this).val(0);
-	});
-	$(".np-ed").each(function() {
-		$(this).val(100);
-	});
-	
 	// Update Buster buff, includes both passive skills & NP fixed-value buffs
 	var buster = Number($("#Buster-buff").val());	
 	buster += servantInfo[0].passiveBuster;
