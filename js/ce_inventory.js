@@ -8,7 +8,17 @@ $(document).ready(function() {
 	loadCESave();
 });
 
-// Generate ce inventory table
+// Update page height
+$(document).on("click", function() {
+	updateCounter();
+});
+
+function updateCounter() {
+	var height = $("#inventory-header").outerHeight() + $("#ce-inventory-content").outerHeight() + 500;
+	$("#ce-inventory-counter").html(height);
+}
+
+// Generate CE inventory table
 let ceInventoryFilter = {
 	star: [1, 2, 3, 4, 5],
 	type: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
@@ -30,6 +40,7 @@ $(document).ready(function() {
 	$("#ce-inventory-star-resetbtn").click(function() {
 		ceInventoryStarNone();
 	});
+	
 	$(".ce-inventory-type").change(function() {
 		var type = $(this).val();
 		ceInventoryTypeChange(this, type);
@@ -40,6 +51,7 @@ $(document).ready(function() {
 	$("#ce-inventory-type-resetbtn").click(function() {
 		ceInventoryTypeNone();
 	});
+	
 	$(".ce-inventory-effect").change(function() {
 		var effect = $(this).val();
 		ceInventoryEffectChange(this, effect);
@@ -50,21 +62,25 @@ $(document).ready(function() {
 	$("#ce-inventory-effect-resetbtn").click(function() {
 		ceInventoryEffectNone();
 	});
+	
 	$("#ce-inventory-owned").change(function() {
 		ceInventoryInclusiveChange(this);
 	});
-	$("#ce-inventory-applybtn").click(function() {
+	
+	$("#ce-inventory-filterbtn").click(function() {
 		generateCEInventory();
 		loadCESave();
 	});
 });
 
+// Clear current inventory table
 function clearCEInventory() {
 	$("#ce-inventory").find(".ce-inventory-row").each(function(){
 		$(this).remove();
 	});
 }
 
+// Generate inventory table
 function generateCEInventory() {
 	var filteredCE = multiFilter(ce, ceInventoryFilter);
 	clearCEInventory();
@@ -96,20 +112,21 @@ function generateCEInventory() {
 				break;				
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-owned' value='true'><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-max' value='true' disabled><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-owned'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-max' disabled><span class='slider'></span></label>";
 		if (essence.defaultMax == true) {
 			$(row).addClass("ce-default-max");
 		}
-		row.insertCell(-1).innerHTML = "<select class='narrow ce-inventory-lv' disabled>" + lvDropDown + "</select>";
+		row.insertCell(-1).innerHTML = "<select class='slim ce-inventory-lv' disabled>" + lvDropDown + "</select>";
 		if (essence.defaultMax == true) {
-			row.insertCell(-1).innerHTML = "<span class='ce-effect'>" + essence.maxEffect + "</span>";
+			row.insertCell(-1).innerHTML = "<div><span class='ce-effect'>" + essence.maxEffect + "</span></div>";
 		} else {
-			row.insertCell(-1).innerHTML = "<span class='ce-effect'>" + essence.defaultEffect + "</span>";
+			row.insertCell(-1).innerHTML = "<div><span class='ce-effect'>" + essence.defaultEffect + "</span></div>";
 		}
 	});
 }
 
+// Change in star filters
 function ceInventoryStarChange(element, starNo) {
 	var newStar = ceInventoryFilter.star;
 	if ($(element).prop("checked")) {
@@ -121,17 +138,16 @@ function ceInventoryStarChange(element, starNo) {
 		ceInventoryFilter.star = newStar;
 	}
 }
-
 function ceInventoryStarAll() {
 	$(".ce-inventory-star").prop("checked", true);
 	ceInventoryFilter.star = [1, 2, 3, 4, 5];
 }
-
 function ceInventoryStarNone() {
 	$(".ce-inventory-star").prop("checked", false);
 	ceInventoryFilter.star = [];
 }
 
+// Change in type filters
 function ceInventoryTypeChange(element, typeName) {
 	var newType = ceInventoryFilter.type;
 	if ($(element).prop("checked")) {
@@ -143,17 +159,16 @@ function ceInventoryTypeChange(element, typeName) {
 		ceInventoryFilter.type = newType;
 	}
 }
-
 function ceInventoryTypeAll() {
 	$(".ce-inventory-type").prop("checked", true);
 	ceInventoryFilter.type = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
 }
-
 function ceInventoryTypeNone() {
 	$(".ce-inventory-type").prop("checked", false);
 	ceInventoryFilter.type = [];
 }
 
+// Change in effect filters
 function ceInventoryEffectChange(element, effectName) {		
 	var newEffect = ceInventoryFilter.effect;	
 	if ($(element).prop("checked")) {	
@@ -164,16 +179,14 @@ function ceInventoryEffectChange(element, effectName) {
 		newEffect.splice(position, 1);
 		ceInventoryFilter.effect = newEffect;
 	}	
-}		
-		
+}				
 function ceInventoryEffectAll() {		
 	$(".ce-inventory-effect").prop("checked", true);	
 	ceInventoryFilter.effect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 	
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
-}		
-		
+}				
 function ceInventoryEffectNone() {		
 	$(".ce-inventory-effect").prop("checked", false);	
 	ceInventoryFilter.effect = [];	
@@ -188,11 +201,13 @@ function ceInventoryInclusiveChange(element) {
 	}
 }
 
+// Change in ownership criteria
 function ceInventoryInclusiveReset() {
 	$("#ce-inventory-owned").prop("checked", false);
 	ceInventoryFilter.owned = [true, false];
 }
 
+// Initialise all filters
 function initialCEInventoryFilter() {
 	ceInventoryStarAll();
 	ceInventoryTypeAll();
@@ -200,7 +215,7 @@ function initialCEInventoryFilter() {
 	ceInventoryInclusiveReset();
 }
 
-// Apply saved ce data
+// Apply saved CE data
 function loadCESave() {
 	if (bgCE[0] !== undefined) {
 		$("#ce-inventory").find(".ce-inventory-row").each(function(){
@@ -225,7 +240,7 @@ function loadCESave() {
 	}
 }
 
-// Update ce data
+// Update CE data
 $(document).ready(function() {
 	$(".ce-default-max").find(".ce-max").each(function() {
 		$(this).prop("checked", true);
@@ -245,6 +260,7 @@ $(document).ready(function() {
 	});
 });
 
+// Update changes made into background data
 function updateCE(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -291,6 +307,7 @@ function updateCE(element) {
 	save();
 }
 
+// Update ownership status
 function updateCEOwnership(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -302,6 +319,7 @@ function updateCEOwnership(element) {
 	parent.ce = ce;
 }
 
+// Check if CE is max by default, enable toggles accordingly upon change in ownership status
 function enableCEOption(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -312,8 +330,10 @@ function enableCEOption(element) {
 		}
 	} else {
 		if (!$(row).hasClass("ce-default-max")) {
-			$(row).find(".ce-max").prop("checked", false);
-			$(row).find(".ce-max").prop("disabled", true);
+			$(row).find(".ce-max").prop({
+				"checked": false,
+				"disabled": true
+			});
 			updateCEDscrp(element);
 		}
 		$(row).find(".ce-inventory-lv").val(0);
@@ -322,6 +342,7 @@ function enableCEOption(element) {
 	}
 }
 
+// Update CE description
 function updateCEDscrp(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
