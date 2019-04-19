@@ -4,30 +4,11 @@
  * @param  {Object} filters: an object with the filter criteria as the property names
  * @return {Array}
  */
-
-/*function multiFilter(array, filters) {
-	var filterKeys = Object.keys(filters);
-	return array.filter(function(item) {
-		return filterKeys.every(function(key) {
-			if (!filters[key].length) return true;
-			if (Array.isArray(item[key])) {
-				var test = [];
-				item[key].forEach(function(value) {
-					test.push(filters[key].includes(value));  
-				});
-				return test.some(function (value){
-					return true === value;
-				});
-			}
-			return filters[key].includes(item[key]);
-		});
-	});
-}*/
-
 function multiFilter(array, filters) {
 	var filterKeys = Object.keys(filters);
 	return array.filter(function(item) {
 		return filterKeys.every(function(key) {
+			/* if (!filters[key].length) return true; */		// Skip empty criteria
 			if (Array.isArray(item[key])) {
 				var test = [];
 				item[key].forEach(function(value) {
@@ -42,6 +23,7 @@ function multiFilter(array, filters) {
 	});
 }
 
+// Compare & sort array elements
 function sortArray(array, key) {
 	array.sort(function(a, b) {
 		return a[key] - b[key];
@@ -83,6 +65,7 @@ function generateSaveList() {
 	select.append($('<option>', option4));
 }
 
+// Acquire existing save or create blank save
 function getSave() {
 	var saveSlot = $("#inventory-save").val();
 	var title = $("#inventory-save").find("option:selected").html();
@@ -90,15 +73,22 @@ function getSave() {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名存檔";
+		
+		// Set Mashu as default servant
 		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, null, null, null, null, null, null, null, 0]}];
+		
 		currentSave.ce = [];
+		
+		// Set Chaldea as default mystic code
 		currentSave.master = [{"name":"迦勒底", "data":[true, 1]}];
+		
 		save();
 		generateSaveList()
 		bgServant = currentSave.servant;
 		bgMaster = currentSave.master;
 		servantOwnership();
 		ceOwnership();
+		ceFrequent();
 		masterOwnership();
 	} else {
 		$("#save-title").val(title);
@@ -108,10 +98,12 @@ function getSave() {
 		bgMaster = currentSave.master;
 		servantOwnership();
 		ceOwnership();
+		ceFrequent();
 		masterOwnership();
 	}
 }
 
+// Save new name
 function saveName() {
 	if ($("#save-title").val() == "" || $("#save-title").val() == " " || $("#save-title").val() == "(未建立)") {
 		alert("請先輸入存檔名稱！");
@@ -126,6 +118,7 @@ function saveName() {
 	}
 }
 
+// Delete save
 function clearSave() {
 	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理。")) {
 		localStorage.removeItem(currentSave.saveSlot);
@@ -136,10 +129,12 @@ function clearSave() {
 	}
 }
 
+// Save current save
 function save() {
 	localStorage.setItem(currentSave.saveSlot, JSON.stringify(currentSave));
 }
 
+// Update servant owenrship status to background array
 function servantOwnership() {
 	servants.forEach(function(servant) {
 		var id = servant.id;
@@ -153,7 +148,8 @@ function servantOwnership() {
 		}
 	});
 }
-			 
+
+// Update ce owenrship status to background array
 function ceOwnership() {
 	ce.forEach(function(essence) {
 		var id = essence.id;
@@ -168,6 +164,22 @@ function ceOwnership() {
 	});
 }
 
+// Update ce frequency status to background array
+function ceFrequent() {
+	ce.forEach(function(essence) {
+		var id = essence.id;
+		var target = bgCE.find(function(obj) {
+			return obj.id == id; 
+		});
+		if (target !== undefined) {
+			essence.frequent = target.data[3];
+		} else {
+			essence.frequent = false;
+		}
+	});
+}
+
+// Update mystic code owenrship status to background array
 function masterOwnership() {
 	master.forEach(function(code) {
 		var name = code.name;
