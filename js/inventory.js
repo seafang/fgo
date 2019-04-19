@@ -1,8 +1,11 @@
 // Sync background data
 var servants = parent.servants;
+var ce = parent.ce;
+var cc = parent.cc;
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
+var customBuff = parent.customBuff;
 
 $(document).ready(function() {
 	initialInventoryFilter();		// Initialise filters, generate new table & apply saved data
@@ -97,6 +100,34 @@ $(document).ready(function() {
 		generateInventory();
 		loadSave();
 	});
+	
+	// Open teammate setup modal
+	$("#inventory-teammate-modalbtn").click(function() {
+		openModal("#inventory-teammate-modal");
+		initialInventoryTeammate();
+		loadInventoryTeammateImg();
+		applyInventoryTeammateSelection();
+	});
+	
+	// Open ce setup modal
+/*	$("#inventory-ce-modalbtn").click(function() {
+		openModal("#inventory-ce-modal");
+		initialInventoryCE();
+		loadInventoryCEImg();
+	});*/
+	
+	// Open command code modal
+	$(".inventory-code-logo").click(function() {
+		if (!$(this).hasClass("dull")) {
+			var row = $(this).parents("tr");
+			var rowID = Number($(row).find("td:first").html());
+			setCaller(rowID);
+			positionMarker = Number($(this).attr("data-value"));
+			openModal("#inventory-code-modal");
+			initialInventoryCode();
+			loadInventoryCodeImg();
+		}
+	});
 });
 
 // Clear current table
@@ -157,28 +188,41 @@ function generateInventory() {
 		}				
 		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";	
 		
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true'><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>";	
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' value='true' disabled><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='np-rankup' disabled><span class='slider'></span></label>";
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow statup' value='0' min='0' max='2000' disabled>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + servant.skill1ImgID + "' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill1-lv' disabled><option value='1'>1</option>" + 				
+		row.insertCell(-1).innerHTML = "<select class='slim skill-lv skill1-lv' disabled><option value='1'>1</option>" + 				
 			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill1-rankup' value='true' disabled><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill-rankup skill1-rankup' disabled><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill2-logo dull' src='" + servant.skill2ImgID + "' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill2-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<select class='slim skill-lv skill2-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill2-rankup' value='true' disabled><span class='slider'></span></label>";			
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill-rankup skill2-rankup' disabled><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill3-logo dull' src='" + servant.skill3ImgID + "' />";				
-		row.insertCell(-1).innerHTML = "<select class='slim skill3-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
+		row.insertCell(-1).innerHTML = "<select class='slim skill-lv skill3-lv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
 			"<option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option><option value='7'>7</option>" + 			
 			"<option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";			
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill3-rankup' value='true' disabled><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='skill-rankup skill3-rankup' disabled><span class='slider'></span></label>";			
+		
+		// Insert element for command codes
+		var card = ["Buster", "Art", "Quick"];
+		var i = 1;
+		$(card).each(function() {
+			var count = servant[this + "No"];
+			while (count > 0) {
+				row.insertCell(-1).innerHTML = "<img class='card-logo inventory-card-logo dull' src='images/command/" + 
+					this + ".webp' data-value='" + i + "' /><img class='code-logo inventory-code-logo src='' data-value='" + i + "' data-id='0' />";
+				i++;
+				count--;
+			}
+		});
+		
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0' disabled>";			
 	});
 }
@@ -354,6 +398,16 @@ function loadSave() {
 					$(this).find(".skill3-rankup").attr("checked", true);
 					updateSkillImg(skill3Toggle, 'skill3');
 				}
+				$(this).find(".inventory-code-logo").each(function() {
+					var value = Number($(this).attr("data-value"));
+					var codeInfo = cc.filter(function(obj) {
+						return obj.id == servant[0].data[value + 10];
+					});
+					$(this).attr({
+						"src": codeInfo[0].logoID,
+						"data-id": servant[0].data[value + 10]
+					});
+				});
 				$(this).find(".event-ED").val(servant[0].data[18]);
 			}
 		});
@@ -413,6 +467,11 @@ function update(element) {
 	info.data[8] = $(row).find(".skill2-rankup").is(":checked");
 	info.data[9] = Number($(row).find(".skill3-lv").val());
 	info.data[10] = $(row).find(".skill3-rankup").is(":checked");
+	info.data[11] = Number($(row).find(".inventory-code-logo[data-value='1']").attr("data-id"));
+	info.data[12] = Number($(row).find(".inventory-code-logo[data-value='2']").attr("data-id"));
+	info.data[13] = Number($(row).find(".inventory-code-logo[data-value='3']").attr("data-id"));
+	info.data[14] = Number($(row).find(".inventory-code-logo[data-value='4']").attr("data-id"));
+	info.data[15] = Number($(row).find(".inventory-code-logo[data-value='5']").attr("data-id"));
 	info.data[18] = Number($(row).find(".event-ED").val());
 	bgServant.push(info);
 	currentSave.servant = bgServant;
@@ -435,62 +494,53 @@ function updateOwnership(element) {
 function enableOption(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
-	var skill1Toggle = $(row).find(".skill1-rankup");
-	var skill2Toggle = $(row).find(".skill2-rankup");
-	var skill3Toggle = $(row).find(".skill3-rankup");
+	var skillList = ["skill1", "skill2", "skill3"];
 	if ($(element).is(":checked")) {
-		$(row).find(".inventory-lv").prop("disabled", false);
-		$(row).find(".nplv").prop("disabled", false);
+		$(row).find("select").prop("disabled", false);
 		$(row).find(".np-rankup").prop("disabled", false);
 		npRankUpCheck(row);
 		$(row).find(".statup").prop("disabled", false);
-		$(row).find(".skill1-logo").removeClass("dull");
-		$(row).find(".skill1-lv").prop("disabled", false);
-		$(row).find(".skill1-rankup").prop("disabled", false);
-		skillRankUpCheck(row, 'skill1');
-		updateSkillImg(skill1Toggle, 'skill1');
-		$(row).find(".skill2-logo").removeClass("dull");
-		$(row).find(".skill2-lv").prop("disabled", false);
-		$(row).find(".skill2-rankup").prop("disabled", false);
-		skillRankUpCheck(row, 'skill2');
-		updateSkillImg(skill2Toggle, 'skill2');
-		$(row).find(".skill3-logo").removeClass("dull");
-		$(row).find(".skill3-lv").prop("disabled", false);
-		$(row).find(".skill3-rankup").prop("disabled", false);
-		skillRankUpCheck(row, 'skill3');
-		updateSkillImg(skill3Toggle, 'skill3');
+		$(row).find(".skill-logo").removeClass("dull");
+		$(row).find(".inventory-command-logo").removeClass("dull");
+		$(row).find(".skill-rankup").prop("disabled", false);
+		$(skillList).each(function() {
+			skillRankUpCheck(row, this);
+			updateSkillImg(this + "Toggle", this);
+		});
 		$(row).find(".event-ED").prop("disabled", false);
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == rowID; 
+		});
+		bgServant.splice(position, 1);
 	} else {
+		$(row).find("select").prop("disabled", true);
+		$(row).find("input").prop("disabled", true);
+		$(element).prop("disabled", false);
 		$(row).find(".inventory-lv").val(0);
-		$(row).find(".inventory-lv").prop("disabled", true);
 		$(row).find(".nplv").val(1);
-		$(row).find(".nplv").prop("disabled", true);
-		$(row).find(".np-rankup").prop("checked", false);
-		$(row).find(".np-rankup").prop("disabled", true);
+		$(row).find(":checkbox").prop("checked", false);
 		$(row).find(".statup").val(0);
-		$(row).find(".statup").prop("disabled", true);
-		$(row).find(".skill1-logo").addClass("dull");
-		$(row).find(".skill1-lv").val(1);
-		$(row).find(".skill1-lv").prop("disabled", true);
-		$(row).find(".skill1-rankup").prop("checked", false);
-		$(row).find(".skill1-rankup").prop("disabled", true);
-		updateSkillImg(skill1Toggle, 'skill1');
-		$(row).find(".skill2-logo").addClass("dull");
-		$(row).find(".skill2-lv").val(1);
-		$(row).find(".skill2-lv").prop("disabled", true);
-		$(row).find(".skill2-rankup").prop("checked", false);
-		$(row).find(".skill2-rankup").prop("disabled", true);
-		updateSkillImg(skill2Toggle, 'skill2');
-		$(row).find(".skill3-logo").addClass("dull");
-		$(row).find(".skill3-lv").val(1);
-		$(row).find(".skill3-lv").prop("disabled", true);
-		$(row).find(".skill3-rankup").prop("checked", false);
-		$(row).find(".skill3-rankup").prop("disabled", true);
-		updateSkillImg(skill3Toggle, 'skill3');
+		$(row).find(".skill-logo").addClass("dull");
+		$(row).find(".inventory-command-logo").addClass("dull");
+		$(row).find(".inventory-code-logo").attr({
+			"src": "",
+			"data-id": 0
+		});
+		$(row).find(".skil1-lv").val(1);
+		$(skillList).each(function() {
+			updateSkillImg(this + "Toggle", this);
+		});
 		$(row).find(".event-ED").val(0);
-		$(row).find(".event-ED").prop("disabled", true);
 		update(element);
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == rowID; 
+		});
+		bgServant[position].data[16] = "不使用隊友";
 	}
+	currentSave.servant = bgServant;
+	parent.bgServant = bgServant;
+	parent.currentSave = currentSave;
+	save();
 }	
 
 function npRankUpCheck(row) {
@@ -498,9 +548,7 @@ function npRankUpCheck(row) {
 	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
-	if (target.npRankUp == false) {
-		$(row).find(".np-rankup").prop("disabled", true);
-	}
+	$(row).find(".np-rankup").prop("disabled", !target.npRankUp);
 }	
 
 function skillRankUpCheck(row, skill) {
@@ -508,9 +556,7 @@ function skillRankUpCheck(row, skill) {
 	var target = servants.find(function(obj) {
 		return obj.id == rowID; 
 	});
-	if (target[skill + "RU"] == false) {
-		$(row).find("." + skill + "-rankup").prop("disabled", true);
-	}
+	$(row).find("." + skill + "-rankup").prop("disabled", !target[skill + "RU"]);
 }	
 
 function updateSkillImg(element, skill) {
@@ -545,4 +591,359 @@ function clearInventoryEventBuff() {
 		parent.currentSave = currentSave;
 		save();
 	}
+}
+
+/* Inventory Teammate Modal */
+var activeSetup = "不使用隊友";
+
+let inventoryTeammateFilter = {
+	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
+	star: [0, 1, 2, 3, 4, 5],
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],		// Exclude Mashu
+	npColor: ["Buster", "Art", "Quick"],
+	npRange: ["全體", "單體"],			// Exclude support & other
+	owned: [true],				// Include owned servant only
+	npDmg: [true]
+};
+
+$(document).ready(function() {
+	// Change in class filtering criteria
+	$(".inventory-teammate-class").click(function() {
+		var servantClass = $(this).attr("title");
+		inventoryTeammateClassChange(this, servantClass);
+	});
+	$("#inventory-teammate-class-setbtn").click(function() {
+		inventoryTeammateClassAll();
+	});
+	$("#inventory-teammate-class-resetbtn").click(function() {
+		inventoryTeammateClassNone();
+	});
+	
+	// Change in star filtering criteria
+	$(".inventory-teammate-star").change(function() {
+		var star = Number($(this).val());
+		inventoryTeammateStarChange(this, star);
+	});
+	$("#inventory-teammate-star-setbtn").click(function() {
+		inventoryTeammateStarAll();
+	});
+	$("#inventory-teammate-star-resetbtn").click(function() {
+		inventoryTeammateStarNone();
+	});
+	
+	// Change in type filtering criteria
+	$(".inventory-teammate-type").change(function() {
+		var type = $(this).val();
+		inventoryTeammateTypeChange(this, type);
+	});
+	$("#inventory-teammate-type-setbtn").click(function() {
+		inventoryTeammateTypeAll();
+	});
+	$("#inventory-teammate-type-resetbtn").click(function() {
+		inventoryTeammateTypeNone();
+	});
+	
+	// Change in NP color filtering criteria
+	$(".inventory-teammate-color").change(function() {
+		var color = $(this).val();
+		inventoryTeammateColorChange(this, color);
+	});
+	$("#inventory-teammate-color-setbtn").click(function() {
+		inventoryTeammateColorAll();
+	});
+	$("#inventory-teammate-color-resetbtn").click(function() {
+		inventoryTeammateColorNone();
+	});
+	
+	// Change in NP range filtering criteria
+	$(".inventory-teammate-range").change(function() {
+		var range = $(this).val();
+		inventoryTeammateRangeChange(this, range);
+	});
+	$("#inventory-teammate-range-setbtn").click(function() {
+		inventoryTeammateRangeAll();
+	});
+	$("#inventory-teammate-range-resetbtn").click(function() {
+		inventoryTeammateRangeNone();
+	});
+	
+	$(".inventory-teammate-option").change(function() {
+		selectInventoryTeammate();
+		applyInventoryTeammateSelection();
+	});
+	
+	$("#inventory-teammate-custom-setup input").change(function() {
+		saveCustomBuff(this);
+	});
+	
+	// Apply filter & generate new image list
+	$("#inventory-teammate-filterbtn").click(function() {
+		loadInventoryTeammateImg();
+		applyInventoryTeammateSelection();
+	});
+	
+	$(".inventory-teammate-modal-img").click(function() {
+		selectServant(this);
+	});
+	
+	$("#inventory-teammate-selection-setbtn").click(function() {
+		selectAllServant();
+	});
+	
+	$("#inventory-teammate-selection-resetbtn").click(function() {
+		deselectAllServant();
+	});
+});
+
+function selectInventoryTeammate() {
+	var buffList = [];
+	activeSetup = $(".inventory-teammate-option:checked").val();
+	if (activeSetup == "自訂 I" || activeSetup == "自訂 II" || activeSetup == "自訂 III") {
+		buffList = customBuff[0][activeSetup];
+		$("#inventory-teammate-custom-setup").find("input").prop("disabled", false);
+	} else {
+		buffList = inventoryTeammateBuff[activeSetup];
+		$("#inventory-teammate-custom-setup").find("input").prop("disabled", true);
+	}
+	
+	if (activeSetup == "不使用隊友") {
+		$("#inventory-teammate-selection-setbtn").hide();
+		$("#inventory-teammate-selection-resetbtn").hide();
+	} else {
+		$("#inventory-teammate-selection-setbtn").show();
+		$("#inventory-teammate-selection-resetbtn").show();
+	}
+	
+	$("#inventory-atk-buff").val(buffList[0]);
+	$("#inventory-add-atk").val(buffList[1]);
+	$("#inventory-np-buff").val(buffList[2]);
+	$("#inventory-Buster-buff").val(buffList[3]);
+	$("#inventory-Art-buff").val(buffList[4]);
+	$("#inventory-Quick-buff").val(buffList[5]);
+}
+
+function saveCustomBuff(element) {
+	if (Number($(element).val()) < 0) {
+		$(element).val(0);
+	}
+	var newBuff = [];
+	$("#inventory-teammate-custom-setup input").each(function() {
+		newBuff.push(Number($(this).val()));
+	});
+	customBuff[0][activeSetup] = newBuff;
+	currentSave.customBuff = customBuff;
+	parent.customBuff = customBuff;
+	parent.currentSave = currentSave;
+	save();
+}
+
+// Generate image list
+function loadInventoryTeammateImg() {
+	var filteredServant = multiFilter(servants, servantFilter);
+	var servantID = filteredServant.map(function(servant) {
+		return servant.id
+	});
+	$("#inventory-teammate-img").html("");
+	var imglist = "";	
+	$(servantID).each(function(index, value) {
+		imglist += "<img class='servant-img inventory-teammate-modal-img' src='images/servant/" + value +
+		".webp' data-id='" + value + "' />"
+	});
+	$("#inventory-teammate-img").html(imglist);
+}
+
+function applyInventoryTeammateSelection() {
+	$(".inventory-teammate-modal-img").removeClass("selected");
+	var list = bgServant[0].filter(function(obj) {
+		return obj.data[16] == activeSetup;
+	});
+	$(list).each(function() {
+		$(".inventory-teammate-modal-img[data-id:'" + this + "']").addClass("selected");
+	});
+}
+
+function selectServant(img) {
+	if (activeSetup == "不使用隊友" && $(img).hasClass("selected")) {
+		alarm("「不使用隊友」為預設選項，無法取消。\n如果希望為從者設定隊友，請先選擇隊友組合。")
+	} else {
+		var id = Number($(img).attr("data-id"));
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == id;
+		});
+		if ($(img).hasClass("selected")) {
+			$(img).removeClass("selected");
+			bgServant[position].data[16] = "不使用隊友";
+		} else {
+			$(img).addClass("selected");
+			bgServant[position].data[16] = activeSetup;
+		}
+		currentSave.servant = bgServant;
+		parent.bgServant = bgServant;
+		parent.currentSave = currentSave;
+		save();
+	}
+}
+
+function selectAllServant() {
+	$(".inventory-teammate-modal-img").each(function() {
+		$(this).addClass("selected");
+		var id = Number($(this).attr("data-id"));
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == id;
+		});
+		bgServant[position].data[16] = activeSetup;
+	});
+	currentSave.servant = bgServant;
+	parent.bgServant = bgServant;
+	parent.currentSave = currentSave;
+	save();
+}
+
+function deselectAllServant() {
+	$(".inventory-teammate-modal-img").each(function() {
+		$(this).addClass("selected");
+		var id = Number($(this).attr("data-id"));
+		var position = bgServant.findIndex(function(obj) {
+			return obj.id == id;
+		});
+		bgServant[position].data[16] = "不使用隊友";
+	});
+	currentSave.servant = bgServant;
+	parent.bgServant = bgServant;
+	parent.currentSave = currentSave;
+	save();
+}
+		     
+/* Command Code Modal */
+var modalCaller = "";
+var positionMarker = 0;
+
+let inventoryCodeFilter = {
+	star: [1, 2, 3, 4, 5],
+	effect: ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中", 
+		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予"]
+};
+
+$(document).ready(function() {
+	// Change in star filtering criteria
+	$(".code-star").change(function() {
+		var star = Number($(this).val());
+		codeStarChange(this, star);
+	});
+	$("#code-star-setbtn").click(function() {
+		codeStarAll();
+	});
+	$("#code-star-resetbtn").click(function() {
+		codeStarNone();
+	});
+	
+	// Change in effect filtering criteria
+	$(".code-effect").change(function() {
+		var effect = $(this).val();
+		codeEffectChange(this, effect);
+	});
+	$("#code-effect-setbtn").click(function() {
+		codeEffectAll();
+	});
+	$("#code-effect-resetbtn").click(function() {
+		codeEffectNone();
+	});
+	
+	// Apply filters and generate image list
+	$("#code-filterbtn").click(function() {
+		loadInventoryCodeImg();
+	});
+});
+
+// Apply filters and generate image list
+function loadInventoryCodeImg() {
+	var filteredCode = multiFilter(cc, inventoryCodeFilter);
+	var codeID = filteredCode.map(function(code) {
+		return code.id
+	});
+	$("#code-img").html("");
+	var imglist = "";	
+	$(codeID).each(function(index, value) {
+		imglist += "<img class='code-img code-modal-img' src='images/code/" + value +
+		".webp' data-id='" + value + "' />"
+	});
+	$("#code-img").html(imglist);
+	codeBind();
+}
+
+// Attach event handler to the images
+function codeBind() {
+	$(".code-modal-img").ready(function() {
+		$(".code-modal-img").click(function() {
+			var id = Number($(this).attr("data-id"));
+			pickCode(modalCaller, positionMarker, id);
+		});
+	});
+}
+
+// Change in star filtering criteria
+function codeStarChange(element, starNo) {
+	var newStar = inventoryCodeFilter.star;
+	if ($(element).prop("checked")) {
+		newStar.push(starNo);
+	 	inventoryCodeFilter.star = newStar;
+	} else {
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
+	 	inventoryCodeFilter.star = newStar;
+	}
+}
+function codeStarAll() {
+	$(".ce-star").prop("checked", true);
+ 	inventoryCodeFilter.star = [1, 2, 3, 4, 5];
+}
+function codeStarNone() {
+	$(".ce-star").prop("checked", false);
+ 	inventoryCodeFilter.star = [];
+}
+
+// Change in effect filtering criteria
+function codeEffectChange(element, effect) {
+	var newEffect = inventoryCodeFilter.effect;
+	if ($(element).prop("checked")) {
+		newEffect.push(effect);
+		inventoryCodeFilter.effect = newEffect;
+	} else {
+		position = newEffect.indexOf(effect);
+		newEffect.splice(position, 1);
+		inventoryCodeFilter.effect = newEffect;
+	}
+}
+function codeEffectAll() {
+	$(".ce-effect").prop("checked", true);
+	inventoryCodeFilter.effect = [];
+}
+function codeEffectNone() {
+	$(".ce-effect").prop("checked", false);
+	inventoryCodeFilter.effect = ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中", 
+		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予"];
+}
+
+
+// Initialise all filters
+function initialInventoryCode() {
+	codeStarAll();
+	codeEffectAll();
+}
+
+function pickCode(target, position, id) {
+	closeModal();
+	modalCaller = "";
+	positionMarker = 0;
+	var row = $("#inventory-row-" + target);
+	var img = $(row).find(".inventory-code-logo[data-value='" + position + "']");
+	var codeInfo = cc.filter(function(obj) {
+		return obj.id == id;
+	});
+	$(img).attr({
+		"src": codeInfo[0].logoID,
+		"data-id": id
+	});
+	update(img);
 }
