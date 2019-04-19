@@ -6,6 +6,7 @@ var attrAffinity = JSON.parse(attributeAdvantage);
 var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
 var master = JSON.parse(mysticCode);
+var cc = JSON.parse(commandCode);
 
 var skillBuff = JSON.parse(servantSkillBuff);
 var npBuff = JSON.parse(servantNPBuff);
@@ -13,6 +14,7 @@ var servantAtk = JSON.parse(servantAttack);
 var ceBuff =  JSON.parse(craftEssenceBuff);
 var ceAtk = JSON.parse(craftEssenceATK);
 var masterBuff = JSON.parse(mysticCodeBuff);
+var ccBuff = JSON.parse(commandCodeBuff);
 
 var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [];
