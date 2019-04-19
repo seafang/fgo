@@ -340,7 +340,7 @@ function updateCEOwnership(element) {
 	var rowID = Number($(row).find("td:first").html());
 	var newValue = $(row).find(".ce-owned").is(":checked");
 	var position = ce.findIndex(function(obj) {
-		return obj.ceID == rowID;
+		return obj.id == rowID;
 	});
 	ce[position].owned = newValue;
 	parent.ce = ce;
@@ -352,7 +352,7 @@ function updateCEFrequent(element) {
 	var rowID = Number($(row).find("td:first").html());
 	var newValue = $(row).find(".ce-frequent").is(":checked");
 	var position = ce.findIndex(function(obj) {
-		return obj.ceID == rowID;
+		return obj.id == rowID;
 	});
 	ce[position].frequent = newValue;
 	parent.ce = ce;
