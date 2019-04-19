@@ -82,10 +82,17 @@ function getSave() {
 		// Set Chaldea as default mystic code
 		currentSave.master = [{"name":"迦勒底", "data":[true, 1]}];
 		
+		currentSave.customBuff = [{
+			"自訂 I": [0, 0, 0, 0, 0, 0],
+			"自訂 II": [0, 0, 0, 0, 0, 0],
+			"自訂 III": [0, 0, 0, 0, 0, 0],
+		}];
+		
 		save();
 		generateSaveList()
 		bgServant = currentSave.servant;
 		bgMaster = currentSave.master;
+		customBuff = currentSave.customBuff;
 		servantOwnership();
 		ceOwnership();
 		ceFrequent();
@@ -96,6 +103,7 @@ function getSave() {
 		bgServant = currentSave.servant;
 		bgCE = currentSave.ce;
 		bgMaster = currentSave.master;
+		customBuff = currentSave.customBuff;
 		servantOwnership();
 		ceOwnership();
 		ceFrequent();
@@ -193,6 +201,21 @@ function masterOwnership() {
 		}
 	});
 }
+
+var inventoryTeammateBuff = {
+	"不使用隊友": [0, 0, 0, 0, 0, 0],
+	"孔明": [30, 500, 0, 0, 0, 0],
+	"雙孔明": [60, 1000, 0, 0, 0, 0],
+	"梅林": [20, 0, 0, 50, 0, 0],
+	"雙梅林": [40, 0, 0, 100, 0, 0],
+	"玉藻前": [0, 0, 30, 0, 50, 0],
+	"雙玉藻前": [0, 0, 60, 0, 100, 0],
+	"斯卡蒂": [30, 0, 0, 0, 0, 50],
+	"雙斯卡蒂": [60, 0, 0, 0, 0, 100],
+	"梅林 + 孔明": [50, 500, 0, 50, 0, 0],
+	"玉藻前 + 孔明": [30, 500, 30, 0, 50, 0],
+	"斯卡蒂 + 孔明": [60, 500, 0, 0, 0, 50],
+};
 
 var lvDropDown = "<option value='0'>預設</option>\
 	<option value='100'>100</option>\
