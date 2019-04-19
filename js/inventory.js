@@ -1,15 +1,26 @@
+// Sync background data
 var servants = parent.servants;
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
 
 $(document).ready(function() {
-	initialInventoryFilter();
+	initialInventoryFilter();		// Initialise filters, generate new table & apply saved data
 	generateInventory();
 	loadSave();
+	updateCounter();
 });
 
-// Generate inventory table
+// Update page height
+$(document).on("click", function() {
+	updateCounter();
+});
+
+function updateCounter() {
+	var height = $("#servant-inventory-header").outerHeight() + $("#servant-inventory-content").outerHeight() + 500;
+	$("#servant-inventory-counter").html(height);
+}
+
 let inventoryFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
@@ -20,6 +31,7 @@ let inventoryFilter = {
 	owned: [true, false]
 };
 
+// Generate inventory table
 $(document).ready(function() {
 	$(".inventory-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -31,6 +43,7 @@ $(document).ready(function() {
 	$("#inventory-class-resetbtn").click(function() {
 		inventoryClassNone();
 	});
+	
 	$(".inventory-star").change(function() {
 		var star = Number($(this).val());
 		inventoryStarChange(this, star);
@@ -41,6 +54,7 @@ $(document).ready(function() {
 	$("#inventory-star-resetbtn").click(function() {
 		inventoryStarNone();
 	});
+	
 	$(".inventory-type").change(function() {
 		var type = $(this).val();
 		inventoryTypeChange(this, type);
@@ -51,6 +65,7 @@ $(document).ready(function() {
 	$("#inventory-type-resetbtn").click(function() {
 		inventoryTypeNone();
 	});
+	
 	$(".inventory-color").change(function() {
 		var color = $(this).val();
 		inventoryColorChange(this, color);
@@ -61,6 +76,7 @@ $(document).ready(function() {
 	$("#inventory-color-resetbtn").click(function() {
 		inventoryColorNone();
 	});
+	
 	$(".inventory-range").change(function() {
 		var range = $(this).val();
 		inventoryRangeChange(this, range);
@@ -71,21 +87,26 @@ $(document).ready(function() {
 	$("#inventory-range-resetbtn").click(function() {
 		inventoryRangeNone();
 	});
+	
 	$("#inventory-owned").change(function() {
 		inventoryInclusiveChange(this);
 	});
-	$("#inventory-applybtn").click(function() {
+	
+	// Generate new table
+	$("#inventory-filterbtn").click(function() {
 		generateInventory();
 		loadSave();
 	});
 });
 
+// Clear current table
 function clearInventory() {
 	$("#servant-inventory").find(".inventory-row").each(function() {
 		$(this).remove();
 	});
 }
 
+// Generate new table
 function generateInventory() {
 	var filteredServant = multiFilter(servants, inventoryFilter);
 	clearInventory();
@@ -110,7 +131,8 @@ function generateInventory() {
 		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
 		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + " " + 
 			servant.name + "</span>";				
-		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".webp' />";				
+		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".webp' />";
+		
 		var starHTML = "";				
 		switch (servant.star) {				
 			case 0:
@@ -133,7 +155,8 @@ function generateInventory() {
 				starHTML = "★★★★★";		
 				break;				
 		}				
-		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
+		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";	
+		
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='owned' value='true'><span class='slider'></span></label>";			
 		row.insertCell(-1).innerHTML = "<select class='narrow inventory-lv' disabled>" + lvDropDown + "</select>";				
 		row.insertCell(-1).innerHTML = "<select class='tight nplv' disabled><option value='1'>1</option><option value='2'>2</option>" + 				
@@ -162,6 +185,7 @@ function generateInventory() {
 	});
 }
 
+// Update class filter
 function inventoryClassChange(element, className) {
 	var newClass = inventoryFilter.classes;
 	if ($(element).hasClass("dull")) {
@@ -175,19 +199,18 @@ function inventoryClassChange(element, className) {
 		inventoryFilter.classes = newClass;
 	}
 }
-
 function inventoryClassAll() {
 	$(".inventory-class").removeClass("dull");
 	inventoryFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
-
 function inventoryClassNone() {
 	$(".inventory-class").removeClass("dull");
 	$(".inventory-class").addClass("dull");
 	inventoryFilter.classes = [];
 }
 
+// Update star filter
 function inventoryStarChange(element, starNo) {
 	var newStar = inventoryFilter.star;
 	if ($(element).prop("checked")) {
@@ -199,17 +222,16 @@ function inventoryStarChange(element, starNo) {
 		inventoryFilter.star = newStar;
 	}
 }
-
 function inventoryStarAll() {
 	$(".inventory-star").prop("checked", true);
 	inventoryFilter.star = [0, 1, 2, 3, 4, 5];
 }
-
 function inventoryStarNone() {
 	$(".inventory-star").prop("checked", false);
 	inventoryFilter.star = [];
 }
 
+// Update type filter
 function inventoryTypeChange(element, typeName) {
 	var newType = inventoryFilter.type;
 	if ($(element).prop("checked")) {
@@ -221,17 +243,16 @@ function inventoryTypeChange(element, typeName) {
 		inventoryFilter.type = newType;
 	}
 }
-
 function inventoryTypeAll() {
 	$(".inventory-type").prop("checked", true);
 	inventoryFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動", "固有從者"];
 }
-
 function inventoryTypeNone() {
 	$(".inventory-type").prop("checked", false);
 	inventoryFilter.type = [];
 }
 
+// Update color filter
 function inventoryColorChange(element, colorName) {
 	var newColor = inventoryFilter.npColor;
 	if ($(element).prop("checked")) {
@@ -243,17 +264,16 @@ function inventoryColorChange(element, colorName) {
 		inventoryFilter.npColor = newColor;
 	}
 }
-
 function inventoryColorAll() {
 	$(".inventory-color").prop("checked", true);
 	inventoryFilter.npColor = ["Buster", "Art", "Quick"];
 }
-
 function inventoryColorNone() {
 	$(".inventory-color").prop("checked", false);
 	inventoryFilter.npColor = [];
 }
 
+// Update NP range filter
 function inventoryRangeChange(element, rangeName) {
 	var newRange = inventoryFilter.npRange;
 	if ($(element).prop("checked")) {
@@ -265,17 +285,16 @@ function inventoryRangeChange(element, rangeName) {
 		inventoryFilter.npRange = newRange;
 	}
 }
-
 function inventoryRangeAll() {
 	$(".inventory-range").prop("checked", true);
 	inventoryFilter.npRange = ["全體", "單體", "輔助"];
 }
-
 function inventoryRangeNone() {
 	$(".inventory-range").prop("checked", false);
 	inventoryFilter.npRange = [];
 }
 
+// Update ownership filter
 function inventoryInclusiveChange(element) {
 	var value = $(element).is(":checked");
 	if (value == true) {
@@ -284,12 +303,12 @@ function inventoryInclusiveChange(element) {
 		inventoryFilter.owned = [true, false];
 	}
 }
-
 function inventoryInclusiveReset() {
 	$("#inventory-owned").prop("checked", false);
 	inventoryFilter.owned = [true, false];
 }
 
+// Initialise all filters
 function initialInventoryFilter() {
 	inventoryClassAll();
 	inventoryStarAll();
