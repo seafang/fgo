@@ -1417,6 +1417,10 @@ $(document).ready(function() {
 	$("#buff-info input").change(function() {
 		labelHighlight(this);
 	});
+	
+	$("#buff-resetbtn").click(function() {
+		updateBuff();
+	});
 });
 
 // Includes servant skills toggled into skill set array
