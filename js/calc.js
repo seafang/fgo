@@ -1529,7 +1529,7 @@ function updateBuff() {
 
 // Highlight active buff fields, put alarm on incorrect input
 function labelHighlight(field) {
-	$(field).siblings(".label").removeClass("alarm highlight");
+	$(field).siblings(".labeltag").removeClass("alarm highlight");
 	
 	var min = Number.NEGATIVE_INFINITY;		// Set minimum value for different fields, negative infinity by default
 	var max = Number.POSITIVE_INFINITY;		// No maximum by default
