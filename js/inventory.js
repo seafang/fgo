@@ -159,7 +159,7 @@ function generateInventory() {
 				npSymb = "♥";
 				break;
 		}
-		row.insertCell(-1).innerHTML = "<img class='profile-img' src='" + servant.imgID + "' />";				
+		row.insertCell(-1).innerHTML = "<img class='servant-img' src='" + servant.imgID + "' />";				
 		row.insertCell(-1).innerHTML = "<span class='" + servant.npColor + "'>" + npSymb + " " + 
 			servant.name + "</span>";				
 		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + servant.classes + ".webp' />";
@@ -213,15 +213,17 @@ function generateInventory() {
 		// Insert element for command codes
 		var card = ["Buster", "Art", "Quick"];
 		var i = 1;
+		var cardHTML = "";
 		$(card).each(function() {
 			var count = servant[this + "No"];
 			while (count > 0) {
-				row.insertCell(-1).innerHTML = "<img class='card-logo inventory-card-logo dull' src='images/command/" + 
-					this + ".webp' data-value='" + i + "' /><img class='code-logo inventory-code-logo src='' data-value='" + i + "' data-id='0' />";
+				cardHTML += "<span><img class='card-logo inventory-card-logo dull' src='images/command/" + 
+					this + ".webp' data-value='" + i + "' /><img class='code-logo inventory-code-logo src='' data-value='" + i + "' data-id='0' /></span>";
 				i++;
 				count--;
 			}
 		});
+		row.insertCell(-1).innerHTML = cardHTML;
 		
 		row.insertCell(-1).innerHTML = "<input type='number' class='narrow event-ED' value='0' min='0' disabled>";			
 	});
@@ -501,7 +503,7 @@ function enableOption(element) {
 		npRankUpCheck(row);
 		$(row).find(".statup").prop("disabled", false);
 		$(row).find(".skill-logo").removeClass("dull");
-		$(row).find(".inventory-command-logo").removeClass("dull");
+		$(row).find(".inventory-card-logo").removeClass("dull");
 		$(row).find(".skill-rankup").prop("disabled", false);
 		$(skillList).each(function() {
 			skillRankUpCheck(row, this);
@@ -521,7 +523,7 @@ function enableOption(element) {
 		$(row).find(":checkbox").prop("checked", false);
 		$(row).find(".statup").val(0);
 		$(row).find(".skill-logo").addClass("dull");
-		$(row).find(".inventory-command-logo").addClass("dull");
+		$(row).find(".inventory-card-logo").addClass("dull");
 		$(row).find(".inventory-code-logo").attr({
 			"src": "",
 			"data-id": 0
