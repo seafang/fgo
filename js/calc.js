@@ -2783,6 +2783,10 @@ function calcDmg(enemy) {
 	};
 	window[enemy + "Result"].push(output);
 	generateResultTable(enemy);
+	
+	$("#buff-info").find(".label").each(function() {
+		labelHighlight(this);
+	});
 }
 
 // Clear all results
