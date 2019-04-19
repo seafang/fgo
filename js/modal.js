@@ -135,11 +135,12 @@ let servantFilter = {
 	alignment1: ["秩序", "中立", "混沌"],
 	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
 	npColor: ["Buster", "Art", "Quick"],
-	npRange: ["全體", "單體"],			// Exclude support
+	npRange: ["全體", "單體"],			// Exclude support & other
 	extraDamage: ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
 		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
 		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒", "Saber", "Saber職階從者"],
-	owned: [true, false]
+	owned: [true, false],
+	npDmg: [true]
 };
 
 $(document).ready(function() {	
