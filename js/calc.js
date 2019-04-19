@@ -122,7 +122,7 @@ $(document).ready(function() {
 	});
 	$(".enemy-trait-resetbtn").click(function() {
 		resetTrait();
-	}
+	});
 	
 	// Update debuff array
 	$(".current-enemy-debuff").change(function() {
@@ -130,7 +130,7 @@ $(document).ready(function() {
 	});
 	$(".enemy-debuff-resetbtn").click(function() {
 		resetDebuff();
-	}
+	});
 	
 	// Set enemy
 	$(".enemy-applybtn").click(function() {
