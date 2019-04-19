@@ -3,6 +3,7 @@ var currentSave = parent.currentSave;
 var bgCE = parent.bgCE;
 
 $(document).ready(function() {
+	updateCounter();
 	initialCEInventoryFilter();
 	generateCEInventory();
 	loadCESave();
