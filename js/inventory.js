@@ -505,7 +505,7 @@ function enableOption(element) {
 		$(row).find(".skill-rankup").prop("disabled", false);
 		$(skillList).each(function() {
 			skillRankUpCheck(row, this);
-			updateSkillImg(this + "Toggle", this);
+			updateSkillImg($(row).find("." + this + "-rankup"), this);
 		});
 		$(row).find(".event-ED").prop("disabled", false);
 		var position = bgServant.findIndex(function(obj) {
@@ -528,7 +528,7 @@ function enableOption(element) {
 		});
 		$(row).find(".skil1-lv").val(1);
 		$(skillList).each(function() {
-			updateSkillImg(this + "Toggle", this);
+			updateSkillImg($(row).find("." + this + "-rankup"), this);
 		});
 		$(row).find(".event-ED").val(0);
 		update(element);
