@@ -14,7 +14,7 @@ $(document).on("click", function() {
 });
 
 function updateCounter() {
-	var height = $("#inventory-header").outerHeight() + $("#ce-inventory-content").outerHeight() + 500;
+	var height = $("#ce-inventory-header").outerHeight() + $("#ce-inventory-content").outerHeight() + 500;
 	$("#ce-inventory-counter").html(height);
 }
 
