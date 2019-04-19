@@ -1532,18 +1532,22 @@ function labelHighlight(field) {
 	$(field).siblings(".label").removeClass("alarm highlight");
 	
 	var min = Number.NEGATIVE_INFINITY;		// Set minimum value for different fields, negative infinity by default
+	var max = Number.POSITIVE_INFINITY;		// No maximum by default
 	if ($(field).hasClass("np-ed")) {		// 100 for NP ED
-		value = 100;
+		min = 100;
+	} else if ($(field).attr("id") == "ce-atk") {
+		min = 0;
+		max = 2400;
 	} else if (
-		$(field).hasClass("ce-atk") || $(field).hasClass("red-atk") || $(field).hasClass("skill-ed") ||
-		$(field).attr("id") == "add-atk" || $(field).attr("id") == "event-buff"		// 0 for fields that disallow negative values
+		$(field).hasClass("red-atk") || $(field).hasClass("skill-ed") ||		// 0 for fields that disallow negative values
+		$(field).attr("id") == "add-atk" || $(field).attr("id") == "event-buff"
 	) {
-		value = 0;
+		min = 0;
 	}
 	if (Number($(field).val()) > min && Number($(field).val()) !== 0) {		// Highlight if higher than minimum & non-0
-		$(field).siblings(".label").addClass("highlight");
-	} else if (Number($(field).val()) < min) {						// Alarm if smaller than minimum
-		$(field).siblings(".label").addClass("alarm");
+		$(field).siblings(".labeltag").addClass("highlight");
+	} else if (Number($(field).val()) < min || Number($(field).val()) > max) {	// Alarm if smaller than minimum or larger than maximum
+		$(field).siblings(".labeltag").addClass("alarm");
 	}
 }
 
@@ -2851,6 +2855,7 @@ function deleteQueryBind() {
 
 // Delete specific row
 function deleteQuery(table, query) {
+	var enemy = $(table).attr("data-value");
 	var row = $(table).find(".result-row-" + query);
 	$(row).remove();
 	var newList = window[enemy + "Result"];
@@ -2862,7 +2867,7 @@ function deleteQuery(table, query) {
 	
 	// Check if the table is empty after row removal, hide the table if true
 	if (newList[0] === undefined) {
-		$(".table-resetbtn").find("[data-value='" + enemy + "']").click();
+		$(".table-resetbtn[data-value='" + enemy + "']").click();
 	}
 }
 
