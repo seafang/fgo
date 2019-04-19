@@ -40,7 +40,7 @@
 		<a class="btn setbtn" id="inventory-class-setbtn">全選</a>	
 		<a class="btn resetbtn" id="inventory-class-resetbtn">取消</a>	
 	</div>		
-	<div class="row">		
+	<div class="row center">		
 		<label class="checkbox">	
 			<input type="checkbox" class="inventory-star" value="0" checked>
 			<span class="checkmark"></span>
@@ -135,17 +135,17 @@
 			<label class="checkbox">	
 				<input type="checkbox" class="inventory-range" value="全體" checked>
 				<span class="checkmark"></span>
-				全體
+				♦ 全體
 			</label>	
 			<label class="checkbox">	
 				<input type="checkbox" class="inventory-range" value="單體" checked>
 				<span class="checkmark"></span>
-				單體
+				♠ 單體
 			</label>	
 			<label class="checkbox">	
 				<input type="checkbox" class="inventory-range" value="輔助" checked>
 				<span class="checkmark"></span>
-				輔助
+				♥ 輔助
 			</label>	
 			<a class="btn setbtn" id="inventory-range-setbtn">全選</a>	
 			<a class="btn resetbtn" id="inventory-range-resetbtn">取消</a>
@@ -166,7 +166,9 @@
 
 <!--Table Section-->
 <div class="row">
-	<a class="btn right resetbtn" id="inventory-event-buff-resetbtn">清空活動加成</a>
+	<div class="right">
+		<a class="btn resetbtn" id="inventory-event-buff-resetbtn">清空活動加成</a>
+	</div>
 </div>
 <div class="content" id="servant-inventory-content">
 	<div class="table-container">
@@ -187,8 +189,6 @@
 					<th colspan="3">技能二</th>
 					<th colspan="3">技能三</th>
 					<th rowspan="2">紋章</th>
-					<th rowspan="2">禮裝</th>
-					<th rowspan="2">隊友</th>
 					<th rowspan="2">活動加成</th>
 				</tr>	
 				<tr>	
@@ -204,6 +204,7 @@
 				</tr>	
 			</tbody>
 		</table>
+		<br/>
 	</div>
 </div>
 
