@@ -17,7 +17,7 @@ var masterBuff = JSON.parse(mysticCodeBuff);
 var ccBuff = JSON.parse(commandCodeBuff);
 
 var currentSave = {};
-var bgServant = [], bgCE = [], bgMaster = [];
+var bgServant = [], bgCE = [], bgMaster = [], customBuff = [];
 
 $(document).ready(function() {
 	
