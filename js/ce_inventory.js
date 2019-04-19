@@ -5,8 +5,8 @@ var bgCE = parent.bgCE;
 $(document).ready(function() {
 	initialCEInventoryFilter();
 	generateCEInventory();
-	updateCounter();
 	loadCESave();
+	updateCounter();
 });
 
 // Update page height
