@@ -27,6 +27,7 @@ let ceInventoryFilter = {
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
+	frequent: [true, false],
 	owned: [true, false]
 };
 
@@ -66,6 +67,11 @@ $(document).ready(function() {
 	
 	$("#ce-inventory-owned").change(function() {
 		ceInventoryInclusiveChange(this);
+	});
+	
+	// Designate CE as frequently used
+	$("#ce-inventory-frequent").change(function() {
+		ceInventoryFrequentChange(this);
 	});
 	
 	$("#ce-inventory-filterbtn").click(function() {
@@ -124,6 +130,7 @@ function generateCEInventory() {
 		} else {
 			row.insertCell(-1).innerHTML = "<div><span class='ce-effect'>" + essence.defaultEffect + "</span></div>";
 		}
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-frequent' disabled><span class='slider'></span></label>";
 	});
 }
 
@@ -193,6 +200,7 @@ function ceInventoryEffectNone() {
 	ceInventoryFilter.effect = [];	
 }		
 
+// Change in ownership criteria
 function ceInventoryInclusiveChange(element) {
 	var value = $(element).is(":checked");
 	if (value == true) {
@@ -201,11 +209,23 @@ function ceInventoryInclusiveChange(element) {
 		ceInventoryFilter.owned = [true, false];
 	}
 }
-
-// Change in ownership criteria
 function ceInventoryInclusiveReset() {
 	$("#ce-inventory-owned").prop("checked", false);
 	ceInventoryFilter.owned = [true, false];
+}
+
+// Designate as frequently used CE
+function ceInventoryFrequentChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		ceInventoryFilter.frequent = [true];
+	} else {
+		ceInventoryFilter.frequent = [true, false];
+	}
+}
+function ceInventoryFrequentReset() {
+	$("#ce-inventory-frequent").prop("checked", false);
+	ceInventoryFilter.frequent = [true, false];
 }
 
 // Initialise all filters
@@ -214,6 +234,7 @@ function initialCEInventoryFilter() {
 	ceInventoryTypeAll();
 	ceInventoryEffectAll();
 	ceInventoryInclusiveReset();
+	ceInventoryFrequentReset();
 }
 
 // Apply saved CE data
@@ -231,11 +252,12 @@ function loadCESave() {
 					$(this).find(".ce-owned").attr("checked", true);
 					enableCEOption(ownershipToggle);
 				}
-				if (servant[0].data[2] == true) {
+				if (essence[0].data[1] == true) {
 					$(this).find(".ce-max").attr("checked", true);
 					updateCEDscrp(maxToggle);
 				}
 				$(this).find(".ce-inventory-lv").val(essence[0].data[2]);
+				$(this).find(".ce-frequent").attr("checked", essence[0].data[3]);
 			}
 		});
 	}
@@ -258,6 +280,9 @@ $(document).ready(function() {
 	});
 	$(".ce-max").change(function() {
 		updateCEDscrp(this)
+	});
+	$(".ce-frequent").change(function() {
+		updateCEFrequent(this);
 	});
 });
 
@@ -301,6 +326,7 @@ function updateCE(element) {
 		$(row).find(".ce-inventory-lv").val(maxLV);
 	}
 	info.data[2] = Number($(row).find(".ce-inventory-lv").val());
+	info.data[3] = $(row).find(".ce-frequent").is(":checked");
 	bgCE.push(info);
 	currentSave.ce = bgCE;
 	parent.bgCE = bgCE;
@@ -320,6 +346,18 @@ function updateCEOwnership(element) {
 	parent.ce = ce;
 }
 
+// Update frequency status
+function updateCEFrequent(element) {
+	var row = $(element).parents("tr");
+	var rowID = Number($(row).find("td:first").html());
+	var newValue = $(row).find(".ce-frequent").is(":checked");
+	var position = ce.findIndex(function(obj) {
+		return obj.ceID == rowID;
+	});
+	ce[position].frequent = newValue;
+	parent.ce = ce;
+}
+
 // Check if CE is max by default, enable toggles accordingly upon change in ownership status
 function enableCEOption(element) {
 	var row = $(element).parents("tr");
@@ -328,6 +366,7 @@ function enableCEOption(element) {
 		if (!$(row).hasClass("ce-default-max")) {
 			$(row).find(".ce-max").prop("disabled", false);
 			$(row).find(".ce-inventory-lv").prop("disabled", false);
+			$(row).find(".ce-frequent").prop("disabled", false);
 		}
 	} else {
 		if (!$(row).hasClass("ce-default-max")) {
@@ -339,6 +378,7 @@ function enableCEOption(element) {
 		}
 		$(row).find(".ce-inventory-lv").val(0);
 		$(row).find(".ce-inventory-lv").prop("disabled", true);
+		$(row).find(".ce-frequent").prop("disabled", true);
 		updateCE(element);
 	}
 }
