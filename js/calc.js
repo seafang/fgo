@@ -379,9 +379,9 @@ function updateBattlefield() {
 		}
 	});
 	if (battlefield[0] !== undefined) {
-		$("#enemy-trait-label").addClass("highlight")
+		$("#battelfield-setup-label").addClass("highlight")
 	} else {
-		$("#enemy-trait-label").removeClass("highlight")
+		$("#battelfield-setup-label").removeClass("highlight")
 	}
 }
 
