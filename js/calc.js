@@ -93,6 +93,7 @@ function countDuplicate(newID) {
 
 /* Set Enemy */
 var enemyInfo = [];
+var trait = [];
 var debuff = [];
 var enemy1Debuff = [], enemy2Debuff = [], enemy3Debuff = [];
 var enemy1Trait = [], enemy2Trait = [], enemy3Trait = [];
@@ -115,10 +116,21 @@ $(document).ready(function() {
 		resetCurrentEnemy();
 	});
 	
-	// Clear debuff setup
+	// Update trait array
+	$(".current-enemy-trait").change(function() {
+		updateTrait();
+	});
+	$(".enemy-trait-resetbtn").click(function() {
+		resetTrait();
+	}
+	
+	// Update debuff array
 	$(".current-enemy-debuff").change(function() {
 		updateDebuff();
 	});
+	$(".enemy-debuff-resetbtn").click(function() {
+		resetDebuff();
+	}
 	
 	// Set enemy
 	$(".enemy-applybtn").click(function() {
@@ -151,6 +163,27 @@ $(document).ready(function() {
 	});
 });
 
+// Update trait array
+function updateTrait() {
+	trait = [];
+	$(".current-enemy-trait:checked").each(function() {
+		trait.push($(this).val())
+	});
+	if (trait[0] !== undefined) {
+		$("#enemy-trait-label").addClass("highlight")
+	} else {
+		$("#enemy-trait-label").removeClass("highlight")
+	}
+}
+
+// Reset trait
+function resetTrait() {
+	$(".current-enemy-trait-type").each(function() {
+		$(this).prop("checked", false);
+	});
+	updateTrait();
+}
+
 // Update debuff array
 function updateDebuff() {
 	debuff = [];
@@ -162,6 +195,19 @@ function updateDebuff() {
 			debuff.push(obj);
 		}
 	});
+	if (debuff[0] !== undefined) {
+		$("#enemy-debuff-label").addClass("highlight")
+	} else {
+		$("#enemy-debuff-label").removeClass("highlight")
+	}
+}
+
+// Reset trait
+function resetDebuff() {
+	$(".current-enemy-debuff").each(function() {
+		$(this).prop("checked", false);
+	});
+	updateDebuff();
 }
 
 // Retrieve selected enemy's info
@@ -208,10 +254,10 @@ function pickEnemy(type, enemyID) {
 	
 	// Loop through the trait list and check all corresponding traits
 	$(".current-enemy-trait").prop("checked", false);
-	var trait = enemyInfo[0].trait;
-	$(trait).each(function(index, value) {
+	$(enemyInfo[0].trait).each(function(index, value) {
 		$("input.current-enemy-trait[value=" + value + "]").prop("checked", true)
 	});
+	updateTrait();
 }
 
 // Initialise enemy setup
@@ -226,7 +272,8 @@ function resetCurrentEnemy() {
 	if ($("#enemy-setup-collapsebtn").html() == "展開 ▼") {
 		$("#enemy-setup-collapsebtn").click();
 	}
-	$(".current-enemy-trait").prop("checked", false);
+	$("#enemy-trait-resetbtn").click();
+	$("#enemy-debuff-resetbtn").click();
 }
 
 // Set the enemy
@@ -331,14 +378,19 @@ function updateBattlefield() {
 			battlefield.push($(this).val());
 		}
 	});
+	if (battlefield[0] !== undefined) {
+		$("#enemy-trait-label").addClass("highlight")
+	} else {
+		$("#enemy-trait-label").removeClass("highlight")
+	}
 }
 
 // Reset battlefield
 function resetBattlefield() {
-	battlefield = [];
 	$(".battlefield-type").each(function() {
 		$(this).prop("checked", false);
 	});
+	updateBattlefield();
 }
 
 
@@ -779,6 +831,8 @@ function setMaster(element) {
 		masterBuffList = [];
 		masterSkillSet = [];
 		
+		$("#master-selection-label").removeClass("highlight");
+		
 		// Initialise all fields
 		$("#master-img1").attr("src", "");
 		$("#master-img2").attr("src", "");
@@ -799,6 +853,8 @@ function setMaster(element) {
 		if ($("#master-setup-collapsebtn").html() == "展開 ▼") {
 			$("#master-setup-collapsebtn").click();
 		}
+		
+		$("#master-selection-label").addClass("highlight");
 		
 		var name = $(element).val();
 		masterInfo = master.filter(function(obj) {
@@ -1360,8 +1416,10 @@ $(document).ready(function() {
 	$("#use-strict-mode").change(function() {
 		if ($(this).is(":checked")) {
 			useStrict = [false];
+			$("#use-strict-mode-label").addClass("highlight");
 		} else {
 			useStrict = [true, false];
+			$("#use-strict-mode-label").removeClass("highlight");
 		}	
 	});
 	
@@ -1369,8 +1427,10 @@ $(document).ready(function() {
 	$("#include-after-defeat").change(function() {
 		if ($(this).is(":checked")) {
 			includeAfterDefeat = [true, false];
+			$("#include-after-defeat-label").addClass("highlight");
 		} else {
 			includeAfterDefeat = [false];
+			$("#include-after-defeat-label").removeClass("highlight");
 		}	
 	});
 	
@@ -2787,6 +2847,7 @@ function calcDmg(enemy) {
 	};
 	window[enemy + "Result"].push(output);
 	generateResultTable(enemy);
+	$("#result-resetbtn").show();
 	
 	$("#buff-info").find(".label").each(function() {
 		labelHighlight(this);
@@ -2802,8 +2863,10 @@ function clearAllResult() {
 		$(table).find(".result-row").each(function() {
 			$(this).remove();
 		});
+		$("#" + this + "-result-title").html("");
 	});
 	queryCount = 0;			// Reset query count of the session
+	$("#result-resetbtn").hide();
 }
 
 // Clear specific result table
@@ -2814,6 +2877,11 @@ function clearResultTable(enemy) {
 		$(this).remove();
 	});
 	$("#" + enemy + "-result-title").html("");
+	
+	if ($("#enemy1-result").css("display") == "none" && $("#enemy2-result").css("display") == "none" &&
+	    $("#enemy3-result").css("display") == "none") {
+		clearAllResult();
+	}
 }
 
 // Generate result table
