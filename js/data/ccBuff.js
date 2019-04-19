@@ -1,0 +1,1 @@
+commandCodeBuff = '[{"id":17,"selective":true,"chance":false,"effect":"ed","lookUp":"trait","corrDetail":"被「天地乖離開闢之星」所剋","standard":20,"":""},{"id":36,"selective":true,"chance":false,"effect":"ed","lookUp":"trait","corrDetail":"秩序","standard":20,"":""},{"id":36,"selective":true,"chance":false,"effect":"ed","lookUp":"trait","corrDetail":"Ruler","standard":20,"":""}]';
