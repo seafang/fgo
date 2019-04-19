@@ -75,7 +75,7 @@ function getSave() {
 		currentSave.title = "未命名存檔";
 		
 		// Set Mashu as default servant
-		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, null, null, null, null, null, null, null, 0]}];
+		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, 0]}];
 		
 		currentSave.ce = [];
 		
