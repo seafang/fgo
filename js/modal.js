@@ -625,7 +625,7 @@ function loadCEImg() {
 	$("#ce-img").html("");
 	var imglist = "";	
 	$(ceID).each(function(index, value) {
-		imglist += "<img class='ce-img ce-modal-img' src='images/ce/" + value +
+		imglist += "<img class='essence-img ce-modal-img' src='images/ce/" + value +
 		".webp' data-id='" + value + "' />"
 	});
 	$("#ce-img").html(imglist);
@@ -1204,7 +1204,7 @@ function loadTeammateCEImg() {
 	$("#teammate-ce-img").html("");
 	var imglist = "";	
 	$(ceID).each(function(index, value) {
-		imglist += "<img class='ce-img teammate-ce-modal-img' src='images/ce/" + value +
+		imglist += "<img class='essence-img teammate-ce-modal-img' src='images/ce/" + value +
 		".webp' data-id='" + value + "' />"
 	});
 	$("#teammate-ce-img").html(imglist);
