@@ -233,12 +233,25 @@
 			<a class="btn resetbtn" id="ce-inventory-effect-resetbtn">取消</a>
 		</div>
 	</div>		
-	<div class="row center inner">
-		<label class="switch">	
-			<input type="checkbox" id="ce-inventory-owned">
-			<span class="slider"></span>
-		</label>	
-		<span class="label-simple">僅包括已有禮裝</span>	
+	<div class="row justify-even inner">
+		<div class="element-50 flex center">
+			<div>
+				<label class="switch">	
+					<input type="checkbox" id="ce-inventory-owned">
+					<span class="slider"></span>
+				</label>	
+				<span class="label-simple">僅包括已有禮裝</span>
+			</div>
+		</div>
+		<div class="element-50 flex center">
+			<div>
+				<label class="switch">	
+					<input type="checkbox" id="ce-inventory-frequent">
+					<span class="slider"></span>
+				</label>	
+				<span class="label-simple">僅包括常用禮裝</span>
+			</div>
+		</div>
 	</div>
 	<div class="row center">
 		<a class="btn filterbtn" id="ce-inventory-filterbtn">套用</a>
@@ -258,6 +271,7 @@
 					<th>滿破</th>
 					<th>等級</th>
 					<th>效果</th>
+					<th>設為常用禮裝</th>
 				</tr>
 			</tbody>
 		</table>
