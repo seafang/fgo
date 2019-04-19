@@ -95,7 +95,7 @@
 			</div>			
 			<div class="row innerborder">
 				<div class="flex listlbl">
-					<span class="labeltag">特性</span>
+					<span class="labeltag" id="enemy-trait-label">特性</span>
 				</div>
 				<div class="flex list">
 					<label class="checkbox">	
@@ -223,11 +223,14 @@
 						<span class="checkmark"></span>
 						人類
 					</label>
+					<div class="right">
+						<a class="btn resetbtn" id="enemy-trait-resetbtn">取消</a>
+					</div>
 				</div>	
 			</div>	
 			<div class="row innerborder">	
 				<div class="flex listlbl">
-					<span class="labeltag">弱化狀態</span>
+					<span class="labeltag" id="enemy-debuff-label">弱化狀態</span>
 				</div>
 				<div class="flex list">
 					<label class="checkbox">
@@ -318,6 +321,9 @@
 							猪化
 						</span>
 					</label>
+					<div class="right">
+						<a class="btn resetbtn" id="enemy-debuff-resetbtn">取消</a>
+					</div>
 				</div>
 			</div>
 			<div class="row center">			
@@ -521,12 +527,12 @@
 					<input type="checkbox" id="use-strict-mode">
 					<span class="slider"></span>
 				</label>
-				<span class="labeltag space-right-wide">無視有機率發動之效果</span>
+				<span class="labeltag space-right-wide" id="use-strict-mode-label">無視有機率發動之效果</span>
 				<label class="switch">
 					<input type="checkbox" id="include-after-defeat" checked>
 					<span class="slider"></span>
 				</label>
-				<span class="labeltag">計入退埸後發動之效果</span>
+				<span class="labeltag highlight" id="include-after-defeat-label">計入退埸後發動之效果</span>
 			</div>
 		</div>
 	</div>
@@ -1005,7 +1011,7 @@
 	<div class="setup" id="master-setup">
 		<div class="row">
 			<div>
-				<label for="master-name-selection" class="labeltag">御主禮裝</label>	
+				<label for="master-name-selection" class="labeltag" id="master-selection-label">御主禮裝</label>	
 				<select class="broad narrow-right" id="master-name-selection">
 					<option value="none">不使用禮裝</option>
 				</select>
@@ -1612,27 +1618,27 @@
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="1" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="2" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="3" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="4" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-enemy-star" value="5" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
 				<a class="btn setbtn" id="servant-enemy-star-setbtn">全選</a>
@@ -1680,34 +1686,34 @@
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-star" value="1" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-star" value="2" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-star" value="3" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-star" value="4" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-star" value="5" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
 				<a class="btn setbtn" id="servant-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="servant-star-resetbtn">取消</a>
 			</div>
 			<div class="row center">
-				<span class="labeltag">分類</span>
+				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="servant-type" value="常駐" checked>
 					<span class="checkmark"></span>
@@ -1744,7 +1750,7 @@
 					<div class="modal-filter-box-content" id="servant-modal-filter-box-content">						
 						<div class="row justify-even">					
 							<div class="element-50 flex center">				
-								<span class="labeltag">陣營</span>			
+								<span class="filtertag">陣營</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="servant-attribute" value="天" checked>		
 									<span class="checkmark"></span>		
@@ -1774,7 +1780,7 @@
 								<a class="btn resetbtn" id="servant-attribute-resetbtn">取消</a>			
 							</div>				
 							<div class="element-50 flex center">				
-								<span class="labeltag">性別</span>			
+								<span class="filtertag">性別</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="servant-gender" value="男性" checked>		
 									<span class="checkmark"></span>		
@@ -1795,7 +1801,7 @@
 							</div>				
 						</div>					
 						<div class="row center">					
-							<span class="labeltag">屬性 I</span>				
+							<span class="filtertag">屬性 I</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="servant-alignment1" value="秩序" checked>			
 								<span class="checkmark"></span>			
@@ -1815,7 +1821,7 @@
 							<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>				
 						</div>					
 						<div class="row center">					
-							<span class="labeltag">屬性 II</span>				
+							<span class="filtertag">屬性 II</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="servant-alignment2" value="善" checked>			
 								<span class="checkmark"></span>			
@@ -1851,7 +1857,7 @@
 						</div>					
 						<div class="row justify-even">					
 							<div class="element-50 flex center">				
-								<span class="labeltag">寶具卡色</span>			
+								<span class="filtertag">寶具卡色</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="servant-color" value=" Buster " checked>		
 									<span class="checkmark"></span>		
@@ -1871,7 +1877,7 @@
 								<a class="btn resetbtn" id="servant-color-resetbtn">取消</a>			
 							</div>				
 							<div class="element-50 flex center">				
-								<span class="labeltag">寶具類別</span>			
+								<span class="filtertag">寶具類別</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="servant-range" value="全體" checked>		
 									<span class="checkmark"></span>		
@@ -1888,7 +1894,7 @@
 						</div>					
 						<div class="row center">					
 							<div class="listlbl">				
-								<span class="labeltag">特攻</span>			
+								<span class="filtertag">特攻</span>			
 							</div>				
 							<div class="flex list">				
 								<label class="checkbox">			
@@ -2072,24 +2078,24 @@
 			<div class="row center">
 				<label class="checkbox">
 					<input type="checkbox" class="ce-star" value="3" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="ce-star" value="4" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="ce-star" value="5" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
 				<a class="btn setbtn" id="ce-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="ce-star-resetbtn">取消</a>
 			</div>	
 			<div class="row center">	
-				<span class="labeltag">分類</span>
+				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="ce-type" value="常駐" checked>
 					<span class="checkmark"></span>
@@ -2130,7 +2136,7 @@
 			</div>
 			<div class="row center inner">
 				<div class="listlbl indent-4">				
-					<span class="labeltag">禮裝效果</span>		
+					<span class="filtertag">禮裝效果</span>		
 				</div>				
 				<div class="flex list">
 					<label class="checkbox">
@@ -2341,34 +2347,34 @@
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-star" value="1" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-star" value="2" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-star" value="3" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-star" value="4" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-star" value="5" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
 				<a class="btn setbtn" id="teammate-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="teammate-star-resetbtn">取消</a>
 			</div>
 			<div class="row center">
-				<span class="labeltag">分類</span>
+				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-type" value="常駐" checked>
 					<span class="checkmark"></span>
@@ -2410,7 +2416,7 @@
 					<div class="modal-filter-box-content" id="teammate-modal-filter-box-content">						
 						<div class="row justify-even">					
 							<div class="element-50 flex center">				
-								<span class="labeltag">陣營</span>			
+								<span class="filtertag">陣營</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="teammate-attribute" value="天" checked>		
 									<span class="checkmark"></span>		
@@ -2440,7 +2446,7 @@
 								<a class="btn resetbtn" id="teammate-attribute-resetbtn">取消</a>
 							</div>				
 							<div class="element-50 flex center">				
-								<span class="labeltag">性別</span>			
+								<span class="filtertag">性別</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="teammate-gender" value="男性" checked>		
 									<span class="checkmark"></span>		
@@ -2461,7 +2467,7 @@
 							</div>
 						</div>
 						<div class="row center">					
-							<span class="labeltag">屬性 I</span>				
+							<span class="filtertag">屬性 I</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="teammate-alignment1" value="秩序" checked>			
 								<span class="checkmark"></span>			
@@ -2481,7 +2487,7 @@
 							<a class="btn resetbtn" id="teammate-alignment1-resetbtn">取消</a>
 						</div>
 						<div class="row center">					
-							<span class="labeltag">屬性 II</span>				
+							<span class="filtertag">屬性 II</span>				
 							<label class="checkbox">				
 								<input type="checkbox" class="teammate-alignment2" value="善" checked>			
 								<span class="checkmark"></span>			
@@ -2517,7 +2523,7 @@
 						</div>
 						<div class="row justify-even">					
 							<div class="element-50 flex center">				
-								<span class="labeltag">寶具卡色</span>			
+								<span class="filtertag">寶具卡色</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="teammate-color" value=" Buster " checked>		
 									<span class="checkmark"></span>		
@@ -2537,7 +2543,7 @@
 								<a class="btn resetbtn" id="teammate-color-resetbtn">取消</a>
 							</div>
 							<div class="element-50 flex center">				
-								<span class="labeltag">寶具類別</span>			
+								<span class="filtertag">寶具類別</span>			
 								<label class="checkbox">			
 									<input type="checkbox" class="teammate-range" value="全體" checked>		
 									<span class="checkmark"></span>		
@@ -2586,24 +2592,24 @@
 			<div class="row center">
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-star" value="3" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-star" value="4" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-star" value="5" checked>
-					<span class="checkmark"></span>
+					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
 				<a class="btn setbtn" id="teammate-ce-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="teammate-ce-star-resetbtn">取消</a>
 			</div>	
 			<div class="row center">	
-				<span class="labeltag">分類</span>
+				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-type" value="常駐" checked>
 					<span class="checkmark"></span>
@@ -2633,7 +2639,7 @@
 				<a class="btn resetbtn" id="teammate-ce-type-resetbtn">取消</a>
 			</div>
 			<div class="row center ">			
-				<span class="labeltag">禮裝效果</span>		
+				<span class="filtertag">禮裝效果</span>		
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-effect" value="攻擊力" checked>
 					<span class="checkmark"></span>
