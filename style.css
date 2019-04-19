@@ -159,11 +159,12 @@ section, iframe {
 	margin: 5px;
 	background-color: white;
 }
-.teammate-np-detail {
-	flex-grow: 14;
+.teammate-basic-detail {
+	flex-grow: 12;
+	padding: 2px;
 }
 .teammate-ce-detail {
-	flex-grow: 6;
+	flex-grow: 8;
 	border: 1px solid darkgray;
 	padding: 2px;
 	margin: 5px;
@@ -260,6 +261,9 @@ td {
 }
 .justify-between {
 	justify-content: space-between;
+}
+.justify-left {
+	justify-content: left;
 }
 .left {
 	float: left;
@@ -454,6 +458,9 @@ span.space-right-wide, .space-right-wide {
 .calcbtn:hover {
 	background-color: #02bed0;
 }
+.result-resetbtn {
+	display: none;
+}
 .result-delbtn {
 	font-weight: 500;
 	color: #b8b8b8;
@@ -463,25 +470,27 @@ span.space-right-wide, .space-right-wide {
 	color: red;
 	font-weight: 1000;
 }
-.label, .labeltag, .infotag {
+.label, .labeltag, .filtertag, .infotag {
 	display: inline-block;
 	white-space: nowrap;
 	font-weight: 500;
 	padding: 0px 10px;
 	cursor: context-menu;
 }
-.label, .labeltag {
+.label, .labeltag, .filtertag {
 	margin: 10px 2px 10px 5px;
 }
-.labeltag {
-	background-color: #d2d2d2;
+.labeltag, .filtertag {
 	color: #464646;
 	border: 2px solid #606060;
+}
+.labeltag {
+	/*background-color: #d2d2d2;*/
 }
 .infotag {
 	background-color: #f1f1f1;
 	color: #444;
-	border: 2px solid #a4a4a4;
+	border: 2px solid #bdbdbd;
 	margin: 10px;
 }
 .highlight {
@@ -560,6 +569,9 @@ input.narrow {
 	background-color: white;
 	border: 1px solid;
 	border-radius: 2px;
+}
+.star-checkmark {
+	top: 7px;
 }
 .checkbox:disabled input ~ .checkmark {
 	background-color: #c8c8c8;
@@ -735,6 +747,24 @@ input:checked + .slider:before {
 .skill-img {
 	width: 40px;
 }
+.card-logo {
+	width: 60px;
+	margin: 4px;
+}
+.inventory-card-logo {
+	cursor: pointer;
+}
+.inventory-card-logo:hover {
+	background: #8cc1ff;
+	box-shadow: 0px 0px 5px #8cc1ff;
+}
+.inventory-card-logo.dull {
+	cursor: context-menu;
+}
+.inventory-card-logo.dull:hover {
+	background: white;
+	box-shadow: none;
+}
 .master-img {
 	width: 100px;
 }
@@ -826,10 +856,11 @@ input:checked + .slider:before {
 .modal .setbtn {
 	margin-left: 10px;
 }
-servant-enemy-modal-img, .servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img {
+servant-enemy-modal-img, .servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img, .code-modal-img {
 	cursor: pointer;
 }
-servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover, .teammate-modal-img:hover, .teammate-ce-modal-img:hover {
+servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
+.teammate-modal-img:hover, .teammate-ce-modal-img:hover, .code-modal-img:hover {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
 }
@@ -842,6 +873,10 @@ servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover, .t
 	margin: 4px;
 }
 .ce-modal-img, .teammate-ce-modal-img {
+	width: 60px;
+	margin: 4px;
+}
+.code-modal-img {
 	width: 60px;
 	margin: 4px;
 }
