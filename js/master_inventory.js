@@ -3,8 +3,8 @@ var currentSave = parent.currentSave;
 var bgMaster = parent.bgMaster;
 
 $(document).ready(function() {
-	updateCounter();
 	generateMasterInventory();		// Generate inventory table
+	updateCounter();
 	loadMasterSave();		// Load saved data
 });
 
