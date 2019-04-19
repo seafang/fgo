@@ -744,6 +744,9 @@ input:checked + .slider:before {
 	background-color: white;
 	border: 1px solid lightgray;
 }
+.servant-img, .essence-img, code-img {
+	width: 60px;
+}
 .skill-img {
 	width: 40px;
 }
@@ -762,7 +765,7 @@ input:checked + .slider:before {
 	cursor: context-menu;
 }
 .inventory-card-logo.dull:hover {
-	background: white;
+	background: initial;
 	box-shadow: none;
 }
 .master-img {
@@ -865,19 +868,15 @@ servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
 	box-shadow: 0px 0px 5px #8cc1ff;
 }
 .servant-enemy-modal-img {
-	width: 60px;
 	margin: 4px;
 }
 .servant-modal-img, .teammate-modal-img {
-	width: 60px;
 	margin: 4px;
 }
 .ce-modal-img, .teammate-ce-modal-img {
-	width: 60px;
 	margin: 4px;
 }
 .code-modal-img {
-	width: 60px;
 	margin: 4px;
 }
 @-webkit-keyframes fadeIn {
