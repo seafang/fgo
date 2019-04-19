@@ -463,27 +463,26 @@ span.space-right-wide, .space-right-wide {
 	color: red;
 	font-weight: 1000;
 }
-.label {
+.label, .labeltag, .infotag {
 	display: inline-block;
 	white-space: nowrap;
-	background-color: #d2d2d2;
 	font-weight: 500;
-	color: #464646;
-	border: 2px solid #606060;
 	padding: 0px 10px;
-	margin: 10px 2px 10px 5px;
 	cursor: context-menu;
 }
+.label, .labeltag {
+	margin: 10px 2px 10px 5px;
+}
+.labeltag {
+	background-color: #d2d2d2;
+	color: #464646;
+	border: 2px solid #606060;
+}
 .infotag {
-	display: inline-block;
-	white-space: nowrap;
 	background-color: #f1f1f1;
-	font-weight: 500;
 	color: #444;
 	border: 2px solid #a4a4a4;
-	padding: 0px 10px;
 	margin: 10px;
-	cursor: context-menu;
 }
 .highlight {
 	background: #ffffb4;
@@ -592,6 +591,60 @@ input.narrow {
 	-webkit-transform: rotate(40deg);
 	-ms-transform: rotate(40deg);
 	transform: rotate(40deg);
+}
+.radiobox {
+	display: block;
+	position: relative;
+	margin-left: 5px;
+	padding: 2px 0 0 21px;
+	font-size: 13px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.radiobox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+.radiomark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 13px;
+	width: 13px;
+	background-color: white;
+	border: 1px solid;
+	border-radius: 50%;
+}
+.radiobox:disabled input ~ .radiomark {
+	background-color: #c8c8c8;
+	border: none;
+}
+.radiobox:hover input ~ .radiomark {
+	background-color: #efefef;
+	border-color: #54B2FF;
+}
+.radiobox input:checked ~ .radiomark {
+	background-color: #54B2FF;
+	border-color: #54B2FF;
+}
+.radiomark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+.radiobox input:checked ~ .radiomark:after {
+	display: block;
+}
+.radiobox .radiomark:after {
+ 	top: 4px;
+	left: 4px;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: white;
 }
 .switch {
 	position: relative;
