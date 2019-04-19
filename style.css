@@ -610,8 +610,8 @@ input.narrow {
 }
 .radiomark {
 	position: absolute;
-	top: 0;
-	left: 0;
+	top: 5px;
+	left: 5px;
 	height: 13px;
 	width: 13px;
 	background-color: white;
@@ -639,8 +639,8 @@ input.narrow {
 	display: block;
 }
 .radiobox .radiomark:after {
- 	top: 4px;
-	left: 4px;
+ 	top: 3px;
+	left: 3px;
 	width: 5px;
 	height: 5px;
 	border-radius: 50%;
