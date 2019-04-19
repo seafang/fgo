@@ -4,8 +4,8 @@ var bgMaster = parent.bgMaster;
 
 $(document).ready(function() {
 	generateMasterInventory();		// Generate inventory table
-	updateCounter();
 	loadMasterSave();		// Load saved data
+	updateCounter();
 });
 
 // Update page height
