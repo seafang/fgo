@@ -557,6 +557,7 @@ let ceFilter = {
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
+	frequent: [true, false],
 	owned: [true, false]
 };
 
@@ -601,6 +602,11 @@ $(document).ready(function() {
 	// Change in ownership filtering criteria
 	$("#modal-ce-owned").change(function() {
 		ceInclusiveChange(this);
+	});
+	
+	// Change in frequency filtering criteria
+	$("#modal-ce-frequent").change(function() {
+		ceFrequentChange(this);
 	});
 	
 	// Apply filters and generate image list
@@ -715,12 +721,27 @@ function ceInclusiveReset() {
 	ceFilter.owned = [true, false];
 }
 
+// Change in frequency filtering criteria
+function ceFrequentChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		ceFilter.frequent = [true];
+	} else {
+		ceFilter.frequent = [true, false];
+	}
+}
+function ceFrequentReset() {
+	$("#modal-ce-frequent").prop("checked", false);
+	ceFilter.frequent = [true, false];
+}
+
 // Initialise all filters
 function initialCE() {
 	ceStarAll();
 	ceTypeAll();
 	ceEffectAll();
 	ceInclusiveReset();
+	ceFrequentReset();
 }
 
 
@@ -1116,6 +1137,7 @@ let teammateCEFilter = {
 	type: ["常駐", "活動限定", "期間限定", "活動兌換", "羈絆禮裝"],		// Only includes CE benefitial to the team
 	effect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "特攻", "傷害附加"],
 	owned: [true, false],
+	frequent: [true, false],
 	dmgToTeam: [true]		// Only includes CE with effects reflect upon damage output
 };
 
@@ -1159,6 +1181,11 @@ $(document).ready(function() {
 	// Change in ownership filtering criteria
 	$("#modal-teammate-ce-owned").change(function() {
 		teammateCEInclusiveChange(this);
+	});
+	
+	// Change in ownership filtering criteria
+	$("#modal-teammate-ce-frequent").change(function() {
+		teammateCEFrequentChange(this);
 	});
 	
 	// Apply filters and generate image list
@@ -1270,10 +1297,25 @@ function teammateCEInclusiveReset() {
 	teammateCEFilter.owned = [true, false];
 }
 
+// Change in frequency filtering criteria
+function teammateCEFrequentChange(element) {
+	var value = $(element).is(":checked");
+	if (value == true) {
+		teammateCEFilter.frequent = [true];
+	} else {
+		teammateCEFilter.frequent = [true, false];
+	}
+}
+function teammateCEFrequentReset() {
+	$("#modal-teammate-ce-frequent").prop("checked", false);
+	teammateCEFilter.frequent = [true, false];
+}
+
 // Initialise all filters
 function initialTeammateCE() {
 	teammateCEStarAll();
 	teammateCETypeAll();
 	teammateCEEffectAll();
 	teammateCEInclusiveReset();
+	teammateCEFrequentReset();
 }
