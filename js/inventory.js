@@ -744,7 +744,7 @@ function saveCustomBuff(element) {
 
 // Generate image list
 function loadInventoryTeammateImg() {
-	var filteredServant = multiFilter(servants, servantFilter);
+	var filteredServant = multiFilter(servants, inventoryTeammateFilter);
 	var servantID = filteredServant.map(function(servant) {
 		return servant.id
 	});
