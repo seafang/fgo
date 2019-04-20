@@ -441,13 +441,15 @@ function pickServant(servantID) {
 		servantInfo = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		$("#servant-resetbtn").show();
+		
 		skillSet = ["default"];
 		
 		// Filter useful skill buffs by ID, buffs that are effective to oneself & damage related buffs
 		skillBuffList = multiFilter(skillBuff, {		
 			id: [servantID],	
 			toSelf: [true],	
-			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
+			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "accdef",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "hpdmg"]
 		});
 		
@@ -457,7 +459,7 @@ function pickServant(servantID) {
 			id: [servantID],	
 			toSelf: [true],	
 			buffFirst: [true],	
-			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
+			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "accdef",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait", "npmult", "hpmult", "skilled"]
 		});
 		
@@ -651,6 +653,8 @@ $(document).ready(function() {
 	
 	// Remove CE
 	$("#servant-ce-resetbtn").click(function() {
+		$(this).hide();
+		$("#servant-ce-reapplybtn").hide();
 		resetCE();
 	});
 	
@@ -668,6 +672,10 @@ $(document).ready(function() {
 // Retrieve CE info
 function pickCE(essenceID) {
 	closeModal();
+	
+	$("#servant-ce-reapplybtn").show();
+	$("#servant-ce-resetbtn").show();
+	
 	ceInfo = ce.filter(function(obj) {
 		return obj.id == essenceID;
 	});
@@ -825,6 +833,8 @@ function setMaster(element) {
 			$("#master-setup-collapsebtn").click();
 		}
 		
+		$("#master-resetbtn").hide();
+		
 		// Clear all arrays
 		masterInfo = [];
 		masterSave = [];
@@ -854,6 +864,7 @@ function setMaster(element) {
 			$("#master-setup-collapsebtn").click();
 		}
 		
+		$("#master-resetbtn").show();
 		$("#master-selection-label").addClass("highlight");
 		
 		var name = $(element).val();
@@ -954,6 +965,7 @@ $(document).ready(function() {
 	// Remove teammate CE
 	$(".teammate-ce-resetbtn").click(function() {
 		var teammate = $(this).attr("data-teammate");
+		$(this).hide();
 		resetTeammateCE(teammate);
 	});
 	
@@ -963,6 +975,8 @@ $(document).ready(function() {
 		if ($("#teammate-setup-collapsebtn").html() == "接疊 ▲") {
 			$("#teammate-setup-collapsebtn").html("展開 ▼");
 		}
+		$(this).hide();
+		$(".teammate-reapplybtn[data-teammate:'" + teammate + "']").hide();
 		resetTeammate(teammate);
 	});
 	
@@ -1021,19 +1035,22 @@ function pickTeammate(value, teammateID, brute) {
 		window[value + "Info"] = [];
 		alert("重複從者！請檢查隊伍組成。");
 	} else {
+		$(".teammate-reapplybtn[data-teammate:'" + value + "']").show();
+		$(".teammate-resetbtn[data-teammate:'" + value + "']").show();
+		
 		window[value + "SkillSet"] = [];
 		
 		// Filter useful NP and skill buffs by ID, effective to teammates & dmage related
 		window[value + "SkillBuffList"] = multiFilter(skillBuff, {		
 			id: [teammateID],	
 			range: ["team", "single", "all-enemy", "single-enemy"],	
-			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
+			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "accdef",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
 		window[value + "NPBuffList"] = multiFilter(npBuff, {		
 			id: [teammateID],	
 			range: ["team", "single", "all-enemy", "single-enemy"],	
-			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def",	
+			effect: ["dmg", "ed", "adddmg", "buster", "art", "quick", "npdmg", "def", "accdef",	
 				"class", "alignment1", "alignment2", "trait", "igndef", "enemytrait"]
 		});		
 		var info = window[value + "Info"];
@@ -1320,6 +1337,8 @@ function toggleAllSkills(value) {
 function pickTeammateCE(value, ceID) {
 	closeModal();
 	modalCaller = "";
+	$(".teammate-ce-resetbtn[data-teammate:'" + value + "']").show();
+	
 	var section = $("#" + value);
 	window[value + "CEInfo"] = ce.filter(function(obj) {
 		return obj.id == ceID;
@@ -1977,6 +1996,7 @@ function updateSkillBuff() {
 						$("#Quick-buff").val(value);
 						break;
 					case "def":			// Enemy defence debuff
+					case "accdef":
 						updateDefDebuff(this, 'enemy1', lv);	
 						if (this.range == "all-enemy") {	// Apply debuff to enemy 2 & 3 if effective range permits
 							updateDefDebuff(this, 'enemy2', lv);
@@ -2137,7 +2157,8 @@ function updateNPBuff() {
 					value += this[lv];	
 					$("#Quick-buff").val(value);	
 					break;	
-				case "def":		
+				case "def":
+				case "accdef":
 					updateNPDefDebuff(this, 'enemy1', lv);	
 					if (this.range == "all-enemy") {	
 						updateNPDefDebuff(this, 'enemy2', lv);
@@ -2506,6 +2527,7 @@ function updateTeammateSkillBuff(section) {
 						$("#Quick-buff").val(value);
 						break;
 					case "def":
+					case "accdef":
 						updateDefDebuff(this, 'enemy1', lv);	
 						if (this.range == "all-enemy") {	
 							updateDefDebuff(this, 'enemy2', lv);
@@ -2585,7 +2607,8 @@ function updateTeammateNPBuff(section) {
 					value += this[lv];	
 					$("#Quick-buff").val(value);	
 					break;	
-				case "def":		
+				case "def":
+				case "accdef":
 					updateNPDefDebuff(this, 'enemy1', lv);	
 					if (this.range == "all-enemy") {	
 						updateNPDefDebuff(this, 'enemy2', lv);
@@ -2695,6 +2718,7 @@ $(document).ready(function() {
 	
 	// Clear all results
 	$("#result-resetbtn").click(function() {
+		$(this).hide();
 		clearAllResult();
 	});
 	
@@ -2707,6 +2731,8 @@ $(document).ready(function() {
 
 // Calculation
 function calculation() {
+	$("#result-resetbtn").show();
+	
 	var enemyList = ["enemy1", "enemy2", "enemy3"];
 	queryCount++;		// Update the total number of query in the current session
 	$(enemyList).each(function() {
@@ -2880,7 +2906,7 @@ function clearResultTable(enemy) {
 	
 	if ($("#enemy1-result").css("display") == "none" && $("#enemy2-result").css("display") == "none" &&
 	    $("#enemy3-result").css("display") == "none") {
-		clearAllResult();
+		$("#result-resetbtn").click();
 	}
 }
 
