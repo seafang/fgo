@@ -471,12 +471,10 @@ function enableOption(element) {
 	var skillList = ["skill1", "skill2", "skill3"];
 	if ($(element).is(":checked")) {
 		$(row).find("select").prop("disabled", false);
-		$(row).find(".np-rankup").prop("disabled", false);
 		npRankUpCheck(row);
 		$(row).find(".statup").prop("disabled", false);
 		$(row).find(".skill-logo").removeClass("dull");
 		$(row).find(".inventory-card-logo").removeClass("dull");
-		$(row).find(".skill-rankup").prop("disabled", false);
 		$(skillList).each(function() {
 			skillRankUpCheck(row, this);
 			updateSkillImg($(row).find("." + this + "-rankup"), this);
@@ -485,7 +483,7 @@ function enableOption(element) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID; 
 		});
-		bgServant.splice(position, 1);
+		bgServant[position].data[16] = "不使用隊友";
 	} else {
 		$(row).find("select").prop("disabled", true);
 		$(row).find("input").prop("disabled", true);
@@ -505,11 +503,10 @@ function enableOption(element) {
 			updateSkillImg($(row).find("." + this + "-rankup"), this);
 		});
 		$(row).find(".event-ED").val(0);
-		update(element);
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID; 
 		});
-		bgServant[position].data[16] = "不使用隊友";
+		bgServant.splice(position, 1);
 	}
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
