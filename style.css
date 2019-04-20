@@ -763,7 +763,6 @@ input:checked + .slider:before {
 }
 .card-logo {
 	width: 60px;
-	margin: 4px;
 }
 .inventory-card-logo {
 	cursor: pointer;
@@ -778,6 +777,12 @@ input:checked + .slider:before {
 .inventory-card-logo.dull:hover {
 	background: initial;
 	box-shadow: none;
+}
+.inventory-code-logo {
+	width: 20px;
+	position: relative;
+	bottom: 40px;
+	right: 20px;
 }
 .master-img {
 	width: 100px;
