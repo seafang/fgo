@@ -403,16 +403,22 @@ span.space-right-wide, .space-right-wide {
 	background-color: blue;
 	color: white;
 }
+.setbtn {
+	margin-left: 8px;
+}
 .filterbtn {
 	background-color: white;
 	color: black;
-	border-color: black;
-	padding: 1px 35px;
+	font-size: 14px;
+	font-weight: 500;
+	border: 2px solid;
+	padding: 2px 70px;
 	margin-bottom: 5px;
 }
 .filterbtn:hover {
 	background-color: black;
 	color: white;
+	border-color: black;
 }
 .enemy-applybtn {
 	background-color: white;
@@ -513,6 +519,11 @@ span.space-right-wide, .space-right-wide {
 }
 .label-simple {
 	margin-left: 5px;
+}
+#inventory-modal-label {
+	font-weight: 500;
+	font-size: 14px;
+	margin-right: 5px;
 }
 select, option, input {
 	font-family: "Noto Sans TC", sans-serif;
@@ -820,15 +831,23 @@ input:checked + .slider:before {
 .modal-header {
 	border: 1px solid black;
 	border-radius: 5px;
-	margin: 4px;
+	margin: 4px 0 10px 0;
 }
-.modal-filter-header {
-	background-color: #ff4a4a;
+.modal-filter-header, .inventory-teammate-header {
 	color: white;
 	font-size: 14px;
 	font-weight: 500;
 	padding: 4px 0;
 	margin-bottom: 10px;
+}
+.modal-filter-header {
+	background-color: #ff4a4a;
+}
+.inventory-teammate-header {
+	background-color: #4ab2ff;
+}
+.modal-header-container {
+	padding: 6px;
 }
 .servant-enemy-class, .servant-class {
 	cursor: pointer;
