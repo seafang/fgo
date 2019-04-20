@@ -1016,11 +1016,11 @@ function codeStarChange(element, starNo) {
 	}
 }
 function codeStarAll() {
-	$(".ce-star").prop("checked", true);
+	$(".code-star").prop("checked", true);
  	inventoryCodeFilter.star = [1, 2, 3, 4, 5];
 }
 function codeStarNone() {
-	$(".ce-star").prop("checked", false);
+	$(".code-star").prop("checked", false);
  	inventoryCodeFilter.star = [];
 }
 
@@ -1037,15 +1037,14 @@ function codeEffectChange(element, effect) {
 	}
 }
 function codeEffectAll() {
-	$(".ce-effect").prop("checked", true);
-	inventoryCodeFilter.effect = [];
-}
-function codeEffectNone() {
-	$(".ce-effect").prop("checked", false);
+	$(".code-effect").prop("checked", true);
 	inventoryCodeFilter.effect = ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中", 
 		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予"];
 }
-
+function codeEffectNone() {
+	$(".code-effect").prop("checked", false);
+	inventoryCodeFilter.effect = [];
+}
 
 // Initialise all filters
 function initialInventoryCode() {
