@@ -218,7 +218,7 @@ function generateInventory() {
 			var count = servant[this + "No"];
 			while (count > 0) {
 				cardHTML += "<span><img class='card-logo inventory-card-logo dull' src='images/command/" + 
-					this + ".webp' data-value='" + i + "' /><img class='code-logo inventory-code-logo src='' data-value='" + i + "' data-id='0' /></span>";
+					this + ".webp' data-value='" + i + "' /><img class='code-logo inventory-code-logo' src='' data-value='" + i + "' data-id='0' /></span>";
 				i++;
 				count--;
 			}
@@ -941,9 +941,9 @@ var modalCaller = "";
 var positionMarker = 0;
 
 let inventoryCodeFilter = {
-	star: [1, 2, 3, 4, 5],
+	star: [0, 1, 2, 3, 4, 5],
 	effect: ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中", 
-		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予"]
+		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予", "其他"]
 };
 
 $(document).ready(function() {
@@ -995,12 +995,12 @@ function loadInventoryCodeImg() {
 
 // Attach event handler to the images
 function codeBind() {
-	$(".code-modal-img").ready(function() {
+	/*$(".code-modal-img").ready(function() {*/
 		$(".code-modal-img").click(function() {
 			var id = Number($(this).attr("data-id"));
 			pickCode(modalCaller, positionMarker, id);
 		});
-	});
+	/*});*/
 }
 
 // Change in star filtering criteria
@@ -1017,11 +1017,11 @@ function codeStarChange(element, starNo) {
 }
 function codeStarAll() {
 	$(".code-star").prop("checked", true);
- 	inventoryCodeFilter.star = [1, 2, 3, 4, 5];
+ 	inventoryCodeFilter.star = [0, 1, 2, 3, 4, 5];
 }
 function codeStarNone() {
 	$(".code-star").prop("checked", false);
- 	inventoryCodeFilter.star = [];
+ 	inventoryCodeFilter.star = [0];
 }
 
 // Change in effect filtering criteria
@@ -1039,11 +1039,11 @@ function codeEffectChange(element, effect) {
 function codeEffectAll() {
 	$(".code-effect").prop("checked", true);
 	inventoryCodeFilter.effect = ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中", 
-		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予"];
+		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予", "其他"];
 }
 function codeEffectNone() {
 	$(".code-effect").prop("checked", false);
-	inventoryCodeFilter.effect = [];
+	inventoryCodeFilter.effect = ["其他"];
 }
 
 // Initialise all filters
