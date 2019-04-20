@@ -406,6 +406,18 @@ span.space-right-wide, .space-right-wide {
 .setbtn {
 	margin-left: 8px;
 }
+#inventory-teammate-selection-setbtn, #inventory-teammate-selection-resetbtn {
+	display: none;
+}
+#servant-resetbtn, #servant-ce-reapplybtn, #servant-ce-resetbtn, #master-resetbtn {
+	display: none;
+}
+.teammate-reapplybtn, .teammate-ce-resetbtn, .teammate-resetbtn {
+	display: none;	
+}
+#result-resetbtn {
+	display: none;
+}
 .filterbtn {
 	background-color: white;
 	color: black;
