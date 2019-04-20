@@ -117,7 +117,7 @@ $(document).ready(function() {
 	});*/
 	
 	// Open command code modal
-	$(".inventory-code-logo").click(function() {
+	$(".inventory-card-logo").click(function() {
 		if (!$(this).hasClass("dull")) {
 			var row = $(this).parents("tr");
 			var rowID = Number($(row).find("td:first").html());
@@ -610,6 +610,8 @@ let inventoryTeammateFilter = {
 };
 
 $(document).ready(function() {
+	
+	
 	// Change in class filtering criteria
 	$(".inventory-teammate-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -816,7 +818,124 @@ function deselectAllServant() {
 	parent.currentSave = currentSave;
 	save();
 }
-		     
+
+// Change in class filtering criteria
+function inventoryTeammateClassChange(element, className) {
+	var newClass = inventoryTeammateFilter.classes;
+	if ($(element).hasClass("dull")) {
+		$(element).removeClass("dull");
+		newClass.push(className);
+		inventoryTeammateFilter.classes = newClass;
+	} else {
+		position = newClass.indexOf(className);
+		newClass.splice(position, 1);
+		$(element).addClass("dull");
+		inventoryTeammateFilter.classes = newClass;
+	}
+}
+function inventoryTeammateClassAll() {
+	$(".inventory-teammate-class").removeClass("dull");
+	inventoryTeammateFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
+}
+function inventoryTeammateClassNone() {
+	$(".inventory-teammate-class").addClass("dull");
+	inventoryTeammateFilter.classes = [];
+}
+
+// Change in star filtering criteria
+function inventoryTeammateStarChange(element, starNo) {
+	var newStar = inventoryTeammateFilter.star;
+	if ($(element).prop("checked")) {
+		newStar.push(starNo);
+		inventoryTeammateFilter.star = newStar;
+	} else {
+		position = newStar.indexOf(starNo);
+		newStar.splice(position, 1);
+		inventoryTeammateFilter.star = newStar;
+	}
+}
+function inventoryTeammateStarAll() {
+	$(".inventory-teammate-star").prop("checked", true);
+	inventoryTeammateFilter.star = [0, 1, 2, 3, 4, 5];
+}
+function inventoryTeammateStarNone() {
+	$(".inventory-teammate-star").prop("checked", false);
+	inventoryTeammateFilter.star = [];
+}
+
+// Change in type filtering criteria
+function inventoryTeammateTypeChange(element, typeName) {
+	var newType = inventoryTeammateFilter.type;
+	if ($(element).prop("checked")) {
+		newType.push(typeName);
+		inventoryTeammateFilter.type = newType;
+	} else {
+		position = newType.indexOf(typeName);
+		newType.splice(position, 1);
+		inventoryTeammateFilter.type = newType;
+	}
+}
+function inventoryTeammateTypeAll() {
+	$(".inventory-teammate-type").prop("checked", true);
+	inventoryTeammateFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
+}
+function inventoryTeammateTypeNone() {
+	$(".inventory-teammate-type").prop("checked", false);
+	inventoryTeammateFilter.type = [];
+}
+
+// Change in NP color filtering criteria
+function inventoryTeammateColorChange(element, colorName) {
+	var newColor = inventoryTeammateFilter.npColor;
+	if ($(element).prop("checked")) {
+		newColor.push(colorName);
+		inventoryTeammateFilter.npColor = newColor;
+	} else {
+		position = newColor.indexOf(colorName);
+		newColor.splice(position, 1);
+		inventoryTeammateFilter.npColor = newColor;
+	}
+}
+function inventoryTeammateColorAll() {
+	$(".inventory-teammate-color").prop("checked", true);
+	inventoryTeammateFilter.npColor = ["Buster", "Art", "Quick"];
+}
+function inventoryTeammateColorNone() {
+	$(".inventory-teammate-color").prop("checked", false);
+	inventoryTeammateFilter.npColor = [];
+}
+
+// Change in NP range filtering criteria
+function inventoryTeammateRangeChange(element, rangeName) {
+	var newRange = inventoryTeammateFilter.npRange;
+	if ($(element).prop("checked")) {
+		newRange.push(rangeName);
+		inventoryTeammateFilter.npRange = newRange;
+	} else {
+		position = newRange.indexOf(rangeName);
+		newRange.splice(position, 1);
+		inventoryTeammateFilter.npRange = newRange;
+	}
+}
+function inventoryTeammateRangeAll() {
+	$(".inventory-teammate-range").prop("checked", true);
+	inventoryTeammateFilter.npRange = ["全體", "單體"];
+}
+function inventoryTeammateRangeNone() {
+	$(".inventory-teammate-range").prop("checked", false);
+	inventoryTeammateFilter.npRange = [];
+}
+
+// Initialise all filters
+function initialInventoryTeammate() {
+	inventoryTeammateClassAll();
+	inventoryTeammateStarAll();
+	inventoryTeammateTypeAll();
+	inventoryTeammateColorAll();
+	inventoryTeammateRangeAll();
+}
+
 /* Command Code Modal */
 var modalCaller = "";
 var positionMarker = 0;
