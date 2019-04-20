@@ -100,34 +100,6 @@ $(document).ready(function() {
 		generateInventory();
 		loadSave();
 	});
-	
-	// Open teammate setup modal
-	$("#inventory-teammate-modalbtn").click(function() {
-		openModal("#inventory-teammate-modal");
-		initialInventoryTeammate();
-		loadInventoryTeammateImg();
-		applyInventoryTeammateSelection();
-	});
-	
-	// Open ce setup modal
-/*	$("#inventory-ce-modalbtn").click(function() {
-		openModal("#inventory-ce-modal");
-		initialInventoryCE();
-		loadInventoryCEImg();
-	});*/
-	
-	// Open command code modal
-	$(".inventory-card-logo").click(function() {
-		if (!$(this).hasClass("dull")) {
-			var row = $(this).parents("tr");
-			var rowID = Number($(row).find("td:first").html());
-			setCaller(rowID);
-			positionMarker = Number($(this).attr("data-value"));
-			openModal("#inventory-code-modal");
-			initialInventoryCode();
-			loadInventoryCodeImg();
-		}
-	});
 });
 
 // Clear current table
@@ -610,7 +582,21 @@ let inventoryTeammateFilter = {
 };
 
 $(document).ready(function() {
+	// Open teammate setup modal
+	$("#inventory-teammate-modalbtn").click(function() {
+		openModal("#inventory-teammate-modal");
+		initialInventoryTeammate();
+		loadInventoryTeammateImg();
+		selectInventoryTeammate();
+		applyInventoryTeammateSelection();
+	});
 	
+	// Open ce setup modal
+/*	$("#inventory-ce-modalbtn").click(function() {
+		openModal("#inventory-ce-modal");
+		initialInventoryCE();
+		loadInventoryCEImg();
+	});*/
 	
 	// Change in class filtering criteria
 	$(".inventory-teammate-class").click(function() {
@@ -687,10 +673,6 @@ $(document).ready(function() {
 		applyInventoryTeammateSelection();
 	});
 	
-	$(".inventory-teammate-modal-img").click(function() {
-		selectServant(this);
-	});
-	
 	$("#inventory-teammate-selection-setbtn").click(function() {
 		selectAllServant();
 	});
@@ -755,6 +737,12 @@ function loadInventoryTeammateImg() {
 		".webp' data-id='" + value + "' />"
 	});
 	$("#inventory-teammate-img").html(imglist);
+	
+	$(".inventory-teammate-modal-img").ready(function() {
+		$(".inventory-teammate-modal-img").click(function() {
+			selectServant(this);
+		});
+	});
 }
 
 function applyInventoryTeammateSelection() {
@@ -947,6 +935,19 @@ let inventoryCodeFilter = {
 };
 
 $(document).ready(function() {
+	// Open command code modal
+	$(".inventory-card-logo").click(function() {
+		if (!$(this).hasClass("dull")) {
+			var row = $(this).parents("tr");
+			var rowID = Number($(row).find("td:first").html());
+			setCaller(rowID);
+			positionMarker = Number($(this).attr("data-value"));
+			openModal("#inventory-code-modal");
+			initialInventoryCode();
+			loadInventoryCodeImg();
+		}
+	});
+	
 	// Change in star filtering criteria
 	$(".code-star").change(function() {
 		var star = Number($(this).val());
