@@ -995,12 +995,12 @@ function loadInventoryCodeImg() {
 
 // Attach event handler to the images
 function codeBind() {
-	/*$(".code-modal-img").ready(function() {*/
+	$(".code-modal-img").ready(function() {
 		$(".code-modal-img").click(function() {
 			var id = Number($(this).attr("data-id"));
 			pickCode(modalCaller, positionMarker, id);
 		});
-	/*});*/
+	});
 }
 
 // Change in star filtering criteria
