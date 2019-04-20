@@ -759,7 +759,7 @@ function loadInventoryTeammateImg() {
 
 function applyInventoryTeammateSelection() {
 	$(".inventory-teammate-modal-img").removeClass("selected");
-	var list = bgServant[0].filter(function(obj) {
+	var list = bgServant.filter(function(obj) {
 		return obj.data[16] == activeSetup;
 	});
 	$(list).each(function() {
