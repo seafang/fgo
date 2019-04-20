@@ -17,7 +17,7 @@ function closeModal() {
 }
 
 $(document).click(function(event) {
-	if (!$(event.target).closest(".modal-box, .modalbtn, #to_top").length) {
+	if (!$(event.target).closest(".modal-box, .modalbtn, #to_top, .inventory-card-logo").length) {
 		closeModal();
 	}
 });
