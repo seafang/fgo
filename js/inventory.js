@@ -395,10 +395,10 @@ $(document).ready(function() {
 	});
 	$("#inventory-row-1").find(".owned").prop("disabled", true);
 	$("#inventory-row-1").find(".nplv").prop("disabled", true);
-	$("select").change(function() {
+	$("#servant-inventory select").change(function() {
 		update(this);
 	});
-	$("input").change(function() {
+	$("#servant-inventory input").change(function() {
 		update(this);
 	});
 	$(".owned").change(function() {
@@ -781,16 +781,13 @@ function selectServant(img) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		var target = bgServant[position];
-		bgServant.splice(position, 1);
 		if ($(img).hasClass("selected")) {				// Remove setup on deselect
 			$(img).removeClass("selected");
-			target.data[16] = "不使用隊友";
+			bgServant[position].data[16] = "不使用隊友";
 		} else {							// Save setup on select
 			$(img).addClass("selected");
-			target.data[16] = activeSetup;
+			bgServant[position].data[16] = activeSetup;
 		}
-		bgServant.push(target);
 		currentSave.servant = bgServant;
 		parent.bgServant = bgServant;
 		parent.currentSave = currentSave;
@@ -806,10 +803,7 @@ function selectAllServant() {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		var target = bgServant[position];
-		bgServant.splice(position, 1);
-		target.data[16] = activeSetup;
-		bgServant.push(target);
+		bgServant[position].data[16] = activeSetup;
 	});
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
@@ -825,10 +819,7 @@ function deselectAllServant() {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		var target = bgServant[position];
-		bgServant.splice(position, 1);
-		target.data[16] = "不使用隊友";
-		bgServant.push(target);
+		bgServant[position].data[16] = "不使用隊友";
 	});
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
