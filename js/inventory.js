@@ -781,13 +781,16 @@ function selectServant(img) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
+		var target = bgServant[position];
+		bgServant.splice(position, 1);
 		if ($(img).hasClass("selected")) {				// Remove setup on deselect
 			$(img).removeClass("selected");
-			bgServant[position].data[16] = "不使用隊友";
+			target.data[16] = "不使用隊友";
 		} else {							// Save setup on select
 			$(img).addClass("selected");
-			bgServant[position].data[16] = activeSetup;
+			target.data[16] = activeSetup;
 		}
+		bgServant.push(target);
 		currentSave.servant = bgServant;
 		parent.bgServant = bgServant;
 		parent.currentSave = currentSave;
@@ -803,7 +806,10 @@ function selectAllServant() {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		bgServant[position].data[16] = activeSetup;
+		var target = bgServant[position];
+		bgServant.splice(position, 1);
+		target.data[16] = activeSetup;
+		bgServant.push(target);
 	});
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
@@ -819,7 +825,10 @@ function deselectAllServant() {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		bgServant[position].data[16] = "不使用隊友";
+		var target = bgServant[position];
+		bgServant.splice(position, 1);
+		target.data[16] = "不使用隊友";
+		bgServant.push(target);
 	});
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
