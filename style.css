@@ -406,7 +406,7 @@ span.space-right-wide, .space-right-wide {
 .setbtn {
 	margin-left: 8px;
 }
-#inventory-teammate-selection-setbtn, #inventory-teammate-selection-resetbtn {
+#inventory-teammate-selection-resetbtn {
 	display: none;
 }
 #servant-resetbtn, #servant-ce-reapplybtn, #servant-ce-resetbtn, #master-resetbtn {
