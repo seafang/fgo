@@ -748,7 +748,7 @@ function applyInventoryTeammateSelection() {
 		return obj.data[16] == activeSetup;
 	});
 	$(list).each(function() {
-		$(".inventory-teammate-modal-img[data-id:'" + this + "']").addClass("selected");
+		$(".inventory-teammate-modal-img[data-id='" + this + "']").addClass("selected");
 	});
 }
 
