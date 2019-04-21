@@ -416,11 +416,12 @@ $(document).ready(function() {
 	});
 });
 
+// Update data on change
 function update(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var info = {};
-	if (bgServant[0] !== undefined) {
+	if (bgServant[0] !== undefined) {			// Remove existing data
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID; 
 		});
@@ -430,23 +431,25 @@ function update(element) {
 	}
 	info.id = rowID;
 	info.data = [];
-	info.data[0] = $(row).find(".owned").is(":checked");
-	info.data[1] = Number($(row).find(".inventory-lv").val());
-	info.data[2] = Number($(row).find(".nplv").val());
-	info.data[3] = $(row).find(".np-rankup").is(":checked");
-	info.data[4] = Number($(row).find(".statup").val());
-	info.data[5] = Number($(row).find(".skill1-lv").val());
-	info.data[6] = $(row).find(".skill1-rankup").is(":checked");
-	info.data[7] = Number($(row).find(".skill2-lv").val());
-	info.data[8] = $(row).find(".skill2-rankup").is(":checked");
-	info.data[9] = Number($(row).find(".skill3-lv").val());
-	info.data[10] = $(row).find(".skill3-rankup").is(":checked");
-	info.data[11] = Number($(row).find(".inventory-code-logo[data-value='1']").attr("data-id"));
-	info.data[12] = Number($(row).find(".inventory-code-logo[data-value='2']").attr("data-id"));
-	info.data[13] = Number($(row).find(".inventory-code-logo[data-value='3']").attr("data-id"));
-	info.data[14] = Number($(row).find(".inventory-code-logo[data-value='4']").attr("data-id"));
-	info.data[15] = Number($(row).find(".inventory-code-logo[data-value='5']").attr("data-id"));
-	info.data[18] = Number($(row).find(".event-ED").val());
+	info.data[0] = $(row).find(".owned").is(":checked");			// Ownership
+	info.data[1] = Number($(row).find(".inventory-lv").val());		// Servant lv
+	info.data[2] = Number($(row).find(".nplv").val());			// NP lv
+	info.data[3] = $(row).find(".np-rankup").is(":checked");		// NP rankup
+	info.data[4] = Number($(row).find(".statup").val());			// Stats up (ATK)
+	info.data[5] = Number($(row).find(".skill1-lv").val());			// Skill 1 lv
+	info.data[6] = $(row).find(".skill1-rankup").is(":checked");		// Skill 1 rankup
+	info.data[7] = Number($(row).find(".skill2-lv").val());			// Skill 2 lv
+	info.data[8] = $(row).find(".skill2-rankup").is(":checked");		// Skill 2 rankup
+	info.data[9] = Number($(row).find(".skill3-lv").val());			// Skill 3 lv
+	info.data[10] = $(row).find(".skill3-rankup").is(":checked");		// Skill 3 rankup
+	info.data[11] = Number($(row).find(".inventory-code-logo[data-value='1']").attr("data-id"));	// Commoand card 1 command code
+	info.data[12] = Number($(row).find(".inventory-code-logo[data-value='2']").attr("data-id"));	// Commoand card 2 command code
+	info.data[13] = Number($(row).find(".inventory-code-logo[data-value='3']").attr("data-id"));	// Commoand card 3 command code
+	info.data[14] = Number($(row).find(".inventory-code-logo[data-value='4']").attr("data-id"));	// Commoand card 4 command code
+	info.data[15] = Number($(row).find(".inventory-code-logo[data-value='5']").attr("data-id"));	// Commoand card 5 command code
+										// data[16] = teammate
+										// data[17] = CE
+	info.data[18] = Number($(row).find(".event-ED").val());			// Event ED buff
 	bgServant.push(info);
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
@@ -454,6 +457,7 @@ function update(element) {
 	save();
 }
 
+// Update ownership status to background array
 function updateOwnership(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -465,6 +469,7 @@ function updateOwnership(element) {
 	parent.servants = servants;
 }
 
+// Enable fields on change in ownership status
 function enableOption(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -483,8 +488,8 @@ function enableOption(element) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID; 
 		});
-		bgServant[position].data[16] = "不使用隊友";
-	} else {
+		bgServant[position].data[16] = "不使用隊友";			// No teammate by default
+	} else {								// Initialise all fields, delete entry
 		$(row).find("select").prop("disabled", true);
 		$(row).find("input").prop("disabled", true);
 		$(element).prop("disabled", false);
@@ -514,6 +519,7 @@ function enableOption(element) {
 	save();
 }	
 
+// Enable NP rankup toggle
 function npRankUpCheck(row) {
 	var rowID = Number($(row).find("td:first").html());
 	var target = servants.find(function(obj) {
@@ -522,6 +528,7 @@ function npRankUpCheck(row) {
 	$(row).find(".np-rankup").prop("disabled", !target.npRankUp);
 }	
 
+// Enable skill rankup toggle
 function skillRankUpCheck(row, skill) {
 	var rowID = Number($(row).find("td:first").html());
 	var target = servants.find(function(obj) {
@@ -530,6 +537,7 @@ function skillRankUpCheck(row, skill) {
 	$(row).find("." + skill + "-rankup").prop("disabled", !target[skill + "RU"]);
 }	
 
+// Update skill images
 function updateSkillImg(element, skill) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
@@ -549,6 +557,7 @@ function updateSkillImg(element, skill) {
 	}
 }
 
+// Clear all event ED buff fields
 function clearInventoryEventBuff() {
 	$("#servant-inventory").find(".inventory-row").each(function() {
 		$(this).find(".event-ED").val(0)
@@ -565,7 +574,7 @@ function clearInventoryEventBuff() {
 }
 
 /* Inventory Teammate Modal */
-var activeSetup = "不使用隊友";
+var activeSetup = "不使用隊友";			// No teammate by default
 
 let inventoryTeammateFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
@@ -575,7 +584,7 @@ let inventoryTeammateFilter = {
 	npColor: ["Buster", "Art", "Quick"],
 	npRange: ["全體", "單體"],			// Exclude support & other
 	owned: [true],				// Include owned servant only
-	npDmg: [true]
+	npDmg: [true]				// Include servant with damage capability NP only
 };
 
 $(document).ready(function() {
@@ -584,6 +593,7 @@ $(document).ready(function() {
 		openModal("#inventory-teammate-modal");
 		initialInventoryTeammate();
 		loadInventoryTeammateImg();
+		$(".inventory-teammate-option[value='不使用隊友']").prop("checked", true);		// "No teammate" as default
 		selectInventoryTeammate();
 		applyInventoryTeammateSelection();
 	});
@@ -655,11 +665,13 @@ $(document).ready(function() {
 		inventoryTeammateRangeNone();
 	});
 	
+	// Update selection highlight on change in setup
 	$(".inventory-teammate-option").change(function() {
 		selectInventoryTeammate();
 		applyInventoryTeammateSelection();
 	});
 	
+	// Save custom setup
 	$("#inventory-teammate-custom-setup input").change(function() {
 		saveCustomBuff(this);
 	});
@@ -670,19 +682,22 @@ $(document).ready(function() {
 		applyInventoryTeammateSelection();
 	});
 	
+	// Select all for current setup
 	$("#inventory-teammate-selection-setbtn").click(function() {
 		selectAllServant();
 	});
 	
+	// Deselect all for current setup
 	$("#inventory-teammate-selection-resetbtn").click(function() {
 		deselectAllServant();
 	});
 });
 
+// Retrieve current setup info
 function selectInventoryTeammate() {
 	var buffList = [];
 	activeSetup = $(".inventory-teammate-option:checked").val();
-	if (activeSetup == "自訂 I" || activeSetup == "自訂 II" || activeSetup == "自訂 III") {
+	if (activeSetup == "自訂 I" || activeSetup == "自訂 II" || activeSetup == "自訂 III") {		// Enable fields with custom setup chosen
 		buffList = customBuff[0][activeSetup];
 		$("#inventory-teammate-custom-setup").find("input").prop("disabled", false);
 	} else {
@@ -690,14 +705,13 @@ function selectInventoryTeammate() {
 		$("#inventory-teammate-custom-setup").find("input").prop("disabled", true);
 	}
 	
-	if (activeSetup == "不使用隊友") {
-		$("#inventory-teammate-selection-setbtn").hide();
+	if (activeSetup == "不使用隊友") {				// Hide deselect button with "no teammate" chosen
 		$("#inventory-teammate-selection-resetbtn").hide();
 	} else {
-		$("#inventory-teammate-selection-setbtn").show();
 		$("#inventory-teammate-selection-resetbtn").show();
 	}
 	
+	// Apply saved setup data
 	$("#inventory-atk-buff").val(buffList[0]);
 	$("#inventory-add-atk").val(buffList[1]);
 	$("#inventory-np-buff").val(buffList[2]);
@@ -706,6 +720,7 @@ function selectInventoryTeammate() {
 	$("#inventory-Quick-buff").val(buffList[5]);
 }
 
+// Save custom setup
 function saveCustomBuff(element) {
 	if (Number($(element).val()) < 0) {
 		$(element).val(0);
@@ -725,7 +740,7 @@ function saveCustomBuff(element) {
 function loadInventoryTeammateImg() {
 	var filteredServant = multiFilter(servants, inventoryTeammateFilter);
 	var servantID = filteredServant.map(function(servant) {
-		return servant.id
+		return servant.id;
 	});
 	$("#inventory-teammate-img").html("");
 	var imglist = "";	
@@ -735,6 +750,7 @@ function loadInventoryTeammateImg() {
 	});
 	$("#inventory-teammate-img").html(imglist);
 	
+	// Attach event hander to the images
 	$(".inventory-teammate-modal-img").ready(function() {
 		$(".inventory-teammate-modal-img").click(function() {
 			selectServant(this);
@@ -742,28 +758,33 @@ function loadInventoryTeammateImg() {
 	});
 }
 
+// Highlight selected servant
 function applyInventoryTeammateSelection() {
 	$(".inventory-teammate-modal-img").removeClass("selected");
-	var list = bgServant.filter(function(obj) {
+	var target = bgServant.filter(function(obj) {
 		return obj.data[16] == activeSetup;
+	});
+	var list = target.map(function(obj) {
+		return obj.id;
 	});
 	$(list).each(function() {
 		$(".inventory-teammate-modal-img[data-id='" + this + "']").addClass("selected");
 	});
 }
 
+// Update data on select
 function selectServant(img) {
-	if (activeSetup == "不使用隊友" && $(img).hasClass("selected")) {
+	if (activeSetup == "不使用隊友" && $(img).hasClass("selected")) {			// Disallow deselect for "no teammate" option
 		alarm("「不使用隊友」為預設選項，無法取消。\n如果希望為從者設定隊友，請先選擇隊友組合。")
 	} else {
 		var id = Number($(img).attr("data-id"));
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		if ($(img).hasClass("selected")) {
+		if ($(img).hasClass("selected")) {				// Remove setup on deselect
 			$(img).removeClass("selected");
 			bgServant[position].data[16] = "不使用隊友";
-		} else {
+		} else {							// Save setup on select
 			$(img).addClass("selected");
 			bgServant[position].data[16] = activeSetup;
 		}
@@ -774,6 +795,7 @@ function selectServant(img) {
 	}
 }
 
+// Select all for current option
 function selectAllServant() {
 	$(".inventory-teammate-modal-img").each(function() {
 		$(this).addClass("selected");
@@ -789,6 +811,7 @@ function selectAllServant() {
 	save();
 }
 
+// Deselect all for current option
 function deselectAllServant() {
 	$(".inventory-teammate-modal-img").each(function() {
 		$(this).addClass("selected");
@@ -921,6 +944,28 @@ function initialInventoryTeammate() {
 	inventoryTeammateRangeAll();
 }
 
+/* Inventory Teammate Modal */
+var activeCE = "不使用禮裝";			// No CE by default
+
+let inventoryCEFilter = {
+	star: [0, 3, 4, 5],
+	type: [],
+	owned: [true],				// Include owned CE only
+};
+
+$(document).ready(function() {	
+	// Open ce setup modal
+/*	$("#inventory-ce-modalbtn").click(function() {
+		openModal("#inventory-ce-modal");
+		initialInventoryTeammate();
+		loadInventoryTeammateImg();
+		initialInventoryCE();
+		loadInventoryCEImg();
+		selectInventoryCE();
+		applyInventorCESelection();
+	});*/
+});
+
 /* Command Code Modal */
 var modalCaller = "";
 var positionMarker = 0;
@@ -1050,6 +1095,7 @@ function initialInventoryCode() {
 	codeEffectAll();
 }
 
+// Pick command code
 function pickCode(target, position, id) {
 	closeModal();
 	modalCaller = "";
