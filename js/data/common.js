@@ -1,5 +1,4 @@
-[
-	{"name":"亡者之門","imgID":"images/enemy/亡者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1}, \
+[{"name":"亡者之門","imgID":"images/enemy/亡者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1}, \
 	{"name":"勇者之門","imgID":"images/enemy/勇者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1}, \
 	{"name":"聖者之門","imgID":"images/enemy/聖者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1}, \
 	{"name":"霸者之門","imgID":"images/enemy/霸者之門 .webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1}, \
