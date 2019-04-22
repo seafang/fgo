@@ -8,6 +8,215 @@ function toggleFilter(button, element) {
 	$(element).toggle(300);
 }
 
+/* Common Enemy Modal */
+let commonEnemyFilter = {
+	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner",
+	"Beast I", "Beast II", "Beast III／L", "Beast III／R", "All"],
+	timeline: ["第一部", "亞種特異點", "第二部", "活動限定"],
+	type: ["小怪", "頭目", "活動亞種 (小怪)", "活動亞種 (頭目)", "特殊"],
+	race: ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人", 
+	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬", 
+	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵", 
+	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔", 
+	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體", 
+	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置", 
+	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬", 
+	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休", 
+	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉", 
+	       "夏塔克鳥", "鵺", "巨人", "空想樹", "其他"]
+};
+
+$(document).ready(function() {
+	$("#common-enemy-all-resetbtn").click(function() {
+		initialCommonEnemy();
+	});
+	
+	// Change in class filtering criteria
+	$(".common-enemy-class").click(function() {
+		var servantClass = $(this).attr("title");
+		commonEnemyClassChange(this, servantClass);
+	});
+	$("#common-enemy-class-setbtn").click(function() {
+		commonEnemyClassAll();
+	});
+	$("#common-enemy-class-resetbtn").click(function() {
+		commonEnemyClassNone();
+	});
+	
+	// Change in timeline filtering criteria
+	$(".common-enemy-timeline").click(function() {
+		var timeline = $(this).val();
+		commonEnemyTimelineChange(this, timeline);
+	});
+	$("#common-enemy-timeline-setbtn").click(function() {
+		commonEnemyTimelineAll();
+	});
+	$("#common-enemy-timeline-resetbtn").click(function() {
+		commonEnemyTimelineNone();
+	});
+	
+	// Change in type filtering criteria
+	$(".common-enemy-type").click(function() {
+		var type = $(this).val();
+		commonEnemyTypeChange(this, type);
+	});
+	$("#common-enemy-type-setbtn").click(function() {
+		commonEnemyTypeAll();
+	});
+	$("#common-enemy-type-resetbtn").click(function() {
+		commonEnemyTypeNone();
+	});
+	
+	// Change in race filtering criteria
+	$(".common-enemy-race").click(function() {
+		var race = $(this).val();
+		commonEnemyRaceChange(this, race);
+	});
+	$("#common-enemy-race-setbtn").click(function() {
+		commonEnemyRaceAll();
+	});
+	$("#common-enemy-race-resetbtn").click(function() {
+		commonEnemyRaceNone();
+	});
+	
+	// Apply filter & generate new image list
+	$("#common-enemy-filterbtn").click(function() {
+		loadCommonEnemyImg();
+	});
+});
+
+// Generate image list
+function loadCommonEnemyImg() {
+	var filteredCommonEnemy = multiFilter(common, commonEnemyFilter);
+	var commonEnemyName = filteredCommonEnemy.map(function(enemy) {
+		return enemy.name;
+	});
+	$("#common-enemy-img").html("");
+	var imglist = "";	
+	$(commonEnemyName).each(function() {
+		imglist += "<img class='enemy-img common-enemy-modal-img' src='images/enemy/" + this +
+		".webp' title='" + this + "' />"
+	});
+	$("#common-enemy-img").html(imglist);
+	commonEnemyBind();
+}
+
+// Attach event handlers to the images
+function commonEnemyBind() {
+	$(".common-enemy-modal-img").ready(function() {
+		$(".common-enemy-modal-img").click(function() {
+			var name = Number($(this).attr("title"));
+			pickEnemy(2, name);
+		});
+	});
+}
+
+// Change in class filtering criteria
+function commonEnemyClassChange(element, className) {
+	var newClass = commonEnemyFilter.classes;
+	if ($(element).hasClass("dull")) {
+		$(element).removeClass("dull");
+		newClass.push(className);
+		commonEnemyFilter.classes = newClass;
+	} else {
+		position = newClass.indexOf(className);
+		newClass.splice(position, 1);
+		$(element).addClass("dull");
+		commonEnemyFilter.classes = newClass;
+	}
+}
+function commonEnemyClassAll() {
+	$(".common-enemy-class").removeClass("dull");
+	commonEnemyFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
+	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner",
+	"Beast I", "Beast II", "Beast III／L", "Beast III／R", "All"];
+}
+function commonEnemyClassNone() {
+	$(".common-enemy-class").addClass("dull");
+	commonEnemyFilter.classes = [];
+}
+
+// Change in timeline filtering criteria
+function commonEnemyTimelineChange(element, timeline) {
+	var newTimeline = commonEnemyFilter.timeline;
+	if ($(element).prop("checked")) {
+		newTimeline.push(timeline);
+		commonEnemyFilter.timeline = newTimeline;
+	} else {
+		position = newTimeline.indexOf(timeline);
+		newTimeline.splice(position, 1);
+		commonEnemyFilter.timeline = newTimeline;
+	}
+}
+function commonEnemyTimelineAll() {
+	$(".common-enemy-timeline").prop("checked", true);
+	commonEnemyFilter.timeline = ["第一部", "亞種特異點", "第二部", "活動限定"];
+}
+function commonEnemyTimelineNone() {
+	$(".common-enemy-timeline").prop("checked", false);
+	commonEnemyFilter.timeline = [];
+
+// Change in type filtering criteria
+function commonEnemyTypeChange(element, typeName) {
+	var newType = commonEnemyFilter.type;
+	if ($(element).prop("checked")) {
+		newType.push(typeName);
+		commonEnemyFilter.type = newType;
+	} else {
+		position = newType.indexOf(typeName);
+		newType.splice(position, 1);
+		commonEnemyFilter.type = newType;
+	}
+}
+function commonEnemyTypeAll() {
+	$(".common-enemy-type").prop("checked", true);
+	commonEnemyFilter.type = ["小怪", "頭目", "活動亞種 (小怪)", "活動亞種 (頭目)", "特殊"];
+}
+function commonEnemyTypeNone() {
+	$(".common-enemy-type").prop("checked", false);
+	commonEnemyFilter.type = [];
+}
+
+// Change in race filtering criteria
+function commonEnemyRaceChange(element, raceName) {
+	var newRace = commonEnemyFilter.race;
+	if ($(element).prop("checked")) {
+		newRace.push(raceName);
+		commonEnemyFilter.race = newRace;
+	} else {
+		position = newRace.indexOf(raceName);
+		newRace.splice(position, 1);
+		commonEnemyFilter.race = newRace;
+	}
+}
+function commonEnemyRaceAll() {
+	$(".common-enemy-race").prop("checked", true);
+	commonEnemyFilter.race = ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人", 
+	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬", 
+	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵", 
+	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔", 
+	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體", 
+	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置", 
+	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬", 
+	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休", 
+	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉", 
+	       "夏塔克鳥", "鵺", "巨人", "空想樹", "其他"];
+}
+function commonEnemyRaceNone() {
+	$(".common-enemy-race").prop("checked", false);
+	commonEnemyFilter.race = [];
+}
+
+// Initialise all filters
+function initialCommonEnemy() {
+	commonEnemyClassAll();
+	commonEnemyTimelineAll();
+	commonEnemyTypeAll();
+	commonEnemyRaceAll();
+}
+
+
 /* Servant Enemy Modal */
 let servantEnemyFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
@@ -16,6 +225,10 @@ let servantEnemyFilter = {
 };
 
 $(document).ready(function() {
+	$("#servant-enemy-all-resetbtn").click(function() {
+		initialServantEnemy();
+	});
+	
 	// Change in class filtering criteria
 	$(".servant-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -49,14 +262,14 @@ $(document).ready(function() {
 // Generate image list
 function loadServantEnemyImg() {
 	var filteredServantEnemy = multiFilter(servants, servantEnemyFilter);
-	var servantEnemyID = filteredServantEnemy.map(function(servant) {	// Map an array of servant ID that matched criteria
-		return servant.id
+	var servantEnemyID = filteredServantEnemy.map(function(servant) {	// Map an array with servant ID & name that matched criteria
+		return [servant.id, servant.name];
 	});
 	$("#servant-enemy-img").html("");
 	var imglist = "";	
-	$(servantEnemyID).each(function(index, value) {
-		imglist += "<img class='servant-img servant-enemy-modal-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+	$(servantEnemyID).each(function() {
+		imglist += "<img class='servant-img servant-enemy-modal-img' src='images/servant/" + this[0] +
+		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
 	});
 	$("#servant-enemy-img").html(imglist);
 	servantEnemyBind();
@@ -144,6 +357,10 @@ let servantFilter = {
 };
 
 $(document).ready(function() {	
+	$("#servant-all-resetbtn").click(function() {
+		initialServant();
+	});
+	
 	$("#servant-modal-filter-box-toggle").click(function() {
 		toggleFilter(this, "#servant-modal-filter-box-content");
 	});
@@ -282,14 +499,14 @@ $(document).ready(function() {
 // Generate image list
 function loadServantImg() {
 	var filteredServant = multiFilter(servants, servantFilter);
-	var servantID = filteredServant.map(function(servant) {
-		return servant.id
+	var servantList = filteredServant.map(function(servant) {
+		return [servant.id, servant.name];
 	});
 	$("#servant-img").html("");
 	var imglist = "";	
-	$(servantID).each(function(index, value) {
-		imglist += "<img class='servant-img servant-modal-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+	$(servantList).each(function() {
+		imglist += "<img class='servant-img servant-modal-img' src='images/servant/" + this[0] +
+		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
 	});
 	$("#servant-img").html(imglist);
 	servantBind();
@@ -563,7 +780,11 @@ let ceFilter = {
 };
 
 
-$(document).ready(function() {	
+$(document).ready(function() {
+	$("#ce-all-resetbtn").click(function() {
+		initialCE();
+	});
+	
 	// Change in star filtering criteria
 	$(".ce-star").change(function() {
 		var star = Number($(this).val());
@@ -619,14 +840,14 @@ $(document).ready(function() {
 // Apply filters and generate image list
 function loadCEImg() {
 	var filteredCE = multiFilter(ce, ceFilter);
-	var ceID = filteredCE.map(function(essence) {
-		return essence.id
+	var ceList = filteredCE.map(function(essence) {
+		return [essence.id, essence.name];
 	});
 	$("#ce-img").html("");
 	var imglist = "";	
-	$(ceID).each(function(index, value) {
-		imglist += "<img class='essence-img ce-modal-img' src='images/ce/" + value +
-		".webp' data-id='" + value + "' />"
+	$(ceList).each(function() {
+		imglist += "<img class='essence-img ce-modal-img' src='images/ce/" + this[0] +
+		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
 	});
 	$("#ce-img").html(imglist);
 	ceBind();
@@ -762,6 +983,10 @@ let teammateFilter = {
 };
 
 $(document).ready(function() {
+	$("#teammate-all-resetbtn").click(function() {
+		initialTeammate();
+	});
+	
 	$("#teammate-modal-filter-box-toggle").click(function() {
 		toggleFilter(this, "#teammate-modal-filter-box-content");
 	});
@@ -888,14 +1113,14 @@ $(document).ready(function() {
 // Apply filters and generate image list
 function loadTeammateImg() {
 	var filteredTeammate = multiFilter(servants, teammateFilter);
-	var teammateID = filteredTeammate.map(function(teammate) {
-		return teammate.id
+	var teammateList = filteredTeammate.map(function(teammate) {
+		return [teammate.id, teammate.name];
 	});
 	$("#teammate-img").html("");
 	var imglist = "";	
-	$.each(teammateID, function(index, value) {
-		imglist += "<img class='teammate-img teammate-modal-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+	$(teammateList).each(function() {
+		imglist += "<img class='teammate-img teammate-modal-img' src='images/servant/" + this[0] +
+		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
 	});
 	$("#teammate-img").html(imglist);
 	teammateBind();
@@ -1143,6 +1368,10 @@ let teammateCEFilter = {
 };
 
 $(document).ready(function() {
+	$("#teammate-ce-all-resetbtn").click(function() {
+		initialTeammateCE();
+	});
+	
 	// Change in star filtering criteria
 	$(".teammate-ce-star").change(function() {
 		var star = Number($(this).val());
@@ -1198,14 +1427,14 @@ $(document).ready(function() {
 // Apply filters and generate image list
 function loadTeammateCEImg() {
 	var filteredCE = multiFilter(ce, teammateCEFilter);
-	var ceID = filteredCE.map(function(essence) {
-		return essence.id
+	var ceList = filteredCE.map(function(essence) {
+		return [essence.id, essence.name];
 	});
 	$("#teammate-ce-img").html("");
 	var imglist = "";	
-	$(ceID).each(function(index, value) {
-		imglist += "<img class='essence-img teammate-ce-modal-img' src='images/ce/" + value +
-		".webp' data-id='" + value + "' />"
+	$(ceList).each(function() {
+		imglist += "<img class='essence-img teammate-ce-modal-img' src='images/ce/" + this[0] +
+		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
 	});
 	$("#teammate-ce-img").html(imglist);
 	teammateCEBind();
