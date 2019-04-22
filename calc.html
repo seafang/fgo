@@ -344,7 +344,7 @@
 					<img class="profile-img enemy-img" id="enemy1-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy1-name"></span>
 					<span class="enemy-debuff" id="enemy1-debuff"></span>
-					<img class="enemy-class class-logo-small space-left" id="enemy1-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy1-class" src="images/class/Unknown.webp" title="" />
 				</div>
 				<div class="element-10">
 					<span class="infotag">性別</span>
@@ -377,7 +377,7 @@
 					<img class="profile-img enemy-img" id="enemy2-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy2-name"></span>
 					<span class="enemy-debuff" id="enemy2-debuff"></span>
-					<img class="enemy-class class-logo-small space-left" id="enemy2-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy2-class" src="images/class/Unknown.webp" title="" />
 				</div>
 				<div class="element-10">
 					<span class="infotag">性別</span>
@@ -410,7 +410,7 @@
 					<img class="profile-img enemy-img" id="enemy3-img" src="images/bg_logo.webp" />
 					<span class="enemy-name" id="enemy3-name"></span>
 					<span class="enemy-debuff" id="enemy3-debuff"></span>
-					<img class="enemy-class class-logo-small space-left" id="enemy3-class" src="images/class/Unknown.webp" alt="" />
+					<img class="enemy-class class-logo-small space-left" id="enemy3-class" src="images/class/Unknown.webp" title="" />
 				</div>
 				<div class="element-10">
 					<span class="infotag">性別</span>
@@ -551,7 +551,7 @@
 				<img class="profile-img" id="current-servant-img" src="images/bg_logo.webp" />
 				<div class="flex justify-even">
 					<span id="current-servant-name">未選定從者</span>
-					<img class="class-logo-small space-left" id="current-servant-class" data-class="" src="images/class/Unknown.webp" />
+					<img class="class-logo-small space-left" id="current-servant-class" src="images/class/Unknown.webp" title="" />
 					<span class="star space-left dull" id="current-servant-star" data-star="">★★★★★</span>
 				</div>
 			</div>
@@ -1135,7 +1135,7 @@
 							<div class="column-element">
 								<img class="teammate-img" src="images/bg_logo.webp" />	
 								<span class="teammate-name">未選定隊友</span>	
-								<img class="class-logo-small teammate-class space-left" data-class="" src="images/class/Unknown.webp" />	
+								<img class="class-logo-small teammate-class space-left" src="images/class/Unknown.webp" title="" />	
 								<span class="star teammate-star space-left dull" data-star="">★★★★★</span>	
 							</div>
 							<div class="column-element">
@@ -1585,6 +1585,597 @@
 	</div>
 </div>
 
+<!--Common Enemy Modal-->
+<div class="modal" id="common-enemy-modal">
+	<div class="modal-box" id="common-enemy-modal-box">
+		<div class="modal-header">
+			<div class="row center modal-filter-header">
+				篩選
+			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="common-enemy-all-resetbtn">重設條件</a>
+				</div>
+			</div>
+			<div class="row center inner">
+				<img class="class-logo common-enemy-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo common-enemy-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo common-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo common-enemy-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo common-enemy-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo common-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo common-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo common-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo common-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo common-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo common-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo common-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo common-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<img class="class-logo common-enemy-class" title="Beast I" src="images/class/Beast I.webp" />
+				<img class="class-logo common-enemy-class" title="Beast II" src="images/class/Beast II.webp" />
+				<img class="class-logo common-enemy-class" title="Beast III／L" src="images/class/Beast III／L.webp" />
+				<img class="class-logo common-enemy-class" title="Beast III／R" src="images/class/Beast III／R.webp" />
+				<img class="class-logo common-enemy-class" title="All" src="images/class/All.webp" />
+				<a class="btn setbtn" id="common-enemy-class-setbtn">全選</a>
+				<a class="btn resetbtn" id="common-enemy-class-resetbtn">取消</a>
+			</div>
+			<div class="row justify-even">					
+				<div class="element-50 flex center">
+					<span class="filtertag">出現時序</span>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-timeline" value="第一部" checked>
+						<span class="checkmark"></span>
+						第一部
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-timeline" value="亞種特異點" checked>
+						<span class="checkmark"></span>
+						亞種特異點
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-timeline" value="第二部" checked>
+						<span class="checkmark"></span>
+						第二部
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-timeline" value="活動限定" checked>
+						<span class="checkmark"></span>
+						活動限定
+					</label>
+					<a class="btn setbtn" id="common-enemy-timeline-setbtn">全選</a>
+					<a class="btn resetbtn" id="common-enemy-timeline-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">分類</span>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-type" value="小怪" checked>
+						<span class="checkmark"></span>
+						小怪
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-type" value="頭目" checked>
+						<span class="checkmark"></span>
+						頭目
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-type" value="活動亞種 (小怪)" checked>
+						<span class="checkmark"></span>
+						活動亞種 (小怪)
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-type" value="活動亞種 (頭目)" checked>
+						<span class="checkmark"></span>
+						活動亞種 (頭目)
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="common-enemy-type" value="特殊" checked>
+						<span class="checkmark"></span>
+						特殊
+					</label>
+					<a class="btn setbtn" id="common-enemy-type-setbtn">全選</a>
+					<a class="btn resetbtn" id="common-enemy-type-resetbtn">取消</a>
+				</div>
+			</div>
+			<div class="row center">					
+				<div class="listlbl">				
+					<span class="filtertag">種族</span>			
+				</div>				
+				<div class="flex list">
+					<div class="row enemy-family-heading">
+						人類
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="士兵" checked>
+							<span class="checkmark"></span>
+							士兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="海盜" checked>
+							<span class="checkmark"></span>
+							海盜
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="凱爾特士兵" checked>
+							<span class="checkmark"></span>
+							凱爾特士兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="亞馬遜人" checked>
+							<span class="checkmark"></span>
+							亞馬遜人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="皮克特人" checked>
+							<span class="checkmark"></span>
+							皮克特人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="肅正騎士" checked>
+							<span class="checkmark"></span>
+							肅正騎士
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="醉酒城裡人" checked>
+							<span class="checkmark"></span>
+							醉酒城裡人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="失心之人" checked>
+							<span class="checkmark"></span>
+							失心之人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="流氓" checked>
+							<span class="checkmark"></span>
+							流氓
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="雀蜂" checked>
+							<span class="checkmark"></span>
+							雀蜂
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="酷吏" checked>
+							<span class="checkmark"></span>
+							酷吏
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="殺戮獵兵" checked>
+							<span class="checkmark"></span>
+							殺戮獵兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="近衛兵" checked>
+							<span class="checkmark"></span>
+							近衛兵
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						亞人
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="獸人" checked>
+							<span class="checkmark"></span>
+							獸人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="蛇女" checked>
+							<span class="checkmark"></span>
+							蛇女
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="半人馬" checked>
+							<span class="checkmark"></span>
+							半人馬
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="雅嘎" checked>
+							<span class="checkmark"></span>
+							雅嘎
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						從者
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="從者" checked>
+							<span class="checkmark"></span>
+							從者
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="哈桑" checked>
+							<span class="checkmark"></span>
+							哈桑
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="瓦爾基里" checked>
+							<span class="checkmark"></span>
+							瓦爾基里
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						獸
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="獸" checked>
+							<span class="checkmark"></span>
+							獸
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="拉赫穆" checked>
+							<span class="checkmark"></span>
+							拉赫穆
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						魔神
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔神" checked>
+							<span class="checkmark"></span>
+							魔神
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						死靈
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="骷髏兵" checked>
+							<span class="checkmark"></span>
+							骷髏兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="龍牙兵" checked>
+							<span class="checkmark"></span>
+							龍牙兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="殭屍" checked>
+							<span class="checkmark"></span>
+							殭屍
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="屍人" checked>
+							<span class="checkmark"></span>
+							屍人
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="鬼魂" checked>
+							<span class="checkmark"></span>
+							鬼魂
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="七人禦佐姬" checked>
+							<span class="checkmark"></span>
+							七人禦佐姬
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="巨大鬼魂" checked>
+							<span class="checkmark"></span>
+							巨大鬼魂
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="黑武者" checked>
+							<span class="checkmark"></span>
+							黑武者
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="食屍鬼" checked>
+							<span class="checkmark"></span>
+							食屍鬼
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						惡魔
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="惡魔" checked>
+							<span class="checkmark"></span>
+							惡魔
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="凝視者" checked>
+							<span class="checkmark"></span>
+							凝視者
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						鬼
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="鬼" checked>
+							<span class="checkmark"></span>
+							鬼
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="小鬼" checked>
+							<span class="checkmark"></span>
+							小鬼
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="大鬼" checked>
+							<span class="checkmark"></span>
+							大鬼
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						無機物
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="門" checked>
+							<span class="checkmark"></span>
+							門
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="手" checked>
+							<span class="checkmark"></span>
+							手
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="雷石" checked>
+							<span class="checkmark"></span>
+							雷石
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						人造物
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔偶" checked>
+							<span class="checkmark"></span>
+							魔偶
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="人工生命體" checked>
+							<span class="checkmark"></span>
+							人工生命體
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="咒語書" checked>
+							<span class="checkmark"></span>
+							咒語書
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔法杖" checked>
+							<span class="checkmark"></span>
+							魔法杖
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="女官" checked>
+							<span class="checkmark"></span>
+							女官
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						機械
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="自動人偶" checked>
+							<span class="checkmark"></span>
+							自動人偶
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="混沌機械兵" checked>
+							<span class="checkmark"></span>
+							混沌機械兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="機械化步兵" checked>
+							<span class="checkmark"></span>
+							機械化步兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="自動防衛裝置" checked>
+							<span class="checkmark"></span>
+							自動防衛裝置
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="英靈兵" checked>
+							<span class="checkmark"></span>
+							英靈兵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="多多益善號" checked>
+							<span class="checkmark"></span>
+							多多益善號
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						迷你信/巨大信
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="迷你信" checked>
+							<span class="checkmark"></span>
+							迷你信
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="巨大信" checked>
+							<span class="checkmark"></span>
+							巨大信
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						野獸
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="翅刃蟲" checked>
+							<span class="checkmark"></span>
+							翅刃蟲
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="寄居蟹" checked>
+							<span class="checkmark"></span>
+							寄居蟹
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔豬" checked>
+							<span class="checkmark"></span>
+							魔豬
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="巨大魔豬" checked>
+							<span class="checkmark"></span>
+							巨大魔豬
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="烏利迪姆" checked>
+							<span class="checkmark"></span>
+							烏利迪姆
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="烏伽爾" checked>
+							<span class="checkmark"></span>
+							烏伽爾
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="斬首雞" checked>
+							<span class="checkmark"></span>
+							斬首雞
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="灰狼" checked>
+							<span class="checkmark"></span>
+							灰狼
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔猿" checked>
+							<span class="checkmark"></span>
+							魔猿
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						龍
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="雙足飛龍" checked>
+							<span class="checkmark"></span>
+							雙足飛龍
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="龍" checked>
+							<span class="checkmark"></span>
+							龍
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="穆修胡休" checked>
+							<span class="checkmark"></span>
+							穆修胡休
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						幻獸
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="奇美拉" checked>
+							<span class="checkmark"></span>
+							奇美拉
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="海魔" checked>
+							<span class="checkmark"></span>
+							海魔
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="守護者" checked>
+							<span class="checkmark"></span>
+							守護者
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="雙角獸" checked>
+							<span class="checkmark"></span>
+							雙角獸
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="噬魂者" checked>
+							<span class="checkmark"></span>
+							噬魂者
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="斯芬克斯" checked>
+							<span class="checkmark"></span>
+							斯芬克斯
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="伊夫利塔" checked>
+							<span class="checkmark"></span>
+							伊夫利塔
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="許德拉" checked>
+							<span class="checkmark"></span>
+							許德拉
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="夏塔克鳥" checked>
+							<span class="checkmark"></span>
+							夏塔克鳥
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="鵺" checked>
+							<span class="checkmark"></span>
+							鵺
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						巨人
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="巨人" checked>
+							<span class="checkmark"></span>
+							巨人
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						空想樹
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="空想樹" checked>
+							<span class="checkmark"></span>
+							空想樹
+						</label>
+					</div>
+					<div class="row enemy-family-heading">
+						其他
+					</div>
+					<div class="row">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="其他" checked>
+							<span class="checkmark"></span>
+							其他
+						</label>
+					</div>
+					<div class="row center listend">
+						<a class="btn setbtn" id="common-enemy-race-setbtn">全選</a>			
+						<a class="btn resetbtn" id="common-enemy-race-resetbtn">取消</a>	
+					</div>
+				</div>
+			</div>
+			<div class="row center">
+				<a class="btn filterbtn" id="common-enemy-filterbtn">套用</a>
+			</div>
+		</div>
+		<div class="modal-content" id="common-enemy-img">
+		</div>
+	</div>
+</div>
+			
 
 <!--Servant Enemy Modal-->
 <div class="modal" id="servant-enemy-modal">
@@ -1592,6 +2183,11 @@
 		<div class="modal-header">
 			<div class="row center modal-filter-header">
 				篩選
+			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="servant-enemy-all-resetbtn">重設條件</a>
+				</div>
 			</div>
 			<div class="row center inner">
 				<img class="class-logo servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
@@ -1660,6 +2256,11 @@
 		<div class="modal-header">
 			<div class="row center modal-filter-header">
 				篩選
+			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="servant-all-resetbtn">重設條件</a>
+				</div>
 			</div>
 			<div class="row center inner">
 				<img class="class-logo servant-class" title="Saber" src="images/class/Saber.webp" />
@@ -2075,6 +2676,11 @@
 			<div class="row center modal-filter-header">
 				篩選
 			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="ce-all-resetbtn">重設條件</a>
+				</div>
+			</div>
 			<div class="row center inner">
 				<label class="checkbox">
 					<input type="checkbox" class="ce-star" value="3" checked>
@@ -2321,6 +2927,11 @@
 		<div class="modal-header">
 			<div class="row center modal-filter-header">
 				篩選
+			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="teammate-all-resetbtn">重設條件</a>
+				</div>
 			</div>
 			<div class="row center inner">
 				<img class="class-logo teammate-class" title="Saber" src="images/class/Saber.webp" />
@@ -2588,6 +3199,11 @@
 		<div class="modal-header">
 			<div class="row center modal-filter-header">
 				篩選
+			</div>
+			<div class="row">
+				<div class="right">
+					<a class="btn resetbtn" id="teammate-ce-all-resetbtn">重設條件</a>
+				</div>
 			</div>
 			<div class="row center inner">
 				<label class="checkbox">
