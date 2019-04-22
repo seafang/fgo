@@ -156,6 +156,7 @@ function commonEnemyTimelineAll() {
 function commonEnemyTimelineNone() {
 	$(".common-enemy-timeline").prop("checked", false);
 	commonEnemyFilter.timeline = [];
+}
 
 // Change in type filtering criteria
 function commonEnemyTypeChange(element, typeName) {
