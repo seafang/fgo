@@ -38,6 +38,13 @@ $(document).ready(function() {
 	$("#teammate-setup-collapsebtn").click(function() {
 		toggleTeammate(this, "#teammate-setup-collapsible");
 	});
+	
+	initialServantEnemy();
+	initialCommonEnemy();
+	initialServant();
+	initialCE();
+	initialTeammate();
+	initialTeammateCE();
 });
 
 // Update page height
@@ -102,12 +109,10 @@ $(document).ready(function() {
 	// Open modals
 	$("#common-enemy-modalbtn").click(function() {
 		openModal("#common-enemy-modal");
-		initialCommonEnemy();
 		loadCommonEnemyImg();
 	});
 	$("#servant-enemy-modalbtn").click(function() {
 		openModal("#servant-enemy-modal");
-		initialServantEnemy();
 		loadServantEnemyImg();
 	});
 	
@@ -222,8 +227,8 @@ function pickEnemy(type, enemyID) {
 			});
 			break;
 		case 2:
-			enemyInfo = commons.filter(function(obj) {
-				return obj.id == enemyID;
+			enemyInfo = common.filter(function(obj) {
+				return obj.name == enemyID;
 			});
 			break;
 		default:
@@ -239,12 +244,12 @@ function pickEnemy(type, enemyID) {
 	$("#current-enemy-name").html(enemyInfo[0].name);
 	
 	// Set class to 'Saber' if it's a non-servant enemy without pre-designated class
-	if (enemyInfo[0].classes) {
+	if (enemyInfo[0].classes !== "All") {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
-		$("#current-enemy-class").attr("data-class", enemyInfo[0].classes);
+		$("#current-enemy-class").attr("title", enemyInfo[0].classes);
 	} else {
 		$("#current-enemy-class").val("Saber");
-		$("#current-enemy-class").attr("data-class", "Saber");
+		$("#current-enemy-class").attr("title", "Saber");
 	}
 	
 	$("#current-enemy-gender").val(enemyInfo[0].gender);
@@ -265,10 +270,10 @@ function resetCurrentEnemy() {
 	$("#current-enemy-img").attr("src", "images/bg_logo.webp");
 	$("#current-enemy-name").html("未選定/自訂敵人");
 	$("#current-enemy-class").val("Saber");
-	$("#current-enemy-gender").val("男性");
+	$("#current-enemy-gender").val("無性別");
 	$("#current-enemy-attribute").val("天");
-	$("#current-enemy-alignment1").val("秩序");
-	$("#current-enemy-alignment2").val("善");
+	$("#current-enemy-alignment1").val("不適用");
+	$("#current-enemy-alignment2").val("不適用");
 	if ($("#enemy-setup-collapsebtn").html() == "展開 ▼") {
 		$("#enemy-setup-collapsebtn").click();
 	}
@@ -305,7 +310,7 @@ function setEnemy(enemy) {
 	var imgURL = "images/class/" + encodeURI($("#current-enemy-class").val()) + ".webp";
 	$(element).find(".enemy-class").attr({
 		src: imgURL,
-		alt: $("#current-enemy-class").val()
+		title: $("#current-enemy-class").val()
 	});
 	
 	
@@ -406,7 +411,6 @@ $(document).ready(function() {
 	$("#servant-modalbtn").click(function() {
 		if ($("#enemy1-name").html() != "") {
 			openModal("#servant-modal");
-			initialServant();
 			loadServantImg();
 		} else {
 			alert("請先設定敵人！");
@@ -488,7 +492,7 @@ function pickServant(servantID) {
 		// Display class & star as logo
 		$("#current-servant-class").attr({		
 			src: "images/class/" + servantInfo[0].classes + ".webp",	
-			"data-class": servantInfo[0].classes	
+			title: servantInfo[0].classes	
 		});		
 		var starHTML = "";		
 		switch (servantInfo[0].star) {		
@@ -639,7 +643,6 @@ $(document).ready(function() {
 	$("#servant-ce-modalbtn").click(function() {
 		if ($("#current-servant-name").html() != "未選定從者") {
 			openModal("#ce-modal");
-			initialCE();
 			loadCEImg();
 		} else {
 			alert("請先設定從者！");
@@ -936,7 +939,6 @@ $(document).ready(function() {
 		if ($("#current-servant-name").html() != "未選定從者") {
 			openModal("#teammate-modal");
 			setCaller(teammate);
-			initialTeammate();
 			loadTeammateImg();
 		} else {
 			alert("請先設定從者！");
@@ -949,7 +951,6 @@ $(document).ready(function() {
 		if ($("#" + teammate + " .teammate-name").html() != "未選定隊友") {
 			openModal("#teammate-ce-modal");
 			setCaller(teammate);
-			initialTeammateCE();
 			loadTeammateCEImg();
 		} else {
 			alert("請先設定隊友！");
@@ -1066,7 +1067,7 @@ function pickTeammate(value, teammateID, brute) {
 		// Display class & star info as logo
 		section.find(".teammate-class").attr({		
 			src: "images/class/" + info[0].classes + ".webp",	
-			"data-class": info[0].classes	
+			title: info[0].classes	
 		});		
 		var starHTML = "";		
 		switch (info[0].star) {		
@@ -1175,8 +1176,8 @@ function resetTeammate(value) {
 	section.find(".teammate-img").attr("src", "images/bg_logo.webp");
 	section.find(".teammate-name").html("未選定隊友");
 	section.find(".teammate-class").attr({
-		"src": "images/class/Unknown.webp",
-		"data-class": ""
+		src: "images/class/Unknown.webp",
+		title: ""
 	});
 	section.find(".teammate-star").html("★★★★★");
 	section.find(".teammate-star").addClass("dull");
@@ -2039,7 +2040,7 @@ function updateSkillED(buff, enemy, lv) {
 	var test = false;
 	switch (buff.lookUp) {			// Check if criteria is met
 		case "class":			// Class-specific
-			if (buff.corrDetail == $("#" + enemy + "-class").attr("alt")) {
+			if (buff.corrDetail == $("#" + enemy + "-class").attr("title")) {
 				test = true;
 			}
 			break;
@@ -2191,7 +2192,7 @@ function updateNPED(buff, enemy, lv, category) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			test =  ( buff.corrDetail == $("#" + enemy + "-class").attr("alt") );
+			test =  ( buff.corrDetail == $("#" + enemy + "-class").attr("title") );
 			break;
 		case "gender":
 			if ($.isArray(buff.corrDetail)) {
@@ -2230,7 +2231,7 @@ function updateNPED(buff, enemy, lv, category) {
 			$(buff.corrDetail).each(function() {
 				switch (this.cat) {
 					case "class":	
-						testTable.push(this.detail == $("#" + enemy + "-class").attr("alt"))
+						testTable.push(this.detail == $("#" + enemy + "-class").attr("title"))
 						break;
 					case "trait":		
 						var traitList = window[enemy + "Trait"];
@@ -2354,7 +2355,7 @@ function updateCEED(buff, enemy, lv) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			test = ( buff.corrDetail == $("#" + enemy + "-class").attr("alt") );
+			test = ( buff.corrDetail == $("#" + enemy + "-class").attr("title") );
 			break;
 		case "gender":
 			test = ( buff.corrDetail == $("#" + enemy + "-gender").html() );
@@ -2813,7 +2814,7 @@ function calcDmg(enemy) {
 	}
 	var cardBuff = parseFloat($("#" + npColor + "-buff").val()) / 100;	// Acquire card buff that correspond with NP color
 	var classMultiplier = servantMult[0].multiplier;		// Acquire class multiplier
-	var enemyClass = $("#" + enemy + "-class").attr("alt");
+	var enemyClass = $("#" + enemy + "-class").attr("title");
 	var affMultiplier;
 	if (tempAffinity[0] !== undefined) {			// Acquire affinity relationship, check if temporary affinity is in effect
 		affMultiplier = tempAffinity[0][enemyClass];
