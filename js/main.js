@@ -3,6 +3,7 @@ var affinity = JSON.parse(classAdvantage);
 var multiplier = JSON.parse(classBaseMultiplier);
 var attrAffinity = JSON.parse(attributeAdvantage);
 
+var common = JSON.parse(commonEnemy);
 var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
 var master = JSON.parse(mysticCode);
