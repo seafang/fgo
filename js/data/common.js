@@ -1,4 +1,5 @@
-commonEnemy = '[{"name":"亡者之門","imgID":"images/enemy/亡者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1},
+[
+	{"name":"亡者之門","imgID":"images/enemy/亡者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1},
 	{"name":"勇者之門","imgID":"images/enemy/勇者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1},
 	{"name":"聖者之門","imgID":"images/enemy/聖者之門.webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1},
 	{"name":"霸者之門","imgID":"images/enemy/霸者之門 .webp","classes":"Caster","type":"小怪","timeline":"第一部","family":"無機物","race":"門","attribute":"天","alignment1":"不適用","alignment2":"不適用","gender":"無性別","trait":[],"raceMult":1},
@@ -400,4 +401,5 @@ commonEnemy = '[{"name":"亡者之門","imgID":"images/enemy/亡者之門.webp",
 	{"name":"俄里翁閣下！","imgID":"images/enemy/俄里翁閣下！.webp","classes":"Rider","type":"活動亞種 (頭目)","timeline":"活動限定","family":"龍","race":"雙足飛龍","attribute":"地","alignment1":"不適用","alignment2":"不適用","gender":"男性","trait":["龍","希臘神話系男性"],"raceMult":1},
 	{"name":"俄里翁！","imgID":"images/enemy/俄里翁！.webp","classes":"Berserker","type":"活動亞種 (小怪)","timeline":"活動限定","family":"野獸","race":"魔豬","attribute":"地","alignment1":"不適用","alignment2":"不適用","gender":"男性","trait":["魔性","猛獸","希臘神話系男性"],"raceMult":1},
 	{"name":"巨大俄里翁","imgID":"images/enemy/巨大俄里翁.webp","classes":"Berserker","type":"活動亞種 (頭目)","timeline":"活動限定","family":"野獸","race":"巨大魔豬","attribute":"地","alignment1":"不適用","alignment2":"不適用","gender":"男性","trait":["魔性","猛獸","超巨大","希臘神話系男性"],"raceMult":1},
-	{"name":"俄里翁？(魔豬)","imgID":"images/enemy/俄里翁？(魔豬).webp","classes":"Rider","type":"活動亞種 (頭目)","timeline":"活動限定","family":"野獸","race":"巨大魔豬","attribute":"地","alignment1":"不適用","alignment2":"不適用","gender":"男性","trait":["魔性","猛獸","超巨大","希臘神話系男性"],"raceMult":1}]';
+	{"name":"俄里翁？(魔豬)","imgID":"images/enemy/俄里翁？(魔豬).webp","classes":"Rider","type":"活動亞種 (頭目)","timeline":"活動限定","family":"野獸","race":"巨大魔豬","attribute":"地","alignment1":"不適用","alignment2":"不適用","gender":"男性","trait":["魔性","猛獸","超巨大","希臘神話系男性"],"raceMult":1}
+];
