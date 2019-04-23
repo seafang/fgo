@@ -3,8 +3,10 @@ var affinity = JSON.parse(classAdvantage);
 var multiplier = JSON.parse(classBaseMultiplier);
 var attrAffinity = JSON.parse(attributeAdvantage);
 
+var common = [];
+
 $.get('js/data/common.json', function(data){		// Common enemy
-	var common = JSON.parse(data);
+	common = JSON.parse(data);
 });
 var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
