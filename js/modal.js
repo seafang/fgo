@@ -32,6 +32,18 @@ $(document).ready(function() {
 		initialCommonEnemy();
 	});
 	
+	$(".enemy-family-heading").click(function() {
+		var value = $(this).attr("data-corr");
+		if ($(this).children("span.right").html() == "▼") {
+			$(this).children("span.right").html("▲");
+			$(this).css("border-bottom", "solid");
+		} else {
+			$(this).children("span.right").html("▼");
+			$(this).css("border-bottom", "none");
+		}
+		$(".enemy-family-category[data-corr=value]").toggle();
+	});
+	
 	// Change in class filtering criteria
 	$(".common-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
