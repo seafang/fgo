@@ -1619,7 +1619,7 @@
 				<a class="btn setbtn" id="common-enemy-class-setbtn">全選</a>
 				<a class="btn resetbtn" id="common-enemy-class-resetbtn">取消</a>
 			</div>
-			<div class="row justify-even">					
+			<div class="row justify-even inner">					
 				<div class="element-50 flex center">
 					<span class="filtertag">出現時序</span>
 					<label class="checkbox">
@@ -1676,15 +1676,16 @@
 					<a class="btn resetbtn" id="common-enemy-type-resetbtn">取消</a>
 				</div>
 			</div>
-			<div class="row center">					
+			<div class="row center box-padding inner">					
 				<div class="listlbl">				
 					<span class="filtertag">種族</span>			
 				</div>				
 				<div class="flex list">
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-1">
 						人類
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-1">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="士兵" checked>
 							<span class="checkmark"></span>
@@ -1751,10 +1752,11 @@
 							近衛兵
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-2">
 						亞人
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-2">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="獸人" checked>
 							<span class="checkmark"></span>
@@ -1776,14 +1778,25 @@
 							雅嘎
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
-						從者
+					<div class="row enemy-family-heading" data-corr="cat-3">
+						類從者
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-3">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="從者" checked>
 							<span class="checkmark"></span>
-							從者
+							類從者
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="迷你信" checked>
+							<span class="checkmark"></span>
+							迷你信
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="巨大信" checked>
+							<span class="checkmark"></span>
+							巨大信
 						</label>
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="哈桑" checked>
@@ -1796,35 +1809,11 @@
 							瓦爾基里
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
-						獸
-					</div>
-					<div class="row">
-						<label class="checkbox">
-							<input type="checkbox" class="common-enemy-race" value="獸" checked>
-							<span class="checkmark"></span>
-							獸
-						</label>
-						<label class="checkbox">
-							<input type="checkbox" class="common-enemy-race" value="拉赫穆" checked>
-							<span class="checkmark"></span>
-							拉赫穆
-						</label>
-					</div>
-					<div class="row enemy-family-heading">
-						魔神
-					</div>
-					<div class="row">
-						<label class="checkbox">
-							<input type="checkbox" class="common-enemy-race" value="魔神" checked>
-							<span class="checkmark"></span>
-							魔神
-						</label>
-					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-4">
 						死靈
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-4">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="骷髏兵" checked>
 							<span class="checkmark"></span>
@@ -1871,10 +1860,11 @@
 							食屍鬼
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-5">
 						惡魔
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-5">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="惡魔" checked>
 							<span class="checkmark"></span>
@@ -1886,10 +1876,11 @@
 							凝視者
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-6">
 						鬼
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-6">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="鬼" checked>
 							<span class="checkmark"></span>
@@ -1906,10 +1897,11 @@
 							大鬼
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-7">
 						無機物
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-7">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="門" checked>
 							<span class="checkmark"></span>
@@ -1926,10 +1918,11 @@
 							雷石
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-8">
 						人造物
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-8">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="魔偶" checked>
 							<span class="checkmark"></span>
@@ -1956,10 +1949,11 @@
 							女官
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-9">
 						機械
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-9">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="自動人偶" checked>
 							<span class="checkmark"></span>
@@ -1991,25 +1985,11 @@
 							多多益善號
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
-						迷你信/巨大信
-					</div>
-					<div class="row">
-						<label class="checkbox">
-							<input type="checkbox" class="common-enemy-race" value="迷你信" checked>
-							<span class="checkmark"></span>
-							迷你信
-						</label>
-						<label class="checkbox">
-							<input type="checkbox" class="common-enemy-race" value="巨大信" checked>
-							<span class="checkmark"></span>
-							巨大信
-						</label>
-					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-10">
 						野獸
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-10">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="翅刃蟲" checked>
 							<span class="checkmark"></span>
@@ -2056,10 +2036,11 @@
 							魔猿
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-11">
 						龍
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-11">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="雙足飛龍" checked>
 							<span class="checkmark"></span>
@@ -2076,10 +2057,11 @@
 							穆修胡休
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
+					<div class="row enemy-family-heading" data-corr="cat-12">
 						幻獸
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-12">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="奇美拉" checked>
 							<span class="checkmark"></span>
@@ -2131,30 +2113,36 @@
 							鵺
 						</label>
 					</div>
-					<div class="row enemy-family-heading">
-						巨人
+					<div class="row enemy-family-heading" data-corr="cat-13">
+						其他
+						<span class="right">▼</span>
 					</div>
-					<div class="row">
+					<div class="row enemy-family-category" data-corr="cat-13">
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="獸" checked>
+							<span class="checkmark"></span>
+							獸
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="拉赫穆" checked>
+							<span class="checkmark"></span>
+							拉赫穆
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-race" value="魔神" checked>
+							<span class="checkmark"></span>
+							魔神
+						</label>
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="巨人" checked>
 							<span class="checkmark"></span>
 							巨人
 						</label>
-					</div>
-					<div class="row enemy-family-heading">
-						空想樹
-					</div>
-					<div class="row">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="空想樹" checked>
 							<span class="checkmark"></span>
 							空想樹
 						</label>
-					</div>
-					<div class="row enemy-family-heading">
-						其他
-					</div>
-					<div class="row">
 						<label class="checkbox">
 							<input type="checkbox" class="common-enemy-race" value="其他" checked>
 							<span class="checkmark"></span>
