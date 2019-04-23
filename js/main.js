@@ -5,9 +5,13 @@ var attrAffinity = JSON.parse(attributeAdvantage);
 
 var common = [];
 
-$.get("js/data/common.js", function(data) {		// Common enemy
-	common = JSON.parse(data);
-}, "json");
+$.ajax({
+	url: "js/data/common.js",
+	success: function(data) {				// Common enemy
+		common = JSON.parse(data.replace("\\", ""));
+	}
+});
+
 var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
 var master = JSON.parse(mysticCode);
