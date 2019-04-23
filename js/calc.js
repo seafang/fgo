@@ -2,6 +2,7 @@ var affinity = parent.affinity;
 var multiplier = parent.multiplier;
 var attrAffinity = parent.attrAffinity;
 
+var common = parent.common;
 var servants = parent.servants;
 var ce = parent.ce;
 var master = parent.master;
