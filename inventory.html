@@ -18,145 +18,159 @@
 </head>
 <body>
 
+<div class="row top-row">
+	<div class="right">
+		<a class="btn favouritebtn" data-src="inventory">♥</a>
+		<a class="btn manualbtn">
+			<span class="focus-content">？</span>
+		</a>
+	</div>
+</div>
+
 <!--Filter Section-->
 <div class="inventory-header" id="servant-inventory-header">
 	<div class="row center inventory-filter-header">
 		篩選
 	</div>
-	<div class="row center inner">		
-		<img class="class-logo inventory-class" title="Saber" src="images/class/Saber.webp" />	
-		<img class="class-logo inventory-class" title="Archer" src="images/class/Archer.webp" />	
-		<img class="class-logo inventory-class" title="Lancer" src="images/class/Lancer.webp" />	
-		<img class="class-logo inventory-class" title="Rider" src="images/class/Rider.webp" />	
-		<img class="class-logo inventory-class" title="Caster" src="images/class/Caster.webp" />	
-		<img class="class-logo inventory-class" title="Assassin" src="images/class/Assassin.webp" />	
-		<img class="class-logo inventory-class" title="Berserker" src="images/class/Berserker.webp" />	
-		<img class="class-logo inventory-class" title="Shielder" src="images/class/Shielder.webp" />	
-		<img class="class-logo inventory-class" title="Ruler" src="images/class/Ruler.webp" />	
-		<img class="class-logo inventory-class" title="Avenger" src="images/class/Avenger.webp" />	
-		<img class="class-logo inventory-class" title="Mooncancer" src="images/class/Mooncancer.webp" />	
-		<img class="class-logo inventory-class" title="Alterego" src="images/class/Alterego.webp" />	
-		<img class="class-logo inventory-class" title="Foreigner" src="images/class/Foreigner.webp" />	
-		<a class="btn setbtn" id="inventory-class-setbtn">全選</a>	
-		<a class="btn resetbtn" id="inventory-class-resetbtn">取消</a>	
-	</div>		
-	<div class="row center inner">		
-		<label class="checkbox">	
+	<div class="row center inner">
+		<img class="class-logo inventory-class" title="Saber" src="images/class/Saber.webp" />
+		<img class="class-logo inventory-class" title="Archer" src="images/class/Archer.webp" />
+		<img class="class-logo inventory-class" title="Lancer" src="images/class/Lancer.webp" />
+		<img class="class-logo inventory-class" title="Rider" src="images/class/Rider.webp" />
+		<img class="class-logo inventory-class" title="Caster" src="images/class/Caster.webp" />
+		<img class="class-logo inventory-class" title="Assassin" src="images/class/Assassin.webp" />
+		<img class="class-logo inventory-class" title="Berserker" src="images/class/Berserker.webp" />
+		<img class="class-logo inventory-class" title="Shielder" src="images/class/Shielder.webp" />
+		<img class="class-logo inventory-class" title="Ruler" src="images/class/Ruler.webp" />
+		<img class="class-logo inventory-class" title="Avenger" src="images/class/Avenger.webp" />
+		<img class="class-logo inventory-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+		<img class="class-logo inventory-class" title="Alterego" src="images/class/Alterego.webp" />
+		<img class="class-logo inventory-class" title="Foreigner" src="images/class/Foreigner.webp" />
+		<a class="btn setbtn" id="inventory-class-setbtn">全選</a>
+		<a class="btn resetbtn" id="inventory-class-resetbtn">取消</a>
+	</div>
+	<div class="row center inner">
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="0" checked>
 			<span class="checkmark"></span>
 			<span class="star">－</span>
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="1" checked>
 			<span class="checkmark star-checkmark"></span>
 			<span class="star">★</span>
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="2" checked>
 			<span class="checkmark star-checkmark"></span>
 			<span class="star">★★</span>
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="3" checked>
 			<span class="checkmark star-checkmark"></span>
 			<span class="star">★★★</span>
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="4" checked>
 			<span class="checkmark star-checkmark"></span>
 			<span class="star">★★★★</span>
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-star" value="5" checked>
 			<span class="checkmark star-checkmark"></span>
 			<span class="star">★★★★★</span>
 		</label>
-		<a class="btn setbtn" id="inventory-star-setbtn">全選</a>	
-		<a class="btn resetbtn" id="inventory-star-resetbtn">取消</a>	
-	</div>		
-	<div class="row center">		
-		<span class="filtertag">分類</span>	
-		<label class="checkbox">	
+		<a class="btn setbtn" id="inventory-star-setbtn">全選</a>
+		<a class="btn resetbtn" id="inventory-star-resetbtn">取消</a>
+	</div>
+	<div class="row center">
+		<span class="filtertag">分類</span>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="常駐" checked>
 			<span class="checkmark"></span>
 			常駐
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="劇情池限定" checked>
 			<span class="checkmark"></span>
 			劇情池限定
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="友情池限定" checked>
 			<span class="checkmark"></span>
 			友情池限定
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="期間限定" checked>
 			<span class="checkmark"></span>
 			期間限定
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="活動" checked>
 			<span class="checkmark"></span>
 			活動
-		</label>	
-		<label class="checkbox">	
+		</label>
+		<label class="checkbox">
 			<input type="checkbox" class="inventory-type" value="固有從者" checked>
 			<span class="checkmark"></span>
 			固有從者
 		</label>
-		<a class="btn setbtn" id="inventory-type-setbtn">全選</a>	
-		<a class="btn resetbtn" id="inventory-type-resetbtn">取消</a>	
-	</div>		
+		<a class="btn setbtn" id="inventory-type-setbtn">全選</a>
+		<a class="btn resetbtn" id="inventory-type-resetbtn">取消</a>
+	</div>
 	<div class="row justify-even">
 		<div class="element-50 flex center">
-			<span class="filtertag">寶具卡色</span>	
-			<label class="checkbox">			
-				<input type="checkbox" class="inventory-color" value=" Buster " checked>		
-				<span class="checkmark"></span>		
-				Buster		
-			</label>			
-			<label class="checkbox">			
-				<input type="checkbox" class="inventory-color" value="Art" checked>		
-				<span class="checkmark"></span>		
-				Art		
-			</label>			
+			<span class="filtertag">寶具卡色</span>
 			<label class="checkbox">
-				<input type="checkbox" class="inventory-color" value="Quick" checked>		
-				<span class="checkmark"></span>		
-				Quick		
+				<input type="checkbox" class="inventory-color" value=" Buster " checked>
+				<span class="checkmark"></span>
+				Buster
 			</label>
-			<a class="btn setbtn" id="inventory-color-setbtn">全選</a>	
+			<label class="checkbox">
+				<input type="checkbox" class="inventory-color" value="Arts" checked>
+				<span class="checkmark"></span>
+				Arts
+			</label>
+			<label class="checkbox">
+				<input type="checkbox" class="inventory-color" value="Quick" checked>
+				<span class="checkmark"></span>
+				Quick
+			</label>
+			<a class="btn setbtn" id="inventory-color-setbtn">全選</a>
 			<a class="btn resetbtn" id="inventory-color-resetbtn">取消</a>
 		</div>
 		<div class="element-50 flex center">
-			<span class="filtertag">寶具類別</span>	
-			<label class="checkbox">	
+			<span class="filtertag">寶具類別</span>
+			<label class="checkbox">
 				<input type="checkbox" class="inventory-range" value="全體" checked>
 				<span class="checkmark"></span>
-				♦ 全體
-			</label>	
-			<label class="checkbox">	
+				♣ 全體
+			</label>
+			<label class="checkbox">
 				<input type="checkbox" class="inventory-range" value="單體" checked>
 				<span class="checkmark"></span>
 				♠ 單體
-			</label>	
-			<label class="checkbox">	
+			</label>
+			<label class="checkbox">
 				<input type="checkbox" class="inventory-range" value="輔助" checked>
 				<span class="checkmark"></span>
 				♥ 輔助
-			</label>	
-			<a class="btn setbtn" id="inventory-range-setbtn">全選</a>	
+			</label>
+			<label class="checkbox">
+				<input type="checkbox" class="inventory-range" value="其他" checked>
+				<span class="checkmark"></span>
+				♦ 其他
+			</label>
+			<a class="btn setbtn" id="inventory-range-setbtn">全選</a>
 			<a class="btn resetbtn" id="inventory-range-resetbtn">取消</a>
 		</div>
-	</div>		
-	<div class="row center inner">		
-		<label class="switch">	
+	</div>
+	<div class="row center inner">
+		<label class="switch">
 			<input type="checkbox" id="inventory-owned">
 			<span class="slider"></span>
-		</label>	
-		<span class="label-simple">僅包括已有從者</span>	
+		</label>
+		<span class="label-simple">僅包括已有從者</span>
 	</div>
 	<div class="row center">
 		<a class="btn filterbtn" id="inventory-filterbtn">套用</a>
@@ -169,6 +183,7 @@
 	<span id="inventory-modal-label">寶傷排名設定：</span>
 	<a class="btn modalbtn" id="inventory-teammate-modalbtn">固定隊友</a>
 	<a class="btn modalbtn" id="inventory-ce-modalbtn">固定禮裝</a>
+	<a class="btn modalbtn" id="inventory-master-modalbtn">固定魔術禮裝</a>
 	<div class="right">
 		<a class="btn resetbtn" id="inventory-event-buff-resetbtn">清空活動加成</a>
 	</div>
@@ -178,7 +193,7 @@
 		<br/>
 		<table class="inventory" id="servant-inventory">
 			<tbody>
-				<tr>	
+				<tr>
 					<th rowspan="2">編號</th>
 					<th rowspan="2" colspan="2">從者</th>
 					<th rowspan="2">職階</th>
@@ -193,8 +208,8 @@
 					<th colspan="3">技能三</th>
 					<th rowspan="2">紋章</th>
 					<th rowspan="2">活動加成</th>
-				</tr>	
-				<tr>	
+				</tr>
+				<tr>
 					<th></th>
 					<th>等級</th>
 					<th>技解</th>
@@ -204,7 +219,7 @@
 					<th></th>
 					<th>等級</th>
 					<th>技解</th>
-				</tr>	
+				</tr>
 			</tbody>
 		</table>
 		<br/>
@@ -219,112 +234,112 @@
 				隊友組合
 			</div>
 			<div class="modal-header-container">
-				<div class="row center innerborder">			
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="不使用隊友" checked>	
-	 					<span class="radiomark"></span>	
-						不使用隊友	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="孔明">	
-	 					<span class="radiomark"></span>	
-						孔明	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="雙孔明">	
-	 					<span class="radiomark"></span>	
-						雙孔明	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="梅林">	
-	 					<span class="radiomark"></span>	
-						梅林	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="雙梅林">	
-	 					<span class="radiomark"></span>	
-						雙梅林	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="玉藻前">	
-	 					<span class="radiomark"></span>	
-						玉藻前	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="雙玉藻前">	
-	 					<span class="radiomark"></span>	
-						雙玉藻前	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="斯卡蒂">	
-	 					<span class="radiomark"></span>	
-						斯卡蒂	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="雙斯卡蒂">	
-	 					<span class="radiomark"></span>	
-						雙斯卡蒂	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="梅林 + 孔明">	
-	 					<span class="radiomark"></span>	
-						梅林 + 孔明	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="玉藻前 + 孔明">	
-	 					<span class="radiomark"></span>	
-						玉藻前 + 孔明	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="斯卡蒂 + 孔明">	
-	 					<span class="radiomark"></span>	
-						斯卡蒂 + 孔明	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 I">	
-	 					<span class="radiomark"></span>	
-						自訂 I	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 II">	
-	 					<span class="radiomark"></span>	
-						自訂 II	
-					</label>		
-					<label class="radiobox">		
-						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 III">	
-	 					<span class="radiomark"></span>	
-						自訂 III	
-					</label>		
-				</div>			
-				<div id="inventory-teammate-custom-setup">			
-					<div class="row center no-wrap">		
-						<div class="element-30">	
-							<label for="inventory-atk-buff" class="labeltag">攻擊力提升(%)</label>
+				<div class="row center innerborder">
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="不使用隊友" checked>
+	 					<span class="radiomark"></span>
+						不使用隊友
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="孔明">
+	 					<span class="radiomark"></span>
+						孔明
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="雙孔明">
+	 					<span class="radiomark"></span>
+						雙孔明
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="梅林">
+	 					<span class="radiomark"></span>
+						梅林
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="雙梅林">
+	 					<span class="radiomark"></span>
+						雙梅林
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="玉藻前">
+	 					<span class="radiomark"></span>
+						玉藻前
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="雙玉藻前">
+	 					<span class="radiomark"></span>
+						雙玉藻前
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="斯卡蒂">
+	 					<span class="radiomark"></span>
+						斯卡蒂
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="雙斯卡蒂">
+	 					<span class="radiomark"></span>
+						雙斯卡蒂
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="梅林 + 孔明">
+	 					<span class="radiomark"></span>
+						梅林 + 孔明
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="玉藻前 + 孔明">
+	 					<span class="radiomark"></span>
+						玉藻前 + 孔明
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="斯卡蒂 + 孔明">
+	 					<span class="radiomark"></span>
+						斯卡蒂 + 孔明
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 I">
+	 					<span class="radiomark"></span>
+						自訂 I
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 II">
+	 					<span class="radiomark"></span>
+						自訂 II
+					</label>
+					<label class="radiobox">
+						<input type="radio" name="radio" class="inventory-teammate-option" value="自訂 III">
+	 					<span class="radiomark"></span>
+						自訂 III
+					</label>
+				</div>
+				<div id="inventory-teammate-custom-setup">
+					<div class="row center no-wrap">
+						<div class="element-30">
+							<label for="inventory-atk-buff" class="labeltag">攻擊力提升/敵方防禦力下降(%)</label>
 							<input type="number" class="narrow" id="inventory-atk-buff" value="0" min="0" step="0.1" disabled>
-						</div>	
-						<div class="element-30">	
+						</div>
+						<div class="element-30">
 							<label for="inventory-add-atk" class="labeltag">傷害附加</label>
 							<input type="number" class="narrow" id="inventory-add-atk" value="0" min="0" disabled>
-						</div>	
-						<div class="element-30">	
-							<label for="inventory-np-buff" class="labeltag">寶具威力提升(%)</label>
+						</div>
+						<div class="element-30">
+							<label for="inventory-np-buff" class="labeltag">寶具威力提升/特攻(%)</label>
 							<input type="number" class="narrow" id="inventory-np-buff" value="0" min="0" step="0.1" disabled>
-						</div>	
-					</div>		
-					<div class="row center no-wrap">		
-						<div class="element-30">	
+						</div>
+					</div>
+					<div class="row center no-wrap">
+						<div class="element-30">
 							<label for="inventory-Buster-buff" class="labeltag">Buster性能(%)</label>
 							<input type="number" class="narrow" id="inventory-Buster-buff" value="0" min="0" step="0.1" disabled>
-						</div>	
-						<div class="element-30">	
-							<label for="inventory-Art-buff" class="labeltag">Art性能(%)</label>
-							<input type="number" class="narrow" id="inventory-Art-buff" value="0" min="0" step="0.1" disabled>
-						</div>	
-						<div class="element-30">	
+						</div>
+						<div class="element-30">
+							<label for="inventory-Arts-buff" class="labeltag">Arts性能(%)</label>
+							<input type="number" class="narrow" id="inventory-Arts-buff" value="0" min="0" step="0.1" disabled>
+						</div>
+						<div class="element-30">
 							<label for="inventory-Quick-buff" class="labeltag">Quick性能(%)</label>
 							<input type="number" class="narrow" id="inventory-Quick-buff" value="0" min="0" step="0.1" disabled>
-						</div>	
-					</div>		
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -333,134 +348,654 @@
 				從者篩選
 			</div>
 			<div class="row center inner">
-				<img class="class-logo inventory-teammate-class" title="Saber" src="images/class/Saber.webp" />
-				<img class="class-logo inventory-teammate-class" title="Archer" src="images/class/Archer.webp" />
-				<img class="class-logo inventory-teammate-class" title="Lancer" src="images/class/Lancer.webp" />
-				<img class="class-logo inventory-teammate-class" title="Rider" src="images/class/Rider.webp" />
-				<img class="class-logo inventory-teammate-class" title="Caster" src="images/class/Caster.webp" />
-				<img class="class-logo inventory-teammate-class" title="Assassin" src="images/class/Assassin.webp" />
-				<img class="class-logo inventory-teammate-class" title="Berserker" src="images/class/Berserker.webp" />
-				<img class="class-logo inventory-teammate-class" title="Shielder" src="images/class/Shielder.webp" />
-				<img class="class-logo inventory-teammate-class" title="Ruler" src="images/class/Ruler.webp" />
-				<img class="class-logo inventory-teammate-class" title="Avenger" src="images/class/Avenger.webp" />
-				<img class="class-logo inventory-teammate-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
-				<img class="class-logo inventory-teammate-class" title="Alterego" src="images/class/Alterego.webp" />
-				<img class="class-logo inventory-teammate-class" title="Foreigner" src="images/class/Foreigner.webp" />
-				<a class="btn setbtn" id="inventory-teammate-class-setbtn">全選</a>
-				<a class="btn resetbtn" id="inventory-teammate-class-resetbtn">取消</a>
+				<img class="class-logo inventory-teammate-servant-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo inventory-teammate-servant-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<a class="btn setbtn" id="inventory-teammate-servant-class-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-teammate-servant-class-resetbtn">取消</a>
 			</div>
 			<div class="row center inner">
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="0" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="0" checked>
 					<span class="checkmark"></span>
 					<span class="star">－</span>
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="1" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="1" checked>
 					<span class="checkmark star-checkmark"></span>
 					<span class="star">★</span>
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="2" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="2" checked>
 					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★</span>
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="3" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="3" checked>
 					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★</span>
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="4" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="4" checked>
 					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★</span>
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-star" value="5" checked>
+					<input type="checkbox" class="inventory-teammate-servant-star" value="5" checked>
 					<span class="checkmark star-checkmark"></span>
 					<span class="star">★★★★★</span>
 				</label>
-				<a class="btn setbtn" id="inventory-teammate-star-setbtn">全選</a>
-				<a class="btn resetbtn" id="inventory-teammate-star-resetbtn">取消</a>
+				<a class="btn setbtn" id="inventory-teammate-servant-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-teammate-servant-star-resetbtn">取消</a>
 			</div>
 			<div class="row center">
 				<span class="filtertag">分類</span>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-type" value="常駐" checked>
+					<input type="checkbox" class="inventory-teammate-servant-type" value="常駐" checked>
 					<span class="checkmark"></span>
 					常駐
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-type" value="劇情池限定" checked>
+					<input type="checkbox" class="inventory-teammate-servant-type" value="劇情池限定" checked>
 					<span class="checkmark"></span>
 					劇情池限定
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-type" value="友情池限定" checked>
+					<input type="checkbox" class="inventory-teammate-servant-type" value="友情池限定" checked>
 					<span class="checkmark"></span>
 					友情池限定
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-type" value="期間限定" checked>
+					<input type="checkbox" class="inventory-teammate-servant-type" value="期間限定" checked>
 					<span class="checkmark"></span>
 					期間限定
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="inventory-teammate-type" value="活動" checked>
+					<input type="checkbox" class="inventory-teammate-servant-type" value="活動" checked>
 					<span class="checkmark"></span>
 					活動
 				</label>
-				<a class="btn setbtn" id="inventory-teammate-type-setbtn">全選</a>
-				<a class="btn resetbtn" id="inventory-teammate-type-resetbtn">取消</a>
+				<a class="btn setbtn" id="inventory-teammate-servant-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-teammate-servant-type-resetbtn">取消</a>
 			</div>
-			<div class="row justify-even">					
-				<div class="element-50 flex center">				
-					<span class="filtertag">寶具卡色</span>			
-					<label class="checkbox">			
-						<input type="checkbox" class="inventory-teammate-color" value=" Buster " checked>		
-						<span class="checkmark"></span>		
-						Buster		
-					</label>			
-					<label class="checkbox">			
-						<input type="checkbox" class="inventory-teammate-color" value="Art" checked>		
-						<span class="checkmark"></span>		
-						Art		
-					</label>			
-					<label class="checkbox">			
-						<input type="checkbox" class="inventory-teammate-color" value="Quick" checked>		
-						<span class="checkmark"></span>		
-						Quick		
-					</label>			
-					<a class="btn setbtn" id="inventory-teammate-color-setbtn">全選</a>			
-					<a class="btn resetbtn" id="inventory-teammate-color-resetbtn">取消</a>			
-				</div>				
-				<div class="element-50 flex center">				
-					<span class="filtertag">寶具類別</span>			
-					<label class="checkbox">			
-						<input type="checkbox" class="inventory-teammate-range" value="全體" checked>		
-						<span class="checkmark"></span>		
-						全體		
-					</label>			
-					<label class="checkbox">			
-						<input type="checkbox" class="inventory-teammate-range" value="單體" checked>		
-						<span class="checkmark"></span>		
-						單體		
-					</label>			
-					<a class="btn setbtn" id="inventory-teammate-range-setbtn">全選</a>			
-					<a class="btn resetbtn" id="inventory-teammate-range-resetbtn">取消</a>			
-				</div>				
+			<div class="row justify-even">
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具卡色</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-teammate-servant-color" value=" Buster " checked>
+						<span class="checkmark"></span>
+						Buster
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-teammate-servant-color" value="Arts" checked>
+						<span class="checkmark"></span>
+						Arts
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-teammate-servant-color" value="Quick" checked>
+						<span class="checkmark"></span>
+						Quick
+					</label>
+					<a class="btn setbtn" id="inventory-teammate-servant-color-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-teammate-servant-color-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具類別</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-teammate-servant-range" value="全體" checked>
+						<span class="checkmark"></span>
+						全體
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-teammate-servant-range" value="單體" checked>
+						<span class="checkmark"></span>
+						單體
+					</label>
+					<a class="btn setbtn" id="inventory-teammate-servant-range-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-teammate-servant-range-resetbtn">取消</a>
+				</div>
 			</div>
 			<div class="row center">
-				<a class="btn filterbtn" id="inventory-teammate-filterbtn">套用</a>
+				<a class="btn filterbtn" id="inventory-teammate-servant-filterbtn">套用</a>
 			</div>
 		</div>
 		<div class="row">
 			<div class="right">
-				<a class="btn setbtn" id="inventory-teammate-selection-setbtn">全選</a>			
-				<a class="btn resetbtn" id="inventory-teammate-selection-resetbtn">取消</a>
+				<a class="btn setbtn" id="inventory-teammate-servant-selection-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-teammate-servant-selection-resetbtn">取消</a>
 			</div>
 		</div>
-		<div class="modal-content" id="inventory-teammate-img">
+		<div class="modal-content" id="inventory-teammate-servant-img">
+		</div>
+	</div>
+</div>
+
+<!--CE Setup Modal-->
+<div class="modal" id="inventory-ce-modal">
+	<div class="modal-box" id="inventory-ce-modal-box">
+		<div class="modal-header">
+			<div class="row center inventory-ce-header">
+				禮裝篩選
+			</div>
+			<div class="row center">
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-star" value="3" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-star" value="4" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-star" value="5" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★★</span>
+				</label>
+				<a class="btn setbtn" id="inventory-ce-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-star-resetbtn">取消</a>
+			</div>
+			<div class="row center">
+				<span class="filtertag">分類</span>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="常駐" checked>
+					<span class="checkmark"></span>
+					常駐
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="常駐/活動" checked>
+					<span class="checkmark"></span>
+					常駐/活動
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="活動限定" checked>
+					<span class="checkmark"></span>
+					活動限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="期間限定" checked>
+					<span class="checkmark"></span>
+					期間限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="活動兌換" checked>
+					<span class="checkmark"></span>
+					活動兌換
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="羈絆禮裝" checked>
+					<span class="checkmark"></span>
+					羈絆禮裝
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-type" value="限時兌換" checked>
+					<span class="checkmark"></span>
+					限時兌換
+				</label>
+				<a class="btn setbtn" id="inventory-ce-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-type-resetbtn">取消</a>
+			</div>
+			<div class="row center inner">
+				<div class="listlbl indent-4">
+					<span class="filtertag">禮裝效果</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="攻擊力" checked>
+						<span class="checkmark"></span>
+						攻擊力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="Buster性能" checked>
+						<span class="checkmark"></span>
+						Buster性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="Arts性能" checked>
+						<span class="checkmark"></span>
+						Arts性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="Quick性能" checked>
+						<span class="checkmark"></span>
+						Quick性能
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="寶具威力" checked>
+						<span class="checkmark"></span>
+						寶具威力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="起始NP" checked>
+						<span class="checkmark"></span>
+						起始NP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="每回合NP" checked>
+						<span class="checkmark"></span>
+						每回合NP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="NP獲得量" checked>
+						<span class="checkmark"></span>
+						NP獲得量
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="獲得爆擊星" checked>
+						<span class="checkmark"></span>
+						獲得爆擊星
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="爆擊星掉落率" checked>
+						<span class="checkmark"></span>
+						爆擊星掉落率
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="爆擊威力" checked>
+						<span class="checkmark"></span>
+						爆擊威力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="爆擊星集中度" checked>
+						<span class="checkmark"></span>
+						爆擊星集中度
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="特攻" checked>
+						<span class="checkmark"></span>
+						特攻
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="傷害附加" checked>
+						<span class="checkmark"></span>
+						傷害附加
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="防禦力" checked>
+						<span class="checkmark"></span>
+						防禦力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="特防" checked>
+						<span class="checkmark"></span>
+						特防
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="傷害減免" checked>
+						<span class="checkmark"></span>
+						傷害減免
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="迴避" checked>
+						<span class="checkmark"></span>
+						迴避
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="無敵" checked>
+						<span class="checkmark"></span>
+						無敵
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="毅力" checked>
+						<span class="checkmark"></span>
+						毅力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="必中" checked>
+						<span class="checkmark"></span>
+						必中
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="無敵貫通" checked>
+						<span class="checkmark"></span>
+						無敵貫通
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="目標集中" checked>
+						<span class="checkmark"></span>
+						目標集中
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="HP" checked>
+						<span class="checkmark"></span>
+						HP
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="狀態耐性" checked>
+						<span class="checkmark"></span>
+						狀態耐性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="狀態無效" checked>
+						<span class="checkmark"></span>
+						狀態無效
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="狀態成功率" checked>
+						<span class="checkmark"></span>
+						狀態成功率
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-effect" value="其他" checked>
+						<span class="checkmark"></span>
+						其他
+					</label>
+					<div class="row center listend">
+						<a class="btn setbtn" id="inventory-ce-effect-setbtn">全選</a>
+						<a class="btn resetbtn" id="inventory-ce-effect-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+			<div class="row center inner">
+				<label class="switch">
+					<input type="checkbox" id="inventory-ce-frequent">
+					<span class="slider"></span>
+				</label>
+				<span class="label-simple">僅包括常用禮裝</span>
+			</div>
+			<div class="row center">
+				<a class="btn filterbtn" id="inventory-ce-filterbtn">套用</a>
+			</div>
+		</div>
+		<div class="row">
+			<span class="labeltag">目前選擇</span>
+			<span id="inventory-ce-selection"></span>
+		</div>
+		<div class="modal-content" id="inventory-ce-img">
+		</div>
+		<br/>
+		<div class="modal-header">
+			<div class="row center modal-filter-header">
+				從者篩選
+			</div>
+			<div class="row center inner">
+				<img class="class-logo inventory-ce-servant-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo inventory-ce-servant-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<a class="btn setbtn" id="inventory-ce-servant-class-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-servant-class-resetbtn">取消</a>
+			</div>
+			<div class="row center inner">
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="0" checked>
+					<span class="checkmark"></span>
+					<span class="star">－</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="1" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="2" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="3" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="4" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-star" value="5" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★★</span>
+				</label>
+				<a class="btn setbtn" id="inventory-ce-servant-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-servant-star-resetbtn">取消</a>
+			</div>
+			<div class="row center">
+				<span class="filtertag">分類</span>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-type" value="常駐" checked>
+					<span class="checkmark"></span>
+					常駐
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-type" value="劇情池限定" checked>
+					<span class="checkmark"></span>
+					劇情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-type" value="友情池限定" checked>
+					<span class="checkmark"></span>
+					友情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-type" value="期間限定" checked>
+					<span class="checkmark"></span>
+					期間限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-ce-servant-type" value="活動" checked>
+					<span class="checkmark"></span>
+					活動
+				</label>
+				<a class="btn setbtn" id="inventory-ce-servant-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-servant-type-resetbtn">取消</a>
+			</div>
+			<div class="row justify-even">
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具卡色</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-servant-color" value=" Buster " checked>
+						<span class="checkmark"></span>
+						Buster
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-servant-color" value="Arts" checked>
+						<span class="checkmark"></span>
+						Arts
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-servant-color" value="Quick" checked>
+						<span class="checkmark"></span>
+						Quick
+					</label>
+					<a class="btn setbtn" id="inventory-ce-servant-color-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-ce-servant-color-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具類別</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-servant-range" value="全體" checked>
+						<span class="checkmark"></span>
+						全體
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-ce-servant-range" value="單體" checked>
+						<span class="checkmark"></span>
+						單體
+					</label>
+					<a class="btn setbtn" id="inventory-ce-servant-range-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-ce-servant-range-resetbtn">取消</a>
+				</div>
+			</div>
+			<div class="row center">
+				<a class="btn filterbtn" id="inventory-ce-servant-filterbtn">套用</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="right">
+				<a class="btn setbtn" id="inventory-ce-servant-selection-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-ce-servant-selection-resetbtn">取消</a>
+			</div>
+		</div>
+		<div class="modal-content" id="inventory-ce-servant-img">
+		</div>
+	</div>
+</div>
+
+<!--Mystic Code Setup Modal-->
+<div class="modal" id="inventory-master-modal">
+	<div class="modal-box" id="inventory-master-modal-box">
+		<div class="modal-header">
+			<div class="row">
+				<label for="inventory-master-selection" class="labeltag" id="inventory-master-selection-label">魔術禮裝</label>
+				<select class="broad narrow-right" id="inventory-master-selection">
+					<option value="不使用魔術禮裝">不使用魔術禮裝</option>
+				</select>
+			</div>
+		</div>
+		<div class="modal-header">
+			<div class="row center modal-filter-header">
+				從者篩選
+			</div>
+			<div class="row center inner">
+				<img class="class-logo inventory-master-servant-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Shielder" src="images/class/Shielder.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo inventory-master-servant-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<a class="btn setbtn" id="inventory-master-servant-class-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-master-servant-class-resetbtn">取消</a>
+			</div>
+			<div class="row center inner">
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="0" checked>
+					<span class="checkmark"></span>
+					<span class="star">－</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="1" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="2" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="3" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="4" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-star" value="5" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★★</span>
+				</label>
+				<a class="btn setbtn" id="inventory-master-servant-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-master-servant-star-resetbtn">取消</a>
+			</div>
+			<div class="row center">
+				<span class="filtertag">分類</span>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-type" value="常駐" checked>
+					<span class="checkmark"></span>
+					常駐
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-type" value="劇情池限定" checked>
+					<span class="checkmark"></span>
+					劇情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-type" value="友情池限定" checked>
+					<span class="checkmark"></span>
+					友情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-type" value="期間限定" checked>
+					<span class="checkmark"></span>
+					期間限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="inventory-master-servant-type" value="活動" checked>
+					<span class="checkmark"></span>
+					活動
+				</label>
+				<a class="btn setbtn" id="inventory-master-servant-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-master-servant-type-resetbtn">取消</a>
+			</div>
+			<div class="row justify-even">
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具卡色</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-master-servant-color" value=" Buster " checked>
+						<span class="checkmark"></span>
+						Buster
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-master-servant-color" value="Arts" checked>
+						<span class="checkmark"></span>
+						Arts
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-master-servant-color" value="Quick" checked>
+						<span class="checkmark"></span>
+						Quick
+					</label>
+					<a class="btn setbtn" id="inventory-master-servant-color-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-master-servant-color-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具類別</span>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-master-servant-range" value="全體" checked>
+						<span class="checkmark"></span>
+						全體
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="inventory-master-servant-range" value="單體" checked>
+						<span class="checkmark"></span>
+						單體
+					</label>
+					<a class="btn setbtn" id="inventory-master-servant-range-setbtn">全選</a>
+					<a class="btn resetbtn" id="inventory-master-servant-range-resetbtn">取消</a>
+				</div>
+			</div>
+			<div class="row center">
+				<a class="btn filterbtn" id="inventory-master-servant-filterbtn">套用</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="right">
+				<a class="btn setbtn" id="inventory-master-servant-selection-setbtn">全選</a>
+				<a class="btn resetbtn" id="inventory-master-servant-selection-resetbtn">取消</a>
+			</div>
+		</div>
+		<div class="modal-content" id="inventory-master-servant-img">
 		</div>
 	</div>
 </div>
@@ -502,9 +1037,9 @@
 				<a class="btn resetbtn" id="code-star-resetbtn">取消</a>
 			</div>
 			<div class="row center inner">
-				<div class="listlbl indent-4">				
-					<span class="filtertag">紋章效果</span>		
-				</div>				
+				<div class="listlbl indent-4">
+					<span class="filtertag">紋章效果</span>
+				</div>
 				<div class="flex list">
 					<label class="checkbox">
 						<input type="checkbox" class="code-effect" value="獲得爆擊星" checked>

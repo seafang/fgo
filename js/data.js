@@ -12,7 +12,7 @@ function multiFilter(array, filters) {
 			if (Array.isArray(item[key])) {
 				var test = [];
 				item[key].forEach(function(value) {
-					test.push(filters[key].includes(value));  
+					test.push(filters[key].includes(value));
 				});
 				return test.some(function (value){
 					return true === value;
@@ -73,26 +73,30 @@ function getSave() {
 		$("#save-title").val("");
 		currentSave.saveSlot = saveSlot;
 		currentSave.title = "未命名存檔";
-		
+
 		// Set Mashu as default servant
-		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, 0]}];
-		
-		currentSave.ce = [];
-		
+		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, "不使用魔術禮裝", 0]}];
+
+		currentSave.ce = [{"id":0, "data":[true, true, 0, true]}];
+
 		// Set Chaldea as default mystic code
 		currentSave.master = [{"name":"迦勒底", "data":[true, 1]}];
-		
+
 		currentSave.customBuff = [{
 			"自訂 I": [0, 0, 0, 0, 0, 0],
 			"自訂 II": [0, 0, 0, 0, 0, 0],
 			"自訂 III": [0, 0, 0, 0, 0, 0],
 		}];
-		
+
+		currentSave.favouritePage = "calc";
+
 		save();
 		generateSaveList()
 		bgServant = currentSave.servant;
+		bgCE = currentSave.ce;
 		bgMaster = currentSave.master;
 		customBuff = currentSave.customBuff;
+		favouritePage = currentSave.favouritePage;
 		servantOwnership();
 		ceOwnership();
 		ceFrequent();
@@ -104,6 +108,7 @@ function getSave() {
 		bgCE = currentSave.ce;
 		bgMaster = currentSave.master;
 		customBuff = currentSave.customBuff;
+		favouritePage = currentSave.favouritePage;
 		servantOwnership();
 		ceOwnership();
 		ceFrequent();
@@ -131,7 +136,7 @@ function clearSave() {
 	if (confirm("確認要清除以下存檔？ \n 「" + currentSave.title + "」 \n 被清除的存檔無法復原，本頁面亦會重新整理。")) {
 		localStorage.removeItem(currentSave.saveSlot);
 		currentSave = {};
-		bgServant = [], bgCE = [], bgMaster = [];
+		bgServant = [], bgCE = [], bgMaster = [], customBuff = [], favouritePage = "calc";
 		alert("存檔已被刪除。");
 		window.location.reload(true);
 	}
@@ -147,7 +152,7 @@ function servantOwnership() {
 	servants.forEach(function(servant) {
 		var id = servant.id;
 		var target = bgServant.find(function(obj) {
-			return obj.id == id; 
+			return obj.id == id;
 		});
 		if (target !== undefined) {
 			servant.owned = target.data[0];
@@ -162,7 +167,7 @@ function ceOwnership() {
 	ce.forEach(function(essence) {
 		var id = essence.id;
 		var target = bgCE.find(function(obj) {
-			return obj.id == id; 
+			return obj.id == id;
 		});
 		if (target !== undefined) {
 			essence.owned = target.data[0];
@@ -177,7 +182,7 @@ function ceFrequent() {
 	ce.forEach(function(essence) {
 		var id = essence.id;
 		var target = bgCE.find(function(obj) {
-			return obj.id == id; 
+			return obj.id == id;
 		});
 		if (target !== undefined) {
 			essence.frequent = target.data[3];
@@ -192,7 +197,7 @@ function masterOwnership() {
 	master.forEach(function(code) {
 		var name = code.name;
 		var target = bgMaster.find(function(obj) {
-			return obj.name == name; 
+			return obj.name == name;
 		});
 		if (target !== undefined) {
 			code.owned = target.data[0];

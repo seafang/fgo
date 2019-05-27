@@ -6,6 +6,7 @@
 <script src="js/misc.js"></script>
 <script src="js/data.js"></script>
 <script src="js/modal.js"></script>
+<script src="js/rank.js"></script>
 <!--<script src="js/rank.js"></script>-->
 <link rel="stylesheet" href="style.css" />
 <!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
@@ -19,7 +20,2167 @@
 </head>
 <body>
 
-<h2>Construction in progress...</h2>
+	<div class="row top-row">
+		<div class="right">
+			<a class="btn favouritebtn" data-src="rank">♥</a>
+			<a class="btn manualbtn">
+				<span class="focus-content">？</span>
+			</a>
+		</div>
+	</div>
 
+	<!--Enemy Section-->
+	<div class="info" id="rank-enemy-info">
+		<div class="setup" id="rank-enemy-setup">
+			<div class="row">
+				<a class="btn modalbtn" id="rank-common-enemy-modalbtn">非從者敵人</a>
+				<a class="btn modalbtn" id="rank-servant-enemy-modalbtn">從者敵人</a>
+				<div class="right">
+					<a class="btn resetbtn" id="rank-enemy-resetbtn">清除</a>
+				</div>
+			</div>
+			<div class="row innerborder under">
+				<div class="element-20 flex">
+					<img class="profile-img" id="rank-enemy-img" src="images/bg_logo.webp" />
+					<span id="rank-enemy-name">未選定/自訂敵人</span>
+				</div>
+				<div class="element-20">
+					<label for="rank-enemy-class" class="label">職階</label>
+					<select class="wide" id="rank-enemy-class">
+						<option value="Saber">Saber</option>
+						<option value="Archer">Archer</option>
+						<option value="Lancer">Lancer</option>
+						<option value="Rider">Rider</option>
+						<option value="Caster">Caster</option>
+						<option value="Assassin">Assassin</option>
+						<option value="Berserker">Berserker</option>
+						<option value="Shielder">Shielder</option>
+						<option value="Ruler">Ruler</option>
+						<option value="Avenger">Avenger</option>
+						<option value="Mooncancer">Mooncancer</option>
+						<option value="Alterego">Alterego</option>
+						<option value="Foreigner">Foreigner</option>
+						<option value="Beast I">Beast I</option>
+						<option value="Beast II">Beast II</option>
+						<option value="Beast III／L">Beast III／L</option>
+						<option value="Beast III／R">Beast III／R</option>
+						<option value="Custom">統一職階相性</option>
+					</select>
+				</div>
+				<div class="element-20" id="rank-enemy-affinity-setup">
+					<label for="rank-enemy-affinity" class="label">職階相性</label>
+					<input type="number" class="narrow" id="rank-enemy-affinity" value="1" min="0.5" max="2" step="0.1">
+				</div>
+				<div class="element-20">
+					<label for="rank-enemy-attribute" class="label">陣營</label>
+					<select class="tight" id="rank-enemy-attribute">
+						<option value="天">天</option>
+						<option value="地">地</option>
+						<option value="人">人</option>
+						<option value="星">星</option>
+						<option value="獸">獸</option>
+						<option value="Custom">統一陣營相性</option>
+					</select>
+				</div>
+				<div class="element-20" id="rank-enemy-attrAffinity-setup">
+					<label for="rank-enemy-attrAffinity" class="label">陣營相性</label>
+					<input type="number" class="narrow" id="rank-enemy-attrAffinity" value="1" min="0.9" max="1.1" step="0.1">
+				</div>
+			</div>
+			<div class="row innerborder">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-enemy-gender-label">性別</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-gender" value="無性別">
+						<span class="checkmark"></span>
+						無性別
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-gender" value="男性">
+						<span class="checkmark"></span>
+						男性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-gender" value="女性">
+						<span class="checkmark"></span>
+						女性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-gender" value="不明">
+						<span class="checkmark"></span>
+						不明
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-enemy-gender-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-enemy-gender-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+			<div class="row innerborder">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-enemy-alignment1-label">屬性 I</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment1" value="不適用">
+						<span class="checkmark"></span>
+						不適用
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment1" value="秩序">
+						<span class="checkmark"></span>
+						秩序
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment1" value="中立">
+						<span class="checkmark"></span>
+						中立
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment1" value="混沌">
+						<span class="checkmark"></span>
+						混沌
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-enemy-alignment1-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-enemy-alignment1-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+			<div class="row innerborder">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-enemy-alignment2-label">屬性 II</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="不適用">
+						<span class="checkmark"></span>
+						不適用
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="善">
+						<span class="checkmark"></span>
+						善
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="中庸">
+						<span class="checkmark"></span>
+						中庸
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="惡">
+						<span class="checkmark"></span>
+						惡
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="狂">
+						<span class="checkmark"></span>
+						狂
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="花嫁">
+						<span class="checkmark"></span>
+						花嫁
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-alignment2" value="夏">
+						<span class="checkmark"></span>
+						夏
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-enemy-alignment2-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-enemy-alignment2-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+			<div class="row innerborder">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-enemy-trait-label">特性</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="被「天地乖離開闢之星」所剋">
+						<span class="checkmark"></span>
+						被「天地乖離開闢之星」所剋
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="被「人類神話・雷電降臨」所剋">
+						<span class="checkmark"></span>
+						被「人類神話・雷電降臨」所剋
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="被「神秘神手」所剋">
+						<span class="checkmark"></span>
+						被「神秘神手」所剋
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="星之力">
+						<span class="checkmark"></span>
+						星之力
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="人型">
+						<span class="checkmark"></span>
+						人型
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="從者">
+						<span class="checkmark"></span>
+						從者
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="擬似從者">
+						<span class="checkmark"></span>
+						擬似從者
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="亞從者">
+						<span class="checkmark"></span>
+						亞從者
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="神性">
+						<span class="checkmark"></span>
+						神性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="王">
+						<span class="checkmark"></span>
+						王
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="騎乘">
+						<span class="checkmark"></span>
+						騎乘
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="羅馬">
+						<span class="checkmark"></span>
+						羅馬
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="希臘神話系男性">
+						<span class="checkmark"></span>
+						希臘神話系男性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="人類威脅">
+						<span class="checkmark"></span>
+						人類威脅
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="阿爾托莉亞臉">
+						<span class="checkmark"></span>
+						阿爾托莉亞臉
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="亞瑟">
+						<span class="checkmark"></span>
+						亞瑟
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="伊莉雅">
+						<span class="checkmark"></span>
+						伊莉雅
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="所愛之人">
+						<span class="checkmark"></span>
+						所愛之人
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="龍">
+						<span class="checkmark"></span>
+						龍
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="魔性">
+						<span class="checkmark"></span>
+						魔性
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="超巨大">
+						<span class="checkmark"></span>
+						超巨大
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="死靈">
+						<span class="checkmark"></span>
+						死靈
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="惡魔">
+						<span class="checkmark"></span>
+						惡魔
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="猛獸">
+						<span class="checkmark"></span>
+						猛獸
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-trait" value="人類">
+						<span class="checkmark"></span>
+						人類
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-enemy-trait-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-enemy-trait-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-enemy-debuff-label">弱化狀態</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/charm.webp" value="魅惑">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/charm.webp" />
+							魅惑
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/poison.webp" value="毒">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/poison.webp" />
+							毒
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/toxic.webp" value="蝕毒">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/toxic.webp" />
+							蝕毒
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/burn.webp" value="灼傷">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/burn.webp" />
+							灼傷
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/spread_of_fire.webp" value="延燒">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/spread_of_fire.webp" />
+							延燒
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/curse.webp" value="詛咒">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/curse.webp" />
+							詛咒
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/evil_curse.webp" value="咒厄">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/evil_curse.webp" />
+							咒厄
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/stun.webp" value="石化">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/stun.webp" />
+							石化
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/stun.webp" value="晕眩">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/stun.webp" />
+							晕眩
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/stun.webp" value="拘束">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/stun.webp" />
+							拘束
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-enemy-debuff" data-src="images/debuff/pig.webp" value="猪化">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="debuff-logo" src="images/debuff/pig.webp" />
+							猪化
+						</span>
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-enemy-debuff-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-enemy-debuff-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+
+	<!--Environment Section-->
+	<div class="info" id="rank-environment-info">
+		<div class="setup" id="rank-battelfield-misc-setup">
+			<div class="row innerborder">
+				<div class="flex listlbl">
+					<span class="labeltag" id="rank-battelfield-setup-label">場地設定</span>
+				</div>
+				<div class="flex list">
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="燃燒">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="battlefield-logo" src="images/battlefield/burning.webp" />
+							燃燒
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="森林">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="battlefield-logo" src="images/battlefield/forest.webp" />
+							森林
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="山丘">
+						<span class="checkmark"></span>
+						山丘
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="城池">
+						<span class="checkmark"></span>
+						城池
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="荒野">
+						<span class="checkmark"></span>
+						荒野
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="沙灘·沙漠">
+						<span class="checkmark"></span>
+						沙灘·沙漠
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="水邊">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="battlefield-logo" src="images/battlefield/waterside.webp" />
+							水邊
+						</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="岩山">
+						<span class="checkmark"></span>
+						岩山
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="草原">
+						<span class="checkmark"></span>
+						草原
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="神殿">
+						<span class="checkmark"></span>
+						神殿
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="山">
+						<span class="checkmark"></span>
+						山
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-battlefield-type" value="陽光照射">
+						<span class="checkmark"></span>
+						<span class="flex">
+							<img class="battlefield-logo" src="images/battlefield/sunlight.webp" />
+							陽光照射
+						</span>
+					</label>
+					<div class="right">
+						<a class="btn setbtn" id="rank-battlefield-setbtn">全選</a>
+						<a class="btn resetbtn" id="rank-battlefield-resetbtn">取消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+
+	<!--Servant Section-->
+	<div class="info" id="rank-servant-info">
+		<div class="setup" id="rank-servant-setup">
+			<div class="row">
+				<div class="element-50 flex">
+					<label class="switch">
+						<input type="checkbox" id="rank-use-inventory" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-inventory-label">使用目前存檔</span>
+					<label class="switch">
+						<input type="checkbox" id="rank-use-strict-mode">
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide" id="rank-use-strict-mode-label">無視有機率發動之效果</span>
+				</div>
+			</div>
+			<div class="setup-toggle" id="assign-progress-toggle">
+				<label for="rank-release-selection" class="labeltag highlight" id="rank-release-selection-label">從者實裝進度</label>
+				<select class="broad narrow-right" id="rank-release-selection">
+					<option value="59">初始從者</option>
+				</select>
+			</div>
+			<div class="setup-toggle" id="use-inventory-setup-toggle">
+				<div class="row">
+					<label class="switch">
+						<input type="checkbox" id="rank-use-saved-data" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-saved-data-label">套用存檔之從者資料</span>
+					<label class="switch">
+						<input type="checkbox" id="rank-use-saved-teammate" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-saved-teammate-label">套用存檔之固定隊友</span>
+					<label class="switch">
+						<input type="checkbox" id="rank-use-saved-ce" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-saved-ce-label">套用存檔之固定禮裝</span>
+					<label class="switch">
+						<input type="checkbox" id="rank-use-saved-master" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-saved-master-label">套用存檔之固定魔術禮裝</span>
+				</div>
+			</div>
+			<div class="setup-toggle under inner" id="assign-data-toggle">
+				<div class="row underborder">
+					<div class="element-20">
+						<label for="rank-servant-lv" class="label">等級</label>
+						<select class="slim" id="rank-servant-lv">
+							<option value="0">預設</option>
+							<option value="100">100</option>
+							<option value="99">99</option>
+							<option value="98">98</option>
+							<option value="97">97</option>
+							<option value="96">96</option>
+							<option value="95">95</option>
+							<option value="94">94</option>
+							<option value="93">93</option>
+							<option value="92">92</option>
+							<option value="91">91</option>
+							<option value="90">90</option>
+							<option value="89">89</option>
+							<option value="88">88</option>
+							<option value="87">87</option>
+							<option value="86">86</option>
+							<option value="85">85</option>
+							<option value="84">84</option>
+							<option value="83">83</option>
+							<option value="82">82</option>
+							<option value="81">81</option>
+							<option value="80">80</option>
+							<option value="79">89</option>
+							<option value="78">88</option>
+							<option value="77">77</option>
+							<option value="76">76</option>
+							<option value="75">75</option>
+							<option value="74">74</option>
+							<option value="73">73</option>
+							<option value="72">72</option>
+							<option value="71">71</option>
+							<option value="70">70</option>
+							<option value="69">69</option>
+							<option value="68">68</option>
+							<option value="67">67</option>
+							<option value="66">66</option>
+							<option value="65">65</option>
+							<option value="64">64</option>
+							<option value="63">63</option>
+							<option value="62">62</option>
+							<option value="61">61</option>
+							<option value="60">60</option>
+							<option value="59">59</option>
+							<option value="58">58</option>
+							<option value="57">57</option>
+							<option value="56">56</option>
+							<option value="55">55</option>
+							<option value="54">54</option>
+							<option value="53">53</option>
+							<option value="52">52</option>
+							<option value="51">51</option>
+							<option value="50">50</option>
+							<option value="49">49</option>
+							<option value="48">48</option>
+							<option value="47">47</option>
+							<option value="46">46</option>
+							<option value="45">45</option>
+							<option value="44">44</option>
+							<option value="43">43</option>
+							<option value="42">42</option>
+							<option value="41">41</option>
+							<option value="40">40</option>
+							<option value="39">39</option>
+							<option value="38">38</option>
+							<option value="37">37</option>
+							<option value="36">36</option>
+							<option value="35">35</option>
+							<option value="34">34</option>
+							<option value="33">33</option>
+							<option value="32">32</option>
+							<option value="31">31</option>
+							<option value="30">30</option>
+							<option value="29">29</option>
+							<option value="28">28</option>
+							<option value="27">27</option>
+							<option value="26">26</option>
+							<option value="25">25</option>
+							<option value="24">24</option>
+							<option value="23">23</option>
+							<option value="22">22</option>
+							<option value="21">21</option>
+							<option value="20">20</option>
+							<option value="19">19</option>
+							<option value="18">18</option>
+							<option value="17">17</option>
+							<option value="16">16</option>
+							<option value="15">15</option>
+							<option value="14">14</option>
+							<option value="13">13</option>
+							<option value="12">12</option>
+							<option value="11">11</option>
+							<option value="10">10</option>
+							<option value="9">9</option>
+							<option value="8">8</option>
+							<option value="7">7</option>
+							<option value="6">6</option>
+							<option value="5">5</option>
+							<option value="4">4</option>
+							<option value="3">3</option>
+							<option value="2">2</option>
+							<option value="1">1</option>
+						</select>
+					</div>
+					<div class="element-20">
+						<label for="rank-servant-statup" class="label">芙芙(ATK)</label>
+						<input type="number" class="narrow" id="rank-servant-statup" value="0" min="0" max="2000">
+					</div>
+					<div class="element-20">
+						<label for="rank-servant-npoc" class="label">寶具OC(%)</label>
+						<select class="slim update-trigger" id="rank-servant-npoc">
+							<option value="1">100</option>
+							<option value="2">200</option>
+							<option value="3">300</option>
+							<option value="4">400</option>
+							<option value="5">500</option>
+						</select>
+					</div>
+					<div class="element-20">
+						<label for="rank-servant-hp" class="label">剩餘HP(%)</label>
+						<input type="number" class="narrow" id="rank-servant-hp" value="100" min="0" max="100" step="0.00001">
+					</div>
+					<div class="element-20">
+						<label for="rank-servant-skill-lv" class="label">技能等級</label>
+						<select class="tight" id="rank-servant-skill-lv">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="setup-toggle" id="assign-npLV-toggle">
+				<table>
+					<tbody>
+						<tr>
+							<th>寶具等級</th>
+							<th>－</th>
+							<th>★</th>
+							<th>★★</th>
+							<th>★★★</th>
+							<th>★★★★</th>
+							<th>★★★★★</th>
+						</tr>
+						<tr>
+							<td>常駐</td>
+							<td id="常駐-0"></td>
+							<td id="常駐-1"></td>
+							<td id="常駐-2"></td>
+							<td id="常駐-3">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="常駐-4">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="常駐-5">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>劇情池限定</td>
+							<td id="劇情池限定-0"></td>
+							<td id="劇情池限定-1"></td>
+							<td id="劇情池限定-2"></td>
+							<td id="劇情池限定-3">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="劇情池限定-4">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="劇情池限定-5">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>友情池限定</td>
+							<td id="友情池限定-0">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="友情池限定-1">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="友情池限定-2">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="友情池限定-3"></td>
+							<td id="友情池限定-4"></td>
+							<td id="友情池限定-5"></td>
+						</tr>
+						<tr>
+							<td>期間限定</td>
+							<td id="期間限定-0"></td>
+							<td id="期間限定-1"></td>
+							<td id="期間限定-2"></td>
+							<td id="期間限定-3">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="期間限定-4">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="期間限定-5">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>活動</td>
+							<td id="活動-0"></td>
+							<td id="活動-1">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="活動-2"></td>
+							<td id="活動-3"></td>
+							<td id="活動-4">
+								<select class="tight">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td id="活動-5"></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row under">
+					<label for="rank-progress-selection" class="labeltag highlight" id="rank-progress-selection-label">強化進度</label>
+					<select class="broad narrow-right" id="rank-progress-selection"></select>
+				</div>
+			</div>
+			<div class="setup-toggle underborder" id="assign-by-color-toggle">
+				<div class="row">
+					<label class="switch">
+						<input type="checkbox" id="rank-use-universal-buff" checked>
+						<span class="slider"></span>
+					</label>
+					<span class="labeltag space-right-wide highlight" id="rank-use-universal-buff-label">Buff設定不劃分寶具卡色</span>
+					<div class="setup-toggle" id="assign-current-color-toggle">
+						<label for="rank-current-color" class="label">目前寶具卡色</label>
+						<select class="tight" id="rank-current-color">
+							<option value="Buster">Buster</option>
+							<option value="Arts">Arts</option>
+							<option value="Quick">Quick</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="setup-toggle underborder" id="assign-buff-toggle">
+				<div class="row inner under">
+					<a class="btn actionbtn supportbtn" data-value="孔明">加上孔明buff</a>
+					<a class="btn actionbtn supportbtn" data-value="梅林">加上梅林buff</a>
+					<a class="btn actionbtn supportbtn" data-value="玉藻前">加上玉藻前buff</a>
+					<a class="btn actionbtn supportbtn" data-value="斯卡蒂">加上斯卡蒂buff</a>
+					<div class="right">
+						<a class="btn resetbtn" id="rank-buff-resetbtn">清除</a>
+					</div>
+				</div>
+				<div class="row center no-wrap">
+					<div class="element-30">
+						<label for="rank-atk-buff" class="labeltag">攻擊力提升/敵方防禦力下降(%)</label>
+						<input type="number" class="narrow update-trigger" id="rank-atk-buff" value="0" min="0" step="0.1">
+					</div>
+					<div class="element-30">
+						<label for="rank-add-atk" class="labeltag">傷害附加</label>
+						<input type="number" class="narrow update-trigger" id="rank-add-atk" value="0" min="0">
+					</div>
+					<div class="element-30">
+						<label for="rank-np-buff" class="labeltag">寶具威力提升/特攻(%)</label>
+						<input type="number" class="narrow update-trigger" id="rank-np-buff" value="0" min="0" step="0.1">
+					</div>
+				</div>
+				<div class="row center no-wrap">
+					<div class="element-30">
+						<label for="rank-Buster-buff" class="labeltag">Buster性能(%)</label>
+						<input type="number" class="narrow update-trigger" id="rank-Buster-buff" value="0" min="0" step="0.1">
+					</div>
+					<div class="element-30">
+						<label for="rank-Arts-buff" class="labeltag">Arts性能(%)</label>
+						<input type="number" class="narrow update-trigger" id="rank-Arts-buff" value="0" min="0" step="0.1">
+					</div>
+					<div class="element-30">
+						<label for="rank-Quick-buff" class="labeltag">Quick性能(%)</label>
+						<input type="number" class="narrow update-trigger" id="rank-Quick-buff" value="0" min="0" step="0.1">
+					</div>
+				</div>
+			</div>
+			<div class="setup-toggle underborder" id="assign-ce-toggle">
+				<div class="row under">
+					<a class="btn modalbtn" id="rank-ce-modalbtn">選擇禮裝</a>
+					<a class="btn resetbtn" id="rank-ce-resetbtn">不使用禮裝</a>
+				</div>
+				<div class="row under">
+					<div class="element-30 flex">
+						<img class="ce-profile-img" id="rank-ce-img" src="images/bg_logo.webp" />
+						<span id="rank-ce-name">未選定禮裝</span>
+					</div>
+					<div class="element-10 flex">
+						<label class="switch">
+							<input type="checkbox" class="update-trigger" id="rank-ce-max" disabled />
+							<span class="slider"></span>
+						</label>
+						<span class="label">滿破</span>
+					</div>
+					<div class="element-10">
+						<label for="rank-ce-lv" class="label">等級</label>
+						<select class="alim" id="rank-ce-lv" disabled>
+							<option value="0">預設</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+							<option value="32">32</option>
+							<option value="33">33</option>
+							<option value="34">34</option>
+							<option value="35">35</option>
+							<option value="36">36</option>
+							<option value="37">37</option>
+							<option value="38">38</option>
+							<option value="39">39</option>
+							<option value="40">40</option>
+							<option value="41">41</option>
+							<option value="42">42</option>
+							<option value="43">43</option>
+							<option value="44">44</option>
+							<option value="45">45</option>
+							<option value="46">46</option>
+							<option value="47">47</option>
+							<option value="48">48</option>
+							<option value="49">49</option>
+							<option value="50">50</option>
+							<option value="51">51</option>
+							<option value="52">52</option>
+							<option value="53">53</option>
+							<option value="54">54</option>
+							<option value="55">55</option>
+							<option value="56">56</option>
+							<option value="57">57</option>
+							<option value="58">58</option>
+							<option value="59">59</option>
+							<option value="60">60</option>
+							<option value="61">61</option>
+							<option value="62">62</option>
+							<option value="63">63</option>
+							<option value="64">64</option>
+							<option value="65">65</option>
+							<option value="66">66</option>
+							<option value="67">67</option>
+							<option value="68">68</option>
+							<option value="69">69</option>
+							<option value="70">70</option>
+							<option value="71">71</option>
+							<option value="72">72</option>
+							<option value="73">73</option>
+							<option value="74">74</option>
+							<option value="75">75</option>
+							<option value="76">76</option>
+							<option value="77">77</option>
+							<option value="78">88</option>
+							<option value="79">89</option>
+							<option value="80">80</option>
+							<option value="81">81</option>
+							<option value="82">82</option>
+							<option value="83">83</option>
+							<option value="84">84</option>
+							<option value="85">85</option>
+							<option value="86">86</option>
+							<option value="87">87</option>
+							<option value="88">88</option>
+							<option value="89">89</option>
+							<option value="90">90</option>
+							<option value="91">91</option>
+							<option value="92">92</option>
+							<option value="93">93</option>
+							<option value="94">94</option>
+							<option value="95">95</option>
+							<option value="96">96</option>
+							<option value="97">97</option>
+							<option value="98">98</option>
+							<option value="99">99</option>
+							<option value="100">100</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="setup-toggle underborder" id="assign-master-toggle">
+				<div class="row">
+					<div class="element-20">
+						<label for="rank-master-selection" class="labeltag" id="rank-master-selection-label">魔術禮裝</label>
+						<select class="broad narrow-right" id="rank-master-selection">
+							<option value="不使用魔術禮裝">不使用魔術禮裝</option>
+						</select>
+					</div>
+					<div class="element-20">
+						<label for="rank-master-lv" class="label">等級</label>
+						<select class="tight" id="rank-master-lv" disabled>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+
+	<!--Result Section-->
+	<div class="row center">
+		<a class="btn calcbtn" id="rank-calcbtn">計算</a>
+	</div>
+	<br/>
+	<div id="rank-result">
+		<div class="rank-header" id="rank-result-header">
+			<div class="row center rank-filter-header">
+				篩選
+			</div>
+			<div class="row center inner">
+				<img class="class-logo rank-class" title="Saber" src="images/class/Saber.webp" />
+				<img class="class-logo rank-class" title="Archer" src="images/class/Archer.webp" />
+				<img class="class-logo rank-class" title="Lancer" src="images/class/Lancer.webp" />
+				<img class="class-logo rank-class" title="Rider" src="images/class/Rider.webp" />
+				<img class="class-logo rank-class" title="Caster" src="images/class/Caster.webp" />
+				<img class="class-logo rank-class" title="Assassin" src="images/class/Assassin.webp" />
+				<img class="class-logo rank-class" title="Berserker" src="images/class/Berserker.webp" />
+				<img class="class-logo rank-class" title="Ruler" src="images/class/Ruler.webp" />
+				<img class="class-logo rank-class" title="Avenger" src="images/class/Avenger.webp" />
+				<img class="class-logo rank-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+				<img class="class-logo rank-class" title="Alterego" src="images/class/Alterego.webp" />
+				<img class="class-logo rank-class" title="Foreigner" src="images/class/Foreigner.webp" />
+				<a class="btn setbtn" id="rank-class-setbtn">全選</a>
+				<a class="btn resetbtn" id="rank-class-resetbtn">取消</a>
+			</div>
+			<div class="row center inner">
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="0" checked>
+					<span class="checkmark"></span>
+					<span class="star">－</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="1" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="2" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="3" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="4" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★</span>
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-star" value="5" checked>
+					<span class="checkmark star-checkmark"></span>
+					<span class="star">★★★★★</span>
+				</label>
+				<a class="btn setbtn" id="rank-star-setbtn">全選</a>
+				<a class="btn resetbtn" id="rank-star-resetbtn">取消</a>
+			</div>
+			<div class="row center">
+				<span class="filtertag">分類</span>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-type" value="常駐" checked>
+					<span class="checkmark"></span>
+					常駐
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-type" value="劇情池限定" checked>
+					<span class="checkmark"></span>
+					劇情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-type" value="友情池限定" checked>
+					<span class="checkmark"></span>
+					友情池限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-type" value="期間限定" checked>
+					<span class="checkmark"></span>
+					期間限定
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-type" value="活動" checked>
+					<span class="checkmark"></span>
+					活動
+				</label>
+				<a class="btn setbtn" id="rank-type-setbtn">全選</a>
+				<a class="btn resetbtn" id="rank-type-resetbtn">取消</a>
+			</div>
+			<div class="row justify-even">
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具卡色</span>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-color" value=" Buster " checked>
+						<span class="checkmark"></span>
+						Buster
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-color" value="Arts" checked>
+						<span class="checkmark"></span>
+						Arts
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-color" value="Quick" checked>
+						<span class="checkmark"></span>
+						Quick
+					</label>
+					<a class="btn setbtn" id="rank-color-setbtn">全選</a>
+					<a class="btn resetbtn" id="rank-color-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具類別</span>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-range" value="全體" checked>
+						<span class="checkmark"></span>
+						全體
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-range" value="單體" checked>
+						<span class="checkmark"></span>
+						單體
+					</label>
+					<a class="btn setbtn" id="rank-range-setbtn">全選</a>
+					<a class="btn resetbtn" id="rank-range-resetbtn">取消</a>
+				</div>
+			</div>
+			<div class="row center inner">
+				<span class="filtertag">特攻</span>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-ed" value="true" checked>
+					<span class="checkmark"></span>
+					已觸發特攻
+				</label>
+				<label class="checkbox">
+					<input type="checkbox" class="rank-ed" value="false" checked>
+					<span class="checkmark"></span>
+					沒有/未觸發特攻
+				</label>
+				<a class="btn setbtn" id="rank-ed-setbtn">全選</a>
+				<a class="btn resetbtn" id="rank-ed-resetbtn">取消</a>
+			</div>
+			<div class="row center">
+				<a class="btn filterbtn" id="rank-filterbtn">套用</a>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="right">
+				<a class="btn resetbtn" id="rank-result-resetbtn">清除結果</a>
+			</div>
+		</div>
+		<br/>
+		<div id="rank-result-section">
+			<div class="table-container">
+				<table class="enemy-table" id="rank-table">
+					<tbody>
+						<tr>
+							<th>排名</th>
+							<th>從者</th>
+							<th>職階</th>
+							<th>等級</th>
+							<th>ATK</th>
+							<th>寶具</th>
+							<th>類別</th>
+							<th>倍率(%)</th>
+							<th>寶具特攻(%)</th>
+							<th>寶具威力(%)</th>
+							<th>指令卡性能(%)</th>
+							<th>攻擊力(%)</th>
+							<th>平均傷害</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!--Common Enemy Modal-->
+	<div class="modal" id="common-enemy-modal">
+		<div class="modal-box" id="common-enemy-modal-box">
+			<div class="modal-header">
+				<div class="row center modal-filter-header">
+					篩選
+				</div>
+				<div class="row">
+					<div class="right">
+						<a class="btn resetbtn" id="common-enemy-all-resetbtn">重設條件</a>
+					</div>
+				</div>
+				<div class="row center inner">
+					<img class="class-logo common-enemy-class" title="Saber" src="images/class/Saber.webp" />
+					<img class="class-logo common-enemy-class" title="Archer" src="images/class/Archer.webp" />
+					<img class="class-logo common-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
+					<img class="class-logo common-enemy-class" title="Rider" src="images/class/Rider.webp" />
+					<img class="class-logo common-enemy-class" title="Caster" src="images/class/Caster.webp" />
+					<img class="class-logo common-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
+					<img class="class-logo common-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
+					<img class="class-logo common-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
+					<img class="class-logo common-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
+					<img class="class-logo common-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
+					<img class="class-logo common-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+					<img class="class-logo common-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
+					<img class="class-logo common-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
+					<img class="class-logo common-enemy-class" title="Beast I" src="images/class/Beast I.webp" />
+					<img class="class-logo common-enemy-class" title="Beast II" src="images/class/Beast II.webp" />
+					<img class="class-logo common-enemy-class" title="Beast III／L" src="images/class/Beast III／L.webp" />
+					<img class="class-logo common-enemy-class" title="Beast III／R" src="images/class/Beast III／R.webp" />
+					<img class="class-logo common-enemy-class" title="All" src="images/class/All.webp" />
+					<a class="btn setbtn" id="common-enemy-class-setbtn">全選</a>
+					<a class="btn resetbtn" id="common-enemy-class-resetbtn">取消</a>
+				</div>
+				<div class="row justify-even inner">
+					<div class="element-50 flex center">
+						<span class="filtertag">出現時序</span>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-timeline" value="第一部" checked>
+							<span class="checkmark"></span>
+							第一部
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-timeline" value="亞種特異點" checked>
+							<span class="checkmark"></span>
+							亞種特異點
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-timeline" value="第二部" checked>
+							<span class="checkmark"></span>
+							第二部
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-timeline" value="活動限定" checked>
+							<span class="checkmark"></span>
+							活動限定
+						</label>
+						<a class="btn setbtn" id="common-enemy-timeline-setbtn">全選</a>
+						<a class="btn resetbtn" id="common-enemy-timeline-resetbtn">取消</a>
+					</div>
+					<div class="element-50 flex center">
+						<span class="filtertag">分類</span>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-type" value="小怪" checked>
+							<span class="checkmark"></span>
+							小怪
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-type" value="頭目" checked>
+							<span class="checkmark"></span>
+							頭目
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-type" value="活動亞種 (小怪)" checked>
+							<span class="checkmark"></span>
+							活動亞種 (小怪)
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-type" value="活動亞種 (頭目)" checked>
+							<span class="checkmark"></span>
+							活動亞種 (頭目)
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="common-enemy-type" value="特殊" checked>
+							<span class="checkmark"></span>
+							特殊
+						</label>
+						<a class="btn setbtn" id="common-enemy-type-setbtn">全選</a>
+						<a class="btn resetbtn" id="common-enemy-type-resetbtn">取消</a>
+					</div>
+				</div>
+				<div class="row center box-padding inner">
+					<div class="listlbl">
+						<span class="filtertag">種族</span>
+					</div>
+					<div class="flex list">
+						<div class="row enemy-family-heading" data-corr="cat-1">
+							人類
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-1">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="士兵" checked>
+								<span class="checkmark"></span>
+								士兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="海盜" checked>
+								<span class="checkmark"></span>
+								海盜
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="凱爾特士兵" checked>
+								<span class="checkmark"></span>
+								凱爾特士兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="亞馬遜人" checked>
+								<span class="checkmark"></span>
+								亞馬遜人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="皮克特人" checked>
+								<span class="checkmark"></span>
+								皮克特人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="肅正騎士" checked>
+								<span class="checkmark"></span>
+								肅正騎士
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="醉酒城裡人" checked>
+								<span class="checkmark"></span>
+								醉酒城裡人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="失心之人" checked>
+								<span class="checkmark"></span>
+								失心之人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="流氓" checked>
+								<span class="checkmark"></span>
+								流氓
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="雀蜂" checked>
+								<span class="checkmark"></span>
+								雀蜂
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="酷吏" checked>
+								<span class="checkmark"></span>
+								酷吏
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="殺戮獵兵" checked>
+								<span class="checkmark"></span>
+								殺戮獵兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="近衛兵" checked>
+								<span class="checkmark"></span>
+								近衛兵
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-2">
+							亞人
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-2">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="獸人" checked>
+								<span class="checkmark"></span>
+								獸人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="蛇女" checked>
+								<span class="checkmark"></span>
+								蛇女
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="半人馬" checked>
+								<span class="checkmark"></span>
+								半人馬
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="雅嘎" checked>
+								<span class="checkmark"></span>
+								雅嘎
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-3">
+							類從者
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-3">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="從者" checked>
+								<span class="checkmark"></span>
+								類從者
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="迷你信" checked>
+								<span class="checkmark"></span>
+								迷你信
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="巨大信" checked>
+								<span class="checkmark"></span>
+								巨大信
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="哈桑" checked>
+								<span class="checkmark"></span>
+								哈桑
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="瓦爾基里" checked>
+								<span class="checkmark"></span>
+								瓦爾基里
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-4">
+							死靈
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-4">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="骷髏兵" checked>
+								<span class="checkmark"></span>
+								骷髏兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="龍牙兵" checked>
+								<span class="checkmark"></span>
+								龍牙兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="殭屍" checked>
+								<span class="checkmark"></span>
+								殭屍
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="屍人" checked>
+								<span class="checkmark"></span>
+								屍人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="鬼魂" checked>
+								<span class="checkmark"></span>
+								鬼魂
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="七人禦佐姬" checked>
+								<span class="checkmark"></span>
+								七人禦佐姬
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="巨大鬼魂" checked>
+								<span class="checkmark"></span>
+								巨大鬼魂
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="黑武者" checked>
+								<span class="checkmark"></span>
+								黑武者
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="食屍鬼" checked>
+								<span class="checkmark"></span>
+								食屍鬼
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-5">
+							惡魔
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-5">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="惡魔" checked>
+								<span class="checkmark"></span>
+								惡魔
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="凝視者" checked>
+								<span class="checkmark"></span>
+								凝視者
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-6">
+							鬼
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-6">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="鬼" checked>
+								<span class="checkmark"></span>
+								鬼
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="小鬼" checked>
+								<span class="checkmark"></span>
+								小鬼
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="大鬼" checked>
+								<span class="checkmark"></span>
+								大鬼
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-7">
+							無機物
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-7">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="門" checked>
+								<span class="checkmark"></span>
+								門
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="手" checked>
+								<span class="checkmark"></span>
+								手
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="雷石" checked>
+								<span class="checkmark"></span>
+								雷石
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-8">
+							人造物
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-8">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="魔偶" checked>
+								<span class="checkmark"></span>
+								魔偶
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="人工生命體" checked>
+								<span class="checkmark"></span>
+								人工生命體
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="咒語書" checked>
+								<span class="checkmark"></span>
+								咒語書
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="魔法杖" checked>
+								<span class="checkmark"></span>
+								魔法杖
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="女官" checked>
+								<span class="checkmark"></span>
+								女官
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-9">
+							機械
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-9">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="自動人偶" checked>
+								<span class="checkmark"></span>
+								自動人偶
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="混沌機械兵" checked>
+								<span class="checkmark"></span>
+								混沌機械兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="機械化步兵" checked>
+								<span class="checkmark"></span>
+								機械化步兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="自動防衛裝置" checked>
+								<span class="checkmark"></span>
+								自動防衛裝置
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="英靈兵" checked>
+								<span class="checkmark"></span>
+								英靈兵
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="多多益善號" checked>
+								<span class="checkmark"></span>
+								多多益善號
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-10">
+							野獸
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-10">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="翅刃蟲" checked>
+								<span class="checkmark"></span>
+								翅刃蟲
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="寄居蟹" checked>
+								<span class="checkmark"></span>
+								寄居蟹
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="魔豬" checked>
+								<span class="checkmark"></span>
+								魔豬
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="巨大魔豬" checked>
+								<span class="checkmark"></span>
+								巨大魔豬
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="烏利迪姆" checked>
+								<span class="checkmark"></span>
+								烏利迪姆
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="烏伽爾" checked>
+								<span class="checkmark"></span>
+								烏伽爾
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="斬首雞" checked>
+								<span class="checkmark"></span>
+								斬首雞
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="灰狼" checked>
+								<span class="checkmark"></span>
+								灰狼
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="魔猿" checked>
+								<span class="checkmark"></span>
+								魔猿
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-11">
+							龍
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-11">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="雙足飛龍" checked>
+								<span class="checkmark"></span>
+								雙足飛龍
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="龍" checked>
+								<span class="checkmark"></span>
+								龍
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="穆修胡休" checked>
+								<span class="checkmark"></span>
+								穆修胡休
+							</label>
+						</div>
+						<div class="row enemy-family-heading" data-corr="cat-12">
+							幻獸
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-12">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="奇美拉" checked>
+								<span class="checkmark"></span>
+								奇美拉
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="海魔" checked>
+								<span class="checkmark"></span>
+								海魔
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="守護者" checked>
+								<span class="checkmark"></span>
+								守護者
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="雙角獸" checked>
+								<span class="checkmark"></span>
+								雙角獸
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="噬魂者" checked>
+								<span class="checkmark"></span>
+								噬魂者
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="斯芬克斯" checked>
+								<span class="checkmark"></span>
+								斯芬克斯
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="伊夫利塔" checked>
+								<span class="checkmark"></span>
+								伊夫利塔
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="許德拉" checked>
+								<span class="checkmark"></span>
+								許德拉
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="夏塔克鳥" checked>
+								<span class="checkmark"></span>
+								夏塔克鳥
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="鵺" checked>
+								<span class="checkmark"></span>
+								鵺
+							</label>
+						</div>
+						<div class="row enemy-family-heading enemy-family-heading-last" data-corr="cat-13">
+							其他
+							<span class="right">▼</span>
+						</div>
+						<div class="row enemy-family-category" data-corr="cat-13">
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="獸" checked>
+								<span class="checkmark"></span>
+								獸
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="拉赫穆" checked>
+								<span class="checkmark"></span>
+								拉赫穆
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="魔神" checked>
+								<span class="checkmark"></span>
+								魔神
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="巨人" checked>
+								<span class="checkmark"></span>
+								巨人
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="空想樹" checked>
+								<span class="checkmark"></span>
+								空想樹
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="common-enemy-race" value="其他" checked>
+								<span class="checkmark"></span>
+								其他
+							</label>
+						</div>
+						<div class="row center listend under">
+							<a class="btn setbtn" id="common-enemy-race-setbtn">全選</a>
+							<a class="btn resetbtn" id="common-enemy-race-resetbtn">取消</a>
+						</div>
+					</div>
+				</div>
+				<div class="row center">
+					<a class="btn filterbtn" id="common-enemy-filterbtn">套用</a>
+				</div>
+			</div>
+			<div class="modal-content" id="common-enemy-img">
+			</div>
+		</div>
+	</div>
+
+	<!--Servant Enemy Modal-->
+	<div class="modal" id="servant-enemy-modal">
+		<div class="modal-box" id="servant-enemy-modal-box">
+			<div class="modal-header">
+				<div class="row center modal-filter-header">
+					篩選
+				</div>
+				<div class="row">
+					<div class="right">
+						<a class="btn resetbtn" id="servant-enemy-all-resetbtn">重設條件</a>
+					</div>
+				</div>
+				<div class="row center inner">
+					<img class="class-logo servant-enemy-class" title="Saber" src="images/class/Saber.webp" />
+					<img class="class-logo servant-enemy-class" title="Archer" src="images/class/Archer.webp" />
+					<img class="class-logo servant-enemy-class" title="Lancer" src="images/class/Lancer.webp" />
+					<img class="class-logo servant-enemy-class" title="Rider" src="images/class/Rider.webp" />
+					<img class="class-logo servant-enemy-class" title="Caster" src="images/class/Caster.webp" />
+					<img class="class-logo servant-enemy-class" title="Assassin" src="images/class/Assassin.webp" />
+					<img class="class-logo servant-enemy-class" title="Berserker" src="images/class/Berserker.webp" />
+					<img class="class-logo servant-enemy-class" title="Shielder" src="images/class/Shielder.webp" />
+					<img class="class-logo servant-enemy-class" title="Ruler" src="images/class/Ruler.webp" />
+					<img class="class-logo servant-enemy-class" title="Avenger" src="images/class/Avenger.webp" />
+					<img class="class-logo servant-enemy-class" title="Mooncancer" src="images/class/Mooncancer.webp" />
+					<img class="class-logo servant-enemy-class" title="Alterego" src="images/class/Alterego.webp" />
+					<img class="class-logo servant-enemy-class" title="Foreigner" src="images/class/Foreigner.webp" />
+					<a class="btn setbtn" id="servant-enemy-class-setbtn">全選</a>
+					<a class="btn resetbtn" id="servant-enemy-class-resetbtn">取消</a>
+				</div>
+				<div class="row center inner">
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="0" checked>
+						<span class="checkmark"></span>
+						<span class="star">－</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="1" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="2" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="3" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="4" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="servant-enemy-star" value="5" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★★★</span>
+					</label>
+					<a class="btn setbtn" id="servant-enemy-star-setbtn">全選</a>
+					<a class="btn resetbtn" id="servant-enemy-star-resetbtn">取消</a>
+				</div>
+				<div class="row center">
+					<a class="btn filterbtn" id="servant-enemy-filterbtn">套用</a>
+				</div>
+			</div>
+			<div class="modal-content" id="servant-enemy-img">
+			</div>
+		</div>
+	</div>
+
+	<!--CE Modal-->
+	<div class="modal" id="ce-modal">
+		<div class="modal-box" id="ce-modal-box">
+			<div class="modal-header">
+				<div class="row center modal-filter-header">
+					篩選
+				</div>
+				<div class="row">
+					<div class="right">
+						<a class="btn resetbtn" id="ce-all-resetbtn">重設條件</a>
+					</div>
+				</div>
+				<div class="row center inner">
+					<label class="checkbox">
+						<input type="checkbox" class="ce-star" value="3" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-star" value="4" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★★</span>
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-star" value="5" checked>
+						<span class="checkmark star-checkmark"></span>
+						<span class="star">★★★★★</span>
+					</label>
+					<a class="btn setbtn" id="ce-star-setbtn">全選</a>
+					<a class="btn resetbtn" id="ce-star-resetbtn">取消</a>
+				</div>
+				<div class="row center">
+					<span class="filtertag">分類</span>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="常駐" checked>
+						<span class="checkmark"></span>
+						常駐
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="常駐/活動" checked>
+						<span class="checkmark"></span>
+						常駐/活動
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="活動限定" checked>
+						<span class="checkmark"></span>
+						活動限定
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="期間限定" checked>
+						<span class="checkmark"></span>
+						期間限定
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="活動兌換" checked>
+						<span class="checkmark"></span>
+						活動兌換
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="羈絆禮裝" checked>
+						<span class="checkmark"></span>
+						羈絆禮裝
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="ce-type" value="限時兌換" checked>
+						<span class="checkmark"></span>
+						限時兌換
+					</label>
+					<a class="btn setbtn" id="ce-type-setbtn">全選</a>
+					<a class="btn resetbtn" id="ce-type-resetbtn">取消</a>
+				</div>
+				<div class="row center inner">
+					<div class="listlbl indent-4">
+						<span class="filtertag">禮裝效果</span>
+					</div>
+					<div class="flex list">
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="攻擊力" checked>
+							<span class="checkmark"></span>
+							攻擊力
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="Buster性能" checked>
+							<span class="checkmark"></span>
+							Buster性能
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="Arts性能" checked>
+							<span class="checkmark"></span>
+							Arts性能
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="Quick性能" checked>
+							<span class="checkmark"></span>
+							Quick性能
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="寶具威力" checked>
+							<span class="checkmark"></span>
+							寶具威力
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="起始NP" checked>
+							<span class="checkmark"></span>
+							起始NP
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="每回合NP" checked>
+							<span class="checkmark"></span>
+							每回合NP
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="NP獲得量" checked>
+							<span class="checkmark"></span>
+							NP獲得量
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="獲得爆擊星" checked>
+							<span class="checkmark"></span>
+							獲得爆擊星
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="爆擊星掉落率" checked>
+							<span class="checkmark"></span>
+							爆擊星掉落率
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="爆擊威力" checked>
+							<span class="checkmark"></span>
+							爆擊威力
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="爆擊星集中度" checked>
+							<span class="checkmark"></span>
+							爆擊星集中度
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="特攻" checked>
+							<span class="checkmark"></span>
+							特攻
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="傷害附加" checked>
+							<span class="checkmark"></span>
+							傷害附加
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="防禦力" checked>
+							<span class="checkmark"></span>
+							防禦力
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="特防" checked>
+							<span class="checkmark"></span>
+							特防
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="傷害減免" checked>
+							<span class="checkmark"></span>
+							傷害減免
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="迴避" checked>
+							<span class="checkmark"></span>
+							迴避
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="無敵" checked>
+							<span class="checkmark"></span>
+							無敵
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="毅力" checked>
+							<span class="checkmark"></span>
+							毅力
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="必中" checked>
+							<span class="checkmark"></span>
+							必中
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="無敵貫通" checked>
+							<span class="checkmark"></span>
+							無敵貫通
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="目標集中" checked>
+							<span class="checkmark"></span>
+							目標集中
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="HP" checked>
+							<span class="checkmark"></span>
+							HP
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="狀態耐性" checked>
+							<span class="checkmark"></span>
+							狀態耐性
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="狀態無效" checked>
+							<span class="checkmark"></span>
+							狀態無效
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="狀態成功率" checked>
+							<span class="checkmark"></span>
+							狀態成功率
+						</label>
+						<label class="checkbox">
+							<input type="checkbox" class="ce-effect" value="其他" checked>
+							<span class="checkmark"></span>
+							其他
+						</label>
+						<div class="row center listend">
+							<a class="btn setbtn" id="ce-effect-setbtn">全選</a>
+							<a class="btn resetbtn" id="ce-effect-resetbtn">取消</a>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-even inner">
+					<div class="element-50 flex center">
+						<div>
+							<label class="switch">
+								<input type="checkbox" id="modal-ce-owned">
+								<span class="slider"></span>
+							</label>
+							<span class="label-simple">僅包括已有禮裝</span>
+						</div>
+					</div>
+					<div class="element-50 flex center">
+						<div>
+							<label class="switch">
+								<input type="checkbox" id="modal-ce-frequent">
+								<span class="slider"></span>
+							</label>
+							<span class="label-simple">僅包括常用禮裝</span>
+						</div>
+					</div>
+				</div>
+				<div class="row center">
+					<a class="btn filterbtn" id="ce-filterbtn">套用</a>
+				</div>
+			</div>
+			<div class="modal-content" id="ce-img">
+			</div>
+		</div>
+	</div>
+
+
+<div class="counter" id="calc-counter"></div>
 </body>
 </html>

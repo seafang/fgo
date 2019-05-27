@@ -12,7 +12,7 @@ body {
 	font-family: "Noto Sans TC", sans-serif;
 	font-weight: 300;
 }
-footer {			
+footer {
 	background-color: #5D5D5D;
 	padding: 10px 10px;
 	text-align: left;
@@ -136,40 +136,6 @@ section, iframe {
 	padding: 4px;
 	border: 1px solid lightgray;
 }
-#enemy1, #enemy2, #enemy3 {
-	display: none;
-}
-.enemy-detail {
-	border-left: 8px solid;
-	padding: 2px 4px;
-}
-#enemy1-detail {
-	border-left-color: orange;
-}
-#enemy2-detail {
-	border-left-color: royalblue;
-}
-#enemy3-detail {
-	border-left-color: #d20000;
-}
-.servant-skill-detail, .master-skill-detail, .teammate-skill-detail {
-	width: 30%;
-	border: 1px solid darkgray;
-	padding: 2px;
-	margin: 5px;
-	background-color: white;
-}
-.teammate-basic-detail {
-	flex-grow: 12;
-	padding: 2px;
-}
-.teammate-ce-detail {
-	flex-grow: 8;
-	border: 1px solid darkgray;
-	padding: 2px;
-	margin: 5px;
-	background-color: lightyellow;
-}
 .result {
 	display: none;
 }
@@ -181,6 +147,9 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	width: 100%;
+}
+tr {
+	background-color: white;
 }
 tr:first-child:hover {
 	background-color: #0032c8;
@@ -224,6 +193,9 @@ td {
 	content: "";
 	display: table;
 	clear: both;
+}
+.top-row {
+	margin: 1px 0px 10px 0px;
 }
 .column {
 	padding: 1px;
@@ -283,6 +255,11 @@ td {
 .under {
 	margin-top: 10px;
 }
+.underborder {
+	border-top: 1px solid gray;
+	margin-top: 10px;
+	padding-top: 10px;
+}
 .innerwide {
 	border-bottom: 1px solid gray;
 	margin-bottom: 20px;
@@ -335,6 +312,119 @@ td {
 	display: none;
 }
 
+/* Inventory */
+.inventory-header {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 4px;
+}
+.inventory-filter-header {
+	background-color: #ffca4a;
+	color: white;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 0;
+	margin-bottom: 10px;
+}
+#inventory-teammate-selection-resetbtn, #inventory-ce-servant-selection-resetbtn {
+	display: none;
+}
+
+/* calc.html */
+#enemy1, #enemy2, #enemy3 {
+	display: none;
+}
+.enemy-detail {
+	border-left: 8px solid;
+	padding: 2px 4px;
+}
+#enemy1-detail {
+	border-left-color: orange;
+}
+#enemy2-detail {
+	border-left-color: royalblue;
+}
+#enemy3-detail {
+	border-left-color: #d20000;
+}
+.servant-skill-detail, .master-skill-detail, .teammate-skill-detail {
+	width: 30%;
+	border: 1px solid darkgray;
+	padding: 2px;
+	margin: 5px;
+	background-color: white;
+}
+.teammate-basic-detail {
+	flex-grow: 12;
+	padding: 2px;
+}
+.teammate-ce-detail {
+	flex-grow: 8;
+	border: 1px solid darkgray;
+	padding: 2px;
+	margin: 5px;
+	background-color: lightyellow;
+}
+#servant-resetbtn, #servant-ce-reapplybtn, #servant-ce-resetbtn, #master-resetbtn {
+	display: none;
+}
+.teammate-reapplybtn, .teammate-ce-resetbtn, .teammate-resetbtn {
+	display: none;
+}
+#calc-result-resetbtn {
+	display: none;
+}
+#enemy1-tag {
+	border-color: orange;
+	background: #ffeece;
+}
+#enemy2-tag {
+	border-color: royalblue;
+	background-color: #d3deff;
+}
+#enemy3-tag {
+	border-color: #d20000;
+	background-color: #ffe1e1;
+}
+
+/* rank.html */
+#rank-enemy-affinity-setup, #rank-enemy-attrAffinity-setup {
+	display: none;
+}
+.setup-toggle {
+	display: none;
+}
+#use-rank-setup-toggle, #use-inventory-setup-toggle {
+	display: block;
+}
+.rank-header {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 4px;
+}
+.rank-filter-header {
+	background-color: #5ed754;
+	color: white;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 0;
+	margin-bottom: 10px;
+}
+#rank-result-header, #rank-result-section {
+	display: none;
+}
+#rank-ce-resetbtn {
+	display: none;
+}
+#rank-result {
+	display: none;
+}
+.rank-container {
+	width: 100%;
+}
+.rank-bar {
+	background-color: #ddd;
+}
 
 /* Element */
 .list label {
@@ -361,7 +451,7 @@ span.space-right-wide, .space-right-wide {
 .Buster {
 	color: Red;
 }
-.Art {
+.Arts {
 	color: Blue;
 }
 .Quick {
@@ -409,17 +499,35 @@ span.space-right-wide, .space-right-wide {
 .setbtn {
 	margin-left: 8px;
 }
-#inventory-teammate-selection-resetbtn {
-	display: none;
+.favouritebtn {
+	color: white;
+	font-size: 20px;
+	text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+	border-color: red;
+	padding: 1px 6px;
+	margin: 5px;
 }
-#servant-resetbtn, #servant-ce-reapplybtn, #servant-ce-resetbtn, #master-resetbtn {
-	display: none;
+.favouritebtn:hover {
+	color: red;
 }
-.teammate-reapplybtn, .teammate-ce-resetbtn, .teammate-resetbtn {
-	display: none;	
+.currentFavourite {
+	color: red;
 }
-#result-resetbtn {
-	display: none;
+.manualbtn {
+	background-color: #007eff;
+	color: white;
+	font-size: 20px;
+	font-weight: 500;
+	border-color: #007eff;
+	padding: 1px 6px;
+	margin: 5px;
+}
+.focus-content {
+	display: inline-block;
+}
+a:hover .focus-content {
+	transform: scale(1.4);
+	-webkit-transform: scale(1.4);
 }
 .filterbtn {
 	background-color: white;
@@ -519,18 +627,6 @@ span.space-right-wide, .space-right-wide {
 }
 .alarm {
 	background: #ffb4b4
-}
-#enemy1-tag {
-	border-color: orange;
-	background: #ffeece;
-}
-#enemy2-tag {
-	border-color: royalblue;
-	background-color: #d3deff;
-}
-#enemy3-tag {
-	border-color: #d20000;
-	background-color: #ffe1e1;
 }
 .label-simple {
 	margin-left: 5px;
@@ -692,7 +788,7 @@ input.narrow {
 	border-radius: 16px;
 	margin: 2px 0px 2px 4px;
 }
-.switch input { 
+.switch input {
 	opacity: 0;
 	width: 0;
 	height: 0;
@@ -804,22 +900,6 @@ input:checked + .slider:before {
 }
 
 
-/* Inventory */
-.inventory-header {
-	border: 1px solid black;
-	border-radius: 5px;
-	margin: 4px;
-}
-.inventory-filter-header {
-	background-color: #ffca4a;
-	color: white;
-	font-size: 14px;
-	font-weight: 500;
-	padding: 4px 0;
-	margin-bottom: 10px;
-}
-
-
 /* Modal */
 .modal {
 	display: none;
@@ -852,7 +932,7 @@ input:checked + .slider:before {
 	border-radius: 5px;
 	margin: 4px 0 10px 0;
 }
-.modal-filter-header, .inventory-teammate-header {
+.modal-filter-header, .inventory-teammate-header, .inventory-ce-header {
 	color: white;
 	font-size: 14px;
 	font-weight: 500;
@@ -862,7 +942,7 @@ input:checked + .slider:before {
 .modal-filter-header {
 	background-color: #ff4a4a;
 }
-.inventory-teammate-header {
+.inventory-teammate-header, .inventory-ce-header {
 	background-color: #4ab2ff;
 }
 .modal-header-container {
@@ -901,18 +981,25 @@ input:checked + .slider:before {
 	padding: 4px 15px;
 	border-bottom: none;
 }
+.enemy-family-heading-last {
+	border-bottom: solid;
+}
 .enemy-family-category {
 	display: none;
 }
 .modal .setbtn {
 	margin-left: 10px;
 }
-servant-enemy-modal-img, .servant-modal-img, .ce-modal-img, .teammate-modal-img, .teammate-ce-modal-img, .code-modal-img,
-.inventory-teammate-modal-img {
+.servant-enemy-modal-img, .servant-modal-img, .ce-modal-img, .teammate-modal-img,
+.teammate-ce-modal-img, .code-modal-img, .inventory-teammate-modal-img,
+.inventory-ce-modal-img, .inventory-ce-modal-servant-img,
+.inventory-master-modal-img {
 	cursor: pointer;
 }
-servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
-.teammate-modal-img:hover, .teammate-ce-modal-img:hover, .code-modal-img:hover, .inventory-teammate-modal-img:hover {
+.servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
+.teammate-modal-img:hover, .teammate-ce-modal-img:hover, .code-modal-img:hover,
+.inventory-teammate-modal-img:hover, .inventory-ce-modal-img:hover,
+.inventory-ce-modal-servant-img:hover, .inventory-master-modal-img:hover {
 	background: #8cc1ff;
 	box-shadow: 0px 0px 5px #8cc1ff;
 }
@@ -925,10 +1012,11 @@ servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
 .ce-modal-img, .teammate-ce-modal-img {
 	margin: 4px;
 }
-.inventory-teammate-modal-img, .code-modal-img {
+.inventory-teammate-modal-img, .inventory-ce-modal-img,
+.inventory-ce-modal-servant-img, .code-modal-img, .inventory-master-modal-img {
 	margin: 4px;
 }
-.inventory-teammate-modal-img {
+.inventory-teammate-modal-img, .inventory-ce-modal-servant-img, .inventory-master-modal-img {
 	filter: grayscale(100%);
 	border: 2px solid white;
 }
@@ -938,11 +1026,11 @@ servant-enemy-modal-img:hover, .servant-modal-img:hover, .ce-modal-img:hover,
 	box-shadow: inset 0 0 4px red;
 }
 @-webkit-keyframes fadeIn {
-  from {opacity: 0} 
+  from {opacity: 0}
   to {opacity: 1}
 }
 @keyframes fadeIn {
-  from {opacity: 0} 
+  from {opacity: 0}
   to {opacity: 1}
 }
 

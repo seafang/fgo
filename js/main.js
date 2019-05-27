@@ -4,22 +4,39 @@ var multiplier = JSON.parse(classBaseMultiplier);
 var attrAffinity = JSON.parse(attributeAdvantage);
 
 var common = [];
+var servantAtk = [], npBuff = [], skillBuff = [];
+var events = [];
 
-$.ajax({
-	url: "js/data/common.js",
-	success: function(data) {				// Common enemy
-		common = JSON.parse(data.replace("\\", ""));
-	}
+$(document).ready(function() {
+	$.get("js/data/common.json", function(data) {
+		common = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/servant.json", function(data) {
+		servants = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/atk.json", function(data) {
+		servantAtk = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/skill.json", function(data) {
+		skillBuff = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/np.json", function(data) {
+		npBuff = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/events.json", function(data) {
+		events = JSON.parse(data);
+	}, "text");
 });
 
-var servants = JSON.parse(servant);
 var ce = JSON.parse(craftEssence);
 var master = JSON.parse(mysticCode);
 var cc = JSON.parse(commandCode);
 
-var skillBuff = JSON.parse(servantSkillBuff);
-var npBuff = JSON.parse(servantNPBuff);
-var servantAtk = JSON.parse(servantAttack);
 var ceBuff =  JSON.parse(craftEssenceBuff);
 var ceAtk = JSON.parse(craftEssenceATK);
 var masterBuff = JSON.parse(mysticCodeBuff);
@@ -29,36 +46,36 @@ var currentSave = {};
 var bgServant = [], bgCE = [], bgMaster = [], customBuff = [];
 
 $(document).ready(function() {
-	
+
 	// Generate save list
 	generateSaveList();
-	
+
 	// Retrieve saved data and maintain in the background
 	getSave();
-	
+
 	// Open corresponding frame
 	$(".menu-button").click(function() {
-		var url = "https://seafang.github.io/fgo/" + $(this).attr("data-src") + ".html";
+		var url = $(this).attr("data-src") + ".html";
 		openFrame(url, this);
 	});
-	
+
 	$("#inventory-save").click(function() {
 		getSave();
 	});
-	
+
 	$("#create-save").click(function() {
 		saveName();
 	});
-	
+
 	$("#clear-save").click(function() {
 		clearSave();
 	});
-	
+
 	$("#to_top").click(function() {
 		toTop();
 	});
-	
-	$("#defaultFrame").click();		// Open the default iframe (calc.html)
+
+	$(".menu-button[data-src='" + favouritePage + "']").click();		// Open iframe, calc.html by default
 	$("#activeFrame").css("height", 1500);		// Set the iframe initial height
 });
 

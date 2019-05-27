@@ -1,3 +1,23 @@
+// Set favourite page
+var favouritePage;
+
+function checkFavourite() {
+	if ($(".favouritebtn").attr("data-src") == favouritePage) {
+		$(".favouritebtn").addClass("currentFavourite");
+	}
+}
+
+function setFavourite(url) {
+	favouritePage = url;
+	currentSave.favouritePage = favouritePage;
+	parent.favouritePage = favouritePage;
+	parent.currentSave = currentSave;
+	save();
+	checkFavourite();
+
+	alert("本頁面已經被設為起始頁面 \n 下次訪問本站時將直接跳轉至本頁面");
+}
+
 // Modal
 function openModal(modal) {
 	if (modal != "#servant-enemy-modal" && modal != "#common-enemy-modal") {

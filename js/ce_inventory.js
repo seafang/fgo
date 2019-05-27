@@ -1,12 +1,18 @@
 var ce = parent.ce;
 var currentSave = parent.currentSave;
 var bgCE = parent.bgCE;
+var favouritePage = parent.favouritePage;
 
 $(document).ready(function() {
 	initialCEInventoryFilter();
 	generateCEInventory();
 	loadCESave();
 	updateCounter();
+	checkFavourite();
+	$(".favouritebtn").click(function() {
+		var url = $(this).attr("data-src");
+		setFavourite(url);
+	});
 });
 
 // Update page height
@@ -21,11 +27,11 @@ function updateCounter() {
 
 // Generate CE inventory table
 let ceInventoryFilter = {
-	star: [1, 2, 3, 4, 5],
+	star: [3, 4, 5],
 	type: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
-	effect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
-		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
-		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+	effect: ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加",
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
 	frequent: [true, false],
 	owned: [true, false]
@@ -42,7 +48,7 @@ $(document).ready(function() {
 	$("#ce-inventory-star-resetbtn").click(function() {
 		ceInventoryStarNone();
 	});
-	
+
 	$(".ce-inventory-type").change(function() {
 		var type = $(this).val();
 		ceInventoryTypeChange(this, type);
@@ -53,7 +59,7 @@ $(document).ready(function() {
 	$("#ce-inventory-type-resetbtn").click(function() {
 		ceInventoryTypeNone();
 	});
-	
+
 	$(".ce-inventory-effect").change(function() {
 		var effect = $(this).val();
 		ceInventoryEffectChange(this, effect);
@@ -64,16 +70,15 @@ $(document).ready(function() {
 	$("#ce-inventory-effect-resetbtn").click(function() {
 		ceInventoryEffectNone();
 	});
-	
+
 	$("#ce-inventory-owned").change(function() {
 		ceInventoryInclusiveChange(this);
 	});
-	
-	// Designate CE as frequently used
+
 	$("#ce-inventory-frequent").change(function() {
 		ceInventoryFrequentChange(this);
 	});
-	
+
 	$("#ce-inventory-filterbtn").click(function() {
 		generateCEInventory();
 		loadCESave();
@@ -92,34 +97,28 @@ function generateCEInventory() {
 	var filteredCE = multiFilter(ce, ceInventoryFilter);
 	clearCEInventory();
 	var table = document.getElementById("ce-inventory");
-	filteredCE.forEach(function(essence) {				
-		var row = table.insertRow(-1);				
-		$(row).addClass("ce-inventory-row");				
-		$(row).attr("id", "ce-inventory-row-" + essence.id);				
+	filteredCE.forEach(function(essence) {
+		var row = table.insertRow(-1);
+		$(row).addClass("ce-inventory-row");
+		$(row).attr("id", "ce-inventory-row-" + essence.id);
 		row.insertCell(-1).innerHTML = essence.id;
-		row.insertCell(-1).innerHTML = "<img class='essence-img' src='" + essence.imgID + "' />";				
-		row.insertCell(-1).innerHTML = essence.name;								
-		var starHTML = "";				
-		switch (essence.star) {	
-			case 1:
+		row.insertCell(-1).innerHTML = "<img class='essence-img' src='" + essence.imgID + "' />";
+		row.insertCell(-1).innerHTML = essence.name;
+		var starHTML = "";
+		switch (essence.star) {
 			default:
-				starHTML = "★";		
-				break;		
-			case 2:			
-				starHTML = "★★";		
-				break;		
-			case 3:			
-				starHTML = "★★★";		
-				break;		
-			case 4:			
-				starHTML = "★★★★";		
-				break;		
-			case 5:			
-				starHTML = "★★★★★";		
-				break;				
-		}				
-		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";				
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-owned'><span class='slider'></span></label>";			
+			case 3:
+				starHTML = "★★★";
+				break;
+			case 4:
+				starHTML = "★★★★";
+				break;
+			case 5:
+				starHTML = "★★★★★";
+				break;
+		}
+		row.insertCell(-1).innerHTML = "<span class='star'>" + starHTML + "</span>";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-owned'><span class='slider'></span></label>";
 		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='ce-max' disabled><span class='slider'></span></label>";
 		if (essence.defaultMax == true) {
 			$(row).addClass("ce-default-max");
@@ -148,7 +147,7 @@ function ceInventoryStarChange(element, starNo) {
 }
 function ceInventoryStarAll() {
 	$(".ce-inventory-star").prop("checked", true);
-	ceInventoryFilter.star = [1, 2, 3, 4, 5];
+	ceInventoryFilter.star = [3, 4, 5];
 }
 function ceInventoryStarNone() {
 	$(".ce-inventory-star").prop("checked", false);
@@ -177,28 +176,28 @@ function ceInventoryTypeNone() {
 }
 
 // Change in effect filters
-function ceInventoryEffectChange(element, effectName) {		
-	var newEffect = ceInventoryFilter.effect;	
-	if ($(element).prop("checked")) {	
+function ceInventoryEffectChange(element, effectName) {
+	var newEffect = ceInventoryFilter.effect;
+	if ($(element).prop("checked")) {
 		newEffect.push(effectName);
 		ceInventoryFilter.effect = newEffect;
-	} else {	
+	} else {
 		position = newEffect.indexOf(effectName);
 		newEffect.splice(position, 1);
 		ceInventoryFilter.effect = newEffect;
-	}	
-}				
-function ceInventoryEffectAll() {		
-	$(".ce-inventory-effect").prop("checked", true);	
-	ceInventoryFilter.effect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 	
-		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
-		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+	}
+}
+function ceInventoryEffectAll() {
+	$(".ce-inventory-effect").prop("checked", true);
+	ceInventoryFilter.effect = ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加",
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
-}				
-function ceInventoryEffectNone() {		
-	$(".ce-inventory-effect").prop("checked", false);	
-	ceInventoryFilter.effect = [];	
-}		
+}
+function ceInventoryEffectNone() {
+	$(".ce-inventory-effect").prop("checked", false);
+	ceInventoryFilter.effect = [];
+}
 
 // Change in ownership criteria
 function ceInventoryInclusiveChange(element) {
@@ -214,7 +213,7 @@ function ceInventoryInclusiveReset() {
 	ceInventoryFilter.owned = [true, false];
 }
 
-// Designate as frequently used CE
+// Change in frequency criteria
 function ceInventoryFrequentChange(element) {
 	var value = $(element).is(":checked");
 	if (value == true) {
@@ -293,7 +292,7 @@ function updateCE(element) {
 	var info = {};
 	if (bgCE[0] !== undefined) {
 		var position = bgCE.findIndex(function(obj) {
-			return obj.id == rowID; 
+			return obj.id == rowID;
 		});
 		if (position !== -1) {
 			bgCE.splice(position, 1);
@@ -304,23 +303,23 @@ function updateCE(element) {
 	info.data[0] = $(row).find(".ce-owned").is(":checked");
 	info.data[1] = $(row).find(".ce-max").is(":checked");
 	var maxLV;
-	switch ($(row).find(".star").html()) {	
+	switch ($(row).find(".star").html()) {
 			case "★":
 			default:
-				maxLV = 50;		
-				break;		
-			case "★★":			
-				maxLV = 55;		
-				break;		
-			case "★★★":			
-				maxLV = 60;		
-				break;		
-			case "★★★★":			
-				maxLV = 80;		
-				break;		
-			case "★★★★★":			
-				maxLV = 100;		
-				break;				
+				maxLV = 50;
+				break;
+			case "★★":
+				maxLV = 55;
+				break;
+			case "★★★":
+				maxLV = 60;
+				break;
+			case "★★★★":
+				maxLV = 80;
+				break;
+			case "★★★★★":
+				maxLV = 100;
+				break;
 		}
 	if (Number($(row).find(".ce-inventory-lv").val()) > maxLV) {
 		$(row).find(".ce-inventory-lv").val(maxLV);
@@ -388,7 +387,7 @@ function updateCEDscrp(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var target = ce.find(function(obj) {
-		return obj.id == rowID; 
+		return obj.id == rowID;
 	});
 	if ($(element).is(":checked")) {
 		$(row).find(".ce-effect").html(target.maxEffect);
@@ -396,5 +395,3 @@ function updateCEDscrp(element) {
 		$(row).find(".ce-effect").html(target.defaultEffect);
 	}
 }
-
-

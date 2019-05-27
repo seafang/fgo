@@ -1,11 +1,17 @@
 var master = parent.master;
 var currentSave = parent.currentSave;
 var bgMaster = parent.bgMaster;
+var favouritePage = parent.favouritePage;
 
 $(document).ready(function() {
 	generateMasterInventory();		// Generate inventory table
 	loadMasterSave();		// Load saved data
 	updateCounter();
+	checkFavourite();
+	$(".favouritebtn").click(function() {
+		var url = $(this).attr("data-src");
+		setFavourite(url);
+	});
 });
 
 // Update page height
@@ -29,16 +35,16 @@ function clearMasterInventory() {
 function generateMasterInventory() {
 	clearMasterInventory();
 	var table = document.getElementById("master-inventory");
-	master.forEach(function(code) {				
-		var row = table.insertRow(-1);				
-		$(row).addClass("master-inventory-row");				
-		$(row).attr("id", "inventory-row-" + code.name);				
+	master.forEach(function(code) {
+		var row = table.insertRow(-1);
+		$(row).addClass("master-inventory-row");
+		$(row).attr("id", "inventory-row-" + code.name);
 		row.insertCell(-1).innerHTML = code.name;
-		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.imgID1 + "' />" + 
-			"<img class='master-img' src='" + code.imgID2 + "' />";								
-		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned'><span class='slider'></span></label>";			
-		row.insertCell(-1).innerHTML = "<select class='tight master-inventory-lv' disabled><option value='1'>1</option>" + 				
-			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" + 			
+		row.insertCell(-1).innerHTML = "<img class='master-img' src='" + code.imgID1 + "' />" +
+			"<img class='master-img' src='" + code.imgID2 + "' />";
+		row.insertCell(-1).innerHTML = "<label class='switch'><input type='checkbox' class='master-owned'><span class='slider'></span></label>";
+		row.insertCell(-1).innerHTML = "<select class='tight master-inventory-lv' disabled><option value='1'>1</option>" +
+			"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option><option value='6'>6</option>" +
 			"<option value='7'>7</option><option value='8'>8</option><option value='9'>9</option><option value='10'>10</option></select>";
 		row.insertCell(-1).innerHTML = "<img class='skill-logo skill1-logo dull' src='" + code.skill1ImgID + "' />";
 		row.insertCell(-1).innerHTML = "<div>" + code.skill1Dscrp + "</div>";
@@ -71,12 +77,12 @@ function loadMasterSave() {
 
 $(document).ready(function() {
 	$("#inventory-row-迦勒底").find(".master-owned").prop("disabled", true);		// 迦勒底 is owned by default
-	
+
 	// Update save on change
 	$("select").change(function() {
 		updateMaster(this);
 	});
-	
+
 	// Enable toggles on change in ownership
 	$(".master-owned").change(function() {
 		updateMasterOwnership(this);
@@ -89,22 +95,22 @@ function updateMaster(element) {
 	var row = $(element).parents("tr");
 	var rowName = $(row).find("td:first").html();
 	var info = {};
-	
+
 	// If there is an existing save for the mystic code, delete old save
 	if (bgMaster[0] !== undefined) {
 		var position = bgMaster.findIndex(function(obj) {
-			return obj.name == rowName; 
+			return obj.name == rowName;
 		});
 		if (position !== -1) {
 			bgMaster.splice(position, 1);
 		}
 	}
-	
+
 	info.name = rowName;
 	info.data = [];
 	info.data[0] = $(row).find(".master-owned").is(":checked");		// Ownership
 	info.data[1] = Number($(row).find(".master-inventory-lv").val());	// Mystic code lv
-	
+
 	// Sync with background data
 	bgMaster.push(info);
 	currentSave.master = bgMaster;

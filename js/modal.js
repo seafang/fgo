@@ -15,15 +15,15 @@ let commonEnemyFilter = {
 	"Beast I", "Beast II", "Beast III／L", "Beast III／R", "All"],
 	timeline: ["第一部", "亞種特異點", "第二部", "活動限定"],
 	type: ["小怪", "頭目", "活動亞種 (小怪)", "活動亞種 (頭目)", "特殊"],
-	race: ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人", 
-	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬", 
-	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵", 
-	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔", 
-	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體", 
-	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置", 
-	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬", 
-	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休", 
-	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉", 
+	race: ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人",
+	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬",
+	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵",
+	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔",
+	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體",
+	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置",
+	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬",
+	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休",
+	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉",
 	       "夏塔克鳥", "鵺", "巨人", "空想樹", "其他"]
 };
 
@@ -31,19 +31,22 @@ $(document).ready(function() {
 	$("#common-enemy-all-resetbtn").click(function() {
 		initialCommonEnemy();
 	});
-	
+
 	$(".enemy-family-heading").click(function() {
 		var value = $(this).attr("data-corr");
 		if ($(this).children("span.right").html() == "▼") {
 			$(this).children("span.right").html("▲");
 			$(this).css("border-bottom", "solid");
+			$(".enemy-family-category[data-corr='" + value + "']").css("display", "flex");
 		} else {
 			$(this).children("span.right").html("▼");
-			$(this).css("border-bottom", "none");
+			if (!$(this).hasClass("enemy-family-heading-last")) {
+				$(this).css("border-bottom", "none");
+			}
+			$(".enemy-family-category[data-corr='" + value + "']").hide();
 		}
-		$(".enemy-family-category[data-corr=value]").toggle();
 	});
-	
+
 	// Change in class filtering criteria
 	$(".common-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -55,7 +58,7 @@ $(document).ready(function() {
 	$("#common-enemy-class-resetbtn").click(function() {
 		commonEnemyClassNone();
 	});
-	
+
 	// Change in timeline filtering criteria
 	$(".common-enemy-timeline").click(function() {
 		var timeline = $(this).val();
@@ -67,7 +70,7 @@ $(document).ready(function() {
 	$("#common-enemy-timeline-resetbtn").click(function() {
 		commonEnemyTimelineNone();
 	});
-	
+
 	// Change in type filtering criteria
 	$(".common-enemy-type").click(function() {
 		var type = $(this).val();
@@ -79,7 +82,7 @@ $(document).ready(function() {
 	$("#common-enemy-type-resetbtn").click(function() {
 		commonEnemyTypeNone();
 	});
-	
+
 	// Change in race filtering criteria
 	$(".common-enemy-race").click(function() {
 		var race = $(this).val();
@@ -91,7 +94,7 @@ $(document).ready(function() {
 	$("#common-enemy-race-resetbtn").click(function() {
 		commonEnemyRaceNone();
 	});
-	
+
 	// Apply filter & generate new image list
 	$("#common-enemy-filterbtn").click(function() {
 		loadCommonEnemyImg();
@@ -105,7 +108,7 @@ function loadCommonEnemyImg() {
 		return enemy.name;
 	});
 	$("#common-enemy-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(commonEnemyName).each(function() {
 		imglist += "<img class='enemy-img common-enemy-modal-img' src='images/enemy/" + this +
 		".webp' title='" + this + "' />"
@@ -118,7 +121,7 @@ function loadCommonEnemyImg() {
 function commonEnemyBind() {
 	$(".common-enemy-modal-img").ready(function() {
 		$(".common-enemy-modal-img").click(function() {
-			var name = Number($(this).attr("title"));
+			var name = $(this).attr("title");
 			pickEnemy(2, name);
 		});
 	});
@@ -205,15 +208,15 @@ function commonEnemyRaceChange(element, raceName) {
 }
 function commonEnemyRaceAll() {
 	$(".common-enemy-race").prop("checked", true);
-	commonEnemyFilter.race = ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人", 
-	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬", 
-	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵", 
-	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔", 
-	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體", 
-	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置", 
-	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬", 
-	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休", 
-	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉", 
+	commonEnemyFilter.race = ["士兵", "海盜", "凱爾特士兵", "亞馬遜人", "皮克特人", "肅正騎士", "醉酒城裡人",
+	       "失心之人", "流氓", "雀蜂", "酷吏", "殺戮獵兵", "近衛兵", "獸人", "蛇女", "半人馬",
+	       "雅嘎", "從者", "哈桑", "瓦爾基里", "獸", "拉赫穆", "魔神", "骷髏兵", "龍牙兵",
+	       "殭屍", "屍人", "鬼魂", "七人禦佐姬", "巨大鬼魂", "黑武者", "食屍鬼", "惡魔",
+	       "凝視者", "鬼", "小鬼", "大鬼", "門", "手", "雷石", "魔偶", "人工生命體",
+	       "咒語書", "魔法杖", "女官", "自動人偶", "混沌機械兵", "機械化步兵", "自動防衛裝置",
+	       "英靈兵", "多多益善號", "迷你信", "巨大信", "翅刃蟲", "寄居蟹", "魔豬", "巨大魔豬",
+	       "烏利迪姆", "烏伽爾", "斬首雞", "灰狼", "魔猿", "雙足飛龍", "龍", "穆修胡休",
+	       "奇美拉", "海魔", "守護者", "雙角獸", "噬魂者", "斯芬克斯", "伊夫利塔", "許德拉",
 	       "夏塔克鳥", "鵺", "巨人", "空想樹", "其他"];
 }
 function commonEnemyRaceNone() {
@@ -241,7 +244,7 @@ $(document).ready(function() {
 	$("#servant-enemy-all-resetbtn").click(function() {
 		initialServantEnemy();
 	});
-	
+
 	// Change in class filtering criteria
 	$(".servant-enemy-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -253,7 +256,7 @@ $(document).ready(function() {
 	$("#servant-enemy-class-resetbtn").click(function() {
 		servantEnemyClassNone();
 	});
-	
+
 	// Change in star filtering criteria
 	$(".servant-enemy-star").change(function() {
 		var star = Number($(this).val());
@@ -265,7 +268,7 @@ $(document).ready(function() {
 	$("#servant-enemy-star-resetbtn").click(function() {
 		servantEnemyStarNone();
 	});
-	
+
 	// Apply filter & generate new image list
 	$("#servant-enemy-filterbtn").click(function() {
 		loadServantEnemyImg();
@@ -279,7 +282,7 @@ function loadServantEnemyImg() {
 		return [servant.id, servant.name];
 	});
 	$("#servant-enemy-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(servantEnemyID).each(function() {
 		imglist += "<img class='servant-img servant-enemy-modal-img' src='images/servant/" + this[0] +
 		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
@@ -360,24 +363,23 @@ let servantFilter = {
 	gender: ["男性", "女性", "不明"],
 	alignment1: ["秩序", "中立", "混沌"],
 	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
-	npColor: ["Buster", "Art", "Quick"],
+	npColor: ["Buster", "Arts", "Quick"],
 	npRange: ["全體", "單體"],			// Exclude support & other
-	extraDamage: ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
-		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
+	extraDamage: ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力",
+		"人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉",
 		"亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒", "Saber", "Saber職階從者"],
 	owned: [true, false],
-	npDmg: [true]
 };
 
-$(document).ready(function() {	
+$(document).ready(function() {
 	$("#servant-all-resetbtn").click(function() {
 		initialServant();
 	});
-	
+
 	$("#servant-modal-filter-box-toggle").click(function() {
 		toggleFilter(this, "#servant-modal-filter-box-content");
 	});
-	
+
 	// Change in class filtering criteria
 	$(".servant-class").click(function() {
 		var servantClass = $(this).attr("title");
@@ -389,7 +391,7 @@ $(document).ready(function() {
 	$("#servant-class-resetbtn").click(function() {
 		servantClassNone();
 	});
-	
+
 	// Change in star filtering criteria
 	$(".servant-star").change(function() {
 		var star = Number($(this).val());
@@ -401,7 +403,7 @@ $(document).ready(function() {
 	$("#servant-star-resetbtn").click(function() {
 		servantStarNone();
 	});
-	
+
 	// Change in type filtering criteria
 	$(".servant-type").change(function() {
 		var type = $(this).val();
@@ -413,7 +415,7 @@ $(document).ready(function() {
 	$("#servant-type-resetbtn").click(function() {
 		servantTypeNone();
 	});
-	
+
 	// Change in attribute filtering criteria
 	$(".servant-attribute").change(function() {
 		var attribute = $(this).val();
@@ -425,7 +427,7 @@ $(document).ready(function() {
 	$("#servant-attribute-resetbtn").click(function() {
 		servantAttributeNone();
 	});
-	
+
 	// Change in gender filtering criteria
 	$(".servant-gender").change(function() {
 		var gender = $(this).val();
@@ -437,7 +439,7 @@ $(document).ready(function() {
 	$("#servant-gender-resetbtn").click(function() {
 		servantGenderNone();
 	});
-	
+
 	// Change in alignment 1 filtering criteria
 	$(".servant-alignment1").change(function() {
 		var alignment1 = $(this).val();
@@ -449,7 +451,7 @@ $(document).ready(function() {
 	$("#servant-alignment1-resetbtn").click(function() {
 		servantAlignment1None();
 	});
-	
+
 	// Change in alignment 2 filtering criteria
 	$(".servant-alignment2").change(function() {
 		var alignment2 = $(this).val();
@@ -461,7 +463,7 @@ $(document).ready(function() {
 	$("#servant-alignment2-resetbtn").click(function() {
 		servantAlignment2None();
 	});
-	
+
 	// Change in NP color filtering criteria
 	$(".servant-color").change(function() {
 		var color = $(this).val();
@@ -473,7 +475,7 @@ $(document).ready(function() {
 	$("#servant-color-resetbtn").click(function() {
 		servantColorNone();
 	});
-	
+
 	// Change in NP range filtering criteria
 	$(".servant-range").change(function() {
 		var range = $(this).val();
@@ -485,7 +487,7 @@ $(document).ready(function() {
 	$("#servant-range-resetbtn").click(function() {
 		servantRangeNone();
 	});
-	
+
 	// Change in extra-damage filtering criteria
 	$(".servant-ed").change(function() {
 		var ed = $(this).val();
@@ -497,12 +499,12 @@ $(document).ready(function() {
 	$("#servant-ed-resetbtn").click(function() {
 		servantEDNone();
 	});
-	
+
 	// Change in ownership filtering criteria
 	$("#servant-owned").change(function() {
 		servantInclusiveChange(this);
 	});
-	
+
 	// Apply filter & generate new image list
 	$("#servant-filterbtn").click(function() {
 		loadServantImg();
@@ -516,7 +518,7 @@ function loadServantImg() {
 		return [servant.id, servant.name];
 	});
 	$("#servant-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(servantList).each(function() {
 		imglist += "<img class='servant-img servant-modal-img' src='images/servant/" + this[0] +
 		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
@@ -699,7 +701,7 @@ function servantColorChange(element, colorName) {
 }
 function servantColorAll() {
 	$(".servant-color").prop("checked", true);
-	servantFilter.npColor = ["Buster", "Art", "Quick"];
+	servantFilter.npColor = ["Buster", "Arts", "Quick"];
 }
 function servantColorNone() {
 	$(".servant-color").prop("checked", false);
@@ -741,8 +743,8 @@ function servantEDChange(element, edName) {
 }
 function servantEDAll() {
 	$(".servant-ed").prop("checked", true);
-	servantFilter.extraDamage = ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力", 
-		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉", 
+	servantFilter.extraDamage = ["無特攻", "男性", "女性", "混沌", "惡", "天之力", "地之力",
+		      "人之力", "人型", "從者", "人類", "神性", "王", "羅馬", "希臘神話系男性", "人類威脅", "阿爾托莉亞臉",
 		      "亞瑟", "所愛之人", "騎乘", "龍", "魔性", "猛獸", "死靈", "惡魔", "超巨大", "毒", "Saber", "Saber職階從者"];
 }
 function servantEDNone() {
@@ -784,9 +786,9 @@ function initialServant() {
 let ceFilter = {
 	star: [3, 4, 5],		// Only includes CE at or above 3 stars
 	type: ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
-	effect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
-		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
-		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+	effect: ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加",
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
 	frequent: [true, false],
 	owned: [true, false]
@@ -797,7 +799,7 @@ $(document).ready(function() {
 	$("#ce-all-resetbtn").click(function() {
 		initialCE();
 	});
-	
+
 	// Change in star filtering criteria
 	$(".ce-star").change(function() {
 		var star = Number($(this).val());
@@ -809,7 +811,7 @@ $(document).ready(function() {
 	$("#ce-star-resetbtn").click(function() {
 		ceStarNone();
 	});
-	
+
 	// Change in type filtering criteria
 	$(".ce-type").change(function() {
 		var type = $(this).val();
@@ -821,7 +823,7 @@ $(document).ready(function() {
 	$("#ce-type-resetbtn").click(function() {
 		ceTypeNone();
 	});
-	
+
 	// Change in effect filtering criteria
 	$(".ce-effect").change(function() {
 		var effect = $(this).val();
@@ -833,17 +835,17 @@ $(document).ready(function() {
 	$("#ce-effect-resetbtn").click(function() {
 		ceEffectNone();
 	});
-	
+
 	// Change in ownership filtering criteria
 	$("#modal-ce-owned").change(function() {
 		ceInclusiveChange(this);
 	});
-	
+
 	// Change in frequency filtering criteria
 	$("#modal-ce-frequent").change(function() {
 		ceFrequentChange(this);
 	});
-	
+
 	// Apply filters and generate image list
 	$("#ce-filterbtn").click(function() {
 		loadCEImg();
@@ -857,7 +859,7 @@ function loadCEImg() {
 		return [essence.id, essence.name];
 	});
 	$("#ce-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(ceList).each(function() {
 		imglist += "<img class='essence-img ce-modal-img' src='images/ce/" + this[0] +
 		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
@@ -932,9 +934,9 @@ function ceEffectChange(element, effect) {
 }
 function ceEffectAll() {
 	$(".ce-effect").prop("checked", true);
-	ceFilter.effect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "起始NP", "每回合NP", 
-		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", 
-		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP", 
+	ceFilter.effect = ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
+		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加",
+		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
 }
 function ceEffectNone() {
@@ -990,7 +992,7 @@ let teammateFilter = {
 	gender: ["男性", "女性", "不明"],
 	alignment1: ["秩序", "中立", "混沌"],
 	alignment2: ["善", "中庸", "惡", "狂", "花嫁", "夏"],
-	npColor: ["Buster", "Art", "Quick"],
+	npColor: ["Buster", "Arts", "Quick"],
 	npRange: ["全體", "單體", "輔助"],
 	owned: [true, false]
 };
@@ -999,11 +1001,11 @@ $(document).ready(function() {
 	$("#teammate-all-resetbtn").click(function() {
 		initialTeammate();
 	});
-	
+
 	$("#teammate-modal-filter-box-toggle").click(function() {
 		toggleFilter(this, "#teammate-modal-filter-box-content");
 	});
-	
+
 	// Change in class filtering criteria
 	$(".teammate-class").click(function() {
 		var teammateClass = $(this).attr("title");
@@ -1015,7 +1017,7 @@ $(document).ready(function() {
 	$("#teammate-class-resetbtn").click(function() {
 		teammateClassNone();
 	});
-	
+
 	// Change in star filtering criteria
 	$(".teammate-star").change(function() {
 		var star = Number($(this).val());
@@ -1027,7 +1029,7 @@ $(document).ready(function() {
 	$("#teammate-star-resetbtn").click(function() {
 		teammateStarNone();
 	});
-	
+
 	// Change in type filtering criteria
 	$(".teammate-type").change(function() {
 		var type = $(this).val();
@@ -1039,7 +1041,7 @@ $(document).ready(function() {
 	$("#teammate-type-resetbtn").click(function() {
 		teammateTypeNone();
 	});
-	
+
 	// Change in attribute filtering criteria
 	$(".teammate-attribute").change(function() {
 		var attribute = $(this).val();
@@ -1051,7 +1053,7 @@ $(document).ready(function() {
 	$("#teammate-attribute-resetbtn").click(function() {
 		teammateAttributeNone();
 	});
-	
+
 	// Change in gender filtering criteria
 	$(".teammate-gender").change(function() {
 		var gender = $(this).val();
@@ -1063,7 +1065,7 @@ $(document).ready(function() {
 	$("#teammate-gender-resetbtn").click(function() {
 		teammateGenderNone();
 	});
-	
+
 	// Change in alignment 1 filtering criteria
 	$(".teammate-alignment1").change(function() {
 		var alignment1 = $(this).val();
@@ -1075,7 +1077,7 @@ $(document).ready(function() {
 	$("#teammate-alignment1-resetbtn").click(function() {
 		teammateAlignment1None();
 	});
-	
+
 	// Change in alignment 2 filtering criteria
 	$(".teammate-alignment2").change(function() {
 		var alignment2 = $(this).val();
@@ -1087,7 +1089,7 @@ $(document).ready(function() {
 	$("#teammate-alignment2-resetbtn").click(function() {
 		teammateAlignment2None();
 	});
-	
+
 	// Change in NP color filtering criteria
 	$(".teammate-color").change(function() {
 		var color = $(this).val();
@@ -1099,7 +1101,7 @@ $(document).ready(function() {
 	$("#teammate-color-resetbtn").click(function() {
 		teammateColorNone();
 	});
-	
+
 	// Change in NP range filtering criteria
 	$(".teammate-range").change(function() {
 		var range = $(this).val();
@@ -1111,12 +1113,12 @@ $(document).ready(function() {
 	$("#teammate-range-resetbtn").click(function() {
 		teammateRangeNone();
 	});
-	
+
 	// Change in ownership filtering criteria
 	$("#teammate-owned").change(function() {
 		teammateInclusiveChange(this);
 	});
-	
+
 	// Apply filters and generate image list
 	$("#teammate-filterbtn").click(function() {
 		loadTeammateImg();
@@ -1130,7 +1132,7 @@ function loadTeammateImg() {
 		return [teammate.id, teammate.name];
 	});
 	$("#teammate-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(teammateList).each(function() {
 		imglist += "<img class='teammate-img teammate-modal-img' src='images/servant/" + this[0] +
 		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
@@ -1313,7 +1315,7 @@ function teammateColorChange(element, colorName) {
 }
 function teammateColorAll() {
 	$(".teammate-color").prop("checked", true);
-	teammateFilter.npColor = ["Buster", "Art", "Quick"];
+	teammateFilter.npColor = ["Buster", "Arts", "Quick"];
 }
 function teammateColorNone() {
 	$(".teammate-color").prop("checked", false);
@@ -1374,7 +1376,7 @@ function initialTeammate() {
 let teammateCEFilter = {
 	star: [3, 4, 5],
 	type: ["常駐", "活動限定", "期間限定", "活動兌換", "羈絆禮裝"],		// Only includes CE benefitial to the team
-	effect: ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "特攻", "傷害附加"],
+	effect: ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "特攻", "傷害附加"],
 	owned: [true, false],
 	frequent: [true, false],
 	dmgToTeam: [true]		// Only includes CE with effects reflect upon damage output
@@ -1384,7 +1386,7 @@ $(document).ready(function() {
 	$("#teammate-ce-all-resetbtn").click(function() {
 		initialTeammateCE();
 	});
-	
+
 	// Change in star filtering criteria
 	$(".teammate-ce-star").change(function() {
 		var star = Number($(this).val());
@@ -1396,7 +1398,7 @@ $(document).ready(function() {
 	$("#teammate-ce-star-resetbtn").click(function() {
 		teammateCEStarNone();
 	});
-	
+
 	// Change in type filtering criteria
 	$(".teammate-ce-type").change(function() {
 		var type = $(this).val();
@@ -1408,7 +1410,7 @@ $(document).ready(function() {
 	$("#teammate-ce-type-resetbtn").click(function() {
 		teammateCETypeNone();
 	});
-	
+
 	// Change in effect filtering criteria
 	$(".teammate-ce-effect").change(function() {
 		var effect = $(this).val();
@@ -1420,17 +1422,17 @@ $(document).ready(function() {
 	$("#teammate-ce-effect-resetbtn").click(function() {
 		teammateCEEffectNone();
 	});
-	
+
 	// Change in ownership filtering criteria
 	$("#modal-teammate-ce-owned").change(function() {
 		teammateCEInclusiveChange(this);
 	});
-	
+
 	// Change in ownership filtering criteria
 	$("#modal-teammate-ce-frequent").change(function() {
 		teammateCEFrequentChange(this);
 	});
-	
+
 	// Apply filters and generate image list
 	$("#teammate-ce-filterbtn").click(function() {
 		loadTeammateCEImg();
@@ -1444,7 +1446,7 @@ function loadTeammateCEImg() {
 		return [essence.id, essence.name];
 	});
 	$("#teammate-ce-img").html("");
-	var imglist = "";	
+	var imglist = "";
 	$(ceList).each(function() {
 		imglist += "<img class='essence-img teammate-ce-modal-img' src='images/ce/" + this[0] +
 		".webp' title='" + this[1] + "' data-id='" + this[0] + "' />"
@@ -1519,7 +1521,7 @@ function teammateCEEffectChange(element, effect) {
 }
 function teammateCEEffectAll() {
 	$(".teammate-ce-effect").prop("checked", true);
-	teammateCEFilter.effect = ["攻擊力", "Buster性能", "Art性能", "Quick性能", "寶具威力", "特攻", "傷害附加"];
+	teammateCEFilter.effect = ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "特攻", "傷害附加"];
 }
 function teammateCEEffectNone() {
 	$(".teammate-ce-effect").prop("checked", false);

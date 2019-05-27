@@ -19,6 +19,15 @@
 </head>
 <body>
 
+<div class="row top-row">
+	<div class="right">
+		<a class="btn favouritebtn" data-src="calc">♥</a>
+		<a class="btn manualbtn">
+			<span class="focus-content">？</span>
+		</a>
+	</div>
+</div>
+
 <!--Enemy Section-->
 <div class="info" id="enemy-info">
 	<div class="setup" id="enemy-setup">
@@ -28,14 +37,14 @@
 			<a class="btn resetbtn" id="current-enemy-resetbtn">自訂敵人</a>
 		</div>
 		<div class="collapsible" id="enemy-setup-collapsible">
-			<div class="row innerborder under">			
-				<div class="element-20 flex">		
+			<div class="row innerborder under">
+				<div class="element-20 flex">
 					<img class="profile-img" id="current-enemy-img" src="images/bg_logo.webp" />
-					<span id="current-enemy-name">未選定/自訂敵人</span>	
-				</div>		
-				<div class="element-20">			
-					<label for="current-enemy-class" class="label">職階</label>	
-					<select class="wide" id="current-enemy-class">	
+					<span id="current-enemy-name">未選定/自訂敵人</span>
+				</div>
+				<div class="element-20">
+					<label for="current-enemy-class" class="label">職階</label>
+					<select class="wide" id="current-enemy-class">
 						<option value="Saber">Saber</option>
 						<option value="Archer">Archer</option>
 						<option value="Lancer">Lancer</option>
@@ -53,36 +62,36 @@
 						<option value="Beast II">Beast II</option>
 						<option value="Beast III／L">Beast III／L</option>
 						<option value="Beast III／R">Beast III／R</option>
-					</select>	
-				</div>		
-				<div class="element-20">		
-					<label for="current-enemy-gender" class="label">性別</label>	
+					</select>
+				</div>
+				<div class="element-20">
+					<label for="current-enemy-gender" class="label">性別</label>
 					<select id="current-enemy-gender">
 						<option value="無性別">無性別</option>
 						<option value="男性">男性</option>
 						<option value="女性">女性</option>
 						<option value="不明">不明</option>
-					</select>	
-				</div>		
-				<div class="element-20">			
-					<label for="current-enemy-attribute" class="label">陣營</label>	
-					<select class="tight" id="current-enemy-attribute">	
+					</select>
+				</div>
+				<div class="element-20">
+					<label for="current-enemy-attribute" class="label">陣營</label>
+					<select class="tight" id="current-enemy-attribute">
 						<option value="天">天</option>
 						<option value="地">地</option>
 						<option value="人">人</option>
 						<option value="星">星</option>
 						<option value="獸">獸</option>
-					</select>	
-				</div>		
+					</select>
+				</div>
 				<div class="element-20">
-					<label class="label">屬性</label>	
-					<select id="current-enemy-alignment1">	
+					<label class="label">屬性</label>
+					<select id="current-enemy-alignment1">
 						<option value="不適用">不適用</option>
 						<option value="秩序">秩序</option>
 						<option value="中立">中立</option>
 						<option value="混沌">混沌</option>
 					</select>
-					<select id="current-enemy-alignment2">	
+					<select id="current-enemy-alignment2">
 						<option value="不適用">不適用</option>
 						<option value="善">善</option>
 						<option value="中庸">中庸</option>
@@ -91,134 +100,134 @@
 						<option value="花嫁">花嫁</option>
 						<option value="夏">夏</option>
 					</select>
-				</div>		
-			</div>			
+				</div>
+			</div>
 			<div class="row innerborder">
 				<div class="flex listlbl">
 					<span class="labeltag" id="enemy-trait-label">特性</span>
 				</div>
 				<div class="flex list">
-					<label class="checkbox">	
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="被「天地乖離開闢之星」所剋">
 						<span class="checkmark"></span>
 						被「天地乖離開闢之星」所剋
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="被「人類神話・雷電降臨」所剋">
 						<span class="checkmark"></span>
 						被「人類神話・雷電降臨」所剋
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="被「神秘神手」所剋">
 						<span class="checkmark"></span>
 						被「神秘神手」所剋
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="星之力">
 						<span class="checkmark"></span>
 						星之力
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="人型">
 						<span class="checkmark"></span>
 						人型
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="從者">
 						<span class="checkmark"></span>
 						從者
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="擬似從者">
 						<span class="checkmark"></span>
 						擬似從者
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="亞從者">
 						<span class="checkmark"></span>
 						亞從者
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="神性">
 						<span class="checkmark"></span>
 						神性
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="王">
 						<span class="checkmark"></span>
 						王
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="騎乘">
 						<span class="checkmark"></span>
 						騎乘
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="羅馬">
 						<span class="checkmark"></span>
 						羅馬
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="希臘神話系男性">
 						<span class="checkmark"></span>
 						希臘神話系男性
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="人類威脅">
 						<span class="checkmark"></span>
 						人類威脅
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="阿爾托莉亞臉">
 						<span class="checkmark"></span>
 						阿爾托莉亞臉
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="亞瑟">
 						<span class="checkmark"></span>
 						亞瑟
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="伊莉雅">
 						<span class="checkmark"></span>
 						伊莉雅
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="所愛之人">
 						<span class="checkmark"></span>
 						所愛之人
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="龍">
 						<span class="checkmark"></span>
 						龍
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="魔性">
 						<span class="checkmark"></span>
 						魔性
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="超巨大">
 						<span class="checkmark"></span>
 						超巨大
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="死靈">
 						<span class="checkmark"></span>
 						死靈
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="惡魔">
 						<span class="checkmark"></span>
 						惡魔
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="猛獸">
 						<span class="checkmark"></span>
 						猛獸
-					</label>	
-					<label class="checkbox">	
+					</label>
+					<label class="checkbox">
 						<input type="checkbox" class="current-enemy-trait" value="人類">
 						<span class="checkmark"></span>
 						人類
@@ -226,9 +235,9 @@
 					<div class="right">
 						<a class="btn resetbtn" id="enemy-trait-resetbtn">取消</a>
 					</div>
-				</div>	
-			</div>	
-			<div class="row innerborder">	
+				</div>
+			</div>
+			<div class="row innerborder">
 				<div class="flex listlbl">
 					<span class="labeltag" id="enemy-debuff-label">弱化狀態</span>
 				</div>
@@ -326,11 +335,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="row center">			
-				<a class="btn enemy-applybtn" data-value="enemy1">設為敵人 I</a>		
-				<a class="btn enemy-applybtn" data-value="enemy2">設為敵人 II</a>		
-				<a class="btn enemy-applybtn" data-value="enemy3">設為敵人 III</a>		
-			</div>			
+			<div class="row center">
+				<a class="btn enemy-applybtn" data-value="enemy1">設為敵人 I</a>
+				<a class="btn enemy-applybtn" data-value="enemy2">設為敵人 II</a>
+				<a class="btn enemy-applybtn" data-value="enemy3">設為敵人 III</a>
+			</div>
 		</div>
 		<a class="btn right collapsebtn" id="enemy-setup-collapsebtn">展開 ▼</a>
 	</div>
@@ -443,20 +452,20 @@
 			<div class="flex listlbl">
 				<span class="labeltag" id="battelfield-setup-label">場地設定</span>
 			</div>
-			<div class="flex list">	
+			<div class="flex list">
 				<label class="checkbox">
 					<input type="checkbox" class="battlefield-type" value="燃燒">
+					<span class="checkmark"></span>
 					<span class="flex">
 						<img class="battlefield-logo" src="images/battlefield/burning.webp" />
-						<span class="checkmark"></span>
 						燃燒
 					</span>
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="battlefield-type" value="森林">
+					<span class="checkmark"></span>
 					<span class="flex">
 						<img class="battlefield-logo" src="images/battlefield/forest.webp" />
-						<span class="checkmark"></span>
 						森林
 					</span>
 				</label>
@@ -482,9 +491,9 @@
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="battlefield-type" value="水邊">
+					<span class="checkmark"></span>
 					<span class="flex">
 						<img class="battlefield-logo" src="images/battlefield/waterside.webp" />
-						<span class="checkmark"></span>
 						水邊
 					</span>
 				</label>
@@ -510,9 +519,9 @@
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="battlefield-type" value="陽光照射">
+					<span class="checkmark"></span>
 					<span class="flex">
 						<img class="battlefield-logo" src="images/battlefield/sunlight.webp" />
-						<span class="checkmark"></span>
 						陽光照射
 					</span>
 				</label>
@@ -538,7 +547,7 @@
 	</div>
 </div>
 <br/>
-	
+
 <!--Servant Section-->
 <div class="info" id="servant-info">
 	<div class="setup" id="servant-setup">
@@ -556,8 +565,8 @@
 				</div>
 			</div>
 			<div class="element-20">
-				<label for="current-servant-lv" class="label">等級</label>	
-				<select class="slim" id="current-servant-lv" disabled>	
+				<label for="current-servant-lv" class="label">等級</label>
+				<select class="slim" id="current-servant-lv" disabled>
 					<option value="0">預設</option>
 					<option value="100">100</option>
 					<option value="99">99</option>
@@ -688,24 +697,24 @@
 		</div>
 		<div class="collapsible" id="servant-setup-collapsible">
 			<div class="innerborder"></div>
-			<div class="row innerborder">			
+			<div class="row innerborder">
 				<div class="element-20">
 					<span class="infotag">性別</span>
 					<span id="current-servant-gender"></span>
-				</div>		
+				</div>
 				<div class="element-20">
 					<span class="infotag">陣營</span>
 					<span id="current-servant-attribute"></span>
-				</div>		
+				</div>
 				<div class="element-20">
 					<span class="infotag">屬性</span>
 					<span id="current-servant-alignment"></span>
-				</div>		
+				</div>
 				<div class="element-40 flex">
 					<span class="infotag">特性</span>
 					<span id="current-servant-trait"></span>
-				</div>		
-			</div>			
+				</div>
+			</div>
 			<div class="row innerborder">
 				<div class="element-20">
 					<label for="current-servant-hp" class="label">剩餘HP(%)</label>
@@ -727,19 +736,26 @@
 			</div>
 			<div class="row justify-even stretch">
 				<div class="servant-skill-detail" id="servant-skill1">
-					<div class="column">				
-						<div class="column-row flex">			
-							<div class="column-element">		
-								<label class="switch">	
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img dull" id="skill1-img" src=""/>
+							<span class="bold" id="skill1-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="skill1-dscrp"></span>
+						</div>
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
 									<input type="checkbox" class="use-skill" id="use-skill1" value="skill1" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">使用技能</span>	
-							</div>		
+								</label>
+								<span class="label">使用技能</span>
+							</div>
 							<div class="column-element">
 								<div>
-									<label for="skill1-lv" class="label">等級</label>	
-									<select class="tight update-trigger skill-lv" id="skill1-lv" disabled>	
+									<label for="skill1-lv" class="label">等級</label>
+									<select class="tight update-trigger skill-lv" id="skill1-lv" disabled>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -752,38 +768,38 @@
 										<option value="10">10</option>
 									</select>
 								</div>
-							</div>		
+							</div>
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill1-rankup" value="skill1" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">強化</span>	
-							</div>		
-						</div>			
-						<div class="column-row flex">			
-							<img class="skill-img" id="skill1-img" src=""/>		
-							<span class="bold" id="skill1-name"></span>		
-						</div>			
-						<div class="column-row flex">			
-							<span id="skill1-dscrp"></span>		
+								</label>
+								<span class="label">強化</span>
+							</div>
 						</div>
 					</div>
-				</div>				
-				<div class="servant-skill-detail" id="servant-skill2">									
-					<div class="column">				
-						<div class="column-row flex">			
-							<div class="column-element">		
-								<label class="switch">	
+				</div>
+				<div class="servant-skill-detail" id="servant-skill2">
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img dull" id="skill2-img" src=""/>
+							<span class="bold" id="skill2-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="skill2-dscrp"></span>
+						</div>
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
 									<input type="checkbox" class="use-skill" id="use-skill2" value="skill2" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">使用技能</span>	
-							</div>		
-							<div class="column-element">		
+								</label>
+								<span class="label">使用技能</span>
+							</div>
+							<div class="column-element">
 								<div>
-									<label for="skill2-lv" class="label">等級</label>	
-									<select class="tight update-trigger skill-lv" id="skill2-lv" disabled>	
+									<label for="skill2-lv" class="label">等級</label>
+									<select class="tight update-trigger skill-lv" id="skill2-lv" disabled>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -795,39 +811,39 @@
 										<option value="9">9</option>
 										<option value="10">10</option>
 									</select>
-								</div>	
-							</div>		
-							<div class="column-element">		
-								<label class="switch">	
+								</div>
+							</div>
+							<div class="column-element">
+								<label class="switch">
 									<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill2-rankup" value="skill2" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">強化</span>	
-							</div>		
-						</div>			
-						<div class="column-row flex">			
-							<img class="skill-img" id="skill2-img" src=""/>		
-							<span class="bold" id="skill2-name"></span>		
-						</div>			
-						<div class="column-row flex">			
-							<span id="skill2-dscrp"></span>		
-						</div>			
-					</div>				
-				</div>			
-				<div class="servant-skill-detail" id="servant-skill3">									
-					<div class="column">				
-						<div class="column-row flex">			
-							<div class="column-element">		
-								<label class="switch">	
+								</label>
+								<span class="label">強化</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="servant-skill-detail" id="servant-skill3">
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img dull" id="skill3-img" src=""/>
+							<span class="bold" id="skill3-name"></span>
+						</div>
+						<div class="column-row flex">
+							<span id="skill3-dscrp"></span>
+						</div>
+						<div class="column-row flex">
+							<div class="column-element">
+								<label class="switch">
 									<input type="checkbox" class="use-skill" id="use-skill3" value="skill3" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">使用技能</span>	
-							</div>		
-							<div class="column-element">		
+								</label>
+								<span class="label">使用技能</span>
+							</div>
+							<div class="column-element">
 								<div>
-									<label for="skill3-lv" class="label">等級</label>	
-									<select class="tight update-trigger skill-lv" id="skill3-lv" disabled>	
+									<label for="skill3-lv" class="label">等級</label>
+									<select class="tight update-trigger skill-lv" id="skill3-lv" disabled>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -839,24 +855,17 @@
 										<option value="9">9</option>
 										<option value="10">10</option>
 									</select>
-								</div>	
-							</div>		
-							<div class="column-element">		
-								<label class="switch">	
+								</div>
+							</div>
+							<div class="column-element">
+								<label class="switch">
 									<input type="checkbox" class="update-trigger check-skill-rankup" id="check-skill3-rankup" value="skill3" disabled>
 									<span class="slider"></span>
-								</label>	
-								<span class="label">強化</span>	
-							</div>		
-						</div>			
-						<div class="column-row flex">			
-							<img class="skill-img" id="skill3-img" src=""/>		
-							<span class="bold" id="skill3-name"></span>		
-						</div>			
-						<div class="column-row flex">			
-							<span id="skill3-dscrp"></span>		
-						</div>			
-					</div>				
+								</label>
+								<span class="label">強化</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -874,159 +883,23 @@
 			<a class="btn resetbtn" id="servant-ce-resetbtn">不使用禮裝</a>
 		</div>
 		<div class="collapsible" id="ce-setup-collapsible">
-			<div class="row under">				
-				<div class="element-30 flex">			
-					<img class="ce-profile-img" id="servant-ce-img" src="images/bg_logo.webp" />		
+			<div class="row under">
+				<div class="element-30 flex">
+					<img class="ce-profile-img" id="servant-ce-img" src="images/bg_logo.webp" />
 					<span id="servant-ce-name">未選定禮裝</span>
 					<span class="star space-left dull" id="servant-ce-star" data-star="">★★★★★</span>
-				</div>			
-				<div class="element-10 flex">			
+				</div>
+				<div class="element-10 flex">
 					<label class="switch">
 						<input type="checkbox" class="update-trigger" id="servant-ce-max" disabled />
 						<span class="slider"></span>
 					</label>
-					<span class="label">滿破</span>	
-				</div>			
-				<div class="element-10">			
-					<span>		
-						<label for="servant-ce-lv" class="label">等級</label>	
-						<select class="alim" id="servant-ce-lv" disabled>
-							<option value="0">預設</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
-							<option value="11">11</option>
-							<option value="12">12</option>
-							<option value="13">13</option>
-							<option value="14">14</option>
-							<option value="15">15</option>
-							<option value="16">16</option>
-							<option value="17">17</option>
-							<option value="18">18</option>
-							<option value="19">19</option>
-							<option value="20">20</option>
-							<option value="21">21</option>
-							<option value="22">22</option>
-							<option value="23">23</option>
-							<option value="24">24</option>
-							<option value="25">25</option>
-							<option value="26">26</option>
-							<option value="27">27</option>
-							<option value="28">28</option>
-							<option value="29">29</option>
-							<option value="30">30</option>
-							<option value="31">31</option>
-							<option value="32">32</option>
-							<option value="33">33</option>
-							<option value="34">34</option>
-							<option value="35">35</option>
-							<option value="36">36</option>
-							<option value="37">37</option>
-							<option value="38">38</option>
-							<option value="39">39</option>
-							<option value="40">40</option>
-							<option value="41">41</option>
-							<option value="42">42</option>
-							<option value="43">43</option>
-							<option value="44">44</option>
-							<option value="45">45</option>
-							<option value="46">46</option>
-							<option value="47">47</option>
-							<option value="48">48</option>
-							<option value="49">49</option>
-							<option value="50">50</option>
-							<option value="51">51</option>
-							<option value="52">52</option>
-							<option value="53">53</option>
-							<option value="54">54</option>
-							<option value="55">55</option>
-							<option value="56">56</option>
-							<option value="57">57</option>
-							<option value="58">58</option>
-							<option value="59">59</option>
-							<option value="60">60</option>
-							<option value="61">61</option>
-							<option value="62">62</option>
-							<option value="63">63</option>
-							<option value="64">64</option>
-							<option value="65">65</option>
-							<option value="66">66</option>
-							<option value="67">67</option>
-							<option value="68">68</option>
-							<option value="69">69</option>
-							<option value="70">70</option>
-							<option value="71">71</option>
-							<option value="72">72</option>
-							<option value="73">73</option>
-							<option value="74">74</option>
-							<option value="75">75</option>
-							<option value="76">76</option>
-							<option value="77">77</option>
-							<option value="78">88</option>
-							<option value="79">89</option>
-							<option value="80">80</option>
-							<option value="81">81</option>
-							<option value="82">82</option>
-							<option value="83">83</option>
-							<option value="84">84</option>
-							<option value="85">85</option>
-							<option value="86">86</option>
-							<option value="87">87</option>
-							<option value="88">88</option>
-							<option value="89">89</option>
-							<option value="90">90</option>
-							<option value="91">91</option>
-							<option value="92">92</option>
-							<option value="93">93</option>
-							<option value="94">94</option>
-							<option value="95">95</option>
-							<option value="96">96</option>
-							<option value="97">97</option>
-							<option value="98">98</option>
-							<option value="99">99</option>
-							<option value="100">100</option>
-						</select>	
-					</span>		
+					<span class="label">滿破</span>
 				</div>
-				<div class="element-50 flex">
-					<span class="infotag">效果</span>
-					<span id="servant-ce-dscrp"></span>
-				</div>
-			</div>				
-		</div>
-		<a class="btn right collapsebtn" id="ce-setup-collapsebtn">展開 ▼</a>						   
-	</div>
-</div>
-<br/>
-
-<!--Master Section-->
-<div class="info" id="master-info">
-	<div class="setup" id="master-setup">
-		<div class="row">
-			<div>
-				<label for="master-name-selection" class="labeltag" id="master-selection-label">御主禮裝</label>	
-				<select class="broad narrow-right" id="master-name-selection">
-					<option value="none">不使用禮裝</option>
-				</select>
-			</div>
-			<a class="btn resetbtn" id="master-resetbtn">還原數值</a>		
-		</div>				
-		<div class="collapsible" id="master-setup-collapsible">				
-			<div class="row inner center">
-				<div>
-					<img class="master-img" id="master-img1" src="" />
-					<img class="master-img" id="master-img2" src="" />
-				</div>
-				<div class="space-left">					
-					<label for="master-lv" class="label">等級</label>	
-					<select class="tight update-trigger" id="master-lv" disabled>	
+				<div class="element-10">
+					<label for="servant-ce-lv" class="label">等級</label>
+					<select class="alim" id="servant-ce-lv" disabled>
+						<option value="0">預設</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -1037,12 +910,146 @@
 						<option value="8">8</option>
 						<option value="9">9</option>
 						<option value="10">10</option>
-					</select>		
-				</div>			
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+						<option value="24">24</option>
+						<option value="25">25</option>
+						<option value="26">26</option>
+						<option value="27">27</option>
+						<option value="28">28</option>
+						<option value="29">29</option>
+						<option value="30">30</option>
+						<option value="31">31</option>
+						<option value="32">32</option>
+						<option value="33">33</option>
+						<option value="34">34</option>
+						<option value="35">35</option>
+						<option value="36">36</option>
+						<option value="37">37</option>
+						<option value="38">38</option>
+						<option value="39">39</option>
+						<option value="40">40</option>
+						<option value="41">41</option>
+						<option value="42">42</option>
+						<option value="43">43</option>
+						<option value="44">44</option>
+						<option value="45">45</option>
+						<option value="46">46</option>
+						<option value="47">47</option>
+						<option value="48">48</option>
+						<option value="49">49</option>
+						<option value="50">50</option>
+						<option value="51">51</option>
+						<option value="52">52</option>
+						<option value="53">53</option>
+						<option value="54">54</option>
+						<option value="55">55</option>
+						<option value="56">56</option>
+						<option value="57">57</option>
+						<option value="58">58</option>
+						<option value="59">59</option>
+						<option value="60">60</option>
+						<option value="61">61</option>
+						<option value="62">62</option>
+						<option value="63">63</option>
+						<option value="64">64</option>
+						<option value="65">65</option>
+						<option value="66">66</option>
+						<option value="67">67</option>
+						<option value="68">68</option>
+						<option value="69">69</option>
+						<option value="70">70</option>
+						<option value="71">71</option>
+						<option value="72">72</option>
+						<option value="73">73</option>
+						<option value="74">74</option>
+						<option value="75">75</option>
+						<option value="76">76</option>
+						<option value="77">77</option>
+						<option value="78">88</option>
+						<option value="79">89</option>
+						<option value="80">80</option>
+						<option value="81">81</option>
+						<option value="82">82</option>
+						<option value="83">83</option>
+						<option value="84">84</option>
+						<option value="85">85</option>
+						<option value="86">86</option>
+						<option value="87">87</option>
+						<option value="88">88</option>
+						<option value="89">89</option>
+						<option value="90">90</option>
+						<option value="91">91</option>
+						<option value="92">92</option>
+						<option value="93">93</option>
+						<option value="94">94</option>
+						<option value="95">95</option>
+						<option value="96">96</option>
+						<option value="97">97</option>
+						<option value="98">98</option>
+						<option value="99">99</option>
+						<option value="100">100</option>
+					</select>
+				</div>
+				<div class="element-50 flex">
+					<span class="infotag">效果</span>
+					<span id="servant-ce-dscrp"></span>
+				</div>
+			</div>
+		</div>
+		<a class="btn right collapsebtn" id="ce-setup-collapsebtn">展開 ▼</a>
+	</div>
+</div>
+<br/>
+
+<!--Master Section-->
+<div class="info" id="master-info">
+	<div class="setup" id="master-setup">
+		<div class="row">
+			<div>
+				<label for="master-name-selection" class="labeltag" id="master-selection-label">魔術禮裝</label>
+				<select class="broad narrow-right" id="master-name-selection">
+					<option value="不使用魔術禮裝">不使用魔術禮裝</option>
+				</select>
+			</div>
+			<a class="btn resetbtn" id="master-resetbtn">還原數值</a>
+		</div>
+		<div class="collapsible" id="master-setup-collapsible">
+			<div class="row inner center">
+				<div>
+					<img class="master-img" id="master-img1" src="" />
+					<img class="master-img" id="master-img2" src="" />
+				</div>
+				<div class="space-left">
+					<label for="master-lv" class="label">等級</label>
+					<select class="tight update-trigger" id="master-lv" disabled>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+				</div>
 			</div>
 			<div class="row justify-even stretch">
 				<div class="master-skill-detail">
-					<div class="column">				
+					<div class="column">
 						<div class="column-row flex">
 							<div class="column-element">
 								<label class="switch">
@@ -1062,7 +1069,7 @@
 					</div>
 				</div>
 				<div class="master-skill-detail">
-					<div class="column">				
+					<div class="column">
 						<div class="column-row flex">
 							<div class="column-element">
 								<label class="switch">
@@ -1082,7 +1089,7 @@
 					</div>
 				</div>
 				<div class="master-skill-detail">
-					<div class="column">				
+					<div class="column">
 						<div class="column-row flex">
 							<div class="column-element">
 								<label class="switch">
@@ -1112,13 +1119,13 @@
 <!--Teammate Section-->
 <div class="info" id="teammate-info">
 	<div class="row inner">
-		<a class="btn actionbtn" id="add-Lord">使用孔明</a>
-		<a class="btn actionbtn" id="add-Merlin">使用梅林</a>
-		<a class="btn actionbtn" id="add-Tamamo">使用玉藻前</a>
-		<a class="btn actionbtn" id="add-Skadi">使用斯卡蒂</a>
+		<a class="btn actionbtn supportbtn" data-id="37">使用孔明</a>
+		<a class="btn actionbtn supportbtn" data-id="150">使用梅林</a>
+		<a class="btn actionbtn supportbtn" data-id="62">使用玉藻前</a>
+		<a class="btn actionbtn supportbtn" data-id="215">使用斯卡蒂</a>
 	</div>
 	<div class="setup" id="teammate-setup">
-		<div class="row">			
+		<div class="row">
 			<a class="btn modalbtn teammate-modalbtn" data-teammate="teammate1">選擇隊友I</a>
 			<a class="btn modalbtn teammate-ce-modalbtn" data-teammate="teammate1">選擇禮裝</a>
 			<a class="btn resetbtn teammate-reapplybtn" data-teammate="teammate1">套用存檔</a>
@@ -1126,17 +1133,17 @@
 				<a class="btn resetbtn teammate-ce-resetbtn" data-teammate="teammate1">移除禮裝</a>
 				<a class="btn resetbtn teammate-resetbtn" data-teammate="teammate1">移除隊友</a>
 			</div>
-		</div>	
-		<div class="teammate-detail allow-toggle" id="teammate1">				
+		</div>
+		<div class="teammate-detail allow-toggle" id="teammate1">
 			<div class="row innerborder under stretch">
 				<div class="teammate-basic-detail">
 					<div class="column">
 						<div class="column-row innerborder flex">
 							<div class="column-element">
-								<img class="teammate-img" src="images/bg_logo.webp" />	
-								<span class="teammate-name">未選定隊友</span>	
-								<img class="class-logo-small teammate-class space-left" src="images/class/Unknown.webp" title="" />	
-								<span class="star teammate-star space-left dull" data-star="">★★★★★</span>	
+								<img class="teammate-img" src="images/bg_logo.webp" />
+								<span class="teammate-name">未選定隊友</span>
+								<img class="class-logo-small teammate-class space-left" src="images/class/Unknown.webp" title="" />
+								<span class="star teammate-star space-left dull" data-star="">★★★★★</span>
 							</div>
 							<div class="column-element">
 								<div>
@@ -1165,14 +1172,14 @@
 						</div>
 						<div class="column-row flex">
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-np update-trigger" disabled>
 									<span class="slider"></span>
-								</label>	
+								</label>
 								<span class="label">使用寶具</span>
 							</div>
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-np-rankup update-trigger" disabled>
 									<span class="slider"></span>
 								</label>
@@ -1182,15 +1189,15 @@
 								<span class="teammate-np-name bold"></span>
 							</div>
 							<div class="column-element flex">
-								<span class="teammate-np-dscrp"></span>	
+								<span class="teammate-np-dscrp"></span>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="teammate-ce-detail">
-					<div class="column">				
+					<div class="column">
 						<div class="column-row flex">
-							<img class="ce-img teammate-ce-img" src="images/bg_logo.webp" />		
+							<img class="ce-img teammate-ce-img" src="images/bg_logo.webp" />
 							<span class="teammate-ce-name">未選定禮裝</span>
 						</div>
 						<div class="column-row flex">
@@ -1210,17 +1217,24 @@
 			</div>
 			<div class="row inner justify-even stretch">
 				<div class="teammate-skill-detail">
-					<div class="column">				
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img teammate-skill1-img dull" src="" />
+							<span class="teammate-skill1-name bold"></span>
+						</div>
+						<div class="column-row flex">
+							<span class="teammate-skill1-dscrp"></span>
+						</div>
 						<div class="column-row flex">
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill teammate-skill1" value="skill1" disabled>
 									<span class="slider"></span>
-								</label>	
+								</label>
 								<span class="label">使用技能</span>
 							</div>
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill1-rankup update-trigger" value="skill1" disabled>
 									<span class="slider"></span>
 								</label>
@@ -1228,7 +1242,7 @@
 							</div>
 							<div class="column-element">
 								<label class="label">等級</label>
-								<select class="narrow teammate-skill1-lv update-trigger" disabled>	
+								<select class="tight teammate-skill1-lv update-trigger" disabled>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -1242,27 +1256,27 @@
 								</select>
 							</div>
 						</div>
-						<div class="column-row flex">
-							<img class="skill-img teammate-skill1-img" src="" />	
-							<span class="teammate-skill1-name bold"></span>
-						</div>
-						<div class="column-row flex">
-							<span class="teammate-skill1-dscrp"></span>
-						</div>
 					</div>
 				</div>
 				<div class="teammate-skill-detail">
-					<div class="column">				
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img teammate-skill2-img dull" src="" />
+							<span class="teammate-skill2-name bold"></span>
+						</div>
+						<div class="column-row flex">
+							<span class="teammate-skill2-dscrp"></span>
+						</div>
 						<div class="column-row flex">
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill teammate-skill2" value="skill2" disabled>
 									<span class="slider"></span>
-								</label>	
+								</label>
 								<span class="label">使用技能</span>
 							</div>
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill2-rankup update-trigger" value="skill2" disabled>
 									<span class="slider"></span>
 								</label>
@@ -1270,7 +1284,7 @@
 							</div>
 							<div class="column-element">
 								<label class="label">等級</label>
-								<select class="narrow teammate-skill2-lv update-trigger" disabled>	
+								<select class="tight teammate-skill2-lv update-trigger" disabled>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -1284,27 +1298,27 @@
 								</select>
 							</div>
 						</div>
-						<div class="column-row flex">
-							<img class="skill-img teammate-skill2-img" src="" />	
-							<span class="teammate-skill2-name bold"></span>
-						</div>
-						<div class="column-row flex">
-							<span class="teammate-skill2-dscrp"></span>
-						</div>
 					</div>
 				</div>
 				<div class="teammate-skill-detail">
-					<div class="column">				
+					<div class="column">
+						<div class="column-row flex">
+							<img class="skill-img teammate-skill3-img dull" src="" />
+							<span class="teammate-skill3-name bold"></span>
+						</div>
+						<div class="column-row flex">
+							<span class="teammate-skill3-dscrp"></span>
+						</div>
 						<div class="column-row flex">
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill teammate-skill3" value="skill3" disabled>
 									<span class="slider"></span>
-								</label>	
+								</label>
 								<span class="label">使用技能</span>
 							</div>
 							<div class="column-element">
-								<label class="switch">	
+								<label class="switch">
 									<input type="checkbox" class="teammate-skill3-rankup update-trigger" value="skill3" disabled>
 									<span class="slider"></span>
 								</label>
@@ -1312,7 +1326,7 @@
 							</div>
 							<div class="column-element">
 								<label class="label">等級</label>
-								<select class="narrow teammate-skill3-lv update-trigger" disabled>	
+								<select class="tight teammate-skill3-lv update-trigger" disabled>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -1325,13 +1339,6 @@
 									<option value="10">10</option>
 								</select>
 							</div>
-						</div>
-						<div class="column-row flex">
-							<img class="skill-img teammate-skill3-img" src="" />	
-							<span class="teammate-skill3-name bold"></span>
-						</div>
-						<div class="column-row flex">
-							<span class="teammate-skill3-dscrp"></span>
 						</div>
 					</div>
 				</div>
@@ -1341,124 +1348,124 @@
 			</div>
 		</div>
 		<span class="btn right collapsebtn" id="teammate-setup-collapsebtn">展開 ▼</span>
-	</div>			
+	</div>
 </div>
 <br/>
-	
+
 <!--Buff Section-->
 <div class="info" id="buff-info">
-	<div class="row">				
+	<div class="row">
 		<h3 class="element-20 bold">Buff結算</h3>
 		<div class="right">
 			<span class="btn resetbtn" id="buff-resetbtn">還原數值</span>
 		</div>
 	</div>
-	<div class="buff-summary innerborder" id="common-buff">			
-		<div class="row justify-between">				
-			<div class="element-20">					
-				<label for="ce-atk" class="labeltag">禮裝ATK</label>	
-				<input type="number" class="narrow" id="ce-atk" value="0" min="0" max="2400">		
-			</div>			
-			<div class="element-20">					
-				<label for="atk-buff" class="labeltag">攻擊力提升(%)</label>	
-				<input type="number" class="narrow" id="atk-buff" value="0" step="0.1">		
-			</div>				
-			<div class="element-20">					
-				<label for="add-atk" class="labeltag">傷害附加</label>	
-				<input type="number" class="narrow" id="add-atk" value="0" min="0">		
-			</div>	
+	<div class="buff-summary innerborder" id="common-buff">
+		<div class="row justify-between">
+			<div class="element-20">
+				<label for="ce-atk" class="labeltag">禮裝ATK</label>
+				<input type="number" class="narrow" id="ce-atk" value="0" min="0" max="2400">
+			</div>
+			<div class="element-20">
+				<label for="atk-buff" class="labeltag">攻擊力提升(%)</label>
+				<input type="number" class="narrow" id="atk-buff" value="0" step="0.1">
+			</div>
+			<div class="element-20">
+				<label for="add-atk" class="labeltag">傷害附加</label>
+				<input type="number" class="narrow" id="add-atk" value="0" min="0">
+			</div>
 		</div>
 		<div class="row justify-between">
-			<div class="element-20">					
-				<label for="Buster-buff" class="labeltag">Buster性能(%)</label>	
-				<input type="number" class="narrow" id="Buster-buff" value="0" step="0.1">		
-			</div>			
-			<div class="element-20">					
-				<label for="Art-buff" class="labeltag">Art性能(%)</label>	
-				<input type="number" class="narrow" id="Art-buff" value="0" step="0.1">
-			</div>				
-			<div class="element-20">					
-				<label for="Quick-buff" class="labeltag">Quick性能(%)</label>	
+			<div class="element-20">
+				<label for="Buster-buff" class="labeltag">Buster性能(%)</label>
+				<input type="number" class="narrow" id="Buster-buff" value="0" step="0.1">
+			</div>
+			<div class="element-20">
+				<label for="Arts-buff" class="labeltag">Arts性能(%)</label>
+				<input type="number" class="narrow" id="Arts-buff" value="0" step="0.1">
+			</div>
+			<div class="element-20">
+				<label for="Quick-buff" class="labeltag">Quick性能(%)</label>
 				<input type="number" class="narrow" id="Quick-buff" value="0" step="0.1">
-			</div>	
-		</div>
-		<div class="row justify-between">				
-			<div class="element-20">					
-				<label for="np-buff" class="labeltag">寶具威力提升(%)</label>	
-				<input type="number" class="narrow" id="np-buff" value="0" step="0.1">			
-			</div>			
-			<div class="element-20">					
-				<label for="event-buff" class="labeltag">活動攻擊加成(%)</label>	
-				<input type="number" class="narrow" id="event-buff" value="0" min="0">		
 			</div>
 		</div>
-	</div>	
+		<div class="row justify-between">
+			<div class="element-20">
+				<label for="np-buff" class="labeltag">寶具威力提升(%)</label>
+				<input type="number" class="narrow" id="np-buff" value="0" step="0.1">
+			</div>
+			<div class="element-20">
+				<label for="event-buff" class="labeltag">活動攻擊加成(%)</label>
+				<input type="number" class="narrow" id="event-buff" value="0" min="0">
+			</div>
+		</div>
+	</div>
 	<div class="buff-summary innerborder" id="enemy1-buff">
 		<div class="row">
-			<a class="element-20">[對敵人 I]</a>			
+			<a class="element-20">[對敵人 I]</a>
 		</div>
 		<div class="row">
-			<div class="element-20">					
-				<label class="labeltag">防禦力下降(%)</label>	
-				<input type="number" class="narrow def-debuff" value="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">防禦力下降(%)</label>
+				<input type="number" class="narrow def-debuff" value="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">傷害減免</label>	
-				<input type="number" class="narrow red-atk" value="0" min="0">		
+			<div class="element-20">
+				<label class="labeltag">傷害減免</label>
+				<input type="number" class="narrow red-atk" value="0" min="0">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">技能/禮裝特攻</label>	
-				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">技能/禮裝特攻</label>
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">寶具特攻</label>
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">
 			</div>
 		</div>
 	</div>
 	<div class="buff-summary innerborder" id="enemy2-buff">
 		<div class="row">
-			<a class="element-20">[對敵人 II]</a>			
+			<a class="element-20">[對敵人 II]</a>
 		</div>
 		<div class="row">
-			<div class="element-20">					
-				<label class="labeltag">防禦力下降(%)</label>	
-				<input type="number" class="narrow def-debuff" value="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">防禦力下降(%)</label>
+				<input type="number" class="narrow def-debuff" value="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">傷害減免</label>	
-				<input type="number" class="narrow red-atk" value="0" min="0">		
+			<div class="element-20">
+				<label class="labeltag">傷害減免</label>
+				<input type="number" class="narrow red-atk" value="0" min="0">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">技能/禮裝特攻</label>	
-				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">技能/禮裝特攻</label>
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">寶具特攻</label>
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">
 			</div>
 		</div>
 	</div>
 	<div class="buff-summary" id="enemy3-buff">
 		<div class="row">
-			<a class="element-20">[對敵人 III]</a>			
+			<a class="element-20">[對敵人 III]</a>
 		</div>
 		<div class="row">
-			<div class="element-20">					
-				<label class="labeltag">防禦力下降(%)</label>	
-				<input type="number" class="narrow def-debuff" value="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">防禦力下降(%)</label>
+				<input type="number" class="narrow def-debuff" value="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">傷害減免</label>	
-				<input type="number" class="narrow red-atk" value="0" min="0">		
+			<div class="element-20">
+				<label class="labeltag">傷害減免</label>
+				<input type="number" class="narrow red-atk" value="0" min="0">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">技能/禮裝特攻</label>	
-				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">技能/禮裝特攻</label>
+				<input type="number" class="narrow skill-ed" value="0" min="0" step="0.1">
 			</div>
-			<div class="element-20">					
-				<label class="labeltag">寶具特攻</label>	
-				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">		
+			<div class="element-20">
+				<label class="labeltag">寶具特攻</label>
+				<input type="number" class="narrow np-ed" value="100" min="100" step="0.1">
 			</div>
 		</div>
 	</div>
@@ -1472,10 +1479,10 @@
 <br/>
 <div class="row">
 	<div class="right">
-		<a class="btn resetbtn" id="result-resetbtn">清除所有結果</a>
+		<a class="btn resetbtn" id="calc-result-resetbtn">清除所有結果</a>
 	</div>
 </div>
-<div id="result-section">
+<div id="calc-result-section">
 	<div class="result" id="enemy1-result">
 		<div class="row">
 			<span class="infotag" id="enemy1-tag">敵人 I</span>
@@ -1487,7 +1494,7 @@
 		<div class="table-container">
 			<table class="enemy-table" id="enemy1-table" data-value="enemy1">
 				<tbody>
-					<tr>	
+					<tr>
 						<th>排名</th>
 						<th>從者</th>
 						<th>職階</th>
@@ -1500,7 +1507,7 @@
 						<th>寶具威力(%)</th>
 						<th>指令卡性能(%)</th>
 						<th>攻擊力(%)</th>
-						<th>敵方減防</th>
+						<th>敵方減防(%)</th>
 						<th>最小傷害</th>
 						<th>平均傷害</th>
 						<th>最大傷害</th>
@@ -1523,7 +1530,7 @@
 		<div class="table-container">
 			<table class="enemy-table" id="enemy2-table" data-value="enemy2">
 				<tbody>
-					<tr>	
+					<tr>
 						<th>排名</th>
 						<th>從者</th>
 						<th>職階</th>
@@ -1536,7 +1543,7 @@
 						<th>寶具威力(%)</th>
 						<th>指令卡性能(%)</th>
 						<th>攻擊力(%)</th>
-						<th>敵方減防</th>
+						<th>敵方減防(%)</th>
 						<th>最小傷害</th>
 						<th>平均傷害</th>
 						<th>最大傷害</th>
@@ -1545,7 +1552,7 @@
 				</tbody>
 			</table>
 			<br/>
-		</div>		
+		</div>
 	</div>
 	<br/>
 	<div class="result" id="enemy3-result">
@@ -1559,7 +1566,7 @@
 		<div class="table-container">
 			<table class="enemy-table" id="enemy3-table" data-value="enemy3">
 				<tbody>
-					<tr>	
+					<tr>
 						<th>排名</th>
 						<th>從者</th>
 						<th>職階</th>
@@ -1572,7 +1579,7 @@
 						<th>寶具威力(%)</th>
 						<th>指令卡性能(%)</th>
 						<th>攻擊力(%)</th>
-						<th>敵方減防</th>
+						<th>敵方減防(%)</th>
 						<th>最小傷害</th>
 						<th>平均傷害</th>
 						<th>最大傷害</th>
@@ -1581,7 +1588,7 @@
 				</tbody>
 			</table>
 			<br/>
-		</div>		
+		</div>
 	</div>
 </div>
 
@@ -1619,7 +1626,7 @@
 				<a class="btn setbtn" id="common-enemy-class-setbtn">全選</a>
 				<a class="btn resetbtn" id="common-enemy-class-resetbtn">取消</a>
 			</div>
-			<div class="row justify-even inner">					
+			<div class="row justify-even inner">
 				<div class="element-50 flex center">
 					<span class="filtertag">出現時序</span>
 					<label class="checkbox">
@@ -1676,10 +1683,10 @@
 					<a class="btn resetbtn" id="common-enemy-type-resetbtn">取消</a>
 				</div>
 			</div>
-			<div class="row center box-padding inner">					
-				<div class="listlbl">				
-					<span class="filtertag">種族</span>			
-				</div>				
+			<div class="row center box-padding inner">
+				<div class="listlbl">
+					<span class="filtertag">種族</span>
+				</div>
 				<div class="flex list">
 					<div class="row enemy-family-heading" data-corr="cat-1">
 						人類
@@ -2113,7 +2120,7 @@
 							鵺
 						</label>
 					</div>
-					<div class="row enemy-family-heading" data-corr="cat-13">
+					<div class="row enemy-family-heading enemy-family-heading-last" data-corr="cat-13">
 						其他
 						<span class="right">▼</span>
 					</div>
@@ -2149,9 +2156,9 @@
 							其他
 						</label>
 					</div>
-					<div class="row center listend">
-						<a class="btn setbtn" id="common-enemy-race-setbtn">全選</a>			
-						<a class="btn resetbtn" id="common-enemy-race-resetbtn">取消</a>	
+					<div class="row center listend under">
+						<a class="btn setbtn" id="common-enemy-race-setbtn">全選</a>
+						<a class="btn resetbtn" id="common-enemy-race-resetbtn">取消</a>
 					</div>
 				</div>
 			</div>
@@ -2163,7 +2170,7 @@
 		</div>
 	</div>
 </div>
-			
+
 
 <!--Servant Enemy Modal-->
 <div class="modal" id="servant-enemy-modal">
@@ -2236,8 +2243,8 @@
 		</div>
 	</div>
 </div>
-	
-	
+
+
 <!--Servant Modal-->
 <div class="modal" id="servant-modal">
 	<div class="modal-box" id="servant-modal-box">
@@ -2332,312 +2339,312 @@
 				<a class="btn resetbtn" id="servant-type-resetbtn">取消</a>
 			</div>
 			<div class="row center inner">
-				<div class="modal-filter-box">							
-					<div class="row modal-filter-box-header">						
-						<a class="filter-box-toggle" id="servant-modal-filter-box-toggle">+</a>					
-					</div>						
-					<div class="modal-filter-box-content" id="servant-modal-filter-box-content">						
-						<div class="row justify-even">					
-							<div class="element-50 flex center">				
-								<span class="filtertag">陣營</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-attribute" value="天" checked>		
-									<span class="checkmark"></span>		
-									天		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-attribute" value="地" checked>		
-									<span class="checkmark"></span>		
-									地		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-attribute" value="人" checked>		
-									<span class="checkmark"></span>		
-									人		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-attribute" value="星" checked>		
-									<span class="checkmark"></span>		
-									星		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-attribute" value="獸" checked>		
-									<span class="checkmark"></span>		
-									獸		
-								</label>			
-								<a class="btn setbtn" id="servant-attribute-setbtn">全選</a>			
-								<a class="btn resetbtn" id="servant-attribute-resetbtn">取消</a>			
-							</div>				
-							<div class="element-50 flex center">				
-								<span class="filtertag">性別</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-gender" value="男性" checked>		
-									<span class="checkmark"></span>		
-									男性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-gender" value="女性" checked>		
-									<span class="checkmark"></span>		
-									女性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-gender" value="不明" checked>		
-									<span class="checkmark"></span>		
-									不明		
-								</label>			
-								<a class="btn setbtn" id="servant-gender-setbtn">全選</a>			
-								<a class="btn resetbtn" id="servant-gender-resetbtn">取消</a>			
-							</div>				
-						</div>					
-						<div class="row center">					
-							<span class="filtertag">屬性 I</span>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment1" value="秩序" checked>			
-								<span class="checkmark"></span>			
-								秩序			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment1" value="中立" checked>			
-								<span class="checkmark"></span>			
-								中立			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment1" value="混沌" checked>			
-								<span class="checkmark"></span>			
-								混沌			
-							</label>				
-							<a class="btn setbtn" id="servant-alignment1-setbtn">全選</a>				
-							<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>				
-						</div>					
-						<div class="row center">					
-							<span class="filtertag">屬性 II</span>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="善" checked>			
-								<span class="checkmark"></span>			
-								善			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="中庸" checked>			
-								<span class="checkmark"></span>			
-								中庸			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="惡" checked>			
-								<span class="checkmark"></span>			
-								惡			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="狂" checked>			
-								<span class="checkmark"></span>			
-								狂			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="花嫁" checked>			
-								<span class="checkmark"></span>			
-								花嫁			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="servant-alignment2" value="夏" checked>			
-								<span class="checkmark"></span>			
-								夏			
-							</label>				
-							<a class="btn setbtn" id="servant-alignment2-setbtn">全選</a>				
-							<a class="btn resetbtn" id="servant-alignment2-resetbtn">取消</a>				
-						</div>					
-						<div class="row justify-even">					
-							<div class="element-50 flex center">				
-								<span class="filtertag">寶具卡色</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-color" value=" Buster " checked>		
-									<span class="checkmark"></span>		
-									Buster		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-color" value="Art" checked>		
-									<span class="checkmark"></span>		
-									Art		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-color" value="Quick" checked>		
-									<span class="checkmark"></span>		
-									Quick		
-								</label>			
-								<a class="btn setbtn" id="servant-color-setbtn">全選</a>			
-								<a class="btn resetbtn" id="servant-color-resetbtn">取消</a>			
-							</div>				
-							<div class="element-50 flex center">				
-								<span class="filtertag">寶具類別</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-range" value="全體" checked>		
-									<span class="checkmark"></span>		
-									全體		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-range" value="單體" checked>		
-									<span class="checkmark"></span>		
-									單體		
-								</label>			
-								<a class="btn setbtn" id="servant-range-setbtn">全選</a>			
-								<a class="btn resetbtn" id="servant-range-resetbtn">取消</a>			
-							</div>				
-						</div>					
-						<div class="row center">					
-							<div class="listlbl">				
-								<span class="filtertag">特攻</span>			
-							</div>				
-							<div class="flex list">				
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="Ruler" checked>		
-									<span class="checkmark"></span>		
-									無特攻		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="Saber" checked>		
-									<span class="checkmark"></span>		
-									Saber		
+				<div class="modal-filter-box">
+					<div class="row modal-filter-box-header">
+						<a class="filter-box-toggle" id="servant-modal-filter-box-toggle">+</a>
+					</div>
+					<div class="modal-filter-box-content" id="servant-modal-filter-box-content">
+						<div class="row justify-even">
+							<div class="element-50 flex center">
+								<span class="filtertag">陣營</span>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-attribute" value="天" checked>
+									<span class="checkmark"></span>
+									天
 								</label>
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="Saber職階從者" checked>		
-									<span class="checkmark"></span>		
-									Saber職階從者		
+								<label class="checkbox">
+									<input type="checkbox" class="servant-attribute" value="地" checked>
+									<span class="checkmark"></span>
+									地
 								</label>
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="男性" checked>		
-									<span class="checkmark"></span>		
-									男性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="女性" checked>		
-									<span class="checkmark"></span>		
-									女性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="混沌" checked>		
-									<span class="checkmark"></span>		
-									混沌		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="惡" checked>		
-									<span class="checkmark"></span>		
-									惡		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="天之力" checked>		
-									<span class="checkmark"></span>		
-									天之力		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="地之力" checked>		
-									<span class="checkmark"></span>		
-									地之力		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="人之力" checked>		
-									<span class="checkmark"></span>		
-									人之力		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="人型" checked>		
-									<span class="checkmark"></span>		
-									人型		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="從者" checked>		
-									<span class="checkmark"></span>		
-									從者		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="人類" checked>		
-									<span class="checkmark"></span>		
-									人類		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="神性" checked>		
-									<span class="checkmark"></span>		
-									神性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="王" checked>		
-									<span class="checkmark"></span>		
-									王		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="羅馬" checked>		
-									<span class="checkmark"></span>		
-									羅馬		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="希臘神話系男性" checked>		
-									<span class="checkmark"></span>		
-									希臘神話系男性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="人類威脅" checked>		
-									<span class="checkmark"></span>		
-									人類威脅		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="阿爾托莉亞臉" checked>		
-									<span class="checkmark"></span>		
-									阿爾托莉亞臉		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="亞瑟" checked>		
-									<span class="checkmark"></span>		
-									亞瑟		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="所愛之人" checked>		
-									<span class="checkmark"></span>		
-									所愛之人		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="騎乘" checked>		
-									<span class="checkmark"></span>		
-									騎乘		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="龍" checked>		
-									<span class="checkmark"></span>		
-									龍		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="魔性" checked>		
-									<span class="checkmark"></span>		
-									魔性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="猛獸" checked>		
-									<span class="checkmark"></span>		
-									猛獸		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="死靈" checked>		
-									<span class="checkmark"></span>		
-									死靈		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="惡魔" checked>		
-									<span class="checkmark"></span>		
-									惡魔		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="超巨大" checked>		
-									<span class="checkmark"></span>		
-									超巨大		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="servant-ed" value="毒" checked>		
-									<span class="checkmark"></span>		
-									毒		
+								<label class="checkbox">
+									<input type="checkbox" class="servant-attribute" value="人" checked>
+									<span class="checkmark"></span>
+									人
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-attribute" value="星" checked>
+									<span class="checkmark"></span>
+									星
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-attribute" value="獸" checked>
+									<span class="checkmark"></span>
+									獸
+								</label>
+								<a class="btn setbtn" id="servant-attribute-setbtn">全選</a>
+								<a class="btn resetbtn" id="servant-attribute-resetbtn">取消</a>
+							</div>
+							<div class="element-50 flex center">
+								<span class="filtertag">性別</span>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-gender" value="男性" checked>
+									<span class="checkmark"></span>
+									男性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-gender" value="女性" checked>
+									<span class="checkmark"></span>
+									女性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-gender" value="不明" checked>
+									<span class="checkmark"></span>
+									不明
+								</label>
+								<a class="btn setbtn" id="servant-gender-setbtn">全選</a>
+								<a class="btn resetbtn" id="servant-gender-resetbtn">取消</a>
+							</div>
+						</div>
+						<div class="row center">
+							<span class="filtertag">屬性 I</span>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment1" value="秩序" checked>
+								<span class="checkmark"></span>
+								秩序
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment1" value="中立" checked>
+								<span class="checkmark"></span>
+								中立
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment1" value="混沌" checked>
+								<span class="checkmark"></span>
+								混沌
+							</label>
+							<a class="btn setbtn" id="servant-alignment1-setbtn">全選</a>
+							<a class="btn resetbtn" id="servant-alignment1-resetbtn">取消</a>
+						</div>
+						<div class="row center">
+							<span class="filtertag">屬性 II</span>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="善" checked>
+								<span class="checkmark"></span>
+								善
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="中庸" checked>
+								<span class="checkmark"></span>
+								中庸
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="惡" checked>
+								<span class="checkmark"></span>
+								惡
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="狂" checked>
+								<span class="checkmark"></span>
+								狂
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="花嫁" checked>
+								<span class="checkmark"></span>
+								花嫁
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="servant-alignment2" value="夏" checked>
+								<span class="checkmark"></span>
+								夏
+							</label>
+							<a class="btn setbtn" id="servant-alignment2-setbtn">全選</a>
+							<a class="btn resetbtn" id="servant-alignment2-resetbtn">取消</a>
+						</div>
+						<div class="row justify-even">
+							<div class="element-50 flex center">
+								<span class="filtertag">寶具卡色</span>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-color" value=" Buster " checked>
+									<span class="checkmark"></span>
+									Buster
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-color" value="Arts" checked>
+									<span class="checkmark"></span>
+									Arts
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-color" value="Quick" checked>
+									<span class="checkmark"></span>
+									Quick
+								</label>
+								<a class="btn setbtn" id="servant-color-setbtn">全選</a>
+								<a class="btn resetbtn" id="servant-color-resetbtn">取消</a>
+							</div>
+							<div class="element-50 flex center">
+								<span class="filtertag">寶具類別</span>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-range" value="全體" checked>
+									<span class="checkmark"></span>
+									全體
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-range" value="單體" checked>
+									<span class="checkmark"></span>
+									單體
+								</label>
+								<a class="btn setbtn" id="servant-range-setbtn">全選</a>
+								<a class="btn resetbtn" id="servant-range-resetbtn">取消</a>
+							</div>
+						</div>
+						<div class="row center">
+							<div class="listlbl">
+								<span class="filtertag">特攻</span>
+							</div>
+							<div class="flex list">
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="Ruler" checked>
+									<span class="checkmark"></span>
+									無特攻
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="Saber" checked>
+									<span class="checkmark"></span>
+									Saber
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="Saber職階從者" checked>
+									<span class="checkmark"></span>
+									Saber職階從者
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="男性" checked>
+									<span class="checkmark"></span>
+									男性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="女性" checked>
+									<span class="checkmark"></span>
+									女性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="混沌" checked>
+									<span class="checkmark"></span>
+									混沌
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="惡" checked>
+									<span class="checkmark"></span>
+									惡
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="天之力" checked>
+									<span class="checkmark"></span>
+									天之力
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="地之力" checked>
+									<span class="checkmark"></span>
+									地之力
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="人之力" checked>
+									<span class="checkmark"></span>
+									人之力
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="人型" checked>
+									<span class="checkmark"></span>
+									人型
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="從者" checked>
+									<span class="checkmark"></span>
+									從者
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="人類" checked>
+									<span class="checkmark"></span>
+									人類
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="神性" checked>
+									<span class="checkmark"></span>
+									神性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="王" checked>
+									<span class="checkmark"></span>
+									王
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="羅馬" checked>
+									<span class="checkmark"></span>
+									羅馬
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="希臘神話系男性" checked>
+									<span class="checkmark"></span>
+									希臘神話系男性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="人類威脅" checked>
+									<span class="checkmark"></span>
+									人類威脅
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="阿爾托莉亞臉" checked>
+									<span class="checkmark"></span>
+									阿爾托莉亞臉
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="亞瑟" checked>
+									<span class="checkmark"></span>
+									亞瑟
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="所愛之人" checked>
+									<span class="checkmark"></span>
+									所愛之人
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="騎乘" checked>
+									<span class="checkmark"></span>
+									騎乘
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="龍" checked>
+									<span class="checkmark"></span>
+									龍
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="魔性" checked>
+									<span class="checkmark"></span>
+									魔性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="猛獸" checked>
+									<span class="checkmark"></span>
+									猛獸
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="死靈" checked>
+									<span class="checkmark"></span>
+									死靈
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="惡魔" checked>
+									<span class="checkmark"></span>
+									惡魔
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="超巨大" checked>
+									<span class="checkmark"></span>
+									超巨大
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="servant-ed" value="毒" checked>
+									<span class="checkmark"></span>
+									毒
 								</label>
 								<div class="row center listend">
-									<a class="btn setbtn" id="servant-ed-setbtn">全選</a>			
-									<a class="btn resetbtn" id="servant-ed-resetbtn">取消</a>	
+									<a class="btn setbtn" id="servant-ed-setbtn">全選</a>
+									<a class="btn resetbtn" id="servant-ed-resetbtn">取消</a>
 								</div>
-							</div>				
-						</div>					
-					</div>						
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row center inner">
@@ -2655,8 +2662,8 @@
 		</div>
 	</div>
 </div>
-	
-	
+
+
 <!--CE Modal-->
 <div class="modal" id="ce-modal">
 	<div class="modal-box" id="ce-modal-box">
@@ -2687,8 +2694,8 @@
 				</label>
 				<a class="btn setbtn" id="ce-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="ce-star-resetbtn">取消</a>
-			</div>	
-			<div class="row center">	
+			</div>
+			<div class="row center">
 				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="ce-type" value="常駐" checked>
@@ -2729,9 +2736,9 @@
 				<a class="btn resetbtn" id="ce-type-resetbtn">取消</a>
 			</div>
 			<div class="row center inner">
-				<div class="listlbl indent-4">				
-					<span class="filtertag">禮裝效果</span>		
-				</div>				
+				<div class="listlbl indent-4">
+					<span class="filtertag">禮裝效果</span>
+				</div>
 				<div class="flex list">
 					<label class="checkbox">
 						<input type="checkbox" class="ce-effect" value="攻擊力" checked>
@@ -2744,9 +2751,9 @@
 						Buster性能
 					</label>
 					<label class="checkbox">
-						<input type="checkbox" class="ce-effect" value="Art性能" checked>
+						<input type="checkbox" class="ce-effect" value="Arts性能" checked>
 						<span class="checkmark"></span>
-						Art性能
+						Arts性能
 					</label>
 					<label class="checkbox">
 						<input type="checkbox" class="ce-effect" value="Quick性能" checked>
@@ -2908,7 +2915,7 @@
 	</div>
 </div>
 
-	
+
 <!--Teammate Modal-->
 <div class="modal" id="teammate-modal">
 	<div class="modal-box" id="teammate-modal-box">
@@ -3008,155 +3015,155 @@
 				<a class="btn resetbtn" id="teammate-type-resetbtn">取消全選</a>
 			</div>
 			<div class="row center inner">
-				<div class="modal-filter-box">							
-					<div class="row modal-filter-box-header">						
-						<a class="filter-box-toggle" id="teammate-modal-filter-box-toggle">+</a>					
-					</div>						
-					<div class="modal-filter-box-content" id="teammate-modal-filter-box-content">						
-						<div class="row justify-even">					
-							<div class="element-50 flex center">				
-								<span class="filtertag">陣營</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-attribute" value="天" checked>		
-									<span class="checkmark"></span>		
-									天		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-attribute" value="地" checked>		
-									<span class="checkmark"></span>		
-									地		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-attribute" value="人" checked>		
-									<span class="checkmark"></span>		
-									人		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-attribute" value="星" checked>		
-									<span class="checkmark"></span>		
-									星		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-attribute" value="獸" checked>		
-									<span class="checkmark"></span>		
-									獸		
+				<div class="modal-filter-box">
+					<div class="row modal-filter-box-header">
+						<a class="filter-box-toggle" id="teammate-modal-filter-box-toggle">+</a>
+					</div>
+					<div class="modal-filter-box-content" id="teammate-modal-filter-box-content">
+						<div class="row justify-even">
+							<div class="element-50 flex center">
+								<span class="filtertag">陣營</span>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-attribute" value="天" checked>
+									<span class="checkmark"></span>
+									天
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-attribute" value="地" checked>
+									<span class="checkmark"></span>
+									地
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-attribute" value="人" checked>
+									<span class="checkmark"></span>
+									人
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-attribute" value="星" checked>
+									<span class="checkmark"></span>
+									星
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-attribute" value="獸" checked>
+									<span class="checkmark"></span>
+									獸
 								</label>
 								<a class="btn setbtn" id="teammate-attribute-setbtn">全選</a>
 								<a class="btn resetbtn" id="teammate-attribute-resetbtn">取消</a>
-							</div>				
-							<div class="element-50 flex center">				
-								<span class="filtertag">性別</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-gender" value="男性" checked>		
-									<span class="checkmark"></span>		
-									男性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-gender" value="女性" checked>		
-									<span class="checkmark"></span>		
-									女性		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-gender" value="不明" checked>		
-									<span class="checkmark"></span>		
-									不明		
+							</div>
+							<div class="element-50 flex center">
+								<span class="filtertag">性別</span>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-gender" value="男性" checked>
+									<span class="checkmark"></span>
+									男性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-gender" value="女性" checked>
+									<span class="checkmark"></span>
+									女性
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-gender" value="不明" checked>
+									<span class="checkmark"></span>
+									不明
 								</label>
 								<a class="btn setbtn" id="teammate-gender-setbtn">全選</a>
 								<a class="btn resetbtn" id="teammate-gender-resetbtn">取消</a>
 							</div>
 						</div>
-						<div class="row center">					
-							<span class="filtertag">屬性 I</span>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment1" value="秩序" checked>			
-								<span class="checkmark"></span>			
-								秩序			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment1" value="中立" checked>			
-								<span class="checkmark"></span>			
-								中立			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment1" value="混沌" checked>			
-								<span class="checkmark"></span>			
-								混沌			
+						<div class="row center">
+							<span class="filtertag">屬性 I</span>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment1" value="秩序" checked>
+								<span class="checkmark"></span>
+								秩序
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment1" value="中立" checked>
+								<span class="checkmark"></span>
+								中立
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment1" value="混沌" checked>
+								<span class="checkmark"></span>
+								混沌
 							</label>
 							<a class="btn setbtn" id="teammate-alignment1-setbtn">全選</a>
 							<a class="btn resetbtn" id="teammate-alignment1-resetbtn">取消</a>
 						</div>
-						<div class="row center">					
-							<span class="filtertag">屬性 II</span>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="善" checked>			
-								<span class="checkmark"></span>			
-								善			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="中庸" checked>			
-								<span class="checkmark"></span>			
-								中庸			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="惡" checked>			
-								<span class="checkmark"></span>			
-								惡			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="狂" checked>			
-								<span class="checkmark"></span>			
-								狂			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="花嫁" checked>			
-								<span class="checkmark"></span>			
-								花嫁			
-							</label>				
-							<label class="checkbox">				
-								<input type="checkbox" class="teammate-alignment2" value="夏" checked>			
-								<span class="checkmark"></span>			
-								夏			
+						<div class="row center">
+							<span class="filtertag">屬性 II</span>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="善" checked>
+								<span class="checkmark"></span>
+								善
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="中庸" checked>
+								<span class="checkmark"></span>
+								中庸
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="惡" checked>
+								<span class="checkmark"></span>
+								惡
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="狂" checked>
+								<span class="checkmark"></span>
+								狂
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="花嫁" checked>
+								<span class="checkmark"></span>
+								花嫁
+							</label>
+							<label class="checkbox">
+								<input type="checkbox" class="teammate-alignment2" value="夏" checked>
+								<span class="checkmark"></span>
+								夏
 							</label>
 							<a class="btn setbtn" id="teammate-alignment2-setbtn">全選</a>
 							<a class="btn resetbtn" id="teammate-alignment2-resetbtn">取消</a>
 						</div>
-						<div class="row justify-even">					
-							<div class="element-50 flex center">				
-								<span class="filtertag">寶具卡色</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-color" value=" Buster " checked>		
-									<span class="checkmark"></span>		
-									Buster		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-color" value="Art" checked>		
-									<span class="checkmark"></span>		
-									Art		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-color" value="Quick" checked>		
-									<span class="checkmark"></span>		
-									Quick		
+						<div class="row justify-even">
+							<div class="element-50 flex center">
+								<span class="filtertag">寶具卡色</span>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-color" value=" Buster " checked>
+									<span class="checkmark"></span>
+									Buster
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-color" value="Arts" checked>
+									<span class="checkmark"></span>
+									Arts
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-color" value="Quick" checked>
+									<span class="checkmark"></span>
+									Quick
 								</label>
 								<a class="btn setbtn" id="teammate-color-setbtn">全選</a>
 								<a class="btn resetbtn" id="teammate-color-resetbtn">取消</a>
 							</div>
-							<div class="element-50 flex center">				
-								<span class="filtertag">寶具類別</span>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-range" value="全體" checked>		
-									<span class="checkmark"></span>		
-									全體		
-								</label>			
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-range" value="單體" checked>		
-									<span class="checkmark"></span>		
-									單體		
+							<div class="element-50 flex center">
+								<span class="filtertag">寶具類別</span>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-range" value="全體" checked>
+									<span class="checkmark"></span>
+									全體
 								</label>
-								<label class="checkbox">			
-									<input type="checkbox" class="teammate-range" value="輔助" checked>		
-									<span class="checkmark"></span>		
-									輔助		
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-range" value="單體" checked>
+									<span class="checkmark"></span>
+									單體
+								</label>
+								<label class="checkbox">
+									<input type="checkbox" class="teammate-range" value="輔助" checked>
+									<span class="checkmark"></span>
+									輔助
 								</label>
 								<a class="btn setbtn" id="teammate-range-setbtn">全選</a>
 								<a class="btn resetbtn" id="teammate-range-resetbtn">取消</a>
@@ -3180,6 +3187,7 @@
 		</div>
 	</div>
 </div>
+
 
 <!--Teammate CE Modal-->
 <div class="modal" id="teammate-ce-modal">
@@ -3211,8 +3219,8 @@
 				</label>
 				<a class="btn setbtn" id="teammate-ce-star-setbtn">全選</a>
 				<a class="btn resetbtn" id="teammate-ce-star-resetbtn">取消</a>
-			</div>	
-			<div class="row center">	
+			</div>
+			<div class="row center">
 				<span class="filtertag">分類</span>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-type" value="常駐" checked>
@@ -3242,8 +3250,8 @@
 				<a class="btn setbtn" id="teammate-ce-type-setbtn">全選</a>
 				<a class="btn resetbtn" id="teammate-ce-type-resetbtn">取消</a>
 			</div>
-			<div class="row center ">			
-				<span class="filtertag">禮裝效果</span>		
+			<div class="row center ">
+				<span class="filtertag">禮裝效果</span>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-effect" value="攻擊力" checked>
 					<span class="checkmark"></span>
@@ -3255,9 +3263,9 @@
 					Buster性能
 				</label>
 				<label class="checkbox">
-					<input type="checkbox" class="teammate-ce-effect" value="Art性能" checked>
+					<input type="checkbox" class="teammate-ce-effect" value="Arts性能" checked>
 					<span class="checkmark"></span>
-					Art性能
+					Arts性能
 				</label>
 				<label class="checkbox">
 					<input type="checkbox" class="teammate-ce-effect" value="Quick性能" checked>
@@ -3315,4 +3323,3 @@
 <div class="counter" id="calc-counter"></div>
 </body>
 </html>
-		
