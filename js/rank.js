@@ -30,9 +30,16 @@ $(document).ready(function() {
 
 	checkFavourite();
 	$(".favouritebtn").click(function() {
-		var url = $(this).attr("buff-src");
+		var url = $(this).attr("data-src");
 		setFavourite(url);
 	});
+
+	common = parent.common;
+	servants = parent.servants;
+	skillBuff = parent.skillBuff;
+	npBuff = parent.npBuff;
+	servantAtk = parent.servantAtk;
+	events = parent.events;
 });
 
 // Update page height
@@ -299,8 +306,8 @@ function updateBattlefield() {
 /* Servant Setup */
 var useStrict = [true, false];
 var activeColor = "Common";
-var buffListCommon = [0, 0, 0, 0, 0, 0, 0], buffListBuster = [0, 0, 0, 0, 0, 0, 0],
-	buffListArts = [0, 0, 0, 0, 0, 0, 0], buffListQuick = [0, 0, 0, 0, 0, 0, 0];
+var buffListCommon = [0, 0, 0, 0, 0, 0, 100], buffListBuster = [0, 0, 0, 0, 0, 0, 100],
+	buffListArts = [0, 0, 0, 0, 0, 0, 100], buffListQuick = [0, 0, 0, 0, 0, 0, 100];
 var ceInfoCommon = [], ceInfoBuster = [], ceInfoArts = [], ceInfoQuick = [];
 var ceBuffListCommon = [], ceBuffListBuster = [], ceBuffListArts = [], ceBuffListQuick = [];
 var ceSaveCommon = [false, 0], ceSaveBuster = [false, 0], ceSaveArts = [false, 0], ceSaveQuick = [false, 0];
@@ -419,15 +426,17 @@ $(document).ready(function() {
 	$("#rank-use-universal-buff").change(function() {
 		if ($(this).is(":checked")) {
 			activeColor = "Common";
+			$("#rank-current-color").val("Buster");
 			$("#assign-current-color-toggle").hide();
 			$("#rank-use-universal-buff-label").addClass("highlight");
-			buffListBuster = [0, 0, 0, 0, 0, 0, 0], buffListArts = [0, 0, 0, 0, 0, 0, 0], buffListQuick = [0, 0, 0, 0, 0, 0, 0];
+			buffListBuster = [0, 0, 0, 0, 0, 0, 100], buffListArts = [0, 0, 0, 0, 0, 0, 100], buffListQuick = [0, 0, 0, 0, 0, 0, 100];
 			ceInfoBuster = [], ceInfoArts = [], ceInfoQuick = [];
 			ceBuffListBuster = [], ceBuffListArts = [], ceBuffListQuick = [];
 			ceSaveBuster = [false, 0], ceSaveArts = [false, 0], ceSaveQuick = [false, 0];
 			masterInfoBuster = [], masterInfoArts = [], masterInfoQuick = [];
 			masterBuffListBuster = [], masterBuffListArts = [], masterBuffListQuick = [];
 			masterSaveBuster = 1, masterSaveArts = 1, masterSaveQuick = 1;
+			applyBuffByColor();
 		} else {
 			activeColor = "Buster";
 			$("#assign-current-color-toggle").show();
@@ -519,7 +528,7 @@ function updateBuffList() {
 	buffList[3] = Number($("#rank-Buster-buff").val());
 	buffList[4] = Number($("#rank-Arts-buff").val());
 	buffList[5] = Number($("#rank-Quick-buff").val());
-	buffList[6] = 0;
+	buffList[6] = 100;
 	window["buffList" + activeColor] = buffList;
 }
 
@@ -570,7 +579,7 @@ function updateCESave() {
 	var ceSave = [];
 	var ceInfo = window["ceInfo" + activeColor];
 	var maxLV;				// Set maximum lv of CE
-	switch (ceInfo[0].star) {
+	switch (ceInfo.star) {
 		case 3:
 			maxLV = 60;
 			break;
@@ -685,9 +694,9 @@ function applyBuffByColor() {
 }
 
 /* Result Section */
-var universalBuffCommon = [0, 0, 0, 0, 0, 0, 0], universalBuffBuster = [0, 0, 0, 0, 0, 0, 0],
-	universalBuffArts = [0, 0, 0, 0, 0, 0, 0], universalBuffQuick = [0, 0, 0, 0, 0, 0, 0],
-	universalBuffTemp = [0, 0, 0, 0, 0, 0, 0];
+var universalBuffCommon = [0, 0, 0, 0, 0, 0, 100], universalBuffBuster = [0, 0, 0, 0, 0, 0, 100],
+	universalBuffArts = [0, 0, 0, 0, 0, 0, 100], universalBuffQuick = [0, 0, 0, 0, 0, 0, 100],
+	universalBuffTemp = [0, 0, 0, 0, 0, 0, 100];
 var currentServantInfo = [], currentServantSave = [], currentSkillBuffList = [],
 	currentNPBuffList = [], currentTempAffinity = [], currentNPAddMult = [];
 var currentNPLV = 1, currentOCLV = 1, currentNPRU = "", currentEDEffective = false;
@@ -700,6 +709,7 @@ $(document).ready(function() {
 	$("#rank-calcbtn").click(function() {
 		$("#rank-result").show();
 		rank();
+		generateRankTable();
 	});
 
 	$("#rank-result-resetbtn").click(function() {
@@ -773,6 +783,17 @@ $(document).ready(function() {
 		rankEDNone();
 	});
 
+	$(".rank-npru").change(function() {
+		var npru = $(this).val();
+		rankNPRUChange(this, npru);
+	});
+	$("#rank-npru-setbtn").click(function() {
+		rankNPRUAll();
+	});
+	$("#rank-npru-resetbtn").click(function() {
+		rankNPRUNone();
+	});
+
 	// Generate new table
 	$("#rank-filterbtn").click(function() {
 		generateRankTable();
@@ -780,11 +801,12 @@ $(document).ready(function() {
 });
 
 function rank() {
-	var servantList = [], rankResult = [];
+	var servantList = [];
 	var ownership = [true, false];
-	universalBuffCommon = [0, 0, 0, 0, 0, 0, 0], universalBuffBuster = [0, 0, 0, 0, 0, 0, 0],
-		universalBuffArts = [0, 0, 0, 0, 0, 0, 0], universalBuffQuick = [0, 0, 0, 0, 0, 0, 0];
+	universalBuffCommon = [0, 0, 0, 0, 0, 0, 100], universalBuffBuster = [0, 0, 0, 0, 0, 0, 100],
+		universalBuffArts = [0, 0, 0, 0, 0, 0, 100], universalBuffQuick = [0, 0, 0, 0, 0, 0, 100];
 	currentTempAffinity = [], currentNPAddMult = [];
+	rankResult = [];
 
 	initialRankFilter();
 
@@ -804,10 +826,10 @@ function rank() {
 	updateUniversalBuff();
 
 	$(servantList).each(function() {
-		universalBuffTemp = [0, 0, 0, 0, 0, 0, 0];
+		universalBuffTemp = [0, 0, 0, 0, 0, 0, 100];
 		currentEDEffective = false;
 		var id = this.id;
-		currentServantInfo = this;
+		currentServantInfo[0] = this;
 
 		currentSkillBuffList = multiFilter(skillBuff, {
 			id: [id],
@@ -824,32 +846,28 @@ function rank() {
 		});
 
 		var npRU = "";
-		var skillSet = ["skill1", "skill2", "skill3"];
 
 		currentOCLV = $("#rank-servant-npoc").val();
 
 		var key = "";
+		var test = false;
 		if ($("#rank-use-universal-buff").is(":checked")) {
 			key = "Common";
 		} else {
-			key = currentServantInfo.npColor;
+			key = currentServantInfo[0].npColor;
 		}
 
 		if ($("#rank-use-inventory").is(":checked")) {
-			currentServantSave = bgServant.filter(function() {
-				return this.id == id;
+			currentServantSave = bgServant.filter(function(servant) {
+				return servant.id == id;
 			});
 
 			universalBuffTemp[3] += currentServantSave[0].data[19];						// Event buff
 
 			if ($("#rank-use-saved-teammate").is(":checked")) {
 				var support = currentServantSave[0].data[16];
-				for (var i = 0; i < universalBuffTemp.length; i++) {
+				for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
 					universalBuffTemp[i] += inventoryTeammateBuff[support][i];
-				}
-			} else {
-				for (var i = 0; i < universalBuffTemp.length; i++) {
-					universalBuffTemp[i] += window["universalBuff" + key][i];
 				}
 			}
 
@@ -860,8 +878,7 @@ function rank() {
 					updateCEBuff("Temp");
 				}
 			} else {
-				updateCEAtk(key);
-				updateCEBuff(key);
+				test = true;
 			}
 
 			if ($("#rank-use-saved-master").is(":checked")) {
@@ -869,8 +886,6 @@ function rank() {
 				if (code != "不使用魔術禮裝") {
 					updateMasterBuff("Temp");
 				}
-			} else {
-				updateMasterBuff(key);
 			}
 
 			if ($("#rank-use-saved-data").is(":checked")) {
@@ -880,33 +895,42 @@ function rank() {
 
 				currentNPLV = currentServantSave[0].data[2].toString();
 
-				updateSkillPreReq("default", false, 1);
-				updateSkillPreReq("skill1", currentServantSave[0].data[6]);
-				updateSkillPreReq("skill2", currentServantSave[0].data[8]);
-				updateSkillPreReq("skill3", currentServantSave[0].data[10]);
+				if (currentSkillBuffList[0] !== undefined) {
+					updateSkillPreReq("default", false, 1);
+					updateSkillPreReq("skill1", currentServantSave[0].data[6]);
+					updateSkillPreReq("skill2", currentServantSave[0].data[8]);
+					updateSkillPreReq("skill3", currentServantSave[0].data[10]);
 
-				updateSkillBuff("skill1", currentServantSave[0].data[6], currentServantSave[0].data[5], []);
-				updateSkillBuff("skill2", currentServantSave[0].data[8], currentServantSave[0].data[7], []);
-				updateSkillBuff("skill3", currentServantSave[0].data[10], currentServantSave[0].data[9], []);
+					updateSkillBuff("skill1", currentServantSave[0].data[6], currentServantSave[0].data[5], []);
+					updateSkillBuff("skill2", currentServantSave[0].data[8], currentServantSave[0].data[7], []);
+					updateSkillBuff("skill3", currentServantSave[0].data[10], currentServantSave[0].data[9], []);
+				}
 			} else {
-				if (currentServantInfo.sequence <= Number($("#rank-progress-selection").val())) {
+				if (currentServantInfo[0].sequence != "" && currentServantInfo[0].sequence <= Number($("#rank-progress-selection").val())) {
 					npRU = "RU";
 				}
 				var source = $("#assign-npLV-toggle").find("#" + currentServantInfo[0].type + "-" + currentServantInfo[0].star);
 				currentNPLV = $(source).find("select").val();
 
-				acHocSkillBuff();
+				if (currentSkillBuffList[0] !== undefined) {
+					acHocSkillBuff();
+				}
+			}
+
+			if (!$("#rank-use-saved-teammate").is(":checked") || !$("#rank-use-saved-ce").is(":checked") ||
+				!$("#rank-use-saved-master").is(":checked")) {
+				for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
+					universalBuffTemp[i] += window["universalBuff" + key][i];
+				}
 			}
 		} else {
-			for (var i = 0; i < universalBuffTemp.length; i++) {
+			for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
 				universalBuffTemp[i] += window["universalBuff" + key][i];
 			}
 
-			updateCEAtk(key);
-			updateCEBuff(key);
-			updateMasterBuff(key);
+			test = true;
 
-			if (currentServantInfo.sequence <= Number($("#rank-progress-selection").val())) {
+			if (currentServantInfo[0].sequence != "" && currentServantInfo[0].sequence <= Number($("#rank-progress-selection").val())) {
 				npRU = "RU";
 			}
 			var source = $("#assign-npLV-toggle").find("#" + currentServantInfo[0].type + "-" + currentServantInfo[0].star);
@@ -917,18 +941,23 @@ function rank() {
 
 		currentNPRU = npRU;
 		updatePassiveBuff(npRU);
-		updateNPPreReq(npRU);
-		updateNPBuff();
 
-		calcDmg(key);
+		if (currentNPBuffList[0] !== undefined) {
+			updateNPPreReq(npRU);
+			updateNPBuff();
+		}
+
+		if (test) {
+			calcDmg(key);
+		} else {
+			calcDmg("Temp");
+		}
 	});
-
-	generateRankTable();
 };
 
 function updateSkillPreReq(skill, skillRU) {
 	var activeSkillBuff = multiFilter(currentSkillBuffList, {
-		no: [skill],
+		no: [skill.toString()],
 		skillRU: [skillRU],
 		chance: useStrict,
 	});
@@ -949,9 +978,9 @@ function acHocSkillBuff() {
 	var skillSet = ["skill1", "skill2", "skill3"];
 	var skillRU = true;
 
-	skillSet.each(function() {
+	$(skillSet).each(function() {
 		var buffList = multiFilter(currentSkillBuffList, {
-			no: [this],
+			no: [this.toString()],
 			skillRU: [true],
 			chance: useStrict,
 		});
@@ -960,7 +989,7 @@ function acHocSkillBuff() {
 		});
 		if (buffList[0] === undefined) {
 			buffList = multiFilter(currentSkillBuffList, {
-				no: [this],
+				no: [this.toString()],
 				skillRU: [false],
 				chance: useStrict,
 			});
@@ -976,7 +1005,7 @@ function updateSkillBuff(skill, skillRU, lv, buffList) {
 	var activeSkillBuff = []
 	if (buffList[0] === undefined) {
 		activeSkillBuff = multiFilter(currentSkillBuffList, {
-			no: [skill],
+			no: [skill.toString()],
 			skillRU: [skillRU],
 			chance: useStrict,
 		});
@@ -1084,13 +1113,19 @@ function updateSkillED(buff, lv) {
 	}
 	if (test == true) {
 		currentEDEffective = true;
-		universalBuffTemp[2] += this[lv];
+		universalBuffTemp[2] += buff[lv];
 	}
 }
 
 function updateNPPreReq(npRU) {
+	var npRUCheck;
+	if (npRU == "RU") {
+		npRUCheck = true;
+	} else {
+		npRUCheck = false;
+	}
 	currentNPBuffList = multiFilter(currentNPBuffList, {
-		npRU: [npRU],
+		npRU: [npRUCheck],
 		chance: useStrict
 	});
 	var activeNPBuff = currentNPBuffList;
@@ -1222,28 +1257,28 @@ function updateNPED(buff, lv, category) {
 	}
 	if (test == true && category == "nped") {				// Standard NP ED given as NP buff
 		currentEDEffective = true;
-		universalBuffTemp[6] += this[lv];
+		universalBuffTemp[6] = buff[lv];
 	} else if (test == true && category == "skilled") {		// Skill ED given by NP buff (Beni-enma)
 		currentEDEffective = true;
-		universalBuffTemp[2] += this[lv];
+		universalBuffTemp[2] += buff[lv];
 	}
 }
 
 function updatePassiveBuff(npRU) {
-	universalBuffTemp[0] += currentServantInfo["npAtk" + npRU];
+	universalBuffTemp[0] += currentServantInfo[0]["npAtk" + npRU];
 
-	universalBuffTemp[1] += currentServantInfo.divinity;
+	universalBuffTemp[1] += currentServantInfo[0].divinity;
 
-	universalBuffTemp[2] += currentServantInfo["npDmgUp" + npRU];
+	universalBuffTemp[2] += currentServantInfo[0]["npDmgUp" + npRU];
 
-	universalBuffTemp[3] += currentServantInfo.passiveBuster;
-	universalBuffTemp[3] += currentServantInfo["npBuster" + npRU];
+	universalBuffTemp[3] += currentServantInfo[0].passiveBuster;
+	universalBuffTemp[3] += currentServantInfo[0]["npBuster" + npRU];
 
-	universalBuffTemp[4] += currentServantInfo.passiveArts;
-	universalBuffTemp[4] += currentServantInfo["npArts" + npRU];
+	universalBuffTemp[4] += currentServantInfo[0].passiveArts;
+	universalBuffTemp[4] += currentServantInfo[0]["npArts" + npRU];
 
-	universalBuffTemp[5] += currentServantInfo.passiveQuick;
-	universalBuffTemp[5] += currentServantInfo["npQuick" + npRU];
+	universalBuffTemp[5] += currentServantInfo[0].passiveQuick;
+	universalBuffTemp[5] += currentServantInfo[0]["npQuick" + npRU];
 }
 
 function updateUniversalBuff() {
@@ -1254,7 +1289,9 @@ function updateUniversalBuff() {
 		cardList = ["Buster", "Arts", "Quick"];
 	}
 	$(cardList).each(function() {
-		window["universalBuff" + this] = window["buffList" + this];
+		for (var i = 0; i < window["universalBuff" + this].length; i++) {
+			window["universalBuff" + this][i] = window["buffList" + this][i];
+		}
 
 		if (window["ceInfo" + this][0] !== undefined) {
 			updateCEAtk(this);
@@ -1271,10 +1308,10 @@ function updateUniversalBuff() {
 
 function updateCEAtk(key) {
 	currentCEInfo = [], currentCESave = [], currentCEBuffList = [];
-	var ceInfo = [];
+	var ceInfo = {};
 	var ceMax = false;
 	var ceLV = "0";
-	ceAtk = 0;
+	var atk = 0;
 	switch (key) {
 		case "Temp":
 			var id = currentServantSave[0].data[17];
@@ -1284,7 +1321,7 @@ function updateCEAtk(key) {
 			currentCESave = bgCE.filter(function(essence) {
 				return essence.id == id;
 			});
-			ceInfo = currentCEInfo[0];
+			ceInfo = currentCEInfo;
 			ceMax = currentCESave[0].data[1];
 			ceLV = currentCESave[0].data[2].toString();
 			break;
@@ -1296,7 +1333,7 @@ function updateCEAtk(key) {
 	}
 
 	if (ceInfo[0].defaultMax == true) {
-		ceAtk = ceInfo[0].maxAtk;
+		atk = ceInfo[0].maxAtk;
 	} else {
 		var sum = ceInfo[0].defaultAtk + ceInfo[0].maxAtk;
 		var lvRef = ceAtk.filter(function(obj) {
@@ -1305,14 +1342,14 @@ function updateCEAtk(key) {
 		if (ceLV == "0") {
 			ceLV = "20";
 		}
-		ceAtk = lvRef[0][lv];
+		atk = lvRef[0][ceLV];
 	}
 
-	window["ceAtk" + key] = ceAtk;
+	window["ceAtk" + key] = atk;
 }
 
 function updateCEBuff(key) {
-	var ceInfo = [], ceBuffList = [];
+	var ceInfo = [], ceBuffList = [], checkRU = false;
 	switch (key) {
 		case "Temp":
 			var id = currentServantSave[0].data[17];
@@ -1321,24 +1358,25 @@ function updateCEBuff(key) {
 				toSelf: [true],
 				effect: ["dmg", "skilled", "adddmg", "buster", "arts", "quick", "npdmg", "def"]
 			});
-			ceInfo = currentCEInfo[0];
+			ceInfo = currentCEInfo;
 			ceBuffList = currentCEBuffList;
+			checkRU = currentCESave[0].data[1];
 			break;
 		default:
 			ceInfo = window["ceInfo" + key];
 			ceBuffList = window["ceBuffList" + key];
+			checkRU = $("#rank-ce-max").is(":checked");
 			break;
 	}
 	var test = true;
 	if (ceInfo[0].type == "羈絆禮裝") {			// Check if CE is a max bond CE
-		if (ceInfo[0].corrSerID != currentServantInfo.id) {
+		if (ceInfo[0].corrSerID != currentServantInfo[0].id) {
 			test = false;
 		}
 	}
 	if (test == true) {
-		var checkRU = $("#rank-ce-max").is(":checked");
 		var lv;
-		if (checkRU == true) {
+		if (checkRU) {
 			lv = "max";
 		} else {
 			lv = "default";
@@ -1414,7 +1452,7 @@ function updateCEED(buff, key) {
 			break;
 	}
 	if (test == true) {
-		window["universalBuff" + key][2] += this[lv];
+		window["universalBuff" + key][2] += buff[lv];
 	}
 }
 
@@ -1432,12 +1470,12 @@ function updateMasterBuff(key) {
 				name: [name],
 				effect: ["dmg", "adddmg", "buster", "arts", "quick", "npdmg"]
 			});
-			masterBuffList = currentMasterBuffList[0];
+			masterBuffList = currentMasterBuffList;
 			lv = currentMasterSave[0].data[1].toString();
 			break;
 		default:
 			masterBuffList = window["masterBuffList" + key];
-			lv = window["masterSave" + key][1].toString();
+			lv = window["masterSave" + key].toString();
 			break;
 	}
 
@@ -1505,7 +1543,7 @@ function calcDmg(input) {
 		atkStatUp = 0
 	}
 
-	if ($("#rank-use-inventory").is(":checked") && $("#rank-use-saved-data").is(":checked")) {
+	if ($("#rank-use-inventory").is(":checked") && $("#rank-use-saved-ce").is(":checked")) {
 		key = "Temp";
 	} else {
 		key = input;
@@ -1583,7 +1621,7 @@ function calcDmg(input) {
 		advantage = "resist";
 	}
 
-	var enemyAttr = $("rank-enemy-attribute").val();
+	var enemyAttr = $("#rank-enemy-attribute").val();
 	var attrAffMultiplier = servantAttrAffList[0][enemyAttr];		// Acquire attribute affinity relationship
 
 	var atkBuff = universalBuffTemp[0] / 100;
@@ -1596,11 +1634,21 @@ function calcDmg(input) {
 		attrAffMultiplier * ( 1 + atkBuff ) * ( 1 + npDmgBuff ) * npEDBuff + addDmg ;
 	dmgOutput = Number(dmgOutput.toFixed(0));
 
+	if (servantLv == 0) {
+		servantLv = "預設";
+	}
+
+	var rankUp = "";
+	if (currentNPRU == "RU") {
+		rankUp = "已強化";
+	}
+
 	// Write output into array
 	var output = {
 		name: currentServantInfo[0].name,
 		color: npColor,
 		classes: currentServantInfo[0].classes,
+		attribute: currentServantInfo[0].attribute,
 		star: currentServantInfo[0].star,
 		type: currentServantInfo[0].type,
 		ed: currentEDEffective.toString(),
@@ -1608,11 +1656,12 @@ function calcDmg(input) {
 		atk: totalAtk,
 		np: npLv,
 		range: currentServantInfo[0].npRange,
-		npmult: npMultiplier * 100,
-		nped: npEDBuff * 100,
-		npbuff: npDmgBuff * 100,
-		cardbuff: cardBuff * 100,
-		atkbuff: atkBuff * 100,
+		npmult: parseFloat(( npMultiplier * 100 ).toFixed(1)),
+		npru: rankUp,
+		nped: ( parseFloat(( npEDBuff * 100 ).toFixed(1)) - 100 ),
+		npbuff: parseFloat(( npDmgBuff * 100 ).toFixed(1)),
+		cardbuff: parseFloat(( cardBuff * 100 ).toFixed(1)),
+		atkbuff: parseFloat(( atkBuff * 100 ).toFixed(1)),
 		dmg: dmgOutput,
 		adv: advantage
 	};
@@ -1633,7 +1682,8 @@ let rankResultFilter = {
 	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],
 	color: ["Buster", "Arts", "Quick"],
 	range: ["全體", "單體"],
-	ed: ["true", "false"]
+	ed: ["true", "false"],
+	npru: ["", "已強化"]
 };
 
 function generateRankTable() {
@@ -1641,23 +1691,25 @@ function generateRankTable() {
 
 	var filteredResult = multiFilter(rankResult, rankResultFilter);
 
-	sortArray(filteredResult, "dmg");
+	sortDescend(filteredResult, "dmg");
 	var i = 0;
 	var max = filteredResult[0].dmg;
+	var table = document.getElementById("rank-table");
 	filteredResult.forEach(function(result) {
 		i++;
-		var percent = result.dmg / max;
-
+		var percent = ( result.dmg / max ) * 100;
 		var row = table.insertRow(-1);
 		$(row).addClass("result-row");
 		row.insertCell(-1).innerHTML = i;
 		row.insertCell(-1).innerHTML = "<span class='" + result.color + "'>" + result.name + "</span>";
 		row.insertCell(-1).innerHTML = "<img class='class-logo' src='images/class/" + result.classes + ".webp' />";
+		row.insertCell(-1).innerHTML = result.attribute;
 		row.insertCell(-1).innerHTML = result.lv;
 		row.insertCell(-1).innerHTML = result.atk;
 		row.insertCell(-1).innerHTML = result.np;
 		row.insertCell(-1).innerHTML = result.range;
 		row.insertCell(-1).innerHTML = result.npmult;
+		row.insertCell(-1).innerHTML = result.npru;
 		row.insertCell(-1).innerHTML = result.nped;
 		row.insertCell(-1).innerHTML = result.npbuff;
 		row.insertCell(-1).innerHTML = result.cardbuff;
@@ -1795,6 +1847,27 @@ function rankEDAll() {
 function rankEDNone() {
 	$(".rank-ed").prop("checked", false);
 	rankResultFilter.ed = [];
+}
+
+// Update NP Rank Up filter
+function rankNPRUChange(element, npru) {
+	var newNPRU = rankResultFilter.npru;
+	if ($(element).prop("checked")) {
+		newNPRU.push(npru);
+		rankResultFilter.npru = newNPRU;
+	} else {
+		position = newNPRU.indexOf(npru);
+		newNPRU.splice(position, 1);
+		rankResultFilter.npru = newNPRU;
+	}
+}
+function rankNPRUAll() {
+	$(".rank-npru").prop("checked", true);
+	rankResultFilter.npru = ["", "已強化"];
+}
+function rankNPRUNone() {
+	$(".rank-npru").prop("checked", false);
+	rankResultFilter.npru = [];
 }
 
 // Initialise all filters

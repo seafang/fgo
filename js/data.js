@@ -24,9 +24,16 @@ function multiFilter(array, filters) {
 }
 
 // Compare & sort array elements
-function sortArray(array, key) {
+function sortAscend(array, key) {
 	array.sort(function(a, b) {
 		return a[key] - b[key];
+	});
+}
+
+// Compare & sort array elements
+function sortDescend(array, key) {
+	array.sort(function(a, b) {
+		return b[key] - a[key];
 	});
 }
 
@@ -75,17 +82,17 @@ function getSave() {
 		currentSave.title = "未命名存檔";
 
 		// Set Mashu as default servant
-		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, "不使用魔術禮裝", 0]}];
+		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, "不使用魔術禮裝", 100]}];
 
 		currentSave.ce = [{"id":0, "data":[true, true, 0, true]}];
 
 		// Set Chaldea as default mystic code
-		currentSave.master = [{"name":"迦勒底", "data":[true, 1]}];
+		currentSave.master = [{"name":"迦勒底", "data":[true, 100]}];
 
 		currentSave.customBuff = [{
-			"自訂 I": [0, 0, 0, 0, 0, 0],
-			"自訂 II": [0, 0, 0, 0, 0, 0],
-			"自訂 III": [0, 0, 0, 0, 0, 0],
+			"自訂 I": [0, 0, 0, 0, 0, 0, 100],
+			"自訂 II": [0, 0, 0, 0, 0, 0, 100],
+			"自訂 III": [0, 0, 0, 0, 0, 0, 100],
 		}];
 
 		currentSave.favouritePage = "calc";
@@ -208,18 +215,18 @@ function masterOwnership() {
 }
 
 var inventoryTeammateBuff = {
-	"不使用隊友": [0, 0, 0, 0, 0, 0],
-	"孔明": [30, 500, 0, 0, 0, 0],
-	"雙孔明": [60, 1000, 0, 0, 0, 0],
-	"梅林": [20, 0, 0, 50, 0, 0],
-	"雙梅林": [40, 0, 0, 100, 0, 0],
-	"玉藻前": [0, 0, 30, 0, 50, 0],
-	"雙玉藻前": [0, 0, 60, 0, 100, 0],
-	"斯卡蒂": [30, 0, 0, 0, 0, 50],
-	"雙斯卡蒂": [60, 0, 0, 0, 0, 100],
-	"梅林 + 孔明": [50, 500, 0, 50, 0, 0],
-	"玉藻前 + 孔明": [30, 500, 30, 0, 50, 0],
-	"斯卡蒂 + 孔明": [60, 500, 0, 0, 0, 50],
+	"不使用隊友": [0, 0, 0, 0, 0, 0, 100],
+	"孔明": [30, 500, 0, 0, 0, 0, 100],
+	"雙孔明": [60, 1000, 0, 0, 0, 0, 100],
+	"梅林": [20, 0, 0, 50, 0, 0, 100],
+	"雙梅林": [40, 0, 0, 100, 0, 0, 100],
+	"玉藻前": [0, 0, 30, 0, 50, 0, 100],
+	"雙玉藻前": [0, 0, 60, 0, 100, 0, 100],
+	"斯卡蒂": [30, 0, 0, 0, 0, 50, 100],
+	"雙斯卡蒂": [60, 0, 0, 0, 0, 100, 100],
+	"梅林 + 孔明": [50, 500, 0, 50, 0, 0, 100],
+	"玉藻前 + 孔明": [30, 500, 30, 0, 50, 0, 100],
+	"斯卡蒂 + 孔明": [60, 500, 0, 0, 0, 50, 100],
 };
 
 var lvDropDown = "<option value='0'>預設</option>\

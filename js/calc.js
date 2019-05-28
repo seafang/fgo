@@ -1683,6 +1683,11 @@ function updateEventBuff() {
 
 // Update passive skill buffs
 function updatePassiveBuff() {
+	var rankUp = "";
+	if ($("#current-servant-rankup").is(":checked")) {
+		rankUp = "RU";
+	}
+
 	// Update Buster buff, includes both passive skills & NP fixed-value buffs
 	var buster = Number($("#Buster-buff").val());
 	buster += servantInfo[0].passiveBuster;
@@ -2651,6 +2656,7 @@ $(document).ready(function() {
 	// Clear specific table
 	$(".table-resetbtn").click(function() {
 		var enemy = $(this).attr("data-value");
+		window[enemy + "Result"] = [];
 		clearResultTable(enemy);
 	});
 });
@@ -2816,6 +2822,7 @@ function clearAllResult() {
 			$(this).remove();
 		});
 		$("#" + this + "-result-title").html("");
+		window[enemy + "Result"] = [];
 	});
 	queryCount = 0;			// Reset query count of the session
 	$("#calc-result-resetbtn").hide();
@@ -2842,7 +2849,7 @@ function generateResultTable(enemy) {
 	clearResultTable(enemy);		// Clear any existing table
 	$(table).parents(".result").show();
 	$("#" + enemy + "-result-title").html($("#" + enemy + "-detail").find(".enemy-name").html());	// Write enemy name
-	sortArray(window[enemy + "Result"], "avg");		// Rearrange results by damage output
+	sortDescend(window[enemy + "Result"], "avg");		// Rearrange results by damage output
 	var i = 0;
 	window[enemy + "Result"].forEach(function(result) {
 		i++;

@@ -5,6 +5,7 @@ var attrAffinity = JSON.parse(attributeAdvantage);
 
 var common = [];
 var servantAtk = [], npBuff = [], skillBuff = [];
+var master = [];
 var events = [];
 
 $(document).ready(function() {
@@ -28,13 +29,16 @@ $(document).ready(function() {
 		npBuff = JSON.parse(data);
 	}, "text");
 
+	$.get("js/data/master.json", function(data) {
+		master = JSON.parse(data);
+	}, "text");
+
 	$.get("js/data/events.json", function(data) {
 		events = JSON.parse(data);
 	}, "text");
 });
 
 var ce = JSON.parse(craftEssence);
-var master = JSON.parse(mysticCode);
 var cc = JSON.parse(commandCode);
 
 var ceBuff =  JSON.parse(craftEssenceBuff);

@@ -360,7 +360,7 @@ function loadSave() {
 			if (servant[0] !== undefined) {
 				if (servant[0].data[0] == true) {
 					$(this).find(".owned").attr("checked", true);
-					enableOption(ownershipToggle);
+					enableOption(ownershipToggle, false);
 				}
 				$(this).find(".inventory-lv").val(servant[0].data[1]);
 				$(this).find(".nplv").val(servant[0].data[2]);
@@ -414,7 +414,7 @@ $(document).ready(function() {
 	});
 	$(".owned").change(function() {
 		updateOwnership(this);
-		enableOption(this);
+		enableOption(this, true);
 	});
 	$(".skill1-rankup").change(function() {
 		updateSkillImg(this, 'skill1');
@@ -482,7 +482,7 @@ function updateOwnership(element) {
 }
 
 // Enable fields on change in ownership status
-function enableOption(element) {
+function enableOption(element, changeTriggered) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var skillList = ["skill1", "skill2", "skill3"];
@@ -500,9 +500,11 @@ function enableOption(element) {
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID;
 		});
-		bgServant[position].data[16] = "不使用隊友";			// No teammate by default
-		bgServant[position].data[17] = 0;							// No CE by default
-		bgServant[position].data[18] = "不使用魔術禮裝";				// No mystic code by default
+		if (changeTriggered) {
+			bgServant[position].data[16] = "不使用隊友";			// No teammate by default
+			bgServant[position].data[17] = 0;							// No CE by default
+			bgServant[position].data[18] = "不使用魔術禮裝";				// No mystic code by default
+		}
 	} else {								// Initialise all fields, delete entry
 		$(row).find("select").prop("disabled", true);
 		$(row).find("input").prop("disabled", true);
@@ -735,6 +737,7 @@ function saveCustomBuff(element) {
 	$("#inventory-teammate-custom-setup input").each(function() {
 		newBuff.push(Number($(this).val()));
 	});
+	newBuff[6] = 100;
 	customBuff[0][activeSetup] = newBuff;
 	currentSave.customBuff = customBuff;
 	parent.customBuff = customBuff;

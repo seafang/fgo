@@ -437,7 +437,7 @@
 	<!--Environment Section-->
 	<div class="info" id="rank-environment-info">
 		<div class="setup" id="rank-battelfield-misc-setup">
-			<div class="row innerborder">
+			<div class="row">
 				<div class="flex listlbl">
 					<span class="labeltag" id="rank-battelfield-setup-label">場地設定</span>
 				</div>
@@ -540,6 +540,20 @@
 					</label>
 					<span class="labeltag space-right-wide" id="rank-use-strict-mode-label">無視有機率發動之效果</span>
 				</div>
+				<div class="element-25">
+					<label for="rank-servant-npoc" class="label">寶具OC(%)</label>
+					<select class="slim update-trigger" id="rank-servant-npoc">
+						<option value="1">100</option>
+						<option value="2">200</option>
+						<option value="3">300</option>
+						<option value="4">400</option>
+						<option value="5">500</option>
+					</select>
+				</div>
+				<div class="element-25">
+					<label for="rank-servant-hp" class="label">剩餘HP(%)</label>
+					<input type="number" class="narrow" id="rank-servant-hp" value="100" min="0" max="100" step="0.00001">
+				</div>
 			</div>
 			<div class="setup-toggle" id="assign-progress-toggle">
 				<label for="rank-release-selection" class="labeltag highlight" id="rank-release-selection-label">從者實裝進度</label>
@@ -573,7 +587,7 @@
 			</div>
 			<div class="setup-toggle under inner" id="assign-data-toggle">
 				<div class="row underborder">
-					<div class="element-20">
+					<div class="element-30">
 						<label for="rank-servant-lv" class="label">等級</label>
 						<select class="slim" id="rank-servant-lv">
 							<option value="0">預設</option>
@@ -679,25 +693,11 @@
 							<option value="1">1</option>
 						</select>
 					</div>
-					<div class="element-20">
+					<div class="element-30">
 						<label for="rank-servant-statup" class="label">芙芙(ATK)</label>
 						<input type="number" class="narrow" id="rank-servant-statup" value="0" min="0" max="2000">
 					</div>
-					<div class="element-20">
-						<label for="rank-servant-npoc" class="label">寶具OC(%)</label>
-						<select class="slim update-trigger" id="rank-servant-npoc">
-							<option value="1">100</option>
-							<option value="2">200</option>
-							<option value="3">300</option>
-							<option value="4">400</option>
-							<option value="5">500</option>
-						</select>
-					</div>
-					<div class="element-20">
-						<label for="rank-servant-hp" class="label">剩餘HP(%)</label>
-						<input type="number" class="narrow" id="rank-servant-hp" value="100" min="0" max="100" step="0.00001">
-					</div>
-					<div class="element-20">
+					<div class="element-30">
 						<label for="rank-servant-skill-lv" class="label">技能等級</label>
 						<select class="tight" id="rank-servant-skill-lv">
 							<option value="1">1</option>
@@ -1227,20 +1227,37 @@
 					<a class="btn resetbtn" id="rank-range-resetbtn">取消</a>
 				</div>
 			</div>
-			<div class="row center inner">
-				<span class="filtertag">特攻</span>
-				<label class="checkbox">
-					<input type="checkbox" class="rank-ed" value="true" checked>
-					<span class="checkmark"></span>
-					已觸發特攻
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" class="rank-ed" value="false" checked>
-					<span class="checkmark"></span>
-					沒有/未觸發特攻
-				</label>
-				<a class="btn setbtn" id="rank-ed-setbtn">全選</a>
-				<a class="btn resetbtn" id="rank-ed-resetbtn">取消</a>
+			<div class="row justify-even">
+				<div class="element-50 flex center">
+					<span class="filtertag">寶具強化</span>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-npru" value="已強化" checked>
+						<span class="checkmark"></span>
+						已強化
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-npru" value="" checked>
+						<span class="checkmark"></span>
+						未強化/沒有強化
+					</label>
+					<a class="btn setbtn" id="rank-npru-setbtn">全選</a>
+					<a class="btn resetbtn" id="rank-npru-resetbtn">取消</a>
+				</div>
+				<div class="element-50 flex center">
+					<span class="filtertag">特攻</span>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-ed" value="true" checked>
+						<span class="checkmark"></span>
+						已觸發特攻
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" class="rank-ed" value="false" checked>
+						<span class="checkmark"></span>
+						未觸發特攻/沒有特攻
+					</label>
+					<a class="btn setbtn" id="rank-ed-setbtn">全選</a>
+					<a class="btn resetbtn" id="rank-ed-resetbtn">取消</a>
+				</div>
 			</div>
 			<div class="row center">
 				<a class="btn filterbtn" id="rank-filterbtn">套用</a>
@@ -1261,11 +1278,13 @@
 							<th>排名</th>
 							<th>從者</th>
 							<th>職階</th>
+							<th>陣營</th>
 							<th>等級</th>
 							<th>ATK</th>
 							<th>寶具</th>
 							<th>類別</th>
 							<th>倍率(%)</th>
+							<th>寶具強化</th>
 							<th>寶具特攻(%)</th>
 							<th>寶具威力(%)</th>
 							<th>指令卡性能(%)</th>

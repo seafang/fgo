@@ -410,9 +410,6 @@ td {
 	padding: 4px 0;
 	margin-bottom: 10px;
 }
-#rank-result-header, #rank-result-section {
-	display: none;
-}
 #rank-ce-resetbtn {
 	display: none;
 }
@@ -420,10 +417,14 @@ td {
 	display: none;
 }
 .rank-container {
-	width: 100%;
+	width: 200px;
+	text-align: left;
 }
 .rank-bar {
-	background-color: #ddd;
+	background-color: #fcff62;
+	font-weight: 500;
+	border: 1px solid #afbb00;
+	padding-left: 10px;
 }
 
 /* Element */
