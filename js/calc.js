@@ -88,7 +88,7 @@ function countDuplicate(newID) {
 
 	// Loop through the team for a complete lsit of teammates
 	$(team).each(function() {
-		if(window[this][0] !== undefined) {
+		if (window[this][0] !== undefined) {
 			list.push(window[this][0].id);
 		}
 	});
@@ -110,8 +110,12 @@ function countDuplicate(newID) {
 var enemyInfo = [];
 var trait = [];
 var debuff = [];
-var enemy1Debuff = [], enemy2Debuff = [], enemy3Debuff = [];
-var enemy1Trait = [], enemy2Trait = [], enemy3Trait = [];
+var enemy1Debuff = [],
+	enemy2Debuff = [],
+	enemy3Debuff = [];
+var enemy1Trait = [],
+	enemy2Trait = [],
+	enemy3Trait = [];
 
 $(document).ready(function() {
 	// Open modals
@@ -295,12 +299,12 @@ function setEnemy(enemy) {
 	$(element).show();
 
 	// Check if is customising enemy
-	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
+	if ($("#current-enemy-name").html() == "未選定/自訂敵人") {
 		$(element).find(".enemy-img").attr("src", "images/bg_logo.webp");
 	} else {
 		$(element).find(".enemy-img").attr("src", $("#current-enemy-img").attr("src"));
 	}
-	if ($("#current-enemy-name").html() == "未選定/自訂敵人"){
+	if ($("#current-enemy-name").html() == "未選定/自訂敵人") {
 		$(element).find(".enemy-name").html("自訂敵人");
 	} else {
 		$(element).find(".enemy-name").html($("#current-enemy-name").html());
@@ -410,8 +414,12 @@ function resetBattlefield() {
 /* Set Servant */
 var servantInfo = [];
 var servantSave = [];
-var servantAffList = [], servantMult = [], servantAttrAffList = [], servantAtkList = [];
-var skillBuffList = [], npBuffList = [];
+var servantAffList = [],
+	servantMult = [],
+	servantAttrAffList = [],
+	servantAtkList = [];
+var skillBuffList = [],
+	npBuffList = [];
 var skillSet = ["default"];
 
 $(document).ready(function() {
@@ -828,10 +836,13 @@ $(document).ready(function() {
 
 // Generate mystic code dropdown list
 function generateMasterSelection() {
+	var select = $("#master-name-selection");
 	$(master).each(function(index, value) {
-		var select = $("#master-name-selection");
 		var name = value.name;
-		var option = {value: name, text: name};
+		var option = {
+			value: name,
+			text: name
+		};
 		select.append($('<option>', option));
 	});
 }
@@ -930,14 +941,46 @@ function applyMaster() {
 
 
 /* Set Teammates */
-var teammate1Info = [], teammate2Info = [], teammate3Info = [], teammate4Info = [], teammate5Info = [];
-var teammate1Save = [], teammate2Save = [], teammate3Save = [], teammate4Save = [], teammate5Save = [];
-var teammate1SkillSet = [], teammate2SkillSet = [], teammate3SkillSet = [], teammate4SkillSet = [], teammate5SkillSet = [];
-var teammate1SkillBuffList = [], teammate2SkillBuffList = [], teammate3SkillBuffList = [], teammate4SkillBuffList = [], teammate5SkillBuffList = [];
-var teammate1NPBuffList = [], teammate2NPBuffList = [], teammate3NPBuffList = [], teammate4NPBuffList = [], teammate5NPBuffList = [];
-var teammate1CEInfo = [], teammate2CEInfo = [], teammate3CEInfo = [], teammate4CEInfo = [], teammate5CEInfo = [];
-var teammate1CESave = [], teammate2CESave = [], teammate3CESave = [], teammate4CESave = [], teammate5CESave = [];
-var teammate1CEBuffList = [], teammate2CEBuffList = [], teammate3CEBuffList = [], teammate4CEBuffList = [], teammate5CEBuffList = [];
+var teammate1Info = [],
+	teammate2Info = [],
+	teammate3Info = [],
+	teammate4Info = [],
+	teammate5Info = [];
+var teammate1Save = [],
+	teammate2Save = [],
+	teammate3Save = [],
+	teammate4Save = [],
+	teammate5Save = [];
+var teammate1SkillSet = [],
+	teammate2SkillSet = [],
+	teammate3SkillSet = [],
+	teammate4SkillSet = [],
+	teammate5SkillSet = [];
+var teammate1SkillBuffList = [],
+	teammate2SkillBuffList = [],
+	teammate3SkillBuffList = [],
+	teammate4SkillBuffList = [],
+	teammate5SkillBuffList = [];
+var teammate1NPBuffList = [],
+	teammate2NPBuffList = [],
+	teammate3NPBuffList = [],
+	teammate4NPBuffList = [],
+	teammate5NPBuffList = [];
+var teammate1CEInfo = [],
+	teammate2CEInfo = [],
+	teammate3CEInfo = [],
+	teammate4CEInfo = [],
+	teammate5CEInfo = [];
+var teammate1CESave = [],
+	teammate2CESave = [],
+	teammate3CESave = [],
+	teammate4CESave = [],
+	teammate5CESave = [];
+var teammate1CEBuffList = [],
+	teammate2CEBuffList = [],
+	teammate3CEBuffList = [],
+	teammate4CEBuffList = [],
+	teammate5CEBuffList = [];
 
 $(document).ready(function() {
 	// Check if servant is chosen, open modal box
@@ -1421,7 +1464,10 @@ function setTeammateCEEffect(toggle) {
 /* Update Buff */
 var useStrict = [true, false];
 var includeAfterDefeat = [true, false];
-var tempAffinity = [], tempAlignment1 = [], tempAlignment2 = [], tempTrait = [];
+var tempAffinity = [],
+	tempAlignment1 = [],
+	tempAlignment2 = [],
+	tempTrait = [];
 var servantNPAddMult = {};
 var tempEnemyTrait = [];
 
@@ -1462,7 +1508,7 @@ $(document).ready(function() {
 	$(".use-skill").change(function() {
 		var skill = $(this).val();
 		var img = $("#" + skill + "-img");
-		if($(this).is(":checked")) {
+		if ($(this).is(":checked")) {
 			$(img).removeClass("dull");
 		} else {
 			$(img).addClass("dull");
@@ -1473,7 +1519,7 @@ $(document).ready(function() {
 	$(".check-master-skill").change(function() {
 		var skill = $(this).val();
 		var img = $("#master-" + skill + "-logo");
-		if($(this).is(":checked")) {
+		if ($(this).is(":checked")) {
 			$(img).removeClass("dull");
 		} else {
 			$(img).addClass("dull");
@@ -1484,7 +1530,7 @@ $(document).ready(function() {
 	$(".teammate-skill").change(function() {
 		var skill = $(this).val();
 		var img = $(this).parents(".teammate-detail").find(".teammate-" + skill + "-img");
-		if($(this).is(":checked")) {
+		if ($(this).is(":checked")) {
 			$(img).removeClass("dull");
 		} else {
 			$(img).addClass("dull");
@@ -1512,7 +1558,7 @@ function updateSkillSet(toggle) {
 		skillSet.splice(position, 1);
 	}
 }
- // Includes master mystic code skills toggled into skill set array
+// Includes master mystic code skills toggled into skill set array
 function updateMasterSkillSet(toggle) {
 	var skill = $(toggle).val();
 	if ($(toggle).is(":checked")) {
@@ -1562,9 +1608,9 @@ function updateBuff() {
 	updateNPPreReq();
 
 	// If CE is set, takes prerequisite buffs into account
-/*	if (ceInfo[0] !== undefined) {
-		updateCEPreReq();
-	}*/
+	/*	if (ceInfo[0] !== undefined) {
+			updateCEPreReq();
+		}*/
 
 	// If teammate is set, takes prerequisite CE, NP & skill buffs into account
 	$(".teammate-detail").each(function() {
@@ -1614,22 +1660,22 @@ function updateBuff() {
 function labelHighlight(field) {
 	$(field).siblings(".labeltag").removeClass("alarm highlight");
 
-	var min = Number.NEGATIVE_INFINITY;		// Set minimum value for different fields, negative infinity by default
-	var max = Number.POSITIVE_INFINITY;		// No maximum by default
-	if ($(field).hasClass("np-ed")) {		// 100 for NP ED
+	var min = Number.NEGATIVE_INFINITY; // Set minimum value for different fields, negative infinity by default
+	var max = Number.POSITIVE_INFINITY; // No maximum by default
+	if ($(field).hasClass("np-ed")) { // 100 for NP ED
 		min = 100;
 	} else if ($(field).attr("id") == "ce-atk") {
 		min = 0;
 		max = 2400;
 	} else if (
-		$(field).hasClass("red-atk") || $(field).hasClass("skill-ed") ||		// 0 for fields that disallow negative values
+		$(field).hasClass("red-atk") || $(field).hasClass("skill-ed") || // 0 for fields that disallow negative values
 		$(field).attr("id") == "add-atk" || $(field).attr("id") == "event-buff"
 	) {
 		min = 0;
 	}
-	if (Number($(field).val()) > min && Number($(field).val()) !== 0) {		// Highlight if higher than minimum & non-0
+	if (Number($(field).val()) > min && Number($(field).val()) !== 0) { // Highlight if higher than minimum & non-0
 		$(field).siblings(".labeltag").addClass("highlight");
-	} else if (Number($(field).val()) < min || Number($(field).val()) > max) {	// Alarm if smaller than minimum or larger than maximum
+	} else if (Number($(field).val()) < min || Number($(field).val()) > max) { // Alarm if smaller than minimum or larger than maximum
 		$(field).siblings(".labeltag").addClass("alarm");
 	}
 }
@@ -1639,9 +1685,9 @@ function updateCEAtk() {
 	if (ceInfo[0] === undefined) {
 		$("#ce-atk").val(0);
 	} else if (ceInfo[0].defaultMax == true) {
-		$("#ce-atk").val(ceInfo[0].maxAtk);		// Use default value if CE is max by default
+		$("#ce-atk").val(ceInfo[0].maxAtk); // Use default value if CE is max by default
 	} else {
-		var maxLV;				// Set maximum lv of CE
+		var maxLV; // Set maximum lv of CE
 		switch (ceInfo[0].star) {
 			case 3:
 				maxLV = 60;
@@ -1654,7 +1700,7 @@ function updateCEAtk() {
 				maxLV = 100;
 				break;
 		}
-		if (!$("#servant-ce-max").is(":checked")) {		// If CE is not max, set maximum lv as 20
+		if (!$("#servant-ce-max").is(":checked")) { // If CE is not max, set maximum lv as 20
 			maxLV = 20;
 		}
 		if (Number($("#servant-ce-lv").val()) > maxLV) {
@@ -1724,34 +1770,34 @@ function updatePassiveBuff() {
 
 // Update prerequisite skill buffs
 function updateSkillPreReq() {
-	$(skillSet).each(function() {			// Loop through each skill in effect
+	$(skillSet).each(function() { // Loop through each skill in effect
 		var checkRU = false;
 		if (this !== "default") {
 			checkRU = $("#check-" + this + "-rankup").is(":checked");
 		}
-		var activeSkillBuff = multiFilter(skillBuffList, {	// Filter useful buffs by rank up status and settings
+		var activeSkillBuff = multiFilter(skillBuffList, { // Filter useful buffs by rank up status and settings
 			no: [this.toString()],
 			skillRU: [checkRU],
 			chance: useStrict,
 			afterDefeat: includeAfterDefeat
 		});
-		$(activeSkillBuff).each(function() {		// Loop through each buff
+		$(activeSkillBuff).each(function() { // Loop through each buff
 			switch (this.effect) {
-				case "class":		// Buffs that change affinity relationships
+				case "class": // Buffs that change affinity relationships
 					tempAffinity = affinity.filter(function(value) {
 						return value.classes = this.corrDetail[0];
 					});
 					break;
-				case "alignment1":		// Buff that add temporary alignment 1
+				case "alignment1": // Buff that add temporary alignment 1
 					tempAlignment1.push(this.corrDetail[0]);
 					break;
-				case "alignment2":		// Buff that add temporary alignment 2
+				case "alignment2": // Buff that add temporary alignment 2
 					tempAlignment2.push(this.corrDetail[0]);
 					break;
-				case "trait":			// Buff that add temporary trait
+				case "trait": // Buff that add temporary trait
 					tempTrait.push(this.corrDetail[0]);
 					break;
-				case "enemytrait":		// Buff that add temporary trait to the enemy
+				case "enemytrait": // Buff that add temporary trait to the enemy
 					tempEnemyTrait.push(this.corrDetail[0]);
 					break;
 				default:
@@ -1764,7 +1810,7 @@ function updateSkillPreReq() {
 // Update prerequisite NP buffs
 function updateNPPreReq() {
 	var checkRU = $("#current-servant-rankup").is(":checked");
-	var activeNPBuff = multiFilter(npBuffList, {		// Filter useful buffs by NP rank up status and settings
+	var activeNPBuff = multiFilter(npBuffList, { // Filter useful buffs by NP rank up status and settings
 		npRU: [checkRU],
 		chance: useStrict
 	});
@@ -1787,8 +1833,8 @@ function updateNPPreReq() {
 			case "enemytrait":
 				tempEnemyTrait.push(this.corrDetail[0]);
 				break;
-			case "npmult":			// NP with additional multiplier that correlate with OC lv (Arash)
-			case "hpmult":			// NP with additional multiplier that correlate with HP value (Anne&Mary, Hijikata)
+			case "npmult": // NP with additional multiplier that correlate with OC lv (Arash)
+			case "hpmult": // NP with additional multiplier that correlate with HP value (Anne&Mary, Hijikata)
 				servantNPAddMult.type = this.effect;
 				servantNPAddMult.npLV = this.npLV;
 				servantNPAddMult["1"] = this["1"];
@@ -1907,15 +1953,15 @@ function updateSkillBuff() {
 			chance: useStrict,
 			afterDefeat: includeAfterDefeat
 		});
-		$(activeSkillBuff).each(function() {		// Check if buff is effective under particular battlefield type
+		$(activeSkillBuff).each(function() { // Check if buff is effective under particular battlefield type
 			var test = true;
 			if (this.selective == true) {
 				switch (this.lookUp) {
 					case "env":
 						if (!battlefield.some(function(env) {
-							return buff.corrDetail.includes(env) === true;
-						})) {
-							test = false;		 // Ignore buff if criteria is not met
+								return buff.corrDetail.includes(env) === true;
+							})) {
+							test = false; // Ignore buff if criteria is not met
 						}
 						break;
 					default:
@@ -1924,52 +1970,52 @@ function updateSkillBuff() {
 			}
 			if (test = true) {
 				switch (this.effect) {
-					case "dmg":			// ATK buffs
+					case "dmg": // ATK buffs
 						var value = Number($("#atk-buff").val());
 						value += this[lv];
 						$("#atk-buff").val(value);
 						break;
-					case "adddmg":			// Additional damage buffs
+					case "adddmg": // Additional damage buffs
 						var value = Number($("#add-atk").val());
 						value += this[lv];
 						$("#add-atk").val(value);
 						break;
-					case "npdmg":			// NP damage buffs
+					case "npdmg": // NP damage buffs
 						var value = Number($("#np-buff").val());
 						value += this[lv];
 						$("#np-buff").val(value);
 						break;
-					case "buster":			// Buster buffs
+					case "buster": // Buster buffs
 						var value = Number($("#Buster-buff").val());
 						value += this[lv];
 						$("#Buster-buff").val(value);
 						break;
-					case "arts":			// Arts buffs
+					case "arts": // Arts buffs
 						var value = Number($("#Arts-buff").val());
 						value += this[lv];
 						$("#Arts-buff").val(value);
 						break;
-					case "quick":			// Quick buffs
+					case "quick": // Quick buffs
 						var value = Number($("#Quick-buff").val());
 						value += this[lv];
 						$("#Quick-buff").val(value);
 						break;
-					case "def":			// Enemy defence debuff
+					case "def": // Enemy defence debuff
 					case "accdef":
 						updateDefDebuff(this, 'enemy1', lv);
-						if (this.range == "all-enemy") {	// Apply debuff to enemy 2 & 3 if effective range permits
+						if (this.range == "all-enemy") { // Apply debuff to enemy 2 & 3 if effective range permits
 							updateDefDebuff(this, 'enemy2', lv);
 							updateDefDebuff(this, 'enemy3', lv);
 						}
 						break;
-					case "skilled":			// Extra damage
+					case "skilled": // Extra damage
 						updateSkillED(this, 'enemy1', lv);
 						updateSkillED(this, 'enemy2', lv);
 						updateSkillED(this, 'enemy3', lv);
 						break;
-					case "hpdmg":			// ATK buffs that correlate with HP value (Passionlips)
+					case "hpdmg": // ATK buffs that correlate with HP value (Passionlips)
 						var hp = Number($("#current-servant-hp").val());
-						if (hp <= 50 && hp > 0) {		// Activate if HP below 50%
+						if (hp <= 50 && hp > 0) { // Activate if HP below 50%
 							var value = Number($("#atk-buff").val());
 							var lower = this[lv];
 							var total = (50 - hp) * 4 / 10 + lower;
@@ -1996,22 +2042,22 @@ function updateDefDebuff(buff, enemy, lv) {
 // Update extra damage buff by skills
 function updateSkillED(buff, enemy, lv) {
 	var test = false;
-	switch (buff.lookUp) {			// Check if criteria is met
-		case "class":			// Class-specific
+	switch (buff.lookUp) { // Check if criteria is met
+		case "class": // Class-specific
 			if (buff.corrDetail.some(function(classes) {
-				return classes == $("#" + enemy + "-class").attr("title");
-			})) {
+					return classes == $("#" + enemy + "-class").attr("title");
+				})) {
 				test = true;
 			}
 			break;
-		case "gender":			// Gender-specific
+		case "gender": // Gender-specific
 			if (buff.corrDetail.some(function(gender) {
-				return gender == $("#" + enemy + "-gender").html();
-			})) {
+					return gender == $("#" + enemy + "-gender").html();
+				})) {
 				test = true;
 			}
 			break;
-		case "alignment1":		// Alignment-specific
+		case "alignment1": // Alignment-specific
 			if (buff.corrDetail[0] == $("#" + enemy + "-alignment1").html()) {
 				test = true;
 			}
@@ -2021,30 +2067,30 @@ function updateSkillED(buff, enemy, lv) {
 				test = true;
 			}
 			break;
-		case "trait":			// Trait-specific
+		case "trait": // Trait-specific
 			var traitList = window[enemy + "Trait"]
-			if (traitList.some(function(trait) {		// Check enemy default traits
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+			if (traitList.some(function(trait) { // Check enemy default traits
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
-			} else if (tempEnemyTrait.some(function(trait) {		// Check temporary traits given by other buffs
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+			} else if (tempEnemyTrait.some(function(trait) { // Check temporary traits given by other buffs
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
 			}
 			break;
-		case "debuff":			// Debuff-specific (Robin Hood)
+		case "debuff": // Debuff-specific (Robin Hood)
 			var debuffList = window[enemy + "Debuff"]
 			if (debuffList.some(function(debuff) {
-				return debuff == buff.corrDetail[0];
-			})) {
+					return debuff == buff.corrDetail[0];
+				})) {
 				test = true;
 			}
 			break;
 		default:
 			break;
 	}
-	if (test == true) {			// Update buff if criteria is met
+	if (test == true) { // Update buff if criteria is met
 		var field = $("#" + enemy + "-buff").find(".skill-ed");
 		var value = Number($(field).val());
 		value += buff[lv];
@@ -2061,7 +2107,7 @@ function updateNPBuff() {
 		npRU: [checkRU],
 		chance: useStrict
 	});
-	$(activeNPBuff).each(function() {		// Check if buff correlate with NP lv or oc lv
+	$(activeNPBuff).each(function() { // Check if buff correlate with NP lv or oc lv
 		if (this.npLV == true) {
 			var lv = nplv;
 		} else {
@@ -2070,7 +2116,7 @@ function updateNPBuff() {
 		var test = true;
 		if (this.selective == true) {
 			switch (this.lookUp) {
-				case "skill":		// NP buffs that required prerequisite skills (Ereshkigal, Kingprotea)
+				case "skill": // NP buffs that required prerequisite skills (Ereshkigal, Kingprotea)
 					var skill = this.corrDetail[0];
 					if (!$("#use-" + skill).is(":checked")) {
 						test = false;
@@ -2146,28 +2192,28 @@ function updateNPED(buff, enemy, lv, category) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			test =  ( buff.corrDetail[0] == $("#" + enemy + "-class").attr("title") );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-class").attr("title"));
 			break;
 		case "gender":
-			test =  buff.corrDetail.some(function(gender) {
+			test = buff.corrDetail.some(function(gender) {
 				return gender == $("#" + enemy + "-gender").html();
 			});
 			break;
 		case "alignment1":
-			test =  ( buff.corrDetail[0] == $("#" + enemy + "-alignment1").html() );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-alignment1").html());
 			break;
 		case "alignment2":
-			test = ( buff.corrDetail[0] == $("#" + enemy + "-alignment2").html() );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-alignment2").html());
 			break;
 		case "trait":
 			var traitList = window[enemy + "Trait"]
 			if (traitList.some(function(trait) {
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
 			} else if (tempEnemyTrait.some(function(trait) {
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
 			}
 			break;
@@ -2176,7 +2222,7 @@ function updateNPED(buff, enemy, lv, category) {
 			test = debuffList.some(function(debuff) {
 				return debuff == buff.corrDetail[0];
 			});
-		case "class-trait":				// Compound criteria (Mysterious Heroine X [Alter])
+		case "class-trait": // Compound criteria (Mysterious Heroine X [Alter])
 			var testTable = [];
 			testTable.push(buff.corrDetail[0] == $("#" + enemy + "-class").attr("title"));
 			var traitList = window[enemy + "Trait"];
@@ -2192,12 +2238,12 @@ function updateNPED(buff, enemy, lv, category) {
 		default:
 			break;
 	}
-	if (test == true && category == "nped") {				// Standard NP ED given as NP buff
+	if (test == true && category == "nped") { // Standard NP ED given as NP buff
 		var field = $("#" + enemy + "-buff").find(".np-ed");
 		var value = Number($(field).val());
 		value += buff[lv];
 		$(field).val(value);
-	} else if (test == true && category == "skilled") {		// Skill ED given by NP buff (Beni-enma)
+	} else if (test == true && category == "skilled") { // Skill ED given by NP buff (Beni-enma)
 		var field = $("#" + enemy + "-buff").find(".skill-ed");
 		var value = Number($(field).val());
 		value += buff[lv];
@@ -2208,7 +2254,7 @@ function updateNPED(buff, enemy, lv, category) {
 // Update CE buffs
 function updateCEBuff() {
 	var test = true;
-	if (ceInfo[0].type == "羈絆禮裝") {			// Check if CE is a max bond CE
+	if (ceInfo[0].type == "羈絆禮裝") { // Check if CE is a max bond CE
 		if (ceInfo[0].corrSerID != servantInfo[0].id) {
 			test = false;
 		}
@@ -2289,25 +2335,25 @@ function updateCEED(buff, enemy, lv) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			test = ( buff.corrDetail[0] == $("#" + enemy + "-class").attr("title") );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-class").attr("title"));
 			break;
 		case "gender":
-			test = ( buff.corrDetail[0] == $("#" + enemy + "-gender").html() );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-gender").html());
 		case "alignment1":
-			test = ( buff.corrDetail[0] == $("#" + enemy + "-alignment1").html() );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-alignment1").html());
 			break;
 		case "alignment2":
-			test = ( buff.corrDetail[0] == $("#" + enemy + "-alignment2").html() );
+			test = (buff.corrDetail[0] == $("#" + enemy + "-alignment2").html());
 			break;
 		case "trait":
 			var traitList = window[enemy + "Trait"]
 			if (traitList.some(function(trait) {
-				return trait == buff.corrDetail[0];
-			})) {
+					return trait == buff.corrDetail[0];
+				})) {
 				test = true;
 			} else if (tempEnemyTrait.some(function(trait) {
-				return trait == buff.corrDetail[0];
-			})) {
+					return trait == buff.corrDetail[0];
+				})) {
 				test = true;
 			}
 			break;
@@ -2390,19 +2436,19 @@ function updateTeammateSkillBuff(section) {
 		});
 		$(activeSkillBuff).each(function() {
 			var test = true;
-			if (this.selective == true) {			// Check if buff is selective
+			if (this.selective == true) { // Check if buff is selective
 				switch (this.lookUp) {
-					case "class":			// Class-specific buff
-						test = ( servantInfo[0].classes == this.corrDetail[0] );
+					case "class": // Class-specific buff
+						test = (servantInfo[0].classes == this.corrDetail[0]);
 						break;
-					case "gender":			// Gender-specific buff
+					case "gender": // Gender-specific buff
 						test = this.corrDetail.some(function(gender) {
 							return gender == servantInfo[0].gender;
 						});
 						break;
-					case "alignment1":		// Alignment-specific buff
+					case "alignment1": // Alignment-specific buff
 						if (servantInfo[0].alignment1 != this.corrDetail[0]) {
-							test = tempAlignment1.some(function(value) {	// Check temporary alignment
+							test = tempAlignment1.some(function(value) { // Check temporary alignment
 								return value == this.corrDetail[0];
 							});
 						}
@@ -2414,11 +2460,11 @@ function updateTeammateSkillBuff(section) {
 							});
 						}
 						break;
-					case "trait":		// Trait-specific buff
+					case "trait": // Trait-specific buff
 						if (!servantInfo[0].trait.some(function(value) {
-						    	return value == this.corrDetail[0];
-						})) {
-							test = tempTrait.some(function(value) {		// Check temporary traits
+								return value == this.corrDetail[0];
+							})) {
+							test = tempTrait.some(function(value) { // Check temporary traits
 								return value == this.corrDetail[0];
 							});
 						}
@@ -2498,7 +2544,7 @@ function updateTeammateNPBuff(section) {
 		var test = true;
 		if (this.selective == true) {
 			switch (this.lookUp) {
-				case "skill":			// NP buffs that required prerequisite skills (Ereshkigal)
+				case "skill": // NP buffs that required prerequisite skills (Ereshkigal)
 					var skill = this.corrDetail[0];
 					test = $("#use-" + skill).is(":checked");
 					break;
@@ -2634,7 +2680,9 @@ function updateTeammateCEBuff(section) {
 }
 
 /* Calculation */
-var enemy1Result = [], enemy2Result = [], enemy3Result = [];
+var enemy1Result = [],
+	enemy2Result = [],
+	enemy3Result = [];
 var queryCount = 0;
 
 $(document).ready(function() {
@@ -2666,9 +2714,9 @@ function calculation() {
 	$("#calc-result-resetbtn").show();
 
 	var enemyList = ["enemy1", "enemy2", "enemy3"];
-	queryCount++;		// Update the total number of query in the current session
+	queryCount++; // Update the total number of query in the current session
 	$(enemyList).each(function() {
-		if ($("#" + this).find(".enemy-name").html() != "") {		// Calculate results on each enemy set
+		if ($("#" + this).find(".enemy-name").html() != "") { // Calculate results on each enemy set
 			calcDmg(this);
 		}
 	});
@@ -2678,33 +2726,33 @@ function calculation() {
 function calcDmg(enemy) {
 	var servantLv = $("#current-servant-lv").val();
 	var atk;
-	if (servantLv == "0") {			// Check if default servant lv is in used
+	if (servantLv == "0") { // Check if default servant lv is in used
 		atk = servantInfo[0].atk;
 	} else {
 		atk = servantAtkList[0][servantLV];
 	}
 	var atkStatUp = parseInt($("#current-servant-statup").val());
-	if (atkStatUp > 2000) {			// Check if ATK stats up exceed 2000
+	if (atkStatUp > 2000) { // Check if ATK stats up exceed 2000
 		atkStatUp = 2000
 	} else if (atkStatUp < 0) {
 		atkStatUp = 0
 	}
 	var ceAtk = parseInt($("#ce-atk").val());
-	if (ceAtk > 2400) {			// Check if CE ATK exceed 2400
+	if (ceAtk > 2400) { // Check if CE ATK exceed 2400
 		ceAtk = 2400
 	} else if (ceAtk < 0) {
 		ceAtk = 0
 	}
-	var totalAtk = atk + atkStatUp + ceAtk;		// Calculate total ATK
+	var totalAtk = atk + atkStatUp + ceAtk; // Calculate total ATK
 	var npLv = $("#current-servant-nplv").val();
 	var npMultiplier;
-	if ($("#current-servant-rankup").is(":checked")) {		// Acquire NP multiplier
+	if ($("#current-servant-rankup").is(":checked")) { // Acquire NP multiplier
 		npMultiplier = servantInfo[0]["np" + npLv + "RU"] / 100;
 	} else {
 		npMultiplier = servantInfo[0]["np" + npLv] / 100;
 	}
 	var multLV;
-	if (servantNPAddMult.npLV !== undefined) {		// Check if additional NP multiplier correlate with NP lv or oc lv
+	if (servantNPAddMult.npLV !== undefined) { // Check if additional NP multiplier correlate with NP lv or oc lv
 		if (servantNPAddMult.npLV) {
 			multLV = npLv;
 		} else {
@@ -2712,25 +2760,25 @@ function calcDmg(enemy) {
 		}
 	}
 	switch (servantNPAddMult.type) {
-		case undefined:			// No additional NP multiplier
+		case undefined: // No additional NP multiplier
 			break;
-		case "npmult":			// Correlate with oc lv (Arash)
+		case "npmult": // Correlate with oc lv (Arash)
 			npMultiplier += servantNPAddMult[multLV];
 			break;
-		case "hpmult":			// Correlate with HP value (Anne&Mary, Hijikata)
+		case "hpmult": // Correlate with HP value (Anne&Mary, Hijikata)
 			var hp = Number($("#current-servant-hp").val());
-			if (hp < 0) {		// Check the validity of HP value
+			if (hp < 0) { // Check the validity of HP value
 				hp = Math.abs(hp);
 			} else if (hp > 100) {
 				hp = 100;
 			}
-			var addMult = servantNPAddMult[multLV] * [ 1 - ( hp / 100 ) ];
+			var addMult = servantNPAddMult[multLV] * [1 - (hp / 100)];
 			npMultiplier += addMult;
 			break;
 	}
 	var npColor = servantInfo[0].npColor;
 	var cardMultiplier;
-	switch (npColor) {		// Acquire card color multiplier
+	switch (npColor) { // Acquire card color multiplier
 		case "Buster":
 			cardMultiplier = 1.5;
 			break;
@@ -2743,27 +2791,27 @@ function calcDmg(enemy) {
 		default:
 			break;
 	}
-	var cardBuff = parseFloat($("#" + npColor + "-buff").val()) / 100;	// Acquire card buff that correspond with NP color
-	var classMultiplier = servantMult[0].multiplier;		// Acquire class multiplier
+	var cardBuff = parseFloat($("#" + npColor + "-buff").val()) / 100; // Acquire card buff that correspond with NP color
+	var classMultiplier = servantMult[0].multiplier; // Acquire class multiplier
 	var enemyClass = $("#" + enemy + "-class").attr("title");
 	var affMultiplier;
-	if (tempAffinity[0] !== undefined) {			// Acquire affinity relationship, check if temporary affinity is in effect
+	if (tempAffinity[0] !== undefined) { // Acquire affinity relationship, check if temporary affinity is in effect
 		affMultiplier = tempAffinity[0][enemyClass];
 	} else {
 		affMultiplier = servantAffList[0][enemyClass];
 	}
-	var advantage;			// Display advantage visually
+	var advantage; // Display advantage visually
 	if (affMultiplier > 1) {
 		advantage = "weak";
 	} else if (affMultiplier < 1) {
 		advantage = "resist";
 	}
 	var enemyAttr = $("#" + enemy + "-attribute").html();
-	var attrAffMultiplier = servantAttrAffList[0][enemyAttr];		// Acquire attribute affinity relationship
+	var attrAffMultiplier = servantAttrAffList[0][enemyAttr]; // Acquire attribute affinity relationship
 	var atkBuff = parseFloat($("#atk-buff").val()) / 100;
 	var defDebuff = parseFloat($("#" + enemy + "-buff").find(".def-debuff").val()) / 100;
-	var npDmgBuff = [ parseFloat($("#np-buff").val()) + parseFloat($("#event-buff").val()) +
-		parseFloat($("#" + enemy + "-buff").find(".skill-ed").val()) ] / 100;
+	var npDmgBuff = [parseFloat($("#np-buff").val()) + parseFloat($("#event-buff").val()) +
+		parseFloat($("#" + enemy + "-buff").find(".skill-ed").val())] / 100;
 	var npEDBuff = parseFloat($("#" + enemy + "-buff").find(".np-ed").val()) / 100;
 	if (npEDBuff < 1) {
 		npEDBuff = 1;
@@ -2772,14 +2820,14 @@ function calcDmg(enemy) {
 	var redDmg = parseInt($("#" + enemy + "-buff").find(".red-atk").val());
 
 	// Generate output
-	var minOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff * 0.9 + ( addDmg - redDmg );
+	var minOutput = totalAtk * 0.23 * [npMultiplier * cardMultiplier * (1 + cardBuff)] * classMultiplier * affMultiplier *
+		attrAffMultiplier * (1 + atkBuff + defDebuff) * (1 + npDmgBuff) * npEDBuff * 0.9 + (addDmg - redDmg);
 	minOutput = Number(minOutput.toFixed(0));
-	var avgOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff + ( addDmg - redDmg );
+	var avgOutput = totalAtk * 0.23 * [npMultiplier * cardMultiplier * (1 + cardBuff)] * classMultiplier * affMultiplier *
+		attrAffMultiplier * (1 + atkBuff + defDebuff) * (1 + npDmgBuff) * npEDBuff + (addDmg - redDmg);
 	avgOutput = Number(avgOutput.toFixed(0));
-	var maxOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff + defDebuff ) * ( 1 + npDmgBuff) * npEDBuff * 1.1 + ( addDmg - redDmg );
+	var maxOutput = totalAtk * 0.23 * [npMultiplier * cardMultiplier * (1 + cardBuff)] * classMultiplier * affMultiplier *
+		attrAffMultiplier * (1 + atkBuff + defDebuff) * (1 + npDmgBuff) * npEDBuff * 1.1 + (addDmg - redDmg);
 	maxOutput = Number(maxOutput.toFixed(0));
 
 	// Write output into array
@@ -2824,7 +2872,7 @@ function clearAllResult() {
 		$("#" + this + "-result-title").html("");
 		window[enemy + "Result"] = [];
 	});
-	queryCount = 0;			// Reset query count of the session
+	queryCount = 0; // Reset query count of the session
 	$("#calc-result-resetbtn").hide();
 }
 
@@ -2838,7 +2886,7 @@ function clearResultTable(enemy) {
 	$("#" + enemy + "-result-title").html("");
 
 	if ($("#enemy1-result").css("display") == "none" && $("#enemy2-result").css("display") == "none" &&
-	    $("#enemy3-result").css("display") == "none") {
+		$("#enemy3-result").css("display") == "none") {
 		$("#calc-result-resetbtn").click();
 	}
 }
@@ -2846,10 +2894,10 @@ function clearResultTable(enemy) {
 // Generate result table
 function generateResultTable(enemy) {
 	var table = document.getElementById(enemy + "-table");
-	clearResultTable(enemy);		// Clear any existing table
+	clearResultTable(enemy); // Clear any existing table
 	$(table).parents(".result").show();
-	$("#" + enemy + "-result-title").html($("#" + enemy + "-detail").find(".enemy-name").html());	// Write enemy name
-	sortDescend(window[enemy + "Result"], "avg");		// Rearrange results by damage output
+	$("#" + enemy + "-result-title").html($("#" + enemy + "-detail").find(".enemy-name").html()); // Write enemy name
+	sortDescend(window[enemy + "Result"], "avg"); // Rearrange results by damage output
 	var i = 0;
 	window[enemy + "Result"].forEach(function(result) {
 		i++;
@@ -2874,7 +2922,7 @@ function generateResultTable(enemy) {
 		row.insertCell(-1).innerHTML = "<span class='" + result.adv + "'>" + result.max + "</span>";
 		row.insertCell(-1).innerHTML = "<a class='result-delbtn' data-query='" + result.query + "'>&times;</a>";
 	});
-	deleteQueryBind();		// Attach event handers
+	deleteQueryBind(); // Attach event handers
 }
 
 // Attach event handlers to the delete button at each row

@@ -8,13 +8,13 @@ function multiFilter(array, filters) {
 	var filterKeys = Object.keys(filters);
 	return array.filter(function(item) {
 		return filterKeys.every(function(key) {
-			/* if (!filters[key].length) return true; */		// Skip empty criteria
+			/* if (!filters[key].length) return true; */ // Skip empty criteria
 			if (Array.isArray(item[key])) {
 				var test = [];
 				item[key].forEach(function(value) {
 					test.push(filters[key].includes(value));
 				});
-				return test.some(function (value){
+				return test.some(function(value) {
 					return true === value;
 				});
 			}
@@ -39,7 +39,10 @@ function sortDescend(array, key) {
 
 // Load save
 function generateSaveList() {
-	var option1 = {}, option2 = {}, option3 = {}, option4 = {};
+	var option1 = {},
+		option2 = {},
+		option3 = {},
+		option4 = {};
 	var save1 = JSON.parse(localStorage.getItem("save1"));
 	var save2 = JSON.parse(localStorage.getItem("save2"));
 	var save3 = JSON.parse(localStorage.getItem("save3"));
@@ -47,24 +50,48 @@ function generateSaveList() {
 	var select = $("#inventory-save");
 	select.html("");
 	if (save1 != null) {
-		option1 = {value: "save1", text: save1.title};
+		option1 = {
+			value: "save1",
+			text: save1.title
+		};
 	} else {
-		option1 = {value: "save1", text: "(未建立)"};
+		option1 = {
+			value: "save1",
+			text: "(未建立)"
+		};
 	}
 	if (save2 != null) {
-		option2 = {value: "save2", text: save2.title};
+		option2 = {
+			value: "save2",
+			text: save2.title
+		};
 	} else {
-		option2 = {value: "save2", text: "(未建立)"};
+		option2 = {
+			value: "save2",
+			text: "(未建立)"
+		};
 	}
 	if (save3 != null) {
-		option3 = {value: "save3", text: save3.title};
+		option3 = {
+			value: "save3",
+			text: save3.title
+		};
 	} else {
-		option3 = {value: "save3", text: "(未建立)"};
+		option3 = {
+			value: "save3",
+			text: "(未建立)"
+		};
 	}
 	if (save4 != null) {
-		option4 = {value: "save4", text: save4.title};
+		option4 = {
+			value: "save4",
+			text: save4.title
+		};
 	} else {
-		option4 = {value: "save4", text: "(未建立)"};
+		option4 = {
+			value: "save4",
+			text: "(未建立)"
+		};
 	}
 	select.append($('<option>', option1));
 	select.append($('<option>', option2));
@@ -82,12 +109,21 @@ function getSave() {
 		currentSave.title = "未命名存檔";
 
 		// Set Mashu as default servant
-		currentSave.servant = [{"id":1, "data":[true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, "不使用魔術禮裝", 100]}];
+		currentSave.servant = [{
+			"id": 1,
+			"data": [true, 0, 3, false, 0, 1, false, 1, false, 1, false, 0, 0, 0, 0, 0, "不使用隊友", 0, "不使用魔術禮裝", 100]
+		}];
 
-		currentSave.ce = [{"id":0, "data":[true, true, 0, true]}];
+		currentSave.ce = [{
+			"id": 0,
+			"data": [true, true, 0, true]
+		}];
 
 		// Set Chaldea as default mystic code
-		currentSave.master = [{"name":"迦勒底", "data":[true, 100]}];
+		currentSave.master = [{
+			"name": "迦勒底",
+			"data": [true, 100]
+		}];
 
 		currentSave.customBuff = [{
 			"自訂 I": [0, 0, 0, 0, 0, 0, 100],

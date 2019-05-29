@@ -4,7 +4,9 @@ var multiplier = JSON.parse(classBaseMultiplier);
 var attrAffinity = JSON.parse(attributeAdvantage);
 
 var common = [];
-var servantAtk = [], npBuff = [], skillBuff = [];
+var servantAtk = [],
+	npBuff = [],
+	skillBuff = [];
 var master = [];
 var events = [];
 
@@ -41,13 +43,16 @@ $(document).ready(function() {
 var ce = JSON.parse(craftEssence);
 var cc = JSON.parse(commandCode);
 
-var ceBuff =  JSON.parse(craftEssenceBuff);
+var ceBuff = JSON.parse(craftEssenceBuff);
 var ceAtk = JSON.parse(craftEssenceATK);
 var masterBuff = JSON.parse(mysticCodeBuff);
 var ccBuff = JSON.parse(commandCodeBuff);
 
 var currentSave = {};
-var bgServant = [], bgCE = [], bgMaster = [], customBuff = [];
+var bgServant = [],
+	bgCE = [],
+	bgMaster = [],
+	customBuff = [];
 
 $(document).ready(function() {
 
@@ -79,8 +84,8 @@ $(document).ready(function() {
 		toTop();
 	});
 
-	$(".menu-button[data-src='" + favouritePage + "']").click();		// Open iframe, calc.html by default
-	$("#activeFrame").css("height", 1500);		// Set the iframe initial height
+	$(".menu-button[data-src='" + favouritePage + "']").click(); // Open iframe, calc.html by default
+	$("#activeFrame").css("height", 1500); // Set the iframe initial height
 });
 
 // Update iframe height on scroll

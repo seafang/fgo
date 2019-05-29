@@ -11,7 +11,7 @@ var customBuff = parent.customBuff;
 var favouritePage = parent.favouritePage;
 
 $(document).ready(function() {
-	initialInventoryFilter();		// Initialise filters, generate new table & apply saved data
+	initialInventoryFilter(); // Initialise filters, generate new table & apply saved data
 	generateInventory();
 	loadSave();
 	updateCounter();
@@ -226,11 +226,13 @@ function inventoryClassChange(element, className) {
 		inventoryFilter.classes = newClass;
 	}
 }
+
 function inventoryClassAll() {
 	$(".inventory-class").removeClass("dull");
 	inventoryFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
+
 function inventoryClassNone() {
 	$(".inventory-class").removeClass("dull");
 	$(".inventory-class").addClass("dull");
@@ -249,10 +251,12 @@ function inventoryStarChange(element, starNo) {
 		inventoryFilter.star = newStar;
 	}
 }
+
 function inventoryStarAll() {
 	$(".inventory-star").prop("checked", true);
 	inventoryFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function inventoryStarNone() {
 	$(".inventory-star").prop("checked", false);
 	inventoryFilter.star = [];
@@ -270,10 +274,12 @@ function inventoryTypeChange(element, typeName) {
 		inventoryFilter.type = newType;
 	}
 }
+
 function inventoryTypeAll() {
 	$(".inventory-type").prop("checked", true);
 	inventoryFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動", "固有從者"];
 }
+
 function inventoryTypeNone() {
 	$(".inventory-type").prop("checked", false);
 	inventoryFilter.type = [];
@@ -291,10 +297,12 @@ function inventoryColorChange(element, colorName) {
 		inventoryFilter.npColor = newColor;
 	}
 }
+
 function inventoryColorAll() {
 	$(".inventory-color").prop("checked", true);
 	inventoryFilter.npColor = ["Buster", "Arts", "Quick"];
 }
+
 function inventoryColorNone() {
 	$(".inventory-color").prop("checked", false);
 	inventoryFilter.npColor = [];
@@ -312,10 +320,12 @@ function inventoryRangeChange(element, rangeName) {
 		inventoryFilter.npRange = newRange;
 	}
 }
+
 function inventoryRangeAll() {
 	$(".inventory-range").prop("checked", true);
 	inventoryFilter.npRange = ["全體", "單體", "輔助", "其他"];
 }
+
 function inventoryRangeNone() {
 	$(".inventory-range").prop("checked", false);
 	inventoryFilter.npRange = [];
@@ -330,6 +340,7 @@ function inventoryInclusiveChange(element) {
 		inventoryFilter.owned = [true, false];
 	}
 }
+
 function inventoryInclusiveReset() {
 	$("#inventory-owned").prop("checked", false);
 	inventoryFilter.owned = [true, false];
@@ -348,7 +359,7 @@ function initialInventoryFilter() {
 // Apply saved data
 function loadSave() {
 	if (bgServant[0] !== undefined) {
-		$("#servant-inventory").find(".inventory-row").each(function(){
+		$("#servant-inventory").find(".inventory-row").each(function() {
 			var rowID = Number($(this).find("td:first").html());
 			var ownershipToggle = $(this).find(".owned");
 			var skill1Toggle = $(this).find(".skill1-rankup");
@@ -432,7 +443,7 @@ function update(element) {
 	var row = $(element).parents("tr");
 	var rowID = Number($(row).find("td:first").html());
 	var info = {};
-	if (bgServant[0] !== undefined) {			// Remove existing data
+	if (bgServant[0] !== undefined) { // Remove existing data
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == rowID;
 		});
@@ -442,26 +453,26 @@ function update(element) {
 	}
 	info.id = rowID;
 	info.data = [];
-	info.data[0] = $(row).find(".owned").is(":checked");			// Ownership
-	info.data[1] = Number($(row).find(".inventory-lv").val());		// Servant lv
-	info.data[2] = Number($(row).find(".nplv").val());			// NP lv
-	info.data[3] = $(row).find(".np-rankup").is(":checked");		// NP rankup
-	info.data[4] = Number($(row).find(".statup").val());			// Stats up (ATK)
-	info.data[5] = Number($(row).find(".skill1-lv").val());			// Skill 1 lv
-	info.data[6] = $(row).find(".skill1-rankup").is(":checked");		// Skill 1 rankup
-	info.data[7] = Number($(row).find(".skill2-lv").val());			// Skill 2 lv
-	info.data[8] = $(row).find(".skill2-rankup").is(":checked");		// Skill 2 rankup
-	info.data[9] = Number($(row).find(".skill3-lv").val());			// Skill 3 lv
-	info.data[10] = $(row).find(".skill3-rankup").is(":checked");		// Skill 3 rankup
-	info.data[11] = Number($(row).find(".inventory-code-logo[data-value='1']").attr("data-id"));	// Commoand card 1 command code
-	info.data[12] = Number($(row).find(".inventory-code-logo[data-value='2']").attr("data-id"));	// Commoand card 2 command code
-	info.data[13] = Number($(row).find(".inventory-code-logo[data-value='3']").attr("data-id"));	// Commoand card 3 command code
-	info.data[14] = Number($(row).find(".inventory-code-logo[data-value='4']").attr("data-id"));	// Commoand card 4 command code
-	info.data[15] = Number($(row).find(".inventory-code-logo[data-value='5']").attr("data-id"));	// Commoand card 5 command code
-										// data[16] = teammate
-										// data[17] = CE
-										// data[18] = mystic code
-	info.data[19] = Number($(row).find(".event-ED").val());			// Event ED buff
+	info.data[0] = $(row).find(".owned").is(":checked"); // Ownership
+	info.data[1] = Number($(row).find(".inventory-lv").val()); // Servant lv
+	info.data[2] = Number($(row).find(".nplv").val()); // NP lv
+	info.data[3] = $(row).find(".np-rankup").is(":checked"); // NP rankup
+	info.data[4] = Number($(row).find(".statup").val()); // Stats up (ATK)
+	info.data[5] = Number($(row).find(".skill1-lv").val()); // Skill 1 lv
+	info.data[6] = $(row).find(".skill1-rankup").is(":checked"); // Skill 1 rankup
+	info.data[7] = Number($(row).find(".skill2-lv").val()); // Skill 2 lv
+	info.data[8] = $(row).find(".skill2-rankup").is(":checked"); // Skill 2 rankup
+	info.data[9] = Number($(row).find(".skill3-lv").val()); // Skill 3 lv
+	info.data[10] = $(row).find(".skill3-rankup").is(":checked"); // Skill 3 rankup
+	info.data[11] = Number($(row).find(".inventory-code-logo[data-value='1']").attr("data-id")); // Commoand card 1 command code
+	info.data[12] = Number($(row).find(".inventory-code-logo[data-value='2']").attr("data-id")); // Commoand card 2 command code
+	info.data[13] = Number($(row).find(".inventory-code-logo[data-value='3']").attr("data-id")); // Commoand card 3 command code
+	info.data[14] = Number($(row).find(".inventory-code-logo[data-value='4']").attr("data-id")); // Commoand card 4 command code
+	info.data[15] = Number($(row).find(".inventory-code-logo[data-value='5']").attr("data-id")); // Commoand card 5 command code
+	// data[16] = teammate
+	// data[17] = CE
+	// data[18] = mystic code
+	info.data[19] = Number($(row).find(".event-ED").val()); // Event ED buff
 	bgServant.push(info);
 	currentSave.servant = bgServant;
 	parent.bgServant = bgServant;
@@ -501,11 +512,11 @@ function enableOption(element, changeTriggered) {
 			return obj.id == rowID;
 		});
 		if (changeTriggered) {
-			bgServant[position].data[16] = "不使用隊友";			// No teammate by default
-			bgServant[position].data[17] = 0;							// No CE by default
-			bgServant[position].data[18] = "不使用魔術禮裝";				// No mystic code by default
+			bgServant[position].data[16] = "不使用隊友"; // No teammate by default
+			bgServant[position].data[17] = 0; // No CE by default
+			bgServant[position].data[18] = "不使用魔術禮裝"; // No mystic code by default
 		}
-	} else {								// Initialise all fields, delete entry
+	} else { // Initialise all fields, delete entry
 		$(row).find("select").prop("disabled", true);
 		$(row).find("input").prop("disabled", true);
 		$(element).prop("disabled", false);
@@ -590,16 +601,16 @@ function clearInventoryEventBuff() {
 }
 
 /* Inventory Teammate Modal */
-var activeSetup = "不使用隊友";			// No teammate by default
+var activeSetup = "不使用隊友"; // No teammate by default
 
 let inventoryTeammateServantFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
 	star: [0, 1, 2, 3, 4, 5],
-	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],		// Exclude Mashu
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"], // Exclude Mashu
 	npColor: ["Buster", "Arts", "Quick"],
-	npRange: ["全體", "單體"],			// Exclude support & other
-	owned: [true],				// Include owned servant only
+	npRange: ["全體", "單體"], // Exclude support & other
+	owned: [true], // Include owned servant only
 };
 
 $(document).ready(function() {
@@ -608,7 +619,7 @@ $(document).ready(function() {
 		openModal("#inventory-teammate-modal");
 		initialInventoryTeammateServant();
 		loadInventoryTeammateServantImg();
-		$(".inventory-teammate-option[value='不使用隊友']").prop("checked", true);		// "No teammate" as default
+		$(".inventory-teammate-option[value='不使用隊友']").prop("checked", true); // "No teammate" as default
 		selectInventoryTeammate();
 		applyInventoryTeammateSelection();
 	});
@@ -705,7 +716,7 @@ $(document).ready(function() {
 function selectInventoryTeammate() {
 	var buffList = [];
 	activeSetup = $(".inventory-teammate-option:checked").val();
-	if (activeSetup == "自訂 I" || activeSetup == "自訂 II" || activeSetup == "自訂 III") {		// Enable fields with custom setup chosen
+	if (activeSetup == "自訂 I" || activeSetup == "自訂 II" || activeSetup == "自訂 III") { // Enable fields with custom setup chosen
 		buffList = customBuff[0][activeSetup];
 		$("#inventory-teammate-custom-setup").find("input").prop("disabled", false);
 	} else {
@@ -713,7 +724,7 @@ function selectInventoryTeammate() {
 		$("#inventory-teammate-custom-setup").find("input").prop("disabled", true);
 	}
 
-	if (activeSetup == "不使用隊友") {				// Hide deselect button with "no teammate" chosen
+	if (activeSetup == "不使用隊友") { // Hide deselect button with "no teammate" chosen
 		$("#inventory-teammate-servant-selection-resetbtn").hide();
 	} else {
 		$("#inventory-teammate-servant-selection-resetbtn").show();
@@ -755,7 +766,7 @@ function loadInventoryTeammateServantImg() {
 	var imglist = "";
 	$(servantID).each(function(index, value) {
 		imglist += "<img class='servant-img inventory-teammate-modal-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+			".webp' data-id='" + value + "' />"
 	});
 	$("#inventory-teammate-servant-img").html(imglist);
 
@@ -783,17 +794,17 @@ function applyInventoryTeammateSelection() {
 
 // Update data on select
 function teammateModalSelectServant(img) {
-	if (activeSetup == "不使用隊友" && $(img).hasClass("selected")) {			// Disallow deselect for "no teammate" option
+	if (activeSetup == "不使用隊友" && $(img).hasClass("selected")) { // Disallow deselect for "no teammate" option
 		alarm("「不使用隊友」為預設選項，無法取消。\n如果希望為從者設定隊友，請先選擇隊友組合。")
 	} else {
 		var id = Number($(img).attr("data-id"));
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		if ($(img).hasClass("selected")) {				// Remove setup on deselect
+		if ($(img).hasClass("selected")) { // Remove setup on deselect
 			$(img).removeClass("selected");
 			bgServant[position].data[16] = "不使用隊友";
-		} else {							// Save setup on select
+		} else { // Save setup on select
 			$(img).addClass("selected");
 			bgServant[position].data[16] = activeSetup;
 		}
@@ -850,11 +861,13 @@ function inventoryTeammateServantClassChange(element, className) {
 		inventoryTeammateServantFilter.classes = newClass;
 	}
 }
+
 function inventoryTeammateServantClassAll() {
 	$(".inventory-teammate-servant-class").removeClass("dull");
 	inventoryTeammateServantFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
+
 function inventoryTeammateServantClassNone() {
 	$(".inventory-teammate-servant-class").addClass("dull");
 	inventoryTeammateServantFilter.classes = [];
@@ -872,10 +885,12 @@ function inventoryTeammateServantStarChange(element, starNo) {
 		inventoryTeammateServantFilter.star = newStar;
 	}
 }
+
 function inventoryTeammateServantStarAll() {
 	$(".inventory-teammate-servant-star").prop("checked", true);
 	inventoryTeammateServantFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function inventoryTeammateServantStarNone() {
 	$(".inventory-teammate-servant-star").prop("checked", false);
 	inventoryTeammateServantFilter.star = [];
@@ -893,10 +908,12 @@ function inventoryTeammateServantTypeChange(element, typeName) {
 		inventoryTeammateServantFilter.type = newType;
 	}
 }
+
 function inventoryTeammateServantTypeAll() {
 	$(".inventory-teammate-servant-type").prop("checked", true);
 	inventoryTeammateServantFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
 }
+
 function inventoryTeammateServantTypeNone() {
 	$(".inventory-teammate-servant-type").prop("checked", false);
 	inventoryTeammateServantFilter.type = [];
@@ -914,10 +931,12 @@ function inventoryTeammateServantColorChange(element, colorName) {
 		inventoryTeammateServantFilter.npColor = newColor;
 	}
 }
+
 function inventoryTeammateServantColorAll() {
 	$(".inventory-teammate-servant-color").prop("checked", true);
 	inventoryTeammateServantFilter.npColor = ["Buster", "Arts", "Quick"];
 }
+
 function inventoryTeammateServantColorNone() {
 	$(".inventory-teammate-servant-color").prop("checked", false);
 	inventoryTeammateServantFilter.npColor = [];
@@ -935,10 +954,12 @@ function inventoryTeammateServantRangeChange(element, rangeName) {
 		inventoryTeammateServantFilter.npRange = newRange;
 	}
 }
+
 function inventoryTeammateServantRangeAll() {
 	$(".inventory-teammate-servant-range").prop("checked", true);
 	inventoryTeammateServantFilter.npRange = ["全體", "單體"];
 }
+
 function inventoryTeammateServantRangeNone() {
 	$(".inventory-teammate-servant-range").prop("checked", false);
 	inventoryTeammateServantFilter.npRange = [];
@@ -955,18 +976,18 @@ function initialInventoryTeammateServant() {
 
 
 /* Inventory CE Modal */
-var activeCE = "不使用禮裝";			// No CE by default
+var activeCE = "不使用禮裝"; // No CE by default
 var activeCEID = 0;
 
 let inventoryCEFilter = {
-	star: [0, 3, 4, 5],
-	type: ["其他", "常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"],
+	star: [0],
+	type: ["其他"],
 	effect: ["特殊", "攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
 		"NP獲得量", "獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加",
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"],
 	frequent: [true, false],
-	owned: [true],				// Include owned CE only
+	owned: [true], // Include owned CE only
 };
 
 $(document).ready(function() {
@@ -977,8 +998,6 @@ $(document).ready(function() {
 		loadInventoryCEImg();
 		initialInventoryCEServant();
 		loadInventoryCEServantImg();
-		$(".inventory-ce-modal-img[data-id='0']").addClass("selected");
-		$("#inventory-ce-selection").html("不使用禮裝");
 	});
 });
 
@@ -1024,6 +1043,10 @@ $(document).ready(function() {
 	$("#inventory-ce-filterbtn").click(function() {
 		loadInventoryCEImg();
 	});
+
+	$("#inventory-ce-togglebtn").click(function() {
+		toggle(this, "#inventory-ce-img");
+	});
 });
 
 // Generate image list
@@ -1036,7 +1059,7 @@ function loadInventoryCEImg() {
 	var imglist = "";
 	$(essenceID).each(function(index, value) {
 		imglist += "<img class='essence-img inventory-ce-modal-img' src='images/ce/" + value +
-		".webp' data-id='" + value + "' />"
+			".webp' data-id='" + value + "' />"
 	});
 	$("#inventory-ce-img").html(imglist);
 
@@ -1048,6 +1071,7 @@ function loadInventoryCEImg() {
 			var id = Number($(this).attr("data-id"));
 			selectInventoryCE(id);
 			applyInventoryCESelection(id);
+			$("#inventory-ce-togglebtn").click();
 		});
 	});
 
@@ -1063,7 +1087,7 @@ function selectInventoryCE(id) {
 	activeCEID = id;
 	$("#inventory-ce-selection").html(activeCE);
 
-	if (activeCEID == 0) {				// Hide deselect button with "no ce" chosen
+	if (activeCEID == 0) { // Hide deselect button with "no ce" chosen
 		$("#inventory-ce-servant-selection-resetbtn").hide();
 	} else {
 		$("#inventory-ce-servant-selection-resetbtn").show();
@@ -1096,10 +1120,12 @@ function inventoryCEStarChange(element, starNo) {
 		inventoryCEFilter.star = newStar;
 	}
 }
+
 function inventoryCEStarAll() {
 	$(".inventory-ce-star").prop("checked", true);
 	inventoryCEFilter.star = [0, 3, 4, 5];
 }
+
 function inventoryCEStarNone() {
 	$(".inventory-ce-star").prop("checked", false);
 	inventoryCEFilter.star = [0];
@@ -1117,10 +1143,12 @@ function inventoryCETypeChange(element, typeName) {
 		inventoryCEFilter.type = newType;
 	}
 }
+
 function inventoryCETypeAll() {
 	$(".inventory-ce-type").prop("checked", true);
 	inventoryCEFilter.type = ["其他", "常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
 }
+
 function inventoryCETypeNone() {
 	$(".inventory-ce-type").prop("checked", false);
 	inventoryCEFilter.type = ["其他"];
@@ -1138,6 +1166,7 @@ function inventoryCEEffectChange(element, effectName) {
 		inventoryCEFilter.effect = newEffect;
 	}
 }
+
 function inventoryCEEffectAll() {
 	$(".inventory-ce-effect").prop("checked", true);
 	inventoryCEFilter.effect = ["特殊", "攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
@@ -1145,6 +1174,7 @@ function inventoryCEEffectAll() {
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
 }
+
 function inventoryCEEffectNone() {
 	$(".inventory-ce-effect").prop("checked", false);
 	inventoryCEFilter.effect = ["特殊"];
@@ -1159,6 +1189,7 @@ function inventoryCEFrequentChange(element) {
 		inventoryCEFilter.frequent = [true, false];
 	}
 }
+
 function inventoryCEFrequentReset() {
 	$("#inventory-ce-frequent").prop("checked", false);
 	inventoryCEFilter.frequent = [true, false];
@@ -1166,8 +1197,8 @@ function inventoryCEFrequentReset() {
 
 // Initialise all filters
 function initialInventoryCE() {
-	inventoryCEStarAll();
-	inventoryCETypeAll();
+	inventoryCEStarNone();
+	inventoryCETypeNone();
 	inventoryCEEffectAll();
 	inventoryCEFrequentReset();
 }
@@ -1177,10 +1208,10 @@ let inventoryCEServantFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
 	star: [0, 1, 2, 3, 4, 5],
-	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],		// Exclude Mashu
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"], // Exclude Mashu
 	npColor: ["Buster", "Arts", "Quick"],
-	npRange: ["全體", "單體"],			// Exclude support & other
-	owned: [true],				// Include owned servant only
+	npRange: ["全體", "單體"], // Exclude support & other
+	owned: [true], // Include owned servant only
 };
 
 // Servant selection
@@ -1272,7 +1303,7 @@ function loadInventoryCEServantImg() {
 	var imglist = "";
 	$(servantID).each(function(index, value) {
 		imglist += "<img class='servant-img inventory-ce-modal-servant-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+			".webp' data-id='" + value + "' />"
 	});
 	$("#inventory-ce-servant-img").html(imglist);
 
@@ -1288,17 +1319,17 @@ function loadInventoryCEServantImg() {
 
 // Update data on select
 function ceModalSelectServant(img) {
-	if (activeCEID == 0 && $(img).hasClass("selected")) {			// Disallow deselect for "no teammate" option
+	if (activeCEID == 0 && $(img).hasClass("selected")) { // Disallow deselect for "no teammate" option
 		alarm("「不使用禮裝」為預設選項，無法取消。\n如果希望為從者設定禮裝，請先選擇禮裝。")
 	} else {
 		var id = Number($(img).attr("data-id"));
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		if ($(img).hasClass("selected")) {				// Remove setup on deselect
+		if ($(img).hasClass("selected")) { // Remove setup on deselect
 			$(img).removeClass("selected");
 			bgServant[position].data[17] = 0;
-		} else {							// Save setup on select
+		} else { // Save setup on select
 			$(img).addClass("selected");
 			bgServant[position].data[17] = id;
 		}
@@ -1355,11 +1386,13 @@ function inventoryCEServantClassChange(element, className) {
 		inventoryCEServantFilter.classes = newClass;
 	}
 }
+
 function inventoryCEServantClassAll() {
 	$(".inventory-ce-servant-class").removeClass("dull");
 	inventoryCEServantFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
+
 function inventoryCEServantClassNone() {
 	$(".inventory-ce-servant-class").addClass("dull");
 	inventoryCEServantFilter.classes = [];
@@ -1377,10 +1410,12 @@ function inventoryCEServantStarChange(element, starNo) {
 		inventoryCEServantFilter.star = newStar;
 	}
 }
+
 function inventoryCEServantStarAll() {
 	$(".inventory-ce-servant-star").prop("checked", true);
 	inventoryCEServantFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function inventoryCEServantStarNone() {
 	$(".inventory-ce-servant-star").prop("checked", false);
 	inventoryCEServantFilter.star = [];
@@ -1398,10 +1433,12 @@ function inventoryCEServantTypeChange(element, typeName) {
 		inventoryCEServantFilter.type = newType;
 	}
 }
+
 function inventoryCEServantTypeAll() {
 	$(".inventory-ce-servant-type").prop("checked", true);
 	inventoryCEServantFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
 }
+
 function inventoryCEServantTypeNone() {
 	$(".inventory-ce-servant-type").prop("checked", false);
 	inventoryCEServantFilter.type = [];
@@ -1419,10 +1456,12 @@ function inventoryCEServantColorChange(element, colorName) {
 		inventoryCEServantFilter.npColor = newColor;
 	}
 }
+
 function inventoryCEServantColorAll() {
 	$(".inventory-ce-servant-color").prop("checked", true);
 	inventoryCEServantFilter.npColor = ["Buster", "Arts", "Quick"];
 }
+
 function inventoryCEServantColorNone() {
 	$(".inventory-ce-servant-color").prop("checked", false);
 	inventoryCEServantFilter.npColor = [];
@@ -1440,10 +1479,12 @@ function inventoryCEServantRangeChange(element, rangeName) {
 		inventoryCEServantFilter.npRange = newRange;
 	}
 }
+
 function inventoryCEServantRangeAll() {
 	$(".inventory-ce-servant-range").prop("checked", true);
 	inventoryCEServantFilter.npRange = ["全體", "單體"];
 }
+
 function inventoryCEServantRangeNone() {
 	$(".inventory-ce-servant-range").prop("checked", false);
 	inventoryCEServantFilter.npRange = [];
@@ -1459,16 +1500,16 @@ function initialInventoryCEServant() {
 }
 
 /* Inventory Mystic Code Modal */
-var activeMaster = "不使用魔術禮裝";			// No mystic code by default
+var activeMaster = "不使用魔術禮裝"; // No mystic code by default
 
 let inventoryMasterServantFilter = {
 	classes: ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 		"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"],
 	star: [0, 1, 2, 3, 4, 5],
-	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"],		// Exclude Mashu
+	type: ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"], // Exclude Mashu
 	npColor: ["Buster", "Arts", "Quick"],
-	npRange: ["全體", "單體"],			// Exclude support & other
-	owned: [true],				// Include owned servant only
+	npRange: ["全體", "單體"], // Exclude support & other
+	owned: [true], // Include owned servant only
 };
 
 $(document).ready(function() {
@@ -1476,7 +1517,7 @@ $(document).ready(function() {
 	$("#inventory-master-modalbtn").click(function() {
 		openModal("#inventory-master-modal");
 		inventoryGenerateMasterSelection();
-		$("#inventory-master-selection").val("不使用魔術禮裝");			// "No mystic code" as default
+		$("#inventory-master-selection").val("不使用魔術禮裝"); // "No mystic code" as default
 		initialInventoryMasterServant();
 		loadInventoryMasterServantImg();
 		selectInventoryMaster();
@@ -1571,7 +1612,10 @@ function inventoryGenerateMasterSelection() {
 	$(master).each(function(index, value) {
 		var select = $("#inventory-master-selection");
 		var name = value.name;
-		var option = {value: name, text: name};
+		var option = {
+			value: name,
+			text: name
+		};
 		select.append($('<option>', option));
 	});
 }
@@ -1580,7 +1624,7 @@ function inventoryGenerateMasterSelection() {
 function selectInventoryMaster() {
 	activeMaster = $("#inventory-master-selection").val();
 
-	if (activeMaster == "不使用魔術禮裝") {				// Hide deselect button with "no mystic code" chosen
+	if (activeMaster == "不使用魔術禮裝") { // Hide deselect button with "no mystic code" chosen
 		$("#inventory-master-servant-selection-resetbtn").hide();
 	} else {
 		$("#inventory-master-servant-selection-resetbtn").show();
@@ -1597,7 +1641,7 @@ function loadInventoryMasterServantImg() {
 	var imglist = "";
 	$(servantID).each(function(index, value) {
 		imglist += "<img class='servant-img inventory-master-modal-img' src='images/servant/" + value +
-		".webp' data-id='" + value + "' />"
+			".webp' data-id='" + value + "' />"
 	});
 	$("#inventory-master-servant-img").html(imglist);
 
@@ -1625,17 +1669,17 @@ function applyInventoryMasterSelection() {
 
 // Update data on select
 function masterModalSelectServant(img) {
-	if (activeMaster == "不使用魔術禮裝" && $(img).hasClass("selected")) {			// Disallow deselect for "no mystic code" option
+	if (activeMaster == "不使用魔術禮裝" && $(img).hasClass("selected")) { // Disallow deselect for "no mystic code" option
 		alarm("「不使用魔術禮裝」為預設選項，無法取消。\n如果希望為從者設定魔術禮裝，請先選擇魔術禮裝。")
 	} else {
 		var id = Number($(img).attr("data-id"));
 		var position = bgServant.findIndex(function(obj) {
 			return obj.id == id;
 		});
-		if ($(img).hasClass("selected")) {				// Remove setup on deselect
+		if ($(img).hasClass("selected")) { // Remove setup on deselect
 			$(img).removeClass("selected");
 			bgServant[position].data[18] = "不使用魔術禮裝";
-		} else {							// Save setup on select
+		} else { // Save setup on select
 			$(img).addClass("selected");
 			bgServant[position].data[18] = activeMaster;
 		}
@@ -1692,11 +1736,13 @@ function inventoryMasterServantClassChange(element, className) {
 		inventoryMasterServantFilter.classes = newClass;
 	}
 }
+
 function inventoryMasterServantClassAll() {
 	$(".inventory-teammate-servant-class").removeClass("dull");
 	inventoryMasterServantFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Shielder", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
+
 function inventoryMasterServantClassNone() {
 	$(".inventory-teammate-servant-class").addClass("dull");
 	inventoryMasterServantFilter.classes = [];
@@ -1714,10 +1760,12 @@ function inventoryMasterServantStarChange(element, starNo) {
 		inventoryMasterServantFilter.star = newStar;
 	}
 }
+
 function inventoryMasterServantStarAll() {
 	$(".inventory-teammate-servant-star").prop("checked", true);
 	inventoryMasterServantFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function inventoryMasterServantStarNone() {
 	$(".inventory-teammate-servant-star").prop("checked", false);
 	inventoryMasterServantFilter.star = [];
@@ -1735,10 +1783,12 @@ function inventoryMasterServantTypeChange(element, typeName) {
 		inventoryMasterServantFilter.type = newType;
 	}
 }
+
 function inventoryMasterServantTypeAll() {
 	$(".inventory-teammate-servant-type").prop("checked", true);
 	inventoryMasterServantFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
 }
+
 function inventoryMasterServantTypeNone() {
 	$(".inventory-teammate-servant-type").prop("checked", false);
 	inventoryMasterServantFilter.type = [];
@@ -1756,10 +1806,12 @@ function inventoryMasterServantColorChange(element, colorName) {
 		inventoryMasterServantFilter.npColor = newColor;
 	}
 }
+
 function inventoryMasterServantColorAll() {
 	$(".inventory-teammate-servant-color").prop("checked", true);
 	inventoryMasterServantFilter.npColor = ["Buster", "Arts", "Quick"];
 }
+
 function inventoryMasterServantColorNone() {
 	$(".inventory-teammate-servant-color").prop("checked", false);
 	inventoryMasterServantFilter.npColor = [];
@@ -1777,10 +1829,12 @@ function inventoryMasterServantRangeChange(element, rangeName) {
 		inventoryMasterServantFilter.npRange = newRange;
 	}
 }
+
 function inventoryMasterServantRangeAll() {
 	$(".inventory-teammate-servant-range").prop("checked", true);
 	inventoryMasterServantFilter.npRange = ["全體", "單體"];
 }
+
 function inventoryMasterServantRangeNone() {
 	$(".inventory-teammate-servant-range").prop("checked", false);
 	inventoryMasterServantFilter.npRange = [];
@@ -1859,7 +1913,7 @@ function loadInventoryCodeImg() {
 	var imglist = "";
 	$(codeID).each(function(index, value) {
 		imglist += "<img class='code-img code-modal-img' src='images/code/" + value +
-		".webp' data-id='" + value + "' />"
+			".webp' data-id='" + value + "' />"
 	});
 	$("#code-img").html(imglist);
 	codeBind();
@@ -1880,20 +1934,22 @@ function codeStarChange(element, starNo) {
 	var newStar = inventoryCodeFilter.star;
 	if ($(element).prop("checked")) {
 		newStar.push(starNo);
-	 	inventoryCodeFilter.star = newStar;
+		inventoryCodeFilter.star = newStar;
 	} else {
 		position = newStar.indexOf(starNo);
 		newStar.splice(position, 1);
-	 	inventoryCodeFilter.star = newStar;
+		inventoryCodeFilter.star = newStar;
 	}
 }
+
 function codeStarAll() {
 	$(".code-star").prop("checked", true);
- 	inventoryCodeFilter.star = [0, 1, 2, 3, 4, 5];
+	inventoryCodeFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function codeStarNone() {
 	$(".code-star").prop("checked", false);
- 	inventoryCodeFilter.star = [0];
+	inventoryCodeFilter.star = [0];
 }
 
 // Change in effect filtering criteria
@@ -1908,11 +1964,13 @@ function codeEffectChange(element, effect) {
 		inventoryCodeFilter.effect = newEffect;
 	}
 }
+
 function codeEffectAll() {
 	$(".code-effect").prop("checked", true);
 	inventoryCodeFilter.effect = ["獲得爆擊星", "爆擊星掉落率", "爆擊威力", "爆擊星集中度", "特攻", "傷害附加", "傷害減免", "必中",
 		 "HP", "弱化狀態解除", "弱化狀態耐性", "弱化狀態無效", "強化狀態解除", "弱化狀態賦予", "其他"];
 }
+
 function codeEffectNone() {
 	$(".code-effect").prop("checked", false);
 	inventoryCodeFilter.effect = ["其他"];

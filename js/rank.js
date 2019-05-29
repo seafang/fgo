@@ -2,15 +2,11 @@ var affinity = parent.affinity;
 var multiplier = parent.multiplier;
 var attrAffinity = parent.attrAffinity;
 
-var common = parent.common;
-var servants = parent.servants;
+var common, servants, events;
 var ce = parent.ce;
 var master = parent.master;
-var events = parent.events;
 
-var skillBuff = parent.skillBuff;
-var npBuff = parent.npBuff;
-var servantAtk = parent.servantAtk;
+var skillBuff, npBuff, servantAtk;
 var ceBuff = parent.ceBuff;
 var ceAtk = parent.ceAtk;
 var masterBuff = parent.masterBuff;
@@ -36,10 +32,11 @@ $(document).ready(function() {
 
 	common = parent.common;
 	servants = parent.servants;
+	events = parent.events;
+
 	skillBuff = parent.skillBuff;
 	npBuff = parent.npBuff;
 	servantAtk = parent.servantAtk;
-	events = parent.events;
 });
 
 // Update page height
@@ -49,12 +46,16 @@ $(document).on("click", function() {
 
 function updateCounter() {
 	var height = $("#rank-enemy-info").outerHeight() + $("#rank-environment-info").outerHeight() +
-	$("#rank-servant-info").outerHeight() + 1500;
+		$("#rank-servant-info").outerHeight() + 1500;
 	$("#calc-counter").html(height);
 }
 
 /* Enemy Setup */
-var enemyGender = [], enemyAlignment1 = [], enemyAlignment2 = [], enemyTrait = [], enemyDebuff = [];
+var enemyGender = [],
+	enemyAlignment1 = [],
+	enemyAlignment2 = [],
+	enemyTrait = [],
+	enemyDebuff = [];
 
 $(document).ready(function() {
 	// Open modals
@@ -70,6 +71,7 @@ $(document).ready(function() {
 		resetEnemy();
 	});
 
+	// Show affinity setup if enemy class is set to 'Custom'
 	$("#rank-enemy-class").change(function() {
 		if ($(this).val() == "Custom") {
 			$("#rank-enemy-affinity-setup").show();
@@ -79,6 +81,7 @@ $(document).ready(function() {
 		}
 	});
 
+	// Show attribute affinity setup if enemy attribute is set to 'Custom'
 	$("#rank-enemy-attribute").change(function() {
 		if ($(this).val() == "Custom") {
 			$("#rank-enemy-attrAffinity-setup").show();
@@ -181,10 +184,12 @@ function pickEnemy(type, enemyID) {
 
 	$("#rank-enemy-attribute").val(rankEnemyInfo[0].attribute);
 
+	// Check matched gender, update array
 	$("#rank-enemy-gender-resetbtn").click();
 	$("input.rank-enemy-gender[value=" + rankEnemyInfo[0].gender + "]").prop("checked", true)
 	updateGender();
 
+	// Check matched alignment, update array
 	$("#rank-enemy-alignment1-resetbtn").click();
 	$("input.rank-enemy-alignment1[value=" + rankEnemyInfo[0].alignment1 + "]").prop("checked", true)
 	updateAlignment1();
@@ -213,6 +218,7 @@ function resetEnemy() {
 	$("#rank-enemy-debuff-resetbtn").click();
 }
 
+// Update gender array
 function updateGender() {
 	enemyGender = [];
 	$(".rank-enemy-gender:checked").each(function() {
@@ -225,6 +231,7 @@ function updateGender() {
 	}
 }
 
+// Update alignment array
 function updateAlignment1() {
 	enemyAlignment1 = [];
 	$(".rank-enemy-alignment1:checked").each(function() {
@@ -249,6 +256,7 @@ function updateAlignment2() {
 	}
 }
 
+// Update trait array
 function updateTrait() {
 	enemyTrait = [];
 	$(".rank-enemy-trait:checked").each(function() {
@@ -261,6 +269,7 @@ function updateTrait() {
 	}
 }
 
+// Update debuff array
 function updateDebuff() {
 	enemyDebuff = [];
 	$(".rank-enemy-debuff:checked").each(function() {
@@ -306,16 +315,38 @@ function updateBattlefield() {
 /* Servant Setup */
 var useStrict = [true, false];
 var activeColor = "Common";
-var buffListCommon = [0, 0, 0, 0, 0, 0, 100], buffListBuster = [0, 0, 0, 0, 0, 0, 100],
-	buffListArts = [0, 0, 0, 0, 0, 0, 100], buffListQuick = [0, 0, 0, 0, 0, 0, 100];
-var ceInfoCommon = [], ceInfoBuster = [], ceInfoArts = [], ceInfoQuick = [];
-var ceBuffListCommon = [], ceBuffListBuster = [], ceBuffListArts = [], ceBuffListQuick = [];
-var ceSaveCommon = [false, 0], ceSaveBuster = [false, 0], ceSaveArts = [false, 0], ceSaveQuick = [false, 0];
-var masterInfoCommon = [], masterInfoBuster = [], masterInfoArts = [], masterInfoQuick = [];
-var masterBuffListCommon = [], masterBuffListBuster = [], masterBuffListArts = [], masterBuffListQuick = [];
-var masterSaveCommon = 1, masterSaveBuster = 1, masterSaveArts = 1, masterSaveQuick = 1;
+var buffListCommon = [0, 0, 0, 0, 0, 0, 100], // Buffs from teammates
+	buffListBuster = [0, 0, 0, 0, 0, 0, 100],
+	buffListArts = [0, 0, 0, 0, 0, 0, 100],
+	buffListQuick = [0, 0, 0, 0, 0, 0, 100];
+var ceInfoCommon = [], // Universal CE setup
+	ceInfoBuster = [],
+	ceInfoArts = [],
+	ceInfoQuick = [];
+var ceBuffListCommon = [], // Buffs from universal CE
+	ceBuffListBuster = [],
+	ceBuffListArts = [],
+	ceBuffListQuick = [];
+var ceSaveCommon = [false, 0], // Lv and max status of universal CE
+	ceSaveBuster = [false, 0],
+	ceSaveArts = [false, 0],
+	ceSaveQuick = [false, 0];
+var masterInfoCommon = [], // Universal mystic code setup
+	masterInfoBuster = [],
+	masterInfoArts = [],
+	masterInfoQuick = [];
+var masterBuffListCommon = [], // Buffs from unversal mystic code
+	masterBuffListBuster = [],
+	masterBuffListArts = [],
+	masterBuffListQuick = [];
+var masterSaveCommon = 1, // Lv of universal mystic code
+	masterSaveBuster = 1,
+	masterSaveArts = 1,
+	masterSaveQuick = 1;
 
 $(document).ready(function() {
+
+	// Check if use strict mode
 	$("#rank-use-strict-mode").change(function() {
 		if ($(this).is(":checked")) {
 			useStrict = [false];
@@ -326,109 +357,128 @@ $(document).ready(function() {
 		}
 	});
 
-	generateRankReleaseSelection();
-	generateRankProgressSelection();
+	generateRankReleaseSelection(); // Generate servants release dropdown list
+	generateRankProgressSelection(); // Generate rank up installation dropdown list
 
 	$("#rank-use-inventory").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If use inventory data, return all toggles to default, hide irrelevant sections
 			$("#assign-progress-toggle").hide();
 			$("#use-inventory-setup-toggle").show();
+
 			if (!$("#rank-use-saved-data").is(":checked")) {
 				$("#rank-use-saved-data").click();
 			}
+
 			if (!$("#rank-use-universal-buff").is(":checked")) {
 				$("#rank-use-universal-buff").click();
 			}
+
 			if (!$("#rank-use-saved-teammate").is(":checked")) {
 				$("#rank-use-saved-teammate").click();
 			}
+
 			if (!$("#rank-use-saved-ce").is(":checked")) {
 				$("#rank-use-saved-ce").click();
 			}
+
 			if (!$("#rank-use-saved-master").is(":checked")) {
 				$("#rank-use-saved-master").click();
 			}
+
 			$("#use-inventory-setup-toggle").siblings(".setup-toggle").hide();
 		} else {
 			$("#use-inventory-setup-toggle").hide();
 			$("#assign-progress-toggle").show();
+
 			$("#use-inventory-setup-toggle").siblings(".setup-toggle").show();
 		}
 	});
 
 	$("#rank-use-saved-data").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If use saved servant data, clear all fields
 			$("#assign-data-toggle").hide();
 			$("#assign-npLV-toggle").hide();
+
 			$("#rank-servant-lv").val(0);
 			$("#rank-servant-statup").val(0);
 			$("#rank-servant-npoc").val(1);
 			$("#rank-servant-hp").val(100);
 			$("#assign-npLV-toggle input").val(1);
+
 			$("#rank-use-saved-data-label").addClass("highlight");
 		} else {
 			$("#assign-data-toggle").show();
 			$("#assign-npLV-toggle").show();
+
 			$("#rank-use-saved-data-label").removeClass("highlight");
 		}
 	});
 
 	$("#rank-use-saved-teammate").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If use saved teammate buffs, clear all fields
 			$("#assign-buff-toggle").hide();
 			$("#rank-buff-resetbtn").click();
+
 			$("#rank-use-saved-teammate-label").addClass("highlight");
+
 			if ($("#rank-use-saved-ce").is(":checked") && $("#rank-use-saved-master").is(":checked")) {
 				$("#assign-by-color-toggle").hide();
 			}
 		} else {
 			$("#assign-buff-toggle").show();
+
 			$("#rank-use-saved-teammate-label").removeClass("highlight");
+
 			$("#assign-by-color-toggle").show();
 		}
 	});
 
 	$("#rank-use-saved-ce").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If use saved CE designation, clear chosen CE
 			$("#assign-ce-toggle").hide();
-		/*	if ($("#rank-ce-resetbtn").css("display") == "block") {
-				$("#rank-ce-resetbtn").click();
-			} else {
-				resetCE();
-			}*/
+
 			$("#rank-use-saved-ce-label").addClass("highlight");
+
 			if ($("#rank-use-saved-teammate").is(":checked") && $("#rank-use-saved-master").is(":checked")) {
 				$("#assign-by-color-toggle").hide();
 			}
 		} else {
 			$("#assign-ce-toggle").show();
+
 			$("#rank-use-saved-ce-label").removeClass("highlight");
+
 			$("#assign-by-color-toggle").show();
 		}
 	});
 
 	$("#rank-use-saved-master").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If use saved mystic code designation, clear chosen code
 			$("#assign-master-toggle").hide();
+
 			$("#rank-master-selection").val("不使用魔術禮裝");
 			setRankMaster($("#rank-master-selection"));
+
 			$("#rank-use-saved-master-label").addClass("highlight");
+
 			if ($("#rank-use-saved-teammate").is(":checked") && $("#rank-use-saved-ce").is(":checked")) {
 				$("#assign-by-color-toggle").hide();
 			}
 		} else {
 			$("#assign-master-toggle").show();
+
 			$("#rank-use-saved-master-label").removeClass("highlight");
+
 			$("#assign-by-color-toggle").show();
 		}
 	});
 
 	$("#rank-use-universal-buff").change(function() {
-		if ($(this).is(":checked")) {
+		if ($(this).is(":checked")) { // If assign custom buffs unversally, empty other arrays
 			activeColor = "Common";
 			$("#rank-current-color").val("Buster");
 			$("#assign-current-color-toggle").hide();
 			$("#rank-use-universal-buff-label").addClass("highlight");
+
 			buffListBuster = [0, 0, 0, 0, 0, 0, 100], buffListArts = [0, 0, 0, 0, 0, 0, 100], buffListQuick = [0, 0, 0, 0, 0, 0, 100];
 			ceInfoBuster = [], ceInfoArts = [], ceInfoQuick = [];
 			ceBuffListBuster = [], ceBuffListArts = [], ceBuffListQuick = [];
@@ -437,10 +487,11 @@ $(document).ready(function() {
 			masterBuffListBuster = [], masterBuffListArts = [], masterBuffListQuick = [];
 			masterSaveBuster = 1, masterSaveArts = 1, masterSaveQuick = 1;
 			applyBuffByColor();
-		} else {
+		} else { // Copy universal buffs to Buster-associated arrays
 			activeColor = "Buster";
 			$("#assign-current-color-toggle").show();
 			$("#rank-use-universal-buff-label").removeClass("highlight");
+
 			buffListBuster = buffListCommon;
 			ceInfoBuster = ceInfoCommon;
 			ceBuffListBuster = ceBuffListCommon;
@@ -465,11 +516,10 @@ $(document).ready(function() {
 	});
 
 	// Buff-related
-	$(".supportbtn").click(function() {
+	$(".supportbtn").click(function() { // Add common support buffs
 		var support = $(this).attr("data-value");
 		applySupportBuff(support);
 	});
-
 	$("#rank-buff-resetbtn").click(function() {
 		$("#assign-buff-toggle .update-trigger").val(0);
 		updateBuffList();
@@ -485,41 +535,48 @@ $(document).ready(function() {
 	});
 
 	// Master-related
-	generateRankMasterSelection();
+	generateRankMasterSelection(); // Generate mystic code dropdown list
 
 	$("#rank-master-selection").change(function() {
 		setRankMaster(this);
 	});
-
 	$("#rank-master-lv").change(function() {
 		window["masterSave" + activeColor] = Number($(this).val());
 	});
 });
 
+// Generate servant release dropdown list
 function generateRankReleaseSelection() {
-	var servantList = $(servants).filter(function(servant) {
+	var select = $("#rank-release-selection");
+	var servantList = $(servants).filter(function(servant) { // Filter out initial servants
 		return servant.id >= 59;
 	});
 	$(servantList).each(function(index, value) {
-		var select = $("#rank-release-selection");
 		var id = value.id;
 		var name = value.name;
-		var option = {value: id, text: name};
+		var option = {
+			value: id,
+			text: name
+		};
 		select.append($('<option>', option));
 	});
 }
 
+// Generate rank up installation dropdown list
 function generateRankProgressSelection() {
+	var select = $("#rank-progress-selection");
 	$(events).each(function(index, value) {
-		var select = $("#rank-progress-selection");
 		var id = value.sequence;
 		var name = value.event;
-		var option = {value: id, text: name};
+		var option = {
+			value: id,
+			text: name
+		};
 		select.append($('<option>', option));
 	});
 }
 
-// Update Buff list
+// Update universal buffs from teammate
 function updateBuffList() {
 	var buffList = [];
 	buffList[0] = Number($("#rank-atk-buff").val());
@@ -529,9 +586,10 @@ function updateBuffList() {
 	buffList[4] = Number($("#rank-Arts-buff").val());
 	buffList[5] = Number($("#rank-Quick-buff").val());
 	buffList[6] = 100;
-	window["buffList" + activeColor] = buffList;
+	window["buffList" + activeColor] = buffList; // Save buffs in associated array
 }
 
+// Add common support buffs
 function applySupportBuff(support) {
 	var buffList = inventoryTeammateBuff[support];
 	$("#assign-buff-toggle .update-trigger").each(function(index) {
@@ -559,13 +617,14 @@ function pickCE(essenceID) {
 		effect: ["dmg", "skilled", "adddmg", "buster", "arts", "quick", "npdmg", "def"]
 	});
 
+	// Save CE info and bufflist in associated arrays
 	window["ceInfo" + activeColor] = ceInfo;
 	window["ceBuffList" + activeColor] = ceBuffList;
 
 	$("#rank-ce-img").attr("src", ceInfo[0].imgID);
 	$("#rank-ce-name").html(ceInfo[0].name);
 
-	// Check if the CE is max at default
+	// Check if the CE is max by default
 	var defaultMax = ceInfo[0].defaultMax;
 	$("#rank-ce-max").prop("disabled", defaultMax);
 	$("#rank-ce-lv").prop("disabled", defaultMax);
@@ -575,10 +634,11 @@ function pickCE(essenceID) {
 	updateCESave();
 }
 
+// Update lv and max status of universal CE
 function updateCESave() {
 	var ceSave = [];
 	var ceInfo = window["ceInfo" + activeColor];
-	var maxLV;				// Set maximum lv of CE
+	var maxLV; // Set maximum lv of CE
 	switch (ceInfo.star) {
 		case 3:
 			maxLV = 60;
@@ -591,7 +651,7 @@ function updateCESave() {
 			maxLV = 100;
 			break;
 	}
-	if (!$("#rank-ce-max").is(":checked")) {		// If CE is not max, set maximum lv as 20
+	if (!$("#rank-ce-max").is(":checked")) { // If CE is not max, set maximum lv as 20
 		maxLV = 20;
 	}
 	if (Number($("#rank-ce-lv").val()) > maxLV) {
@@ -616,15 +676,20 @@ function resetCE() {
 	updateCESave();
 }
 
+// Generate mystic code dropdown list
 function generateRankMasterSelection() {
 	$(master).each(function(index, value) {
 		var select = $("#rank-master-selection");
 		var name = value.name;
-		var option = {value: name, text: name};
+		var option = {
+			value: name,
+			text: name
+		};
 		select.append($('<option>', option));
 	});
 }
 
+// Set chosen mystic code
 function setRankMaster(element) {
 	if ($(element).val() == "不使用魔術禮裝") {
 
@@ -659,6 +724,7 @@ function setRankMaster(element) {
 	}
 }
 
+// Update all fields as assocated command card changes
 function applyBuffByColor() {
 	var buffList = window["buffList" + activeColor];
 	var ceInfo = window["ceInfo" + activeColor];
@@ -666,6 +732,7 @@ function applyBuffByColor() {
 	var masterInfo = window["masterInfo" + activeColor];
 	var masterSave = window["masterSave" + activeColor];
 
+	// Update teammate buffs
 	$("#rank-atk-buff").val(buffList[0]);
 	$("#rank-add-atk").val(buffList[1]);
 	$("#rank-np-buff").val(buffList[2]);
@@ -673,6 +740,7 @@ function applyBuffByColor() {
 	$("#rank-Arts-buff").val(buffList[4]);
 	$("#rank-Quick-buff").val(buffList[5]);
 
+	// Update universal CE
 	if (ceInfo[0] !== undefined) {
 		$("#rank-ce-img").attr("src", ceInfo[0].imgID);
 		$("#rank-ce-name").html(ceInfo[0].name);
@@ -683,6 +751,7 @@ function applyBuffByColor() {
 	$("#rank-ce-max").prop("checked", ceSave[0]);
 	$("#rank-ce-lv").val(ceSave[1]);
 
+	// Update universal mystic code
 	if (masterInfo[0] !== undefined) {
 		$("#rank-master-selection").val(masterInfo[0].name);
 		$("#rank-master-selection-label").addClass("highlight");
@@ -694,29 +763,49 @@ function applyBuffByColor() {
 }
 
 /* Result Section */
-var universalBuffCommon = [0, 0, 0, 0, 0, 0, 100], universalBuffBuster = [0, 0, 0, 0, 0, 0, 100],
-	universalBuffArts = [0, 0, 0, 0, 0, 0, 100], universalBuffQuick = [0, 0, 0, 0, 0, 0, 100],
-	universalBuffTemp = [0, 0, 0, 0, 0, 0, 100];
-var currentServantInfo = [], currentServantSave = [], currentSkillBuffList = [],
-	currentNPBuffList = [], currentTempAffinity = [], currentNPAddMult = [];
-var currentNPLV = 1, currentOCLV = 1, currentNPRU = "", currentEDEffective = false;
-var currentCEInfo = [], currentCESave = []; currentCEBuffList = [];
-var currentMasterInfo = [], currentMasterSave = []; currentMasterBuffList = [];
-var ceAtkCommon = 0, ceAtkBuster = 0, ceAtkArts = 0, ceAtkQuick = 0, ceAtkTemp = 0;
-var rankResult = [];
+var universalBuffCommon = [0, 0, 0, 0, 0, 0, 100], // Universal buff array
+	universalBuffBuster = [0, 0, 0, 0, 0, 0, 100],
+	universalBuffArts = [0, 0, 0, 0, 0, 0, 100],
+	universalBuffQuick = [0, 0, 0, 0, 0, 0, 100],
+	universalBuffTemp = [0, 0, 0, 0, 0, 0, 100]; // BUff array of current servant
+var currentServantInfo = [], // Current servant info
+	currentServantSave = [], // Current servant saved data
+	currentSkillBuffList = [],
+	currentNPBuffList = [],
+	currentTempAffinity = [],
+	currentNPAddMult = [];
+var currentNPLV = 1,
+	currentOCLV = 1,
+	currentNPRU = "", // Check if NP is ranked up
+	currentEDEffective = false; // Check if ED is triggered
+var currentCEInfo = [], // Current effective CE info
+	currentCESave = [],
+	currentCEBuffList = [];
+var currentMasterInfo = [], // Current effective mystic code info
+	currentMasterSave = [],
+	currentMasterBuffList = [];
+var ceAtkCommon = 0, // ATK values of universal CEs
+	ceAtkBuster = 0,
+	ceAtkArts = 0,
+	ceAtkQuick = 0,
+	ceAtkTemp = 0;
+var rankResult = []; // Result array
 
 $(document).ready(function() {
+	// Rank calcuation
 	$("#rank-calcbtn").click(function() {
 		$("#rank-result").show();
 		rank();
 		generateRankTable();
 	});
 
+	// Clear results
 	$("#rank-result-resetbtn").click(function() {
 		$("#rank-result").hide();
 		clearRankResult();
 	});
 
+	// Result table filter setup
 	$(".rank-class").click(function() {
 		var servantClass = $(this).attr("title");
 		rankClassChange(this, servantClass);
@@ -810,6 +899,7 @@ function rank() {
 
 	initialRankFilter();
 
+	// Check if only owned servant is included
 	if ($("#rank-use-inventory").is(":checked")) {
 		ownership = [true];
 	}
@@ -817,20 +907,25 @@ function rank() {
 		npRange: ["全體", "單體"],
 		owned: ownership,
 	});
+
+	// If not using inventory, included servant already released as designated
 	if (!$("#rank-use-inventory").is(":checked")) {
 		servantList = servantList.filter(function(servant) {
 			return servant.id <= Number($("#rank-release-selection").val());
 		});
 	}
 
+	// Summarise total universal buff (teammate + CE + mystic code)
 	updateUniversalBuff();
 
+	// Calculate by each servant in the servant list
 	$(servantList).each(function() {
 		universalBuffTemp = [0, 0, 0, 0, 0, 0, 100];
 		currentEDEffective = false;
 		var id = this.id;
 		currentServantInfo[0] = this;
 
+		// Filter skill and NP buff list of the current servant
 		currentSkillBuffList = multiFilter(skillBuff, {
 			id: [id],
 			toSelf: [true],
@@ -849,6 +944,7 @@ function rank() {
 
 		currentOCLV = $("#rank-servant-npoc").val();
 
+		// If universal buff associated with command card, determine NP color of the current servant
 		var key = "";
 		var test = false;
 		if ($("#rank-use-universal-buff").is(":checked")) {
@@ -857,20 +953,22 @@ function rank() {
 			key = currentServantInfo[0].npColor;
 		}
 
-		if ($("#rank-use-inventory").is(":checked")) {
+		if ($("#rank-use-inventory").is(":checked")) { // Use partial or all inventory data
 			currentServantSave = bgServant.filter(function(servant) {
 				return servant.id == id;
 			});
 
-			universalBuffTemp[3] += currentServantSave[0].data[19];						// Event buff
+			universalBuffTemp[3] += currentServantSave[0].data[19]; // Event buff
 
+			// If use saved teammate buffs, pull corresponding buff values into buff array of current servant
 			if ($("#rank-use-saved-teammate").is(":checked")) {
 				var support = currentServantSave[0].data[16];
-				for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
+				for (var i = 0; i < (universalBuffTemp.length - 1); i++) {
 					universalBuffTemp[i] += inventoryTeammateBuff[support][i];
 				}
 			}
 
+			// If use saved CE, update CE ATK and buffs
 			if ($("#rank-use-saved-ce").is(":checked")) {
 				var ce = currentServantSave[0].data[17];
 				if (ce != 0) {
@@ -878,9 +976,10 @@ function rank() {
 					updateCEBuff("Temp");
 				}
 			} else {
-				test = true;
+				test = true; // Inform downstream function to use ATK value of universal CE
 			}
 
+			// If use saved mystic code, update buffs
 			if ($("#rank-use-saved-master").is(":checked")) {
 				var code = currentServantSave[0].data[18];
 				if (code != "不使用魔術禮裝") {
@@ -888,15 +987,19 @@ function rank() {
 				}
 			}
 
+			// If use saved servant data, retrieve info
 			if ($("#rank-use-saved-data").is(":checked")) {
+
+				// Check if NP is ranked up
 				if (currentServantSave[0].data[3]) {
 					npRU = "RU";
 				}
 
 				currentNPLV = currentServantSave[0].data[2].toString();
 
+				// Retrieve buff from effective skill buffs
 				if (currentSkillBuffList[0] !== undefined) {
-					updateSkillPreReq("default", false, 1);
+					updateSkillPreReq("default", false);
 					updateSkillPreReq("skill1", currentServantSave[0].data[6]);
 					updateSkillPreReq("skill2", currentServantSave[0].data[8]);
 					updateSkillPreReq("skill3", currentServantSave[0].data[10]);
@@ -906,47 +1009,61 @@ function rank() {
 					updateSkillBuff("skill3", currentServantSave[0].data[10], currentServantSave[0].data[9], []);
 				}
 			} else {
+				// Use ranked up NP if rank up is available within designated timeframe
 				if (currentServantInfo[0].sequence != "" && currentServantInfo[0].sequence <= Number($("#rank-progress-selection").val())) {
 					npRU = "RU";
 				}
+
+				// Retrieve designated NP Lv by rarity and servant type
 				var source = $("#assign-npLV-toggle").find("#" + currentServantInfo[0].type + "-" + currentServantInfo[0].star);
 				currentNPLV = $(source).find("select").val();
 
+				// Update skill buffs with designated skill lv
 				if (currentSkillBuffList[0] !== undefined) {
 					acHocSkillBuff();
 				}
 			}
 
+			// If any universal buff is used, pull buff values from corresponding arrays
 			if (!$("#rank-use-saved-teammate").is(":checked") || !$("#rank-use-saved-ce").is(":checked") ||
 				!$("#rank-use-saved-master").is(":checked")) {
-				for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
+				for (var i = 0; i < (universalBuffTemp.length - 1); i++) {
 					universalBuffTemp[i] += window["universalBuff" + key][i];
 				}
 			}
-		} else {
-			for (var i = 0; i < ( universalBuffTemp.length - 1 ); i++) {
+		} else { // Use current setup only
+
+			// Pull buff values from corresponding arrays
+			for (var i = 0; i < (universalBuffTemp.length - 1); i++) {
 				universalBuffTemp[i] += window["universalBuff" + key][i];
 			}
 
-			test = true;
+			test = true; // Inform downstream function to use ATK value of universal CE
 
+			// Use ranked up NP if rank up is available within designated timeframe
 			if (currentServantInfo[0].sequence != "" && currentServantInfo[0].sequence <= Number($("#rank-progress-selection").val())) {
 				npRU = "RU";
 			}
+
+			// Retrieve designated NP Lv by rarity and servant type
 			var source = $("#assign-npLV-toggle").find("#" + currentServantInfo[0].type + "-" + currentServantInfo[0].star);
 			currentNPLV = $(source).find("select").val();
 
+			// Update skill buffs with designated skill lv
 			acHocSkillBuff();
 		}
 
+		// Update passive buffs and default NP buffs
 		currentNPRU = npRU;
 		updatePassiveBuff(npRU);
 
+		// Update NP buffs
 		if (currentNPBuffList[0] !== undefined) {
 			updateNPPreReq(npRU);
 			updateNPBuff();
 		}
 
+		// Inform downstream function if to use ATK value of universal CE or saved CE
 		if (test) {
 			calcDmg(key);
 		} else {
@@ -955,6 +1072,7 @@ function rank() {
 	});
 };
 
+// Update skill prerequisite
 function updateSkillPreReq(skill, skillRU) {
 	var activeSkillBuff = multiFilter(currentSkillBuffList, {
 		no: [skill.toString()],
@@ -974,19 +1092,25 @@ function updateSkillPreReq(skill, skillRU) {
 	});
 }
 
+// Update skill buffs with designated skill lv
 function acHocSkillBuff() {
-	var skillSet = ["skill1", "skill2", "skill3"];
+	var skillSet = ["default", "skill1", "skill2", "skill3"];
 	var skillRU = true;
 
 	$(skillSet).each(function() {
+		// Presume ranked up skills
 		var buffList = multiFilter(currentSkillBuffList, {
 			no: [this.toString()],
 			skillRU: [true],
 			chance: useStrict,
 		});
+
+		// Use ranked up skill if rank up is available within designated timeframe
 		buffList = buffList.filter(function(buff) {
 			return buff.sequence <= Number($("#rank-progress-selection").val());
 		});
+
+		// Use non-ranked up skills if rank up not available
 		if (buffList[0] === undefined) {
 			buffList = multiFilter(currentSkillBuffList, {
 				no: [this.toString()],
@@ -1001,9 +1125,10 @@ function acHocSkillBuff() {
 	});
 }
 
+// Update skill buffs
 function updateSkillBuff(skill, skillRU, lv, buffList) {
 	var activeSkillBuff = []
-	if (buffList[0] === undefined) {
+	if (buffList[0] === undefined) { // Retrieve bufflist if function called without bufflist given
 		activeSkillBuff = multiFilter(currentSkillBuffList, {
 			no: [skill.toString()],
 			skillRU: [skillRU],
@@ -1012,15 +1137,16 @@ function updateSkillBuff(skill, skillRU, lv, buffList) {
 	} else {
 		activeSkillBuff = buffList;
 	}
-	$(activeSkillBuff).each(function() {		// Check if buff is effective under particular battlefield type
+
+	$(activeSkillBuff).each(function() {
 		var test = true;
-		if (this.selective == true) {
+		if (this.selective == true) { // Check if buff is effective under particular battlefield type
 			switch (this.lookUp) {
 				case "env":
 					if (!battlefield.some(function(env) {
-						return buff.corrDetail.includes(env) === true;
-					})) {
-						test = false;		 // Ignore buff if criteria is not met
+							return buff.corrDetail.includes(env) === true;
+						})) {
+						test = false; // Ignore buff if criteria is not met
 					}
 					break;
 				default:
@@ -1054,9 +1180,9 @@ function updateSkillBuff(skill, skillRU, lv, buffList) {
 				case "skilled":
 					updateSkillED(this, lv);
 					break;
-				case "hpdmg":							// ATK buffs that correlate with HP value (Passionlips)
+				case "hpdmg": // ATK buffs that correlate with HP value (Passionlips)
 					var hp = Number($("#rank-servant-hp").val());
-					if (hp <= 50 && hp > 0) {							// Activate if HP below 50%
+					if (hp <= 50 && hp > 0) { // Activate if HP below 50%
 						var value = Number($("#atk-buff").val());
 						var lower = this[lv];
 						var total = (50 - hp) * 4 / 10 + lower;
@@ -1071,13 +1197,14 @@ function updateSkillBuff(skill, skillRU, lv, buffList) {
 	});
 }
 
+// Update skill extra damage
 function updateSkillED(buff, lv) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
 			if (enemyClass.some(function(classes) {
-				return buff.corrDetail.includes(classes) === true;
-			})) {
+					return buff.corrDetail.includes(classes) === true;
+				})) {
 				test = true;
 			}
 			break;
@@ -1092,14 +1219,14 @@ function updateSkillED(buff, lv) {
 			});
 			break;
 		case "alignment2":
-		  test = enemyAlignment2.some(function(alignment2) {
-		  	return alignment2 == buff.corrDetail[0];
-	  	});
+			test = enemyAlignment2.some(function(alignment2) {
+				return alignment2 == buff.corrDetail[0];
+			});
 			break;
 		case "trait":
 			if (enemyTrait.some(function(trait) {
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
 			}
 			break;
@@ -1117,17 +1244,22 @@ function updateSkillED(buff, lv) {
 	}
 }
 
+// Update NP prerequisite
 function updateNPPreReq(npRU) {
+
+	// Check if ranked up NP is used
 	var npRUCheck;
 	if (npRU == "RU") {
 		npRUCheck = true;
 	} else {
 		npRUCheck = false;
 	}
+
 	currentNPBuffList = multiFilter(currentNPBuffList, {
 		npRU: [npRUCheck],
 		chance: useStrict
 	});
+
 	var activeNPBuff = currentNPBuffList;
 	$(activeNPBuff).each(function() {
 		switch (this.effect) {
@@ -1136,8 +1268,8 @@ function updateNPPreReq(npRU) {
 					return value.classes = this.corrDetail[0];
 				});
 				break;
-			case "npmult":			// NP with additional multiplier that correlate with OC lv (Arash)
-			case "hpmult":			// NP with additional multiplier that correlate with HP value (Anne&Mary, Hijikata)
+			case "npmult": // NP with additional multiplier that correlate with OC lv (Arash)
+			case "hpmult": // NP with additional multiplier that correlate with HP value (Anne&Mary, Hijikata)
 				currentNPAddMult.type = this.effect;
 				currentNPAddMult.npLV = this.npLV;
 				currentNPAddMult["1"] = this["1"];
@@ -1152,12 +1284,15 @@ function updateNPPreReq(npRU) {
 	});
 }
 
+// Update NP buffs
 function updateNPBuff() {
 	var nplv = currentNPLV;
 	var oclv = currentOCLV;
 	var checkRU = currentNPRU;
 	var activeNPBuff = currentNPBuffList;
-	$(activeNPBuff).each(function() {					// Check if buff correlate with NP lv or oc lv
+	$(activeNPBuff).each(function() {
+
+		// Check if buff correlate with NP lv or oc lv
 		if (this.npLV == true) {
 			var lv = nplv;
 		} else {
@@ -1197,13 +1332,14 @@ function updateNPBuff() {
 	});
 }
 
+// Update NP extra damage
 function updateNPED(buff, lv, category) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
 			if (enemyClass.some(function(classes) {
-				return buff.corrDetail.includes(classes) === true;
-			})) {
+					return buff.corrDetail.includes(classes) === true;
+				})) {
 				test = true;
 			}
 			break;
@@ -1218,14 +1354,14 @@ function updateNPED(buff, lv, category) {
 			});
 			break;
 		case "alignment2":
-		  test = enemyAlignment2.some(function(alignment2) {
-		  	return alignment2 == buff.corrDetail[0];
-	  	});
+			test = enemyAlignment2.some(function(alignment2) {
+				return alignment2 == buff.corrDetail[0];
+			});
 			break;
 		case "trait":
 			if (enemyTrait.some(function(trait) {
-				return buff.corrDetail.includes(trait) === true;
-			})) {
+					return buff.corrDetail.includes(trait) === true;
+				})) {
 				test = true;
 			}
 			break;
@@ -1234,11 +1370,12 @@ function updateNPED(buff, lv, category) {
 				return debuff == buff.corrDetail[0];
 			});
 			break;
-		case "class-trait":								// Compound criteria (Mysterious Heroine X [Alter])
-			var testTable = [], test1 = false;
+		case "class-trait": // Compound criteria (Mysterious Heroine X [Alter])
+			var testTable = [],
+				test1 = false;
 			if (enemyClass.some(function(classes) {
-				return buff.corrDetail[0] == classes;
-			})) {
+					return buff.corrDetail[0] == classes;
+				})) {
 				test1 = true;
 			}
 			testTable.push(test1);
@@ -1255,15 +1392,16 @@ function updateNPED(buff, lv, category) {
 		default:
 			break;
 	}
-	if (test == true && category == "nped") {				// Standard NP ED given as NP buff
+	if (test == true && category == "nped") { // Standard NP ED given as NP buff
 		currentEDEffective = true;
 		universalBuffTemp[6] = buff[lv];
-	} else if (test == true && category == "skilled") {		// Skill ED given by NP buff (Beni-enma)
+	} else if (test == true && category == "skilled") { // Skill ED given by NP buff (Beni-enma)
 		currentEDEffective = true;
 		universalBuffTemp[2] += buff[lv];
 	}
 }
 
+// Update passive buff & default NP buff
 function updatePassiveBuff(npRU) {
 	universalBuffTemp[0] += currentServantInfo[0]["npAtk" + npRU];
 
@@ -1281,18 +1419,25 @@ function updatePassiveBuff(npRU) {
 	universalBuffTemp[5] += currentServantInfo[0]["npQuick" + npRU];
 }
 
+// Summarise universal buffs & update arrays
 function updateUniversalBuff() {
+
+	// Check if universal buff assocated with command card color
 	var cardList = [];
 	if ($("#rank-use-universal-buff").is(":checked")) {
 		cardList = ["Common"];
 	} else {
 		cardList = ["Buster", "Arts", "Quick"];
 	}
+
 	$(cardList).each(function() {
+
+		// Pull buff values from universal teammate buff array
 		for (var i = 0; i < window["universalBuff" + this].length; i++) {
 			window["universalBuff" + this][i] = window["buffList" + this][i];
 		}
 
+		// Update universal CE
 		if (window["ceInfo" + this][0] !== undefined) {
 			updateCEAtk(this);
 			if (window["ceBuffList" + this][0] !== undefined) {
@@ -1300,18 +1445,22 @@ function updateUniversalBuff() {
 			}
 		}
 
+		// Update universal mystic code
 		if (window["masterBuffList" + this][0] !== undefined) {
 			updateMasterBuff(this);
 		}
 	});
 }
 
+// Update CE ATK value
 function updateCEAtk(key) {
 	currentCEInfo = [], currentCESave = [], currentCEBuffList = [];
 	var ceInfo = {};
 	var ceMax = false;
 	var ceLV = "0";
 	var atk = 0;
+
+	// Check if use saved CE or universal CE
 	switch (key) {
 		case "Temp":
 			var id = currentServantSave[0].data[17];
@@ -1348,8 +1497,13 @@ function updateCEAtk(key) {
 	window["ceAtk" + key] = atk;
 }
 
+// Update CE buffs
 function updateCEBuff(key) {
-	var ceInfo = [], ceBuffList = [], checkRU = false;
+	var ceInfo = [],
+		ceBuffList = [],
+		checkRU = false;
+
+	// Check if use saved CE or universal CE
 	switch (key) {
 		case "Temp":
 			var id = currentServantSave[0].data[17];
@@ -1368,12 +1522,14 @@ function updateCEBuff(key) {
 			checkRU = $("#rank-ce-max").is(":checked");
 			break;
 	}
+
 	var test = true;
-	if (ceInfo[0].type == "羈絆禮裝") {			// Check if CE is a max bond CE
+	if (ceInfo[0].type == "羈絆禮裝") { // Check if CE is a max bond CE
 		if (ceInfo[0].corrSerID != currentServantInfo[0].id) {
 			test = false;
 		}
 	}
+
 	if (test == true) {
 		var lv;
 		if (checkRU) {
@@ -1417,11 +1573,12 @@ function updateCEBuff(key) {
 	}
 }
 
+// Update CE ED
 function updateCEED(buff, key) {
 	var test = false;
 	switch (buff.lookUp) {
 		case "class":
-			test = ( buff.corrDetail[0] == $("#rank-enemy-class").val() );
+			test = (buff.corrDetail[0] == $("#rank-enemy-class").val());
 			break;
 		case "gender":
 			test = enemyGender.some(function(gender) {
@@ -1451,15 +1608,19 @@ function updateCEED(buff, key) {
 		default:
 			break;
 	}
+
 	if (test == true) {
 		window["universalBuff" + key][2] += buff[lv];
 	}
 }
 
+// Update mystic code buff
 function updateMasterBuff(key) {
 	currentMasterSave = [], currentMasterBuffList = [];
 	var masterBuffList = [];
 	var lv = "0";
+
+	// Check if use saved mystic code or universal mystic code
 	switch (key) {
 		case "Temp":
 			var name = currentServantSave[0].data[18];
@@ -1505,9 +1666,12 @@ function updateMasterBuff(key) {
 	});
 }
 
+// Calcuate damage output
 function calcDmg(input) {
 	var servantLv, atk, atkStatUp, totalAtk, npMultiplier, multLv;
 	var key = "";
+
+	// Check if use saved or designated servant lv & stats
 	if ($("#rank-use-inventory").is(":checked") && $("#rank-use-saved-data").is(":checked")) {
 		servantLv = currentServantSave[0].data[1].toString();
 		atkStatUp = currentServantSave[0].data[4];
@@ -1531,13 +1695,15 @@ function calcDmg(input) {
 		return value.id == currentServantInfo[0].id;
 	});
 
-	if (servantLv == "0") {			// Check if default servant lv is in used
+	// Check if default servant lv is in used
+	if (servantLv == "0") {
 		atk = currentServantInfo[0].atk;
 	} else {
 		atk = servantAtkList[0][servantLv];
 	}
 
-	if (atkStatUp > 2000) {			// Check if ATK stats up exceed 2000
+	// Check if ATK stats up exceed 2000
+	if (atkStatUp > 2000) {
 		atkStatUp = 2000
 	} else if (atkStatUp < 0) {
 		atkStatUp = 0
@@ -1549,18 +1715,18 @@ function calcDmg(input) {
 		key = input;
 	}
 	var ceAtk = window["ceAtk" + key];
-	if (ceAtk > 2400) {			// Check if CE ATK exceed 2400
+	if (ceAtk > 2400) { // Check if CE ATK exceed 2400
 		ceAtk = 2400
 	} else if (ceAtk < 0) {
 		ceAtk = 0
 	}
 
-	var totalAtk = atk + atkStatUp + ceAtk;		// Calculate total ATK
+	var totalAtk = atk + atkStatUp + ceAtk; // Calculate total ATK
 
 	var npMultiplier = currentServantInfo[0]["np" + npLv + currentNPRU] / 100;
 
 	var multLv;
-	if (currentNPAddMult.npLV !== undefined) {		// Check if additional NP multiplier correlate with NP lv or oc lv
+	if (currentNPAddMult.npLV !== undefined) { // Check if additional NP multiplier correlate with NP lv or oc lv
 		if (currentNPAddMult.npLV) {
 			multLv = npLv;
 		} else {
@@ -1568,26 +1734,26 @@ function calcDmg(input) {
 		}
 	}
 	switch (currentNPAddMult.type) {
-		case undefined:			// No additional NP multiplier
+		case undefined: // No additional NP multiplier
 			break;
-		case "npmult":			// Correlate with oc lv (Arash)
+		case "npmult": // Correlate with oc lv (Arash)
 			npMultiplier += currentNPAddMult[multLv];
 			break;
-		case "hpmult":			// Correlate with HP value (Anne&Mary, Hijikata)
+		case "hpmult": // Correlate with HP value (Anne&Mary, Hijikata)
 			var hp = Number($("#rank-servant-hp").val());
-			if (hp < 0) {		// Check the validity of HP value
+			if (hp < 0) { // Check the validity of HP value
 				hp = Math.abs(hp);
 			} else if (hp > 100) {
 				hp = 100;
 			}
-			var addMult = currentNPAddMult[multLv] * [ 1 - ( hp / 100 ) ];
+			var addMult = currentNPAddMult[multLv] * [1 - (hp / 100)];
 			npMultiplier += addMult;
 			break;
 	}
 
 	var npColor = currentServantInfo[0].npColor;
 	var cardMultiplier, cardBuff;
-	switch (npColor) {		// Acquire card color multiplier
+	switch (npColor) { // Acquire card color multiplier
 		case "Buster":
 			cardMultiplier = 1.5;
 			cardBuff = universalBuffTemp[3] / 100;
@@ -1604,25 +1770,48 @@ function calcDmg(input) {
 			break;
 	}
 
-	var classMultiplier = servantMult[0].multiplier;		// Acquire class multiplier
+	var classMultiplier = servantMult[0].multiplier; // Acquire class multiplier
 
+	// Acquire affinity relationship
 	var enemyClass = $("#rank-enemy-class").val();
-	var affMultiplier;
-	if (currentTempAffinity[0] !== undefined) {			// Acquire affinity relationship, check if temporary affinity is in effect
-		affMultiplier = currentTempAffinity[0][enemyClass];
-	} else {
-		affMultiplier = servantAffList[0][enemyClass];
+	var affMultiplier = 1;
+	if (enemyClass != "Custom") {
+		if (currentTempAffinity[0] !== undefined) { // Check if temporary affinity is in effect
+			affMultiplier = currentTempAffinity[0][enemyClass];
+		} else {
+			affMultiplier = servantAffList[0][enemyClass];
+		}
+	} else { // Use universal affinity multiplier
+		var input = Number(Number($("#rank-enemy-affinity").val()).toFixed(1));
+		if (input < 0.5) {
+			input = 0.5;
+		} else if (input > 2) {
+			input = 2;
+		}
+		affMultiplier = input;
 	}
 
-	var advantage;			// Display advantage visually
+	var advantage; // Display advantage visually
 	if (affMultiplier > 1) {
 		advantage = "weak";
 	} else if (affMultiplier < 1) {
 		advantage = "resist";
 	}
 
+	// Acquire attribute affinity relationship
 	var enemyAttr = $("#rank-enemy-attribute").val();
-	var attrAffMultiplier = servantAttrAffList[0][enemyAttr];		// Acquire attribute affinity relationship
+	var attrAffMultiplier = 1;
+	if (enemyAttr != "Custom") {
+		attrAffMultiplier = servantAttrAffList[0][enemyAttr];
+	} else { // Use univesal attribute affinity multiplier
+		var input = Number(Number($("#rank-enemy-attrAffinity").val()).toFixed(1));
+		if (input < 0.9) {
+			input = 0.9;
+		} else if (input > 1.1) {
+			input = 1.1;
+		}
+		attrAffMultiplier = input;
+	}
 
 	var atkBuff = universalBuffTemp[0] / 100;
 	var npDmgBuff = universalBuffTemp[2] / 100;
@@ -1630,8 +1819,8 @@ function calcDmg(input) {
 	var addDmg = universalBuffTemp[1];
 
 	// Generate output
-	var dmgOutput = totalAtk * 0.23 * [ npMultiplier * cardMultiplier * ( 1 + cardBuff ) ] * classMultiplier * affMultiplier *
-		attrAffMultiplier * ( 1 + atkBuff ) * ( 1 + npDmgBuff ) * npEDBuff + addDmg ;
+	var dmgOutput = totalAtk * 0.23 * [npMultiplier * cardMultiplier * (1 + cardBuff)] * classMultiplier * affMultiplier *
+		attrAffMultiplier * (1 + atkBuff) * (1 + npDmgBuff) * npEDBuff + addDmg;
 	dmgOutput = Number(dmgOutput.toFixed(0));
 
 	if (servantLv == 0) {
@@ -1651,23 +1840,24 @@ function calcDmg(input) {
 		attribute: currentServantInfo[0].attribute,
 		star: currentServantInfo[0].star,
 		type: currentServantInfo[0].type,
-		ed: currentEDEffective.toString(),
+		ed: currentEDEffective.toString(), // If any ED triggered
 		lv: servantLv,
 		atk: totalAtk,
 		np: npLv,
 		range: currentServantInfo[0].npRange,
-		npmult: parseFloat(( npMultiplier * 100 ).toFixed(1)),
-		npru: rankUp,
-		nped: ( parseFloat(( npEDBuff * 100 ).toFixed(1)) - 100 ),
-		npbuff: parseFloat(( npDmgBuff * 100 ).toFixed(1)),
-		cardbuff: parseFloat(( cardBuff * 100 ).toFixed(1)),
-		atkbuff: parseFloat(( atkBuff * 100 ).toFixed(1)),
+		npmult: parseFloat((npMultiplier * 100).toFixed(1)),
+		npru: rankUp, // If NP is ranked up
+		nped: (parseFloat((npEDBuff * 100).toFixed(1)) - 100),
+		npbuff: parseFloat((npDmgBuff * 100).toFixed(1)),
+		cardbuff: parseFloat((cardBuff * 100).toFixed(1)),
+		atkbuff: parseFloat((atkBuff * 100).toFixed(1)),
 		dmg: dmgOutput,
 		adv: advantage
 	};
 	rankResult.push(output);
 }
 
+// Clear result array
 function clearRankResult() {
 	var table = $("#rank-table");
 	$(table).find(".result-row").each(function() {
@@ -1686,18 +1876,21 @@ let rankResultFilter = {
 	npru: ["", "已強化"]
 };
 
+// Generate rank table
 function generateRankTable() {
 	clearRankResult();
 
 	var filteredResult = multiFilter(rankResult, rankResultFilter);
 
+	// Sort array by damage
 	sortDescend(filteredResult, "dmg");
+
 	var i = 0;
 	var max = filteredResult[0].dmg;
 	var table = document.getElementById("rank-table");
 	filteredResult.forEach(function(result) {
 		i++;
-		var percent = ( result.dmg / max ) * 100;
+		var percent = (result.dmg / max) * 100;
 		var row = table.insertRow(-1);
 		$(row).addClass("result-row");
 		row.insertCell(-1).innerHTML = i;
@@ -1715,7 +1908,7 @@ function generateRankTable() {
 		row.insertCell(-1).innerHTML = result.cardbuff;
 		row.insertCell(-1).innerHTML = result.atkbuff;
 		row.insertCell(-1).innerHTML = "<div class='rank-container'><div class='rank-bar " + result.adv + "' id='rank-bar-" + i + "'>" + result.dmg + "</div></div>";
-		$("#rank-bar-" + i).css("width", percent + "%");
+		$("#rank-bar-" + i).css("width", percent + "%"); // Visualise damage output in relation to the highest output
 	});
 }
 
@@ -1733,11 +1926,13 @@ function rankClassChange(element, className) {
 		rankResultFilter.classes = newClass;
 	}
 }
+
 function rankClassAll() {
 	$(".rank-class").removeClass("dull");
 	rankResultFilter.classes = ["Saber", "Archer", "Lancer", "Rider", "Caster", "Assassin",
 	"Berserker", "Ruler", "Avenger", "Mooncancer", "Foreigner"];
 }
+
 function rankClassNone() {
 	$(".rank-class").removeClass("dull");
 	$(".rank-class").addClass("dull");
@@ -1756,10 +1951,12 @@ function rankStarChange(element, starNo) {
 		rankResultFilter.star = newStar;
 	}
 }
+
 function rankStarAll() {
 	$(".rank-star").prop("checked", true);
 	rankResultFilter.star = [0, 1, 2, 3, 4, 5];
 }
+
 function rankStarNone() {
 	$(".rank-star").prop("checked", false);
 	rankResultFilter.star = [];
@@ -1777,10 +1974,12 @@ function rankTypeChange(element, typeName) {
 		rankResultFilter.type = newType;
 	}
 }
+
 function rankTypeAll() {
 	$(".rank-type").prop("checked", true);
 	rankResultFilter.type = ["常駐", "劇情池限定", "友情池限定", "期間限定", "活動"];
 }
+
 function rankTypeNone() {
 	$(".rank-type").prop("checked", false);
 	rankResultFilter.type = [];
@@ -1798,10 +1997,12 @@ function rankColorChange(element, colorName) {
 		rankResultFilter.color = newColor;
 	}
 }
+
 function rankColorAll() {
 	$(".rank-color").prop("checked", true);
 	rankResultFilter.color = ["Buster", "Arts", "Quick"];
 }
+
 function rankColorNone() {
 	$(".rank-color").prop("checked", false);
 	rankResultFilter.color = [];
@@ -1819,10 +2020,12 @@ function rankRangeChange(element, rangeName) {
 		rankResultFilter.range = newRange;
 	}
 }
+
 function rankRangeAll() {
 	$(".rank-range").prop("checked", true);
 	rankResultFilter.range = ["全體", "單體"];
 }
+
 function rankRangeNone() {
 	$(".rank-range").prop("checked", false);
 	rankResultFilter.range = [];
@@ -1840,10 +2043,12 @@ function rankEDChange(element, ed) {
 		rankResultFilter.ed = newED;
 	}
 }
+
 function rankEDAll() {
 	$(".rank-ed").prop("checked", true);
 	rankResultFilter.ed = ["true", "false"];
 }
+
 function rankEDNone() {
 	$(".rank-ed").prop("checked", false);
 	rankResultFilter.ed = [];
@@ -1861,10 +2066,12 @@ function rankNPRUChange(element, npru) {
 		rankResultFilter.npru = newNPRU;
 	}
 }
+
 function rankNPRUAll() {
 	$(".rank-npru").prop("checked", true);
 	rankResultFilter.npru = ["", "已強化"];
 }
+
 function rankNPRUNone() {
 	$(".rank-npru").prop("checked", false);
 	rankResultFilter.npru = [];
@@ -1878,4 +2085,5 @@ function initialRankFilter() {
 	rankColorAll();
 	rankRangeAll();
 	rankEDAll();
+	rankNPRUAll();
 }

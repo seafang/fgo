@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 // Clear current inventory table
 function clearCEInventory() {
-	$("#ce-inventory").find(".ce-inventory-row").each(function(){
+	$("#ce-inventory").find(".ce-inventory-row").each(function() {
 		$(this).remove();
 	});
 }
@@ -145,10 +145,12 @@ function ceInventoryStarChange(element, starNo) {
 		ceInventoryFilter.star = newStar;
 	}
 }
+
 function ceInventoryStarAll() {
 	$(".ce-inventory-star").prop("checked", true);
 	ceInventoryFilter.star = [3, 4, 5];
 }
+
 function ceInventoryStarNone() {
 	$(".ce-inventory-star").prop("checked", false);
 	ceInventoryFilter.star = [];
@@ -166,10 +168,12 @@ function ceInventoryTypeChange(element, typeName) {
 		ceInventoryFilter.type = newType;
 	}
 }
+
 function ceInventoryTypeAll() {
 	$(".ce-inventory-type").prop("checked", true);
 	ceInventoryFilter.type = ["常駐", "常駐/活動", "活動限定", "期間限定", "活動兌換", "羈絆禮裝", "限時兌換"];
 }
+
 function ceInventoryTypeNone() {
 	$(".ce-inventory-type").prop("checked", false);
 	ceInventoryFilter.type = [];
@@ -187,6 +191,7 @@ function ceInventoryEffectChange(element, effectName) {
 		ceInventoryFilter.effect = newEffect;
 	}
 }
+
 function ceInventoryEffectAll() {
 	$(".ce-inventory-effect").prop("checked", true);
 	ceInventoryFilter.effect = ["攻擊力", "Buster性能", "Arts性能", "Quick性能", "寶具威力", "起始NP", "每回合NP",
@@ -194,6 +199,7 @@ function ceInventoryEffectAll() {
 		"防禦力", "特防", "傷害減免", "迴避", "無敵", "毅力", "必中", "無敵貫通", "目標集中", "HP",
 		"狀態耐性", "狀態無效", "狀態成功率", "其他"];
 }
+
 function ceInventoryEffectNone() {
 	$(".ce-inventory-effect").prop("checked", false);
 	ceInventoryFilter.effect = [];
@@ -208,6 +214,7 @@ function ceInventoryInclusiveChange(element) {
 		ceInventoryFilter.owned = [true, false];
 	}
 }
+
 function ceInventoryInclusiveReset() {
 	$("#ce-inventory-owned").prop("checked", false);
 	ceInventoryFilter.owned = [true, false];
@@ -222,6 +229,7 @@ function ceInventoryFrequentChange(element) {
 		ceInventoryFilter.frequent = [true, false];
 	}
 }
+
 function ceInventoryFrequentReset() {
 	$("#ce-inventory-frequent").prop("checked", false);
 	ceInventoryFilter.frequent = [true, false];
@@ -239,7 +247,7 @@ function initialCEInventoryFilter() {
 // Apply saved CE data
 function loadCESave() {
 	if (bgCE[0] !== undefined) {
-		$("#ce-inventory").find(".ce-inventory-row").each(function(){
+		$("#ce-inventory").find(".ce-inventory-row").each(function() {
 			var rowID = Number($(this).find("td:first").html());
 			var ownershipToggle = $(this).find(".ce-owned");
 			var maxToggle = $(this).find(".ce-max");
@@ -304,23 +312,23 @@ function updateCE(element) {
 	info.data[1] = $(row).find(".ce-max").is(":checked");
 	var maxLV;
 	switch ($(row).find(".star").html()) {
-			case "★":
-			default:
-				maxLV = 50;
-				break;
-			case "★★":
-				maxLV = 55;
-				break;
-			case "★★★":
-				maxLV = 60;
-				break;
-			case "★★★★":
-				maxLV = 80;
-				break;
-			case "★★★★★":
-				maxLV = 100;
-				break;
-		}
+		case "★":
+		default:
+			maxLV = 50;
+			break;
+		case "★★":
+			maxLV = 55;
+			break;
+		case "★★★":
+			maxLV = 60;
+			break;
+		case "★★★★":
+			maxLV = 80;
+			break;
+		case "★★★★★":
+			maxLV = 100;
+			break;
+	}
 	if (Number($(row).find(".ce-inventory-lv").val()) > maxLV) {
 		$(row).find(".ce-inventory-lv").val(maxLV);
 	}

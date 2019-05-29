@@ -4,8 +4,8 @@ var bgMaster = parent.bgMaster;
 var favouritePage = parent.favouritePage;
 
 $(document).ready(function() {
-	generateMasterInventory();		// Generate inventory table
-	loadMasterSave();		// Load saved data
+	generateMasterInventory(); // Generate inventory table
+	loadMasterSave(); // Load saved data
 	updateCounter();
 	checkFavourite();
 	$(".favouritebtn").click(function() {
@@ -26,7 +26,7 @@ function updateCounter() {
 
 // Clear current table
 function clearMasterInventory() {
-	$("#master-inventory").find(".master-inventory-row").each(function(){
+	$("#master-inventory").find(".master-inventory-row").each(function() {
 		$(this).remove();
 	});
 }
@@ -57,26 +57,26 @@ function generateMasterInventory() {
 
 // Load saved data
 function loadMasterSave() {
-	if (bgMaster[0] !== undefined) {		// Check if save exists
-		$("#master-inventory").find(".master-inventory-row").each(function(){
+	if (bgMaster[0] !== undefined) { // Check if save exists
+		$("#master-inventory").find(".master-inventory-row").each(function() {
 			var rowName = $(this).find("td:first").html();
 			var ownershipToggle = $(this).find(".master-owned");
 			var master = bgMaster.filter(function(obj) {
 				return obj.name == rowName;
 			});
 			if (master[0] !== undefined) {
-				if (master[0].data[0] == true) {		// Toggle if the mystic code is owned
+				if (master[0].data[0] == true) { // Toggle if the mystic code is owned
 					$(this).find(".master-owned").attr("checked", true);
 					enableMasterOption(ownershipToggle);
 				}
-				$(this).find(".master-inventory-lv").val(master[0].data[1]);	// Update mystic code lv
+				$(this).find(".master-inventory-lv").val(master[0].data[1]); // Update mystic code lv
 			}
 		});
 	}
 }
 
 $(document).ready(function() {
-	$("#inventory-row-迦勒底").find(".master-owned").prop("disabled", true);		// 迦勒底 is owned by default
+	$("#inventory-row-迦勒底").find(".master-owned").prop("disabled", true); // 迦勒底 is owned by default
 
 	// Update save on change
 	$("select").change(function() {
@@ -108,8 +108,8 @@ function updateMaster(element) {
 
 	info.name = rowName;
 	info.data = [];
-	info.data[0] = $(row).find(".master-owned").is(":checked");		// Ownership
-	info.data[1] = Number($(row).find(".master-inventory-lv").val());	// Mystic code lv
+	info.data[0] = $(row).find(".master-owned").is(":checked"); // Ownership
+	info.data[1] = Number($(row).find(".master-inventory-lv").val()); // Mystic code lv
 
 	// Sync with background data
 	bgMaster.push(info);
@@ -127,7 +127,7 @@ function updateMasterOwnership(element) {
 	var position = master.findIndex(function(obj) {
 		return obj.name == rowName;
 	});
-	master[position].owned = newValue;		// Update ownership status in database, allows filtering when needed
+	master[position].owned = newValue; // Update ownership status in database, allows filtering when needed
 	parent.master = master;
 }
 
@@ -135,12 +135,12 @@ function updateMasterOwnership(element) {
 function enableMasterOption(element) {
 	var row = $(element).parents("tr");
 	var rowName = $(row).find("td:first").html();
-	if ($(element).is(":checked")) {		// When ownership is toggled 'true'
+	if ($(element).is(":checked")) { // When ownership is toggled 'true'
 		$(row).find(".master-inventory-lv").prop("disabled", false);
 		$(row).find(".skill1-logo").removeClass("dull");
 		$(row).find(".skill2-logo").removeClass("dull");
 		$(row).find(".skill3-logo").removeClass("dull");
-	} else {					// Initialise all fields on disable
+	} else { // Initialise all fields on disable
 		$(row).find(".master-inventory-lv").val(0);
 		$(row).find(".master-inventory-lv").prop("disabled", true);
 		$(row).find(".skill1-logo").addClass("dull");

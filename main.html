@@ -1,78 +1,81 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<meta name="description" content="FGO計算" />
-<meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發" />
-<meta name="author" content="Wilfred Tang" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" type="image/png" href="images/logo.png" />
-<title>FGO寶具傷害及NP計算</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/data/class.js"></script>
-<script src="js/data/multiplier.js"></script>
-<script src="js/data/attribute.js"></script>
-<script src="js/data/ce.js"></script>
-<script src="js/data/ceAtk.js"></script>
-<script src="js/data/ceBuff.js"></script>
-<script src="js/data/masterBuff.js"></script>
-<script src="js/data/cc.js"></script>
-<script src="js/data/ccBuff.js"></script>
-<script src="js/main.js"></script>
-<script src="js/data.js"></script>
-<script src="js/modal.js"></script>
-<script src="js/misc.js"></script>
-<link rel="stylesheet" href="style.css" />
-<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="FGO計算" />
+	<meta name="keywords" content="FGO, Fate Grand Order, 台服, 繁中服, 日服, B服, 寶具傷害, 傷害計算, NP, 寶具連發" />
+	<meta name="author" content="Wilfred Tang" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/png" href="images/logo.png" />
+	<title>FGO寶具傷害及NP計算</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/data/class.js"></script>
+	<script src="js/data/multiplier.js"></script>
+	<script src="js/data/attribute.js"></script>
+	<script src="js/data/ce.js"></script>
+	<script src="js/data/ceAtk.js"></script>
+	<script src="js/data/ceBuff.js"></script>
+	<script src="js/data/masterBuff.js"></script>
+	<script src="js/data/cc.js"></script>
+	<script src="js/data/ccBuff.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/data.js"></script>
+	<script src="js/modal.js"></script>
+	<script src="js/misc.js"></script>
+	<link rel="stylesheet" href="style.css" />
+	<!--[if lt IE 9]><script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
 </head>
+
 <body>
 
-<!-- header -->
-<header class="flex">
-	<img id="header-logo" src="images/logo_big.webp">
-	<h1 class="flex">FGO寶具傷害及NP計算 <small><small><small>by wilfang</small></small></small></h1>
-</header>
+	<!-- header -->
+	<header class="flex">
+		<img id="header-logo" src="images/logo_big.webp">
+		<h1 class="flex">FGO寶具傷害及NP計算 <small><small><small>by wilfang</small></small></small></h1>
+	</header>
 
-<!-- top navigation box -->
-<nav>
-	<a class="menu-button" data-src="inventory">從者管理</a>
-	<a class="menu-button" data-src="ce_inventory">禮裝管理</a>
-	<a class="menu-button" data-src="master_inventory">魔術禮裝管理</a>
-	<a class="menu-button" data-src="calc">寶傷計算</a>
-	<a class="menu-button" data-src="rank">寶傷排名</a>
-	<a class="menu-button" data-src="sim">傷害/NP計算</a>
-	<div class="right">
-		<a class="menu-button" data-src="instruction">網站說明</a>
-		<a class="menu-button" data-src="formula">FGO公式</a>
-		<a class="menu-button" data-src="update">更新紀錄</a>
-	</div>
-</nav>
-
-<section>
-	<div class="row" id="save-container">
-		<div class="save-element">
-			<span class="save-label">選擇存檔</span>
-			<select id="inventory-save"></select>
+	<!-- top navigation box -->
+	<nav>
+		<a class="menu-button" data-src="inventory">從者管理</a>
+		<a class="menu-button" data-src="ce_inventory">禮裝管理</a>
+		<a class="menu-button" data-src="master_inventory">魔術禮裝管理</a>
+		<a class="menu-button" data-src="calc">寶傷計算</a>
+		<a class="menu-button" data-src="rank">寶傷排名</a>
+		<a class="menu-button" data-src="sim">傷害/NP計算</a>
+		<div class="right">
+			<a class="menu-button" data-src="instruction">網站說明</a>
+			<a class="menu-button" data-src="formula">FGO公式</a>
+			<a class="menu-button" data-src="update">更新紀錄</a>
 		</div>
-		<div class="save-element">
-			<span class="save-label">存檔名稱</span>
-			<input type="text" id="save-title" placeholder="請輸入名字">
-		</div>
-		<div class="save-element">
-			<a class="btn" id="create-save">重新命名</a>
-			<a class="btn" id="clear-save">刪除存檔</a>
-		</div>
-	</div>
-	<iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
+	</nav>
 
-	<a id="to_top">回到頂部</a>
-	<br/>
-</section>
+	<section>
+		<div class="row" id="save-container">
+			<div class="save-element">
+				<span class="save-label">選擇存檔</span>
+				<select id="inventory-save"></select>
+			</div>
+			<div class="save-element">
+				<span class="save-label">存檔名稱</span>
+				<input type="text" id="save-title" placeholder="請輸入名字">
+			</div>
+			<div class="save-element">
+				<a class="btn" id="create-save">重新命名</a>
+				<a class="btn" id="clear-save">刪除存檔</a>
+			</div>
+		</div>
+		<iframe id="activeFrame" src="https://seafang.github.io/fgo/calc.html"></iframe>
 
-<!-- footer -->
-<footer>
-	<!-- <p><small><small>版權所有&#169;wilfang</small></small></p> -->
-</footer>
+		<a id="to_top">回到頂部</a>
+		<br />
+	</section>
+
+	<!-- footer -->
+	<footer>
+		<!-- <p><small><small>版權所有&#169;wilfang</small></small></p> -->
+	</footer>
 
 </body>
+
 </html>
