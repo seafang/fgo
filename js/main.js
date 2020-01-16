@@ -4,6 +4,7 @@ var multiplier = JSON.parse(classBaseMultiplier);
 var attrAffinity = JSON.parse(attributeAdvantage);
 
 var common = [];
+var servants = [];
 var servantAtk = [],
 	npBuff = [],
 	skillBuff = [];

@@ -2,14 +2,11 @@ var affinity = parent.affinity;
 var multiplier = parent.multiplier;
 var attrAffinity = parent.attrAffinity;
 
-var common = parent.common;
-var servants = parent.servants;
+var common, servants;
 var ce = parent.ce;
 var master = parent.master;
 
-var skillBuff = parent.skillBuff;
-var npBuff = parent.npBuff;
-var servantAtk = parent.servantAtk;
+var skillBuff, npBuff, servantAtk;
 var ceBuff = parent.ceBuff;
 var ceAtk = parent.ceAtk;
 var masterBuff = parent.masterBuff;
@@ -41,18 +38,18 @@ $(document).ready(function() {
 		toggleTeammate(this, "#teammate-setup-collapsible");
 	});
 
-	initialServantEnemy();
-	initialCommonEnemy();
-	initialServant();
-	initialCE();
-	initialTeammate();
-	initialTeammateCE();
-
 	checkFavourite();
 	$(".favouritebtn").click(function() {
 		var url = $(this).attr("data-src");
 		setFavourite(url);
 	});
+
+	common = parent.common;
+	servants = parent.servants;
+
+	skillBuff = parent.skillBuff;
+	npBuff = parent.npBuff;
+	servantAtk = parent.servantAtk;
 });
 
 // Update page height
@@ -258,10 +255,8 @@ function pickEnemy(type, enemyID) {
 	// Set class to 'Saber' if it's a non-servant enemy without pre-designated class
 	if (enemyInfo[0].classes !== "All") {
 		$("#current-enemy-class").val(enemyInfo[0].classes);
-		$("#current-enemy-class").attr("title", enemyInfo[0].classes);
 	} else {
 		$("#current-enemy-class").val("Saber");
-		$("#current-enemy-class").attr("title", "Saber");
 	}
 
 	$("#current-enemy-gender").val(enemyInfo[0].gender);
@@ -332,10 +327,6 @@ function setEnemy(enemy) {
 	$(element).find(".enemy-alignment2").html($("#current-enemy-alignment2").val());
 
 	// Display trait as string list, update enemy trait list
-	var trait = [];
-	$(".current-enemy-trait:checked").each(function() {
-		trait.push($(this).val())
-	});
 	window[enemy + "Trait"] = trait;
 	var string = trait.join(", ");
 	if (string.length !== 0) {

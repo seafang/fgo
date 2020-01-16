@@ -3,6 +3,7 @@ var servants = parent.servants;
 var ce = parent.ce;
 var master = parent.master;
 var cc = parent.cc;
+
 var currentSave = parent.currentSave;
 var bgServant = parent.bgServant;
 var bgCE = parent.bgCE;
@@ -15,6 +16,7 @@ $(document).ready(function() {
 	generateInventory();
 	loadSave();
 	updateCounter();
+
 	checkFavourite();
 	$(".favouritebtn").click(function() {
 		var url = $(this).attr("data-src");

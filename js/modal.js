@@ -543,12 +543,21 @@ function loadServantImg() {
 
 // Attach event handler to images
 function servantBind() {
-	$(".servant-modal-img").ready(function() {
-		$(".servant-modal-img").click(function() {
-			var id = Number($(this).attr("data-id"));
-			pickServant(id);
+	if ($(parent.document).contents().find("iframe").attr("src") != "sim.html") {
+		$(".servant-modal-img").ready(function() {
+			$(".servant-modal-img").click(function() {
+				var id = Number($(this).attr("data-id"));
+				pickServant(id);
+			});
 		});
-	});
+	} else {
+		$(".servant-modal-img").ready(function() {
+			$(".servant-modal-img").click(function() {
+				var id = Number($(this).attr("data-id"));
+				pickServant(modalCaller, id, false);
+			});
+		});
+	}
 }
 
 // Change in class filtering criteria
@@ -929,12 +938,21 @@ function loadCEImg() {
 
 // Attach event handler to the images
 function ceBind() {
-	$(".ce-modal-img").ready(function() {
-		$(".ce-modal-img").click(function() {
-			var id = Number($(this).attr("data-id"));
-			pickCE(id);
+	if ($(parent.document).contents().find("iframe").attr("src") != "sim.html") {
+		$(".ce-modal-img").ready(function() {
+			$(".ce-modal-img").click(function() {
+				var id = Number($(this).attr("data-id"));
+				pickCE(id);
+			});
 		});
-	});
+	} else {
+		$(".ce-modal-img").ready(function() {
+			$(".ce-modal-img").click(function() {
+				var id = Number($(this).attr("data-id"));
+				pickCE(modalCaller, id);
+			});
+		});
+	}
 }
 
 // Change in star filtering criteria

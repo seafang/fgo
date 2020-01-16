@@ -228,6 +228,9 @@ td {
 .center {
   justify-content: center;
 }
+.text-center {
+  text-align: center;
+}
 .justify-even {
   justify-content: space-evenly;
 }
@@ -427,6 +430,23 @@ td {
   padding-left: 10px;
 }
 
+/* sim.html */
+.sim-enemy-toggle, .sim-member-toggle {
+  display: none;
+}
+.member-ce-detail {
+  border: 1px solid darkgray;
+  padding: 1px;
+  background-color: lightyellow;
+}
+.member-skill-detail {
+  width: 30%;
+  border: 1px solid darkgray;
+  padding: 2px;
+  margin: 5px;
+  background-color: white;
+}
+
 /* Element */
 .list label {
   margin: 1px 10px 2px 5px;
@@ -552,13 +572,13 @@ a:hover .focus-content {
   color: white;
   border-color: black;
 }
-.enemy-applybtn {
+.enemy-applybtn, .sim-enemy-applybtn {
   background-color: white;
   color: black;
   padding: 1px 20px;
   margin: 0px 5px;
 }
-.enemy-applybtn:hover {
+.enemy-applybtn:hover, .sim-enemy-applybtn:hover {
   background-color: black;
   color: white;
 }
