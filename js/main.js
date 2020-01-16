@@ -11,36 +11,6 @@ var servantAtk = [],
 var master = [];
 var events = [];
 
-$(document).ready(function() {
-	$.get("js/data/common.json", function(data) {
-		common = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/servant.json", function(data) {
-		servants = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/atk.json", function(data) {
-		servantAtk = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/skill.json", function(data) {
-		skillBuff = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/np.json", function(data) {
-		npBuff = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/master.json", function(data) {
-		master = JSON.parse(data);
-	}, "text");
-
-	$.get("js/data/events.json", function(data) {
-		events = JSON.parse(data);
-	}, "text");
-});
-
 var ce = JSON.parse(craftEssence);
 var cc = JSON.parse(commandCode);
 
@@ -56,6 +26,8 @@ var bgServant = [],
 	customBuff = [];
 
 $(document).ready(function() {
+
+	loadData();
 
 	// Generate save list
 	generateSaveList();
@@ -93,6 +65,36 @@ $(document).ready(function() {
 $(document).scroll(function() {
 	iframeResize();
 });
+
+function loadData() {
+	$.get("js/data/common.json", function(data) {
+		common = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/servant.json", function(data) {
+		servants = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/atk.json", function(data) {
+		servantAtk = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/skill.json", function(data) {
+		skillBuff = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/np.json", function(data) {
+		npBuff = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/master.json", function(data) {
+		master = JSON.parse(data);
+	}, "text");
+
+	$.get("js/data/events.json", function(data) {
+		events = JSON.parse(data);
+	}, "text");
+}
 
 // Retrieve iframe content height and update the iframe height
 function iframeResize() {
